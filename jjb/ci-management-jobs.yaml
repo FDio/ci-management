@@ -55,7 +55,7 @@
                       branch-pattern: '**/master'
                   file-paths:
                     - compare-type: ANT
-                      pattern: jjb/*
+                      pattern: jjb/**
                     - compare-type: ANT
                       pattern: jjb-templates/**
 
