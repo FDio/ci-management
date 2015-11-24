@@ -11,6 +11,7 @@
     name: toolchain_test-verify
 
     project-type: freestyle
+    node: verify
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -48,6 +49,7 @@
     name: toolchain_test-merge
 
     project-type: freestyle
+    node: merge
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
