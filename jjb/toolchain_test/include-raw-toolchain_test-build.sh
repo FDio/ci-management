@@ -3,3 +3,6 @@
 
 # do nothing but print the current slave hostname
 hostname
+autoreconf --install
+./configure
+make
