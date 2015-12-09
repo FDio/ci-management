@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "daeb3561_8474289d",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2015-12-09T17:34:55Z",
+      "side": 1,
+      "message": "build-root *mostly* only contains build artifacts (a small number of scripts and vagrant files as well... but small)",
+      "parentUuid": "daeb3561_e43d34bd",
+      "revId": "00be9b464af1d401c31c55ccbdd5eab9ee94c58a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daeb3561_c44a3055",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-09T17:12:53Z",
       "side": 1,
       "message": "Does this directory only contain built artifacts or all source files too?",
+      "revId": "00be9b464af1d401c31c55ccbdd5eab9ee94c58a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_64792493",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2015-12-09T17:34:55Z",
+      "side": 1,
+      "message": "build-root *mostly* only contains build artifacts (a small number of scripts and vagrant files as well... but small)",
+      "parentUuid": "daeb3561_c44a3055",
       "revId": "00be9b464af1d401c31c55ccbdd5eab9ee94c58a",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
