@@ -45,6 +45,10 @@
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
 
+    publishers:
+        - archive-artifacts:
+            artifacts: 'build-root/**'
+
 - job-template:
     name: vpp-merge
 
@@ -82,3 +86,7 @@
     builders:
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'build-root/**'
