@@ -111,7 +111,7 @@
     name: archive-artifacts
     publishers:
         - archive:
-            articacts: '{artifacts}'
+            artifacts: '{artifacts}'
             allow-empty: true
             fingerprint: true
             latest-only: true
