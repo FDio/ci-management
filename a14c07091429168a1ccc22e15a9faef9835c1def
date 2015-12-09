@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daeb3561_21178e53",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-12-09T15:32:41Z",
+      "side": 1,
+      "message": "We normally manage maven installs via jenkins itself. As long as a maven specific step is defined jenkins will auto-install the target version of maven. This is a more flexible method of dealing with maven.",
+      "revId": "a14c07091429168a1ccc22e15a9faef9835c1def",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
