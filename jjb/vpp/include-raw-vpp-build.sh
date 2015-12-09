@@ -5,4 +5,4 @@
 hostname
 cd build-root/
 ./bootstrap.sh
-make PLATFORM=vpp TAG=vpp_debug install-packages
+make PLATFORM=vpp TAG=vpp_debug install-deb
