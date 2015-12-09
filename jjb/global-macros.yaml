@@ -33,6 +33,15 @@
             default: '{refspec}'
             description: "GERRIT_REFSPEC parameter not given by trigger"
 
+- parameter:
+    name: maven-project-parameter
+    parameters:
+        - string:
+            name: MAVEN_SELECTOR
+            default: '{maven}'
+            description: 'Maven selector to be used by shell scripts'
+
+
 ##### SCMS
 - scm:
     name: git-scm
@@ -163,7 +172,7 @@
     builders:
         - config-file-provider:
             files:
-                - file-id: '{global-settings}'
+                - file-id: '{global-settings-file}'
                   variable: 'GLOBAL_SETTINGS_FILE'
                 - file-id: '{settings-file}'
                   variable: 'SETTINGS_FILE'

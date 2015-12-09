@@ -66,6 +66,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - maven-project-parameter:
+            maven: '{mvn33}'
 
     scm:
         - gerrit-trigger-scm:
@@ -86,6 +88,16 @@
     builders:
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
+        - maven-target:
+            maven-version: '{mvn33}'
+            goals: '--version'
+            settings: '{vpp-settings}'
+            global-settings: '{global-settings}'
+        - provide-maven-settings:
+            settings-file: '{vpp-settings}'
+            global-settings-file: '{global-settings}'
+        - shell:
+            !include-raw-escape include-raw-vpp-maven-push.sh
 
     publishers:
         - archive-artifacts:
