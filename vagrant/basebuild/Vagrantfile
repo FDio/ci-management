@@ -40,8 +40,8 @@ Vagrant.configure(2) do |config|
     # Install build tools
     apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git
 
-    # Install other stuff
-    # apt-get install -y qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+    # Install maven stuff
+    apt-get install -y maven
 
     # Install debian packaging tools
     apt-get install -y debhelper dkms
