@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daeb3561_e43d34bd",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-12-09T17:12:53Z",
+      "side": 1,
+      "message": "Does this directory only contain built artifacts or all source files too?",
+      "revId": "00be9b464af1d401c31c55ccbdd5eab9ee94c58a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_c44a3055",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-12-09T17:12:53Z",
+      "side": 1,
+      "message": "Does this directory only contain built artifacts or all source files too?",
+      "revId": "00be9b464af1d401c31c55ccbdd5eab9ee94c58a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
