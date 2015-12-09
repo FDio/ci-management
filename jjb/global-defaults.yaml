@@ -11,7 +11,7 @@
     ssh-credentials: 'jenkins-gerrit-credentials'
 
     # Maven versions
-    mvn33: 'Maven 3.3.9'
+    mvn33: 'Maven_3.3.9'
 
     # Config File provider ID mapping
     global-settings: 'org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1449593564219'
