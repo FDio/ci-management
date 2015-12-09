@@ -106,6 +106,51 @@
                     - branch-compare-type: 'ANT'
                       branch-pattern: '**/{branch}'
 
+# Publishers
+- publisher:
+    name: archive-artifacts
+    publishers:
+        - archive:
+            articacts: '{artifacts}'
+            allow-empty: true
+            fingerprint: true
+            latest-only: true
+
+- publisher:
+    name: email-notification
+    publishers:
+        - email-ext:
+            recipients: 'nobody@projectrotterdam.info'
+            reply-to:
+            content-type: default
+            subject: '{email-prefix} $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
+            body: |
+                $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+                Check console output at $BUILD_URL to view the results.
+            unstable: true
+            fixed: true
+            send-to:
+                - developers
+                - recipients
+
+- publisher:
+    name: jacoco-report
+    publishers:
+        - jacoco:
+            exec-pattern: '**/**.exec'
+            class-pattern: '**/classes'
+            source-pattern: '**/src/main/java'
+            exclusion-pattern: '**/gen**,**/generated-sources/**,**/yang-gen**,**/pax/**'
+            status-update: true
+            targets:
+                - branch:
+                    healthy: 10
+                    unhealthy: 20
+                - method:
+                    healthy: 50
+                    unhealthy: 40
+
 ###### BUILDERS
 - builder:
     name: ci-management-check-unicode
@@ -113,4 +158,13 @@
         - shell: |
             $WORKSPACE/scripts/check-unicode.sh jjb/
 
+- builder:
+    name: provide-maven-settings
+    builders:
+        - config-file-provider:
+            files:
+                - file-id: '{global-settings}'
+                  variable: 'GLOBAL_SETTINGS_FILE'
+                - file-id: '{settings-file}'
+                  variable: 'SETTINGS_FILE'
 
