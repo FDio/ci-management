@@ -62,7 +62,7 @@ function push_deb ()
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
     version=$(echo "$basefile" | cut -f 2- -d '_')
 
-    push_file "$debfile" "$repoId" "$url" "${version}_amd64" "$artifactId" deb
+    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb
 }
 
 for i in $JARS
