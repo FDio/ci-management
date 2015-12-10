@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Determine the path to maven
-if [ -n "${MAVEN_SELECTOR}" ]; then
+if [ -z "${MAVEN_SELECTOR}" ]; then
     echo "ERROR: No Maven install detected!"
     exit 1
 fi
