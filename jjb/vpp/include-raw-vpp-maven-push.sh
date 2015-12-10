@@ -37,6 +37,12 @@ function push_file ()
         -Dversion=$version -DartifactId=$artifactId \
         -Dtype=$file_type $d_classifier\
         -gs $GLOBAL_SETTINGS_FILE -s $SETTINGS_FILE
+
+    # make sure the script bombs if we fail an upload
+    if [ ! "$?" ]; then
+        echo "ERROR: There was an error with the upload"
+        exit 1
+    fi
 }
 
 function push_jar ()
@@ -55,8 +61,8 @@ function push_jar ()
 function push_deb ()
 {
     debfile=$1
-    repoId="${BASEREPOID}release"
-    url="${BASEURL}release"
+    repoId="${BASEREPOID}dev"
+    url="${BASEURL}dev"
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
