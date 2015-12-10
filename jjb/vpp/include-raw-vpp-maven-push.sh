@@ -9,7 +9,7 @@ fi
 MVN="${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mvn"
 GROUP_ID="info.projectrotterdam.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/rotterdam."
-BASEREPOID='rotterdam.'
+BASEREPOID='rotterdam-'
 
 # find the files
 JARS=$(find . -type f -iname '*.jar')
@@ -49,7 +49,7 @@ function push_jar ()
     artifactId=$(echo "$basefile" | cut -f 1 -d '-')
     version=$(echo "$basefile" | cut -f 2 -d '-')
 
-    push_file "$jarfile" "$repoId" "$url" "$version" "$artifactId" jar
+    push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
 }
 
 function push_deb ()
@@ -58,11 +58,11 @@ function push_deb ()
     repoId="${BASEREPOID}release"
     url="${BASEURL}release"
 
-    basefile=$(basename -s _amd64.deb "$debfile")
+    basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
-    version=$(echo "$basefile" | cut -f 2 -d '_')
+    version=$(echo "$basefile" | cut -f 2- -d '_')
 
-    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb _amd64
+    push_file "$debfile" "$repoId" "$url" "${version}_amd64" "$artifactId" deb
 }
 
 for i in $JARS
