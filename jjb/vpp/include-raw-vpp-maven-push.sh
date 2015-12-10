@@ -39,7 +39,7 @@ function push_file ()
         -gs $GLOBAL_SETTINGS_FILE -s $SETTINGS_FILE
 
     # make sure the script bombs if we fail an upload
-    if [ ! "$?" ]; then
+    if [ "$?" != '0' ]; then
         echo "ERROR: There was an error with the upload"
         exit 1
     fi
