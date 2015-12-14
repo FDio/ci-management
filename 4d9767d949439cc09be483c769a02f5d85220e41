@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daeb3561_c44d90c6",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-12-14T19:39:44Z",
+      "side": 1,
+      "message": "Is there a reason for vim or is that just for folks that end up using this interactively?",
+      "revId": "4d9767d949439cc09be483c769a02f5d85220e41",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
