@@ -11,6 +11,7 @@
     name: ci-management-verify-jjb
 
     project-type: freestyle
+    concurrent: true
 
     logrotate:
         daysToKeep: 30
