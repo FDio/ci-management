@@ -12,6 +12,7 @@
 
     project-type: freestyle
     node: verify
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
