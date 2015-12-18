@@ -15,4 +15,5 @@
 
     # Config File provider ID mapping
     global-settings: 'org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1449593564219'
+    honeycomb-settings: 'bcd56fc8-76b4-4fa0-b2cd-c13bc5cdc527'
     vpp-settings: 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1449593875850'
