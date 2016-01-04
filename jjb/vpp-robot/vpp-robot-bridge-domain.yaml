@@ -1,0 +1,51 @@
+- project:
+    name: vpp-robot-bridge-domain
+    jobs:
+        - 'vpp-robot-{functionality}'
+
+    project: 'vpp'
+    branch: 'master'
+
+    functionality: 'bridge-domain'
+- job-template:
+    name: vpp-robot
+
+    project-type: freestyle
+    node: I honestly have no idea
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - shell:
+            !include-raw-escape include-raw-vpp-build.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'build-root/**'
