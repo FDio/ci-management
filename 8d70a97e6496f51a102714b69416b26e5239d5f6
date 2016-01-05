@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daeb3561_6a044b15",
+        "filename": "csit/suites/vpp/resources/libraries/python/SetupFramework.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space (dunno if it\u0027s proper here in python)",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_4a09872b",
+        "filename": "csit/suites/vpp/resources/libraries/python/SetupFramework.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space (dunno if it\u0027s proper here in python)",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_8aff8f01",
+        "filename": "csit/suites/vpp/resources/libraries/python/SetupFramework.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_2a0e4335",
+        "filename": "csit/suites/vpp/resources/libraries/python/VatExecutor.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space (dunno if it\u0027s proper here in python)",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_0a137f5d",
+        "filename": "csit/suites/vpp/resources/libraries/python/VatExecutor.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space (dunno if it\u0027s proper here in python)",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_ea0f3b2d",
+        "filename": "csit/suites/vpp/resources/libraries/python/VatExecutor.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space (dunno if it\u0027s proper here in python)",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daeb3561_ca1c776d",
+        "filename": "csit/suites/vpp/resources/libraries/robot/vat/interfaces.robot",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-05T00:24:40Z",
+      "side": 1,
+      "message": "trailing white space",
+      "revId": "8d70a97e6496f51a102714b69416b26e5239d5f6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
