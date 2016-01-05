@@ -1,16 +1,16 @@
 - project:
-    name: vpp-bridge-domain
+    name: csit-vpp-bridge-domain
 
     jobs:
-        - 'vpp-{functionality}'
+        - 'csit-vpp-{functionality}'
 
-    project: 'vpp'
+    project: 'csit'
     branch: 'master'
 
     functionality: 'bridge-domain'
 
 - job-template:
-    name: 'vpp-{functionality}'
+    name: 'csit-vpp-{functionality}'
 
     project-type: freestyle
     node: verify
