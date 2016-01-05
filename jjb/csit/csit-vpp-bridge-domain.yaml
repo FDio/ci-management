@@ -31,8 +31,8 @@
     scm:
         - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+            refspec: ''
+            choosing-strategy: 'default'
 
     wrappers:
         - ssh-agent-credentials:
@@ -50,7 +50,7 @@
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape ../vpp/include-raw-vpp-build.sh
+            !include-raw-escape include-raw-csit-build.sh
 
     publishers:
         - archive-artifacts:
