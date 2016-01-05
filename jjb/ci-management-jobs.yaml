@@ -11,6 +11,7 @@
     name: ci-management-verify-jjb
 
     project-type: freestyle
+    node: master
     concurrent: true
 
     logrotate:
@@ -69,6 +70,7 @@
     name: 'ci-management-merge'
 
     project-type: freestyle
+    node: master
 
     logrotate:
         daysToKeep: 30
@@ -124,6 +126,7 @@
     # basis with --flush-cache enabled to ensure jobs are properly configured in Jenkins
 
     project-type: freestyle
+    node: master
 
     logrotate:
         daysToKeep: 30
