@@ -7,9 +7,9 @@ if [ -z "${MAVEN_SELECTOR}" ]; then
 fi
 
 MVN="${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mvn"
-GROUP_ID="info.projectrotterdam.${PROJECT}"
-BASEURL="${NEXUSPROXY}/content/repositories/rotterdam."
-BASEREPOID='rotterdam-'
+GROUP_ID="io.fd.${PROJECT}"
+BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
+BASEREPOID='fdio-'
 
 # find the files
 JARS=$(find . -type f -iname '*.jar')
