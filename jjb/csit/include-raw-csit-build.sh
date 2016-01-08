@@ -1,8 +1,15 @@
 #!/bin/bash
-# basic build script example
 
-# do nothing but print the current slave hostname
-git clone ssh://rotterdam-jobbuilder@gerrit.projectrotterdam.info:29418/vpp.git
-cd vpp/build-root/
-./bootstrap.sh
-make PLATFORM=vpp TAG=vpp_debug install-deb
+# execute csit bootstrap script if it exists
+if [ -e bootstrap.sh ]
+then
+    # make sure that bootstrap.sh is executable
+    chmod +x bootstrap.sh
+    # run the script
+    ./bootstrap.sh
+else
+    echo 'ERROR: No bootstrap.sh found'
+    exit 1
+fi
+
+# vim: ts=4 ts=4 sts=4 et :
