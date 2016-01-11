@@ -63,8 +63,12 @@
 
     builders:
         - shell: |
-            jenkins-jobs test jjb/
+            jenkins-jobs test -o job_output jjb/
         - ci-management-check-unicode
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'job_output/*'
 
 - job-template:
     name: 'ci-management-merge'
