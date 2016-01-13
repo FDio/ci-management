@@ -3,7 +3,7 @@
     jobs:
         - 'honeycomb-verify'
         - 'honeycomb-merge'
-    project: 'honyecomb'
+    project: 'honeycomb'
     branch: 'master'
 
 - job-template:
