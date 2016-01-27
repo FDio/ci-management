@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baf0414d_63f35c74",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-27T13:56:25Z",
+      "side": 1,
+      "message": "dangling white space",
+      "revId": "d79149ffbd8a73320f195a6d5d4ee7156fb38f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf0414d_43e8587c",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-01-27T13:56:25Z",
+      "side": 1,
+      "message": "dangling white space",
+      "revId": "d79149ffbd8a73320f195a6d5d4ee7156fb38f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
