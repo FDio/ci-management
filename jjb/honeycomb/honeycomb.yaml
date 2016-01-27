@@ -44,12 +44,14 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: '{honeycomb-settings}'
         global-settings: '{global-settings}'
 
     publishers:
+        - archive-artifacts:
+            artifacts: '**/target/**'
         - findbugs
         - email-notification:
             email-prefix: '[honeycomb]'
@@ -91,7 +93,7 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: '{honeycomb-settings}'
         global-settings: '{global-settings}'
@@ -100,6 +102,8 @@
         - findbugs
 
     publishers:
+        - archive-artifacts:
+            artifacts: '**/target/**'
         - email-notification:
             email-prefix: '[honeycomb]'
         - maven-deploy:
