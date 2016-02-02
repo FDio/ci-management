@@ -46,9 +46,6 @@
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
 
-    publishers:
-        - archive-artifacts:
-            artifacts: 'build-root/**'
 
 - job-template:
     name: vpp-merge
@@ -100,6 +97,3 @@
         - shell:
             !include-raw-escape include-raw-vpp-maven-push.sh
 
-    publishers:
-        - archive-artifacts:
-            artifacts: 'build-root/**'
