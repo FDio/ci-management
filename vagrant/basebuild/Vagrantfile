@@ -66,6 +66,9 @@ Vagrant.configure(2) do |config|
     echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
     mount /mnt/huge
 
+    # Add fd.io apt repo in case its needed
+    echo "deb http://nexus.fd.io/content/repositories/fd.io.dev/ ./" > /etc/apt/sources.list.d/99fd.io.list
+
   SHELL
 
   #################
