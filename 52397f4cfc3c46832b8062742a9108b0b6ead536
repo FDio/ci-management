@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baf0414d_144ba42c",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-02-03T15:03:14Z",
+      "side": 1,
+      "message": "Much as it pains me, you should change this from https to http. While the system is canonically https I found that apt is referencing a CA file that doesn\u0027t include COMODO (the CA we used for nexus) for some reason, whereas other components don\u0027t have that issue as COMODO is in the system CA store.",
+      "revId": "52397f4cfc3c46832b8062742a9108b0b6ead536",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
