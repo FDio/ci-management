@@ -36,11 +36,6 @@
             users:
                 - '{ssh-credentials}'
 
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
-
     builders:
         - shell:
             !include-raw-escape include-raw-toolchain_test-build.sh
@@ -73,11 +68,6 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-
-    triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
 
     builders:
         - shell:
