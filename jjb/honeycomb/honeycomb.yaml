@@ -36,11 +36,6 @@
             users:
                 - '{ssh-credentials}'
 
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: 'honeycomb'
-            branch: '{branch}'
-
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -84,11 +79,6 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-
-    triggers:
-        - gerrit-trigger-patch-merged:
-            name: 'honeycomb'
-            branch: '{branch}'
 
     maven:
         maven-name: '{mvn33}'
