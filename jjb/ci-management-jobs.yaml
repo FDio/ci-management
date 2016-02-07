@@ -39,7 +39,7 @@
 
     builders:
         - shell: |
-            jenkins-jobs test -o job_output jjb/
+            jenkins-jobs test --recursive -o job_output jjb/
         - ci-management-check-unicode
 
     publishers:
@@ -115,6 +115,6 @@
 
     builders:
         - shell: |
-            jenkins-jobs --flush-cache update jjb/
+            jenkins-jobs --flush-cache update --recursive jjb/
 
 
