@@ -1,4 +1,4 @@
-jenkins-jobs update --delete-old jjb/
+jenkins-jobs update --recursive --delete-old jjb/
 
 # Submit patches for any jobs that can be auto updated
 function submitJJB {
