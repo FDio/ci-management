@@ -19,21 +19,10 @@
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
-    parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-
     scm:
-        - git:
+        - zuul-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            url: '$ZUUL_URL/$ZUUL_PROJECT'
             refspec: '$ZUUL_REF'
-            branches:
-              - 'origin/$ZUUL_BRANCH'
-            skip-tag: true
-            wipe-workspace: true
 
     wrappers:
         - ssh-agent-credentials:
@@ -56,27 +45,15 @@
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
-    parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-
     scm:
-        - gerrit-trigger-scm:
+        - zuul-trigger-scm:
             credentials-id: '{ssh-credentials}'
             refspec: ''
-            choosing-strategy: 'default'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-
-    triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
 
     builders:
         - shell:
