@@ -45,8 +45,13 @@
                     count: 3
                     stop-on-terminate: False
 
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
     builders:
-        # This is where we will need to insert a step with a script that pulls all the
+        # This is where we will need to insert a step with a script that pulls all the 
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:

@@ -37,6 +37,30 @@
             users:
                 - '{ssh-credentials}'
 
+    triggers:
+        - gerrit:
+            trigger-on:
+                - patchset-created-event:
+                    exclude-drafts: 'false'
+                    exclude-trivial-rebase: 'false'
+                    exclude-no-code-change: 'false'
+                - draft-published-event
+                - comment-added-contains-event:
+                    comment-contains-value: 'recheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'reverify'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: 'ci-management'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/master'
+                  file-paths:
+                    - compare-type: ANT
+                      pattern: jjb/**
+                    - compare-type: ANT
+                      pattern: jjb-templates/**
+
     builders:
         - shell: |
             jenkins-jobs test --recursive -o job_output jjb/
@@ -74,6 +98,24 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+
+    triggers:
+        - gerrit:
+            trigger-on:
+                - change-merged-event
+                - comment-added-contains-event:
+                    comment-contains-value: 'remerge'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: 'ci-management'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/master'
+                  file-paths:
+                    - compare-type: ANT
+                      pattern: jjb/**
+                    - compare-type: ANT
+                      pattern: jjb-templates/**
 
     builders:
         - shell:
