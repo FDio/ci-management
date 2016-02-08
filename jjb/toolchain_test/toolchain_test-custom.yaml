@@ -26,20 +26,19 @@
             branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
+        - git:
             credentials-id: '{ssh-credentials}'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+            url: '$ZUUL_URL/$ZUUL_PROJECT'
+            refspec: '$ZUUL_REF'
+            branches:
+              - 'origin/$ZUUL_BRANCH'
+            skip-tag: true
+            wipe-workspace: true
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
 
     builders:
         - shell:
