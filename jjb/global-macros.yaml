@@ -67,6 +67,17 @@
             skip-tag: true
             choosing-strategy: '{choosing-strategy}'
 
+- scm:
+    name: zuul-trigger-scm
+    scm:
+      - git:
+          url: '$ZUUL_URL/$ZUUL_PROJECT'
+          refspec: '{refspec}'
+          branches:
+            - 'origin/$ZUUL_BRANCH'
+          skip-tag: true
+          wipe-workspace: true
+
 ###### WRAPPERS
 - wrapper:
     name: build-timeout
