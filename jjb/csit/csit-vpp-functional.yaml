@@ -1,13 +1,13 @@
 - project:
-    name: csit-validate
+    name: csit-vpp-functional
 
     jobs:
-        - 'csit-validate-{functionality}'
+        - 'csit-vpp-{functionality}'
 
     project: 'csit'
     branch: 'master'
 
-    functionality: 'pylint'
+    functionality: 'functional'
 
 - job-template:
     name: 'csit-vpp-{functionality}'
@@ -27,6 +27,10 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - string:
+            name: 'VPP_URLS'
+            default: ''
+            description: 'Space separated VPP *.deb URLs from nexus'
 
     scm:
         - gerrit-trigger-scm:
@@ -45,18 +49,16 @@
                     count: 3
                     stop-on-terminate: False
 
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+    # No triggers section, as it is expected that his job is triggered by
+    # vpp verify/merge job.
 
     builders:
         # This is where we will need to insert a step with a script that pulls all the 
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape include-raw-csit-pylint.sh
+            !include-raw-escape include-raw-csit-build.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'build-root/**'
+            artifacts: 'report.html, log.html, output.xml'
