@@ -50,12 +50,8 @@
         global-settings: '{global-settings}'
 
     publishers:
-        - archive-artifacts:
-            artifacts: '**/target/**'
-        - findbugs
         - email-notification:
             email-prefix: '[honeycomb]'
-        - jacoco-report
 
 - job-template:
     name: 'honeycomb-merge'
@@ -102,8 +98,6 @@
         - findbugs
 
     publishers:
-        - archive-artifacts:
-            artifacts: '**/target/**'
         - email-notification:
             email-prefix: '[honeycomb]'
         - maven-deploy:
