@@ -66,6 +66,9 @@ Vagrant.configure(2) do |config|
     echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
     mount /mnt/huge
 
+    # Install virtualenv for test execution
+    apt-get install -y --force-yes python-virtualenv python-pip python-dev
+
   SHELL
 
   #################
