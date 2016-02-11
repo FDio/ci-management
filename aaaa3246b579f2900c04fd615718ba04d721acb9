@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af53d3f_ffc37f88",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-02-11T14:24:01Z",
+      "side": 1,
+      "message": "should be \"apt-get install -y\" so that it\u0027s non-interactive.",
+      "revId": "aaaa3246b579f2900c04fd615718ba04d721acb9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
