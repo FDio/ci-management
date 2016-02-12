@@ -8,7 +8,7 @@
     branch: 'master'
 
 - job-template:
-    name: 'csit-vpp-pylint'
+    name: 'csit-validate-pylint'
 
     project-type: freestyle
     node: verify
