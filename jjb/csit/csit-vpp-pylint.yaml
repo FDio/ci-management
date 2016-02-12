@@ -2,15 +2,13 @@
     name: csit-validate
 
     jobs:
-        - 'csit-validate-{functionality}'
+        - 'csit-validate-pylint'
 
     project: 'csit'
     branch: 'master'
 
-    functionality: 'pylint'
-
 - job-template:
-    name: 'csit-vpp-{functionality}'
+    name: 'csit-vpp-pylint'
 
     project-type: freestyle
     node: verify
@@ -51,7 +49,7 @@
             branch: '{branch}'
 
     builders:
-        # This is where we will need to insert a step with a script that pulls all the 
+        # This is where we will need to insert a step with a script that pulls all the
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
