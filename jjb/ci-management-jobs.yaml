@@ -24,6 +24,7 @@
         - zuul-trigger-scm:
             credentials-id: '{ssh-credentials}'
             refspec: '$ZUUL_REF'
+            commit: '$ZUUL_COMMIT'
 
     wrappers:
         - ssh-agent-credentials:
@@ -55,6 +56,7 @@
         - zuul-trigger-scm:
             credentials-id: '{ssh-credentials}'
             refspec: ''
+            commit: 'origin/$ZUUL_BRANCH'
 
     wrappers:
         - ssh-agent-credentials:

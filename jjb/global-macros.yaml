@@ -74,7 +74,7 @@
           url: '$ZUUL_URL/$ZUUL_PROJECT'
           refspec: '{refspec}'
           branches:
-            - 'origin/$ZUUL_BRANCH'
+            - '{commit}'
           skip-tag: true
           wipe-workspace: true
 
