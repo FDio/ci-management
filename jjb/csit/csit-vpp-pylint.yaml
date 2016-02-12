@@ -1,13 +1,13 @@
 - project:
-    name: csit-vpp-bridge-domain
+    name: csit-validate
 
     jobs:
-        - 'csit-vpp-{functionality}'
+        - 'csit-validate-{functionality}'
 
     project: 'csit'
     branch: 'master'
 
-    functionality: 'bridge-domain'
+    functionality: 'pylint'
 
 - job-template:
     name: 'csit-vpp-{functionality}'
@@ -55,7 +55,7 @@
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape include-raw-csit-build.sh
+            !include-raw-escape include-raw-csit-pylint.sh
 
     publishers:
         - archive-artifacts:
