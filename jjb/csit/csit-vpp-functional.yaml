@@ -49,8 +49,15 @@
         #             count: 3
         #             stop-on-terminate: False
 
-    # No triggers section, as it is expected that his job is triggered by
-    # vpp verify/merge job.
+    # TODO: Rewrite following trigger. Whis job has to be triggered by
+    # VPP verification build. This job requires built VPP DEBs.
+    # Until CSIT is fully integrated with VIRL & HW lab, trigger this build by
+    # csit patch submit.
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
 
     builders:
         # This is where we will need to insert a step with a script that pulls all the
