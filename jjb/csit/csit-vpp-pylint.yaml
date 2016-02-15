@@ -2,13 +2,13 @@
     name: csit-validate
 
     jobs:
-        - 'csit-vpp-validate-pylint'
+        - 'csit-validate-pylint'
 
     project: 'csit'
     branch: 'master'
 
 - job-template:
-    name: 'csit-vpp-validate-pylint'
+    name: 'csit-validate-pylint'
 
     project-type: freestyle
     node: verify
@@ -57,4 +57,4 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'build-root/**'
+            artifacts: 'pylint.log'
