@@ -69,3 +69,9 @@
     publishers:
         - archive-artifacts:
             artifacts: 'report.html, log.html, output.xml'
+            latest-only: false
+
+        - robot:
+            output-path: '.'
+            other-files: ''
+
