@@ -171,6 +171,13 @@
                     healthy: 50
                     unhealthy: 40
 
+- publisher:
+    name: robot-report
+    publishers:
+        - robot:
+            output-path: ''
+            other-files: ''
+
 ###### BUILDERS
 - builder:
     name: ci-management-check-unicode
