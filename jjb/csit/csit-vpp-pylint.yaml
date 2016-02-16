@@ -58,3 +58,4 @@
     publishers:
         - archive-artifacts:
             artifacts: 'pylint.log'
+            latest-only: false
