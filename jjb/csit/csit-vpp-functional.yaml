@@ -1,5 +1,6 @@
 - project:
     name: csit-vpp-functional
+    description: 'Run VPP functional tests on VIRL.'
 
     jobs:
         - 'csit-vpp-{functionality}'
@@ -7,14 +8,14 @@
     project: 'csit'
     branch: 'master'
 
-    functionality: 'functional'
+    functionality: 'functional-virl'
 
 - job-template:
     name: 'csit-vpp-{functionality}'
 
     project-type: freestyle
     node: verify
-    concurrent: true
+    concurrent: false
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -64,7 +65,7 @@
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape include-raw-csit-build.sh
+            !include-raw-escape include-raw-csit-vpp-functional-virl.sh
 
     publishers:
         - archive-artifacts:
