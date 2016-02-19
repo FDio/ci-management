@@ -36,12 +36,6 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-        - jclouds:
-            instances:
-                - multi-link:
-                    cloud-name: 'Primary'
-                    count: 3
-                    stop-on-terminate: False
 
     triggers:
         - gerrit-trigger-patch-submitted:
