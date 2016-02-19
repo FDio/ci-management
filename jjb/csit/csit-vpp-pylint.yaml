@@ -59,3 +59,9 @@
         - archive-artifacts:
             artifacts: 'pylint.log'
             latest-only: false
+        - violations:
+            pylint:
+                min: 0
+                max: 999
+                unstable: 0
+                pattern: 'pylint.log'
