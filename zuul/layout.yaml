@@ -1,3 +1,4 @@
+---
 ##############################################################################
 ### Pipelines
 ##############################################################################
@@ -68,9 +69,9 @@ pipelines:
 project-templates:
   - name: default-jobs
     check:
-     - '{name}-verify'
+      - '{name}-verify'
     post-merge:
-     - '{name}-merge'
+      - '{name}-merge'
 
 ##############################################################################
 ### Projects
@@ -80,23 +81,19 @@ projects:
   - name: ci-management
     check:
       - ci-management-verify-jjb
-    periodic-weekly:
-      - ci-management-weekly
+      - ci-management-verify-zuul
     post-merge:
-      - ci-management-merge
+      - ci-management-merge-jjb
+      - ci-management-merge-zuul
 
-  - name: csit
-    check:
-      - csit-vpp-bridge-domain
+#  - name: csit
+#    check:
+#      - csit-vpp-bridge-domain
 
-  - name: honeycomb
-    template:
-      - name: default-jobs
+#  - name: honeycomb
+#    template:
+#      - name: default-jobs
 
-  - name: toolchain_test
-    template:
-      - name: default-jobs
-
-  - name: vpp
-    template:
-      - name: default-jobs
+#  - name: vpp
+#    template:
+#      - name: default-jobs
