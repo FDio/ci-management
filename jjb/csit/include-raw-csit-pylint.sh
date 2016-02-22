@@ -1,6 +1,18 @@
 #!/bin/bash
 
+set -x
+
 sudo apt-get install -y --force-yes pylint
-find resources -name \*.py | xargs pylint --rcfile=pylint.cfg > pylint.log || true
+
+# Re-create virtual environment
+rm -rf env || true
+virtualenv env
+. env/bin/activate
+
+# Install requirements, so all CSIT python dependencies are met
+pip install -r requirements.txt
+
+# Run pylint, but hide its' return value until python warnings are cleared
+PYTHONPATH=`pwd` pylint --rcfile=pylint.cfg resources/ > pylint.log || true
 
 # vim: ts=4 ts=4 sts=4 et :
