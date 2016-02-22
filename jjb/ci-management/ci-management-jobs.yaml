@@ -3,6 +3,8 @@
     jobs:
         - 'ci-management-verify-jjb'
         - 'ci-management-merge-jjb'
+        - 'ci-management-verify-zuul'
+        - 'ci-management-merge-zuul'
 
 - job-template:
     name: ci-management-verify-jjb
@@ -62,5 +64,61 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-jjb-update.sh
+            !include-raw-escape: include-raw-jjb-update.sh
 
+- job-template:
+    name: ci-management-verify-zuul
+
+    project-type: freestyle
+    node: jjb
+    concurrent: true
+
+    logrotate:
+        daysToKeep: 30
+        numToKeep: 10
+        artifactDaysToKeep: -1
+        artifactNumToKeep: 5
+
+    scm:
+        - zuul-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$ZUUL_REF'
+            commit: '$ZUUL_COMMIT'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-test-zuul.sh
+
+- job-template:
+    name: ci-management-merge-zuul
+
+    project-type: freestyle
+    node: jjb
+
+    logrotate:
+        daysToKeep: 30
+        numToKeep: 40
+        artifactDaysToKeep: -1
+        artifactNumToKeep: 5
+
+    scm:
+        - zuul-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: ''
+            commit: 'origin/$ZUUL_BRANCH'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-test-zuul.sh
+        - shell:
+            !include-raw-escape: include-raw-merge-zuul.sh
