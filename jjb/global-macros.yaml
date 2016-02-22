@@ -111,6 +111,21 @@
                       branch-pattern: '**/{branch}'
 
 - trigger:
+    name: gerrit-trigger-manually-triggered
+    triggers:
+        - gerrit:
+            server-name: 'Default'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: '{comment-trigger-value}'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{name}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+
+- trigger:
     name: gerrit-trigger-patch-merged
     triggers:
         - gerrit:
