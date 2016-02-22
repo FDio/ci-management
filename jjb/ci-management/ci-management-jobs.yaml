@@ -2,9 +2,7 @@
     name: ci-management-jobs
     jobs:
         - 'ci-management-verify-jjb'
-        - 'ci-management-merge'
-
-    project: 'ci-management'
+        - 'ci-management-merge-jjb'
 
 - job-template:
     name: ci-management-verify-jjb
@@ -40,7 +38,7 @@
             artifacts: 'job_output/*'
 
 - job-template:
-    name: 'ci-management-merge'
+    name: 'ci-management-merge-jjb'
 
     project-type: freestyle
     node: jjb
