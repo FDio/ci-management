@@ -74,3 +74,52 @@
 
         - robot-report
 
+- job:
+    name: 'csit-vpp-functional-hw-tb2'
+
+    project-type: freestyle
+    node: verify
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - string:
+            name: 'VPP_URLS'
+            default: ''
+            description: 'Space separated VPP *.deb URLs from nexus'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+    triggers:
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+            comment-trigger-value: 'hw-tb2-recheck'
+
+    builders:
+        - shell:
+            !include-raw-escape jjb/csit/include-raw-csit-vpp-functional-hw-tb2.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml'
+            latest-only: false
+
+        - robot-report
