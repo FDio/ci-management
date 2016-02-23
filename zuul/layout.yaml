@@ -82,9 +82,11 @@ projects:
     check:
       - ci-management-verify-jjb
       - ci-management-verify-zuul
+      - ci-management-verify-nodepool
     post-merge:
       - ci-management-merge-jjb
       - ci-management-merge-zuul
+      - ci-management-merge-nodepool
 
 #  - name: csit
 #    check:
