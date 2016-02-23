@@ -5,6 +5,8 @@
         - 'ci-management-merge-jjb'
         - 'ci-management-verify-zuul'
         - 'ci-management-merge-zuul'
+        - 'ci-management-verify-nodepool'
+        - 'ci-management-merge-nodepool'
 
 - job-template:
     name: ci-management-verify-jjb
@@ -122,3 +124,60 @@
             !include-raw-escape: include-raw-test-zuul.sh
         - shell:
             !include-raw-escape: include-raw-merge-zuul.sh
+
+- job-template:
+    name: ci-management-verify-nodepool
+
+    project-type: freestyle
+    node: np
+    concurrent: true
+
+    logrotate:
+        daysToKeep: 30
+        numToKeep: 10
+        artifactDaysToKeep: -1
+        artifactNumToKeep: 5
+
+    scm:
+        - zuul-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$ZUUL_REF'
+            commit: '$ZUUL_COMMIT'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-test-nodepool.sh
+
+- job-template:
+    name: ci-management-merge-nodepool
+
+    project-type: freestyle
+    node: np
+
+    logrotate:
+        daysToKeep: 30
+        numToKeep: 40
+        artifactDaysToKeep: -1
+        artifactNumToKeep: 5
+
+    scm:
+        - zuul-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: ''
+            commit: 'origin/$ZUUL_BRANCH'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-test-nodepool.sh
+        - shell:
+            !include-raw-escape: include-raw-merge-nodepool.sh
