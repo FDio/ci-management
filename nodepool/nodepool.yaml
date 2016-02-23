@@ -1,0 +1,74 @@
+---
+
+script-dir: /opt/nodepool/scripts
+#elements-dir: /opt/nodepool/elements
+#images-dir: /opt/nodepool/images
+
+zmq-publishers:
+  - 'tcp://vex-yul-rot-jenkins-1.ci.codeaurora.org:8888'
+
+gearman-servers:
+  - host: 'vex-yul-rot-zuul-1.ci.codeaurora.org'
+
+labels:
+  - name: 'verify_merge'
+    image: 'trusty'
+    min-ready: 1
+    providers:
+      - name: 'verify-merge'
+  - name: 'multilink'
+    image: 'trusty-multilink'
+    min-ready: 1
+    subnodes: 3
+    ready-script: 'multilink_ready.sh'
+    providers:
+      - name: 'multilink'
+
+providers:
+  - name: 'verify-merge'
+    cloud: vexxhost
+    max-servers: 10
+    availability-zones:
+      - 'ca-ymq-2'
+    template-hostname: 'np-verify-merge-{timestamp}-nodepool-template'
+    keypair: 'jenkins'
+    networks:
+      - name: 'fdio'
+        public: True
+    images:
+      - name: 'trusty'
+        #base-image: 'Ubuntu 14.04 LTS - basebuild - 20160202'
+        base-image: '72ac4b06-74bb-40ee-97f9-835a797354a9'
+        min-ram: 4096
+        setup: 'verify_merge.sh'
+        username: 'jenkins'
+        private-key: '/home/nodepool/.ssh/id_rsa'
+  - name: 'multilink'
+    cloud: vexxhost
+    max-servers: 16
+    availability-zones:
+      - 'ca-ymq-2'
+    template-hostname: 'np-multi-link-{timestamp}-nodepool-template'
+    keypair: 'jenkins'
+    networks:
+      - name: 'fdio'
+        public: True
+      - name: 'TestNet1'
+        public: False
+      - name: 'TestNet2'
+        public: False
+    images:
+      - name: 'trusty-multilink'
+        #base-image: 'Ubuntu 14.04 LTS - basebuild - 20160202'
+        base-image: '72ac4b06-74bb-40ee-97f9-835a797354a9'
+        min-ram: 4096
+        setup: 'multilink.sh'
+        username: 'jenkins'
+        private-key: '/home/nodepool/.ssh/id_rsa'
+
+targets:
+  - name: 'vex-yul-rot-jenkins-1.ci.codeaurora.org'
+    #hostname: 'np-{label.name}-{provider.name}-{node_id}'
+    #subnode-hostname: 'np-{label.name}-{provider.name}-{node_id}'
+    hostname: 'np-{label.name}-{node_id}'
+    subnode-hostname: 'np-{label.name}-{node_id}'
