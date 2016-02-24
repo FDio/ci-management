@@ -78,7 +78,7 @@
     name: 'csit-vpp-functional-hw-tb2'
 
     project-type: freestyle
-    node: verify
+    node: verify_merge
     concurrent: false
 
     logrotate:
@@ -92,26 +92,17 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
-        - string:
-            name: 'VPP_URLS'
-            default: ''
-            description: 'Space separated VPP *.deb URLs from nexus'
 
     scm:
-        - gerrit-trigger-scm:
+        - zuul-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+            refspec: '$ZUUL_REF'
+            commit: '$ZUUL_COMMIT'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
-    triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'hw-tb2-recheck'
 
     builders:
         - shell:
