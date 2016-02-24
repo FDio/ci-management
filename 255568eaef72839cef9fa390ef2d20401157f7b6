@@ -34,6 +34,24 @@
       "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9af53d3f_f41cbe15",
+        "filename": "zuul/layout.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-02-24T22:39:44Z",
+      "side": 1,
+      "message": "Given how specific it is, perhaps the name should reflect that it more? Something like csit-manual-check-hw?",
+      "parentUuid": "9af53d3f_342b4632",
+      "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
