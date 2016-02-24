@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af53d3f_942c524c",
+        "filename": "zuul/layout.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-02-24T22:02:57Z",
+      "side": 1,
+      "message": "One concern I have is this pipeline seems project specific with the hw-tb2-check command, but maybe I\u0027m incorrect here. Pipelines should be generic enough that they are reusable by other projects.",
+      "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
