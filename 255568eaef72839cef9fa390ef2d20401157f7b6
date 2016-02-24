@@ -16,6 +16,24 @@
       "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9af53d3f_342b4632",
+        "filename": "zuul/layout.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-02-24T22:25:20Z",
+      "side": 1,
+      "message": "This is indeed very specific job. This is going to run test cases against specific configuration in the HW lab. Indeed we could make it more generic (i think), but that will come afterwards, in later patches. Reason being is we need to have the option to start this from reviews manually so that we can tweak the execution/nail bugs.",
+      "parentUuid": "9af53d3f_942c524c",
+      "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
