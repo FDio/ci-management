@@ -61,6 +61,19 @@ pipelines:
       gerrit: {}
     failure:
       gerrit: {}
+  - name: csit-manual-perf
+    source: gerrit
+    manager: IndependentPipelineManager
+    trigger:
+      gerrit:
+        - event: comment-added
+          comment: (?i)^(Patch Set [0-9]+:)?( [\w\\+-]*)*(\n\n)?\s*(hw-perf-check)
+    success:
+      gerrit:
+        verified: 1
+    failure:
+      gerrit:
+        verified: -1
 
 ##############################################################################
 ### Project Templates
@@ -88,9 +101,9 @@ projects:
       - ci-management-merge-zuul
       - ci-management-merge-nodepool
 
-#  - name: csit
-#    check:
-#      - csit-vpp-bridge-domain
+  - name: csit
+    csit-manual-perf:
+      - csit-vpp-functional-hw-tb2
 
 #  - name: honeycomb
 #    template:
