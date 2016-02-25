@@ -52,6 +52,24 @@
       "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9af53d3f_14e72214",
+        "filename": "zuul/layout.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-02-25T09:18:17Z",
+      "side": 1,
+      "message": "Agree, let me upload new patchset.",
+      "parentUuid": "9af53d3f_f41cbe15",
+      "revId": "255568eaef72839cef9fa390ef2d20401157f7b6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
