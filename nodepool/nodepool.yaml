@@ -71,4 +71,4 @@ targets:
     #hostname: 'np-{label.name}-{provider.name}-{node_id}'
     #subnode-hostname: 'np-{label.name}-{provider.name}-{node_id}'
     hostname: 'np-{label.name}-{node_id}'
-    subnode-hostname: 'np-{label.name}-{node_id}'
+    subnode-hostname: 'np-sub-{label.name}-{node_id}'
