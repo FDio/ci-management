@@ -104,6 +104,8 @@ projects:
   - name: csit
     csit-manual-perf:
       - csit-vpp-functional-hw-tb2
+    check:
+      - csit-vpp-functional-virl
 
 #  - name: honeycomb
 #    template:
