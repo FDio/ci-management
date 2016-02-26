@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af53d3f_083706e5",
+        "filename": "jjb/vpp/include-raw-vpp-csit-functional.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-02-26T04:23:02Z",
+      "side": 1,
+      "message": "Please use the http clone method instead of encoding credentials.\n\nThis should be https://gerrit.fd.io/r/csit",
+      "revId": "1a81d9ad17119d000779c187b4bd5e3df3579f21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
