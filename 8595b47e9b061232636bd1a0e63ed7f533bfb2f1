@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af53d3f_c830feea",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-02-26T04:24:47Z",
+      "side": 1,
+      "message": "The label is verify_merge (note the underscore)",
+      "revId": "8595b47e9b061232636bd1a0e63ed7f533bfb2f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
