@@ -16,6 +16,24 @@
       "revId": "8595b47e9b061232636bd1a0e63ed7f533bfb2f1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7afa4931_be33b9f5",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-02-29T12:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af53d3f_c830feea",
+      "revId": "8595b47e9b061232636bd1a0e63ed7f533bfb2f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
