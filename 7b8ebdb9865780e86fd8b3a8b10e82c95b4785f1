@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7afa4931_07affce4",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_4412a263",
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7afa4931_a4028609",
         "filename": "jjb/csit/include-raw-csit-vpp-functional-multilink.sh",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-03-04T17:36:37Z",
       "side": 1,
       "message": "Given the changes you\u0027re making in include-raw-csit-vpp-virl.sh I\u0027m assuming you meant to make them here and not in that file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7afa4931_e7abf0d4",
+        "filename": "jjb/csit/include-raw-csit-vpp-functional-multilink.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_a4028609",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7afa4931_c7b8f42c",
+        "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_24179653",
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7afa4931_040c9a41",
         "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2016-03-04T17:36:37Z",
       "side": 1,
       "message": "I don\u0027t think this is the file you wanted to modify for the multi-link testing. Changing this will affect your current csit-vpp-functional-virl job needing it to have a bootstrap-multilink.sh instead of the bootstrap.sh it currently uses.",
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7afa4931_a7b5e832",
+        "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_040c9a41",
       "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "7afa4931_8782ec50",
+        "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_e4088e2f",
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7afa4931_c4059215",
         "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
         "patchSetId": 1
@@ -104,6 +200,24 @@
       "writtenOn": "2016-03-04T17:36:37Z",
       "side": 1,
       "message": "I don\u0027t think this is the file you wanted to modify for the multi-link testing. Changing this will affect your current csit-vpp-functional-virl job needing it to have a bootstrap-multilink.sh instead of the bootstrap.sh it currently uses.",
+      "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7afa4931_6787e062",
+        "filename": "jjb/csit/include-raw-csit-vpp-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-04T20:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7afa4931_c4059215",
       "revId": "7b8ebdb9865780e86fd8b3a8b10e82c95b4785f1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
