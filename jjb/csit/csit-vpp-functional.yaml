@@ -3,6 +3,7 @@
     description: 'Run VPP functional tests on VIRL.'
 
     jobs:
+        - 'csit-vpp-functional-hw-tb2'
         - 'csit-vpp-functional-virl'
 
     project: 'csit'
@@ -44,7 +45,7 @@
 
         - robot-report
 
-- job:
+- job-template:
     name: 'csit-vpp-functional-hw-tb2'
 
     project-type: freestyle
