@@ -119,6 +119,7 @@ projects:
       - csit-vpp-functional-hw-tb2
     check:
       - csit-vpp-functional-virl
+      - csit-vpp-functional-nodepool
 
 #  - name: honeycomb
 #    template:

@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # execute csit bootstrap script if it exists
-if [ -e bootstrap-multilink.sh ]
+if [ -e bootstrap.sh ]
 then
     # make sure that bootstrap.sh is executable
-    chmod +x bootstrap-multilink.sh
+    chmod +x bootstrap.sh
     # run the script
-    ./bootstrap-multilink.sh
+    ./bootstrap.sh
 else
-    echo 'ERROR: No bootstrap-multilink.sh found'
+    echo 'ERROR: No bootstrap.sh found'
     exit 1
 fi
 
