@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7afa4931_c7191424",
+        "filename": "jjb/csit/include-raw-csit-pylint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-03-04T22:21:52Z",
+      "side": 1,
+      "message": "Is there a reason that a system version of pylint is being installed when below pip is being used to install the same library?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 42
+      },
+      "revId": "1ebc73acc69f9aee07edfb9bfd7191aa172f0bd8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
