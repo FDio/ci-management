@@ -69,6 +69,11 @@ Vagrant.configure(2) do |config|
     # Install virtualenv for test execution
     apt-get install -y --force-yes python-virtualenv python-pip python-dev
 
+    # Add csit user with default password and nopasswd sudoers entry
+    sudo adduser --disabled-password --gecos "" csit
+    echo csit:csit | sudo chpasswd
+    echo "csit    ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+
   SHELL
 
   #################
