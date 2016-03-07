@@ -22,6 +22,30 @@
       "revId": "1ebc73acc69f9aee07edfb9bfd7191aa172f0bd8",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7afa4931_3246b824",
+        "filename": "jjb/csit/include-raw-csit-pylint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-03-07T16:34:46Z",
+      "side": 1,
+      "message": "Oh yeah, right. I forgot I manually started doing this here. In fact, that sudo apt-get should really disappear I think.",
+      "parentUuid": "7afa4931_c7191424",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 42
+      },
+      "revId": "1ebc73acc69f9aee07edfb9bfd7191aa172f0bd8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
