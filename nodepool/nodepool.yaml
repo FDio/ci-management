@@ -53,9 +53,17 @@ providers:
     networks:
       - name: 'fdio'
         public: True
-      - name: 'TestNet1'
+      - name: 'Interlink1'
         public: False
-      - name: 'TestNet2'
+      - name: 'Interlink2'
+        public: False
+      - name: 'Interlink3'
+        public: False
+      - name: 'Interlink4'
+        public: False
+      - name: 'Interlink5'
+        public: False
+      - name: 'Interlink6'
         public: False
     images:
       - name: 'trusty-multilink'
