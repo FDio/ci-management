@@ -123,10 +123,10 @@
             project: '{project}'
 
     scm:
-        - gerrit-trigger-scm:
+        - git-scm:
             credentials-id: '{ssh-credentials}'
             refspec: ''
-            choosing-strategy: 'default'
+            branch: '{branch}'
 
     wrappers:
         - build-timeout
@@ -157,5 +157,3 @@
             id: ''
             unique-version: true
             deploy-unstable: false
-
-
