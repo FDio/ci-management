@@ -1,0 +1,7 @@
+Verified+1: Zuul <zuul@fd.io>
+Code-Review+2: Thanh Ha <thanh.ha@linuxfoundation.org>
+Submitted-by: Thanh Ha <thanh.ha@linuxfoundation.org>
+Submitted-at: Tue, 08 Mar 2016 18:17:54 +0000
+Reviewed-on: https://gerrit.fd.io/r/506
+Project: ci-management
+Branch: refs/heads/master
