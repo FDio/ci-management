@@ -15,8 +15,8 @@
     name: 'csit-vpp-functional-virl'
 
     project-type: freestyle
-    node: verify_merge
-    concurrent: false
+    node: verify
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -25,15 +25,20 @@
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     scm:
-        - zuul-trigger-scm:
+        - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: '$ZUUL_REF'
-            commit: '$ZUUL_COMMIT'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
 
     builders:
         - shell:
@@ -50,7 +55,7 @@
     name: 'csit-vpp-functional-hw-tb2'
 
     project-type: freestyle
-    node: verify_merge
+    node: verify
     concurrent: false
 
     logrotate:
@@ -60,15 +65,21 @@
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     scm:
-        - zuul-trigger-scm:
+        - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: '$ZUUL_REF'
-            commit: '$ZUUL_COMMIT'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+            comment-contains-value: 'hw-perf-check'
 
     builders:
         - shell:
