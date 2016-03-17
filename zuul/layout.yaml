@@ -115,10 +115,10 @@ projects:
       - ci-management-merge-nodepool
 
   - name: csit
-    csit-manual-perf:
-      - csit-vpp-functional-hw-tb2
+#    csit-manual-perf:
+#      - csit-vpp-functional-hw-tb2
     check:
-      - csit-vpp-functional-virl
+#      - csit-vpp-functional-virl
       - csit-vpp-functional-nodepool
 
 #  - name: honeycomb
