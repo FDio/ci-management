@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_1f462724",
+        "filename": "vagrant/basebuild.centos/Vagrantfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-03-22T22:12:11Z",
+      "side": 1,
+      "message": "This looks incorrect considering the above and below references to CentOS and yum",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 5
+      },
+      "revId": "86f593215a29325eff6a0f8b698ded730022371b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
