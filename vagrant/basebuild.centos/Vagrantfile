@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vi: set ts=2 sw=2 sts=2 et ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "puppetlabs/centos-7.2-64-nocm"
+  vb.memory = "4096"
+
+  config.vm.provider :openstack do |os, override|
+    override.vm.box = 'dummy'
+    os.image = 'Ubuntu 14.04 LTS (2015-11-19) - Agentless'
+    config.ssh.username = 'ubuntu'
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+
+    # Standard update + upgrade dance
+    yum check-update
+    yum update -y
+
+    # Install build tools
+    yum groupinstall 'Development Tools' -y
+    yum install -y redhat-lsb
+    yum install -y glibc-static -y
+    yum install -y java-1.8.0-openjdk-devel
+    yum install -y openssl-devel
+
+    # Install EPEL
+    yum install -y epel-release
+
+    # Install components to build Ganglia modules
+    yum install -y apr-devel
+    yum install -y --enablerepo=epel libconfuse-devel
+    yum install -y --enablerepo=epel ganglia-devel
+
+
+  SHELL
+
+  #################
+  # FINAL CLEANUP #
+  #################
+
+  # set RESEAL to... anything if you want to snap an image of this box
+  # not setting the environment variable will cause the system to come
+  # up fully and not be in a resealable state
+  if ENV['RESEAL']
+    config.vm.provision 'shell', path: '../lib/system_reseal.sh'
+  end
+end
