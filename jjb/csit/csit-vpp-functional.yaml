@@ -6,6 +6,7 @@
         - 'csit-vpp-functional-hw-tb2'
         - 'csit-vpp-functional-virl'
         - 'csit-vpp-functional-nodepool'
+        - 'csit-vpp-master-verify-weekly'
 
     project: 'csit'
     branch: 'master'
@@ -138,3 +139,46 @@
             latest-only: false
 
         - robot-report
+
+- job-template:
+    name: 'csit-vpp-master-verify-weekly'
+
+    project-type: freestyle
+    node: verify
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - git-scm:
+            credentials-id: '{ssh-credentials}'
+            branch: 'master'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - timed: 'H H * * 0'
+
+    builders:
+        - shell:
+            !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-master.sh
+
+    publishers:
+        - git:
+               push-only-if-success: true
+               branches:
+                   - branch:
+                       name: "master-verified"
