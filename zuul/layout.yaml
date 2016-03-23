@@ -125,7 +125,7 @@ projects:
 #    template:
 #      - name: default-jobs
 
-  - name: vpp
-    check-novote:
-      - vpp-csit-verify-virl
+#  - name: vpp
+#    check-novote:
+#      - vpp-csit-verify-virl
 

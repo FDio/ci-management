@@ -2,7 +2,7 @@
 set -xeu -o pipefail
 
 # Clone csit and start tests
-git clone https://gerrit.fd.io/r/csit
+git clone https://gerrit.fd.io/r/csit --branch csit-verified
 
 cp build-root/*.deb csit/
 cd csit
