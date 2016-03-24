@@ -2,74 +2,51 @@
 # vi: set ts=2 sw=2 sts=2 et ft=ruby :
 
 Vagrant.configure(2) do |config|
-   config.vm.box = "ubuntu/trusty64"
-
-#  config.vm.network "private_network", type: "dhcp"
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "4096"
-  end
-  config.vm.provider "vmware_fusion" do |fusion,override|
-    override.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-    fusion.vmx["memsize"] = "4096"
-  end
-  config.vm.provider "vmware_workstation" do |vws,override|
-    override.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-    vws.vmx["memsize"] = "8192"
-    vws.vmx["numvcpus"] = "4"
-#   To enable workstation GUI
-#   vws.gui = "true"
+  # Fedora and EL systems default to requiring a tty for sudo
+  if (ENV['RSPTY'] == 'default')
+    config.ssh.pty = false
+  else
+    config.ssh.pty = true
   end
 
   config.vm.provider :openstack do |os, override|
-    override.vm.box = 'dummy'
-    os.image = 'Ubuntu 14.04 LTS (2015-11-19) - Agentless'
-    config.ssh.username = 'ubuntu'
+    config.vm.box = "dummy"
+
+    # require an IMAGE to be passed in
+    # IMAGE must be a human name and not image ID!
+    if ENV['IMAGE']
+      os.image = ENV['IMAGE']
+    else
+      os.image = 'BAD IMAGE'
+      override.ssh.username = 'baduser'
+    end
+
+    case ENV['IMAGE']
+      when /.*ubuntu.*/i
+        override.ssh.username = 'ubuntu'
+
+      when /.*fedora.*/i
+        override.ssh.username = 'fedora'
+
+        # take care of the tty requirement by fedora for sudo
+        os.user_data = "#!/bin/bash
+/bin/sed -i 's/ requiretty/ !requiretty/' /etc/sudoers;"
+
+      when /.*centos.*/i
+        override.ssh.username = 'centos'
+
+        # take care of the tty requirement by centos for sudo
+        os.user_data = "#!/bin/bash
+/bin/sed -i 's/ requiretty/ !requiretty/' /etc/sudoers;"
+    end
   end
 
-  config.vm.provision "shell", inline: <<-SHELL
+  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder "../lib/", "/vagrant/lib"
 
-    # Standard update + upgrade dance
-    apt-get update
-    apt-get upgrade -y
-
-    # Fix the silly notion that /bin/sh should point to dash by pointing it to bash
-
-    sudo update-alternatives --install /bin/sh sh /bin/bash 100
-
-    # Install build tools
-    apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev
-
-    # Install other stuff
-    apt-get install -y --force-yes bridge-utils vim gdb iproute2
-
-    # Install debian packaging tools
-    apt-get install -y debhelper dkms
-
-    # Install uio
-    apt-get install -y linux-image-extra-`uname -r`
-
-    # Install jdk and maven
-    apt-get install -y openjdk-7-jdk
-    # $$$ comment out for the moment
-    # apt-get install -y --force-yes maven3
-
-    # Load the uio kernel module
-    modprobe uio_pci_generic
-
-    # Make sure uio loads at boot time
-    echo uio_pci_generic >> /etc/modules
-
-    # Setup for hugepages using upstart so it persists across reboots
-    sysctl -w vm.nr_hugepages=1024
-    mkdir -p /mnt/huge
-    echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
-    mount /mnt/huge
-
-    # Install virtualenv for test execution
-    apt-get install -y --force-yes python-virtualenv python-pip python-dev
-
-  SHELL
+  # Do a full system update and force enforcing on (it's in permissive
+  # by default in the rackspace base images)
+  config.vm.provision 'shell', path: 'bootstrap.sh'
 
   #################
   # FINAL CLEANUP #
