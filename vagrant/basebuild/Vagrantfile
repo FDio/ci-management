@@ -2,74 +2,45 @@
 # vi: set ts=2 sw=2 sts=2 et ft=ruby :
 
 Vagrant.configure(2) do |config|
-   config.vm.box = "ubuntu/trusty64"
+   # root off of the rackspace provider dummy box
+  config.vm.box = "dummy"
 
-#  config.vm.network "private_network", type: "dhcp"
+  # rackspace systems even with cloud-init
+  # don't seem to have the cloud init user ${osname}
+  # getting the ssh key for some reason, root does
+  # so use that
+  config.ssh.username = 'root'
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "4096"
+  # Fedora and EL systems default to requiring a tty for sudo
+  if (ENV['RSPTY'] == 'default')
+    config.ssh.pty = false
+  else
+    config.ssh.pty = true
   end
-  config.vm.provider "vmware_fusion" do |fusion,override|
-    override.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-    fusion.vmx["memsize"] = "4096"
-  end
-  config.vm.provider "vmware_workstation" do |vws,override|
-    override.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
-    vws.vmx["memsize"] = "8192"
-    vws.vmx["numvcpus"] = "4"
-#   To enable workstation GUI
-#   vws.gui = "true"
-  end
+
+  # The rackspace provider by default tries to rsync
+  # the local folder / vagrant box to /vagrant
+  # unfortunately, even with config.ssh.pty = true
+  # this fails because it doesn't recognize the pty requirement
+  # when doing the sudo based rsync (not that it needs to sudo
+  # when doing things as root). To avoid this, disable the
+  # default sync, we don't need it anyway.
+  config.vm.synced_folder '.', '/vagrant', :disabled => true
 
   config.vm.provider :openstack do |os, override|
-    override.vm.box = 'dummy'
-    os.image = 'Ubuntu 14.04 LTS (2015-11-19) - Agentless'
+    if ENV['RSIMAGE']
+      os.image = ENV['RSIMAGE']
+    else
+      os.image = 'Ubuntu 14.04 LTS (2015-11-19) - Agentless'
     config.ssh.username = 'ubuntu'
   end
 
-  config.vm.provision "shell", inline: <<-SHELL
+  # Do a full system update and force enforcing on (it's in permissive
+  # by default in the rackspace base images)
+  config.vm.provision 'shell', path: 'bootstrap.sh'
 
-    # Standard update + upgrade dance
-    apt-get update
-    apt-get upgrade -y
-
-    # Fix the silly notion that /bin/sh should point to dash by pointing it to bash
-
-    sudo update-alternatives --install /bin/sh sh /bin/bash 100
-
-    # Install build tools
-    apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev
-
-    # Install other stuff
-    apt-get install -y --force-yes bridge-utils vim gdb iproute2
-
-    # Install debian packaging tools
-    apt-get install -y debhelper dkms
-
-    # Install uio
-    apt-get install -y linux-image-extra-`uname -r`
-
-    # Install jdk and maven
-    apt-get install -y openjdk-7-jdk
-    # $$$ comment out for the moment
-    # apt-get install -y --force-yes maven3
-
-    # Load the uio kernel module
-    modprobe uio_pci_generic
-
-    # Make sure uio loads at boot time
-    echo uio_pci_generic >> /etc/modules
-
-    # Setup for hugepages using upstart so it persists across reboots
-    sysctl -w vm.nr_hugepages=1024
-    mkdir -p /mnt/huge
-    echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
-    mount /mnt/huge
-
-    # Install virtualenv for test execution
-    apt-get install -y --force-yes python-virtualenv python-pip python-dev
-
-  SHELL
+  # disable the default requiretty for sudo that Fedora and CentOS have
+  config.vm.provision 'shell', path: 'remove_requiretty.sh'
 
   #################
   # FINAL CLEANUP #
