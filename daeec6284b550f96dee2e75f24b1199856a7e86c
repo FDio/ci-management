@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_425856fa",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:42:40Z",
+      "side": 1,
+      "message": "This is rather ODL / Rackspace cloud specific and I don\u0027t think it should be changed",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "daeec6284b550f96dee2e75f24b1199856a7e86c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_225d4aea",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:42:40Z",
+      "side": 1,
+      "message": "Again this is rather ODL / Rackspace specific and shouldn\u0027t be added",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 60
+      },
+      "revId": "daeec6284b550f96dee2e75f24b1199856a7e86c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_02724e7c",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:42:40Z",
+      "side": 1,
+      "message": "Could you perhaps model this off of what we\u0027re doing for the Zephyr Project? In a way it will make it a little easier to build and maintain\n\nhttps://gerrit.zephyrproject.org/r/gitweb?p\u003dci-management.git;a\u003dblob_plain;f\u003dvagrant/basebuild/Vagrantfile;hb\u003dHEAD",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "daeec6284b550f96dee2e75f24b1199856a7e86c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_c26b4684",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:42:40Z",
+      "side": 1,
+      "message": "This is not needed if you model the the :openstack provider section off of what we\u0027ve done for the Zephyr Project",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "daeec6284b550f96dee2e75f24b1199856a7e86c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
