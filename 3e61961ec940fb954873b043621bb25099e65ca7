@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_82053ec4",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:48:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually install epel-release since the epel-release package is not in the default repositories.",
+      "revId": "3e61961ec940fb954873b043621bb25099e65ca7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_620a32d4",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-24T14:48:15Z",
+      "side": 1,
+      "message": "Since epel is not actually installed (see above comment) this isn\u0027t going to work. Besides, if epel-release _does_ get installed then --enablerepo\u003depel is not needed as the repository is by default enabled",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "3e61961ec940fb954873b043621bb25099e65ca7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
