@@ -41,7 +41,7 @@ ubuntu_systems() {
     apt-get install -y --force-yes python-virtualenv python-pip python-dev
 }
 
-rh_systems {
+rh_systems() {
     # Install build tools
     yum groupinstall 'Development Tools' -y
     yum install openssl-devel -y
