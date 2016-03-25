@@ -12,4 +12,5 @@ else
 fi
 cd build-root/
 ./bootstrap.sh
+make PLATFORM=vpp_lite V=0 TAG=vpp_lite install-packages
 make PLATFORM=vpp V=0 TAG=vpp install-deb
