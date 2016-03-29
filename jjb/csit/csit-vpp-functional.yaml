@@ -179,6 +179,10 @@
     publishers:
         - git:
                push-only-if-success: true
-               branches:
-                   - branch:
-                       name: "master-verified"
+               tags:
+                   - tag:
+                       remote: origin
+                       name: "csit-verified"
+                       message: "Verified CSIT version for VPP testing"
+                       create-tag: true
+                       update-tag: true
