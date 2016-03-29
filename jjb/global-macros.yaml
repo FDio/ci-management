@@ -190,7 +190,7 @@
     name: robot-report
     publishers:
         - robot:
-            output-path: ''
+            output-path: '{output-path}'
             other-files: ''
 
 ###### BUILDERS

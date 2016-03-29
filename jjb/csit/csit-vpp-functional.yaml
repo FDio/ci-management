@@ -56,7 +56,8 @@
             artifacts: 'report.html, log.html, output.xml'
             latest-only: false
 
-        - robot-report
+        - robot-report:
+            output-path: ''
 
 - job-template:
     name: 'csit-vpp-functional-hw-tb2'
@@ -103,7 +104,8 @@
             artifacts: 'report.html, log.html, output.xml'
             latest-only: false
 
-        - robot-report
+        - robot-report:
+            output-path: ''
 
 - job-template:
     name: 'csit-vpp-functional-nodepool'
@@ -138,7 +140,8 @@
             artifacts: 'report.html, log.html, output.xml'
             latest-only: false
 
-        - robot-report
+        - robot-report:
+            output-path: ''
 
 - job-template:
     name: 'csit-vpp-master-verify-weekly'
