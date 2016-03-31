@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a045101_cba92126",
+        "filename": "jjb/vpp/include-raw-vpp-verify-performance.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2016-03-31T14:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a045101_ebd73dbe",
+      "revId": "b91d815fb5b05804ea7ec904515c4caea1a30330",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_ab1c95c2",
         "filename": "jjb/vpp/include-raw-vpp-verify-performance.sh",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-03-31T13:47:54Z",
       "side": 1,
       "message": "I prefer to place terminal conditions within the conditional block and leave the non-terminal condition outside of the block.  This reduces unnecessary indentation and complexity, ie:\n\nif [ ! -e bootstrap-verify-perf.sh ]\nthen\n  echo \u0027ERROR: No bootstrap-verify-perf.sh found\u0027\n  exit 1\nfi\n\n# make sure that bootstrap-verify-perf.sh is executable\nchmod +x bootstrap-verify-perf.sh\n# run the script\n./bootstrap-verify-perf.sh *.deb",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "b91d815fb5b05804ea7ec904515c4caea1a30330",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_aba6d551",
+        "filename": "jjb/vpp/include-raw-vpp-verify-performance.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2016-03-31T14:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a045101_ab1c95c2",
       "range": {
         "startLine": 16,
         "startChar": 0,
