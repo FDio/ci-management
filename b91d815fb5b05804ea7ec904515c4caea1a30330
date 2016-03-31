@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a045101_ebd73dbe",
+        "filename": "jjb/vpp/include-raw-vpp-verify-performance.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-03-31T14:04:10Z",
+      "side": 1,
+      "message": "You should probably consider doing this as \u0027--depth 1\u0027 as well as it will speed up the clone",
+      "revId": "b91d815fb5b05804ea7ec904515c4caea1a30330",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a045101_ab1c95c2",
         "filename": "jjb/vpp/include-raw-vpp-verify-performance.sh",
         "patchSetId": 1
