@@ -103,7 +103,7 @@
 
     project-type: freestyle
     node: verify
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -129,8 +129,7 @@
                 - '{ssh-credentials}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'manualrun'
+        - gerrit-trigger-patch-submitted:
             name: '{project}'
             branch: '{branch}'
 
@@ -139,7 +138,6 @@
             !include-raw-escape include-raw-vpp-build.sh
         - shell:
             !include-raw-escape include-raw-vpp-csit-functional.sh
-
 
     publishers:
         - archive-artifacts:
