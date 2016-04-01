@@ -4,6 +4,7 @@
         - 'vpp-verify'
         - 'vpp-merge'
         - 'vpp-csit-verify-virl'
+        - 'vpp-verify-performance'
 
     project: 'vpp'
     branch: 'master'
