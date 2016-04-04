@@ -4,10 +4,13 @@
         - 'vpp-verify'
         - 'vpp-merge'
         - 'vpp-csit-verify-virl'
-        - 'vpp-verify-performance'
+        - 'vpp-verify-performance-{type}'
 
     project: 'vpp'
     branch: 'master'
+    type:
+        - short
+        - long
 
 - job-template:
     name: vpp-verify
@@ -149,7 +152,7 @@
             output-path: 'csit'
 
 - job-template:
-    name: 'vpp-verify-performance'
+    name: 'vpp-verify-performance-{type}'
 
     project-type: freestyle
     node: verify
@@ -166,6 +169,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - type-parameter:
+            type: '{type}'
 
     scm:
         - gerrit-trigger-scm:
@@ -180,7 +185,7 @@
 
     triggers:
         - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'verify-perf'
+            comment-trigger-value: 'verify-perf-{type}'
             name: '{project}'
             branch: '{branch}'
 
@@ -197,3 +202,12 @@
 
         - robot-report:
             output-path: 'csit'
+
+- parameter:
+    name: type-parameter
+
+    parameters:
+        - string:
+            name: TYPE
+            default: '{type}'
+            description: "TYPE parameter if not given by trigger"
