@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_51837ecc",
+        "filename": "jjb/vpp/include-raw-vpp-verify-performance-long.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-04T16:46:01Z",
+      "side": 1,
+      "message": "I imagine that this variable could be set in a config file... Let me check with my colleagues to confirm or deny my hunch.",
+      "range": {
+        "startLine": 4,
+        "startChar": 17,
+        "endLine": 4,
+        "endChar": 30
+      },
+      "revId": "229f9dd44dfea3915617969dd05f1378d925d9df",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
