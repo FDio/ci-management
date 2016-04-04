@@ -1,6 +1,8 @@
 #!/bin/bash
 set -xeu -o pipefail
 
+export TEST_TAG='PERFTEST_LONG'
+
 # Clone csit and start tests
 git clone --depth 1 https://gerrit.fd.io/r/csit --branch csit-verified
 

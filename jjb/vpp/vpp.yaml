@@ -4,7 +4,8 @@
         - 'vpp-verify'
         - 'vpp-merge'
         - 'vpp-csit-verify-virl'
-        - 'vpp-verify-performance'
+        - 'vpp-verify-performance-long'
+        - 'vpp-verify-performance-short'
 
     project: 'vpp'
     branch: 'master'
@@ -151,7 +152,7 @@
             output-path: 'csit'
 
 - job-template:
-    name: 'vpp-verify-performance'
+    name: 'vpp-verify-performance-long'
 
     project-type: freestyle
     node: verify
@@ -182,7 +183,7 @@
 
     triggers:
         - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'verify-perf'
+            comment-trigger-value: 'verify-perf-long'
             name: '{project}'
             branch: '{branch}'
 
@@ -190,7 +191,57 @@
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape include-raw-vpp-verify-performance.sh
+            !include-raw-escape include-raw-vpp-verify-performance-long.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit'
+
+- job-template:
+    name: 'vpp-verify-performance-short'
+
+    project-type: freestyle
+    node: verify
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-manually-triggered:
+            comment-trigger-value: 'verify-perf-short'
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - shell:
+            !include-raw-escape include-raw-vpp-build.sh
+        - shell:
+            !include-raw-escape include-raw-vpp-verify-performance-short.sh
 
     publishers:
         - archive-artifacts:
