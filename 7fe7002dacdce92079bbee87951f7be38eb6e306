@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_c830fcea",
+        "filename": "jjb/vpp/include-raw-vpp-maven-push.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-12T22:53:54Z",
+      "side": 1,
+      "message": "$(find . -type f -iname \u0027*.rpm\u0027)",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "7fe7002dacdce92079bbee87951f7be38eb6e306",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
