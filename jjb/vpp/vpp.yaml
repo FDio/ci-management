@@ -1,22 +1,24 @@
 - project:
     name: vpp
     jobs:
-        - 'vpp-verify'
+        - 'vpp-verify-{branch}-{os}'
         - 'vpp-merge'
         - 'vpp-csit-verify-virl'
         - 'vpp-verify-performance-{type}'
 
     project: 'vpp'
+    os:
+        - ubuntu1404
     branch: 'master'
     type:
         - short
         - long
 
 - job-template:
-    name: vpp-verify
+    name: vpp-verify-{branch}-{os}
 
     project-type: freestyle
-    node: verify
+    node: verify-{os}
     concurrent: true
 
     logrotate:
@@ -30,6 +32,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: {os}
 
     scm:
         - gerrit-trigger-scm:
