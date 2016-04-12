@@ -2,7 +2,7 @@
     name: vpp
     jobs:
         - 'vpp-verify-{branch}-{os}'
-        - 'vpp-merge'
+        - 'vpp-merge-{branch}-{os}'
         - 'vpp-csit-verify-virl'
         - 'vpp-verify-performance-{type}'
 
@@ -58,10 +58,10 @@
 
 
 - job-template:
-    name: vpp-merge
+    name: vpp-merge-{branch}-{os}
 
     project-type: freestyle
-    node: merge
+    node: 'merge-{os}'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -74,6 +74,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
         - maven-project-parameter:
             maven: '{mvn33}'
 
