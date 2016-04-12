@@ -70,15 +70,15 @@ function push_deb ()
 
     push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb
 }
+if [ ${OS} == "ubuntu1404" ]; then
+    for i in $JARS
+    do
+        push_jar "$i"
+    done
 
-for i in $JARS
-do
-    push_jar "$i"
-done
-
-for i in $DEBS
-do
-    push_deb "$i"
-done
-
+    for i in $DEBS
+    do
+        push_deb "$i"
+    done
+fi
 # vim: ts=4 sw=4 sts=4 et ft=sh :
