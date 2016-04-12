@@ -26,6 +26,14 @@
             description: "GERRIT_PROJECT parameter if not given by trigger"
 
 - parameter:
+    name: os-parameter
+    parameters:
+        - string:
+            name: OS
+            default: '{os}'
+            description: "OS parameter"
+
+- parameter:
     name: gerrit-refspec-parameter
     parameters:
         - string:
