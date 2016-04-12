@@ -11,10 +11,6 @@ GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
 
-# find the files
-JARS=$(find . -type f -iname '*.jar')
-DEBS=$(find . -type f -iname '*.deb')
-
 function push_file ()
 {
     push_file=$1
@@ -70,7 +66,22 @@ function push_deb ()
 
     push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb
 }
+
+function push_rpm ()
+{
+    rpmfile=$1
+    repoId="${BASEREPOID}yum"
+    url="${BASEURL}yum"
+    basefile=$(basename -s .rpm "$rpmfile")
+    artifactId=$(echo "$basefile" | cut -f 1 -d '_')
+    version=$(echo "$basefile" | cut -f 2- -d '_')
+    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" rpm
+}
+
 if [ ${OS} == "ubuntu1404" ]; then
+    # Find the files
+    JARS=$(find . -type f -iname '*.jar')
+    DEBS=$(find . -type f -iname '*.deb')
     for i in $JARS
     do
         push_jar "$i"
@@ -79,6 +90,12 @@ if [ ${OS} == "ubuntu1404" ]; then
     for i in $DEBS
     do
         push_deb "$i"
+    done
+elif [ ${OS} == "centos7" ]; then
+    # Find the files
+    for i in $RPMS
+    do
+        push_rpm "$i"
     done
 fi
 # vim: ts=4 sw=4 sts=4 et ft=sh :
