@@ -9,6 +9,7 @@
     project: 'vpp'
     os:
         - ubuntu1404
+        - centos7
     branch: 'master'
     type:
         - short

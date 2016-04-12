@@ -15,6 +15,10 @@ if [ ${OS} == "ubuntu1404" ]; then
     cd build-root/
     ./bootstrap.sh
     make PLATFORM=vpp V=0 TAG=vpp install-deb
+elif [ ${OS} == "centos7" ]; then
+    cd build-root/
+    ./bootstrap.sh
+    make PLATFORM=vpp V=0 TAG=vpp install-rpm
 else
     echo "Unrecognized OS: ${OS}.  Please edit: https://gerrit.fd.io/r/gitweb?p=ci-management.git;a=blob;f=jjb/vpp/include-raw-vpp-build.sh;h=f3cb320bd9a2515eab0c4564c927764c9dad417d;hb=HEAD"
     exit 1
