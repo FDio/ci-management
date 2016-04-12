@@ -10,6 +10,11 @@ if [ -d $CCACHE_DIR ];then
 else
     echo $CCACHE_DIR does not exist.  This must be a new slave.
 fi
-cd build-root/
-./bootstrap.sh
-make PLATFORM=vpp V=0 TAG=vpp install-deb
+
+if [ ${OS} == "ubuntu1404" ]; then
+    cd build-root/
+    ./bootstrap.sh
+    make PLATFORM=vpp V=0 TAG=vpp install-deb
+else
+    exit 1
+fi
