@@ -16,6 +16,24 @@
       "revId": "520e1e7c7baf0b16af64676b15709e7dee52babe",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_ce05a5c3",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-04-13T16:52:55Z",
+      "side": 1,
+      "message": "the package is python34-devel (devel is the standard suffix on RH systems not dev)",
+      "parentUuid": "3a045101_ceffe500",
+      "revId": "520e1e7c7baf0b16af64676b15709e7dee52babe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
