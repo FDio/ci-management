@@ -38,7 +38,7 @@ ubuntu_systems() {
     mount /mnt/huge
 
     # Install virtualenv for test execution
-    apt-get install -y --force-yes python-virtualenv python-pip python-dev
+    apt-get install -y --force-yes python-virtualenv python-pip python-dev python3-dev
 }
 
 rh_systems() {
