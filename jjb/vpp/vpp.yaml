@@ -15,6 +15,18 @@
         - short
         - long
 
+- project:
+    name: vpp-misc
+    jobs:
+        - 'vpp-csit-verify-virl'
+        - 'vpp-verify-performance-{type}'
+    project: 'vpp'
+    branch: 'master'
+    os: ubuntu1404
+    type:
+        - short
+        - long
+
 - job-template:
     name: 'vpp-verify-{branch}-{os}'
 
@@ -113,7 +125,7 @@
     name: 'vpp-csit-verify-virl'
 
     project-type: freestyle
-    node: verify
+    node: 'verify-{os}'
     concurrent: true
 
     logrotate:
@@ -127,6 +139,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
 
     scm:
         - gerrit-trigger-scm:
@@ -162,7 +176,7 @@
     name: 'vpp-verify-performance-{type}'
 
     project-type: freestyle
-    node: verify
+    node: 'verify-{os}'
     concurrent: false
 
     logrotate:
@@ -176,6 +190,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
         - type-parameter:
             type: '{type}'
 
