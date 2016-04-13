@@ -127,6 +127,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
 
     scm:
         - gerrit-trigger-scm:
@@ -176,6 +178,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
         - type-parameter:
             type: '{type}'
 
