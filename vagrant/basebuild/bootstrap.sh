@@ -38,7 +38,7 @@ ubuntu_systems() {
     mount /mnt/huge
 
     # Install virtualenv for test execution
-    apt-get install -y --force-yes python-virtualenv python-pip python-dev
+    apt-get install -y --force-yes python-virtualenv python-pip python-dev python3-dev
 }
 
 rh_systems() {
@@ -49,6 +49,9 @@ rh_systems() {
 
     # Install jdk and maven
     yum install -y java-1.8.0-openjdk-devel
+
+    # Install python-dev
+    yum install -y python3-dev
 
     # Install EPEL
     yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
