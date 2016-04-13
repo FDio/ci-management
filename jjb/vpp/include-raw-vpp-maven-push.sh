@@ -73,17 +73,15 @@ function push_rpm ()
     repoId="${BASEREPOID}yum"
     url="${BASEURL}yum"
 
-    if grep -q srpm <<<"$rpmfile"
+    if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
-        rpmtype=srpm
-        basefile=$(basename -s .srpm "$rpmfile")
+        rpmrelease=$(rpm -qp --queryformat="%{release}.src" "$rpmfile")
     else
-        rpmtype=rpm
-        basefile=$(basename -s .rpm "$rpmfile")
+        rpmrelease=$(rpm -qp --queryformat="%{release}.%{arch}" "$rpmfile")
     fi
-    artifactId=$(echo "$basefile" | cut -f 1 -d '_')
-    version=$(echo "$basefile" | cut -f 2- -d '_')
-    push_file "$rpmfile" "$repoId" "$url" "$version" "$artifactId" "$rpmtype"
+    artifactId=$(rpm -qp --queryformat="%{name}" "$rpmfile")
+    version=$(rpm -qp --queryformat="%{version}" "$rpmfile")
+    push_file "$rpmfile" "$repoId" "$url" "${version}-${rpmrelease}" "$artifactId" rpm
 }
 
 if [ "${OS}" == "ubuntu1404" ]; then
@@ -103,7 +101,8 @@ elif [ "${OS}" == "centos7" ]; then
     # Find the files
     RPMS=$(find . -type f -iname '*.rpm')
     SRPMS=$(find . -type f -iname '*.srpm')
-    for i in $RPMS $SRPMS
+    SRCRPMS=$(find . -type f -name '*.src.rpm')
+    for i in $RPMS $SRPMS $SRCRPMS
     do
         push_rpm "$i"
     done
