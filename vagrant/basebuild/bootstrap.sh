@@ -57,6 +57,7 @@ rh_systems() {
     yum install -y apr-devel
     yum install -y --enablerepo=epel libconfuse-devel
     yum install -y --enablerepo=epel ganglia-devel
+    yum install -y --enablerepo=epel mock
 }
 
 echo "---> Attempting to detect OS"
