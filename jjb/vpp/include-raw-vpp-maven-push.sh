@@ -72,13 +72,21 @@ function push_rpm ()
     rpmfile=$1
     repoId="${BASEREPOID}yum"
     url="${BASEURL}yum"
-    basefile=$(basename -s .rpm "$rpmfile")
+
+    if grep -q srpm <<<"$rpmfile"
+    then
+        rpmtype=srpm
+        basefile=$(basename -s .srpm "$rpmfile")
+    else
+        rpmtype=rpm
+        basefile=$(basename -s .rpm "$rpmfile")
+    fi
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
     version=$(echo "$basefile" | cut -f 2- -d '_')
-    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" rpm
+    push_file "$rpmfile" "$repoId" "$url" "$version" "$artifactId" "$rpmtype"
 }
 
-if [ ${OS} == "ubuntu1404" ]; then
+if [ "${OS}" == "ubuntu1404" ]; then
     # Find the files
     JARS=$(find . -type f -iname '*.jar')
     DEBS=$(find . -type f -iname '*.deb')
@@ -91,10 +99,11 @@ if [ ${OS} == "ubuntu1404" ]; then
     do
         push_deb "$i"
     done
-elif [ ${OS} == "centos7" ]; then
+elif [ "${OS}" == "centos7" ]; then
     # Find the files
     RPMS=$(find . -type f -iname '*.rpm')
-    for i in $RPMS
+    SRPMS=$(find . -type f -iname '*.srpm')
+    for i in $RPMS $SRPMS
     do
         push_rpm "$i"
     done
