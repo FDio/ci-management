@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a045101_ceffe500",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-04-13T13:47:31Z",
+      "side": 1,
+      "message": "Someone should confirm but I thought in Centos72 the package is python34-dev.",
+      "revId": "520e1e7c7baf0b16af64676b15709e7dee52babe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
