@@ -3,14 +3,15 @@
     description: 'Run VPP functional tests on VIRL.'
 
     jobs:
-        - 'csit-vpp-functional-hw-tb2'
+        - 'csit-vpp-perf-hw-{type}'
         - 'csit-vpp-functional-virl'
         - 'csit-vpp-functional-nodepool'
         - 'csit-vpp-master-verify-weekly'
 
     project: 'csit'
     branch: 'master'
-
+    type:
+        - all
 
 - job-template:
     name: 'csit-vpp-functional-virl'
@@ -60,7 +61,7 @@
             output-path: ''
 
 - job-template:
-    name: 'csit-vpp-functional-hw-tb2'
+    name: 'csit-vpp-perf-hw-{type}'
 
     project-type: freestyle
     node: verify
@@ -77,6 +78,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - type-parameter:
+            type: '{type}'
 
     scm:
         - gerrit-trigger-scm:
@@ -93,11 +96,11 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'hw-perf-check'
+            comment-trigger-value: 'verify-perf-{type}'
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-functional-hw-tb2.sh
+            !include-raw-escape jjb/csit/include-raw-csit-vpp-perf-hw.sh
 
     publishers:
         - archive-artifacts:
@@ -189,3 +192,12 @@
                        message: "Verified CSIT version for VPP testing"
                        create-tag: true
                        update-tag: true
+
+- parameter:
+    name: test-type-parameter
+
+    parameters:
+        - string:
+            name: TYPE
+            default: '{type}'
+            description: "Test TYPE parameter if not given by trigger"
