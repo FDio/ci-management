@@ -34,6 +34,24 @@
       "revId": "520e1e7c7baf0b16af64676b15709e7dee52babe",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a045101_0e9f0d61",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2016-04-15T10:32:21Z",
+      "side": 1,
+      "message": "Updated \u0026 Done",
+      "parentUuid": "3a045101_ce05a5c3",
+      "revId": "520e1e7c7baf0b16af64676b15709e7dee52babe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
