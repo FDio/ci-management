@@ -9,7 +9,7 @@ ubuntu_systems() {
     sudo update-alternatives --install /bin/sh sh /bin/bash 100
 
     # Install build tools
-    apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev
+    apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev dh-systemd
 
     # Install other stuff
     apt-get install -y --force-yes bridge-utils vim gdb iproute2
