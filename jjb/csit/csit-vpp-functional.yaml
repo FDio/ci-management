@@ -175,11 +175,23 @@
     triggers:
         - timed: 'H H * * 0'
 
+        - gerrit-trigger-manually-triggered:
+            comment-trigger-value: 'csit-weekly-verify'
+            name: '{project}'
+            branch: '{branch}'
+
     builders:
         - shell:
             !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-master.sh
 
     publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: ''
+
         - git:
                push-only-if-success: true
                tags:
