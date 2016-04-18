@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_1a175d53",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 74
+      },
+      "writtenOn": "2016-04-18T15:28:46Z",
+      "side": 1,
+      "message": "manual trigger is a temporary solution to debug this job",
+      "revId": "4740ad622f4ff0951257dfe1889a9437fe52c9af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
