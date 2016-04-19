@@ -11,15 +11,18 @@ else
     echo $CCACHE_DIR does not exist.  This must be a new slave.
 fi
 
-if [ ${OS} == "ubuntu1404" ]; then
-    cd build-root/
-    ./bootstrap.sh
-    make PLATFORM=vpp V=0 TAG=vpp install-deb
-elif [ ${OS} == "centos7" ]; then
-    cd build-root/
-    ./bootstrap.sh
-    make PLATFORM=vpp V=0 TAG=vpp install-rpm
-else
-    echo "Unrecognized OS: ${OS}.  Please edit: https://gerrit.fd.io/r/gitweb?p=ci-management.git;a=blob;f=jjb/vpp/include-raw-vpp-build.sh;h=f3cb320bd9a2515eab0c4564c927764c9dad417d;hb=HEAD"
+SUPPORTED="ubuntu1404 ubuntu1604 centos7"
+declare -A DIST_TARGET
+DIST_TARGET=(
+    [ubuntu1404]=install-deb
+    [ubuntu1604]=install-deb
+    [centos7]=install-rpm
+)
+if [[ ! ${SUPPORTED[*]} =~ ${OS} ]]
+then
+  echo "Unrecognized OS: ${OS}.  Please edit: https://gerrit.fd.io/r/gitweb?p=ci-management.git;a=blob;f=jjb/vpp/include-raw-vpp-build.sh;hb=HEAD"
     exit 1
 fi
+cd build-root/
+./bootstrap.sh
+make PLATFORM=vpp V=0 TAG=vpp ${DIST_TARGET[${OS}]}
