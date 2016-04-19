@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_40aba289",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-19T22:58:34Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be echoed to /etc/sysctl.conf?  It is probably not needed for the bootstrap phase, is it?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "684d78de71e312c6758cda7a4bcc5b876e202c03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
