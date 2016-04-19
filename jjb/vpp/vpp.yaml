@@ -8,6 +8,7 @@
     os:
         - ubuntu1404
         - centos7
+        - ubuntu1604
     branch: 'master'
     type:
         - short
