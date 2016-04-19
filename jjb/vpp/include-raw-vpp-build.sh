@@ -11,7 +11,7 @@ else
     echo $CCACHE_DIR does not exist.  This must be a new slave.
 fi
 
-if [ ${OS} == "ubuntu1404" ]; then
+if [ ${OS} == "ubuntu1404" ] || [ ${OS} == "ubuntu1604" ]; then
     cd build-root/
     ./bootstrap.sh
     make PLATFORM=vpp V=0 TAG=vpp install-deb
