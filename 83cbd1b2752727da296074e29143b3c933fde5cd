@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fa0f191f_ce3363f5",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T19:31:30Z",
+      "side": 1,
+      "message": "try this instead?\n\nSUPPORTED\u003d\"ubuntu1404 ubuntu1604 centos7\"\n\ndeclare -A DIST_TARGET\nDIST_TARGET\u003d(\n    [ubuntu1404]\u003dinstall-deb\n    [ubuntu1604]\u003dinstall-deb\n    [centos7]\u003dinstall-rpm\n)\n\nif [[ ! ${SUPPORTED[*]} \u003d~ ${OS} ]]\nthen\n  echo \"Unrecognized OS: ${OS}.  Please edit: https://gerrit.fd.io/r/gitweb?p\u003dci-management.git;a\u003dblob;f\u003djjb/vpp/include-raw-vpp-build.sh;hb\u003dHEAD\"\n    exit 1\nfi\n\ncd build-root/\n./bootstrap.sh\nmake PLATFORM\u003dvpp V\u003d0 TAG\u003dvpp ${DIST_TARGET[${OS}]}",
+      "parentUuid": "fa0f191f_ce1c836d",
+      "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa0f191f_8effab01",
         "filename": "jjb/vpp/include-raw-vpp-build.sh",
         "patchSetId": 3
@@ -124,6 +142,29 @@
         "startChar": 3,
         "endLine": 20,
         "endChar": 18
+      },
+      "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa0f191f_ee3627e7",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T19:31:30Z",
+      "side": 1,
+      "message": "you probably don\u0027t want this GUID here",
+      "range": {
+        "startLine": 23,
+        "startChar": 142,
+        "endLine": 23,
+        "endChar": 182
       },
       "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
