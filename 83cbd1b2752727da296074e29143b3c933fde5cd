@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_4e09932b",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T18:53:10Z",
+      "side": 1,
+      "message": "those commands seem common for all non-terminal branches.  might as well put them here.",
+      "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa0f191f_8effab01",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T18:53:10Z",
+      "side": 1,
+      "message": "Why are these here",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa0f191f_6e045715",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T18:53:10Z",
+      "side": 1,
+      "message": "and these here?",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "83cbd1b2752727da296074e29143b3c933fde5cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
