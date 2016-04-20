@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_c3f1fc96",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-20T16:18:15Z",
+      "side": 1,
+      "message": "$? \u003d\u003d 0 || echo \"dh-systemd not installed\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "ac2aa243adfd0237216bc0df386e3f6cb1cb55a6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
