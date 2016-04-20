@@ -12,6 +12,8 @@ else
 fi
 
 if [ ${OS} == "ubuntu1404" ]; then
+    echo "CHECKING FOR dh-systemd"
+    dpkg -l dh-systemd
     cd build-root/
     ./bootstrap.sh
     make PLATFORM=vpp V=0 TAG=vpp install-deb
