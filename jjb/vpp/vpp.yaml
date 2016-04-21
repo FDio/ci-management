@@ -18,11 +18,12 @@
     name: vpp-misc
     jobs:
         - 'vpp-csit-verify-virl'
-        - 'vpp-verify-performance-{type}'
+        - 'vpp-csit-verify-perf-{type}'
     project: 'vpp'
     branch: 'master'
     os: ubuntu1404
     type:
+        - all
         - short
         - long
 
@@ -172,7 +173,7 @@
             output-path: 'csit'
 
 - job-template:
-    name: 'vpp-verify-performance-{type}'
+    name: 'vpp-csit-verify-perf-{type}'
 
     project-type: freestyle
     node: 'verify-{os}'
@@ -215,7 +216,7 @@
         - shell:
             !include-raw-escape include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape include-raw-vpp-verify-performance.sh
+            !include-raw-escape include-raw-vpp-csit-verify-perf.sh
 
     publishers:
         - archive-artifacts:
