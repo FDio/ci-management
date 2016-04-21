@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_a947094b",
+        "filename": "jjb/vpp/include-raw-vpp-maven-push.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-04-21T16:29:05Z",
+      "side": 1,
+      "message": "not defined?",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 16
+      },
+      "revId": "5817c7c0af55e9697f975186343b24acbe80a1f0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
