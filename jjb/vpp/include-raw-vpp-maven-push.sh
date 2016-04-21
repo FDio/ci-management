@@ -70,7 +70,7 @@ function push_deb ()
 {
     debfile=$1
     repoId=${REPOID_TARGET[${OS}]}
-    url="${REPOURL_TARGET[${OS}]}dev"
+    url="${REPOURL_TARGET[${OS}]}"
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
