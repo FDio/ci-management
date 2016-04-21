@@ -10,6 +10,18 @@ MVN="${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mv
 GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
+declare -A REPO_TARGET
+REPOID_TARGET=(
+    [ubuntu1404]="${BASEREPOID}dev"
+    [ubuntu1604]="${BASEREPOID}ubuntu.xenial.main"
+    [centos7]="${BASEREPOID}yum"
+)
+declare -A REPOURL_TARGET
+REPOURL_TARGET=(
+    [ubuntu1404]="${BASEURL}dev"
+    [ubuntu1604]="${BASEURL}ubuntu.xenial.main"
+    [centos7]="${BASEURL}yum"
+)
 
 function push_file ()
 {
@@ -57,8 +69,8 @@ function push_jar ()
 function push_deb ()
 {
     debfile=$1
-    repoId="${BASEREPOID}dev"
-    url="${BASEURL}dev"
+    repoId=${REPOID_TARGET[${OS}]}
+    url="${REPOURL_TARGET[${OS}]}dev"
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
@@ -70,8 +82,8 @@ function push_deb ()
 function push_rpm ()
 {
     rpmfile=$1
-    repoId="${BASEREPOID}yum"
-    url="${BASEURL}yum"
+    repoId=${REPOID_TARGET[${OS}]}
+    url="${REPOURL_TARGET[${OS}]}yum"
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
@@ -93,6 +105,12 @@ if [ "${OS}" == "ubuntu1404" ]; then
         push_jar "$i"
     done
 
+    for i in $DEBS
+    do
+        push_deb "$i"
+    done
+elif [ "${OS}" == "ubuntu1604" ]; then
+    DEBS=$(find . -type f -iname '*.deb')
     for i in $DEBS
     do
         push_deb "$i"
