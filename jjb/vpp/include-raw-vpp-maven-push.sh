@@ -83,7 +83,7 @@ function push_rpm ()
 {
     rpmfile=$1
     repoId=${REPOID_TARGET[${OS}]}
-    url="${REPOURL_TARGET[${OS}]}yum"
+    url="${REPOURL_TARGET[${OS}]}"
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
