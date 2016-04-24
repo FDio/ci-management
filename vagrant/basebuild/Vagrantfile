@@ -44,8 +44,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/vagrant"
   config.vm.synced_folder "../lib/", "/vagrant/lib"
 
-  # Do a full system update and force enforcing on (it's in permissive
-  # by default in the rackspace base images)
+  # Do a full system update and set enforcing on
   config.vm.provision 'shell', path: 'bootstrap.sh'
 
   #################
