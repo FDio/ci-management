@@ -13,3 +13,8 @@ target/
 # IntelliJ
 .idea/
 *.iml
+
+# Emacs
+*~
+\.\#*
+\#*
