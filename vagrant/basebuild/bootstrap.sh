@@ -1,44 +1,87 @@
+#!/bin/bash -x
+
+# die on errors
+set -e
+
+# Redirect stdout ( > ) and stderr ( 2> ) into named pipes ( >() ) running "tee"
+exec > >(tee -i /tmp/bootstrap-out.log)
+exec 2> >(tee -i /tmp/bootstrap-err.log)
 
 ubuntu_systems() {
+
+    VERSION=$(lsb_release -r | awk '{print $2}')
+
+    export DEBIAN_FRONTEND=noninteractive
+    cat <<EOF >> /etc/apt/apt.conf
+APT {
+  Get {
+    Assume-Yes "true";
+    allow-change-held-packages "true";
+    allow-downgrades "true";
+    allow-remove-essential "true";
+  };
+};
+
+Dpkg::Options {
+   "--force-confdef";
+   "--force-confold";
+};
+
+EOF
+
     # Standard update + upgrade dance
     apt-get update
-    apt-get upgrade -y
+    apt-get upgrade
+    apt-get dist-upgrade
 
     # Fix the silly notion that /bin/sh should point to dash by pointing it to bash
 
-    sudo update-alternatives --install /bin/sh sh /bin/bash 100
+    update-alternatives --install /bin/sh sh /bin/bash 100
 
     # Install build tools
-    apt-get install -y build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev dh-systemd
+    PACKAGES="build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev"
 
-    # Install other stuff
-    apt-get install -y --force-yes bridge-utils vim gdb iproute2
+    # Install interface manipulation tools, editor and debugger
+    PACKAGES="$PACKAGES iproute2 bridge-utils vim gdb"
 
     # Install debian packaging tools
-    apt-get install -y debhelper dkms
+    PACKAGES="$PACKAGES debhelper dh-systemd dkms"
 
-    # Install uio
-    apt-get install -y linux-image-extra-`uname -r`
+    # Install latest kernel and uio
+    PACKAGES="$PACKAGES linux-image-extra-virtual"
+
+    # Install plymouth labels and themes to get rid of initrd warnings / errors
+    if [ $VERSION != '14.04' ]
+    then
+        PACKAGES="$PACKAGES plymouth-themes plymouth-label"
+    fi
 
     # Install jdk and maven
-    apt-get install -y openjdk-7-jdk
+    PACKAGES="$PACKAGES default-jdk"
     # $$$ comment out for the moment
-    # apt-get install -y --force-yes maven3
+    # PACKAGES="$PACKAGES maven3"
 
-    # Load the uio kernel module
-    modprobe uio_pci_generic
+    # Install virtualenv for test execution
+    PACKAGES="$PACKAGES python-virtualenv python-pip python-dev"
+
+    apt-get install ${PACKAGES}
+    apt-get autoremove
+    apt-get clean
+
+    # It is not necessary to load the uio kernel module during the bootstrap phase
+#    modprobe uio_pci_generic
 
     # Make sure uio loads at boot time
     echo uio_pci_generic >> /etc/modules
 
     # Setup for hugepages using upstart so it persists across reboots
     sysctl -w vm.nr_hugepages=1024
+    echo "vm.nr_hugepages=1024" >> /etc/sysctl.conf
+
     mkdir -p /mnt/huge
     echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
     mount /mnt/huge
 
-    # Install virtualenv for test execution
-    apt-get install -y --force-yes python-virtualenv python-pip python-dev python3-dev
 }
 
 rh_systems() {
@@ -85,3 +128,7 @@ case "$OS" in
         echo "---> Unknown operating system"
     ;;
 esac
+
+echo "bootstrap process (PID=$$) complete."
+
+exit 0
