@@ -1,5 +1,8 @@
 
 ubuntu_systems() {
+    # jdk8 for ubuntu 14.04
+    add-apt-repository ppa:openjdk-r/ppa
+    
     # Standard update + upgrade dance
     apt-get update
     apt-get upgrade -y
@@ -21,7 +24,7 @@ ubuntu_systems() {
     apt-get install -y linux-image-extra-`uname -r`
 
     # Install jdk and maven
-    apt-get install -y openjdk-7-jdk
+    apt-get install -y openjdk-8-jdk
     # $$$ comment out for the moment
     # apt-get install -y --force-yes maven3
 
