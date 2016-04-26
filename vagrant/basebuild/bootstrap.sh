@@ -1,5 +1,12 @@
 
 ubuntu_systems() {
+
+    if [ "$(lsb_release -r | awk '{print $2}')" == "14.04" ]
+    then
+        # openjdk-8-jdk is not available in 14.04 repos by default
+        add-apt-repository ppa:openjdk-r/ppa
+    fi
+
     # Standard update + upgrade dance
     apt-get update
     apt-get upgrade -y
@@ -21,7 +28,7 @@ ubuntu_systems() {
     apt-get install -y linux-image-extra-`uname -r`
 
     # Install jdk and maven
-    apt-get install -y openjdk-7-jdk
+    apt-get install -y openjdk-8-jdk
     # $$$ comment out for the moment
     # apt-get install -y --force-yes maven3
 
