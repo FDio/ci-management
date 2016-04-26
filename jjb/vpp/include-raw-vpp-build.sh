@@ -25,4 +25,4 @@ then
 fi
 cd build-root/
 ./bootstrap.sh
-make PLATFORM=vpp V=0 TAG=vpp ${DIST_TARGET[${OS}]}
+make PLATFORM=vpp TAG=vpp ${DIST_TARGET[${OS}]}
