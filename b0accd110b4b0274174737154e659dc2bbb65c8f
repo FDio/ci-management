@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_44172f52",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-04-26T18:27:20Z",
+      "side": 1,
+      "message": "Isn\u0027t this going to forcibly update between Ubuntu releases? That\u0027s not generally something you want when you are building off of a specific base image.",
+      "revId": "b0accd110b4b0274174737154e659dc2bbb65c8f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
