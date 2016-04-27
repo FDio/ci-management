@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa0f191f_9a5ec2e8",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2016-04-27T12:21:09Z",
+      "side": 1,
+      "message": "jdk7 is default for ubuntu 14.04. Could you please update it to jdk8? That would allow fixing HONEYCOMB-25 and VPP-8.",
+      "range": {
+        "startLine": 60,
+        "startChar": 24,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "3bc7cd81a3322d7b3a922d5cb4f000b0d3cbc022",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
