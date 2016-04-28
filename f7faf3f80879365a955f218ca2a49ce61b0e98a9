@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_fc126557",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-04-28T15:18:21Z",
+      "side": 1,
+      "message": "redundant white space, please remove.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "f7faf3f80879365a955f218ca2a49ce61b0e98a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_bc1ced6b",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 13
+      },
+      "writtenOn": "2016-04-28T15:18:21Z",
+      "side": 1,
+      "message": "I\u0027m going to try this on my ubuntu 1404 VM.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "f7faf3f80879365a955f218ca2a49ce61b0e98a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
