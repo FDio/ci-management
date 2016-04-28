@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da141535_3c0c5d94",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-04-28T23:52:37Z",
+      "side": 1,
+      "message": "Why the dist-upgrade?",
+      "revId": "3bc7cd81a3322d7b3a922d5cb4f000b0d3cbc022",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa0f191f_9a5ec2e8",
         "filename": "vagrant/basebuild/bootstrap.sh",
         "patchSetId": 7
