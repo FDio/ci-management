@@ -28,6 +28,12 @@ ubuntu_systems() {
     apt-get install -y linux-image-extra-`uname -r`
 
     # Install jdk and maven
+    if [ "$(lsb_release -r | awk '{print $2}')" == "14.04" ]
+    then
+        # It turns out that while we need java-8, for ubuntu 14.04
+        # we need to make sure that works even if java-7 is also installed
+        apt-get install -y openjdk-7-jdk
+    fi
     apt-get install -y openjdk-8-jdk
     # $$$ comment out for the moment
     # apt-get install -y --force-yes maven3
