@@ -10,6 +10,7 @@ exec 2> >(tee -i /tmp/bootstrap-err.log)
 ubuntu_systems() {
 
     LSB_PATH=$(which lsb_release)
+    PACKAGES="" # initialize PACKAGES
 
     if [ $? == 0 ]
     then
@@ -58,7 +59,7 @@ EOF
         add-apt-repository ppa:openjdk-r/ppa
 
         # Install OpenJDK
-        PACKAGES="$PACKAGES openjdk-8-jdk"
+        PACKAGES="$PACKAGES openjdk-8-jdk-headless"
 
         # Install Oracle's jdk version 8
 #        apt-add-repository -y ppa:webupd8team/java
@@ -68,21 +69,21 @@ EOF
 #        PACKAGES="$PACKAGES oracle-java8-installer"
     else
         # Install default jdk and plymouth packages
-        PACKAGES="$PACKAGES plymouth-themes plymouth-label default-jdk"
+        PACKAGES="$PACKAGES plymouth-themes plymouth-label default-jdk-headless"
     fi
 
 
     # Standard update + upgrade dance
-    apt-get -qq update
-    apt-get -qq upgrade
-    apt-get -qq dist-upgrade
+    apt-get update
+    apt-get upgrade
+    apt-get dist-upgrade
 
     # Fix the silly notion that /bin/sh should point to dash by pointing it to bash
 
     update-alternatives --install /bin/sh sh /bin/bash 100
 
     # Install build tools
-    PACKAGES="build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev"
+    PACKAGES="$PACKAGES build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev"
 
     # Install interface manipulation tools, editor, debugger and lsb
     PACKAGES="$PACKAGES iproute2 bridge-utils vim gdb lsb-release"
@@ -99,9 +100,12 @@ EOF
     # Install virtualenv for test execution
     PACKAGES="$PACKAGES python-virtualenv python-pip python-dev"
 
-    apt-get -qq install ${PACKAGES}
-    apt-get -qq autoremove
-    apt-get -qq clean
+    apt-get install ${PACKAGES}
+    apt-get autoremove
+    apt-get clean
+
+    # update CA certificates
+    update-ca-certificates -f
 
     # It is not necessary to load the uio kernel module during the bootstrap phase
 #    modprobe uio_pci_generic
