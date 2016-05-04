@@ -2,13 +2,6 @@
 # vi: set ts=2 sw=2 sts=2 et ft=ruby :
 
 Vagrant.configure(2) do |config|
-  # Fedora and EL systems default to requiring a tty for sudo
-  if (ENV['RSPTY'] == 'default')
-    config.ssh.pty = false
-  else
-    config.ssh.pty = true
-  end
-
   config.vm.provider :openstack do |os, override|
     config.vm.box = "dummy"
 

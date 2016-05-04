@@ -4,12 +4,11 @@
 set -e
 
 # Redirect stdout ( 1> ) and stderr ( 2> ) into named pipes ( >() ) running "tee"
-exec 1> >(tee -i /tmp/bootstrap-out.log)
-exec 2> >(tee -i /tmp/bootstrap-err.log)
+#exec 1> >(tee -i /tmp/bootstrap-out.log)
+#exec 2> >(tee -i /tmp/bootstrap-err.log)
 
 ubuntu_systems() {
 
-    LSB_PATH=$(which lsb_release)
     PACKAGES="" # initialize PACKAGES
 
     if [ $? == 0 ]
@@ -19,19 +18,19 @@ ubuntu_systems() {
         CODENAME=$(lsb_release -c | awk '{print $2}')
     else
         ISSUE_TXT=$(head -1 /etc/issue)
-        DIST=$(echo ${ISSUE_TXT} | awk '{print $1}')
+        DIST=$(echo "${ISSUE_TXT}" | awk '{print $1}')
         if [ "$DIST" = "Ubuntu" ]
         then
-            VERSION=$(echo ${ISSUE_TXT} | awk '{print $2}' | sed -e 's/^(\d+\.\d+)(\.\d+)?$/\1/')
+            VERSION=$(echo "${ISSUE_TXT}" | awk '{print $2}' | sed -e 's/^(\d+\.\d+)(\.\d+)?$/\1/')
         elif [ "$DIST" = "Debian" ]
         then
-            VERSION=$(echo ${ISSUE_TXT} | awk '{print $3}')
+            VERSION=$(echo "${ISSUE_TXT}" | awk '{print $3}')
         else
             echo "Unrecognized distribution: ${DIST}"
         fi
     fi
 
-    echo "Detected [${DIST} v${VERSION} (${CODENAME})]"
+    echo "---> Detected [${DIST} v${VERSION} (${CODENAME})]"
 
     export DEBIAN_FRONTEND=noninteractive
     cat <<EOF >> /etc/apt/apt.conf
@@ -73,10 +72,11 @@ EOF
     fi
 
 
+    echo '---> Updating OS'
     # Standard update + upgrade dance
-    apt-get update
-    apt-get upgrade
-    apt-get dist-upgrade
+    apt-get -qq update
+    apt-get -qq upgrade
+    apt-get -qq dist-upgrade
 
     # Fix the silly notion that /bin/sh should point to dash by pointing it to bash
 
@@ -100,11 +100,15 @@ EOF
     # Install virtualenv for test execution
     PACKAGES="$PACKAGES python-virtualenv python-pip python-dev"
 
-    apt-get install ${PACKAGES}
-    apt-get autoremove
-    apt-get clean
+    echo '---> Installing packages'
+    # disable double quoting check
+    # shellcheck disable=SC2086 
+    apt-get -qq install ${PACKAGES}
+    apt-get -qq autoremove
+    apt-get -qq clean
 
     # update CA certificates
+    echo '---> Forcing CA certificate update'
     update-ca-certificates -f
 
     # It is not necessary to load the uio kernel module during the bootstrap phase
@@ -123,31 +127,33 @@ EOF
 }
 
 rh_systems() {
-    # Install build tools
-    yum groupinstall 'Development Tools' -y
-    yum install openssl-devel -y
-    yum install glibc-static -y
+    echo '---> Updating OS'
+    yum clean all -q
+    yum upgrade -q -y
+
+    echo '---> Installing tools'
+    yum install -q -y @development openssl-devel glibc-static
 
     # Install jdk and maven
-    yum install -y java-1.8.0-openjdk-devel
+    yum install -q -y java-1.8.0-openjdk-devel
 
     # Install python development
     yum search python34-devel 2>&1 | grep -q 'No matches'
     if [ $? -eq 0 ]
     then
-        yum install -y python-devel
+	echo '---> Installing python-devel'
+        yum install -q -y python-devel
     else
-        yum install -y python34-devel
+	echo '---> Installying python34-devel'
+        yum install -q -y python34-devel
     fi
 
+    echo '---> Configuring EPEL'
     # Install EPEL
-    yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    yum install -q -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
     # Install components to build Ganglia modules
-    yum install -y apr-devel
-    yum install -y --enablerepo=epel libconfuse-devel
-    yum install -y --enablerepo=epel ganglia-devel
-    yum install -y --enablerepo=epel mock
+    yum install -q -y {apr,libconfuse,ganglia}-devel mock
 }
 
 echo "---> Attempting to detect OS"
@@ -175,7 +181,7 @@ esac
 
 echo "bootstrap process (PID=$$) complete."
 
-exec 1>&- # close STDOUT
-exec 2>&- # close STDERR
+#exec 1>&- # close STDOUT
+#exec 2>&- # close STDERR
 
 exit 0
