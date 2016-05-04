@@ -7,6 +7,9 @@ set -e
 exec 1> >(tee -i /tmp/bootstrap-out.log)
 exec 2> >(tee -i /tmp/bootstrap-err.log)
 
+# record the bootstrap.sh checksum
+shasum $0 > /etc/bootstrap.sha1
+
 ubuntu_systems() {
 
     LSB_PATH=$(which lsb_release)
@@ -148,6 +151,13 @@ rh_systems() {
     yum install -y --enablerepo=epel libconfuse-devel
     yum install -y --enablerepo=epel ganglia-devel
     yum install -y --enablerepo=epel mock
+
+    rpm -V apr-devel
+    if [ if [ $? != 0 ]; then exec 1>&-;exec 2>&-exit 1; fi ]
+    rpm -V ganglia-devel
+    if [ if [ $? != 0 ]; then exec 1>&-;exec 2>&-exit 1; fi ]
+    rpm -V libconfuse-devel
+    if [ if [ $? != 0 ]; then exec 1>&-;exec 2>&-exit 1; fi ]
 }
 
 echo "---> Attempting to detect OS"

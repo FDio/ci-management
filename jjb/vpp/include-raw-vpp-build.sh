@@ -11,4 +11,14 @@ else
     echo $CCACHE_DIR does not exist.  This must be a new slave.
 fi
 
+echo "cat /etc/bootstrap.sha1"
+if [ -f /etc/bootstrap.sh1 ];then
+    cat /etc/bootstrap.sha1
+else
+    echo "Cannot find cat /etc/bootstrap.sha1"
+fi
+
+echo "shasum of this script"
+shasum $0
+
 build-root/vagrant/build.sh
