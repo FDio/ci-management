@@ -82,14 +82,16 @@ EOF
 
     update-alternatives --install /bin/sh sh /bin/bash 100
 
-    # Install build tools
-    PACKAGES="$PACKAGES build-essential autoconf automake bison libssl-dev ccache libtool git dkms debhelper libganglia1-dev libapr1-dev libconfuse-dev"
+    # Install build tools - should match vpp/Makefile DEB_DEPENDS variable
+    PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev ccache "
+    PACKAGES="$PACKAGES debhelper dkms openjdk-8-jdk git libtool dkms debhelper libganglia1-dev libapr1-dev dh-systemd"
+    PACKAGES="$PACKAGES libconfuse-dev git-review exuberant-ctags cscope"
+
+    # Add openjdk-7-jdk because it catches some bugs in Ubuntu1404
+    PACKAGES="$PACKAGES openjdk-7-jdk"
 
     # Install interface manipulation tools, editor, debugger and lsb
     PACKAGES="$PACKAGES iproute2 bridge-utils vim gdb lsb-release"
-
-    # Install debian packaging tools
-    PACKAGES="$PACKAGES debhelper dh-systemd dkms"
 
     # Install latest kernel and uio
     PACKAGES="$PACKAGES linux-image-extra-virtual"
@@ -132,10 +134,10 @@ rh_systems() {
     yum upgrade -q -y
 
     echo '---> Installing tools'
-    yum install -q -y @development openssl-devel glibc-static
+    yum install -q -y @development openssl-devel glibc-static redhat-lsb
 
     # Install jdk and maven
-    yum install -q -y java-1.8.0-openjdk-devel
+    yum install -q -y java-1.8.0-openjdk-devel yum-utils openssl-devel
 
     # Install python development
     yum search python34-devel 2>&1 | grep -q 'No matches'
