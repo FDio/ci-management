@@ -39,6 +39,8 @@ rm -rf /var/lib/cloud/*
 # cleanup /vagrant
 rm -rf /vagrant
 
+sync
+
 echo "********************************************"
 echo "*   PLEASE SNAPSHOT IMAGE AT THIS TIME     *"
 echo "********************************************"
