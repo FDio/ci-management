@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_253f9927",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 70,
+        "startChar": 31,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_05f5b582",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_453a8d37",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 168,
+        "startChar": 31,
+        "endLine": 168,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_e5f1a196",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 178,
+        "startChar": 31,
+        "endLine": 178,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_c5ee9db4",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 219,
+        "startChar": 31,
+        "endLine": 219,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_a52ba9ea",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 221,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_8530a557",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 273,
+        "startChar": 31,
+        "endLine": 273,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_65359145",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T20:39:26Z",
+      "side": 1,
+      "message": "WARNING:jenkins_jobs.local_yaml:tag \u0027!include-raw-escape\u0027 is deprecated, switch to using \u0027!include-raw-escape:\u0027",
+      "range": {
+        "startLine": 275,
+        "startChar": 31,
+        "endLine": 275,
+        "endChar": 32
+      },
+      "revId": "d5a99e0d3900488b280cbe4ae5d027b348c39cb8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
