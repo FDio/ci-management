@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_e5c3e136",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-05-04T20:08:24Z",
+      "side": 1,
+      "message": "This format for triggering is deprecated. We should use this:\n\n            trigger-on:\n                - comment-added-contains-event:\n                    comment-contains-value: \u0027verify-images\u0027\n            projects:\n              - project-compare-type: \u0027ANT\u0027\n                project-pattern: \u0027{project}\u0027\n                branches:\n                  - branch-compare-type: \u0027ANT\u0027\n                    branch-pattern: \u0027**/{branch}\u0027\n            skip-vote:\n                successful: true\n                failed: true\n                unstable: true\n                notbuilt: true",
+      "revId": "4f599a0ac7d0e817d2419d5303e765a151d36204",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
