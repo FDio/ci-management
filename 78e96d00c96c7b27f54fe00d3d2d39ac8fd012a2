@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_a5bcc96d",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-04T23:46:21Z",
+      "side": 0,
+      "message": "This is checking the return value of the above $(which lsb_release)",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "78e96d00c96c7b27f54fe00d3d2d39ac8fd012a2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
