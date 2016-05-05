@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "da141535_9b824651",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-05-05T14:31:49Z",
+      "side": 1,
+      "message": "No.  The correct java version is what is installed by install-dep, otherwise we are going to end up installing a bunch of stuff during verify.  I think its probably a good idea to go get install-dep to install a lighter JDK... but this is what *will* be installed by the build if its not there.",
+      "parentUuid": "da141535_a563a919",
+      "range": {
+        "startLine": 87,
+        "startChar": 39,
+        "endLine": 87,
+        "endChar": 52
+      },
+      "revId": "5c19b29bcccc4df02bedf9d4e92f3e286847d2e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da141535_a54a8981",
         "filename": "vagrant/basebuild/bootstrap.sh",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2016-05-05T00:17:21Z",
       "side": 1,
       "message": "trailing whitespace",
+      "range": {
+        "startLine": 107,
+        "startChar": 31,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "5c19b29bcccc4df02bedf9d4e92f3e286847d2e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_5b7cae72",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-05-05T14:31:49Z",
+      "side": 1,
+      "message": "Existing, not new.",
+      "parentUuid": "da141535_a54a8981",
       "range": {
         "startLine": 107,
         "startChar": 31,
