@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "da141535_7bd53242",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-05T14:35:40Z",
+      "side": 1,
+      "message": "This is a malformed commit message. You _must_ have a blank line between the message subject and message body.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "6b52ab23c3fa38058ebf2170f736e86180899005",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da141535_7bee5224",
         "filename": "vagrant/lib/bootstrap-functions.sh",
         "patchSetId": 5
