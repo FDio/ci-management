@@ -114,12 +114,12 @@ projects:
       - ci-management-merge-zuul
       - ci-management-merge-nodepool
 
-  - name: csit
+#  - name: csit
 #    csit-manual-perf:
 #      - csit-vpp-functional-hw-tb2
-    check:
+#    check:
 #      - csit-vpp-functional-virl
-      - csit-vpp-functional-nodepool
+#      - csit-vpp-functional-nodepool
 
 #  - name: honeycomb
 #    template:
