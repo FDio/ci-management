@@ -111,42 +111,6 @@
             output-path: ''
 
 - job-template:
-    name: 'csit-vpp-functional-nodepool'
-
-    project-type: freestyle
-    node: multilink
-    concurrent: true
-
-    logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    scm:
-        - zuul-trigger-scm:
-            credentials-id: '{ssh-credentials}'
-            refspec: '$ZUUL_REF'
-            commit: '$ZUUL_COMMIT'
-
-    wrappers:
-        - ssh-agent-credentials:
-            users:
-                - '{ssh-credentials}'
-
-    builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-vpp-functional-multilink.sh
-
-    publishers:
-        - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml'
-            latest-only: false
-
-        - robot-report:
-            output-path: ''
-
-- job-template:
     name: 'csit-vpp-master-verify-weekly'
 
     project-type: freestyle
