@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da141535_1b72b67c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-05T15:15:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da141535_7bd53242",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "6b52ab23c3fa38058ebf2170f736e86180899005",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da141535_7bee5224",
         "filename": "vagrant/lib/bootstrap-functions.sh",
         "patchSetId": 5
@@ -36,6 +60,24 @@
       "writtenOn": "2016-05-05T14:33:56Z",
       "side": 1,
       "message": "Please see https://gerrit.fd.io/r/#/c/996/ for correct packages that need to be installed.  openjdk-{7,8}-jdk are missing",
+      "revId": "6b52ab23c3fa38058ebf2170f736e86180899005",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_3b5d7aea",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-05T15:15:30Z",
+      "side": 1,
+      "message": "see line 94",
+      "parentUuid": "da141535_7bee5224",
       "revId": "6b52ab23c3fa38058ebf2170f736e86180899005",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
