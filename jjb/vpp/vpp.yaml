@@ -19,7 +19,7 @@
     name: vpp-misc
     jobs:
         - 'vpp-csit-verify-virl'
-        - 'vpp-csit-verify-perf-{type}'
+        - 'vpp-csit-verify-hw-perf-{type}'
     project: 'vpp'
     branch: 'master'
     os: ubuntu1404
@@ -227,7 +227,7 @@
             output-path: 'csit'
 
 - job-template:
-    name: 'vpp-csit-verify-perf-{type}'
+    name: 'vpp-csit-verify-hw-perf-{type}'
 
     project-type: freestyle
     node: 'verify-{os}'
