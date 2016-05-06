@@ -49,6 +49,14 @@
             default: '{maven}'
             description: 'Maven selector to be used by shell scripts'
 
+- parameter:
+    name: java-home-parameter
+    parameters:
+        - string:
+            name: JAVA_HOME
+            default: '{java-home}'
+            description: 'JAVA_HOME environment variable'
+
 
 ##### SCMS
 - scm:
