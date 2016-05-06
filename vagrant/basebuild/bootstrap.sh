@@ -20,6 +20,7 @@ then
     echo "---> Debian type system detected"
     export DEBIAN_FRONTEND=noninteractive
 
+    deb_enable_serial_console
     deb_aptconf_batchconf
     deb_sync_minor
     deb_correct_shell
