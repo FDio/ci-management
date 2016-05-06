@@ -47,7 +47,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -58,7 +58,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
     publishers:
         - email-notification:
@@ -101,7 +101,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
 
     maven:
         maven-name: '{mvn33}'
@@ -113,7 +113,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
     reporters:
         - findbugs
@@ -163,7 +163,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
 
     maven:
         maven-name: '{mvn33}'
@@ -175,7 +175,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
     reporters:
         - findbugs
