@@ -3,6 +3,9 @@
 # die on errors
 set -e
 
+# record the bootstrap.sh checksum
+shasum $0 > /etc/bootstrap.sha1
+
 # pull in bootstrap functions
 . /vagrant/lib/bootstrap-functions.sh
 
