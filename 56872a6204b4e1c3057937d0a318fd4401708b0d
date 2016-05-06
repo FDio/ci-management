@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_31ca3b50",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-05-06T14:49:47Z",
+      "side": 1,
+      "message": "Missing:\n\n    default: \u0027{java-home}\u0027",
+      "revId": "56872a6204b4e1c3057937d0a318fd4401708b0d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
