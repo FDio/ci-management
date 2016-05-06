@@ -6,9 +6,10 @@
         - 'honeycomb-integration'
     project: 'honeycomb'
     branch: 'master'
+    os: 'ubuntu1404'
 
 - job-template:
-    name: 'honeycomb-verify'
+    name: 'honeycomb-verify-{branch}-{os}'
     project-type: maven
     node: verify
     concurrent: true
@@ -24,6 +25,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
 
     scm:
         - gerrit-trigger-scm:
@@ -42,6 +45,10 @@
             name: 'honeycomb'
             branch: '{branch}'
 
+    prebuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -50,12 +57,17 @@
         settings: '{honeycomb-settings}'
         global-settings: '{global-settings}'
 
+    postbuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+
     publishers:
         - email-notification:
             email-prefix: '[honeycomb]'
 
 - job-template:
-    name: 'honeycomb-merge'
+    name: 'honeycomb-merge-{branch}-{os}'
     project-type: maven
     node: merge
     jdk: '{jdk}'
@@ -69,6 +81,8 @@
     parameters:
         - project-parameter:
             project: '{project}'
+        - os-parameter:
+            os: '{os}'
 
     scm:
         - gerrit-trigger-scm:
@@ -87,6 +101,11 @@
             name: 'honeycomb'
             branch: '{branch}'
 
+    prebuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -94,6 +113,11 @@
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: '{honeycomb-settings}'
         global-settings: '{global-settings}'
+
+    postbuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
     reporters:
         - findbugs
@@ -107,7 +131,7 @@
             deploy-unstable: false
 
 - job-template:
-    name: 'honeycomb-integration'
+    name: 'honeycomb-integration-{branch}-{os}'
     project-type: maven
     node: merge
     jdk: '{jdk}'
@@ -121,6 +145,8 @@
     parameters:
         - project-parameter:
             project: '{project}'
+        - os-parameter:
+            os: '{os}'
 
     scm:
         - git-scm:
@@ -139,6 +165,11 @@
             jobs: 'vpp-merge'
             result: 'success'
 
+    prebuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -146,6 +177,11 @@
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: '{honeycomb-settings}'
         global-settings: '{global-settings}'
+
+    postbuilders:
+        builders:
+            - shell: |
+                if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
     reporters:
         - findbugs
