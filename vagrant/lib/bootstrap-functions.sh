@@ -1,5 +1,15 @@
 #!/bin/bash
 
+deb_enable_serial_console() {
+# enable grub and login on serial console
+
+    echo <<EOF>> /etc/default/grub
+GRUB_TERMINAL=serial
+GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"
+EOF
+    update-grub
+}
+
 deb_probe_modules() {
     for mod in "$@"
     do
