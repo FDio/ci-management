@@ -5,7 +5,7 @@
     jobs:
         - 'csit-vpp-perf-hw-{type}'
         - 'csit-vpp-functional-virl'
-        - 'csit-vpp-master-verify-weekly'
+        - 'csit-vpp-verify-weekly'
 
     project: 'csit'
     branch: 'master'
@@ -49,7 +49,7 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-csit-vpp-functional-virl.sh
+            !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
 
     publishers:
         - archive-artifacts:
@@ -99,7 +99,7 @@
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-perf-hw.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-hw.sh
 
     publishers:
         - archive-artifacts:
@@ -110,7 +110,7 @@
             output-path: ''
 
 - job-template:
-    name: 'csit-vpp-master-verify-weekly'
+    name: 'csit-vpp-verify-weekly'
 
     project-type: freestyle
     node: verify
@@ -139,16 +139,16 @@
                 - '{ssh-credentials}'
 
     triggers:
-        - timed: 'H H * * 0'
+        - timed: '0 4 * * 0'
 
         - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'csit-weekly-verify'
+            comment-trigger-value: 'csit-vpp-ref-verify'
             name: '{project}'
             branch: '{branch}'
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-master.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
 
     publishers:
         - archive-artifacts:
