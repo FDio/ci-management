@@ -12,15 +12,27 @@ BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
 declare -A REPO_TARGET
 REPOID_TARGET=(
-    [ubuntu1404]="${BASEREPOID}dev"
-    [ubuntu1604]="${BASEREPOID}ubuntu.xenial.main"
-    [centos7]="${BASEREPOID}yum"
+    [master:ubuntu1404]="${BASEREPOID}master.ubuntu.trusty.main"
+    [master:ubuntu1604]="${BASEREPOID}master.ubuntu.xenial.main"
+    [master:centos7]="${BASEREPOID}master.centos7"
+    [stable/test:ubuntu1404]="${BASEREPOID}stable.test.ubuntu.trusty.main"
+    [stable/test:ubuntu1604]="${BASEREPOID}stable.test.ubuntu.xenial.main"
+    [stable/test:centos7]="${BASEREPOID}stable.test.centos7"
+    [stable/1606:ubuntu1404]="${BASEREPOID}stable.1606.ubuntu.trusty.main"
+    [stable/1606:ubuntu1604]="${BASEREPOID}stable.1606.ubuntu.xenial.main"
+    [stable/1606:centos7]="${BASEREPOID}stable.1606.centos7"
 )
 declare -A REPOURL_TARGET
 REPOURL_TARGET=(
-    [ubuntu1404]="${BASEURL}dev"
-    [ubuntu1604]="${BASEURL}ubuntu.xenial.main"
-    [centos7]="${BASEURL}yum"
+    [master:ubuntu1404]="${BASEURL}master.ubuntu.trusty.main"
+    [master:ubuntu1604]="${BASEURL}master.ubuntu.xenial.main"
+    [master:centos7]="${BASEURL}master.centos7"
+    [stable/test:ubuntu1404]="${BASEURL}stable.test.ubuntu.trusty.main"
+    [stable/test:ubuntu1604]="${BASEURL}stable.test.ubuntu.xenial.main"
+    [stable/test:centos7]="${BASEURL}stable.test.centos7"
+    [stable/1606:ubuntu1404]="${BASEURL}stable.1606.ubuntu.trusty.main"
+    [stable/1606:ubuntu1604]="${BASEURL}stable.1606.ubuntu.xenial.main"
+    [stable/1606:centos7]="${BASEURL}stable.1606.centos7"
 )
 
 function push_file ()
@@ -69,8 +81,8 @@ function push_jar ()
 function push_deb ()
 {
     debfile=$1
-    repoId=${REPOID_TARGET[${OS}]}
-    url="${REPOURL_TARGET[${OS}]}"
+    repoId=${REPOID_TARGET[${GERRIT_BRANCH}:${OS}]}
+    url="${REPOURL_TARGET[${GERRIT_BRANCH}:${OS}]}"
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
@@ -82,8 +94,8 @@ function push_deb ()
 function push_rpm ()
 {
     rpmfile=$1
-    repoId=${REPOID_TARGET[${OS}]}
-    url="${REPOURL_TARGET[${OS}]}"
+    repoId=${REPOID_TARGET[${GERRIT_BRANCH}:${OS}]}
+    url="${REPOURL_TARGET[${GERRIT_BRANCH}:${OS}]}"
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
