@@ -8,6 +8,9 @@ set -e
 
 do_setup
 
+# record the bootstrap.sh checksum
+shasum $0 > /etc/bootstrap.sha
+
 echo "---> Attempting to detect OS"
 # OS selector
 if [ -f /usr/bin/yum ]

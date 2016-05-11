@@ -11,6 +11,16 @@ else
     echo $CCACHE_DIR does not exist.  This must be a new slave.
 fi
 
+echo "cat /etc/bootstrap.sha"
+if [ -f /etc/bootstrap.sha ];then
+    cat /etc/bootstrap.sha
+else
+    echo "Cannot find cat /etc/bootstrap.sha"
+fi
+
+echo "shasum of this script: ${0}"
+shasum $0
+
 # Check to make sure the patch doesn't need to be rebased
 # Since there was a discontinuity, patches with a
 # parent before 30d41ff need to be rebased
