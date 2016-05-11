@@ -6,6 +6,9 @@ set -e
 # pull in bootstrap functions
 . /vagrant/lib/bootstrap-functions.sh
 
+# record the bootstrap.sh checksum
+shasum $0 > /etc/bootstrap.sha
+
 echo "---> Attempting to detect OS"
 # OS selector
 if [ -f /usr/bin/yum ]
