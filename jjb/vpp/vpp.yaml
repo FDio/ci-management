@@ -1,22 +1,16 @@
 - project:
     name: vpp
     jobs:
-        - 'vpp-verify-{stream}-{os}'
-        - 'vpp-merge-{stream}-{os}'
-        - 'vpp-verify-image-{stream}-{os}'
+        - 'vpp-verify-{branch}-{os}'
+        - 'vpp-merge-{branch}-{os}'
+        - 'vpp-verify-image-{branch}-{os}'
 
     project: 'vpp'
     os:
         - ubuntu1404
         - centos7
         - ubuntu1604
-    stream:
-        - master:
-            branch: master
-        - test:
-            branch: stable/test
-        - 1606:
-            branch: stable/1606
+    branch: 'master'
     type:
         - short
         - long
@@ -35,7 +29,7 @@
         - long
 
 - job-template:
-    name: 'vpp-verify-{stream}-{os}'
+    name: 'vpp-verify-{branch}-{os}'
 
     project-type: freestyle
     node: 'verify-{os}'
@@ -76,7 +70,7 @@
             !include-raw-escape include-raw-vpp-build.sh
 
 - job-template:
-    name: 'vpp-verify-image-{stream}-{os}'
+    name: 'vpp-verify-image-{branch}-{os}'
 
     project-type: freestyle
     node: 'verify-image-{os}'
@@ -130,7 +124,7 @@
             !include-raw-escape include-raw-vpp-build.sh
 
 - job-template:
-    name: 'vpp-merge-{stream}-{os}'
+    name: 'vpp-merge-{branch}-{os}'
 
     project-type: freestyle
     node: 'merge-{os}'
