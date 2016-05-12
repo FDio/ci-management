@@ -1,0 +1,269 @@
+#!/usr/bin/perl -wT
+
+print(
+     "\n",
+     "######################################################################\n",
+     "    Push to Nexus via Maven\n",
+     "######################################################################\n"
+);
+
+use strict;
+
+use File::Find;
+use Carp;
+use IPC::Cmd qw(run);
+use Sys::Syslog qw(:macros :standard);
+
+$SIG{CHLD} = 'DEFAULT';
+my $DEBUG = 1;
+
+openlog( 'zephyr-maven-push', 'nofatal,perror', LOG_LOCAL0 );
+setlogmask( LOG_UPTO( LOG_DEBUG ) );
+
+my %input = (
+
+  # example: /etc/maven/settings.xml
+  global_settings => { ENV_KEY => 'GLOBAL_SETTINGS_FILE',
+                       rx      => qr{^(/.+)$},
+                       label   => 'Global Settings File',
+                       default => '/etc/maven/settings.xml',
+  },
+
+  # example: /etc/maven/settings.xml
+  global_settings => { ENV_KEY => 'GLOBAL_SETTINGS_FILE',
+                       rx      => qr{^(/.+)$},
+                       label   => 'Global Settings File',
+                       default => '/etc/maven/settings.xml',
+  },
+
+  # example:  https://nexus.fd.io
+  nexus_proxy => { ENV_KEY => 'NEXUSPROXY',
+                   rx      => qr{^(https?://[^/]+)$},
+                   label   => 'Nexus Proxy',
+                   default => 'http://nexus.fd.io',
+  },
+
+  # example: Maven_3.0.4
+  maven_selector => { ENV_KEY => 'MAVEN_SELECTOR',
+                      rx      => qr{^(Maven_\d+\.\d+\.\d+)$},
+                      label   => 'Maven selector',
+                      default => 'Maven_3.0.4',
+  },
+
+  # example: ~/.m2/settings.xml
+  settings => { ENV_KEY => 'SETTINGS_FILE',
+                rx      => qr{^(/.+)$},
+                label   => 'Settings File',
+                default => qq{$ENV{HOME}/.m2/settings.xml},
+  },
+
+  # example: /jenkins
+  home => { ENV_KEY => 'HOME',
+            rx      => qr{^(/.+)$},
+            label   => 'Home Directory',
+            default => $ENV{HOME}
+  },
+
+  # example: vpp
+  project => { ENV_KEY => 'PROJECT',
+               rx      => qr{^(\S+)$},
+               label   => 'Project',
+               default => 'vpp',
+  },
+
+  # os: ubuntu1404
+  os => { ENV_KEY => 'OS',
+          rx      => qr{^(\S+)$},
+          label   => 'OS',
+          default => 'ubuntu1404',
+  },
+
+  # gerrit_branch: master
+  gerrit_branch => { ENV_KEY => 'GERRIT_BRANCH',
+                     rx      => qr{^(\S+)$},
+                     label   => 'Branch',
+                     default => 'master',
+  },
+
+);
+
+# Input validation
+foreach my $field ( values %input ) {
+  my $key = $field->{ENV_KEY};
+  $ENV{$key} = $field->{default}
+    unless exists $ENV{$key};
+  ( $field->{validated} ) = ( $ENV{$key} =~ $field->{rx} )
+    or error( 'ERROR: Invalid [%s] environment variable!', $key );
+}
+
+# Determine the path to maven
+my $mvn = join( '',
+                $input{home}->{validated},
+                qq{/tools/hudson.tasks.Maven_MavenInstallation/},
+                $input{maven_selector}->{validated},
+                q{/bin/mvn} );
+
+error( "ERROR: Maven install [\%s] not detected at \n$mvn",
+       $input{maven_selector}->{validated} )
+  unless -f $mvn && -x $mvn;
+
+my $os = $input{os}->{validated};
+
+my $prj     = 'fd.io';
+my $groupId = qq{io.fd.$input{project}->{validated}};
+my $baseurl = "$input{nexus_proxy}->{validated}/content/repositories";
+
+my $lsb_release = {
+                    ubuntu1404 => { "Distributor ID" => "Ubuntu",
+                                    "Description"    => "Ubuntu 14.04.2 LTS",
+                                    "Release"        => "14.04",
+                                    "Codename"       => "trusty"
+                    },
+                    ubuntu1604 => { "Distributor ID" => "Ubuntu",
+                                    "Description"    => "Ubuntu 16.04 LTS",
+                                    "Release"        => "16.04",
+                                    "Codename"       => "xenial"
+                    },
+                    centos7 => { "Distributor ID" => "CentOS",
+                                 "Description"    => "CentOS 7",
+                                 "Release"        => "7",
+                    }, };
+
+my $dist = lc $lsb_release->{$os}->{'Distributor ID'};
+( my ( $rel ) = $lsb_release->{$os}->{Release} ) =~ s/\.//g;
+my ( @br ) = ( split( m:/:, $input{gerrit_branch}->{validated} ) );
+my ( @release ) = ( $lsb_release->{$os}->{Codename} ) // ();
+
+if ( @release ) {
+
+  # Ubuntu 14.04 becomes ubuntu.trusty
+  unshift @release, $dist;
+} else {
+
+  # "CentOS 7" becomes "centos7"
+  ( my $desc = $lsb_release->{$os}->{Description} ) =~ s/\s*//g;
+  push( @release, lc $desc );
+}
+
+my $area = 'main';
+
+my $repo_id = join( '.', $prj, @br, @release, $area );
+my $repo_url = "${baseurl}/${repo_id}";
+
+# example: zephyr-kernel-1.0.0-160210-c12c48c.tar.gz
+
+my $deb_rx = { build   => qr{([^/_]+)_([^_]+)_([^_]+).build$},
+               dsc     => qr{([^/_]+)_([^_]+)_([^_]+).dsc$},
+               deb     => qr{([^/_]+)_([^_]+)_([^_]+).deb$},
+               changes => qr{([^/_]+)_([^_]+)_([^_]+).changes$},
+               src     => qr{([^/_]+)_([^_]+).tar\.[^.]$}, };
+
+find(
+  { untaint => 1,
+    no_chdir => 1,
+    wanted  => sub {
+      /\.((s(?:rc\.)?)?rpm)/ && push_rpm( $File::Find::name, $_, $1 );
+      /\.(deb|dsc|build|changes|tar\.[^.])$/
+        && push_deb( $File::Find::name, $_, $1 );
+      }
+
+  },
+  '.' );
+
+sub push_deb {
+  my ( $file, $rel_file, $ext ) = @_;
+
+  my ( $arch, $artifactId, $version ) = ( 'all' );
+
+  if ( $ext =~ /tar/ ) {
+    ( $artifactId, $version ) = ( $rel_file =~ $deb_rx->{src} );
+  } else {
+    my $rx = $deb_rx->{$ext};
+    ( $artifactId, $version, $arch ) = ( $rel_file =~ $rx );
+  }
+
+  print(
+         join( "\n",
+               "ext: $ext",
+               "file: $file",
+               "rel_file: $rel_file",
+               "url: $repo_url",
+               "artifactId: $artifactId",
+               "version: $version",
+               "repositoryId: $repo_id",
+               "release: @release",
+         ),
+         "\n", );
+
+  push_file( file         => $file,
+             repositoryId => $repo_id,
+             url          => $repo_url,
+             groupId      => $groupId,
+             version      => $version,
+             artifactId   => $artifactId,
+             type         => $ext );
+}
+
+sub push_rpm {
+  my ( $file, $rel_file, $ext ) = @_;
+  print "processing file $_\n";
+
+  my $qcmd       = q{rpm -qp --queryformat="%{name}" "$file"};
+  my $artifactId = qx($qcmd);
+  $qcmd = q{rpm -qp --queryformat="\%{version}" "$file"};
+  my $version = qx($qcmd);
+  if ( $ext =~ /^s/ ) {
+    $qcmd = q{rpm -qp --queryformat="%{release}.src" "$file"};
+  } else {
+    $qcmd = q{rpm -qp --queryformat="%{release}.%{arch}" "$file"};
+  }
+  my $rpmrelease = qx($qcmd);
+
+  push_file( file         => $file,
+             repositoryId => $repo_id,
+             url          => $repo_url,
+             groupId      => $groupId,
+             version      => "${version}-${rpmrelease}",
+             artifactId   => $artifactId,
+             type         => $ext );
+}
+
+sub error {
+  my ( $fmt, @arg ) = @_;
+  syslog( LOG_ERR, $fmt, @arg );
+  confess sprintf( $fmt, @arg );
+}
+
+sub push_file {
+  my %arg = @_;
+
+  my @required = qw( file repositoryId url groupId version artifactId type );
+
+  foreach my $required ( @required ) {
+    next if exists $arg{$required} && defined $arg{$required};
+
+    error( 'Required argument [%s] was not specified in call to push_file',
+           $required );
+  }
+
+  my $cmd = join( ' ',
+                  $mvn,
+                  'org.apache.maven.plugins:maven-deploy-plugin:deploy-file',
+                  ( map { "-D${_}=$arg{$_}" } keys %arg ),
+                  "-gs $input{global_settings}->{validated}",
+                  "-s $input{settings}->{validated}", );
+
+  $ENV{PATH} = '/bin:/usr/bin';
+  ( $cmd ) = ( $cmd =~ /^(.+)$/ );
+
+  my $output = qx($cmd 2>&1);
+
+  unless ( $? == 0 ) {
+    print( "=====\n", "OUTPUT: [ $output ]\n", "errstr: [ $! ]\n", "=====\n" )
+      if $DEBUG;
+
+    error( 'Error executing maven [%s]', "$cmd" );
+  }
+}
+
+# vim: ts=4 sw=4 sts=4 et ft=sh :
