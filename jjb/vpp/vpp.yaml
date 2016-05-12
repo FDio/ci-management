@@ -8,9 +8,21 @@
     project: 'vpp'
     os:
         - ubuntu1404
+            repo-os-part: 'ubuntu.trusty.main'
         - centos7
+            repo-os-part: 'ubuntu.xenial.main'
         - ubuntu1604
-    branch: 'master'
+            repo-os-part: 'centos7'
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+        - test:
+            branch: 'stable/test'
+            repo-stream-part: 'stable.test'
+        - 1606:
+            branch: 'stable/1606'
+            repo-stream-part: 'stable.1606'
     type:
         - short
         - long
@@ -48,6 +60,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
