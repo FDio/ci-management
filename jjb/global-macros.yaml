@@ -48,6 +48,13 @@
             name: MAVEN_SELECTOR
             default: '{maven}'
             description: 'Maven selector to be used by shell scripts'
+- parameter:
+    name: repo-name-parameter
+    parameters:
+        - string:
+            name: REPO_NAME
+            default: '{repo-name}'
+            description: 'Name of repo to which to publish packaging'
 
 
 ##### SCMS
