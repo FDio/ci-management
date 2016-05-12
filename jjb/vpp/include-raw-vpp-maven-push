@@ -1,0 +1,297 @@
+#!/usr/bin/perl -wT
+
+print(
+    "\n",
+    "######################################################################\n",
+    "    Push to Nexus via Maven\n",
+    "######################################################################\n"
+);
+
+use strict;
+
+use File::Find;
+use Carp;
+use IPC::Cmd qw(run);
+use Sys::Syslog qw(:macros :standard);
+
+$SIG{CHLD} = 'DEFAULT';
+my $DEBUG = 1;
+
+openlog( 'zephyr-maven-push', 'nofatal,perror', LOG_LOCAL0 );
+setlogmask( LOG_UPTO(LOG_DEBUG) );
+
+my %input = (
+
+    # example: /etc/maven/settings.xml
+    global_settings => {
+        ENV_KEY => 'GLOBAL_SETTINGS_FILE',
+        rx      => qr{^(/.+)$},
+        label   => 'Global Settings File',
+        default => '/etc/maven/settings.xml',
+    },
+
+    # example: /etc/maven/settings.xml
+    global_settings => {
+        ENV_KEY => 'GLOBAL_SETTINGS_FILE',
+        rx      => qr{^(/.+)$},
+        label   => 'Global Settings File',
+        default => '/etc/maven/settings.xml',
+    },
+
+    # example:  https://nexus.fd.io
+    nexus_proxy => {
+        ENV_KEY => 'NEXUSPROXY',
+        rx      => qr{^(https?://[^/]+)$},
+        label   => 'Nexus Proxy',
+        default => 'http://nexus.fd.io',
+    },
+
+    # example: Maven_3.0.4
+    maven_selector => {
+        ENV_KEY => 'MAVEN_SELECTOR',
+        rx      => qr{^(Maven_\d+\.\d+\.\d+)$},
+        label   => 'Maven selector',
+        default => 'Maven_3.0.4',
+    },
+
+    # example: ~/.m2/settings.xml
+    settings => {
+        ENV_KEY => 'SETTINGS_FILE',
+        rx      => qr{^(/.+)$},
+        label   => 'Settings File',
+        default => qq{$ENV{HOME}/.m2/settings.xml},
+    },
+
+    # example: /jenkins
+    home => {
+        ENV_KEY => 'HOME',
+        rx      => qr{^(/.+)$},
+        label   => 'Home Directory',
+        default => $ENV{HOME}
+    },
+
+    # example: fd.io
+    project => {
+        ENV_KEY => 'PROJECT',
+        rx      => qr{^(\S+)$},
+        label   => 'Project',
+        default => 'fd.io',
+    },
+);
+
+# Input validation
+foreach my $field ( values %input ) {
+    my $key = $field->{ENV_KEY};
+    $ENV{$key} = $field->{default}
+      unless exists $ENV{$key};
+    ( $field->{validated} ) = ( $ENV{$key} =~ $field->{rx} )
+      or error( 'ERROR: Invalid [%s] environment variable!', $key );
+}
+
+# Determine the path to maven
+my $mvn = join( '',
+    $input{home}->{validated},
+    qq{/tools/hudson.tasks.Maven_MavenInstallation/},
+    $input{maven_selector}->{validated}, q{/bin/mvn} );
+
+error( "ERROR: Maven install [\%s] not detected at \n$mvn",
+    $input{maven_selector}->{validated} )
+  unless -f $mvn && -x $mvn;
+
+my $groupId    = qq{io.fd.$input{project}->{validated}};
+my $baseurl    = "$input{nexus_proxy}->{validated}/content/repositories/fd.io.";
+my $baserepoid = 'fdio-';
+
+my $codename_map = {
+ubuntu1404 => { "Distributor ID" => "Ubuntu",
+                
+                Distributor ID:Debian
+              Description:Debian GNU/Linux testing (stretch)
+              Release:testing
+              Codename:stretch
+
+}
+
+my %os_repo (
+    ubuntu1404 => {
+        branch => {
+            master => {
+                id  => '',
+                url => '',
+            },
+            stable => {
+                id  => 'fd.io.stable.1606.centos7',
+                url => "$baseurl"
+            },
+            'stable/test' => {
+                id  => '',
+                url => '',
+            },
+        },
+        ubuntu1604 => {
+            id  => '',
+            url => '',
+        },
+        centos7 => {
+            id  => '',
+            url => '',
+        },
+    }
+);
+
+# example: zephyr-kernel-1.0.0-160210-c12c48c.tar.gz
+
+my $kernel_artifact_id = 'zephyr-kernel';
+
+my $kernel_rx = qr{
+  ^(($kernel_artifact_id)-                   # begin basefile
+    ((\d+)\.(\d+)\.(\d+)(?:_(\d+))?(rc\d+)?) # maj/min/pat/res/extra
+    (?:-(\d{6}))?                            # date
+    (?:-([0-9a-fA-F]{7,}))?                  # shortid
+  )                                          # end basefile
+  \.(t.+)$                                   # extension
+}x;
+
+find(
+    {
+        untaint => 1,
+        wanted  => \&process_deb,
+    },
+    '.'
+);
+
+sub process_deb {
+    return unless /(\.deb|\.dsc|\.build|\.changes|\.tar\.[^.]$)/;
+    print "processing file $_\n";
+
+    push_file(
+        file         => $File::Find::name,
+        repositoryId => $baserepoid . $env,
+        url          => $baseurl . $env,
+        groupId      => $groupId,
+        version      => $version,
+        artifactId   => $artifactId,
+        type         => $type
+    );
+
+}
+
+sub process_kernel {
+
+    return
+      unless my (
+        $basefile, $artifactId, $version,  $major,
+        $minor,    $patch,      $reserved, $extra,
+        $date,     $shortid,    $type
+      ) = ( $_ =~ $kernel_rx );
+
+    $reserved //= '';
+    $extra    //= '';
+
+    print STDERR (
+        "found file: $_\n",
+        "basefile: [$basefile]\n",
+        "artifactId: [$artifactId]\n",
+        "version: [$version]\n",
+        "  major: [$major],\n",
+        "  minor: [$minor],\n",
+        "  patch: [$patch],\n",
+        "reserved: [$reserved]\n",
+        "extra: [$extra]\n",
+        "date: [$date]\n",
+        "shortid: [$shortid]\n",
+        "type: [$type]\n",
+        ( map { "[$_] : $input{$_}->{validated}\n" } keys %input )
+    ) if $DEBUG;
+
+    return unless /$kernel_rx/;
+
+    # $File::Find::dir is the current directory name,
+    # $_ is the current filename within that directory
+    # $File::Find::name is the complete pathname to the file.
+    (
+        $basefile, $artifactId, $version,  $major,
+        $minor,    $patch,      $reserved, $extra,
+        $date,     $shortid,    $type
+      )
+      = (/$kernel_rx/)
+      or return;
+
+    my $env = 'dev';
+
+    push_file(
+        file         => $File::Find::name,
+        repositoryId => $baserepoid . $env,
+        url          => $baseurl . $env,
+        groupId      => $groupId,
+        version      => $version,
+        artifactId   => $artifactId,
+        type         => $type
+    );
+}
+
+sub usage {
+    my $msg = join( "\n",
+        q{ This script expects a number of environment variables to be set },
+        q{It is run on a Jenkins machine and expects maven is installed as},
+q{ $HOME/tools/hudson.tasks.Maven_MavenInstallation/$MAVEN_SELECTOR/bin/mvn },
+        qq{GLOBAL_SETTINGS_FILE="/etc/maven/settings.xml"},
+        qq{NEXUSPROXY='http://nexus.fd.io'},
+        qq{MAVEN_SELECTOR='Maven_3.3.42'},
+        qq{SETTINGS_FILE="~/.m2/settings.xml"},
+        qq{HOME='/home/cjac'},
+        qq{PROJECT='fd.io'},
+    );
+    die $msg;
+}
+
+sub error {
+    my ( $fmt, @arg ) = @_;
+    syslog( LOG_ERR, $fmt, @arg );
+    confess sprintf( $fmt, @arg );
+}
+
+sub push_file {
+    my %arg = @_;
+
+    my @required = qw( file repositoryId url groupId version artifactId type );
+
+    foreach my $required (@required) {
+        next if exists $arg{$required} && defined $arg{$required};
+
+        error( 'Required argument [%s] was not specified in call to push_file',
+            $required );
+    }
+
+    my $cmd = [
+        $mvn,
+        'org.apache.maven.plugins:maven-deploy-plugin:deploy-file',
+        ( map { "-D${_}=$arg{$_}" } keys %arg ),
+        "-gs $input{global_settings}->{validated}",
+        "-s $input{settings}->{validated}",
+    ];
+
+    my ( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf ) = run(
+        command => $cmd,
+        verbose => 0
+    );
+
+    unless ($success) {
+        my $exception = $@;
+        my $errstr    = $!;
+        print(
+            "=====\n",
+            "STDOUT: [ @$stdout_buf ]\n",
+            "STDERR: [ @$stderr_buf ]\n",
+            "full output: [ @$full_buf ]\n",
+            "error message: [ $error_message ]\n",
+            "exception: [ $@ ]\n",
+            "errstr: [ $! ]\n",
+            "=====\n"
+        ) if $DEBUG;
+
+        error( 'Error executing maven [%s]', "@$cmd" );
+    }
+}
+
+# vim: ts=4 sw=4 sts=4 et ft=sh :
