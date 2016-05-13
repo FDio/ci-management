@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_61033874",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-13T17:14:39Z",
+      "side": 1,
+      "message": "replace with:\n/usr/bin/bash",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "86c789092ef5bb4ad47dc2a5e59f00091f02b2b9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_81fe4c6a",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-13T17:14:39Z",
+      "side": 1,
+      "message": "vpp-verify-weekly ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 30,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "86c789092ef5bb4ad47dc2a5e59f00091f02b2b9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
