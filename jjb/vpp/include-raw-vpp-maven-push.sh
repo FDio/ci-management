@@ -70,7 +70,7 @@ function push_deb ()
 function push_rpm ()
 {
     rpmfile=$1
-    repoId=fd.io.${REPO_NAME}"
+    repoId="fd.io.${REPO_NAME}"
     url="${BASEURL}${REPO_NAME}"
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
