@@ -113,7 +113,7 @@ deb_install_pkgs() {
     # Install build tools - should match vpp/Makefile DEB_DEPENDS variable
     PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev ccache"
     PACKAGES="$PACKAGES debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd"
-    PACKAGES="$PACKAGES libconfuse-dev git-review exuberant-ctags cscope"
+    PACKAGES="$PACKAGES libconfuse-dev git-review exuberant-ctags cscope doxygen graphviz"
 
 
     # Install interface manipulation tools, editor, debugger and lsb
