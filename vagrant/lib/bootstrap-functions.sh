@@ -1,7 +1,15 @@
 #!/bin/bash
 
+do_setup() {
+    echo "127.0.1.1 $(hostname) # temporary" >> /etc/hosts
+}
+
+do_cleanup() {
+    perl -i -ne 'print unless /^127.0.1.1.*# temporary$/' /etc/hosts
+}
+
 deb_enable_serial_console() {
-# enable grub and login on serial console
+    # enable grub and login on serial console
 
     echo <<EOF>> /etc/default/grub
 GRUB_TERMINAL=serial
@@ -13,14 +21,14 @@ EOF
 deb_probe_modules() {
     for mod in "$@"
     do
-	modprobe ${mod}
+        modprobe ${mod}
     done
 }
 
 deb_enable_modules() {
     for mod in "$@"
     do
-	echo ${mod} >> /etc/modules
+    echo ${mod} >> /etc/modules
     done
 }
 
@@ -98,26 +106,28 @@ deb_install_pkgs() {
     if [ "$VERSION" = '14.04' ]
     then
         # openjdk-8-jdk is not available in 14.04 repos by default
-	deb_add_ppa ppa:openjdk-r/ppa
+          deb_add_ppa ppa:openjdk-r/ppa
 
-        # Install OpenJDK v8 and v7
-        PACKAGES="$PACKAGES openjdk-8-jdk-headless openjdk-7-jdk"
-    else
-        # Install default jdk
-        PACKAGES="$PACKAGES default-jdk-headless"
+        # Install OpenJDK v8 *and* v7 on Trusty
+        PACKAGES="$PACKAGES openjdk-8-jdk-headless openjdk-7-jdk emacs24-nox"
+    elif [ "$VERSION" = '16.04' ]
+    then
+        # Install default jdk (v8 on this platform)
+        PACKAGES="$PACKAGES default-jdk-headless emacs-nox"
 
-	# Install plymouth label and themes to get rid of initrd warnings / errors
-	apt-get -qq install plymouth-themes plymouth-label
+          # plymouth-label and plymouth-themes are required to get rid of
+        # initrd warnings / errors on 16.04
+          apt-get -qq install plymouth-themes plymouth-label
     fi
 
-    # Install build tools - should match vpp/Makefile DEB_DEPENDS variable
-    PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev ccache"
-    PACKAGES="$PACKAGES debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd"
-    PACKAGES="$PACKAGES libconfuse-dev git-review exuberant-ctags cscope"
+    # Build tools - should match vpp/Makefile DEB_DEPENDS variable
+    PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev
+              ccache debhelper dkms git libtool libganglia1-dev libapr1-dev
+              dh-systemd libconfuse-dev git-review exuberant-ctags cscope"
 
-
-    # Install interface manipulation tools, editor, debugger and lsb
-    PACKAGES="$PACKAGES iproute2 bridge-utils vim gdb lsb-release"
+    # Interface manipulation tools, editors, debugger and lsb
+    PACKAGES="$PACKAGES iproute2 ethtool vlan bridge-utils
+              vim gdb lsb-release"
 
     # Install latest kernel and uio
     PACKAGES="$PACKAGES linux-image-extra-virtual linux-headers-virtual"
@@ -133,6 +143,9 @@ deb_install_pkgs() {
     # shellcheck disable=SC2086
     apt-get -qq install ${PACKAGES}
 
+    # Specify documentation packages
+    DOC_PACKAGES="doxygen graphviz"
+    apt-get -qq install ${DOC_PACKAGES}
 }
 
 deb_enable_hugepages() {
@@ -170,20 +183,28 @@ rh_install_pkgs() {
     yum install -q -y @development redhat-lsb glibc-static java-1.8.0-openjdk-devel yum-utils \
                       openssl-devel apr-devel
 
+    # Specify documentation packages
+    DOC_PACKAGES="doxygen graphviz"
+    yum install -q -y install ${DOC_PACKAGES}
+
     # Install python development
-    yum search python34-devel 2>&1 | grep -q 'No matches'
-    if [ $? -eq 0 ]
+    OUTPUT=$(yum search python34-devel 2>&1)
+    if [ "$OUTPUT" == "No matches" ]
     then
-	echo '---> Installing python-devel'
+    echo '---> Installing python-devel'
         yum install -q -y python-devel
     else
-	echo '---> Installing python34-devel'
+    echo '---> Installing python34-devel'
         yum install -q -y python34-devel
     fi
 
     echo '---> Configuring EPEL'
     # Install EPEL
-    yum install -q -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    OUTPUT=$(rpm -qa epel-release)
+    if [ -z "$OUTPUT" ]
+    then
+        yum install -q -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    fi
 
     # Install components to build Ganglia modules
     yum install -q -y --enablerepo=epel {libconfuse,ganglia}-devel mock

@@ -6,6 +6,8 @@ set -e
 # pull in bootstrap functions
 . /vagrant/lib/bootstrap-functions.sh
 
+do_setup
+
 echo "---> Attempting to detect OS"
 # OS selector
 if [ -f /usr/bin/yum ]
@@ -40,6 +42,8 @@ then
     # deb_mount_hugepages
 
 fi
+
+do_cleanup
 
 echo "bootstrap process (PID=$$) complete."
 
