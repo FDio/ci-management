@@ -37,3 +37,8 @@ if [ ${OS} == ubuntu1404 ];then
 fi
 
 build-root/vagrant/build.sh
+if [ $? == 0 ];then
+    echo "*******************************************************************"
+    echo "* VPP BUILD SUCCESSFULLY COMPLETED"
+    echo "*******************************************************************"
+fi
