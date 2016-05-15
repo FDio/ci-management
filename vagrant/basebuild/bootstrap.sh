@@ -25,6 +25,8 @@ then
     deb_sync_minor
     deb_correct_shell
     deb_install_pkgs
+    deb_remove_pkgs
+    deb_disable_apt_systemd_daily
     deb_flush
     deb_reup_certs
 

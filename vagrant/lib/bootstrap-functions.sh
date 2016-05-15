@@ -153,6 +153,17 @@ deb_reup_certs() {
     update-ca-certificates -f
 }
 
+deb_remove_pkgs() {
+    echo '---> Removing unattended-upgrades packge to avoid it locking /var/lib/dpkg/lock'
+    apt-get remove unattended-upgrades
+}
+
+deb_disable_apt_systemd_daily() {
+    echo '---> Stopping and disabling apt.systemd.daily to avoid it locking /var/lib/dpkg/lock'
+    systemctl stop apt.systemd.daily
+    systemctl disable apt.systemd.daily
+}
+
 rh_clean_pkgs() {
     echo '---> Cleaning caches'
     yum clean all -q
