@@ -18,6 +18,13 @@ else
     echo "Cannot find cat /etc/bootstrap.sha"
 fi
 
+echo "cat /etc/bootstrap-functions.sha"
+if [ -f /etc/bootstrap-functions.sha ];then
+    cat /etc/bootstrap-functions.sha
+else
+    echo "Cannot find cat /etc/bootstrap-functions.sha"
+fi
+
 echo "shasum of this script: ${0}"
 shasum $0
 

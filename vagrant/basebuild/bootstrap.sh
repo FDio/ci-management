@@ -10,6 +10,7 @@ do_setup
 
 # record the bootstrap.sh checksum
 shasum $0 > /etc/bootstrap.sha
+shasum /vagrant/lib/bootstrap-functions.sh > /etc/bootstrap-functions.sha
 
 echo "---> Attempting to detect OS"
 # OS selector
