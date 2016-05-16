@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_c97ea6e4",
+        "filename": "jjb/vpp/tests/test-include-raw-vpp-maven-push.sh/test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-16T19:13:28Z",
+      "side": 1,
+      "message": "dkms?",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "4dfe088f35e2c1d10bd98f633ff9ceef4c14527f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_091dbebd",
+        "filename": "jjb/vpp/tests/test-include-raw-vpp-maven-push.sh/test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-16T19:13:28Z",
+      "side": 1,
+      "message": "once",
+      "range": {
+        "startLine": 17,
+        "startChar": 15,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "4dfe088f35e2c1d10bd98f633ff9ceef4c14527f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_e9796afd",
+        "filename": "jjb/vpp/tests/test-include-raw-vpp-maven-push.sh/test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-16T19:13:28Z",
+      "side": 1,
+      "message": "twice?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "4dfe088f35e2c1d10bd98f633ff9ceef4c14527f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
