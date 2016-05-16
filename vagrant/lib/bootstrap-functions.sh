@@ -173,8 +173,14 @@ deb_remove_pkgs() {
 
 deb_disable_apt_systemd_daily() {
     echo '---> Stopping and disabling apt.systemd.daily to avoid it locking /var/lib/dpkg/lock'
-    systemctl stop apt.systemd.daily
-    systemctl disable apt.systemd.daily
+    if [ -f /usr/bin/systemctl ]
+    then
+        systemctl stop apt.systemd.daily
+        systemctl disable apt.systemd.daily
+    else
+        /etc/init.d/unattended-upgrades stop
+        update-rc.d -f unattended-upgrades remove
+    fi
 }
 
 rh_clean_pkgs() {
