@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "*******************************************************************"
+echo "* STARTING PUSH OF PACKAGES TO REPOS"
+echo "* NOTHING THAT HAPPENS BELOW THIS POINT IS RELATED TO BUILD FAILURE"
+echo "*******************************************************************"
+
 # Determine the path to maven
 if [ -z "${MAVEN_SELECTOR}" ]; then
     echo "ERROR: No Maven install detected!"
