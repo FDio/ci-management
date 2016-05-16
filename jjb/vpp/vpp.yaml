@@ -88,7 +88,7 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-vpp-build.sh
+            !include-raw-escape: include-raw-vpp-build.sh
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
@@ -142,7 +142,7 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-vpp-build.sh
+            !include-raw-escape: include-raw-vpp-build.sh
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
@@ -186,7 +186,7 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-vpp-build.sh
+            !include-raw-escape: include-raw-vpp-build.sh
         - maven-target:
             maven-version: '{mvn33}'
             goals: '--version'
@@ -196,7 +196,7 @@
             settings-file: '{vpp-settings}'
             global-settings-file: '{global-settings}'
         - shell:
-            !include-raw-escape include-raw-vpp-maven-push.sh
+            !include-raw-escape: include-raw-vpp-maven-push.sh
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
@@ -237,9 +237,9 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-vpp-build.sh
+            !include-raw-escape: include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape include-raw-vpp-csit-functional.sh
+            !include-raw-escape: include-raw-vpp-csit-functional.sh
 
     publishers:
         - archive-artifacts:
@@ -291,9 +291,9 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-vpp-build.sh
+            !include-raw-escape: include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape include-raw-vpp-csit-verify-perf.sh
+            !include-raw-escape: include-raw-vpp-csit-verify-perf.sh
 
     publishers:
         - archive-artifacts:
