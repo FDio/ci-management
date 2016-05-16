@@ -22,6 +22,30 @@
       "revId": "a3e5073d19e8e8078147ee47512901a17bc8e202",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_4923b605",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-05-16T19:06:50Z",
+      "side": 1,
+      "message": "Pre-existing, not contributed by this patch.",
+      "parentUuid": "da141535_4e3bcfeb",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 50
+      },
+      "revId": "a3e5073d19e8e8078147ee47512901a17bc8e202",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
