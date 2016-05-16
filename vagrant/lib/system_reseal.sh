@@ -38,7 +38,7 @@ rm -rf /etc/Pegasus/*.cnf /etc/Pegasus/*.crt /etc/Pegasus/*.csr \
        /var/log/secure* /var/log/setroubleshoot/*.log \
        /var/log/spooler* /var/log/squid/*.log /var/log/syslog* \
        /var/log/tallylog* /var/log/tuned/tuned.log /var/log/wtmp* \
-       /var/named/data/named.run /var/lib/dpkg/lock
+       /var/named/data/named.run
 
 rm -rf ~/.viminfo /etc/ssh/ssh*key* ~/.ssh/* /root/.ssh/*
 
@@ -56,3 +56,5 @@ sleep 10
 echo "********************************************"
 echo "*   PLEASE SNAPSHOT IMAGE AT THIS TIME     *"
 echo "********************************************"
+init 1
+sleep 10
