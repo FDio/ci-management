@@ -124,7 +124,7 @@
 
     triggers:
         - gerrit:
-            server-name: 'Default'
+            server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: 'verify-images'

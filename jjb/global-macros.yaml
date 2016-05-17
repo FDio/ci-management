@@ -107,7 +107,7 @@
     name: gerrit-trigger-patch-submitted
     triggers:
         - gerrit:
-            server-name: 'Default'
+            server-name: 'Primary'
             trigger-on:
                 - patchset-created-event:
                     exclude-drafts: 'false'
@@ -129,7 +129,7 @@
     name: gerrit-trigger-manually-triggered
     triggers:
         - gerrit:
-            server-name: 'Default'
+            server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: '{comment-trigger-value}'
@@ -144,7 +144,7 @@
     name: gerrit-trigger-patch-merged
     triggers:
         - gerrit:
-            server-name: 'Default'
+            server-name: 'Primary'
             trigger-on:
                 - change-merged-event
                 - comment-added-contains-event:
