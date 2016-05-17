@@ -14,6 +14,12 @@ Vagrant.configure(2) do |config|
       override.ssh.username = 'baduser'
     end
 
+    if ENV['SERVER_NAME']
+      os.server_name = ENV['SERVER_NAME']
+    end
+
+    #os.keypair_name='rotterdam-jenkins'
+
     case ENV['IMAGE']
       when /.*ubuntu.*/i
         override.ssh.username = 'ubuntu'
