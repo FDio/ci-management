@@ -205,14 +205,14 @@ rh_install_pkgs() {
     yum install -q -y install ${DOC_PACKAGES}
 
     # Install python development
-    OUTPUT=$(yum search python34-devel 2>&1)
-    if [ "$OUTPUT" == "No matches" ]
+    OUTPUT=$(yum search python34-devel 2>&1 | grep 'No matches')
+    if [ -z "$OUTPUT" ]
     then
-    echo '---> Installing python-devel'
-        yum install -q -y python-devel
-    else
     echo '---> Installing python34-devel'
         yum install -q -y python34-devel
+    else
+    echo '---> Installing python-devel'
+        yum install -q -y python-devel
     fi
 
     echo '---> Configuring EPEL'
