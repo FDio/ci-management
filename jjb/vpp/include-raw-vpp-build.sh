@@ -25,8 +25,8 @@ else
     echo "Cannot find cat /etc/bootstrap-functions.sha"
 fi
 
-echo "shasum of this script: ${0}"
-shasum $0
+echo "sha1sum of this script: ${0}"
+sha1sum $0
 
 # Check to make sure the patch doesn't need to be rebased
 # Since there was a discontinuity, patches with a

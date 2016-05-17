@@ -56,5 +56,3 @@ sleep 10
 echo "********************************************"
 echo "*   PLEASE SNAPSHOT IMAGE AT THIS TIME     *"
 echo "********************************************"
-init 1
-sleep 10
