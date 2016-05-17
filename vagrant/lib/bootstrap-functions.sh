@@ -12,7 +12,8 @@ deb_enable_serial_console() {
     # enable grub and login on serial console
 
     echo <<EOF>> /etc/default/grub
-GRUB_TERMINAL=serial
+GRUB_TERMINAL="console serial"
+GRUB_CMDLINE_LINUX='console=tty0 console=ttyS0,38400n8'
 GRUB_SERIAL_COMMAND="serial --speed=38400 --unit=0 --word=8 --parity=no --stop=1"
 EOF
     update-grub
@@ -48,15 +49,17 @@ Dpkg::Options {
    "--force-confold";
 };
 
+quiet "2";
+
 EOF
 }
 
 deb_sync_minor() {
     echo '---> Updating OS'
     # Standard update + upgrade dance
-    apt-get -qq update
-    apt-get -qq upgrade
-    apt-get -qq dist-upgrade
+    apt-get update
+    apt-get upgrade
+    apt-get dist-upgrade
 }
 
 deb_correct_shell() {
@@ -67,42 +70,41 @@ deb_correct_shell() {
 
 deb_flush() {
     echo '---> Flushing extra packages and package cache'
-    apt-get -qq autoremove
-    apt-get -qq clean
+    apt-get autoremove
+    apt-get clean
 }
 
 deb_add_ppa() {
     echo "---> Adding '$1' PPA"
-    apt-get -qq install software-properties-common
-    apt-add-repository -y $1
-    apt-get -qq update
+    apt-get install software-properties-common
+    ATTEMPT=0
+    while [ ${ATTEMPT} -le 4 ]
+    do
+        FAIL=0
+        apt-add-repository -y $1 || FAIL=1
+        if [ ${FAIL} -eq 0 ]
+        then
+            break
+        fi
+        ATTEMPT=$(expr $ATTEMPT + 1)
+    done
+    apt-get update
 }
 
 deb_install_pkgs() {
+    apt-get install lsb-release
     LSB_PATH=$(which lsb_release)
 
-    if [ $? == 0 ]
-    then
-        VERSION=$(lsb_release -r | awk '{print $2}')
-        DIST=$(lsb_release -i | awk '{print $3}')
-        CODENAME=$(lsb_release -c | awk '{print $2}')
-    else
-        ISSUE_TXT=$(head -1 /etc/issue)
-        DIST=$(echo "${ISSUE_TXT}" | awk '{print $1}')
-        if [ "$DIST" = "Ubuntu" ]
-        then
-            VERSION=$(echo "${ISSUE_TXT}" | awk '{print $2}' | sed -e 's/^(\d+\.\d+)(\.\d+)?$/\1/')
-        elif [ "$DIST" = "Debian" ]
-        then
-            VERSION=$(echo "${ISSUE_TXT}" | awk '{print $3}')
-        else
-            echo "Unrecognized distribution: ${DIST}"
-        fi
-    fi
+    VERSION=$(lsb_release -r | awk '{print $2}')
+    DIST=$(lsb_release -i | awk '{print $3}')
+    CODENAME=$(lsb_release -c | awk '{print $2}')
 
     echo "---> Detected [${DIST} v${VERSION} (${CODENAME})]"
 
-    PACKAGES="" # initialize PACKAGES
+    # initialize PACKAGES
+    PACKAGES="cloud-init cloud-initramfs-dyn-netconf
+              cloud-initramfs-growroot cloud-initramfs-rescuevol"
+
     if [ "$VERSION" = '14.04' ]
     then
         # openjdk-8-jdk is not available in 14.04 repos by default
@@ -117,7 +119,7 @@ deb_install_pkgs() {
 
           # plymouth-label and plymouth-themes are required to get rid of
         # initrd warnings / errors on 16.04
-          apt-get -qq install plymouth-themes plymouth-label
+          apt-get install plymouth-themes plymouth-label
     fi
 
     # Build tools - should match vpp/Makefile DEB_DEPENDS variable
@@ -141,11 +143,11 @@ deb_install_pkgs() {
     echo '---> Installing packages'
     # disable double quoting check
     # shellcheck disable=SC2086
-    apt-get -qq install ${PACKAGES}
+    apt-get install ${PACKAGES}
 
     # Specify documentation packages
     DOC_PACKAGES="doxygen graphviz"
-    apt-get -qq install ${DOC_PACKAGES}
+    apt-get install ${DOC_PACKAGES}
 }
 
 deb_enable_hugepages() {
@@ -205,14 +207,14 @@ rh_install_pkgs() {
     yum install -q -y install ${DOC_PACKAGES}
 
     # Install python development
-    OUTPUT=$(yum search python34-devel 2>&1)
-    if [ "$OUTPUT" == "No matches" ]
+    OUTPUT=$(yum search python34-devel 2>&1 | grep 'No matches')
+    if [ -z "$OUTPUT" ]
     then
-    echo '---> Installing python-devel'
-        yum install -q -y python-devel
-    else
     echo '---> Installing python34-devel'
         yum install -q -y python34-devel
+    else
+    echo '---> Installing python-devel'
+        yum install -q -y python-devel
     fi
 
     echo '---> Configuring EPEL'
