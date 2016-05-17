@@ -48,6 +48,15 @@ rm -rf /var/lib/cloud/*
 # cleanup /vagrant
 rm -rf /vagrant
 
+if [ -f /etc/debian_version ]
+then
+    echo "********************************************"
+    echo "*   NOW INSTALLING cloud-init PACKAGE      *"
+    echo "********************************************"
+
+    apt-get -y -qq install cloud-init > /dev/null 2>&1
+fi
+
 # Force a system sync and sleep to get around any SSD issues
 echo "Forcing sync and sleep for 10sec"
 sync
@@ -56,5 +65,3 @@ sleep 10
 echo "********************************************"
 echo "*   PLEASE SNAPSHOT IMAGE AT THIS TIME     *"
 echo "********************************************"
-init 1
-sleep 10
