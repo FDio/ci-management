@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_5a8936c9",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-18T19:51:34Z",
+      "side": 1,
+      "message": "should have a colon after it.  puts warnings in to the logs otherwise.",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "7fcb51211430f9981db4e262bd25dcfe08560983",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
