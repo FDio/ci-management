@@ -228,7 +228,7 @@
 
     triggers:
         - reverse:
-            jobs: 'vpp-merge'
+            jobs: 'vpp-merge-{branch}-{os}'
             result: 'success'
 
     prebuilders:
