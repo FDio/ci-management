@@ -54,8 +54,10 @@
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
-        settings: '{honeycomb-settings}'
-        global-settings: '{global-settings}'
+        settings: 'honeycomb-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
 
     postbuilders:
         - shell: |
@@ -123,8 +125,10 @@
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
-        settings: '{honeycomb-settings}'
-        global-settings: '{global-settings}'
+        settings: 'honeycomb-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
 
     postbuilders:
         - shell: |
@@ -178,8 +182,10 @@
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
-        settings: '{honeycomb-settings}'
-        global-settings: '{global-settings}'
+        settings: 'honeycomb-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
 
     postbuilders:
         - shell: |
@@ -240,8 +246,10 @@
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
-        settings: '{honeycomb-settings}'
-        global-settings: '{global-settings}'
+        settings: 'honeycomb-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
 
     postbuilders:
         - shell: |

@@ -12,8 +12,3 @@
 
     # Maven versions
     mvn33: 'Maven_3.3.9'
-
-    # Config File provider ID mapping
-    global-settings: 'org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1449593564219'
-    honeycomb-settings: 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1452706188439972818'
-    vpp-settings: 'org.jenkinsci.plugins.configfiles.maven.MavenSettingsConfig1449593875850'
