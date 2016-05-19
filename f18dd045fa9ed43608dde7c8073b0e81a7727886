@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_159cb0bf",
+        "filename": "vagrant/basebuild/Vagrantfile",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-19T20:38:56Z",
+      "side": 1,
+      "message": "This is useless to have here.",
+      "revId": "f18dd045fa9ed43608dde7c8073b0e81a7727886",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_f5a01cf6",
+        "filename": "vagrant/basebuild/bootstrap.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-19T20:38:56Z",
+      "side": 1,
+      "message": "Just delete this, instead of commenting it out.",
+      "revId": "f18dd045fa9ed43608dde7c8073b0e81a7727886",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_d5a51805",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-19T20:38:56Z",
+      "side": 1,
+      "message": "Please remove this. Screwing with the serial console for cloud images is a bad thing in general",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "f18dd045fa9ed43608dde7c8073b0e81a7727886",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
