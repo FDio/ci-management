@@ -1,16 +1,18 @@
 - project:
     name: honeycomb
     jobs:
-        - 'honeycomb-verify-{branch}-{os}'
-        - 'honeycomb-merge-{branch}-{os}'
-        - 'honeycomb-integration-{branch}-{os}'
-        - 'honeycomb-verify-image-{branch}-{os}'
+        - 'honeycomb-verify-{stream}-{os}'
+        - 'honeycomb-merge-{stream}-{os}'
+        - 'honeycomb-integration-{stream}-{os}'
+        - 'honeycomb-verify-image-{stream}-{os}'
     project: 'honeycomb'
-    branch: 'master'
+    stream:
+        - master:
+            branch: 'master'
     os: 'ubuntu1404'
 
 - job-template:
-    name: 'honeycomb-verify-{branch}-{os}'
+    name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
     node: verify
     concurrent: true
@@ -68,7 +70,7 @@
             email-prefix: '[honeycomb]'
 
 - job-template:
-    name: 'honeycomb-verify-image-{branch}-{os}'
+    name: 'honeycomb-verify-image-{stream}-{os}'
     project-type: maven
     node: 'verify-image-{os}'
     concurrent: true
@@ -139,7 +141,7 @@
             email-prefix: '[honeycomb]'
 
 - job-template:
-    name: 'honeycomb-merge-{branch}-{os}'
+    name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: merge
     jdk: '{jdk}'
@@ -203,7 +205,7 @@
             deploy-unstable: false
 
 - job-template:
-    name: 'honeycomb-integration-{branch}-{os}'
+    name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
     node: merge
     jdk: '{jdk}'
