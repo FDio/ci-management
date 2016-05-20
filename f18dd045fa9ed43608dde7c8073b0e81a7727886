@@ -73,6 +73,30 @@
       "revId": "f18dd045fa9ed43608dde7c8073b0e81a7727886",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_55b9082d",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-20T16:12:00Z",
+      "side": 1,
+      "message": "I\u0027ll move it to its own branch.",
+      "parentUuid": "da141535_d5a51805",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "f18dd045fa9ed43608dde7c8073b0e81a7727886",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
