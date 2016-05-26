@@ -2,8 +2,10 @@
 
 set -e
 
+CI_MGMT=$(realpath $(dirname $(realpath $0))/..)
+
 # Copyright 2016 The Linux Foundation <cjcollier@linuxfoundation.org>
-source ../vagrant/lib/respin-functions.sh
+source ${CI_MGMT}/vagrant/lib/respin-functions.sh
 
 source ${PVE_PATH}/bin/activate
 
