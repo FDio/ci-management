@@ -2,19 +2,29 @@
 
 # Copyright 2016 The Linux Foundation <cjcollier@linuxfoundation.org>
 
-PVE_ROOT=/usr/src/git/lf/git.lf.org/cjcollier/python-virtual
+PVE_ROOT="${HOME}/src/python-virtual"
 CPPROJECT=${CPPROJECT:-fdio}
 PVENAME="${CPPROJECT}-openstack"
 PVE_PATH="${PVE_ROOT}/${PVENAME}"
 PVERC=${PVE_PATH}/bin/activate
 SERVER_NAME=${SERVER_NAME:-${USER}-vagrant}
 
+STACK_PROVIDER=vexxhost
+STACK_PORTAL=secure.${STACK_PROVIDER}.com
+STACK_ID_SERVER=auth.${STACK_PROVIDER}.net
+
+export OPENSTACK_AUTH_URL="https://${STACK_ID_SERVER}/v2.0/"
+export OPENSTACK_FLAVOR='v1-standard-4'
+export STACK_REGION_NAME='ca-ymq-1'
+export AVAILABILITY_ZONE='ca-ymq-2'
+export NETID=${NETID:-$(nova network-list | awk "/${CPPROJECT}/ {print \$2}")}
+
 if [ ! -d ${PVE_PATH} ]
 then
     mkdir -p $(dirname $PVE_PATH)
     if [ -f /etc/debian_version ]
     then
-        sudo apt-get -y -qq install python-virtualenv libpython-dev
+        sudo apt-get -y -qq install virtualenvwrapper python-virtualenv libpython-dev
     elif [ -f /etc/redhat-release ]
     then
         sudo yum -y install python-virtualenv
@@ -22,7 +32,7 @@ then
 
     python-virtualenv ${PVE_PATH}
 
-    echo "Please visit https://secure.vexxhost.com/console/#/account/credentials and place all $OS_* variables at the end of ${PVERC}"
+    echo "Please copy all OS_* variables from https://secure.vexxhost.com/console/#/account/credentials to the end of ${PVERC}"
 fi
 
 RH_ARCH64=x86_64
