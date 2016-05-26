@@ -77,6 +77,7 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
