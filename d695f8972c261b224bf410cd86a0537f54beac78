@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_9e40d857",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-27T22:17:56Z",
+      "side": 0,
+      "message": "these commands should find their way to the patch",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "d695f8972c261b224bf410cd86a0537f54beac78",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_7e2504c1",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-27T22:17:56Z",
+      "side": 0,
+      "message": "detailed instructions for the verification phase, please.",
+      "revId": "d695f8972c261b224bf410cd86a0537f54beac78",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_3e2f8ca3",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-27T22:17:56Z",
+      "side": 0,
+      "message": "this should not need to be done in production.  we need a sandbox to test these images.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 123
+      },
+      "revId": "d695f8972c261b224bf410cd86a0537f54beac78",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_1e2cc8aa",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-05-27T22:17:56Z",
+      "side": 0,
+      "message": "promotion of new images should be automated.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 114
+      },
+      "revId": "d695f8972c261b224bf410cd86a0537f54beac78",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
