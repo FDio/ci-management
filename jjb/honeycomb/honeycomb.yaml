@@ -61,6 +61,10 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
+    builders:
+        - sonar:
+            sonar-name: SonarQube 5.4
+
     postbuilders:
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
@@ -132,6 +136,10 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
+    builders:
+        - sonar:
+            sonar-name: SonarQube 5.4
+
     postbuilders:
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
@@ -188,6 +196,10 @@
         settings-type: cfp
         global-settings: 'global-settings'
         global-settings-type: cfp
+
+    builders:
+        - sonar:
+            sonar-name: SonarQube 5.4
 
     postbuilders:
         - shell: |
@@ -252,6 +264,10 @@
         settings-type: cfp
         global-settings: 'global-settings'
         global-settings-type: cfp
+
+    builders:
+        - sonar:
+            sonar-name: SonarQube 5.4
 
     postbuilders:
         - shell: |
