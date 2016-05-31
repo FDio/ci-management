@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_f265c545",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-31T20:24:24Z",
+      "side": 1,
+      "message": "You don\u0027t want to use the sonar builder, but he sonar publisher.\n\nsomething more along the lines of the following added to the publishers section along with a -Dsonar as a goal:\n\n- sonar:\n    language: \u0027java\u0027",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "f636a93144aecfb704875d325fb5213a88522565",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_d25ac182",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-31T20:24:24Z",
+      "side": 1,
+      "message": "You don\u0027t want to use the sonar builder, but he sonar publisher.\n\nsomething more along the lines of the following added to the publishers section along with a -Dsonar as a goal:\n\n- sonar:\n    language: \u0027java\u0027",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 37
+      },
+      "revId": "f636a93144aecfb704875d325fb5213a88522565",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_b25f4d72",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-31T20:24:24Z",
+      "side": 1,
+      "message": "You don\u0027t want to use the sonar builder, but he sonar publisher.\n\nsomething more along the lines of the following added to the publishers section along with a -Dsonar as a goal:\n\n- sonar:\n    language: \u0027java\u0027",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 37
+      },
+      "revId": "f636a93144aecfb704875d325fb5213a88522565",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_7251b561",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-05-31T20:24:24Z",
+      "side": 1,
+      "message": "You don\u0027t want to use the sonar builder, but he sonar publisher.\n\nsomething more along the lines of the following added to the publishers section along with a -Dsonar as a goal:\n\n- sonar:\n    language: \u0027java\u0027",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 37
+      },
+      "revId": "f636a93144aecfb704875d325fb5213a88522565",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
