@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_28b62a3e",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-06-01T13:44:11Z",
+      "side": 1,
+      "message": "I would suggest not setting this unless it\u0027s proven to be needed. ODL projects need it set as it\u0027s been proven to be required.",
+      "revId": "0d6ea4833ccf3a10509afe5775b7adef965b320b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_08836657",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-06-01T13:44:11Z",
+      "side": 1,
+      "message": "I would suggest not setting this unless it\u0027s proven to be needed. ODL projects need it set as it\u0027s been proven to be required.",
+      "revId": "0d6ea4833ccf3a10509afe5775b7adef965b320b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
