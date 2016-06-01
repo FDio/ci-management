@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da141535_8d5e6844",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-01T11:51:35Z",
+      "side": 1,
+      "message": "Do you really want to sonar data for verify jobs?  I would expect it to confuse and pollute the actual data from the merge jobs...",
+      "revId": "713955b5dff7477660664b36c4ef584852530ffc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
