@@ -16,6 +16,24 @@
       "revId": "713955b5dff7477660664b36c4ef584852530ffc",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da141535_a8259aac",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2016-06-01T13:01:07Z",
+      "side": 1,
+      "message": "Removed, thank you for notice.",
+      "parentUuid": "da141535_8d5e6844",
+      "revId": "713955b5dff7477660664b36c4ef584852530ffc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
