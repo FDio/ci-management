@@ -1,6 +1,6 @@
 #!/bin/bash
 # basic build script example
-
+set -xeu -o pipefail
 # do nothing but print the current slave hostname
 hostname
 export CCACHE_DIR=/tmp/ccache
@@ -54,8 +54,7 @@ if [ ${OS} == ubuntu1404 ];then
 fi
 
 build-root/vagrant/build.sh
-if [ $? == 0 ];then
-    echo "*******************************************************************"
-    echo "* VPP BUILD SUCCESSFULLY COMPLETED"
-    echo "*******************************************************************"
-fi
+
+echo "*******************************************************************"
+echo "* VPP BUILD SUCCESSFULLY COMPLETED"
+echo "*******************************************************************"

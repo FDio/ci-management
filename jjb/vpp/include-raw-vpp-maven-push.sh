@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -xeu -o pipefail
 echo "*******************************************************************"
 echo "* STARTING PUSH OF PACKAGES TO REPOS"
 echo "* NOTHING THAT HAPPENS BELOW THIS POINT IS RELATED TO BUILD FAILURE"
