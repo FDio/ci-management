@@ -1,0 +1,9 @@
+Verified+1: Zuul <zuul@fd.io>
+Code-Review+1: Marek Gradzki <mgradzki@cisco.com>
+Code-Review+1: Maros Marsalek <mmarsale@cisco.com>
+Code-Review+2: Andrew Grimberg <agrimberg@linuxfoundation.org>
+Submitted-by: Andrew Grimberg <agrimberg@linuxfoundation.org>
+Submitted-at: Thu, 02 Jun 2016 16:37:05 +0000
+Reviewed-on: https://gerrit.fd.io/r/1302
+Project: ci-management
+Branch: refs/heads/master
