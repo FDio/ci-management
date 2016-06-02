@@ -182,7 +182,7 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
@@ -197,6 +197,8 @@
         - findbugs
 
     publishers:
+        - sonar:
+            language: 'java'
         - email-notification:
             email-prefix: '[honeycomb]'
         - maven-deploy:
@@ -246,7 +248,7 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar'
         maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
@@ -261,6 +263,8 @@
         - findbugs
 
     publishers:
+        - sonar:
+            language: 'java'
         - email-notification:
             email-prefix: '[honeycomb]'
         - maven-deploy:
