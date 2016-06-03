@@ -162,13 +162,10 @@
 
         - git:
                push-only-if-success: true
-               tags:
-                   - tag:
-                       remote: origin
-                       name: "csit-verified"
-                       message: "Verified CSIT version for VPP testing"
-                       create-tag: true
-                       update-tag: true
+               branches:
+                - branch:
+                    remote: origin
+                    name: 'csit-verified-`date +%y%m%d`'
 
 - job-template:
     name: 'csit-vpp-master-verify-semiweekly'
