@@ -1,6 +1,6 @@
 #!/bin/bash
 # basic build script example
-set -e -o pipefail
+set -xe -o pipefail
 # do nothing but print the current slave hostname
 hostname
 export CCACHE_DIR=/tmp/ccache
