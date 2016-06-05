@@ -165,7 +165,7 @@
                branches:
                 - branch:
                     remote: origin
-                    name: 'csit-verified-`date +%y%m%d`'
+                    name: "csit-verified-`date +%y%m%d`"
 
 - job-template:
     name: 'csit-vpp-master-verify-semiweekly'
