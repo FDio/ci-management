@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_8c18d785",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-06T01:46:14Z",
+      "side": 1,
+      "message": "I don\u0027t believe that this will be executed by the shell.  I will ask Thanh to know for certain...",
+      "range": {
+        "startLine": 168,
+        "startChar": 41,
+        "endLine": 168,
+        "endChar": 55
+      },
+      "revId": "22fe79cec53045d15722954644735ee339b349e4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
