@@ -22,6 +22,30 @@
       "revId": "22fe79cec53045d15722954644735ee339b349e4",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_4c12bf63",
+        "filename": "jjb/csit/csit-vpp-functional.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-06T01:51:01Z",
+      "side": 1,
+      "message": "confirmed.  you\u0027ll need to find a different way to inject this date string.  I recommend looking at the way we do OS and STREAM",
+      "parentUuid": "ba092121_8c18d785",
+      "range": {
+        "startLine": 168,
+        "startChar": 41,
+        "endLine": 168,
+        "endChar": 55
+      },
+      "revId": "22fe79cec53045d15722954644735ee339b349e4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
