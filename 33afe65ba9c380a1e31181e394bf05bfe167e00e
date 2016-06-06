@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_ad47154b",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 17
+      },
+      "writtenOn": "2016-06-06T22:17:56Z",
+      "side": 1,
+      "message": "unmatched brace here",
+      "range": {
+        "startLine": 20,
+        "startChar": 21,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "33afe65ba9c380a1e31181e394bf05bfe167e00e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_0d416139",
+        "filename": "vagrant/basebuild/README.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 17
+      },
+      "writtenOn": "2016-06-06T22:17:56Z",
+      "side": 1,
+      "message": "Unmatched quote here.",
+      "range": {
+        "startLine": 112,
+        "startChar": 14,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "33afe65ba9c380a1e31181e394bf05bfe167e00e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
