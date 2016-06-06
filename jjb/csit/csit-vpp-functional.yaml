@@ -104,11 +104,33 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml'
+            artifacts: 'report.html, log.html, output.xml, output_perf_data.xml'
             latest-only: false
 
         - robot-report:
             output-path: ''
+
+        - plot:
+            - title: 'RFC2544 binary search with 64B, 1 worker-thread, rss=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: '1_thread'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 64B, 1 worker-thread, rss=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: '1_thread'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
 
 - job-template:
     name: 'csit-vpp-verify-weekly'
