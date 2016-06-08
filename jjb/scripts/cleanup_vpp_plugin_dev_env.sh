@@ -20,7 +20,7 @@ function cleanup {
     # Setup by installing vpp-dev and vpp-lib
     if [ $DISTRIB_ID == "Ubuntu" ]; then
         sudo rm -f /etc/apt/sources.list.d/99fd.io.list
-        sudo apt-get -y remove vpp-dev vpp-lib vpp-dev vpp-lib vpp vpp-dpdk-dev vpp-dpdk-dkms vpp-dbg
+        sudo dpkg -r vpp-dev vpp-lib vpp-dev vpp-lib vpp vpp-dpdk-dev vpp-dpdk-dkms vpp-dbg
     elif [[ $DISTRIB_ID == "CentOS" ]]; then
         sudo rm -f /etc/yum.repos.d/fdio-master.repo
         sudo yum -y remove vpp-devel vpp-lib vpp
