@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_58a5d202",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-06-08T20:11:06Z",
+      "side": 1,
+      "message": "Please cleanup trailing whitespaces",
+      "revId": "934d34bec7c3d7d6873ba68431e55bde042fb4ae",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
