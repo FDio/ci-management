@@ -1,9 +1,9 @@
 - project:
     name: nsh_sfc
     jobs:
-        - '{project}-verify-{stream}-{os}'
-        - '{project}-merge-{stream}-{os}'
-        - '{project}-verify-image-{stream}-{os}'
+        - 'nsh_sfc-verify-{stream}-{os}'
+        - 'nsh_sfc-merge-{stream}-{os}'
+        - 'nsh_sfc-verify-image-{stream}-{os}'
 
     project: 'nsh_sfc'
     os:
