@@ -111,9 +111,9 @@
             output-path: ''
 
         - plot:
-            - title: 'RFC2544 binary search with 64B, 1 worker-thread, rss=1, NDR'
+            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, NDR'
               yaxis: 'Packets Per Second'
-              group: '1_thread'
+              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
               series:
@@ -121,9 +121,59 @@
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, 1 worker-thread, rss=1, PDR=0.5%'
+            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, NDR'
               yaxis: 'Packets Per Second'
-              group: '1_thread'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
               series:
@@ -131,6 +181,56 @@
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
 
 - job-template:
     name: 'csit-vpp-verify-weekly'
