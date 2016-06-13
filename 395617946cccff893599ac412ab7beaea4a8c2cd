@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "ba092121_aac131e6",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-06-13T19:02:04Z",
+      "side": 1,
+      "message": "Please, add branch parameter:\n./bootstrap-vpp-verify-weekly.sh --branch ${GERRIT_BRANCH}\n\nto be able to download correct VPP build for different branches as defined in patch https://gerrit.fd.io/r/#/c/1506/",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_4a3f3526",
         "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
         "patchSetId": 1
