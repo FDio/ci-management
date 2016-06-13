@@ -2,13 +2,13 @@
     name: csit-validate
 
     jobs:
-        - 'csit-validate-pylint'
+        - 'csit-validate-pylint-master'
 
     project: 'csit'
     branch: 'master'
 
 - job-template:
-    name: 'csit-validate-pylint'
+    name: 'csit-validate-pylint-master'
 
     project-type: freestyle
     node: verify

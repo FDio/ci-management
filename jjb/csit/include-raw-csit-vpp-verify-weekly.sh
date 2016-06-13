@@ -1,20 +1,15 @@
 #!/bin/bash
 set -xeu -o pipefail
 
-# Clone csit and start tests
-git clone https://gerrit.fd.io/r/csit --branch master
-
-cd csit
-
 # execute csit bootstrap script if it exists
 if [ -e bootstrap-vpp-verify-weekly.sh ]
 then
     # make sure that bootstrap.sh is executable
     chmod +x bootstrap-vpp-verify-weekly.sh
-    # run the script
-    ./bootstrap-vpp-verify-weekly.sh
+    # run the script with branch as argument (use master by default)
+    ./bootstrap-vpp-verify-weekly.sh ${GERRIT_BRANCH:-"master"}
 else
-    echo 'ERROR: No bootstrap-verify-master.sh found'
+    echo 'ERROR: No bootstrap-vpp-verify-weekly.sh found'
     exit 1
 fi
 
