@@ -1,11 +1,6 @@
 #!/bin/bash
 set -xeu -o pipefail
 
-# Clone csit and start tests
-git clone https://gerrit.fd.io/r/csit --branch master
-
-cd csit
-
 # execute csit bootstrap script if it exists
 if [ -e bootstrap-vpp-verify-weekly.sh ]
 then

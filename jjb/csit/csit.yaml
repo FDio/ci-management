@@ -1,20 +1,27 @@
 - project:
-    name: csit-vpp-functional
-    description: 'Run VPP functional tests on VIRL.'
+    name: csit
+    description: 'Run CSIT tests.'
 
     jobs:
-        - 'csit-vpp-perf-hw-{type}'
-        - 'csit-vpp-functional-virl'
-        - 'csit-vpp-verify-weekly'
+        - 'csit-vpp-perf-{stream}-{type}'
+        - 'csit-vpp-functional-{stream}-virl'
+        - 'csit-vpp-verify-{stream}-weekly'
         - 'csit-vpp-master-verify-semiweekly'
 
     project: 'csit'
     branch: 'master'
+    build-artifact-num-to-keep: 10
     type:
         - all
+        - long
+    stream:
+        - master:
+            branch: 'master'
+        - '1606':
+            branch: 'stable/1606'
 
 - job-template:
-    name: 'csit-vpp-functional-virl'
+    name: 'csit-vpp-functional-{stream}-virl'
 
     project-type: freestyle
     node: verify
@@ -61,7 +68,7 @@
             output-path: ''
 
 - job-template:
-    name: 'csit-vpp-perf-hw-{type}'
+    name: 'csit-vpp-perf-{stream}-{type}'
 
     project-type: freestyle
     node: verify
@@ -133,8 +140,8 @@
                     xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
 
 - job-template:
-    name: 'csit-vpp-verify-weekly'
-    description: 'Purpose of this job is to validate CSIT code against verified vpp build and apply csit-verified tag in case of success.'
+    name: 'csit-vpp-verify-{stream}-weekly'
+    description: 'Purpose of this job is to validate CSIT code against verified vpp build and create csit-verified branch in case of success.'
 
     project-type: freestyle
     node: verify
@@ -155,7 +162,7 @@
     scm:
         - git-scm:
             credentials-id: '{ssh-credentials}'
-            branch: 'master'
+            branch: '{branch}'
 
     wrappers:
         - ssh-agent-credentials:
@@ -173,6 +180,9 @@
     builders:
         - shell:
             !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-weekly.sh
+        - shell: 'echo "DATE=`date +%Y-%m-%d`" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
 
     publishers:
         - archive-artifacts:
@@ -181,13 +191,13 @@
 
         - robot-report:
             output-path: 'csit'
-
         - git:
                push-only-if-success: true
                branches:
                 - branch:
                     remote: origin
-                    name: 'csit-verified-`date +%y%m%d`'
+                    name: '{branch}-csit-verified-$DATE'
+
 
 - job-template:
     name: 'csit-vpp-master-verify-semiweekly'
