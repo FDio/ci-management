@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_4a3f3526",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-06-13T15:11:32Z",
+      "side": 1,
+      "message": "bootstrap-vpp-verify-weekly",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
