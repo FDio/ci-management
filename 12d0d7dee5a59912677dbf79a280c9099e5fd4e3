@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ba092121_f04a76ab",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-14T19:41:02Z",
+      "side": 1,
+      "message": "OK... those can be fixed in subsequent patches.",
+      "parentUuid": "ba092121_10772a04",
+      "revId": "12d0d7dee5a59912677dbf79a280c9099e5fd4e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_90833acc",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 5
