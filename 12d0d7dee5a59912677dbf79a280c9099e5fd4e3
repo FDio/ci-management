@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_7088a6e7",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-14T19:05:44Z",
+      "side": 1,
+      "message": "I am curious why this is only being done for branch master (not saying its bad or good, just curious).",
+      "revId": "12d0d7dee5a59912677dbf79a280c9099e5fd4e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_90833acc",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-14T19:05:44Z",
+      "side": 1,
+      "message": "I am pretty sure the $DATE here won\u0027t get evaluated and will show up as a literal \u0027$DATE\u0027.  My suggestion would be to separate the portions of this patch that are about autocreation of branches from the rest of it, as the rest of it is pretty straight forward, but we may face some  mechanical challenges on the autocreation of branches.",
+      "revId": "12d0d7dee5a59912677dbf79a280c9099e5fd4e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
