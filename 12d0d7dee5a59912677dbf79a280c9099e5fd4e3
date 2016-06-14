@@ -87,6 +87,24 @@
       "revId": "12d0d7dee5a59912677dbf79a280c9099e5fd4e3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_b0ccfe36",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-14T19:46:25Z",
+      "side": 1,
+      "message": "the inject plugin sources $WORKSPACE/variables.prop (specified above), which is written by the above builder.",
+      "parentUuid": "ba092121_90833acc",
+      "revId": "12d0d7dee5a59912677dbf79a280c9099e5fd4e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
