@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba092121_2d6adb1a",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 74
+      },
+      "writtenOn": "2016-06-14T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba092121_ea45e9b3",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_ca1225b4",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-13T15:17:38Z",
       "side": 1,
       "message": "Based on comment on line 17:\ncsit-verified-{repo-part-name}-$DATE",
+      "range": {
+        "startLine": 199,
+        "startChar": 27,
+        "endLine": 199,
+        "endChar": 55
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_0d771704",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 74
+      },
+      "writtenOn": "2016-06-14T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba092121_ca1225b4",
       "range": {
         "startLine": 199,
         "startChar": 27,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ba092121_6d88d3e7",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 74
+      },
+      "writtenOn": "2016-06-14T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba092121_aac131e6",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_4a3f3526",
         "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-06-13T15:11:32Z",
       "side": 1,
       "message": "bootstrap-vpp-verify-weekly",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "395617946cccff893599ac412ab7beaea4a8c2cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_4d6d0f32",
+        "filename": "jjb/csit/include-raw-csit-vpp-verify-weekly.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 74
+      },
+      "writtenOn": "2016-06-14T11:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba092121_4a3f3526",
       "range": {
         "startLine": 12,
         "startChar": 20,
