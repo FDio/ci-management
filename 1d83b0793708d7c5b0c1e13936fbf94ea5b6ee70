@@ -1,0 +1,9 @@
+Verified+1: Zuul <zuul@fd.io>
+Code-Review+1: Stefan Kobza <skobza@cisco.com>
+Code-Review+1: Jan Gelety <jgelety@cisco.com>
+Code-Review+2: C.J. Collier <cjcollier@linuxfoundation.org>
+Submitted-by: C.J. Collier <cjcollier@linuxfoundation.org>
+Submitted-at: Wed, 15 Jun 2016 16:25:01 +0000
+Reviewed-on: https://gerrit.fd.io/r/1562
+Project: ci-management
+Branch: refs/heads/master
