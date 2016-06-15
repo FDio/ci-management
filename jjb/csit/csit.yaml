@@ -299,7 +299,7 @@
                branches:
                 - branch:
                     remote: origin
-                    name: 'csit-verified-{branch-id}-$DATE'
+                    name: 'refs/heads/csit-verified-{branch-id}-$DATE'
 
 
 - job-template:
