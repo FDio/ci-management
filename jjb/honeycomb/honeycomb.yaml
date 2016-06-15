@@ -6,10 +6,15 @@
         - 'honeycomb-integration-{stream}-{os}'
         - 'honeycomb-verify-image-{stream}-{os}'
     project: 'honeycomb'
+    os:
+        - ubuntu1404:
+            repo-os-part: 'ubuntu.trusty.main'
+        - centos7:
+            repo-os-part: 'centos7'
     stream:
         - master:
             branch: 'master'
-    os: 'ubuntu1404'
+            repo-stream-part: 'master'
 
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
@@ -157,6 +162,10 @@
             project: '{project}'
         - os-parameter:
             os: '{os}'
+        - maven-project-parameter:
+            maven: '{mvn33}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -190,6 +199,10 @@
         global-settings-type: cfp
 
     postbuilders:
+        - shell: 
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-honeycomb-pkg-push.sh
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
