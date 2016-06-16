@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_7ff3d10a",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T20:44:09Z",
+      "side": 1,
+      "message": "s/\\s+$//",
+      "range": {
+        "startLine": 202,
+        "startChar": 16,
+        "endLine": 202,
+        "endChar": 17
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_9fd58545",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T20:44:09Z",
+      "side": 1,
+      "message": "This is great.  I\u0027d like to see this pattern used more throughout the code to reduce code duplication.",
+      "range": {
+        "startLine": 204,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 51
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_3fdd5971",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T20:44:09Z",
+      "side": 1,
+      "message": "might be easier to maintain without the trailing \"; fi\":\n\n[ \"${{OS}}\" \u003d\u003d \"ubuntu1404\" ] \u0026\u0026  sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 207,
+        "endChar": 123
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_ffe6c143",
+        "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T20:44:09Z",
+      "side": 1,
+      "message": "[ \"${OS}\" \u003d\u003d \"centos7\" ] || exit 0",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_1fda9578",
+        "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T20:44:09Z",
+      "side": 1,
+      "message": "nix",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
