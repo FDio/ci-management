@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_5f2b6d30",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T21:30:26Z",
+      "side": 1,
+      "message": "too many prepositions",
+      "range": {
+        "startLine": 6,
+        "startChar": 36,
+        "endLine": 6,
+        "endChar": 41
+      },
+      "revId": "2ced71e7075a6daf47155f8f9fb352180df11bba",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_3f20b948",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T21:30:26Z",
+      "side": 1,
+      "message": "I would use conditional logic here to reduce the duplicate code:\n\nelse\n  CSIT_BRANCH\u003d${CSIT_BRANCH:-csit-verified}\nfi",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "2ced71e7075a6daf47155f8f9fb352180df11bba",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_1f1df50f",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T21:30:26Z",
+      "side": 1,
+      "message": "nix",
+      "range": {
+        "startLine": 13,
+        "startChar": 70,
+        "endLine": 13,
+        "endChar": 85
+      },
+      "revId": "2ced71e7075a6daf47155f8f9fb352180df11bba",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_ff192123",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T21:30:26Z",
+      "side": 1,
+      "message": "nix",
+      "range": {
+        "startLine": 17,
+        "startChar": 85,
+        "endLine": 17,
+        "endChar": 100
+      },
+      "revId": "2ced71e7075a6daf47155f8f9fb352180df11bba",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_df165df1",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-16T21:30:26Z",
+      "side": 1,
+      "message": "nix",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "2ced71e7075a6daf47155f8f9fb352180df11bba",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
