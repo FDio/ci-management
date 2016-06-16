@@ -126,6 +126,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -136,6 +137,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -146,6 +148,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -156,6 +159,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -166,6 +170,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-5.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -176,6 +181,7 @@
               group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-6.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -186,6 +192,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-7.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -196,6 +203,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-8.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -206,6 +214,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-9.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -216,6 +225,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-10.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -226,6 +236,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-11.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -236,6 +247,7 @@
               group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-12.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
