@@ -6,7 +6,7 @@
         - 'csit-vpp-perf-{stream}-{type}'
         - 'csit-vpp-functional-{stream}-virl'
         - 'csit-vpp-verify-master-weekly'
-        - 'csit-vpp-master-verify-semiweekly'
+        - 'csit-vpp-verify-{stream}-semiweekly'
 
     project: 'csit'
     branch: 'master'
@@ -303,8 +303,8 @@
 
 
 - job-template:
-    name: 'csit-vpp-master-verify-semiweekly'
-    description: 'Purpose of this job is to validate latest vpp build stored in nexus against verified CSIT codebase.'
+    name: 'csit-vpp-verify-{stream}-semiweekly'
+    description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
     node: verify
@@ -322,11 +322,6 @@
         - gerrit-parameter:
             branch: '{branch}'
 
-    scm:
-        - git-scm:
-            credentials-id: '{ssh-credentials}'
-            branch: 'master'
-
     wrappers:
         - ssh-agent-credentials:
             users:
@@ -342,7 +337,7 @@
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-master-verify-semiweekly.sh
+            !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-semiweekly.sh --branch_id {branch-id}
 
     publishers:
         - archive-artifacts:
@@ -352,9 +347,14 @@
         - robot-report:
             output-path: 'csit/archive'
 
+        - git:
+               push-only-if-success: true
+               branches:
+                  - branch:
+                      name: '{branch}'
+
 - parameter:
     name: test-type-parameter
-
     parameters:
         - string:
             name: TYPE
