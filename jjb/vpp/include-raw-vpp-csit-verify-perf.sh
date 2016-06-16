@@ -10,7 +10,7 @@ if [ -x build-root/scripts/csit-test-branch ]; then
 fi
 
 # Clone csit and start tests
-git clone --depth 1 https://gerrit.fd.io/r/csit --branch csit-verified
+git clone --depth 1 https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH:-csit-verified}
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
