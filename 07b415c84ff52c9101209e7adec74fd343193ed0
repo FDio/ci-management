@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba092121_bf3729b0",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-16T20:55:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba092121_7ff3d10a",
+      "range": {
+        "startLine": 202,
+        "startChar": 16,
+        "endLine": 202,
+        "endChar": 17
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_9fd58545",
         "filename": "jjb/honeycomb/honeycomb.yaml",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-06-16T20:44:09Z",
       "side": 1,
       "message": "This is great.  I\u0027d like to see this pattern used more throughout the code to reduce code duplication.",
+      "range": {
+        "startLine": 204,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 51
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_1fc17580",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-16T20:55:24Z",
+      "side": 1,
+      "message": "Yeah, I like it too :)  I used it for the nsh_sfc jobs as well.",
+      "parentUuid": "ba092121_9fd58545",
       "range": {
         "startLine": 204,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ba092121_ffbda103",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-16T20:55:24Z",
+      "side": 1,
+      "message": "Pre-existing stuff... not something I changed :)",
+      "parentUuid": "ba092121_3fdd5971",
+      "range": {
+        "startLine": 207,
+        "startChar": 12,
+        "endLine": 207,
+        "endChar": 123
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_ffe6c143",
         "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ba092121_7f41910a",
+        "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-16T20:55:24Z",
+      "side": 1,
+      "message": "Good point, but shortly I\u0027ll be bringing the stuff for the Ubuntu cases... so this will grow to an if elif fi shortly :)",
+      "parentUuid": "ba092121_ffe6c143",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba092121_1fda9578",
         "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2016-06-16T20:44:09Z",
       "side": 1,
       "message": "nix",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "07b415c84ff52c9101209e7adec74fd343193ed0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_5f46cd24",
+        "filename": "jjb/honeycomb/include-raw-honeycomb-pkg-push.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-16T20:55:24Z",
+      "side": 1,
+      "message": "But I *like* clear endings to blocks :)  It prevents future errors when the script is expanded.",
+      "parentUuid": "ba092121_1fda9578",
       "range": {
         "startLine": 16,
         "startChar": 0,
