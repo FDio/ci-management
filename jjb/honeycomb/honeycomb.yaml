@@ -149,7 +149,6 @@
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: merge
-    jdk: '{jdk}'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -223,7 +222,6 @@
     name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
     node: merge
-    jdk: '{jdk}'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
