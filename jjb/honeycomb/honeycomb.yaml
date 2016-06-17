@@ -267,6 +267,10 @@
         global-settings-type: cfp
 
     postbuilders:
+        - shell:
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-honeycomb-pkg-push.sh
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
