@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_b4e86b7d",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-06-17T21:03:00Z",
+      "side": 0,
+      "message": "Why did you remove this from the shared script where it logically belongs?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 82
+      },
+      "revId": "6e8f5c9323fcc2898965975005ff4a42ff0fe83c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}

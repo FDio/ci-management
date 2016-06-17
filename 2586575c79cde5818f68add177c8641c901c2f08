@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_f4eee38a",
+        "filename": "jjb/vpp/include-raw-vpp-maven-push.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-06-17T21:03:00Z",
+      "side": 1,
+      "message": "You moved everything but this into the shared script, why not this?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 82
+      },
+      "revId": "2586575c79cde5818f68add177c8641c901c2f08",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_34e57ba8",
+        "filename": "scripts/deploy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-06-17T21:03:00Z",
+      "side": 1,
+      "message": "No email addresses in copyright statements attributed to a company",
+      "range": {
+        "startLine": 8,
+        "startChar": 38,
+        "endLine": 8,
+        "endChar": 69
+      },
+      "revId": "2586575c79cde5818f68add177c8641c901c2f08",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
