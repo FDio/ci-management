@@ -5,13 +5,6 @@ echo "* STARTING PUSH OF PACKAGES TO REPOS"
 echo "* NOTHING THAT HAPPENS BELOW THIS POINT IS RELATED TO BUILD FAILURE"
 echo "*******************************************************************"
 
-# Determine the path to maven
-if [ -z "${MAVEN_SELECTOR}" ]; then
-    echo "ERROR: No Maven install detected!"
-    exit 1
-fi
-
-MVN="${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mvn"
 GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
