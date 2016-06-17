@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_d41d1f75",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-17T23:48:12Z",
+      "side": 1,
+      "message": "Could we minimize the changes per patch... more changes per patch increases the likelihood that something goes wrong.",
+      "revId": "3fffe124708de984e058bd57f224c5caf8feaef3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_b412ab60",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-17T23:48:12Z",
+      "side": 1,
+      "message": "Could we minimize the changes per patch... more changes per patch increases the likelihood that something goes wrong",
+      "revId": "3fffe124708de984e058bd57f224c5caf8feaef3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_9417a751",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-17T23:48:12Z",
+      "side": 1,
+      "message": "Could we minimize the changes per patch... more changes per patch increases the likelihood that something goes wrong",
+      "revId": "3fffe124708de984e058bd57f224c5caf8feaef3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}

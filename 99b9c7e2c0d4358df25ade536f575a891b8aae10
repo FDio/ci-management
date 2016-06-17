@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_f4182386",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-17T23:48:12Z",
+      "side": 0,
+      "message": "If MVN isn\u0027t set, we will fail further down in this script.",
+      "revId": "99b9c7e2c0d4358df25ade536f575a891b8aae10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
