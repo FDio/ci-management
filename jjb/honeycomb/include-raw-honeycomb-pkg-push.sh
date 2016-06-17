@@ -1,4 +1,19 @@
 #!/bin/bash
+set -xe -o pipefail
+
+# Determine the path to maven
+if [ -n "${MAVEN_SELECTOR}" ]
+then
+    MVN=${MVN:-"${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mvn"}
+else
+    MVN="$(which mvn)"
+fi
+
+if [ -z "${MVN}" ]; then
+    echo "ERROR: No Maven install detected!"
+    exit 1
+fi
+
 if [ "${OS}" == "centos7" ]; then
 
     # Build the rpms
