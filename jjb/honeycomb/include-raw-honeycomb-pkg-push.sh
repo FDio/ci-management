@@ -1,4 +1,11 @@
 #!/bin/bash
+set -xe -o pipefail
+
+if [ -z "${MAVEN_SELECTOR}" ]; then
+    echo "ERROR: No Maven install detected!"
+    exit 1
+fi
+
 if [ "${OS}" == "centos7" ]; then
 
     # Build the rpms
