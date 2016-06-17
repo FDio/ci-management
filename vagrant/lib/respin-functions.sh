@@ -1,22 +1,36 @@
 #!/bin/bash
 
-# Copyright 2016 The Linux Foundation
+# Copyright 2016 The Linux Foundation <cjcollier@linuxfoundation.org>
+CI_MGMT=$(realpath $(dirname $(realpath $0))/..)
 
-source ${CI_MGMT}/vagrant/lib/vagrant-functions.sh
+PVE_ROOT="${HOME}/src/python-virtual"
+CPPROJECT=${CPPROJECT:-fdio}
+PVENAME="${CPPROJECT}-openstack"
+PVE_PATH="${PVE_ROOT}/${PVENAME}"
+PVERC=${PVE_PATH}/bin/activate
+SERVER_NAME=${SERVER_NAME:-${USER}-vagrant}
 
+STACK_PROVIDER=vexxhost
+STACK_PORTAL=secure.${STACK_PROVIDER}.com
+STACK_ID_SERVER=auth.${STACK_PROVIDER}.net
 
-source ${PVERC}
+export OPENSTACK_AUTH_URL="https://${STACK_ID_SERVER}/v2.0/"
+export OPENSTACK_FLAVOR='v1-standard-4'
+export STACK_REGION_NAME='ca-ymq-1'
+export AVAILABILITY_ZONE='ca-ymq-2'
+export NETID=${NETID:-$(nova network-list | awk "/${CPPROJECT}/ {print \$2}")}
 
-pip install -q --upgrade pip setuptools python-{cinder,glance,keystone,neutron,nova,openstack}client
-
-#
-# usage:
-#   AGE_JSON=$(latest_src_age ${DIST} ${VERSION} ${ARCH})
-#
-function latest_src_age ()
-{
-    SRC_TS=$(latest_src_timestamp "$@")
-    NOW_TS=$(new_timestamp)
+if [ ! -d ${PVE_PATH} ]
+then
+    mkdir -p $(dirname $PVE_PATH)
+    if [ -f /etc/debian_version ]
+    then
+        sudo apt-get -y -qq install \
+             virtualenvwrapper python-virtualenv libpython-dev
+    elif [ -f /etc/redhat-release ]
+    then
+        sudo yum -y install python-virtualenv
+    fi
 
     perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( @ARGV )' "${NOW_TS}" "${SRC_TS}"
 
