@@ -18,9 +18,3 @@ target/
 *~
 \.\#*
 \#*
-
-# Ruby
-.ruby-version
-
-# Perl
-perltidy.ERR
