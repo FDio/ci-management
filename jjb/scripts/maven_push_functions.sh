@@ -1,17 +1,10 @@
 #!/bin/bash
-set -xe -o pipefail
+
 echo "*******************************************************************"
 echo "* STARTING PUSH OF PACKAGES TO REPOS"
 echo "* NOTHING THAT HAPPENS BELOW THIS POINT IS RELATED TO BUILD FAILURE"
 echo "*******************************************************************"
 
-# Determine the path to maven
-if [ -z "${MAVEN_SELECTOR}" ]; then
-    echo "ERROR: No Maven install detected!"
-    exit 1
-fi
-
-MVN="${HOME}/tools/hudson.tasks.Maven_MavenInstallation/${MAVEN_SELECTOR}/bin/mvn"
 GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
@@ -49,21 +42,22 @@ function push_file ()
 function push_jar ()
 {
     jarfile=$1
-    repoId="${BASEREPOID}snapshot"
-    url="${BASEURL}snapshot"
+    repoId=${2:-"${BASEREPOID}snapshot"}
+    url=${3:-"${BASEURL}snapshot"}
 
     basefile=$(basename -s .jar "$jarfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '-')
-    version=$(echo "$basefile" | cut -f 2 -d '-')
+    version=${4:-$(echo "$basefile" | cut -f 2 -d '-')}
+    if [ -z "$4" ] ; then version="${version}-SNAPSHOT" ; fi
 
-    push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
+    push_file "$jarfile" "$repoId" "$url" "$version" "$artifactId" jar
 }
 
 function push_deb ()
 {
     debfile=$1
-    repoId="fd.io.${REPO_NAME}"
-    url="${BASEURL}${REPO_NAME}"
+    repoId=${2:-"fd.io.${REPO_NAME}"}
+    url=${3:-"${BASEURL}${REPO_NAME}"}
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
@@ -75,8 +69,8 @@ function push_deb ()
 function push_rpm ()
 {
     rpmfile=$1
-    repoId="fd.io.${REPO_NAME}"
-    url="${BASEURL}${REPO_NAME}"
+    repoId=${2:-"fd.io.${REPO_NAME}"}
+    url=${3:-"${BASEURL}${REPO_NAME}"}
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
