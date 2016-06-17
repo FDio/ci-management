@@ -138,6 +138,9 @@
         global-settings-type: cfp
 
     postbuilders:
+        - provide-maven-settings:
+            settings-file: 'vpp-settings'
+            global-settings-file: 'global-settings'
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
@@ -198,6 +201,9 @@
         global-settings-type: cfp
 
     postbuilders:
+        - provide-maven-settings:
+            settings-file: 'vpp-settings'
+            global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
