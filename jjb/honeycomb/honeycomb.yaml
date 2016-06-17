@@ -17,7 +17,7 @@
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
-    node: verify
+    node: verify-{os}
     concurrent: true
 
     logrotate:
@@ -146,7 +146,7 @@
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
-    node: merge
+    node: merge-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -219,7 +219,7 @@
 - job-template:
     name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
-    node: merge
+    node: merge-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
