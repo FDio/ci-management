@@ -198,6 +198,9 @@
         global-settings-type: cfp
 
     postbuilders:
+        - provide-maven-settings:
+            settings-file: 'vpp-settings'
+            global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
@@ -267,6 +270,9 @@
         global-settings-type: cfp
 
     postbuilders:
+        - provide-maven-settings:
+            settings-file: 'vpp-settings'
+            global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
