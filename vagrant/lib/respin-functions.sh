@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Copyright 2016 The Linux Foundation <cjcollier@linuxfoundation.org>
+CI_MGMT=$(realpath $(dirname $(realpath $0))/..)
 
 PVE_ROOT="${HOME}/src/python-virtual"
 CPPROJECT=${CPPROJECT:-fdio}

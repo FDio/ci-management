@@ -49,8 +49,8 @@ function push_file ()
 function push_jar ()
 {
     jarfile=$1
-    repoId="${BASEREPOID}snapshot"
-    url="${BASEURL}snapshot"
+    repoId=${2:-"${BASEREPOID}snapshot"}
+    url=${3:-"${BASEURL}snapshot"}
 
     basefile=$(basename -s .jar "$jarfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '-')
@@ -62,8 +62,8 @@ function push_jar ()
 function push_deb ()
 {
     debfile=$1
-    repoId="fd.io.${REPO_NAME}"
-    url="${BASEURL}${REPO_NAME}"
+    repoId=${2:-"fd.io.${REPO_NAME}"}
+    url=${3:-"${BASEURL}${REPO_NAME}"}
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
@@ -75,8 +75,8 @@ function push_deb ()
 function push_rpm ()
 {
     rpmfile=$1
-    repoId="fd.io.${REPO_NAME}"
-    url="${BASEURL}${REPO_NAME}"
+    repoId=${2:-"fd.io.${REPO_NAME}"}
+    url=${3:-"${BASEURL}${REPO_NAME}"}
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
