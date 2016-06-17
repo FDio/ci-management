@@ -9,6 +9,8 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
+        - centos7:
+            repo-os-part: 'centos7'
     stream:
         - master:
             branch: 'master'
