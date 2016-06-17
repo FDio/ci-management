@@ -1,0 +1,9 @@
+Verified+1: Zuul <zuul@fd.io>
+Code-Review+1: Maciek Konstantynowicz <mkonstan@cisco.com>
+Code-Review+1: Dave Wallace <dwallacelf@gmail.com>
+Code-Review+2: C.J. Collier <cjcollier@linuxfoundation.org>
+Submitted-by: C.J. Collier <cjcollier@linuxfoundation.org>
+Submitted-at: Fri, 17 Jun 2016 16:23:04 +0000
+Reviewed-on: https://gerrit.fd.io/r/1608
+Project: ci-management
+Branch: refs/heads/master
