@@ -22,6 +22,30 @@
       "revId": "6e8f5c9323fcc2898965975005ff4a42ff0fe83c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_94a44758",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-06-17T23:10:59Z",
+      "side": 0,
+      "message": "not all code which uses this should fail when MAVEN_SELECTOR is unset.  That condition should only exist in code which will never be run outside of jenkins build environments.",
+      "parentUuid": "ba092121_b4e86b7d",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 82
+      },
+      "revId": "6e8f5c9323fcc2898965975005ff4a42ff0fe83c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
