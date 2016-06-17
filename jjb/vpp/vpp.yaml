@@ -198,7 +198,9 @@
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
         - shell:
-            !include-raw-escape: include-raw-vpp-maven-push.sh
+            !include-raw-escape:
+              - ../scripts/maven_push_functions.sh
+              - include-raw-vpp-maven-push.sh
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
