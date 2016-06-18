@@ -198,6 +198,13 @@
         global-settings-type: cfp
 
     postbuilders:
+        - maven-target:
+            maven-version: '{mvn33}'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
@@ -270,6 +277,13 @@
         global-settings-type: cfp
 
     postbuilders:
+        - maven-target:
+            maven-version: '{mvn33}'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
