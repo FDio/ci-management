@@ -9,6 +9,8 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
+        - centos7:
+            repo-os-part: 'centos7'
     stream:
         - master:
             branch: 'master'
@@ -199,12 +201,12 @@
         - maven-target:
             maven-version: '{mvn33}'
             goals: '--version'
-            settings: 'vpp-settings'
+            settings: 'honeycomb-settings'
             settings-type: cfp
             global-settings: 'global-settings'
             global-settings-type: cfp
         - provide-maven-settings:
-            settings-file: 'vpp-settings'
+            settings-file: 'honeycomb-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -278,12 +280,12 @@
         - maven-target:
             maven-version: '{mvn33}'
             goals: '--version'
-            settings: 'vpp-settings'
+            settings: 'honeycomb-settings'
             settings-type: cfp
             global-settings: 'global-settings'
             global-settings-type: cfp
         - provide-maven-settings:
-            settings-file: 'vpp-settings'
+            settings-file: 'honeycomb-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
