@@ -60,7 +60,7 @@
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
-        maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
         global-settings: 'global-settings'
@@ -131,7 +131,7 @@
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
-        maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
         global-settings: 'global-settings'
@@ -191,7 +191,7 @@
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar'
-        maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
         global-settings: 'global-settings'
@@ -246,6 +246,8 @@
             os: '{os}'
         - maven-project-parameter:
             maven: '{mvn33}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - git-scm:
@@ -272,7 +274,7 @@
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar'
-        maven-opts: '-Xmx2048m -XX:MaxPermSize=256m -Dmaven.compile.fork=true'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
         global-settings: 'global-settings'

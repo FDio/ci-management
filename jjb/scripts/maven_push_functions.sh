@@ -24,10 +24,14 @@ function push_file ()
     version=$4
     artifactId=$5
     file_type=$6
-    classifier=$7
 
-    if [ "$classifier" ]; then
+    if [ -n "$7" ]; then
         d_classifier="-Dclassifier=$7"
+    fi
+
+    if [ ! -f "$push_file" ] ; then
+        echo "file for deployment does not exist: $push_file"
+        exit 1;
     fi
 
     # Disable checks for doublequote to prevent glob / splitting
