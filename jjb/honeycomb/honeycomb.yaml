@@ -244,6 +244,8 @@
             project: '{project}'
         - os-parameter:
             os: '{os}'
+        - maven-project-parameter:
+            maven: '{mvn33}'
 
     scm:
         - git-scm:
