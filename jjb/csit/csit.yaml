@@ -60,7 +60,7 @@
 
     builders:
         - shell:
-            !include-raw-escape include-raw-csit-vpp-functional-virl.sh
+            !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
 
     publishers:
         - archive-artifacts:
@@ -110,7 +110,7 @@
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-perf-hw.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-hw.sh
 
     publishers:
         - archive-artifacts:
@@ -294,7 +294,7 @@
 
     builders:
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-weekly.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
         - shell: 'echo "DATE=`date +%Y-%m-%d`" > $WORKSPACE/variables.prop'
         - inject:
             properties-file: variables.prop
@@ -352,7 +352,7 @@
         - inject:
             properties-file: variables.prop
         - shell:
-            !include-raw-escape jjb/csit/include-raw-csit-vpp-verify-semiweekly.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-semiweekly.sh
 
     publishers:
         - archive-artifacts:

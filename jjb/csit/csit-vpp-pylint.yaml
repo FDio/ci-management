@@ -47,7 +47,7 @@
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape include-raw-csit-pylint.sh
+            !include-raw-escape: include-raw-csit-pylint.sh
 
     publishers:
         - archive-artifacts:
