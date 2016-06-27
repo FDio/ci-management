@@ -1,0 +1,49 @@
+- project:
+    name: 'deb-dpdk'
+    project: 'deb-dpdk'
+    branch: 'deb_dpdk_16.04'
+    branch-id: 'deb_dpdk_16.04'
+    build-artifact-num-to-keep: 10
+    jobs:
+        - 'deb-dpdk-verify-ubuntu1604'
+
+- job:
+    name: 'deb-dpdk-verify-ubuntu1604'
+
+    project-type: freestyle
+    node: 'verify-ubuntu1604'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: 'deb-dpdk'
+        - gerrit-parameter:
+            branch: 'deb_dpdk_16.04'
+        - os-parameter:
+            os: 'ubuntu1604'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: 'deb-dpdk'
+            branch: 'deb_dpdk_16.04'
+
+    builders:
+        - shell:
+            !include-raw-escape: build.sh
