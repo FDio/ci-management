@@ -1,0 +1,67 @@
+- project:
+    name: 'deb-dpdk'
+    jobs:
+        - 'deb-dpdk-verify-{stream}-{os}'
+#        - 'deb-dpdk-merge-{stream}-{os}'
+#        - 'deb-dpdk-verify-image-{stream}-{os}'
+
+    project: 'deb-dpdk'
+    os:
+        - debian
+            repo-os-part: 'debian'
+    stream:
+        - oldstable
+          branch: 'deb_dpdk_16.04'
+          repo-stream-part: 'oldstable'
+        - stable
+          branch: 'deb_dpdk_16.04'
+          repo-stream-part: 'stable'
+        - testing
+          branch: 'deb_dpdk_16.04'
+          repo-stream-part: 'testing'
+        - unstable
+          branch: 'deb_dpdk_16.04'
+          repo-stream-part: 'unstable'
+
+    build-artifact-num-to-keep: 10
+
+- job:
+    name: 'deb-dpdk-verify-{stream}-{os}'
+
+    project-type: freestyle
+    node: 'verify-{os}-{stream}'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: 'deb-dpdk'
+        - gerrit-parameter:
+            branch: 'deb_dpdk_16.04'
+        - os-parameter:
+            os: 'ubuntu1604'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: 'deb-dpdk'
+            branch: 'deb_dpdk_16.04'
+
+    builders:
+        - shell:
+            !include-raw-escape: build.sh
