@@ -362,6 +362,140 @@
         - robot-report:
             output-path: 'csit/archive'
 
+        - plot:
+            - title: 'RFC2544 binary search with 64B, worker-thread=1, rxq=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-1.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=1, rxq=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-2.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=2, rxq=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-3.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=2, rxq=1, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-4.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=4, rxq=2, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-5.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=4, rxq=2, NDR'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:NDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-6.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=1, rxq=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-7.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=1, rxq=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-8.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=2, rxq=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-9.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=2, rxq=1, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-10.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
+            - title: 'RFC2544 binary search with 64B, worker-thread=4, rxq=2, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-11.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
+            - title: 'RFC2544 binary search with 78B, worker-thread=4, rxq=2, PDR=0.5%'
+              yaxis: 'Packets Per Second'
+              group: 'RFC2544:PDR'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-{stream}-semiweekly-12.csv'
+              series:
+                  - file: 'csit/archive/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
+
 - parameter:
     name: test-type-parameter
     parameters:
