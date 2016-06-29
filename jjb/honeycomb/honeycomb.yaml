@@ -198,20 +198,6 @@
         global-settings-type: cfp
 
     postbuilders:
-        - maven-target:
-            maven-version: '{mvn33}'
-            goals: '--version'
-            settings: 'honeycomb-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'honeycomb-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-honeycomb-pkg-push.sh
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
 
@@ -264,6 +250,9 @@
     triggers:
         - reverse:
             jobs: 'vpp-merge-{branch}-{os}'
+            result: 'success'
+        - reverse:
+            jobs: 'honeycomb-merge-{branch}-{os}'
             result: 'success'
 
     prebuilders:
