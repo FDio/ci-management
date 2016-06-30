@@ -1,27 +1,11 @@
 #!/bin/bash
 
-# Copyright 2016 The Linux Foundation <cjcollier@linuxfoundation.org>
+# Copyright 2016 The Linux Foundation
 
-PVE_ROOT="${HOME}/src/python-virtual"
-CPPROJECT=${CPPROJECT:-fdio}
-PVENAME="${CPPROJECT}-openstack"
-PVE_PATH="${PVE_ROOT}/${PVENAME}"
-PVERC=${PVE_PATH}/bin/activate
-SERVER_NAME=${SERVER_NAME:-${USER}-vagrant}
+source ${CI_MGMT}/vagrant/lib/vagrant-functions.sh
 
-STACK_PROVIDER=vexxhost
-STACK_PORTAL=secure.${STACK_PROVIDER}.com
-STACK_ID_SERVER=auth.${STACK_PROVIDER}.net
-
-export OPENSTACK_AUTH_URL="https://${STACK_ID_SERVER}/v2.0/"
-export OPENSTACK_FLAVOR='v1-standard-4'
-export STACK_REGION_NAME='ca-ymq-1'
-export AVAILABILITY_ZONE='ca-ymq-2'
-export NETID=${NETID:-$(nova network-list | awk "/${CPPROJECT}/ {print \$2}")}
-
-if [ ! -d ${PVE_PATH} ]
+if [ ! -d ${PVE_BINDIR} ]
 then
-    mkdir -p $(dirname $PVE_PATH)
     if [ -f /etc/debian_version ]
     then
         sudo apt-get -y -qq install virtualenvwrapper python-virtualenv libpython-dev
@@ -30,24 +14,39 @@ then
         sudo yum -y install python-virtualenv
     fi
 
-    python-virtualenv ${PVE_PATH}
+    mkdir -p ${PVE_PATH}
+    virtualenv ${PVE_PATH}
 
     echo "Please copy all OS_* variables from https://secure.vexxhost.com/console/#/account/credentials to the end of ${PVERC}"
 fi
 
-RH_ARCH64=x86_64
-RH_ARCH32=i686
-DEB_ARCH64=amd64
-DEB_ARCH32=i386
-LV_IMG_DIR=/var/lib/libvirt/images/
-SRC_TIMESTAMP=""
-DST_TIMESTAMP=""
+source ${PVERC}
+pip install -q --upgrade pip setuptools python-{cinder,glance,keystone,neutron,nova,openstack}client
+
+#
+# usage:
+#   AGE_JSON=$(latest_src_age ${DIST} ${VERSION} ${ARCH})
+#
+function latest_src_age ()
+{
+    SRC_TS=$(latest_src_timestamp "$@")
+    NOW_TS=$(new_timestamp)
+
+    perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( "${NOW_TS}", "${SRC_TS}" )'
+
+    return 0
+}
+
+function new_timestamp ()
+{
+    date +'%F T %T' | sed -e 's/[-: ]//g'
+}
 
 function new_dst_timestamp ()
 {
     if [ -z "${DST_TIMESTAMP}" ]
     then
-        DST_TIMESTAMP=$(date +'%F T %T' | sed -e 's/[-: ]//g')
+        DST_TIMESTAMP=$(new_timestamp)
     fi
 
     echo ${DST_TIMESTAMP}
@@ -101,7 +100,6 @@ function setup_rh ()
     IMG_NAME="${DIST} ${VERSION} (${SRC_TIMESTAMP}) - LF upload"
 }
 
-
 #
 # usage:
 #   create_rh_image ${DIST} ${VERSION} ${ARCH}
@@ -122,7 +120,7 @@ function download_rh_image ()
 {
     setup_rh "$@"
     echo "--> Fetching image file for ${DIST} ${VERSION}"
-    wget -cP ${LV_IMG_DIR} "http://cloud.centos.org/centos/${VERSION}/images/${IMG_FNAME}"
+    wget -qcP ${LV_IMG_DIR} "http://cloud.centos.org/centos/${VERSION}/images/${IMG_FNAME}"
 }
 
 
@@ -234,7 +232,7 @@ function download_deb_image ()
 
     if [ -z "$URL" ]; then echo "Cannot fetch qcow2 image for ${DIST} v${MICRO_VERSION}"; return -3; fi
     echo "--> Fetching image file for ${DIST} ${VERSION}"
-    wget -cP ${LV_IMG_DIR} "${URL}"
+    wget -qcP ${LV_IMG_DIR} "${URL}"
 }
 
 # Used to upload
@@ -251,6 +249,7 @@ function create_deb_image ()
 
     if [ ! -f ${IMG_PATH} ]; then download_deb_image "$@"; fi
 
+    echo "--> Pushing image ${IMG_NAME}"
     glance_image_create "${IMG_NAME}" "${IMG_PATH}"
 }
 
@@ -261,7 +260,7 @@ function respin_deb_image ()
     setup_deb "$@"
     export IMAGE="${IMG_NAME}"
     echo "--> creating instance of image '${IMAGE}' as server name '${SERVER_NAME}'"
-    vagrant up
+    vagrant up --provider=openstack
     if [ "Ubuntu" == "${DIST}" ]
     then
         DST_IMAGE="${DIST} ${VERSION} LTS - basebuild - ${DST_TIMESTAMP}"
@@ -285,10 +284,25 @@ function respin_rh_image ()
     setup_rh "$@"
     IMAGE="${IMG_NAME}"
     echo "--> creating instance of image '${IMG_NAME}' as server name '${SERVER_NAME}'"
-    vagrant up
+    vagrant up --provider=openstack
     DST_IMAGE="${DIST} ${VERSION} - basebuild - ${DST_TIMESTAMP}"
     echo "--> Taking snapshot of image '${IMG_NAME}' with name '${DST_IMAGE}'"
     nova image-create --poll "${SERVER_NAME}" "${DST_IMAGE}"
     echo "--> Bringing down vagrant instance"
     vagrant destroy
 }
+
+function dist_type ()
+{
+  case "${1}" in
+      CentOS | RHEL | SuSE)
+          echo "rh" ;;
+      Debian | Ubuntu | Kali | ProxMox | VyOS)
+          echo "deb" ;;
+      *)
+          echo "Unrecognized distribution: ${1}"
+          exit 2 ;;
+  esac
+
+}
+
