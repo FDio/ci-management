@@ -40,4 +40,9 @@ rbenv global 2.1.5
 
 # Add dummy box
 vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
-cp ${CIADM_DIR}/vagrant/examples/box/dummy/Vagrantfile ~/.vagrant.d/boxes/dummy/0/openstack/
+cp ${CI_MGMT}/vagrant/examples/box/dummy/Vagrantfile ~/.vagrant.d/boxes/dummy/0/openstack/
+
+for plugin in vagrant-openstack-provider vagrant-cachier vagrant-mutate
+do
+    vagrant plugin install ${plugin}
+done
