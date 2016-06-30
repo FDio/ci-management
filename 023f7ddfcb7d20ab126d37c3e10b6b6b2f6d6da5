@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba092121_9e9e9655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-06-30T21:16:33Z",
+      "side": 1,
+      "message": "Images should be respun whenever the underlying files in vagrant/basebuild are changed, not every two weeks.  If patches are submitted, its usually because there is a reason the change is needed promptly, waiting for two weeks after merge for it to happen doesn\u0027t work.",
+      "revId": "023f7ddfcb7d20ab126d37c3e10b6b6b2f6d6da5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
