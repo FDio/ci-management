@@ -1,0 +1,60 @@
+- project:
+    name: csit
+    description: 'CSIT jenkins jobs to test Honeycomb features.'
+    jobs:
+        - 'csit-honeycomb-functional-{stream}-{os}'
+    project: 'csit'
+    branch: 'master'
+    branch-id: 'master'
+    build-artifact-num-to-keep: 10
+    stream:
+        - master:
+            branch: 'master'
+            branch-id: 'master'
+    os:
+        - ubuntu1404
+
+- job-template:
+    name: 'csit-honeycomb-functional-{stream}-{os}'
+
+    project-type: freestyle
+    node: verify
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - build-result:
+            combine: false
+            groups:
+                - jobs:
+                    - honeycomb-merge-{stream}-{os}
+                    results:
+                        - stable
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-csit-honeycomb-functional-virl.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: ''
