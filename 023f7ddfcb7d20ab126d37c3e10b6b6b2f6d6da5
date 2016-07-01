@@ -16,6 +16,24 @@
       "revId": "023f7ddfcb7d20ab126d37c3e10b6b6b2f6d6da5",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba092121_beb03ade",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-07-01T17:58:25Z",
+      "side": 1,
+      "message": "Sorry for the confusion here.  I\u0027ve added a better commit message.",
+      "parentUuid": "ba092121_9e9e9655",
+      "revId": "023f7ddfcb7d20ab126d37c3e10b6b6b2f6d6da5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
