@@ -10,7 +10,7 @@
 
     project: 'csit'
     branch: 'master'
-    branch-id: 'master'
+    branch-id: 'oper'
     build-artifact-num-to-keep: 10
     type:
         - all
@@ -18,10 +18,10 @@
     stream:
         - master:
             branch: 'master'
-            branch-id: 'master'
+            branch-id: 'oper'
         - '1606':
-            branch: 'stable/1606'
-            branch-id: 'stable1606'
+            branch: 'rls1606'
+            branch-id: 'oper-rls1606'
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-virl'
@@ -311,7 +311,7 @@
                branches:
                 - branch:
                     remote: origin
-                    name: 'refs/heads/csit-verified-{branch-id}-$DATE'
+                    name: 'refs/heads/{branch-id}-$DATE'
 
 
 - job-template:
