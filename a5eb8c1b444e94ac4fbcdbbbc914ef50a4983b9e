@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a0e1d27_775e70eb",
+        "filename": "jjb/csit/include-raw-csit-honeycomb-functional-virl.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-07-02T21:15:11Z",
+      "side": 1,
+      "message": "negate this condition",
+      "range": {
+        "startLine": 4,
+        "startChar": 5,
+        "endLine": 4,
+        "endChar": 34
+      },
+      "revId": "a5eb8c1b444e94ac4fbcdbbbc914ef50a4983b9e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0e1d27_975104db",
+        "filename": "jjb/csit/include-raw-csit-honeycomb-functional-virl.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-07-02T21:15:11Z",
+      "side": 1,
+      "message": "move this below the condition",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "a5eb8c1b444e94ac4fbcdbbbc914ef50a4983b9e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
