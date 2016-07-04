@@ -295,7 +295,7 @@
     builders:
         - shell:
             !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
-        - shell: 'echo "DATE=`date +%Y-%m-%d`" > $WORKSPACE/variables.prop'
+        - shell: 'echo "DATE=`date +%y%m%d`" > $WORKSPACE/variables.prop'
         - inject:
             properties-file: variables.prop
 
