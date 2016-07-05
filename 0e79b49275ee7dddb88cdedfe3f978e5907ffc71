@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a0e1d27_1d463324",
+        "filename": "jjb/deb-dpdk/deb-dpdk.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-07-05T14:11:39Z",
+      "side": 1,
+      "message": "I would recommend that if you are going to have many branches that you introduce the {stream} concept.",
+      "revId": "0e79b49275ee7dddb88cdedfe3f978e5907ffc71",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
