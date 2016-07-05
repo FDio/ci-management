@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a0e1d27_7d888f22",
+        "filename": "jjb/deb-dpdk/build.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-07-05T21:12:27Z",
+      "side": 1,
+      "message": "Don\u0027t use a generic name like build.sh. If the file is being used for raw include the name should be raw-include-${project}-reason.sh or similar",
+      "revId": "c2b31c2c6786c9996de59a7c73fb53a92034a9ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0e1d27_5d8dcb30",
+        "filename": "jjb/deb-dpdk/deb-dpdk.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-07-05T21:12:27Z",
+      "side": 1,
+      "message": "Badly named file, see comment on file for better name",
+      "revId": "c2b31c2c6786c9996de59a7c73fb53a92034a9ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0e1d27_3d821701",
+        "filename": "jjb/deb-dpdk/maven-push.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-07-05T21:12:27Z",
+      "side": 1,
+      "message": "What\u0027s the point of this script since it\u0027s not being called by any of the defined jobs for deb-dpdk",
+      "revId": "c2b31c2c6786c9996de59a7c73fb53a92034a9ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
