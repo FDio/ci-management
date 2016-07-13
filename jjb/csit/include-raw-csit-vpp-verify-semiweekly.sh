@@ -19,7 +19,7 @@ fi
 cd csit
 
 # get the latest verified version of the required branch
-BRANCH_NAME=$(echo $(git branch -r | grep ${BRANCH_ID} | tail -n 1))
+BRANCH_NAME=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
 
 if [ "${BRANCH_NAME}" == "" ]; then
     echo "No verified version found for requested branch - exiting"
