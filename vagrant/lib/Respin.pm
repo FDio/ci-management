@@ -20,6 +20,8 @@ my $dur_fmt = DateTime::Format::Duration->new(
 sub latest_src_age {
     my ( $now, $src ) = @_;
 
+    print STDERR "Computing duration between [$src] and [$now]\n";
+
     my ( %now, %src );
     @now{qw(year month day hour minute second)} = ( $now =~ $iso8601_rx );
     @src{qw(year month day hour minute second)} = ( $src =~ $iso8601_rx );

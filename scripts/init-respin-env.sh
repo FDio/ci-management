@@ -9,11 +9,13 @@ ruby_version=2.1.5
 ruby_patch=https://gist.github.com/mislav/055441129184a1512bb5.txt
 rbenv_git=https://github.com/rbenv/rbenv.git
 
+CPPROJECT=fdio
+
 PVENAME="${CPPROJECT}-openstack"
+PVE_ROOT="${HOME}/src/python-virtual"
 PVE_PATH="${PVE_ROOT}/${PVENAME}"
 PVERC=${PVE_PATH}/bin/activate
 PVE_BINDIR=$(dirname $PVERC)
-PVE_ROOT="${HOME}/src/python-virtual"
 
 LOCAL_LIB="${HOME}/src/local-lib"
 LL_LIBDIR="${LOCAL_LIB}/lib"
@@ -25,17 +27,6 @@ DEB_ARCH32=i386
 LV_IMG_DIR=/var/lib/libvirt/images/
 SRC_TIMESTAMP=""
 DST_TIMESTAMP=""
-
-init_virtualenv
-init_rbenv
-init_ruby
-select_ruby ${ruby_version}
-init_virtualenv
-init_vagrant
-install_vagrant_plugins
-import_vagrant_box
-init_local_lib
-init_javascript
 
 function init_virtualenv ()
 {
@@ -84,8 +75,8 @@ function init_vagrant ()
     vagrant_pkg_name=vagrant_${vagrant_version}_x86_64.deb
     vagrant_pkg=https://releases.hashicorp.com/vagrant/${vagrant_version}/${vagrant_pkg_name}
 
-    wget -c ${vagrant_pkg}
-    sudo dpkg -i ${vagrant_pkg_name}
+    wget -t 10 -q -c /tmp/${vagrant_pkg}
+    sudo dpkg -i /vagrant/${vagrant_pkg_name}
 }
 
 function init_rbenv ()
@@ -103,7 +94,7 @@ function init_rbenv ()
     cd ~/.rbenv && src/configure && make -C src
 
     # Add rbenv to bashrc
-    grep HOME/.rbenv/bin ~/.bash_profile || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+    grep HOME/.rbenv/bin ~/.bashrc || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 
     # Add rbenv to current environment
     export PATH="$HOME/.rbenv/bin:$PATH"
@@ -111,6 +102,8 @@ function init_rbenv ()
 
 function init_ruby ()
 {
+    rbenv versions | grep -q ${ruby_version} && return 0
+
     # Install ruby build deps
     sudo apt-get build-dep ruby
     #sudo apt-get -y install \
@@ -130,17 +123,33 @@ function select_ruby ()
 
 function install_vagrant_plugins ()
 {
+    plugs=$(vagrant plugin list)
     for plugin in vagrant-openstack-provider vagrant-cachier vagrant-mutate
     do
+        echo ${plugs} | grep -q ${plugin} && continue
         vagrant plugin install ${plugin}
     done
 }
 
 function import_vagrant_box ()
 {
+    # Skip if already done
+    if [ -f ${HOME}/.vagrant.d/boxes/dummy/0/openstack/Vagrantfile ]; then return ; fi
+
     # Add dummy box
     vagrant box add dummy https://github.com/huit/vagrant-openstack/blob/master/dummy.box
 
     cp ${CI_MGMT}/vagrant/examples/box/dummy/Vagrantfile ~/.vagrant.d/boxes/dummy/0/openstack/
 }
 
+
+init_virtualenv
+init_rbenv
+init_ruby
+select_ruby ${ruby_version}
+init_virtualenv
+init_vagrant
+install_vagrant_plugins
+import_vagrant_box
+init_local_lib
+init_javascript

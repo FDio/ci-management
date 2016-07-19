@@ -13,6 +13,24 @@ CI_MGMT=$(realpath $(dirname $(realpath $0))/..)
 source ${CI_MGMT}/vagrant/lib/respin-functions.sh
 source ${PVERC}
 
+VAGRANT_DIR=${CI_MGMT}/vagrant/basebuild
+
+# Fetch MVN package
+MAVEN_MIRROR=apache.mirrors.tds.net
+MAVEN_VERSION=3.3.9
+MAVEN_FILENAME=apache-maven-${MAVEN_VERSION}-bin.tar.gz
+MAVEN_RELEASE=http://${MAVEN_MIRROR}/maven/maven-3/${MAVEN_VERSION}/binaries/${MAVEN_FILENAME}
+
+TRIES=10
+
+wget -t ${TRIES} -q -O ${VAGRANT_DIR}/${MAVEN_FILENAME} ${MAVEN_RELEASE}
+
+# Fetch EPEL package
+EPEL_RPM=epel-release-latest-7.noarch.rpm
+EPEL_RELEASE=https://dl.fedoraproject.org/pub/epel/${EPEL_RPM}
+
+wget -t ${TRIES} -q -O ${VAGRANT_DIR}/${EPEL_RPM} ${EPEL_RELEASE}
+
 echo nova: $(which nova)
 
 export NETID=${NETID:-$(nova network-list | awk "/${CPPROJECT}/ {print \$2}")}
@@ -25,19 +43,7 @@ do
     ARCH="${DVA[2]}"
     DTYPE=$(dist_type ${DIST})
 
-    AGE_JSON=$(latest_src_age ${DIST} ${VERSION} ${ARCH});
-
-    # only fetch new base image if our latest one is more than two weeks old
-    if [ $(echo ${AGE_JSON} | jq .week) -ge "3" ]
-    then
-        # Acquire bootstrap images
-        download_${DTYPE}_image "${DIST}" "${VERSION}" "${ARCH}"
-
-        # Push images to openstack via glance
-        create_${DTYPE}_image "${DIST}" "${VERSION}" "${ARCH}"
-    fi
-
     # Respin images
-    cd ${CI_MGMT}/vagrant/basebuild
+    cd ${VAGRANT_DIR}
     respin_${DTYPE}_image "${DIST}" "${VERSION}" "${ARCH}"
 done

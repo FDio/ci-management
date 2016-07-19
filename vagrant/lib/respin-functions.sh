@@ -6,6 +6,7 @@ source ${CI_MGMT}/vagrant/lib/vagrant-functions.sh
 
 
 source ${PVERC}
+
 pip install -q --upgrade pip setuptools python-{cinder,glance,keystone,neutron,nova,openstack}client
 
 #
@@ -17,7 +18,7 @@ function latest_src_age ()
     SRC_TS=$(latest_src_timestamp "$@")
     NOW_TS=$(new_timestamp)
 
-    perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( "${NOW_TS}", "${SRC_TS}" )'
+    perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( @ARGV )' "${NOW_TS}" "${SRC_TS}"
 
     return 0
 }
@@ -244,7 +245,7 @@ function respin_deb_image ()
     DST_TIMESTAMP=$(new_dst_timestamp)
     setup_deb "$@"
     export IMAGE="${IMG_NAME}"
-    echo "--> creating instance of image '${IMAGE}' as server name '${SERVER_NAME}'"
+    echo "--> creating instance of image '${IMG_NAME}' as server name '${SERVER_NAME}'"
     vagrant up --provider=openstack
     if [ "Ubuntu" == "${DIST}" ]
     then
@@ -267,7 +268,7 @@ function respin_rh_image ()
     SRC_TIMESTAMP=$(latest_src_timestamp)
     DST_TIMESTAMP=$(new_dst_timestamp)
     setup_rh "$@"
-    IMAGE="${IMG_NAME}"
+    export IMAGE="${IMG_NAME}"
     echo "--> creating instance of image '${IMG_NAME}' as server name '${SERVER_NAME}'"
     vagrant up --provider=openstack
     DST_IMAGE="${DIST} ${VERSION} - basebuild - ${DST_TIMESTAMP}"
