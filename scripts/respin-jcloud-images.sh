@@ -28,7 +28,8 @@ do
     AGE_JSON=$(latest_src_age ${DIST} ${VERSION} ${ARCH});
 
     # only fetch new base image if our latest one is more than two weeks old
-    if [ $(echo ${AGE_JSON} | jq .week) -ge "3" ]
+    WEEK_AGE=$(echo ${AGE_JSON} | jq .week | sed -e s/\"\'//g)
+    if [ "${WEEK_AGE}" -gt "3" ]
     then
         # Acquire bootstrap images
         download_${DTYPE}_image "${DIST}" "${VERSION}" "${ARCH}"

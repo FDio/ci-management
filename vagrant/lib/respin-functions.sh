@@ -6,6 +6,7 @@ source ${CI_MGMT}/vagrant/lib/vagrant-functions.sh
 
 
 source ${PVERC}
+
 pip install -q --upgrade pip setuptools python-{cinder,glance,keystone,neutron,nova,openstack}client
 
 #
@@ -17,7 +18,7 @@ function latest_src_age ()
     SRC_TS=$(latest_src_timestamp "$@")
     NOW_TS=$(new_timestamp)
 
-    perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( "${NOW_TS}", "${SRC_TS}" )'
+    perl -I${CI_MGMT}/vagrant/lib -MRespin -e 'Respin::latest_src_age( @ARGV )' "${NOW_TS}" "${SRC_TS}"
 
     return 0
 }
