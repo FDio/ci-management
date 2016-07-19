@@ -5,14 +5,12 @@ do_setup() {
 }
 
 do_mvn_install() {
-    MAVEN_MIRROR=apache.mirrors.tds.net
     MAVEN_VERSION=3.3.9
-    MAVEN_RELEASE=http://${MAVEN_MIRROR}/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+    MAVEN_FILENAME=apache-maven-${MAVEN_VERSION}-bin.tar.gz
     MAVEN_HOME=/opt/apache/maven
 
-    mkdir -p /opt/apache/maven
-    wget -O - ${MAVEN_RELEASE} | \
-        tar xz -C ${MAVEN_HOME} --strip-components 1
+    mkdir -p ${MAVEN_HOME}
+    tar -C ${MAVEN_HOME} --strip-components 1 -xzf /vagrant/${MAVEN_FILENAME}
 }
 
 
@@ -223,7 +221,7 @@ rh_install_pkgs() {
     OUTPUT=$(rpm -qa epel-release)
     if [ -z "$OUTPUT" ]
     then
-        yum install -q -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        yum install -q -y /vagrant/epel-release-latest-7.noarch.rpm
     fi
 
     # Install components to build Ganglia modules
