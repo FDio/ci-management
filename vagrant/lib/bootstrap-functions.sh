@@ -4,6 +4,18 @@ do_setup() {
     echo "127.0.1.1 $(hostname) # temporary" >> /etc/hosts
 }
 
+do_mvn_install() {
+    MAVEN_MIRROR=apache.mirrors.tds.net
+    MAVEN_VERSION=3.3.9
+    MAVEN_RELEASE=http://${MAVEN_MIRROR}/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+    MAVEN_HOME=/opt/apache/maven
+
+    mkdir -p /opt/apache/maven
+    wget -O - ${MAVEN_RELEASE} | \
+        tar xz -C ${MAVEN_HOME} --strip-components 1
+}
+
+
 do_cleanup() {
     perl -i -ne 'print unless /^127.0.1.1.*# temporary$/' /etc/hosts
 }
