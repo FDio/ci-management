@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a0e1d27_72d1c7fa",
+        "filename": "jjb/scripts/maven_push_functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-07-21T15:25:13Z",
+      "side": 1,
+      "message": "Don\u0027t just comment the code out, remove it if you\u0027re going to disable it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 83
+      },
+      "revId": "4a7dc5c6428be958da00c6c79c3f0e82f17f8699",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a0e1d27_32db4f1d",
+        "filename": "jjb/vpp/include-raw-vpp-maven-push.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-07-21T15:25:13Z",
+      "side": 1,
+      "message": "Don\u0027t just comment the code out, remove it if you\u0027re going to disable it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 84
+      },
+      "revId": "4a7dc5c6428be958da00c6c79c3f0e82f17f8699",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
