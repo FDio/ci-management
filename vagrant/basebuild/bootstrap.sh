@@ -7,6 +7,7 @@ set -e
 . /vagrant/lib/bootstrap-functions.sh
 
 do_setup
+do_mvn_install
 
 # record the bootstrap.sh checksum
 sha1sum $0 > /etc/bootstrap.sha
