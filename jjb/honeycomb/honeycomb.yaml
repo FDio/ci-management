@@ -55,7 +55,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -68,7 +68,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - email-notification:
@@ -126,7 +126,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -139,7 +139,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - email-notification:
@@ -185,7 +185,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
 
     maven:
         maven-name: '{mvn33}'
@@ -199,7 +199,7 @@
 
     postbuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     reporters:
         - findbugs
@@ -250,7 +250,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
 
     maven:
         maven-name: '{mvn33}'
@@ -278,7 +278,7 @@
                 - ../scripts/maven_push_functions.sh
                 - include-raw-honeycomb-pkg-push.sh
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64;fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     reporters:
         - findbugs
