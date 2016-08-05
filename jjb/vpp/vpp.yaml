@@ -88,7 +88,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - include-raw-vpp-checkstyle.sh
+                - include-raw-vpp-build.sh
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
@@ -142,7 +144,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - include-raw-vpp-checkstyle.sh
+                - include-raw-vpp-build.sh
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
@@ -186,7 +190,8 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+                - include-raw-vpp-checkstyle.sh
+                - include-raw-vpp-build.sh
         - maven-target:
             maven-version: '{mvn33}'
             goals: '--version'
