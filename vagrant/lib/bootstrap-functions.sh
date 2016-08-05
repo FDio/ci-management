@@ -124,7 +124,7 @@ deb_install_pkgs() {
     # Build tools - should match vpp/Makefile DEB_DEPENDS variable
     PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev
               ccache debhelper dkms git libtool libganglia1-dev libapr1-dev
-              dh-systemd libconfuse-dev git-review exuberant-ctags cscope"
+              dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent"
 
     # Interface manipulation tools, editors, debugger and lsb
     PACKAGES="$PACKAGES iproute2 ethtool vlan bridge-utils
@@ -199,7 +199,7 @@ rh_install_pkgs() {
 
     # Install build tools
     yum install -q -y @development redhat-lsb glibc-static java-1.8.0-openjdk-devel yum-utils \
-                      openssl-devel apr-devel
+                      openssl-devel apr-devel indent
 
     # Specify documentation packages
     DOC_PACKAGES="doxygen graphviz"
