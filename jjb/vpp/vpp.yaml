@@ -88,6 +88,8 @@
 
     builders:
         - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-build.sh
 
 - job-template:
@@ -142,6 +144,8 @@
 
     builders:
         - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-build.sh
 
 - job-template:
@@ -185,6 +189,8 @@
             branch: '{branch}'
 
     builders:
+        - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape: include-raw-vpp-build.sh
         - maven-target:
