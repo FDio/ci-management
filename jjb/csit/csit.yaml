@@ -548,7 +548,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-1.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
@@ -559,7 +559,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-2.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
@@ -570,7 +570,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-3.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
@@ -581,7 +581,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-4.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
@@ -592,7 +592,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-5.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
@@ -603,7 +603,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-6.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
@@ -614,7 +614,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-7.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
@@ -625,7 +625,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-8.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
@@ -636,7 +636,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-9.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
@@ -647,7 +647,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-10.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
@@ -658,7 +658,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-11.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
@@ -669,7 +669,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-verify-master-nightly-12.csv'
               series:
-                  - file: 'csit/output.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
