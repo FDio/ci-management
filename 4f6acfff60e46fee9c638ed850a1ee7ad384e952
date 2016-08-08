@@ -1,0 +1,9 @@
+Verified+1: Zuul <zuul@fd.io>
+Code-Review+1: Jan Gelety <jgelety@cisco.com>
+Code-Review+1: Miroslav Miklus <mmiklus@cisco.com>
+Code-Review+2: Ed Warnicke <hagbard@gmail.com>
+Submitted-by: Ed Warnicke <hagbard@gmail.com>
+Submitted-at: Mon, 08 Aug 2016 15:33:51 +0000
+Reviewed-on: https://gerrit.fd.io/r/2250
+Project: ci-management
+Branch: refs/heads/master
