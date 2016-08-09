@@ -246,6 +246,8 @@
 
     builders:
         - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-build.sh
         - shell:
             !include-raw-escape: include-raw-vpp-csit-functional.sh
