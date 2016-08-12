@@ -50,6 +50,7 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
@@ -99,6 +100,7 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
@@ -281,6 +283,7 @@
             branch: '{branch}'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
@@ -336,6 +339,7 @@
             branch: '{branch}'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
@@ -384,6 +388,7 @@
             branch: '{branch}'
 
     wrappers:
+        - timestamps
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
