@@ -37,8 +37,8 @@ providers:
         public: True
     images:
       - name: 'trusty'
-        #base-image: 'Ubuntu 14.04 LTS - basebuild - 20160202'
-        base-image: '72ac4b06-74bb-40ee-97f9-835a797354a9'
+        #base-image: 'Ubuntu 14.04 - basebuild - 20160518T202806'
+        base-image: 'ce91c99d-3cda-4ffe-bcdb-8293ac65d95e'
         min-ram: 4096
         setup: 'verify_merge.sh'
         username: 'jenkins'
@@ -67,8 +67,8 @@ providers:
         public: False
     images:
       - name: 'trusty-multilink'
-        #base-image: 'Ubuntu 14.04 LTS - basebuild - 20160202'
-        base-image: '72ac4b06-74bb-40ee-97f9-835a797354a9'
+        #base-image: 'Ubuntu 14.04 - basebuild - 20160518T202806'
+        base-image: 'ce91c99d-3cda-4ffe-bcdb-8293ac65d95e'
         min-ram: 4096
         setup: 'multilink.sh'
         username: 'jenkins'
