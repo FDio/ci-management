@@ -2,6 +2,7 @@
 
 # die on errors
 set -e
+set -x
 
 # pull in bootstrap functions
 . /vagrant/lib/bootstrap-functions.sh
@@ -27,7 +28,12 @@ then
     echo "---> Debian type system detected"
     export DEBIAN_FRONTEND=noninteractive
 
+    VERSION=$(lsb_release -r | awk '{print $2}')
+    DIST=$(lsb_release -i | awk '{print $3}')
+    CODENAME=$(lsb_release -c | awk '{print $2}')
+
     deb_aptconf_batchconf
+    deb_apt_sources_list
     deb_sync_minor
     deb_correct_shell
     deb_install_pkgs
