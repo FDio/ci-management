@@ -48,7 +48,32 @@ Dpkg::Options {
    "--force-confold";
 };
 
-quiet "2";
+#quiet "2";
+
+EOF
+}
+
+deb_apt_sources_list() {
+    CODENAME=""
+    if [ "$VERSION" = '14.04' ]
+    then
+        CODENAME=trusty
+    elif [ "$VERSION" = '16.04' ]
+    then
+        CODENAME=xenial
+    fi
+
+    cat <<EOF > /etc/apt/sources.list
+deb http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME} main restricted universe multiverse 
+deb-src http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME} main restricted universe multiverse 
+deb http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-security main restricted universe multiverse 
+deb http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-updates main restricted universe multiverse 
+deb http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-proposed main restricted universe multiverse 
+deb-src http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-security main restricted universe multiverse 
+deb-src http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-updates main restricted universe multiverse 
+deb-src http://ca.archive.ubuntu.com/ubuntu/ ${CODENAME}-proposed main restricted universe multiverse 
+deb http://archive.canonical.com/ubuntu ${CODENAME} partner
+deb-src http://archive.canonical.com/ubuntu ${CODENAME} partner
 
 EOF
 }
@@ -93,10 +118,6 @@ deb_add_ppa() {
 deb_install_pkgs() {
     apt-get install lsb-release
     LSB_PATH=$(which lsb_release)
-
-    VERSION=$(lsb_release -r | awk '{print $2}')
-    DIST=$(lsb_release -i | awk '{print $3}')
-    CODENAME=$(lsb_release -c | awk '{print $2}')
 
     echo "---> Detected [${DIST} v${VERSION} (${CODENAME})]"
 
