@@ -3,10 +3,8 @@
     jobs:
         - 'ci-management-verify-jjb'
         - 'ci-management-merge-jjb'
-        - 'ci-management-verify-zuul'
-        - 'ci-management-merge-zuul'
-        - 'ci-management-verify-nodepool'
-        - 'ci-management-merge-nodepool'
+
+    branch: master
 
 - job-template:
     name: ci-management-verify-jjb
@@ -22,15 +20,20 @@
         artifactNumToKeep: 5
 
     scm:
-        - zuul-trigger-scm:
+        - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: '$ZUUL_REF'
-            commit: '$ZUUL_COMMIT'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: 'honeycomb'
+            branch: '{branch}'
 
     builders:
         - shell: |
@@ -54,15 +57,20 @@
         artifactNumToKeep: 5
 
     scm:
-        - zuul-trigger-scm:
+        - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: ''
-            commit: 'origin/$ZUUL_BRANCH'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
 
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+
+    triggers:
+        - gerrit-trigger-patch-merged:
+            name: 'honeycomb'
+            branch: '{branch}'
 
     builders:
         - shell:
