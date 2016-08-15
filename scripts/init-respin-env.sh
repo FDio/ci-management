@@ -104,14 +104,22 @@ function init_ruby ()
 {
     rbenv versions | grep -q ${ruby_version} && return 0
 
-    # Install ruby build deps
-    sudo apt-get build-dep ruby
-    #sudo apt-get -y install \
-    #     autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev \
-    #     zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+    if [ -f /usr/bin/yum ]
+    then
+        sudo yum-builddep ruby
+        rbenv install --patch ${ruby_version}
 
-    # Build ruby
-    curl -fsSL ${ruby_patch} | rbenv install --patch ${ruby_version}
+    elif [ -f /usr/bin/apt-get ]
+    then
+        # Install ruby build deps
+        sudo apt-get build-dep ruby
+        #sudo apt-get -y install \
+        #     autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev \
+        #     zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+        # Build ruby
+        curl -fsSL ${ruby_patch} | rbenv install --patch ${ruby_version}
+    fi
+
 }
 
 function select_ruby ()
