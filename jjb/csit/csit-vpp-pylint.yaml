@@ -2,13 +2,23 @@
     name: csit-validate
 
     jobs:
-        - 'csit-validate-pylint-master'
+        - 'csit-validate-pylint-{stream}'
 
     project: 'csit'
     branch: 'master'
 
+    project: 'csit'
+    branch: 'master'
+    stream:
+        - master:
+            branch: 'master'
+        - '1606':
+            branch: 'rls1606'
+        - '1609':
+            branch: 'rls1609'
+
 - job-template:
-    name: 'csit-validate-pylint-master'
+    name: 'csit-validate-pylint-{stream}'
 
     project-type: freestyle
     node: verify
