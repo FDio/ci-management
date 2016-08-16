@@ -5,13 +5,14 @@
     jobs:
         - 'csit-vpp-perf-{stream}-{type}'
         - 'csit-vpp-functional-{stream}-virl'
-        - 'csit-vpp-verify-master-weekly'
-        - 'csit-vpp-verify-{stream}-semiweekly'
+        - 'csit-vpp-verify-{stream_timed}-weekly'
+        - 'csit-vpp-verify-{stream_timed}-semiweekly'
         - 'csit-vpp-verify-perf-master-nightly-all'
 
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
+    stream_timed: 'master'
     build-artifact-num-to-keep: 10
     type:
         - all
@@ -20,9 +21,14 @@
         - master:
             branch: 'master'
             branch-id: 'oper'
+            stream_timed: 'master'
         - '1606':
             branch: 'rls1606'
             branch-id: 'oper-rls1606'
+        - '1609':
+            branch: 'rls1609'
+            branch-id: 'oper-rls1609'
+            stream_timed: '1609'
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-virl'
@@ -258,8 +264,8 @@
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
 
 - job-template:
-    name: 'csit-vpp-verify-master-weekly'
-    description: 'Purpose of this job is to validate CSIT code against verified vpp build and create csit-verified branch in case of success.'
+    name: 'csit-vpp-verify-{stream_timed}-weekly'
+    description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch and create corresponding operational branch in case of success.'
 
     project-type: freestyle
     node: verify
@@ -319,7 +325,7 @@
 
 
 - job-template:
-    name: 'csit-vpp-verify-{stream}-semiweekly'
+    name: 'csit-vpp-verify-{stream_timed}-semiweekly'
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
