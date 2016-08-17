@@ -70,8 +70,10 @@ function push_deb ()
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
     version=$(echo "$basefile" | cut -f 2- -d '_')
+    file_type=deb
+    classifier=deb
 
-    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb
+    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" "$file_type" "$classifier"
 }
 
 function push_rpm ()
