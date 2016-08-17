@@ -51,8 +51,8 @@ function push_jar ()
     url="${BASEURL}snapshot"
 
     basefile=$(basename -s .jar "$jarfile")
-    artifactId=$(echo "$basefile" | cut -f 1 -d '-')
-    version=$(echo "$basefile" | cut -f 2 -d '-')
+    artifactId=$(echo "$basefile" | rev | cut -d '-' -f 2-  | rev)
+    version=$(echo "$basefile" | rev | cut -d '-' -f 1  | rev)
 
     push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
 }
