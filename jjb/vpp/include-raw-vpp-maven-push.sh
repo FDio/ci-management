@@ -63,7 +63,7 @@ function push_deb ()
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
     version=$(echo "$basefile" | cut -f 2- -d '_')
 
-    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb
+    push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" deb deb
 }
 
 function push_rpm ()
