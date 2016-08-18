@@ -21,6 +21,8 @@ function push_file ()
 
     if [ -n "$7" ]; then
         d_classifier="-Dclassifier=$7"
+    else
+        d_classifier="-Dclassifier=all"
     fi
 
     if [ ! -f "$push_file" ] ; then

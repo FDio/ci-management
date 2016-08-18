@@ -22,6 +22,8 @@ function push_file ()
 
     if [ "$classifier" ]; then
         d_classifier="-Dclassifier=$7"
+    else
+        d_classifier="-Dclassifier=all"
     fi
 
     # Disable checks for doublequote to prevent glob / splitting
