@@ -214,7 +214,7 @@
             !include-raw-escape: include-raw-vpp-maven-push.sh
     publishers:
         - archive:
-            artifacts: '*.rpm,*.deb,*.jar'
+            artifacts: 'build-root/*.rpm,build-root/*.deb'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
