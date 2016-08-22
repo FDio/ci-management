@@ -212,6 +212,13 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape: include-raw-vpp-maven-push.sh
+    publishers:
+        - archive:
+            artifacts: '*.rpm,*.deb,*.jar'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
