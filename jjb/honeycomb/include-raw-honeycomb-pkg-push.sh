@@ -2,7 +2,6 @@
 if [ "${OS}" == "centos7" ]; then
 
     # Build the rpms
-
     ./packaging/rpm/rpmbuild.sh
 
     # Find the files
@@ -12,5 +11,16 @@ if [ "${OS}" == "centos7" ]; then
     for i in $RPMS $SRPMS $SRCRPMS
     do
         push_rpm "$i"
+    done
+elif [ "${OS}" == "ubuntu1404" ]; then
+
+    # Build the rpms
+    ./packaging/deb/debuild.sh
+
+    # Find the files
+    DEBS=$(find . -type f -iname '*.deb')
+    for i in $DEBS
+    do
+        push_deb "$i"
     done
 fi
