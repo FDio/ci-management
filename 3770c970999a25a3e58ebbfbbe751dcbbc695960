@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_6fa56a03",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-08-23T09:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1d315d_4eb077dd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "3770c970999a25a3e58ebbfbbe751dcbbc695960",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_948fb923",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-22T19:54:04Z",
       "side": 1,
       "message": "we only have timed jobs for master, why do we need to define this as variable ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "3770c970999a25a3e58ebbfbbe751dcbbc695960",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_2f6892b9",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-08-23T09:01:30Z",
+      "side": 1,
+      "message": "Fixed. We will need timed jobs for 1609 branch too until it is officially released.",
+      "parentUuid": "3a1d315d_948fb923",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_0f65d6e0",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-08-23T09:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1d315d_d4753133",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "3770c970999a25a3e58ebbfbbe751dcbbc695960",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_b472b547",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-22T19:54:04Z",
       "side": 1,
       "message": "stream_timed variable isn\u0027t used anywhere later in job definition",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "3770c970999a25a3e58ebbfbbe751dcbbc695960",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ef617ad4",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-08-23T09:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1d315d_b472b547",
       "range": {
         "startLine": 31,
         "startChar": 13,
