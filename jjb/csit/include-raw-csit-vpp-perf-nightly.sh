@@ -7,6 +7,11 @@ if [ "$BRANCH_ID" == "" ]; then
     BRANCH_ID="master"
 fi
 
+#make sure there is no csit directory
+if [ -d "./csit/" ]; then
+    rm -rf ./csit/
+fi
+
 # clone csit
 git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
 
