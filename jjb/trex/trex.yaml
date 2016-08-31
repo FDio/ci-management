@@ -1,0 +1,50 @@
+- project:
+    name: trex
+    jobs:
+        - 'trex-verify-{stream}-{os}'
+
+    project: 'trex'
+    os:
+        - ubuntu1404
+        - ubuntu1604
+        - centos7
+
+    stream:
+        - master:
+            branch: 'master'
+
+
+- job-template:
+    name: 'trex-verify-{stream}-{os}'
+
+    project-type: freestyle
+    node: 'verify-{os}'
+    concurrent: true
+
+    logrotate:
+      artifactDaysToKeep: '-1'
+      artifactNumToKeep: '-1'
+      daysToKeep: '30'
+      numToKeep: '100'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+
+    triggers:
+        - timed: H */6 * * *
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-trex-build.sh
+
+    description: "!!! Playground to verify that TRex and docs can be built. !!!\r\n\
+        \r\n\
+        TODO:\r\n\
+        1) merge doc and core repos\r\n\
+        2) replace pull from github by fd.io gerrit with triggering\r\n\
+        3) add a real regression\r\n\r\n"
