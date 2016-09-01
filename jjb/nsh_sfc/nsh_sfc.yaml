@@ -65,6 +65,16 @@
             settings-type: cfp
             global-settings: 'global-settings'
             global-settings-type: cfp
+        - config-file-provider:
+            files:
+              - file-id: 'nsh_sfc-settings'
+                variable: 'SETTINGS_FILE'
+              - file-id: 'global-settings'
+                variable: 'GLOBAL_SETTINGS_FILE'
+        - shell:
+            !include-raw-escape: ../scripts/create_maven_env.sh 
+        - inject:
+            - properties-file: maven_env.txt 
         - shell:
             !include-raw-escape:
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
@@ -132,6 +142,16 @@
             settings-type: cfp
             global-settings: 'global-settings'
             global-settings-type: cfp
+       - config-file-provider:
+            files:
+              - file-id: 'nsh_sfc-settings'
+                variable: 'SETTINGS_FILE'
+              - file-id: 'global-settings'
+                variable: 'GLOBAL_SETTINGS_FILE'
+        - shell:
+            !include-raw-escape: ../scripts/create_maven_env.sh
+        - inject: 
+            - properties-file: maven_env.txt
         - shell:
             !include-raw-escape:
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
@@ -178,6 +198,16 @@
             branch: '{branch}'
 
     builders:
+       - config-file-provider:
+            files:
+              - file-id: 'nsh_sfc-settings'
+                variable: 'SETTINGS_FILE'
+              - file-id: 'global-settings'
+                variable: 'GLOBAL_SETTINGS_FILE'
+        - shell:
+            !include-raw-escape: ../scripts/create_maven_env.sh
+        - inject: 
+            - properties-file: maven_env.txt
         - shell:
             !include-raw-escape:
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
