@@ -248,7 +248,7 @@
 
     triggers:
         - reverse:
-            jobs: 'vpp-merge-{branch}-{os},honeycomb-merge-{branch}-{os}'
+            jobs: 'vpp-merge-{stream}-{os},honeycomb-merge-{stream}-{os}'
             result: 'success'
 
     prebuilders:
