@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_c17e83e4",
+        "filename": "jjb/trex/include-raw-trex-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 581
+      },
+      "writtenOn": "2016-09-02T09:12:24Z",
+      "side": 1,
+      "message": "We don\u0027t have yet trex-core cloned repository in fd.io due to open case:\nhttps://gerrit.fd.io/r/#/c/2528/1",
+      "parentUuid": "3a1d315d_c10a03d2",
+      "revId": "4eac3f7694de7c3b15bf83eaf365c78df721845b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_e105ffc2",
         "filename": "jjb/trex/trex.yaml",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2016-09-02T05:17:26Z",
       "side": 1,
       "message": "Why is this triggering on a timer, instead of triggering to verify each patch?",
+      "revId": "4eac3f7694de7c3b15bf83eaf365c78df721845b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_815f6b72",
+        "filename": "jjb/trex/trex.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 581
+      },
+      "writtenOn": "2016-09-02T09:12:24Z",
+      "side": 1,
+      "message": "Currently it\u0027s to verify the job itself it OK.",
+      "parentUuid": "3a1d315d_e105ffc2",
       "revId": "4eac3f7694de7c3b15bf83eaf365c78df721845b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
