@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_dce9c81b",
+        "filename": "jjb/trex/include-raw-trex-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-02T14:36:28Z",
+      "side": 1,
+      "message": "That change has been abandoned as it will _not_ be permitted per policy as you\u0027ve been told previously.",
+      "parentUuid": "3a1d315d_c17e83e4",
+      "revId": "4eac3f7694de7c3b15bf83eaf365c78df721845b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_e105ffc2",
         "filename": "jjb/trex/trex.yaml",
         "patchSetId": 2
