@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_5bc49b3f",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-06T20:01:09Z",
+      "side": 1,
+      "message": "You need to make sure that there is a default set in jjb/global-defaults.yaml for build-timeoute.",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 35
+      },
+      "revId": "0bff2bb045f158e1d6ad6eea2ea4d69e8f273d35",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
