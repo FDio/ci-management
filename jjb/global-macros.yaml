@@ -95,12 +95,16 @@
 
 ###### WRAPPERS
 - wrapper:
-    name: build-timeout
+    # This wrapper is required for all jobs as it configures the wrappers
+    # needed by the fd.io infra.
+    name: fdio-infra-wrappers
     wrappers:
-        - timeout:
-            type: absolute
-            timeout: 360
-            fail: true
+      - timeout:
+          type: absolute
+          timeout: 360
+          fail: true
+      - jclouds:
+          single-use: True
 
 ###### TRIGGERS
 - trigger:
