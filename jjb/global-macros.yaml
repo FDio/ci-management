@@ -102,6 +102,19 @@
             timeout: 360
             fail: true
 
+- wrapper:
+    # This wrapper is required for all jobs as it configures the wrappers
+    # needed by the fd.io infra.
+    name: fdio-infra-wrappers
+    wrappers:
+      - timeout:
+          type: absolute
+          timeout: '{build-timeout}'
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+      - jclouds:
+          single-use: True
+
 ###### TRIGGERS
 - trigger:
     name: gerrit-trigger-patch-submitted
