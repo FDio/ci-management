@@ -50,7 +50,7 @@ function push_jar ()
     artifactId=$(echo "$basefile" | rev | cut -d '-' -f 2-  | rev)
     version=$(echo "$basefile" | rev | cut -d '-' -f 1  | rev)
 
-    push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
+    push_file "$jarfile" "$repoId" "$url" "${version}-RC2" "$artifactId" jar
 }
 
 function push_deb ()
