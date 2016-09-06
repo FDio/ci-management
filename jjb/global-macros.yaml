@@ -1,11 +1,12 @@
+---
 # Global macros
 
-#### PARAMETERS
+# PARAMETERS
 - parameter:
     name: project-parameter
     parameters:
-        - string:
-            name: PROJECT
+      - string:
+          name: PROJECT
             default: '{project}'
             description: "JJB configured PROJECT parameter to identify a Gerrit project"
 
@@ -57,7 +58,7 @@
             description: 'Name of repo to which to publish packaging'
 
 
-##### SCMS
+# SCMS
 - scm:
     name: git-scm
     scm:
@@ -93,7 +94,7 @@
           skip-tag: true
           wipe-workspace: true
 
-###### WRAPPERS
+# WRAPPERS
 - wrapper:
     name: build-timeout
     wrappers:
@@ -101,8 +102,20 @@
             type: absolute
             timeout: 360
             fail: true
+- wrapper:
+    # This wrapper is required for all jobs as it configures the wrappers
+    # needed by the fd.io infra.
+    name: fd.io-infra-wrappers
+    wrappers:
+      - timeout:
+          type: absolute
+          timeout: '{build-timeout}'
+          timeout-var: 'BUILD_TIMEOUT'
+          fail: true
+      - jclouds:
+          single-use: True
 
-###### TRIGGERS
+# TRIGGERS
 - trigger:
     name: gerrit-trigger-patch-submitted
     triggers:
@@ -208,7 +221,7 @@
             output-path: '{output-path}'
             other-files: ''
 
-###### BUILDERS
+# BUILDERS
 - builder:
     name: ci-management-check-unicode
     builders:
@@ -224,4 +237,3 @@
                   variable: 'GLOBAL_SETTINGS_FILE'
                 - file-id: '{settings-file}'
                   variable: 'SETTINGS_FILE'
-
