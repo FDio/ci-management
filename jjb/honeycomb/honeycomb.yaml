@@ -210,6 +210,7 @@
     publishers:
         - sonar:
             language: 'java'
+            branch: '{stream}'
         - email-notification:
             email-prefix: '[honeycomb]'
 
@@ -289,6 +290,7 @@
     publishers:
         - sonar:
             language: 'java'
+            branch: '{stream}'
         - email-notification:
             email-prefix: '[honeycomb]'
         - maven-deploy:
