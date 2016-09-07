@@ -51,6 +51,8 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-patch-submitted:
@@ -115,6 +117,8 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit:
@@ -191,6 +195,8 @@
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-patch-merged:
