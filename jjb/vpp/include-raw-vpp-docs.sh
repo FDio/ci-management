@@ -1,14 +1,14 @@
 #!/bin/bash
-set -e
+set -xe -o pipefail
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site/"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
-[ "$DOCS_FILE" ] || DOC_FILE=vpp.docs.zip
+[ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
-if [ ${BRANCH} == "stable/1609" ]; then
+if [ "${GERRIT_BRANCH}" == "stable/1609" ]; then
   VERSION=16.09
 else
   echo "************************************"
-  echo "* ${BRANCH} does not publish docs  *"
+  echo "* ${GERRIT_BRANCH} does not publish docs  *"
   echo "************************************"
   exit
 fi
@@ -49,7 +49,7 @@ cat pom.xml << EOF
               <serverId>opendaylight-log-archives</serverId>
               <repositoryUrl>$DOCS_REPO_URL/content-compressed</repositoryUrl>
               <file>${DOC_FILE}</file>
-              <repositoryPath>${PROJECT_PATH}</repositoryPath>
+              <repositoryPath>${PROJECT_PATH}/${VERSION}</repositoryPath>
             </configuration>
           </execution>
         </executions>
@@ -58,6 +58,6 @@ cat pom.xml << EOF
   </build>
 </project>
 EOF
-${MVN} deploy -gs $GLOBAL_SETTINGS_FILE -s $SETTINGS_FILE
+${MVN} deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
 cd -
 
