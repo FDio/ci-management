@@ -14,6 +14,8 @@ else
 fi
 MVN="/opt/apache/maven/bin/mvn"
 
+sudo apt-get install -y zip
+
 make doxygen
 cd ${DOC_DIR}
 zip ${DOC_FILE} .

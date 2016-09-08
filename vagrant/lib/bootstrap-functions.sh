@@ -139,6 +139,9 @@ deb_install_pkgs() {
     # Install virtualenv for test execution
     PACKAGES="$PACKAGES python-virtualenv python-pip python-dev"
 
+    # Install to allow the vpp-docs job to zip up docs to push them
+    PACKAGES="$PACKAGES zip"
+
     echo '---> Installing packages'
     # disable double quoting check
     # shellcheck disable=SC2086
