@@ -68,8 +68,8 @@
     scm:
         - gerrit-trigger-scm:
             credentials-id: '{ssh-credentials}'
-            refspec: refs/heads/master
-            choosing-strategy: 'gerrit'
+            refspec: ''
+            choosing-strategy: 'default'
 
     wrappers:
         - ssh-agent-credentials:
