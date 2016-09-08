@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_2d83e157",
+        "filename": "jjb/vpp/include-raw-vpp-docs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-08T19:51:26Z",
+      "side": 1,
+      "message": "I would make sure that the zip file ends up at $WORKSPACE/vpp.docs.zip",
+      "revId": "577b8de5fd17e094a8c7c1982a38038eb8c09a17",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_0d882570",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-08T19:51:26Z",
+      "side": 1,
+      "message": "Please also use the the new fdio-infra-wrappers macro",
+      "revId": "577b8de5fd17e094a8c7c1982a38038eb8c09a17",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ed7cc974",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-08T19:51:26Z",
+      "side": 1,
+      "message": "This variable isn\u0027t presently defined since you\u0027re not ingesting the stream var in your job name",
+      "range": {
+        "startLine": 385,
+        "startChar": 40,
+        "endLine": 385,
+        "endChar": 48
+      },
+      "revId": "577b8de5fd17e094a8c7c1982a38038eb8c09a17",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
