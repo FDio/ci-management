@@ -3,6 +3,7 @@
     jobs:
         - 'nsh_sfc-verify-{stream}-{os}'
         - 'nsh_sfc-merge-{stream}-{os}'
+        - 'nsh_sfc-integration-{stream}-{os}'
         - 'nsh_sfc-verify-image-{stream}-{os}'
 
     project: 'nsh_sfc'
@@ -196,6 +197,62 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+
+    builders:
+        - config-file-provider:
+            files:
+              - file-id: 'nsh_sfc-settings'
+                variable: 'SETTINGS_FILE'
+              - file-id: 'global-settings'
+                variable: 'GLOBAL_SETTINGS_FILE'
+        - shell:
+            !include-raw-escape: ../scripts/create_maven_env.sh
+        - inject:
+            properties-file: maven_env.txt
+        - shell:
+            !include-raw-escape:
+                - ../scripts/cleanup_vpp_plugin_dev_env.sh
+                - ../scripts/setup_vpp_plugin_dev_env.sh
+                - include-raw-nsh_sfc-build.sh
+                - ../scripts/cleanup_vpp_plugin_dev_env.sh
+
+- job-template:
+    name: 'nsh_sfc-integration-{stream}-{os}'
+
+    project-type: freestyle
+    node: 'merge-{os}'
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - '{ssh-credentials}'
+
+    triggers:
+        - reverse:
+            jobs: 'vpp-merge-{stream}-{os},nsh_sfc-merge-{stream}-{os}'
+            result: 'success'
 
     builders:
         - config-file-provider:
