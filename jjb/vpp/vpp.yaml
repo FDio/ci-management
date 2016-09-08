@@ -367,7 +367,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
