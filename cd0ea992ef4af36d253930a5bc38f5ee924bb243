@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_ade7f111",
+        "filename": "jjb/vpp/include-raw-vpp-docs.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-08T22:15:58Z",
+      "side": 1,
+      "message": "You\u0027re note calling maven with the global and project settings files.",
+      "revId": "cd0ea992ef4af36d253930a5bc38f5ee924bb243",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_8de4350e",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-09-08T22:15:58Z",
+      "side": 1,
+      "message": "Need a config-file-provider call for the global and project maven settings files",
+      "revId": "cd0ea992ef4af36d253930a5bc38f5ee924bb243",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
