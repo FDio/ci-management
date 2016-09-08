@@ -4,7 +4,7 @@ set -e
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOCS_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
-if [ ${BRANCH} == "stable/1609"]; then
+if [ ${BRANCH} == "stable/1609" ]; then
   VERSION=16.09
 else
   echo "************************************"
