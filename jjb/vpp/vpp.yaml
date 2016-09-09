@@ -343,7 +343,7 @@
     name: 'vpp-docs-1609'
 
     project-type: freestyle
-    node: 'verify-ubuntu1404'
+    node: 'verify-ubuntu1604'
     concurrent: true
 
     logrotate:
@@ -358,7 +358,7 @@
         - gerrit-parameter:
             branch: 'stable/1609'
         - os-parameter:
-            os: 'ubuntu1404'
+            os: 'ubuntu1604'
 
     scm:
         - gerrit-trigger-scm:
