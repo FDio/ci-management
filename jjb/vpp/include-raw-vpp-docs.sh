@@ -42,7 +42,7 @@ cat > pom.xml << EOF
   <distributionManagement>
     <site>
       <id>fdio-site</id>
-      <url>dav:${DOCS_REPO_URL}/site/${PROJECT_PATH}/${VERSION}</url>
+      <url>dav:${DOCS_REPO_URL}/${PROJECT_PATH}/${VERSION}</url>
     </site>
   </distributionManagement>
 </project>
