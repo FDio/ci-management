@@ -372,6 +372,9 @@
                 - '{ssh-credentials}'
 
     triggers:
+        - reverse:
+            jobs: 'vpp-merge-{stream}-ubuntu1404'
+            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
