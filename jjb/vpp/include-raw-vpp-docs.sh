@@ -50,5 +50,5 @@ cat > pom.xml << EOF
   </distributionManagement>
 </project>
 EOF
-${MVN} site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
+${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
 cd -
