@@ -4,7 +4,7 @@
         - 'vpp-verify-{stream}-{os}'
         - 'vpp-merge-{stream}-{os}'
         - 'vpp-verify-image-{stream}-{os}'
-        - 'vpp-docs-1609'
+        - 'vpp-docs-{stream}'
 
     project: 'vpp'
     os:
@@ -340,10 +340,10 @@
             description: "TYPE parameter if not given by trigger"
 
 - job-template:
-    name: 'vpp-docs-1609'
+    name: 'vpp-docs-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1404'
+    node: 'verify-ubuntu1604'
     concurrent: true
 
     logrotate:
@@ -356,9 +356,9 @@
         - project-parameter:
             project: '{project}'
         - gerrit-parameter:
-            branch: 'stable/1609'
+            branch: '{branch}'
         - os-parameter:
-            os: 'ubuntu1404'
+            os: 'ubuntu1604'
 
     scm:
         - gerrit-trigger-scm:
@@ -382,7 +382,7 @@
                 project-pattern: '{project}'
                 branches:
                   - branch-compare-type: 'ANT'
-                    branch-pattern: '**/stable/1609'
+                    branch-pattern: '**/{branch}'
             skip-vote:
                 successful: true
                 failed: true
