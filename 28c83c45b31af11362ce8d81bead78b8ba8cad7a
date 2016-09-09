@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_cda46d59",
+        "filename": "jjb/vpp/include-raw-vpp-docs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-09-09T00:17:55Z",
+      "side": 1,
+      "message": "package installation should be done in the respin script",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "28c83c45b31af11362ce8d81bead78b8ba8cad7a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
