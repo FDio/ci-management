@@ -1,6 +1,6 @@
 #!/bin/bash
 set -xe -o pipefail
-[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
+[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
