@@ -52,6 +52,7 @@ cat > pom.xml << EOF
               <repositoryUrl>$DOCS_REPO_URL/content-compressed</repositoryUrl>
               <file>${DOC_FILE}</file>
               <repositoryPath>${PROJECT_PATH}/${VERSION}</repositoryPath>
+              <stagingProgressTimeoutMinutes>10</stagingProgressTimeoutMinutes>
             </configuration>
           </execution>
         </executions>
