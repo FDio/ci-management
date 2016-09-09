@@ -48,7 +48,7 @@ cat > pom.xml << EOF
               <goal>upload-file</goal>
             </goals>
             <configuration>
-              <serverId>opendaylight-log-archives</serverId>
+              <serverId>fdio-docs</serverId>
               <repositoryUrl>$DOCS_REPO_URL/content-compressed</repositoryUrl>
               <file>${DOC_FILE}</file>
               <repositoryPath>${PROJECT_PATH}/${VERSION}</repositoryPath>
