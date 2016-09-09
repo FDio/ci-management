@@ -10,6 +10,7 @@ set -xe -o pipefail
 
 [ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
 
+sudo apt-get -y update
 sudo apt-get -y install python-pyparsing
 
 make doxygen
