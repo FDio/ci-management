@@ -1,9 +1,11 @@
 #!/bin/bash
 set -xe -o pipefail
-[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/service/local/repositories/site/"
+[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/service/local/repositories/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
+[ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
+
 if [ "${GERRIT_BRANCH}" == "stable/1609" ]; then
   VERSION=16.09
 else
@@ -12,7 +14,7 @@ else
   echo "************************************"
   exit
 fi
-MVN="/opt/apache/maven/bin/mvn"
+
 
 sudo apt-get install -y zip
 
@@ -42,7 +44,7 @@ cat > pom.xml << EOF
         <version>0.0.1</version>
         <executions>
           <execution>
-            <id>publish-site</id>
+            <id>site</id>
             <phase>deploy</phase>
             <goals>
               <goal>upload-file</goal>
@@ -60,6 +62,5 @@ cat > pom.xml << EOF
   </build>
 </project>
 EOF
-${MVN} deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
+${MVN} -Dhttp.connection.timeout=6000000 deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
 cd -
-
