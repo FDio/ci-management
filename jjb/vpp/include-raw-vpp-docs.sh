@@ -10,7 +10,7 @@ set -xe -o pipefail
 
 [ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
 
-sudo apt-get -y install python-pyparsing
+export CONFIRM=-y
 
 make doxygen
 mkdir -p $(dirname ${RESOURCES_DIR})
