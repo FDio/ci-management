@@ -8,14 +8,7 @@ set -xe -o pipefail
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
-if [ "${GERRIT_BRANCH}" == "stable/1609" ]; then
-  VERSION=16.09
-else
-  echo "************************************"
-  echo "* ${GERRIT_BRANCH} does not publish docs  *"
-  echo "************************************"
-  exit
-fi
+[ "$VERSION" ] || VERSION=$(./build-root/scripts/version --rpm-version)
 
 make doxygen
 mkdir -p $(dirname ${RESOURCES_DIR})
