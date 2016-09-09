@@ -4,6 +4,8 @@ set -xe -o pipefail
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
+[ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site/src/site
+[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
 if [ "${GERRIT_BRANCH}" == "stable/1609" ]; then
@@ -15,12 +17,11 @@ else
   exit
 fi
 
-
-sudo apt-get install -y zip
+mkdir -p $(dirname ${RESOURCES_DIR})
+mv -f ${DOC_DIR} ${RESOURCES_DIR}
 
 make doxygen
-cd ${DOC_DIR}
-zip -r ${DOC_FILE} *
+cd ${SITE_DIR}
 cat > pom.xml << EOF
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -28,39 +29,27 @@ cat > pom.xml << EOF
   <artifactId>docs</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
+
+  <properties>
+    <generateReports>false</generateReports>
+  </properties>
+
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.8.2</version>
-        <configuration>
-          <skip>true</skip>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>maven-upload-plugin</artifactId>
-        <version>0.0.1</version>
-        <executions>
-          <execution>
-            <id>site</id>
-            <phase>deploy</phase>
-            <goals>
-              <goal>upload-file</goal>
-            </goals>
-            <configuration>
-              <serverId>fdio-site</serverId>
-              <repositoryUrl>$DOCS_REPO_URL/content-compressed</repositoryUrl>
-              <file>${DOC_FILE}</file>
-              <repositoryPath>${PROJECT_PATH}/${VERSION}</repositoryPath>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-webdav-jackrabbit</artifactId>
+         <version>2.9</version>
+      </extension>
+    </extensions>
   </build>
+  <distributionManagement>
+    <site>
+      <id>fdio-site</id>
+      <url>dav:${DOCS_REPO_URL}/site/${PROJECT_PATH}/${VERSION}</url>
+    </site>
+  </distributionManagement>
 </project>
 EOF
-${MVN} -Dhttp.connection.timeout=6000000 deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
+${MVN} site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
 cd -
