@@ -375,6 +375,7 @@
         - gerrit:
             server-name: 'Primary'
             trigger-on:
+                - change-merged-event
                 - comment-added-contains-event:
                     comment-contains-value: 'run-docs'
             projects:
