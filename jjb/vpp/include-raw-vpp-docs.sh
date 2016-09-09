@@ -1,6 +1,6 @@
 #!/bin/bash
 set -xe -o pipefail
-[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/service/local/repositories/site"
+[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
@@ -17,10 +17,9 @@ else
   exit
 fi
 
+make doxygen
 mkdir -p $(dirname ${RESOURCES_DIR})
 mv -f ${DOC_DIR} ${RESOURCES_DIR}
-
-make doxygen
 cd ${SITE_DIR}
 cat > pom.xml << EOF
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
