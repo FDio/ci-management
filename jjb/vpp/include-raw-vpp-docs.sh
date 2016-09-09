@@ -8,7 +8,9 @@ set -xe -o pipefail
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
-[ "$VERSION" ] || VERSION=$(./build-root/scripts/version --rpm-version)
+[ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
+
+sudo apt-get -y install python-pyparsing
 
 make doxygen
 mkdir -p $(dirname ${RESOURCES_DIR})

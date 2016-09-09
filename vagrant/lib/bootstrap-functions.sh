@@ -148,7 +148,7 @@ deb_install_pkgs() {
     apt-get install ${PACKAGES}
 
     # Specify documentation packages
-    DOC_PACKAGES="doxygen graphviz"
+    DOC_PACKAGES="doxygen graphviz python-pyparsing"
     apt-get install ${DOC_PACKAGES}
 }
 
