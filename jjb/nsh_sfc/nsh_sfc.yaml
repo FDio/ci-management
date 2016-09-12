@@ -18,6 +18,9 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
+        - '1609':
+            branch: 'stable/1609'
+            repo-stream-part: 'stable.1609'
 
 - job-template:
     name: 'nsh_sfc-verify-{stream}-{os}'
