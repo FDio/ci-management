@@ -154,7 +154,9 @@ deb_install_pkgs() {
 
 deb_enable_hugepages() {
     # Setup for hugepages using sysctl so it persists across reboots
-    sysctl -w vm.nr_hugepages=1024
+    AVP="vm.nr_hugepages=1024"
+    sysctl -w ${AVP}
+    echo "${AVP}" >> /etc/sysctl.conf
 
     mkdir -p /mnt/huge
     echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab
