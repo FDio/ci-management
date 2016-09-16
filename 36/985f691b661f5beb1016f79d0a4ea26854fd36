@@ -1,0 +1,7 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+2: Thanh Ha <thanh.ha@linuxfoundation.org>
+Submitted-by: Thanh Ha <thanh.ha@linuxfoundation.org>
+Submitted-at: Fri, 16 Sep 2016 22:50:42 +0000
+Reviewed-on: https://gerrit.fd.io/r/2925
+Project: ci-management
+Branch: refs/heads/master
