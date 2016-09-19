@@ -304,9 +304,9 @@
             !include-raw-escape:
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
                 - ../scripts/setup_vpp_plugin_dev_env.sh
+                - ../scripts/maven_push_functions.sh
                 - include-raw-nsh_sfc-build.sh
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/maven_push_functions.sh
                 - include-raw-nsh_sfc-pkg-push.sh
 
     publishers:
