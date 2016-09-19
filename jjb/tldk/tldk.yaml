@@ -53,6 +53,8 @@
     builders:
         - shell:
             !include-raw-escape: include-raw-build.sh
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -110,6 +112,8 @@
     builders:
         - shell:
             !include-raw-escape: include-raw-build.sh
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -153,6 +157,8 @@
     builders:
         - shell:
             !include-raw-escape: include-raw-build.sh
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:

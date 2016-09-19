@@ -1,5 +1,9 @@
 #!/bin/bash -ex
 
+export CCACHE_DIR=/tmp/ccache
+
+fetch_ccache
+
 # building core
 
 cd linux_dpdk
@@ -19,6 +23,8 @@ cd -
 #./b configure
 #./b build
 #cd -
+
+push_ccache
 
 echo "*******************************************************************"
 echo "* TREX BUILD SUCCESSFULLY COMPLETED"
