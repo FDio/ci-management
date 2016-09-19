@@ -40,7 +40,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-trex-build.sh
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-trex-build.sh
 
     description: "!!! Playground to verify that TRex and docs can be built. !!!\r\n\
         \r\n\

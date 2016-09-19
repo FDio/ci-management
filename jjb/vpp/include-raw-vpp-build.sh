@@ -4,12 +4,8 @@ set -xe -o pipefail
 # do nothing but print the current slave hostname
 hostname
 export CCACHE_DIR=/tmp/ccache
-if [ -d $CCACHE_DIR ];then
-    echo $CCACHE_DIR exists
-    du -sk $CCACHE_DIR
-else
-    echo $CCACHE_DIR does not exist.  This must be a new slave.
-fi
+
+fetch_cache
 
 echo "cat /etc/bootstrap.sha"
 if [ -f /etc/bootstrap.sha ];then
@@ -54,6 +50,8 @@ if [ ${OS} == ubuntu1404 ];then
 fi
 
 build-root/vagrant/build.sh
+
+push_ccache
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
