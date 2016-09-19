@@ -4,6 +4,10 @@
 GERRIT_NEWREV=hash`date +%s%N`
 WS=${PWD}/$GERRIT_NEWREV
 
+export CCACHE_DIR=/tmp/ccache
+
+fetch_ccache
+
 #  temporary don't fail
 set +e
 
@@ -49,5 +53,9 @@ cd trex-doc
 ./b build
 cd -
 
-echo Done
+push_ccache
+
+echo "*******************************************************************"
+echo "* TREX BUILD SUCCESSFULLY COMPLETED"
+echo "*******************************************************************"
 
