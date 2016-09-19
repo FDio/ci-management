@@ -34,6 +34,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -51,8 +53,17 @@
             branch: '{branch}'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'tldk-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -78,6 +89,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -108,8 +121,17 @@
                 notbuilt: true
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'tldk-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -134,6 +156,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -151,8 +175,17 @@
             branch: '{branch}'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'tldk-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+              - ../scripts/maven_push_functions.sh
+              - include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
