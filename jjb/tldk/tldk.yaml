@@ -55,7 +55,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-build.sh
 
 - job-template:
     name: '{project}-verify-image-{stream}-{os}'
@@ -111,7 +113,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-build.sh
 
 - job-template:
     name: '{project}-merge-{stream}-{os}'
@@ -153,4 +157,6 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-build.sh
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-build.sh
