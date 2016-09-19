@@ -92,3 +92,51 @@ function push_rpm ()
     version=$(rpm -qp --queryformat="%{version}" "$rpmfile")
     push_file "$rpmfile" "$repoId" "$url" "${version}-${rpmrelease}" "$artifactId" rpm
 }
+
+function fetch_ccache ()
+{
+    CCACHE_DIR=${CCACHE_DIR:-/tmp/${repoID}}
+    dir_name=$(dirname ${CCACHE_DIR})
+    base_name=$(basename ${CCACHE_DIR})
+
+    repoId="fd.io.${REPO_NAME}"
+
+    artifactId="ccache-${PROJECT}-${STREAM}-${OS}"
+    version="0-SNAPSHOT"
+    tarball="${artifactId}_${version}.tgz"
+
+    url="${BASEURL}${REPO_NAME}/io/fd/${PROJECT}/${artifactId}/${version}/${tarball}"
+
+    mkdir -p ${CCACHE_DIR}
+    echo "fetching ccache tarball [${url}]"
+    curl  -o /dev/null --head "${url}"
+
+    if [ $? -eq 0 ]
+    then
+        curl "${url}" | tar -C ${dir_name} -xz
+    else
+        echo "Could not fetch tarball.  First build?"
+    fi
+}
+
+function push_ccache ()
+{
+    CCACHE_DIR=${CCACHE_DIR:-/tmp/ccache}
+    dir_name=$(dirname ${CCACHE_DIR})
+    base_name=$(basename ${CCACHE_DIR})
+
+    repoId="fd.io.${REPO_NAME}"
+    url="${BASEURL}${REPO_NAME}"
+
+    artifactId="ccache-${PROJECT}-${STREAM}-${OS}"
+    version="0-SNAPSHOT"
+    tarball="${artifactId}_${version}.tgz"
+
+    # Clear stale cache (5 days without access)
+    find ${CCACHE_DIR} -atime +5 -delete
+
+    # Create tarball of cache
+    tar -C ${dir_name} -czf ${tarball} ${base_name}
+
+    push_file "${tarball}" "${repoID}" "${url}" "${version}" "${artifactId}"
+}

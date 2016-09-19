@@ -4,12 +4,8 @@ set -e -o pipefail
 # do nothing but print the current slave hostname
 hostname
 export CCACHE_DIR=/tmp/ccache
-if [ -d $CCACHE_DIR ];then
-    echo $CCACHE_DIR exists
-    du -sk $CCACHE_DIR
-else
-    echo $CCACHE_DIR does not exist.  This must be a new slave.
-fi
+
+fetch_ccache
 
 echo "cat /etc/bootstrap.sha"
 if [ -f /etc/bootstrap.sha ];then
@@ -32,6 +28,8 @@ export MAVEN_HOME="/opt/apache/maven/"
 export PATH=${MAVEN_HOME}/bin:${PATH}
 
 scripts/ci/verify.sh
+
+push_ccache
 
 echo "*******************************************************************"
 echo "* NSH_SFC BUILD SUCCESSFULLY COMPLETED"
