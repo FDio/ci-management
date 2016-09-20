@@ -21,8 +21,8 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-sudo apt-get install -y `dpkg-checkbuilddeps |& sed "s/dpkg-checkbuilddeps: Unmet build dependencies://g"`
-
+MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
+sudo apt-get install -y ${MISSING_PKGS}
 debuild -uc -us -j4
 
 echo "*******************************************************************"
