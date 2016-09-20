@@ -69,6 +69,30 @@
       "revId": "1e03baf37185eae0c1ccdc0db171c5fa6d20a42d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_942f8ba1",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-09-20T18:09:42Z",
+      "side": 1,
+      "message": "Understood.  I don\u0027t think bluca tested his regex, as this is what I got when I ran it:\n\n$ dpkg-checkbuilddeps  |\u0026 sed \"s/.*://g\" |\u0026 sed \"s/(...[0-9]*)//g\"\n dh-systemd (\u003e\u003d 1.5) inkscape libcap-dev libpcap-dev libxen-dev libxenstore3.0 python-sphinx python-sphinx-rtd-theme texlive-fonts-recommended texlive-latex-extra\n\nThe parens and their contents need to be stripped in order to work (at least on trusty).  I bet I could re-write the search/replace with sed if necessary, but I know the perl syntax off the top of my head.",
+      "parentUuid": "3a1d315d_f4491f8c",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 57
+      },
+      "revId": "1e03baf37185eae0c1ccdc0db171c5fa6d20a42d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
