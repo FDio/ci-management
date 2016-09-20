@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_14b7fb87",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-09-20T17:37:25Z",
+      "side": 1,
+      "message": "Why not just use a proper apt repo?  Why the wget dance?",
+      "revId": "9f0d855ee82352faae887d3b83573999bad15fd2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
