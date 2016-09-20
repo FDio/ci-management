@@ -5,6 +5,7 @@
         - 'nsh_sfc-merge-{stream}-{os}'
         - 'nsh_sfc-integration-{stream}-{os}'
         - 'nsh_sfc-verify-image-{stream}-{os}'
+        - 'nsh_sfc-merge-docs-{stream}'
 
     project: 'nsh_sfc'
     os:
