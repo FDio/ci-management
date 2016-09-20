@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_f4bb5f70",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-09-20T17:41:01Z",
+      "side": 1,
+      "message": "Maybe peg the regex to beginning of line just to be explicit?\n\n^.*:",
+      "range": {
+        "startLine": 24,
+        "startChar": 56,
+        "endLine": 24,
+        "endChar": 57
+      },
+      "revId": "1e03baf37185eae0c1ccdc0db171c5fa6d20a42d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_b4ade733",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-09-20T17:41:01Z",
+      "side": 1,
+      "message": "(..) are metacharacters.  They\u0027ll need some escaping...\nHere\u0027s the way I did it:\n\nMISSING_PKGS\u003d$(dpkg-checkbuilddeps |\u0026 perl -pe \u0027s/^.*://g; s/\\(.*?\\)//g\u0027)\nsudo apt-get install -y ${MISSING_PKGS}",
+      "range": {
+        "startLine": 24,
+        "startChar": 74,
+        "endLine": 24,
+        "endChar": 75
+      },
+      "revId": "1e03baf37185eae0c1ccdc0db171c5fa6d20a42d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
