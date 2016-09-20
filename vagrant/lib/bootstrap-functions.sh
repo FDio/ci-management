@@ -73,6 +73,11 @@ deb_flush() {
     apt-get clean
 }
 
+deb_add_repo() {
+    echo "---> Adding '$1' repo"
+    echo "$2" > "/etc/apt/sources.list.d/$1.list"
+}
+
 deb_add_ppa() {
     echo "---> Adding '$1' PPA"
     apt-get install software-properties-common
@@ -107,7 +112,10 @@ deb_install_pkgs() {
     if [ "$VERSION" = '14.04' ]
     then
         # openjdk-8-jdk is not available in 14.04 repos by default
-          deb_add_ppa ppa:openjdk-r/ppa
+        deb_add_ppa ppa:openjdk-r/ppa
+
+        # python-sphinx-rtd-theme is not available in 14.04 repos by default
+        deb_add_repo FD.io.thirdparty "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./"
 
         # Install OpenJDK v8 *and* v7 on Trusty
         PACKAGES="$PACKAGES openjdk-8-jdk-headless openjdk-7-jdk emacs24-nox"
@@ -123,8 +131,13 @@ deb_install_pkgs() {
 
     # Build tools - should match vpp/Makefile DEB_DEPENDS variable
     PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev
-              ccache debhelper dkms git libtool libganglia1-dev libapr1-dev
-              dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent"
+              ccache debhelper dkms git libtool libganglia1-dev
+              libapr1-dev dh-systemd libconfuse-dev git-review
+              exuberant-ctags cscope indent debhelper dh-python
+              dh-systemd dkms doxygen graphviz inkscape libcap-dev
+              libpcap-dev libxen-dev libxenstore3.0 python
+              python-sphinx python-sphinx-rtd-theme devscripts
+              texlive-fonts-recommended texlive-latex-extra"
 
     # Interface manipulation tools, editors, debugger and lsb
     PACKAGES="$PACKAGES iproute2 ethtool vlan bridge-utils
