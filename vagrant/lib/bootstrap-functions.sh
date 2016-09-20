@@ -142,6 +142,9 @@ deb_install_pkgs() {
     # Install to allow the vpp-docs job to zip up docs to push them
     PACKAGES="$PACKAGES zip"
 
+    # Install for deb_dpdk debian package buiding
+    PACKAGES="$PACKAGES dpkg-checkbuilddeps"
+
     echo '---> Installing packages'
     # disable double quoting check
     # shellcheck disable=SC2086
