@@ -21,8 +21,20 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
+if [ $OS == 'ubuntu1404' ]
+then
+    dpkg -l python-sphinx-rtd-theme | grep -q '^ii' || (
+        echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./" > "/etc/apt/sources.list.d/FD.io.thirdparty.list"
+        apt-get update
+    )
+fi
+
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
+
+which debuild | grep -q debuild || MISSING_PKGS="${MISSING_PKGS} devscripts"
+
 sudo apt-get install -y ${MISSING_PKGS}
+
 debuild -uc -us -j4
 
 echo "*******************************************************************"
