@@ -21,8 +21,7 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-sudo apt-get install -y `dpkg-checkbuilddeps |& sed "s/dpkg-checkbuilddeps: Unmet build dependencies://g"`
-
+sudo apt-get install -y `dpkg-checkbuilddeps  |& sed "s/.*://g" |& sed "s/(...[0-9]*)//g"`
 debuild -uc -us -j4
 
 echo "*******************************************************************"
