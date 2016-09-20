@@ -142,6 +142,11 @@ deb_install_pkgs() {
     # Install to allow the vpp-docs job to zip up docs to push them
     PACKAGES="$PACKAGES zip"
 
+    # Install for deb_dpdk debian package buiding
+    PACKAGES="$PACKAGES dpkg-dev dh-python inkscape libcap-dev libpcap-dev"
+    PACKAGES="$PACKAGES libxen-dev libxenstore3.0 python-sphinx python-sphinx-rtd-theme"
+    PACKAGES="$PACKAGES texlive-fonts-recommended texlive-latex-extra"
+
     echo '---> Installing packages'
     # disable double quoting check
     # shellcheck disable=SC2086
