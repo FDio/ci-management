@@ -1,6 +1,6 @@
 #!/bin/bash
 set -xe -o pipefail
-[ "PROJECT_NAME" ] || PROJECT_NAME="nsh_sfc"
+[ "$PROJECT_NAME" ] || PROJECT_NAME="nsh_sfc"
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/${PROJECT_NAME}
 [ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
