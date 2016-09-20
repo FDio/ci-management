@@ -43,7 +43,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
       </site>
     </distributionManagement>
   </project>
-  EOF
+EOF
   ${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}" -T 4C
   cd -
 fi
