@@ -53,7 +53,7 @@ Dpkg::Options {
    "--force-confold";
 };
 
-quiet "2";
+quiet "1";
 
 EOF
 }
