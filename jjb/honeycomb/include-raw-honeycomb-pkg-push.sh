@@ -12,7 +12,7 @@ if [ "${OS}" == "centos7" ]; then
     do
         push_rpm "$i"
     done
-elif [ "${OS}" == "ubuntu1404" ]; then
+elif [ "${OS}" == "ubuntu1404" ] || [ "${OS}" == "ubuntu1604" ]; then
 
     # Build the rpms
     ./packaging/deb/debuild.sh
