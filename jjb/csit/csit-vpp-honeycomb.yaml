@@ -10,7 +10,10 @@
     stream:
         - master:
             branch: 'master'
-            branch-id: 'master'
+            repo-stream-part: 'master'
+        - '1609':
+            branch: 'stable/1609'
+            repo-stream-part: 'stable.1609'
     os:
         - ubuntu1404
 
@@ -32,24 +35,30 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
-
+        - os-parameter:
+            os: '{os}'
+            
     wrappers:
         - ssh-agent-credentials:
             users:
                 - '{ssh-credentials}'
 
     triggers:
-        - build-result:
-            combine: false
-            groups:
-                - jobs:
-                    - honeycomb-merge-{stream}-{os}
-                  results:
-                    - success
+        - reverse:
+            jobs: 'honeycomb-integration-{stream}-{os}'
+            result: 'success'
 
+    prebuilders:
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
+            
     builders:
         - shell:
             !include-raw-escape: include-raw-csit-honeycomb-functional-virl.sh
+
+    postbuilders:
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - archive-artifacts:
