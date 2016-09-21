@@ -390,10 +390,11 @@
             users:
                 - '{ssh-credentials}'
 
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: '{ssh-credentials}'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
 
     builders:
         - maven-target:
