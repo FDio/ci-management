@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_874e3fc0",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2016-09-21T01:27:20Z",
+      "side": 1,
+      "message": "Could we make ServerAliveInterval\u003d10 and ServerAliveCountMax\u003d30 ?",
+      "revId": "641303bebe75ae58f5eca1df0360cc5207ce3e74",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
