@@ -5,6 +5,7 @@
         - 'vpp-merge-{stream}-{os}'
         - 'vpp-verify-image-{stream}-{os}'
         - 'vpp-docs-merge-{stream}'
+        - 'vpp-docs-verify-{stream}'
 
     project: 'vpp'
     os:
