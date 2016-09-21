@@ -59,8 +59,9 @@ fi
 
 # Force a system sync and sleep to get around any SSD issues
 echo "Forcing sync and sleep for 10sec"
+df -h
 sync
-sleep 10
+sleep 60
 
 echo "********************************************"
 echo "*   PLEASE SNAPSHOT IMAGE AT THIS TIME     *"

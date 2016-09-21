@@ -78,6 +78,11 @@ deb_flush() {
     apt-get clean
 }
 
+deb_add_repo() {
+    echo "---> Adding '$1' repo"
+    echo "$2" > "/etc/apt/sources.list.d/$1.list"
+}
+
 deb_add_ppa() {
     echo "---> Adding '$1' PPA"
     apt-get install software-properties-common
@@ -112,10 +117,15 @@ deb_install_pkgs() {
     if [ "$VERSION" = '14.04' ]
     then
         # openjdk-8-jdk is not available in 14.04 repos by default
-          deb_add_ppa ppa:openjdk-r/ppa
+        deb_add_ppa ppa:openjdk-r/ppa
+
+        # python-sphinx-rtd-theme is not available in 14.04 repos by default
+        deb_add_repo FD.io.thirdparty "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./"
 
         # Install OpenJDK v8 *and* v7 on Trusty
         PACKAGES="$PACKAGES openjdk-8-jdk-headless openjdk-7-jdk emacs24-nox"
+
+        apt-get update
     elif [ "$VERSION" = '16.04' ]
     then
         # Install default jdk (v8 on this platform)
@@ -166,7 +176,7 @@ deb_enable_hugepages() {
     # Setup for hugepages using sysctl so it persists across reboots
     AVP="vm.nr_hugepages=1024"
     sysctl -w ${AVP}
-    echo "${AVP}" >> /etc/sysctl.conf
+#    echo "${AVP}" >> /etc/sysctl.conf # <- this was causing image verify to fail
 
     mkdir -p /mnt/huge
     echo "hugetlbfs       /mnt/huge  hugetlbfs       defaults        0 0" >> /etc/fstab

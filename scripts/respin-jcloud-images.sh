@@ -15,6 +15,8 @@ source ${PVERC}
 
 VAGRANT_DIR=${CI_MGMT}/vagrant/basebuild
 
+RESEAL=true
+
 # Fetch MVN package
 MAVEN_MIRROR=apache.mirrors.tds.net
 MAVEN_VERSION=3.3.9

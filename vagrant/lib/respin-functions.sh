@@ -246,6 +246,7 @@ function respin_deb_image ()
     setup_deb "$@"
     export IMAGE="${IMG_NAME}"
     echo "--> creating instance of image '${IMG_NAME}' as server name '${SERVER_NAME}'"
+    export RESEAL=true
     vagrant up --provider=openstack
     if [ "Ubuntu" == "${DIST}" ]
     then
@@ -270,6 +271,7 @@ function respin_rh_image ()
     setup_rh "$@"
     export IMAGE="${IMG_NAME}"
     echo "--> creating instance of image '${IMG_NAME}' as server name '${SERVER_NAME}'"
+    export RESEAL=true
     vagrant up --provider=openstack
     DST_IMAGE="${DIST} ${VERSION} - basebuild - ${DST_TIMESTAMP}"
     echo "--> Taking snapshot of image '${IMG_NAME}' with name '${DST_IMAGE}'"
