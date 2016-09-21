@@ -34,6 +34,9 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
         - timed: H */6 * * *
