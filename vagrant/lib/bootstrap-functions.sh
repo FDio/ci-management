@@ -2,6 +2,11 @@
 
 do_setup() {
     echo "127.0.1.1 $(hostname) # temporary" >> /etc/hosts
+
+    # Dead peer detection
+    echo "TCPKeepAlive        true" >> /etc/ssh/ssh_config
+    echo "ServerAliveCountMax 30"   >> /etc/ssh/ssh_config
+    echo "ServerAliveInterval 10"   >> /etc/ssh/ssh_config
 }
 
 do_mvn_install() {
