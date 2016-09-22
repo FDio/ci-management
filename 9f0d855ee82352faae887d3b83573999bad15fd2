@@ -16,6 +16,24 @@
       "revId": "9f0d855ee82352faae887d3b83573999bad15fd2",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_e75cd327",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-09-22T02:32:20Z",
+      "side": 1,
+      "message": "we don\u0027t yet have a contrib/third-party apt repo.  The only one we\u0027ve got is fd.io.ubuntu.trusty.main ; we would want it to land in fd.io.ubuntu.trusty.contrib, and then we\u0027d need to maintain a new file under /etc/apt/sources.list.d/ ; until there is more than one use case, I think it\u0027s premature to stand up a whole new repo.  If you feel otherwise, I would be happy to do that, though.\n\nI guess we get it for free by uploading to the thirdparty nexus repo, though, eh?",
+      "parentUuid": "3a1d315d_14b7fb87",
+      "revId": "9f0d855ee82352faae887d3b83573999bad15fd2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
