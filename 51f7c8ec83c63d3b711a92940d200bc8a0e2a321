@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_6b5be52e",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-09-26T09:16:53Z",
+      "side": 1,
+      "message": "480 - Please, use there the same value as in case of semiweekly jobs as the last executions of weekly jobs (master and 1609) took 6h28m/6h23m.",
+      "range": {
+        "startLine": 305,
+        "startChar": 27,
+        "endLine": 305,
+        "endChar": 44
+      },
+      "revId": "51f7c8ec83c63d3b711a92940d200bc8a0e2a321",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_8b588133",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-09-26T09:16:53Z",
+      "side": 1,
+      "message": "We need there timeout at least 24 hour! It runs for about 21 hours at the moment.",
+      "range": {
+        "startLine": 414,
+        "startChar": 27,
+        "endLine": 414,
+        "endChar": 44
+      },
+      "revId": "51f7c8ec83c63d3b711a92940d200bc8a0e2a321",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
