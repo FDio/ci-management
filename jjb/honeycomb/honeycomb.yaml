@@ -9,8 +9,10 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
+            deploy-site: 'true'
         - centos7:
             repo-os-part: 'centos7'
+            deploy-site: 'false'
     stream:
         - master:
             branch: 'master'
@@ -63,7 +65,7 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true site:site'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
@@ -196,7 +198,7 @@
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar -Dmaven.site.skip={deploy-site} site:site -Dmaven.site.deploy.skip={deploy-site} site:deploy'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
