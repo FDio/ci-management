@@ -337,9 +337,8 @@
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
-        - shell: |
-            true
-
+        - shell:
+            !include-raw-escape: include-raw-nsh_sfc-docs.sh
 
 
 
