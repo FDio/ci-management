@@ -72,10 +72,6 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
-    postbuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
-
     publishers:
         - email-notification:
             email-prefix: '[honeycomb]'
@@ -143,10 +139,6 @@
         settings-type: cfp
         global-settings: 'global-settings'
         global-settings-type: cfp
-
-    postbuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - email-notification:
@@ -283,9 +275,6 @@
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
                 - include-raw-honeycomb-pkg-push.sh
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
-
     reporters:
         - findbugs
 
