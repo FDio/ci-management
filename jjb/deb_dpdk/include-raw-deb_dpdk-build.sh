@@ -22,7 +22,7 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
-sudo apt-get install -y ${MISSING_PKGS}
+sudo apt-get install -y ${MISSING_PKGS} devscripts
 debuild -uc -us -j4
 
 echo "*******************************************************************"
