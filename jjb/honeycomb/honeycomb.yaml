@@ -205,10 +205,6 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
-    postbuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
-
     reporters:
         - findbugs
 
