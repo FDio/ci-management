@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_63d41a47",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-05T21:03:04Z",
+      "side": 1,
+      "message": "package is called python-jinja2 in trusty and python3-jinja2 in xenial ; please conditionalize",
+      "range": {
+        "startLine": 161,
+        "startChar": 52,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "f03b6a4feb97705dd934667b388fa33e23d4bd58",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
