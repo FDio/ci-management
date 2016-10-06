@@ -23,7 +23,7 @@ sha1sum $0
 
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
 sudo apt-get install -y ${MISSING_PKGS} devscripts
-debuild -uc -us -j4
+debuild -uc -us -j4 -b
 
 echo "*******************************************************************"
 echo "* DEB_DPDK BUILD SUCCESSFULLY COMPLETED"
