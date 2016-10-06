@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_f5127257",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-06T20:41:54Z",
+      "side": 1,
+      "message": "13:26 \u003c cj\u003e do we want to distribute binaries without their associated source?  This could be a GPL violation if we have any GPL code in the project.  \n            Of course, the source used could be discovered by looking up the package build date and comparing it against the repo git history.\n13:27 \u003c cj\u003e but I think the source packages include only the deltas from upstream, so maybe it\u0027s best to include the changes to the source.\n13:29 \u003c cj\u003e so if we do a debuild -b, we should also have a debuild -S to build the source package.  If not in the master stream job, at least in the \n            stable and release stream jobs",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "2f8c1c34874465c156dc7f23c576562838f91111",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
