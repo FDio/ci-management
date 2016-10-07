@@ -168,6 +168,9 @@
                   branches:
                     - branch-compare-type: 'ANT'
                       branch-pattern: '**/{branch}'
+            # Force Jenkins to pass the same "expected" votes during start
+            override-votes: true
+            gerrit-build-started-verified-value: 1
             skip-vote:
                 successful: true
                 failed: true
