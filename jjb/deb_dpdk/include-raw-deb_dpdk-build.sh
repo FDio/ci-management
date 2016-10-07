@@ -22,7 +22,11 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
+
 sudo apt-get install -y ${MISSING_PKGS} devscripts
+
+curl https://nexus.fd.io/content/repositories/thirdparty/dpdk/dpdk-release/16.07/dpdk-release-16.07.tar.xz > ../dpdk_16.07.orig.tar.xz
+
 debuild -uc -us -j4
 
 echo "*******************************************************************"
