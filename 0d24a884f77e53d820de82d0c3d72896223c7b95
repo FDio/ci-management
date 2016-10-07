@@ -16,6 +16,24 @@
       "revId": "0d24a884f77e53d820de82d0c3d72896223c7b95",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_9beeb7b3",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 489
+      },
+      "writtenOn": "2016-10-07T16:23:13Z",
+      "side": 1,
+      "message": "Yes we don\u0027t have errors anymore, not even warnings I think",
+      "parentUuid": "fa3479d7_957d66b4",
+      "revId": "0d24a884f77e53d820de82d0c3d72896223c7b95",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
