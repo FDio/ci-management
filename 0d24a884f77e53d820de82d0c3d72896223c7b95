@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_957d66b4",
+        "filename": "jjb/deb_dpdk/include-raw-deb_dpdk-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 490
+      },
+      "writtenOn": "2016-10-07T05:54:48Z",
+      "side": 1,
+      "message": "I think today we are down to warnings only right?\nWell let it start this way, but if we have only warnings in all build streams RC will be good and we can drop the set +e",
+      "revId": "0d24a884f77e53d820de82d0c3d72896223c7b95",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
