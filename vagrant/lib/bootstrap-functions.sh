@@ -158,7 +158,7 @@ deb_install_pkgs() {
     apt-get install ${PACKAGES}
 
     # Specify documentation packages
-    DOC_PACKAGES="doxygen graphviz python-pyparsing"
+    DOC_PACKAGES="doxygen graphviz python-pyparsing python-jinja2"
     apt-get install ${DOC_PACKAGES}
 }
 
@@ -217,7 +217,7 @@ rh_install_pkgs() {
                       openssl-devel apr-devel indent
 
     # Specify documentation packages
-    DOC_PACKAGES="doxygen graphviz"
+    DOC_PACKAGES="doxygen graphviz pyparsing python-jinja2"
     yum install -q -y install ${DOC_PACKAGES}
 
     # Install python development
