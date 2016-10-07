@@ -22,7 +22,14 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
+
 sudo apt-get install -y ${MISSING_PKGS} devscripts
+
+orig_version=$(dpkg-parsechangelog --show-field Version | sed s'/-.*//')
+orig_tarball="dpdk_${orig_version}.orig.tar.gz"
+pristine-tar checkout ${orig_tarball}
+mv ${orig_tarball} ..
+
 debuild -uc -us -j4
 
 echo "*******************************************************************"
