@@ -46,13 +46,6 @@ if [ "x${VPP_REPO}" == "x1" ]; then
     fi
 fi
 
-# Make sure we are starting on java-7.  This catches bugs in the
-# vpp build system that can occur on Ubuntu 14.04 when a user may
-# have both java-7 and java-8 installed.
-if [ ${OS} == ubuntu1404 ];then
-    sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64 || echo 'ignoring failure'
-fi
-
 make UNATTENDED=yes install-dep
 make PLATFORM=vpp_lite build-release
 
