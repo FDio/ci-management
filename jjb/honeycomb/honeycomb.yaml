@@ -140,6 +140,23 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
+    builders:
+        - jacoco-nojava-workaround
+        - provide-maven-settings:
+            global-settings-file: 'global-settings'
+            settings-file: 'honeycomb-settings'
+        - maven-target:
+            maven-version: '{mvn33}'
+            # We should switch to the recommended configuration of sonar once
+            # JJB adds support for configurating the Sonar wrapper:
+            #    http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Jenkins
+            goals: 'sonar:sonar -V -B -Djenkins -Dsonar -Dsonar.host.url=https://sonar.fd.io -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r'
+            maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+            settings: '{mvn-settings}'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+
     publishers:
         - email-notification:
             email-prefix: '[honeycomb]'
@@ -148,6 +165,7 @@
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: merge-{os}
+    jdk: 'openjdk8'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
