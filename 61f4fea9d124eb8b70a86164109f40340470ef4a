@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_cc57e325",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-11T14:34:26Z",
+      "side": 1,
+      "message": "Need to specify: jdk: openjdk8",
+      "revId": "61f4fea9d124eb8b70a86164109f40340470ef4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_ac549f21",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-11T14:34:26Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this will fix the issue this patch is trying to resolve.",
+      "range": {
+        "startLine": 188,
+        "startChar": 55,
+        "endLine": 188,
+        "endChar": 68
+      },
+      "revId": "61f4fea9d124eb8b70a86164109f40340470ef4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_8c31db0d",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-11T14:34:26Z",
+      "side": 1,
+      "message": "As discussed on IRC we should stop using the deprecated sonar publisher and use the sonar:sonar maven goal as recommended by sonarqube. This is the ODL patch that moved us forward in ODL.\n\nhttps://git.opendaylight.org/gerrit/45501/",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "61f4fea9d124eb8b70a86164109f40340470ef4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
