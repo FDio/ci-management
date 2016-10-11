@@ -302,7 +302,7 @@
             users:
                 - '{ssh-credentials}'
         - fdio-infra-wrappers:
-            build-timeout: '480'
+            build-timeout: '600'
 
     triggers:
         - timed: '0 4 * * 0'
