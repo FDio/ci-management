@@ -185,7 +185,7 @@
 
     prebuilders:
         - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo apt-get purge -qqy openjdk-7-jdk openjdk-7-jre openjdk-7-jre-headless ;fi
 
     maven:
         maven-name: '{mvn33}'
