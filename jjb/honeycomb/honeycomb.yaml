@@ -148,6 +148,7 @@
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: merge-{os}
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -183,10 +184,6 @@
             name: 'honeycomb'
             branch: '{branch}'
 
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo apt-get purge -qqy openjdk-7-jdk openjdk-7-jre openjdk-7-jre-headless ;fi
-
     maven:
         maven-name: '{mvn33}'
         root-pom: 'pom.xml'
@@ -201,6 +198,10 @@
         - findbugs
 
     publishers:
+        - sonar:
+            jdk: 'openjdk8-{os}'
+            language: 'java'
+            branch: '{stream}'
         - email-notification:
             email-prefix: '[honeycomb]'
 
