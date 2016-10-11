@@ -201,10 +201,6 @@
         - findbugs
 
     publishers:
-        - sonar:
-            jdk: 'openjdk8'
-            language: 'java'
-            branch: '{stream}'
         - email-notification:
             email-prefix: '[honeycomb]'
 
