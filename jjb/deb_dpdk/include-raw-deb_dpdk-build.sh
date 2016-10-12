@@ -23,7 +23,7 @@ sha1sum $0
 
 MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
 
-sudo apt-get install -y ${MISSING_PKGS} devscripts
+sudo apt-get install -y ${MISSING_PKGS} devscripts pristine-tar
 
 pkg_version=$(dpkg-parsechangelog --show-field Version)
 orig_version=$(echo ${pkg_version} | sed s'/-.*//')
