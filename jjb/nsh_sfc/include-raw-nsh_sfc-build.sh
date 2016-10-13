@@ -28,7 +28,12 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-export MAVEN_HOME="/opt/apache/maven/"
+if [ -n ${MVN} ]
+then
+  export MAVEN_HOME=$(realpath $(dirname ${MVN})/..)
+else
+  export MAVEN_HOME="/opt/apache/maven/"
+fi
 export PATH=${MAVEN_HOME}/bin:${PATH}
 
 scripts/ci/verify.sh
