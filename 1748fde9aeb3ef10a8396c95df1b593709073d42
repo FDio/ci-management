@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_8d8d5234",
+        "filename": "packer/provision/basebuild/.dummy",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "Not sure what this dummy file is. Is it needed?",
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_ed75fe32",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "I don\u0027t think FD.io has a VM system called baseline.",
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_0d79622f",
+        "filename": "packer/provision/redis-server.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "I don\u0027t believe FD.io has a VM system called redis-server",
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_6d990e6e",
+        "filename": "packer/vars/centos.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "Should check if this image is a valid image.",
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_8d943238",
+        "filename": "packer/vars/ubuntu-14.04.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "Should check if this image is a valid image.",
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_ad8ff622",
+        "filename": "packer/vars/ubuntu-16.04.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:01:04Z",
+      "side": 1,
+      "message": "Should check if this image is a valid image.",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 59
+      },
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
