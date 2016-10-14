@@ -14,8 +14,19 @@ if [ "${OS}" == "centos7" ]; then
     done
 elif [ "${OS}" == "ubuntu1404" ]; then
 
-    # Build the rpms
-    ./packaging/deb/debuild.sh
+    # Build the debs
+    ./packaging/deb/trusty/debuild.sh
+
+    # Find the files
+    DEBS=$(find . -type f -iname '*.deb')
+    for i in $DEBS
+    do
+        push_deb "$i"
+    done
+elif [ "${OS}" == "ubuntu1604" ]; then
+
+    # Build the debs
+    ./packaging/deb/xenial/debuild.sh
 
     # Find the files
     DEBS=$(find . -type f -iname '*.deb')
