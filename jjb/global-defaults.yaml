@@ -12,5 +12,3 @@
 
     ssh-credentials: 'jenkins-gerrit-credentials'
 
-    # Maven versions
-    mvn33: 'Maven_3.3.9'
