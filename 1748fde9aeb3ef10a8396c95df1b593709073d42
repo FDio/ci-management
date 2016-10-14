@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa3479d7_edacde8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-14T05:07:31Z",
+      "side": 1,
+      "message": "I am a string believer in creating well formatted and useful commit messages! Please refer to this blog for an explanation why commit messages are useful.\n\nhttp://chris.beams.io/posts/git-commit/\n\nAlso commit messages should be written in present-tense, imperative style. Write like you are ordering the reviewer to do something. \"Configure packer.io\" is better than \"configurating packer.io\".\n\nI\u0027d like to see more details of WHY we\u0027re adding packer in the body of the commit message. Someone reviewing this patch with 0 background of ci-management or packer should be able to read the commit message and figure out the purpose/intention of the patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "1748fde9aeb3ef10a8396c95df1b593709073d42",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa3479d7_8d8d5234",
         "filename": "packer/provision/basebuild/.dummy",
         "patchSetId": 2
