@@ -1,7 +1,8 @@
 #!/bin/bash
-# basic build script example
+
 set -e -o pipefail
-# do nothing but print the current slave hostname
+
+# print the current slave hostname
 hostname
 
 echo "cat /etc/bootstrap.sha"
@@ -27,8 +28,8 @@ sudo apt-get update
 sudo apt-get install -y ${MISSING_PKGS} devscripts pristine-tar
 
 pkg_version=$(dpkg-parsechangelog --show-field Version)
-orig_version=$(echo ${pkg_version} | sed s'/-.*//')
-orig_tarball="dpdk_${orig_version}.orig.tar.gz"
+orig_version=$(echo ${pkg_version} | sed 's/-.+$//; s/~/-/') # remove debian suffix, replace ~rc1 with -rc1, for instance
+orig_tarball=$(git ls-tree pristine-tar | perl -ne 'print $1 if /(dpdk_$ENV{orig_version}\.orig\..+)\.id$/')
 pristine-tar checkout ${orig_tarball}
 mv ${orig_tarball} ..
 
