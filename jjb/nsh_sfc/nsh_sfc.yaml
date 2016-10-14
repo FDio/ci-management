@@ -54,9 +54,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -120,9 +117,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -198,9 +192,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -256,9 +247,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -315,9 +303,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -371,9 +356,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -411,5 +393,3 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape: include-raw-nsh_sfc-docs.sh
-
-

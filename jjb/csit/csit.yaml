@@ -57,10 +57,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -109,10 +105,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: 1400
 
@@ -294,10 +286,6 @@
             branch: '{branch}'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '480'
 
@@ -352,10 +340,6 @@
             branch: '{branch}'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: 480
 
@@ -403,10 +387,6 @@
             branch: '{branch}'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '1440'
 

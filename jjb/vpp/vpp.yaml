@@ -86,10 +86,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -139,10 +135,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -201,10 +193,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -268,10 +256,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -326,10 +310,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -390,10 +370,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -451,10 +427,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -499,4 +471,3 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
-
