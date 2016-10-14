@@ -34,9 +34,8 @@
             branch: '{branch}'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - build-result:
