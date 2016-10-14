@@ -81,7 +81,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
@@ -89,7 +89,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -134,7 +134,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
@@ -142,7 +142,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -196,7 +196,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: ''
             choosing-strategy: 'default'
 
@@ -204,7 +204,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -263,7 +263,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
@@ -271,7 +271,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -321,7 +321,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
@@ -329,7 +329,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -385,7 +385,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
@@ -393,7 +393,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -446,7 +446,7 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: ''
             choosing-strategy: 'default'
 
@@ -454,7 +454,7 @@
         - timestamps
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 

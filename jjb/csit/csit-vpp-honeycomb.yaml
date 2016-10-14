@@ -36,7 +36,7 @@
     wrappers:
         - ssh-agent-credentials:
             users:
-                - '{ssh-credentials}'
+                - 'jenkins-gerrit-credentials'
 
     triggers:
         - build-result:

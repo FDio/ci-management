@@ -9,6 +9,3 @@
     build-artifact-num-to-keep: 5
     # Timeout in minutes
     build-timeout: 360
-
-    ssh-credentials: 'jenkins-gerrit-credentials'
-
