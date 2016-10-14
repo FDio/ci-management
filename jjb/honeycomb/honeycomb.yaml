@@ -26,6 +26,7 @@
     project-type: maven
     node: verify-{os}
     concurrent: true
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -81,6 +82,7 @@
     project-type: maven
     node: 'verify-image-{os}'
     concurrent: true
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -209,6 +211,7 @@
     name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
     node: merge-{os}
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
