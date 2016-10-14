@@ -80,8 +80,10 @@
             branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-jjb-update.sh
+        - shell: |
+            pip freeze
+            jenkins-jobs --version
+            jenkins-jobs update --recursive --delete-old --workers 4 jjb/
 
 - job-template:
     name: ci-management-verify-zuul
