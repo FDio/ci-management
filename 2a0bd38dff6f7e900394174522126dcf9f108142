@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_2df9c6c8",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-15T01:37:34Z",
+      "side": 1,
+      "message": "you\u0027ll probably need to prefix \u0027sudo\u0027 to all of the admin commands",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "2a0bd38dff6f7e900394174522126dcf9f108142",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
