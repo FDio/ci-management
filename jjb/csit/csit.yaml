@@ -114,7 +114,10 @@
             users:
                 - '{ssh-credentials}'
         - fdio-infra-wrappers:
-            build-timeout: 1400
+            build-timeout: 1440
+##change build timeout behaviour to no-activity, 30 minutes
+        - build-no-activity-timeout:
+            build-timeout: 30
 
     triggers:
         - gerrit-trigger-manually-triggered:
@@ -408,6 +411,9 @@
             users:
                 - '{ssh-credentials}'
         - fdio-infra-wrappers:
+            build-timeout: '1440'
+##change build timeout behaviour to no-activity, 30 minutes
+        - build-no-activity-timeout:
             build-timeout: '1440'
 
     triggers:
