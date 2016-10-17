@@ -31,9 +31,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-patch-submitted:
@@ -72,9 +71,8 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-patch-merged:
@@ -105,9 +103,8 @@
             commit: '$ZUUL_COMMIT'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     builders:
         - shell:
@@ -132,9 +129,8 @@
             commit: 'origin/$ZUUL_BRANCH'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     builders:
         - shell:
@@ -162,9 +158,8 @@
             commit: '$ZUUL_COMMIT'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     builders:
         - shell:
@@ -189,9 +184,8 @@
             commit: 'origin/$ZUUL_BRANCH'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
 
     builders:
         - shell:

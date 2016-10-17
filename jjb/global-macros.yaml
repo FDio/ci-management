@@ -112,6 +112,10 @@
           timeout: '{build-timeout}'
           timeout-var: 'BUILD_TIMEOUT'
           fail: true
+      - timestamps
+      - ssh-agent-credentials:
+          users:
+              - 'jenkins-gerrit-credentials'
       - jclouds:
           single-use: True
 
@@ -250,4 +254,3 @@
                   variable: 'GLOBAL_SETTINGS_FILE'
                 - file-id: '{settings-file}'
                   variable: 'SETTINGS_FILE'
-

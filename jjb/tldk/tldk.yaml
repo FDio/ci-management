@@ -42,9 +42,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -85,9 +82,6 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
@@ -140,9 +134,6 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
