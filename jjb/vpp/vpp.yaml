@@ -145,17 +145,6 @@
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: 'virl-1604-test'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
 
     builders:
         - shell:
@@ -166,12 +155,12 @@
             !include-raw-escape: include-raw-vpp-csit-functional.sh
     
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
+        - archive-artifacts:
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit'
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
