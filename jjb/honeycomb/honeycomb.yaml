@@ -67,7 +67,7 @@
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
-        maven-name: '{mvn33}'
+        maven-name: 'mvn33'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true site'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -136,7 +136,7 @@
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
-        maven-name: '{mvn33}'
+        maven-name: 'mvn33'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -167,7 +167,7 @@
         - os-parameter:
             os: '{os}'
         - maven-project-parameter:
-            maven: '{mvn33}'
+            maven: 'mvn33'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -190,7 +190,7 @@
             branch: '{branch}'
 
     maven:
-        maven-name: '{mvn33}'
+        maven-name: 'mvn33'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true -Dsonar -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -228,7 +228,7 @@
         - os-parameter:
             os: '{os}'
         - maven-project-parameter:
-            maven: '{mvn33}'
+            maven: 'mvn33'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -255,7 +255,7 @@
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
 
     maven:
-        maven-name: '{mvn33}'
+        maven-name: 'mvn33'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -266,7 +266,7 @@
 
     postbuilders:
         - maven-target:
-            maven-version: '{mvn33}'
+            maven-version: 'mvn33'
             goals: '--version'
             settings: 'honeycomb-settings'
             settings-type: cfp

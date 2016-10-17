@@ -257,7 +257,7 @@
         - os-parameter:
             os: '{os}'
         - maven-project-parameter:
-            maven: '{mvn33}'
+            maven: 'mvn33'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -286,7 +286,7 @@
         - shell:
             !include-raw-escape: include-raw-vpp-build.sh
         - maven-target:
-            maven-version: '{mvn33}'
+            maven-version: 'mvn33'
             goals: '--version'
             settings: 'vpp-settings'
             settings-type: cfp
@@ -471,7 +471,7 @@
 
     builders:
         - maven-target:
-            maven-version: '{mvn33}'
+            maven-version: 'mvn33'
             goals: '--version'
             settings: 'vpp-settings'
             settings-type: cfp
@@ -548,7 +548,7 @@
 
     builders:
         - maven-target:
-            maven-version: '{mvn33}'
+            maven-version: 'mvn33'
             goals: '--version'
             settings: 'vpp-settings'
             settings-type: cfp
