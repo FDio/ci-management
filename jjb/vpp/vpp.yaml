@@ -131,15 +131,11 @@
 
     scm:
         - gerrit-trigger-scm:
-            credentials-id: '{ssh-credentials}'
+            credentials-id: 'jenkins-gerrit-credentials'
             refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - timestamps
-        - ssh-agent-credentials:
-            users:
-                - '{ssh-credentials}'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
