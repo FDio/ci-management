@@ -116,7 +116,7 @@
     name: 'vpp-csit-verify-virl-1604-test-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1404'
+    node: 'verify-ubuntu1604'
     concurrent: true
 
     logrotate:
@@ -131,7 +131,7 @@
         - gerrit-parameter:
             branch: '{branch}'
         - os-parameter:
-            os: 'ubuntu1404'
+            os: 'ubuntu1604'
 
     scm:
         - gerrit-trigger-scm:
