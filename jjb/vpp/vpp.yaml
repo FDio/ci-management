@@ -162,6 +162,9 @@
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape: include-raw-vpp-build.sh
+        - shell:
+            !include-raw-escape: include-raw-vpp-csit-functional.sh
+	    
     publishers:
         - archive:
             artifacts: 'build-root/*.rpm,build-root/*.deb'
