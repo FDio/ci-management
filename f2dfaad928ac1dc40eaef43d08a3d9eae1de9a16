@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_5a04c914",
+        "filename": "jjb/rpm_dpdk/include-raw-rpm_dpdk-pkg-build.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-17T23:34:42Z",
+      "side": 1,
+      "message": "We do not currently support CCACHE.  I have a patch in to get it working, though.\n\nhttps://gerrit.fd.io/r/#/c/2970/\n\nUntil this is merged, please remove reference to CCACHE",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "f2dfaad928ac1dc40eaef43d08a3d9eae1de9a16",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
