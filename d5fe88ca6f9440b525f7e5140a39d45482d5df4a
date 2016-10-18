@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_25e20604",
+        "filename": "jjb/rpm_dpdk/rpm_dpdk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2016-10-18T17:37:30Z",
+      "side": 1,
+      "message": "No need for this entire section. fdio-infra-wrappers macro now contains the ssh-agent-credentials.",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "d5fe88ca6f9440b525f7e5140a39d45482d5df4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
