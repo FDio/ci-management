@@ -53,7 +53,7 @@
             branch: 'stable/1609'
             repo-stream-part: 'stable.1609'
 
-    os: ubuntu1404
+    os: ubuntu1604
     type:
         - all
         - short
