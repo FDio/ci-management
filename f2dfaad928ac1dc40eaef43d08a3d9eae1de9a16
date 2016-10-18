@@ -22,6 +22,52 @@
       "revId": "f2dfaad928ac1dc40eaef43d08a3d9eae1de9a16",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_65312ea2",
+        "filename": "jjb/rpm_dpdk/rpm_dpdk.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-18T17:08:30Z",
+      "side": 1,
+      "message": "this representation has been deprecated.  use \u0027jenkins-gerrit-credentials\u0027 instead",
+      "range": {
+        "startLine": 42,
+        "startChar": 28,
+        "endLine": 42,
+        "endChar": 47
+      },
+      "revId": "f2dfaad928ac1dc40eaef43d08a3d9eae1de9a16",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_45262a6a",
+        "filename": "jjb/rpm_dpdk/rpm_dpdk.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-18T17:08:30Z",
+      "side": 1,
+      "message": "see above",
+      "range": {
+        "startLine": 49,
+        "startChar": 18,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "f2dfaad928ac1dc40eaef43d08a3d9eae1de9a16",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
