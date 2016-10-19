@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_2049d48b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-10-19T15:32:14Z",
+      "side": 1,
+      "message": "As Thanh stated in a previous review, we should have a more constructive commit message stating why we\u0027re transitioning from packer to vagrant.",
+      "revId": "77a23c698b84ad6fab2a3d9726954d8577c2e5c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
