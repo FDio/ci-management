@@ -57,7 +57,7 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
+       - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
     triggers:
@@ -105,11 +105,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 1440
-##change build timeout behaviour to no-activity, 30 minutes
-        - build-no-activity-timeout:
-            build-timeout: 30
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 30
 
     triggers:
         - gerrit-trigger-manually-triggered:
@@ -390,11 +387,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '1440'
-##change build timeout behaviour to no-activity, 30 minutes
-        - build-no-activity-timeout:
-            build-timeout: '1440'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
 
     triggers:
         - timed: '0 20 * * *'
