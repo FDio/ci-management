@@ -103,6 +103,14 @@
             fail: true
 
 - wrapper:
+    name: build-no-activity-timeout
+    wrappers:
+        - timeout:
+            type: no-activity
+            timeout: '{build-timeout}'
+            fail: true
+
+- wrapper:
     # This wrapper is required for all jobs as it configures the wrappers
     # needed by the fd.io infra.
     name: fdio-infra-wrappers
