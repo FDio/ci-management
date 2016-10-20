@@ -105,10 +105,19 @@
 - wrapper:
     name: build-no-activity-timeout
     wrappers:
+      # This wrapper is used for all jobs that require no-activity timeouts
+      name: fdio-infra-wrappers-non-activity-timeout
+      wrappers:
         - timeout:
             type: no-activity
             timeout: '{build-timeout}'
             fail: true
+        - timestamps
+        - ssh-agent-credentials:
+            users:
+              - 'jenkins-gerrit-credentials'
+        - jclouds:
+            single-use: True
 
 - wrapper:
     # This wrapper is required for all jobs as it configures the wrappers
