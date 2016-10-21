@@ -35,6 +35,11 @@ jenkins         soft    nofile          16000
 jenkins         hard    nofile          16000
 EOF
 
+cat <<EOJENKINS_SUDO >/etc/sudoers.d/89-jenkins-user-defaults
+Defaults:jenkins !requiretty
+jenkins     ALL = NOPASSWD: ALL
+EOJENKINS_SUDO
+
 cat <<EOSSH >> /etc/ssh/ssh_config
 Host *
   ServerAliveInterval 60
