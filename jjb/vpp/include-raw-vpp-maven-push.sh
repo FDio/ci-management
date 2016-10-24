@@ -5,7 +5,7 @@ echo "* STARTING PUSH OF PACKAGES TO REPOS"
 echo "* NOTHING THAT HAPPENS BELOW THIS POINT IS RELATED TO BUILD FAILURE"
 echo "*******************************************************************"
 
-MVN="/opt/apache/maven/bin/mvn"
+[ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
