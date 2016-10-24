@@ -27,7 +27,7 @@
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
-    node: verify-{os}
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -80,7 +80,7 @@
 - job-template:
     name: 'honeycomb-verify-image-{stream}-{os}'
     project-type: maven
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -146,7 +146,7 @@
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
-    node: merge-{os}
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
 
     logrotate:
@@ -207,7 +207,7 @@
 - job-template:
     name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
-    node: merge-{os}
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
 
     logrotate:

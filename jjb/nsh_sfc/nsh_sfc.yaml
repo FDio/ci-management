@@ -28,7 +28,7 @@
     name: 'nsh_sfc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -91,7 +91,7 @@
     name: 'nsh_sfc-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -167,7 +167,7 @@
     name: 'nsh_sfc-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -222,7 +222,7 @@
     name: 'nsh_sfc-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -279,7 +279,7 @@
     name: 'nsh_sfc-verify-docs-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -332,7 +332,7 @@
     name: 'nsh_sfc-merge-docs-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:

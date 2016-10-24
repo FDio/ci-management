@@ -63,7 +63,7 @@
     name: 'vpp-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -112,7 +112,7 @@
     name: 'vpp-csit-verify-virl-1604-test-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -165,7 +165,7 @@
     name: 'vpp-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -220,7 +220,7 @@
     name: 'vpp-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -237,6 +237,8 @@
             os: '{os}'
         - maven-project-parameter:
             maven: 'mvn33'
+        - maven-exec:
+            maven-version: 'mvn33'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -286,7 +288,7 @@
     name: 'vpp-csit-verify-virl-{stream}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -338,7 +340,7 @@
     name: 'vpp-csit-verify-hw-perf-{stream}-{type}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -400,7 +402,7 @@
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -457,7 +459,7 @@
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
