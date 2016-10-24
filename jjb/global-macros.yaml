@@ -48,6 +48,15 @@
             name: MAVEN_SELECTOR
             default: '{maven}'
             description: 'Maven selector to be used by shell scripts'
+
+- parameter:
+    name: maven-exec
+    parameters:
+      - string:
+          name: MVN
+          default: '/w/tools/hudson.tasks.Maven_MavenInstallation/{maven-version}/bin/mvn'
+          description: 'Maven selector to be used by shell scripts'
+
 - parameter:
     name: repo-name-parameter
     parameters:
