@@ -1,34 +1,40 @@
 #!/bin/bash
-# basic build script example
+
 set -e -o pipefail
-# do nothing but print the current slave hostname
+
+# print the current slave hostname
 hostname
 
-echo "cat /etc/bootstrap.sha"
-if [ -f /etc/bootstrap.sha ];then
-    cat /etc/bootstrap.sha
-else
-    echo "Cannot find /etc/bootstrap.sha"
+for hashfile in bootstrap.sha bootstrap-functions.sha
+do
+    echo -n "${hashfile}: "
+    if [ -f /etc/${hashfile} ];then
+        cat /etc/${hashfile}
+    else
+        echo "Cannot find ${hashfile}"
+    fi
+done
+
+echo "sha1sum of script [${0}]: " $(sha1sum $0)
+
+MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g; s/\|\s+\S+//g;')
+MISSING_PKGS="devscripts pristine-tar ${MISSING_PKGS}"
+
+if [ -n "${MISSING_PKGS}" ]
+then
+    echo "*******************************************************************"
+    echo "* ADD MISSING DEPENDENCIES TO RESPIN SCRIPT:"
+    echo "${MISSING_PKGS}"
+    echo "*******************************************************************"
 fi
-
-echo "cat /etc/bootstrap-functions.sha"
-if [ -f /etc/bootstrap-functions.sha ];then
-    cat /etc/bootstrap-functions.sha
-else
-    echo "Cannot find /etc/bootstrap-functions.sha"
-fi
-
-echo "sha1sum of this script: ${0}"
-sha1sum $0
-
-MISSING_PKGS=$(dpkg-checkbuilddeps |& perl -pe 's/^.+://g; s/\(.*?\)//g')
 
 sudo apt-get update
-sudo apt-get install -y ${MISSING_PKGS} devscripts pristine-tar
+sudo apt-get install -y ${MISSING_PKGS}
 
 pkg_version=$(dpkg-parsechangelog --show-field Version)
-orig_version=$(echo ${pkg_version} | sed s'/-.*//')
-orig_tarball="dpdk_${orig_version}.orig.tar.gz"
+orig_version=$(echo ${pkg_version} | perl -pe 's/-.+$//; s/~/-/') # remove debian suffix, replace ~rc1 with -rc1, for instance
+orig_tarball=$(git ls-tree remotes/origin/pristine-tar | perl -ne "print /(dpdk_${orig_version}.orig.+).id/")
+
 pristine-tar checkout ${orig_tarball}
 mv ${orig_tarball} ..
 
