@@ -105,6 +105,8 @@
 
     builders:
         - shell:
+            !include-raw-escape: gtest-build.sh
+        - shell:
             !include-raw-escape: include-raw-build.sh
 
 - job-template:
