@@ -28,8 +28,16 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
+# Make TLDK
 make
 
 echo "*******************************************************************"
 echo "* TLDK BUILD SUCCESSFULLY COMPLETED"
+echo "*******************************************************************"
+
+# Run unit tests application
+$WORKSPACE/x86_64-native-linuxapp-gcc/app/gtest-rfc --lcores=0 -n 2
+
+echo "*******************************************************************"
+echo "* TLDK UNIT TESTS SUCCESSFUL
 echo "*******************************************************************"
