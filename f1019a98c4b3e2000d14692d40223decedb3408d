@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_55093c94",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-26T21:54:17Z",
+      "side": 1,
+      "message": "I recommend using bash as the default shell:\n\n# Fix the silly notion that /bin/sh should point to dash by pointing it to bash\nsudo update-alternatives --install /bin/sh sh /bin/bash 100 \u003e /dev/null 2\u003e\u00261",
+      "revId": "f1019a98c4b3e2000d14692d40223decedb3408d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d5f40c89",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-26T21:54:17Z",
+      "side": 1,
+      "message": "This is a vast under-representation of the list of packages needed.\n\nI am not certain that the Java packages are correctly configured in the baseline.sh script.  I recommend that the OpenJDK pakages be installed:\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l248\n\nJoel H. requested two weeks ago at a TSC meeting that gcc-5 be installed.  On Ubuntu 14.04, this requires that the ppa:ubuntu-toolchain-r/test PPA be enabled.  On all Ubuntu platforms, these packages should be installed:\n\ngcc-5 g++-5 cpp-5\n\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l224\n\nThe vpp project depends on many packages, which are called out in the Makefile in the root of the vpp repo.\nhttps://gerrit.fd.io/r/gitweb?p\u003dvpp.git;a\u003dblob;f\u003dMakefile#l33\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l271\n\ncurl build-essential autoconf automake bison libssl-dev ccache \\\ndebhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd \\\nlibconfuse-dev git-review exuberant-ctags cscope \\\npython-dev\n\nThe latest kernel should be installed.\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l288\n\nlinux-image-extra-virtual linux-headers-virtual\n\nThe csit project depends on a few packages:\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l301\n\npython-virtualenv python-pip python-dev\n\nThe deb_dpdk project depends on LaTeX and a bunch of other tools.  LaTeX itself weighs in over a gigabyte of data (fonts, layout styles, etc).  We will save a whole lot of time if we install during respin rather than doing it for each build and merge.\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l179\n\nFor the doc build job, we depend on doxygen, graphviz and a couple of python libraries.\n\ndoxygen graphviz python-pyparsing python-jinja2\n\nWe may want to ensure that the cloud packages exist so that OpenStack can dynamically grow the disk, and so that it has the rescue initrd.\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l197\n\ncloud-initramfs-dyn-netconf cloud-initramfs-growroot cloud-initramfs-rescuevol\n\nAt one point, we were experiencing race conditions during builds. The builds needed to install packages, and the daily upgrade script was running, locking the dpkg database.  Our resolution to this was to disable regular upgrades:\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l341\n\n    local PFX\u003d\u0027unattended-upgrades     unattended-upgrades\u0027\n    sudo debconf-set-selections \u003c\u003c\u003c \"${PFX}/enable_auto_updates boolean false\"\n    sudo debconf-set-selections \u003c\u003c\u003c \"${PFX}/origins_pattern string \\\"origin\u003dDebian,codename\u003d\\${distro_codename},label\u003dDebian-Security\\\"\"\n\n    if dpkg -l unattended-upgrades \u003e /dev/null 2\u003e\u00261\n    then\n        sudo dpkg-reconfigure -phigh unattended-upgrades\n    fi\n\nAfter installing packages, clean the package cache:\n\napt-get clean\n\nWe have needed to update the SSL certificates in the past.  I\u0027m not certain we need to do it any longer, but keep it in mind.\nhttp://git.linuxfoundation.org/?p\u003dcjcollier/openstack.git;a\u003dblob;f\u003dpacker/vexx-yul-rot/bootstrap-functions.sh#l329\n\nupdate-ca-certificates -f",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "f1019a98c4b3e2000d14692d40223decedb3408d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d5cd2c5f",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-26T21:54:17Z",
+      "side": 1,
+      "message": "I would also add:\nInstall-Recommends \"false\";\nInstall-Suggests \"false\";",
+      "revId": "f1019a98c4b3e2000d14692d40223decedb3408d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b5daa815",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-26T21:54:17Z",
+      "side": 1,
+      "message": "I would also add:\nquiet \"2\";",
+      "revId": "f1019a98c4b3e2000d14692d40223decedb3408d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
