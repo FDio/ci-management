@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_23f8c2e4",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-10-27T19:33:27Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "revId": "21679228901783a1379013fdd6ead2317603f209",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
