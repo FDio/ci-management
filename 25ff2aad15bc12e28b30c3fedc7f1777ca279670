@@ -16,6 +16,24 @@
       "revId": "25ff2aad15bc12e28b30c3fedc7f1777ca279670",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_69046915",
+        "filename": "jjb/nsh_sfc/include-raw-nsh_sfc-build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2016-10-28T16:09:46Z",
+      "side": 1,
+      "message": "Indeed.  I have created a patch.  Once that is merged, we can rebase this patch and this will go away:\n\nhttps://gerrit.fd.io/r/3625",
+      "parentUuid": "9a437d4f_7ebc1d6d",
+      "revId": "25ff2aad15bc12e28b30c3fedc7f1777ca279670",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
