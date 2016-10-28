@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_7ebc1d6d",
+        "filename": "jjb/nsh_sfc/include-raw-nsh_sfc-build.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-10-28T14:49:25Z",
+      "side": 1,
+      "message": "Do not conflate this change with the changes needed for packer. While I see that this change needs to happen, it needs to happen as a separate patch.",
+      "revId": "25ff2aad15bc12e28b30c3fedc7f1777ca279670",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
