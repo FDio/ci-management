@@ -38,7 +38,15 @@
         - os-parameter:
             os: '{os}'
 
+    scm:
+        - git-scm:
+            credentials-id: '{ssh-credentials}'
+            branch: '{branch}'
+
     wrappers:
+        - ssh-agent-credentials:
+                users:
+                    - '{ssh-credentials}'
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
