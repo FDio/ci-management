@@ -38,6 +38,11 @@
         - os-parameter:
             os: '{os}'
 
+    scm:
+        - git-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            branch: '{branch}'
+
     wrappers:
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
