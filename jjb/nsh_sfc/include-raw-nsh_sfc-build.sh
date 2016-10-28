@@ -30,10 +30,11 @@ sha1sum $0
 
 if [ -n ${MVN} ]
 then
-  export MAVEN_HOME=$(realpath $(dirname ${MVN})/..)
+  export MAVEN_HOME=$(dirname ${MVN})/..
 else
   export MAVEN_HOME="/opt/apache/maven/"
 fi
+
 export PATH=${MAVEN_HOME}/bin:${PATH}
 
 scripts/ci/verify.sh
