@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_8e2c2e4c",
+        "filename": "jjb/csit/csit-vpp-honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-11-02T14:37:14Z",
+      "side": 1,
+      "message": "Please, ignore the comment above as the global variable was removed by patch https://gerrit.fd.io/r/#/c/3411.",
+      "parentUuid": "9a437d4f_ce3356f5",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "d41ed5ebee82fc525a8f3da7db546cb371e112c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_8e9b0ec9",
         "filename": "jjb/csit/csit-vpp-honeycomb.yaml",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2016-11-02T14:12:17Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "9a437d4f_8e9b0ec9",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "d41ed5ebee82fc525a8f3da7db546cb371e112c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_6e310aa2",
+        "filename": "jjb/csit/csit-vpp-honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-11-02T14:37:14Z",
+      "side": 1,
+      "message": "Please, ignore the comment above as the global variable was removed by patch https://gerrit.fd.io/r/#/c/3411.",
       "parentUuid": "9a437d4f_8e9b0ec9",
       "range": {
         "startLine": 46,
