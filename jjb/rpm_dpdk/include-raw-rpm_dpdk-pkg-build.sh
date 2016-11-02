@@ -21,7 +21,7 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-build/build.sh
+scripts/ci/verify.sh
 
 echo "*******************************************************************"
 echo "* rpm_dpdk BUILD SUCCESSFULLY COMPLETED"
