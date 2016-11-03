@@ -28,7 +28,7 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-if [ -n ${MVN} ]
+if [ -n "${MVN}" ]
 then
   export MAVEN_HOME=$(dirname ${MVN})/..
 else
