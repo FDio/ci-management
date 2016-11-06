@@ -161,4 +161,5 @@
             !include-raw-escape:
                 - include-raw-rpm_dpdk-pkg-build.sh
                 - include-raw-rpm_dpdk-pkg-push.sh
+                - ../scripts/maven_push_functions.sh
 
