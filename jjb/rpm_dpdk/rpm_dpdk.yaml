@@ -159,7 +159,7 @@
                 variable: 'GLOBAL_SETTINGS_FILE'
         - shell:
             !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
                 - include-raw-rpm_dpdk-pkg-build.sh
                 - include-raw-rpm_dpdk-pkg-push.sh
-                - ../scripts/maven_push_functions.sh
 
