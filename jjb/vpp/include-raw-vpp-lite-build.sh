@@ -47,7 +47,7 @@ if [ "x${VPP_REPO}" == "x1" ]; then
 fi
 
 make UNATTENDED=yes install-dep
-make PLATFORM=vpp_lite build-release
+make test
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
