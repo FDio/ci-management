@@ -1,9 +1,9 @@
 - project:
-    name: vpp-lite
+    name: vpp-test
     jobs:
-        - 'vpp-lite-verify-{stream}-{os}'
-        - 'vpp-lite-merge-{stream}-{os}'
-        - 'vpp-lite-verify-image-{stream}-{os}'
+        - 'vpp-test-verify-{stream}-{os}'
+        - 'vpp-test-merge-{stream}-{os}'
+        - 'vpp-test-verify-image-{stream}-{os}'
 
     project: 'vpp'
     os:
@@ -31,7 +31,7 @@
         - long
 
 - job-template:
-    name: 'vpp-lite-verify-{stream}-{os}'
+    name: 'vpp-test-verify-{stream}-{os}'
 
     project-type: freestyle
     node: 'verify-{os}'
@@ -70,10 +70,10 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: 'include-raw-vpp-lite-build.sh'
+            !include-raw-escape: 'include-raw-vpp-test-build.sh'
 
 - job-template:
-    name: 'vpp-lite-verify-image-{stream}-{os}'
+    name: 'vpp-test-verify-image-{stream}-{os}'
 
     project-type: freestyle
     node: 'verify-image-{os}'
@@ -125,10 +125,10 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: 'include-raw-vpp-lite-build.sh'
+            !include-raw-escape: 'include-raw-vpp-test-build.sh'
 
 - job-template:
-    name: 'vpp-lite-merge-{stream}-{os}'
+    name: 'vpp-test-merge-{stream}-{os}'
 
     project-type: freestyle
     node: 'merge-{os}'
@@ -170,4 +170,4 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: 'include-raw-vpp-lite-build.sh'
+            !include-raw-escape: 'include-raw-vpp-test-build.sh'
