@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_f0194c23",
+        "filename": "jjb/puppet-fdio/include-raw-prepare-node.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-10T18:39:49Z",
+      "side": 1,
+      "message": "Why are you removing puppet and supporting packages from the system?",
+      "revId": "a44edcbd7202737427e3d4d566d8648f67731931",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b0d3c437",
+        "filename": "jjb/puppet-fdio/include-raw-prepare-node.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-10T18:39:49Z",
+      "side": 1,
+      "message": "This is not needed. The base system already in includes the \"Development Tools\" yum group installed",
+      "revId": "a44edcbd7202737427e3d4d566d8648f67731931",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d01648f1",
+        "filename": "jjb/puppet-fdio/include-raw-prepare-node.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-10T18:39:49Z",
+      "side": 1,
+      "message": "Why are you removing puppet and supporting packages from teh system?",
+      "revId": "a44edcbd7202737427e3d4d566d8648f67731931",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
