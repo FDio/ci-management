@@ -205,6 +205,71 @@
             email-prefix: '[honeycomb]'
 
 - job-template:
+    name: 'honeycomb-benchmark-master'
+    project-type: maven
+    node: verify-ubuntu1604
+    jdk: openjdk8-ubuntu1604
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - maven-project-parameter:
+            maven: 'mvn33'
+        - repo-name-parameter:
+            repo-name: 'master.ubuntu.xenial.main'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - timed: '@daily'
+
+    maven:
+        maven-name: 'mvn33'
+        root-pom: 'pom.xml'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+        settings: 'honeycomb-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
+
+    publishers:
+        - plot:
+            - title: 'Infrastructure CFG write benchmark'
+              yaxis: 'ops/second'
+              csv-file-name: 'benchmark.csv'
+              group: 'infra-bench'
+              keep-records: true
+              numbuilds: '20'
+              style: 'line'
+              use-description: false
+              series:
+                - file: 'infra/it/benchmark/target/benchmark.csv'
+                  display-table: true
+                  format: 'csv'
+                  inclusion-flag: 'include-by-string'
+                  exclude: 'Score'
+
+- job-template:
     name: 'honeycomb-integration-{stream}-{os}'
     project-type: maven
     node: merge-{os}
