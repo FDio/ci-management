@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Damjan Marion <dmarion.lists@gmail.com>
+Code-Review+2: Andrew Grimberg <agrimberg@linuxfoundation.org>
+Submitted-by: Andrew Grimberg <agrimberg@linuxfoundation.org>
+Submitted-at: Fri, 11 Nov 2016 23:19:54 +0000
+Reviewed-on: https://gerrit.fd.io/r/3799
+Project: ci-management
+Branch: refs/heads/master
