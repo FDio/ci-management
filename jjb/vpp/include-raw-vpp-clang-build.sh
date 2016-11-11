@@ -28,7 +28,6 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-echo "CC=${CC}"
 make UNATTENDED=y verify
 
 echo "*******************************************************************"

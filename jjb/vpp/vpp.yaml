@@ -129,8 +129,6 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
-        - compiler-parameter:
-            cc: 'clang'
 
     scm:
         - gerrit-trigger-scm:
