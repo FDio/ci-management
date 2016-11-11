@@ -65,6 +65,14 @@
             default: '{repo-name}'
             description: 'Name of repo to which to publish packaging'
 
+- parameter:
+    name: compiler-parameter
+    parameters:
+        - string:
+            name: CC
+            default: '{cc}'
+            description: "CC parameter, can be gnu or clang"
+
 
 ##### SCMS
 - scm:

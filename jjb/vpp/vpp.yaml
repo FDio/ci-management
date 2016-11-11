@@ -2,6 +2,7 @@
     name: vpp
     jobs:
         - 'vpp-verify-{stream}-{os}'
+        - 'vpp-verify-{stream}-{os}-clang'
         - 'vpp-merge-{stream}-{os}'
         - 'vpp-verify-image-{stream}-{os}'
         - 'vpp-docs-merge-{stream}'
@@ -79,6 +80,57 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
+            !include-raw-escape: include-raw-vpp-build.sh
+    publishers:
+        - archive:
+            artifacts: 'build-root/*.rpm,build-root/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+
+- job-template:
+    name: 'vpp-verify-{stream}-{os}-clang'
+
+    project-type: freestyle
+    node: 'verify-{os}'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - compiler-parameter:
+            cc: 'clang'
 
     scm:
         - gerrit-trigger-scm:
