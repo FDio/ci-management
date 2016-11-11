@@ -28,25 +28,8 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-# Check to make sure the patch doesn't need to be rebased
-# Since there was a discontinuity, patches with a
-# parent before 30d41ff need to be rebased
-
-(git log --oneline | grep 30d41ff > /dev/null 2>&1);if [ $? != 0 ]; then REBASE_NEEDED="1";fi
-(git log --oneline | grep fb0815d > /dev/null 2>&1);if [ $? == 0 ]; then VPP_REPO="1";fi
-echo "REBASE_NEEDED: ${REBASE_NEEDED}"
-echo "VPP_REPO: ${VPP_REPO}"
-
-if [ "x${VPP_REPO}" == "x1" ]; then
-    if [ "x${REBASE_NEEDED}" == "x1" ]; then
-        echo "This patch to vpp is based on an old point in the tree that is likely"
-        echo "to fail verify."
-        echo "PLEASE REBASE PATCH ON THE CURRENT HEAD OF THE VPP REPO"
-        exit 1
-    fi
-fi
 echo "CC=${CC}"
-build-root/vagrant/build.sh
+make UNATTENDED=y verify
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
