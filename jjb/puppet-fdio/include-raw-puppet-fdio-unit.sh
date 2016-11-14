@@ -30,5 +30,5 @@ $GEM_HOME/bin/bundle exec rake spec
 $GEM_HOME/bin/bundle exec rake acceptance
 
 echo "*******************************************************************"
-echo "* rpm_dpdk BUILD SUCCESSFULLY COMPLETED"
+echo "* puppet-fdio BUILD SUCCESSFULLY COMPLETED"
 echo "*******************************************************************"
