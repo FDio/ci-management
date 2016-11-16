@@ -3,18 +3,11 @@
     jobs:
         - 'honeycomb-verify-{stream}-{os}'
         - 'honeycomb-merge-{stream}-{os}'
-        - 'honeycomb-integration-{stream}-{os}'
-        - 'honeycomb-verify-image-{stream}-{os}'
+        - 'honeycomb-benchmark-master'
     project: 'honeycomb'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
-            skip-site: 'false'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'true'
-        - centos7:
-            repo-os-part: 'centos7'
             skip-site: 'true'
     stream:
         - master:
@@ -78,72 +71,6 @@
             email-prefix: '[honeycomb]'
 
 - job-template:
-    name: 'honeycomb-verify-image-{stream}-{os}'
-    project-type: maven
-    node: 'verify-image-{os}'
-    concurrent: true
-    jdk: openjdk8-{os}
-
-    logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-
-    scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
-
-    wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
-
-    triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-images'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
-
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
-    maven:
-        maven-name: 'mvn33'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'honeycomb-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
-
-    publishers:
-        - email-notification:
-            email-prefix: '[honeycomb]'
-
-- job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: merge-{os}
@@ -193,6 +120,18 @@
         global-settings: 'global-settings'
         global-settings-type: cfp
 
+    postbuilders:
+        - maven-target:
+            maven-version: 'mvn33'
+            goals: '--version'
+            settings: 'honeycomb-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'honeycomb-settings'
+            global-settings-file: 'global-settings'
+
     reporters:
         - findbugs
 
@@ -203,6 +142,10 @@
             branch: '{stream}'
         - email-notification:
             email-prefix: '[honeycomb]'
+        - maven-deploy:
+            id: ''
+            unique-version: true
+            deploy-unstable: false
 
 - job-template:
     name: 'honeycomb-benchmark-master'
@@ -268,83 +211,3 @@
                   format: 'csv'
                   inclusion-flag: 'include-by-string'
                   exclude: 'Score'
-
-- job-template:
-    name: 'honeycomb-integration-{stream}-{os}'
-    project-type: maven
-    node: merge-{os}
-    jdk: openjdk8-{os}
-
-    logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-
-    scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            branch: '{branch}'
-
-    wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
-
-    triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-{os},honeycomb-merge-{stream}-{os}'
-            result: 'success'
-
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
-
-    maven:
-        maven-name: 'mvn33'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dkaraf.keep.unpack=true'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'honeycomb-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
-
-    postbuilders:
-        - maven-target:
-            maven-version: 'mvn33'
-            goals: '--version'
-            settings: 'honeycomb-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'honeycomb-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-honeycomb-pkg-push.sh
-    reporters:
-        - findbugs
-
-    publishers:
-        - email-notification:
-            email-prefix: '[honeycomb]'
-        - maven-deploy:
-            id: ''
-            unique-version: true
-            deploy-unstable: false
