@@ -129,7 +129,8 @@ deb_install_pkgs() {
     # Build tools - should match vpp/Makefile DEB_DEPENDS variable
     PACKAGES="$PACKAGES curl build-essential autoconf automake bison libssl-dev
               ccache debhelper dkms git libtool libganglia1-dev libapr1-dev
-              dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent"
+              dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent
+              python-termcolor"
 
     # Interface manipulation tools, editors, debugger and lsb
     PACKAGES="$PACKAGES iproute2 ethtool vlan bridge-utils
