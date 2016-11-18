@@ -141,6 +141,8 @@
             - 'jenkins-gerrit-credentials'
       - jclouds:
           single-use: True
+      - openstack:
+          single-use: True
 
 - wrapper:
     # This wrapper is required for all jobs as it configures the wrappers
@@ -157,6 +159,8 @@
           users:
               - 'jenkins-gerrit-credentials'
       - jclouds:
+          single-use: True
+      - openstack:
           single-use: True
 
 ###### TRIGGERS
