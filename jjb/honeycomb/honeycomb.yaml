@@ -170,10 +170,9 @@
             repo-name: 'master.ubuntu.xenial.main'
 
     scm:
-        - gerrit-trigger-scm:
+        - git-scm:
             credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+            branch: 'master'
 
     wrappers:
         - ssh-agent-credentials:
