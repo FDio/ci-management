@@ -9,7 +9,7 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
-            skip-site: 'false'
+            skip-site: 'true'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
             skip-site: 'true'
