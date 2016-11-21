@@ -1,8 +1,8 @@
 - project:
-    name: csit-honeycomb
-    description: 'CSIT jenkins jobs to test Honeycomb features.'
+    name: csit-hc2vpp
+    description: 'CSIT jenkins jobs to test Hc2vpp features.'
     jobs:
-        - 'csit-honeycomb-functional-{stream}-{os}'
+        - 'csit-hc2vpp-functional-{stream}-{os}'
     project: 'csit'
     branch: 'master'
     branch-id: 'master'
@@ -18,7 +18,7 @@
         - ubuntu1404
 
 - job-template:
-    name: 'csit-honeycomb-functional-{stream}-{os}'
+    name: 'csit-hc2vpp-functional-{stream}-{os}'
 
     project-type: freestyle
     node: verify
@@ -49,7 +49,7 @@
 
     triggers:
         - reverse:
-            jobs: 'honeycomb-integration-{stream}-{os}'
+            jobs: 'hc2vpp-integration-{stream}-{os}'
             result: 'success'
 
     prebuilders:
@@ -58,7 +58,7 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-csit-honeycomb-functional-virl.sh
+            !include-raw-escape: include-raw-csit-hc2vpp-functional-virl.sh
 
     postbuilders:
         - shell: |
