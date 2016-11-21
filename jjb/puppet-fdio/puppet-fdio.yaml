@@ -1,8 +1,8 @@
 - project:
     name: puppet-fdio
     jobs:
-        - 'puppet-fdio-verify-{stream}-{os}'
-
+        - 'puppet-module-unit'
+        - 'puppet-fdio-verify-beaker-{stream}-{os}'
     project: 'puppet-fdio'
     os:
         - centos7:
@@ -13,7 +13,7 @@
             repo-stream-part: 'master'
 
 - job-template:
-    name: 'puppet-fdio-verify-{stream}-{os}'
+    name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
 
     project-type: freestyle
     node: 'verify-{os}'
@@ -51,9 +51,111 @@
             branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-prepare-node.sh
-        - shell:
-            !include-raw-escape:
-                - include-raw-puppet-fdio-unit.sh
+        - puppet-prepare-node
+        - shell: |
+            if [ "{puppet_version}" != "latest" ]; then
+              export PUPPET_GEM_VERSION='~> {puppet_version}.0'
+            fi
+            mkdir .bundled_gems
+            export GEM_HOME=`pwd`/.bundled_gems
+            gem install bundler --no-rdoc --no-ri --verbose
+            $GEM_HOME/bin/bundle install --retry 3
+            $GEM_HOME/bin/bundle exec rake syntax
+            $GEM_HOME/bin/bundle exec rake lint
+            $GEM_HOME/bin/bundle exec rake spec SPEC_OPTS='--format documentation'
+
+- job-group:
+    name: 'puppet-module-unit'
+    puppet_version:
+      - 3.6
+      - 3.8
+      - 4.0
+      - 4.5
+      - 'latest'
+    jobs:
+      - 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
+
+- job-template:
+    name: 'puppet-fdio-verify-beaker-{stream}-{os}'
+
+    project-type: freestyle
+    node: 'verify-{os}'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - puppet-prepare-node
+        - allow-local-ssh-root
+        - shell: |
+            sudo sysctl -w vm.nr_hugepages=1024
+            cat /proc/meminfo | grep Huge
+            mkdir .bundled_gems
+            export GEM_HOME=`pwd`/.bundled_gems
+            gem install bundler --no-rdoc --no-ri --verbose
+            $GEM_HOME/bin/bundle install --retry 3
+            export BEAKER_set=nodepool-{os}
+            export BEAKER_debug=yes
+            export BEAKER_color=no
+            $GEM_HOME/bin/bundle exec rspec spec/acceptance
+
+- builder:
+    name: puppet-prepare-node
+    builders:
+      - shell: |
+          if [ -f /usr/bin/yum ]; then
+            sudo yum -y install libxml2-devel libxslt-devel ruby-devel zlib-devel
+          elif [ -f /usr/bin/apt-get ]; then
+            sudo apt-get update
+            sudo apt-get install -y libxml2-dev libxslt-dev zlib1g-dev
+          fi
+
+- builder:
+    name: allow-local-ssh-root
+    builders:
+      - shell: |
+          #!/bin/bash
+          echo "" | sudo tee -a /etc/ssh/sshd_config
+          echo "Match address 127.0.0.1" | sudo tee -a /etc/ssh/sshd_config
+          echo "    PermitRootLogin without-password" | sudo tee -a /etc/ssh/sshd_config
+          echo "" | sudo tee -a /etc/ssh/sshd_config
+          echo "Match address ::1" | sudo tee -a /etc/ssh/sshd_config
+          echo "    PermitRootLogin without-password" | sudo tee -a /etc/ssh/sshd_config
+          mkdir -p .ssh
+          ssh-keygen -f ~/.ssh/id_rsa -b 2048 -P ""
+          sudo mkdir -p /root/.ssh
+          cat ~/.ssh/id_rsa.pub | sudo tee -a /root/.ssh/authorized_keys
+          if [ -f /usr/bin/yum ]; then
+              sudo systemctl restart sshd
+          elif [ -f /usr/bin/apt-get ]; then
+              sudo service ssh restart
+          fi
