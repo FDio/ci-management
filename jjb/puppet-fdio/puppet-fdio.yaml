@@ -150,8 +150,12 @@
           echo "Match address ::1" | sudo tee -a /etc/ssh/sshd_config
           echo "    PermitRootLogin without-password" | sudo tee -a /etc/ssh/sshd_config
           mkdir -p .ssh
-          if [ ! -f ~/.ssh/id_rsa ]; then
+          if [ ! -f ~/.ssh/id_rsa.pub ]; then
+            if [ -f ~/.ssh/id_rsa ]; then
+              ssh-keygen -y -f ~/.ssh/id_rsa -b 2048 -P "" > ~/.ssh/id_rsa.pub
+            else
               ssh-keygen -f ~/.ssh/id_rsa -b 2048 -P ""
+            fi
           fi
           sudo mkdir -p /root/.ssh
           cat ~/.ssh/id_rsa.pub | sudo tee -a /root/.ssh/authorized_keys
