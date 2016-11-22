@@ -34,6 +34,24 @@
       "revId": "113fd0b6d0120d5e2e302ee1e134832b38b062bc",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_24543b53",
+        "filename": "jjb/puppet-fdio/puppet-fdio.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-22T18:12:11Z",
+      "side": 1,
+      "message": "Well that\u0027s annoying :-/",
+      "parentUuid": "7a288981_84652f47",
+      "revId": "113fd0b6d0120d5e2e302ee1e134832b38b062bc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
