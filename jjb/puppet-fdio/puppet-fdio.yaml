@@ -51,18 +51,9 @@
             branch: '{branch}'
 
     builders:
-        - puppet-prepare-node
         - shell: |
-            if [ "{puppet_version}" != "latest" ]; then
-              export PUPPET_GEM_VERSION='~> {puppet_version}.0'
-            fi
-            mkdir .bundled_gems
-            export GEM_HOME=`pwd`/.bundled_gems
-            gem install bundler --no-rdoc --no-ri --verbose
-            $GEM_HOME/bin/bundle install --retry 3
-            $GEM_HOME/bin/bundle exec rake syntax
-            $GEM_HOME/bin/bundle exec rake lint
-            $GEM_HOME/bin/bundle exec rake spec SPEC_OPTS='--format documentation'
+            ./scripts/prepare-node.sh
+            ./scripts/ci-unit-tests.sh {puppet_version}
 
 - job-group:
     name: 'puppet-module-unit'
@@ -114,53 +105,7 @@
             branch: '{branch}'
 
     builders:
-        - puppet-prepare-node
-        - allow-local-ssh-root
         - shell: |
-            sudo sysctl -w vm.nr_hugepages=1024
-            cat /proc/meminfo | grep Huge
-            mkdir .bundled_gems
-            export GEM_HOME=`pwd`/.bundled_gems
-            gem install bundler --no-rdoc --no-ri --verbose
-            $GEM_HOME/bin/bundle install --retry 3
-            export BEAKER_set=nodepool-{os}
-            export BEAKER_debug=yes
-            export BEAKER_color=no
-            $GEM_HOME/bin/bundle exec rspec spec/acceptance
-
-- builder:
-    name: puppet-prepare-node
-    builders:
-      - shell: |
-          if [ -f /usr/bin/yum ]; then
-            sudo yum -y install libxml2-devel libxslt-devel ruby-devel zlib-devel
-          elif [ -f /usr/bin/apt-get ]; then
-            sudo apt-get update
-            sudo apt-get install -y libxml2-dev libxslt-dev zlib1g-dev
-          fi
-
-- builder:
-    name: allow-local-ssh-root
-    builders:
-      - shell: |
-          echo "" | sudo tee -a /etc/ssh/sshd_config
-          echo "Match address 127.0.0.1" | sudo tee -a /etc/ssh/sshd_config
-          echo "    PermitRootLogin without-password" | sudo tee -a /etc/ssh/sshd_config
-          echo "" | sudo tee -a /etc/ssh/sshd_config
-          echo "Match address ::1" | sudo tee -a /etc/ssh/sshd_config
-          echo "    PermitRootLogin without-password" | sudo tee -a /etc/ssh/sshd_config
-          mkdir -p .ssh
-          if [ ! -f ~/.ssh/id_rsa.pub ]; then
-            if [ -f ~/.ssh/id_rsa ]; then
-              ssh-keygen -y -f ~/.ssh/id_rsa -b 2048 -P "" > ~/.ssh/id_rsa.pub
-            else
-              ssh-keygen -f ~/.ssh/id_rsa -b 2048 -P ""
-            fi
-          fi
-          sudo mkdir -p /root/.ssh
-          cat ~/.ssh/id_rsa.pub | sudo tee -a /root/.ssh/authorized_keys
-          if [ -f /usr/bin/yum ]; then
-              sudo systemctl restart sshd
-          elif [ -f /usr/bin/apt-get ]; then
-              sudo service ssh restart
-          fi
+            ./scripts/prepare-node.sh
+            ./scripts/allow-local-ssh-root.sh
+            ./scripts/ci-beaker.sh {os}
