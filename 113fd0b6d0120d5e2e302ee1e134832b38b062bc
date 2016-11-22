@@ -16,6 +16,24 @@
       "revId": "113fd0b6d0120d5e2e302ee1e134832b38b062bc",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_84652f47",
+        "filename": "jjb/puppet-fdio/puppet-fdio.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 409
+      },
+      "writtenOn": "2016-11-22T18:10:31Z",
+      "side": 1,
+      "message": "beaker uses root ssh to get into localhost to run acceptance tests",
+      "parentUuid": "7a288981_847e4fe3",
+      "revId": "113fd0b6d0120d5e2e302ee1e134832b38b062bc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
