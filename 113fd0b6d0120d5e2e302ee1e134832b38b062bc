@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_847e4fe3",
+        "filename": "jjb/puppet-fdio/puppet-fdio.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-22T18:03:08Z",
+      "side": 1,
+      "message": "Why do you need this? You\u0027ve already got sudo rights",
+      "revId": "113fd0b6d0120d5e2e302ee1e134832b38b062bc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
