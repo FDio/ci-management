@@ -46,7 +46,7 @@ if [ "x${VPP_REPO}" == "x1" ]; then
     fi
 fi
 echo "CC=${CC}"
-build-root/vagrant/build.sh
+make verify
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
