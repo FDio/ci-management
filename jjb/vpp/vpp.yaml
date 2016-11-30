@@ -28,6 +28,9 @@
         - '1609':
             branch: 'stable/1609'
             repo-stream-part: 'stable.1609'
+        - '1701':
+            branch: 'stable/1701'
+            repo-stream-part: 'stable.1701'
     type:
         - short
         - long
