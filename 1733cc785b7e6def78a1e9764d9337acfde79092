@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_2a952640",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2016-11-30T22:56:02Z",
+      "side": 1,
+      "message": "This should be in both infra-wrappers",
+      "revId": "1733cc785b7e6def78a1e9764d9337acfde79092",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
