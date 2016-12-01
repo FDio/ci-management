@@ -45,8 +45,9 @@ if [ "x${VPP_REPO}" == "x1" ]; then
         exit 1
     fi
 fi
-echo "CC=${CC}"
-build-root/vagrant/build.sh
+
+make UNATTENDED=yes install-dep
+make PLATFORM=vpp_lite build-release
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
