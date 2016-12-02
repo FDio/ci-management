@@ -254,6 +254,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - is-csit-vpp-job-parameter:
+            is-csit-vpp-job: 'True'
 
     scm:
         - gerrit-trigger-scm:
@@ -308,6 +310,8 @@
             os: '{os}'
         - type-parameter:
             type: '{type}'
+        - is-csit-vpp-job-parameter:
+            is-csit-vpp-job: 'True'
 
     scm:
         - gerrit-trigger-scm:

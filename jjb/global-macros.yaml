@@ -73,6 +73,14 @@
             default: '{cc}'
             description: "CC parameter, can be gnu or clang"
 
+- parameter:
+    name: is-csit-vpp-job-parameter
+    parameters:
+        - string:
+            name: IS_CSIT_VPP_JOB
+            default: '{is-csit-vpp-job}'
+            description: "Parameter is True if this is a CSIT vpp job."
+
 
 ##### SCMS
 - scm:

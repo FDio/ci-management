@@ -51,6 +51,7 @@ if [ "x${VPP_REPO}" == "x1" ]; then
     fi
 fi
 echo "CC=${CC}"
+echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 make UNATTENDED=yes verify
 
 echo "*******************************************************************"
