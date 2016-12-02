@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_bb184985",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-12-02T20:03:02Z",
+      "side": 1,
+      "message": "I guess it should be \"xTrue\"",
+      "range": {
+        "startLine": 41,
+        "startChar": 22,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "5a494f9291970388d0a29d4aa396e3a3a0f21678",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_9b1d8d76",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2016-12-02T20:03:02Z",
+      "side": 1,
+      "message": "I guess it should be \"xTrue\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "5a494f9291970388d0a29d4aa396e3a3a0f21678",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
