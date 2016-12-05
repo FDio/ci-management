@@ -28,14 +28,20 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-# Check to make sure the patch doesn't need to be rebased
-# Since there was a discontinuity, patches with a
-# parent before 30d41ff need to be rebased
-
-(git log --oneline | grep 30d41ff > /dev/null 2>&1);if [ $? != 0 ]; then REBASE_NEEDED="1";fi
-(git log --oneline | grep fb0815d > /dev/null 2>&1);if [ $? == 0 ]; then VPP_REPO="1";fi
-echo "REBASE_NEEDED: ${REBASE_NEEDED}"
-echo "VPP_REPO: ${VPP_REPO}"
+echo "CC=${CC}"
+echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
+# If and only if we are doing verify *after* make verify was made to work
+# and we are not a CSIT job just building packages, then use make verify,
+# else use the old build-root/vagrant/build.sh
+if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
+        [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
+then
+    echo "Building using \"make verify\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
+else
+    echo "Building using \"build-root/vagrant/build.sh\""
+    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
+fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
     if [ "x${REBASE_NEEDED}" == "x1" ]; then
@@ -45,9 +51,6 @@ if [ "x${VPP_REPO}" == "x1" ]; then
         exit 1
     fi
 fi
-echo "CC=${CC}"
-echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
-make UNATTENDED=yes verify
 
 echo "*******************************************************************"
 echo "* VPP BUILD SUCCESSFULLY COMPLETED"
