@@ -34,11 +34,6 @@ sha1sum $0
 
 (git log --oneline | grep 30d41ff > /dev/null 2>&1);if [ $? != 0 ]; then REBASE_NEEDED="1";fi
 (git log --oneline | grep fb0815d > /dev/null 2>&1);if [ $? == 0 ]; then VPP_REPO="1";fi
-
-# Due to a shift to make verify, after 2016-12-01 we need to make sure any patches
-# coming in happen after 37682e1
-(git log --oneline | grep 37682e1 > /dev/null 2>&1);if [ $? != 0 ]; then REBASE_NEEDED="1";fi
-
 echo "REBASE_NEEDED: ${REBASE_NEEDED}"
 echo "VPP_REPO: ${VPP_REPO}"
 
