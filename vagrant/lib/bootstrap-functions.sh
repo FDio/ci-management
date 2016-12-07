@@ -152,13 +152,16 @@ deb_install_pkgs() {
     PACKAGES="$PACKAGES libxen-dev libxenstore3.0 python-sphinx python-sphinx-rtd-theme"
     PACKAGES="$PACKAGES texlive-fonts-recommended texlive-latex-extra"
 
+    # valgrind for memory leakage checks
+    PACKAGES="$PACKAGES valgrind"
+
     echo '---> Installing packages'
     # disable double quoting check
     # shellcheck disable=SC2086
     apt-get install ${PACKAGES}
 
     # Specify documentation packages
-    DOC_PACKAGES="doxygen graphviz python-pyparsing python-jinja2"
+    DOC_PACKAGES="doxygen graphviz python-pyparsing python-jinja2 asciidoc dblatex source-highlight"
     apt-get install ${DOC_PACKAGES}
 }
 
@@ -216,8 +219,11 @@ rh_install_pkgs() {
     yum install -q -y @development redhat-lsb glibc-static java-1.8.0-openjdk-devel yum-utils \
                       openssl-devel apr-devel indent
 
+    # valgrind for memory leaks check
+    yum install -q -y valgrind
+
     # Specify documentation packages
-    DOC_PACKAGES="doxygen graphviz pyparsing python-jinja2"
+    DOC_PACKAGES="doxygen graphviz pyparsing python-jinja2 asciidoc dblatex source-highlight python-sphinx"
     yum install -q -y install ${DOC_PACKAGES}
 
     # Install python development
