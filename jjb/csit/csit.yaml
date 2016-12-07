@@ -186,138 +186,408 @@
             output-path: ''
 
         - plot:
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, NDR'
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-1.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-2.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-3.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-4.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-5.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-5.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-6.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-l2-6.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-7.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-8.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and c(contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-9.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-10.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-11.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-5.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-12.csv'
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-ipv4-6.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP4FWD")]'
+
+            - title: 'RFC2544 binary search with 78B, 1T1C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 1T1C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-5.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-IPv6-6.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP6FWD")]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-5.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, IPv4, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-6.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: 'RFC2544 binary search with 78B, 1T1C, NDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-7.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, NDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-8.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, NDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-9.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 1T1C, PDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-10.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, PDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-11.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, PDR, IPv6, ENCAP'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-encap-12.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "VHOST")]'
+                    
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-5.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-{stream}-{type}-vhost-6.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "VHOST")]'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -458,7 +728,7 @@
           build-timeout: '1440'
 
     triggers:
-        - timed: '0 20 * * *'
+        - timed: 'H 20 * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -476,138 +746,407 @@
             output-path: 'csit/archive'
 
         - plot:
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rxq=1, NDR'
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-1.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-1.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rxq=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-2.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-2.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rxq=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-3.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-3.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rxq=1, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-4.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-4.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rxq=2, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-5.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-5.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rxq=2, NDR'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR'
+              group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-6.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-l2-6.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rxq=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-7.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-1.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rxq=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-8.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-2.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rxq=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-9.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-3.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rxq=1, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-10.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-4.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rxq=2, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-11.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-5.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rxq=2, PDR=0.5%'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, IPv4'
+              group: 'RFC2544: IPv4 base, scale, feature'
               yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-verify-master-nightly-12.csv'
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv4-6.csv'
               series:
                   - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
+                    xpath: '//*[@framesize="64" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP4FWD")]'
+
+            - title: 'RFC2544 binary search with 78B, 1T1C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-1.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-2.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, NDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-3.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 1T1C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-4.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-5.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, PDR, IPv6'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-IPv6-6.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "IP6FWD")]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-1.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-2.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-3.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-4.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-5.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, IPv4'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-6.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: 'RFC2544 binary search with 78B, 1T1C, NDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-7.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, NDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-8.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, NDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-9.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 1T1C, PDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-10.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 2T2C, PDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-11.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: 'RFC2544 binary search with 78B, 4T4C, PDR, IPv6'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, IPSEC'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-encap-12.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78" and contains(@tags, "ENCAP") and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: 'RFC2544 binary search with 64B, 1T1C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-1.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-2.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, NDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-3.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 1T1C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-4.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 2T2C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-5.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST")]'
+            - title: 'RFC2544 binary search with 64B, 4T4C, PDR, Vhost'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-verify-perf-master-nightly-all-vhost-6.csv'
+              series:
+                  - file: 'csit/output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64" and contains(@tags, "PDRDISC") and contains(@tags, "4T4C") and contains(@tags, "VHOST")]'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
