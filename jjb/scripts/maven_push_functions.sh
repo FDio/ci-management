@@ -47,8 +47,8 @@ function push_file ()
 function push_jar ()
 {
     jarfile=$1
-    repoId="${BASEREPOID}snapshot"
-    url="${BASEURL}snapshot"
+    repoId="fd.io.${REPO_NAME}"
+    url="${BASEURL}${REPO_NAME}"
 
     # examples:
     # * jvpp-registry-16.09.jar
@@ -58,7 +58,7 @@ function push_jar ()
     artifactId=$(echo "$basefile" | rev | cut -d '-' -f 2-  | rev)
     version=$(echo "$basefile" | rev | cut -d '-' -f 1  | rev)
 
-    push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
+    push_file "$jarfile" "$repoId" "$url" "${version}" "$artifactId" jar
 }
 
 function push_deb ()
