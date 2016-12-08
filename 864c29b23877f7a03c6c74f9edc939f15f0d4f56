@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_c7e20fd5",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2016-12-08T13:58:35Z",
+      "side": 1,
+      "message": "double check if it is OK.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "864c29b23877f7a03c6c74f9edc939f15f0d4f56",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_a7e703e4",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2016-12-08T13:58:35Z",
+      "side": 1,
+      "message": "double check",
+      "range": {
+        "startLine": 79,
+        "startChar": 10,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "864c29b23877f7a03c6c74f9edc939f15f0d4f56",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_67d11bfb",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-csit-integration.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2016-12-08T13:58:35Z",
+      "side": 1,
+      "message": "sh",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "864c29b23877f7a03c6c74f9edc939f15f0d4f56",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_47ce1f5c",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-csit-verify.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2016-12-08T13:58:35Z",
+      "side": 1,
+      "message": "sh",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "864c29b23877f7a03c6c74f9edc939f15f0d4f56",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
