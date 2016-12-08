@@ -17,6 +17,7 @@ if [ "${OS}" == "ubuntu1404" ]; then
     for i in $JARS
     do
         push_jar "$i"
+        push_jar_snapshot "i"
     done
 
     for i in $DEBS
