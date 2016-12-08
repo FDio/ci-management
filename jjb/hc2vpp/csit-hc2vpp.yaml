@@ -1,0 +1,157 @@
+- project:
+    name: csit-hc2vpp
+    description: 'jenkins jobs to test Hc2vpp features.'
+    jobs:
+        - 'hc2vpp-csit-integration-{stream}-{os}'
+        - 'hc2vpp-csit-verify-{stream}-{os}'
+    project: 'hc2vpp'
+    branch: 'master'
+    branch-id: 'master'
+    build-artifact-num-to-keep: 10
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+    os:
+        - ubuntu1404:
+            repo-os-part: 'ubuntu.trusty.main'
+            skip-site: 'true'
+
+- job-template:
+    name: 'hc2vpp-csit-integration-{stream}-{os}'
+
+    project-type: freestyle
+    node: verify-{os}
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - os-parameter:
+            os: '{os}'
+
+    scm:
+        - git-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            branch: '{branch}'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - reverse:
+            jobs: 'hc2vpp-verify-{stream}-{os}'
+            result: 'success'
+
+    prebuilders:
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-integration.sh
+
+    postbuilders:
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml, /var/log/honeycomb/honeycomb.log'
+            latest-only: false
+        - email-notification:
+            email-prefix: '[hc2vpp]'
+
+        - robot-report:
+            output-path: ''
+
+- job-template:
+    name: 'hc2vpp-csit-verify-{stream}-{os}'
+
+    project-type: maven
+    node: verify-{os}
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+            branch: '{branch}'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'csit-verify'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
+
+    prebuilders:
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
+
+    maven:
+        maven-name: 'mvn33'
+        root-pom: 'pom.xml'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} -DskipTests'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+        settings: 'hc2vpp-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
+
+    postbuilders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-verify.sh
+        - shell: |
+            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml, /var/log/honeycomb/honeycomb.log'
+            latest-only: false
+        - email-notification:
+            email-prefix: '[hc2vpp]'
+
+        - robot-report:
+            output-path: ''
