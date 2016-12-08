@@ -8,6 +8,8 @@
         - 'csit-vpp-verify-{stream_timed}-weekly'
         - 'csit-vpp-verify-{stream_timed}-semiweekly'
         - 'csit-vpp-verify-perf-master-nightly-all'
+        - 'csit-docs-merge-{stream}'
+        - 'csit-docs-verify-{stream}'
 
     project: 'csit'
     branch: 'master'
@@ -30,6 +32,7 @@
         - '1609':
             branch: 'rls1609'
             branch-id: 'oper-rls1609'
+
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-virl'
@@ -76,6 +79,7 @@
 
         - robot-report:
             output-path: ''
+
 
 - job-template:
     name: 'csit-vpp-perf-{stream}-{type}'
@@ -260,6 +264,7 @@
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
 
+
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-weekly'
     description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch and create corresponding operational branch in case of success.'
@@ -365,6 +370,7 @@
 
         - robot-report:
             output-path: 'csit/archive'
+
 
 - job-template:
     name: 'csit-vpp-verify-perf-master-nightly-all'
@@ -541,6 +547,134 @@
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
+
+
+- job-template:
+    name: 'csit-docs-verify-{stream}'
+
+    project-type: freestyle
+    node: 'verify-ubuntu1604'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+        - fdio-infra-wrappers-non-activity-timeout:
+            build-timeout: 360
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33'
+            goals: '--version'
+            settings: 'csit-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'csit-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape: include-raw-csit-docs.sh
+
+    publishers:
+        - archive:
+            artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+
+
+- job-template:
+    name: 'csit-docs-merge-{stream}'
+
+    project-type: freestyle
+    node: 'verify-ubuntu1604'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+        - fdio-infra-wrappers-non-activity-timeout:
+            build-timeout: 360
+
+    triggers:
+        - reverse:
+            jobs: 'csit-vpp-verify-master-weekly'
+            result: 'success'
+        - gerrit:
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'run-docs'
+            skip-vote:
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33'
+            goals: '--version'
+            settings: 'csit-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'csit-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape: include-raw-csit-docs.sh
+
+    publishers:
+        - archive:
+            artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+
 
 - parameter:
     name: test-type-parameter
