@@ -44,7 +44,7 @@ function push_file ()
     fi
 }
 
-function push_jar ()
+function push_jar_snapshot ()
 {
     jarfile=$1
     repoId="${BASEREPOID}snapshot"
@@ -59,6 +59,23 @@ function push_jar ()
     version=$(echo "$basefile" | rev | cut -d '-' -f 1  | rev)
 
     push_file "$jarfile" "$repoId" "$url" "${version}-SNAPSHOT" "$artifactId" jar
+}
+
+function push_jar ()
+{
+    jarfile=$1
+    repoId="fd.io.${REPO_NAME}"
+    url="${BASEURL}${REPO_NAME}"
+
+    # examples:
+    # * jvpp-registry-16.09.jar
+    # * jvpp-16.09.jar
+
+    basefile=$(basename -s .jar "$jarfile")
+    artifactId=$(echo "$basefile" | rev | cut -d '-' -f 2-  | rev)
+    version=$(echo "$basefile" | rev | cut -d '-' -f 1  | rev)
+
+    push_file "$jarfile" "$repoId" "$url" "${version}" "$artifactId" jar
 }
 
 function push_deb ()
