@@ -12,9 +12,6 @@
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
         - 1607:
             branch: 'deb_dpdk_16.07'
             repo-stream-part: 'deb_dpdk_1607'
