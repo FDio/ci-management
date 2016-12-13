@@ -1,6 +1,9 @@
 #!/bin/bash
 set -xeu -o pipefail
 
+current_dir = `pwd`
+cd ${WORKSPACE}
+
 # Clone csit and run package download script
 git clone https://gerrit.fd.io/r/csit --branch master
 
@@ -10,4 +13,6 @@ if [ $? != 0 ]; then
     exit
 fi
 
-./resources/tools/download_hc_build_pkgs.sh
+./csit/resources/tools/download_hc_build_pkgs.sh
+
+cd ${current_dir}
