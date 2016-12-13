@@ -64,13 +64,13 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml, /var/log/honeycomb/honeycomb.log'
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: ''
+            output-path: 'csit'
 
 - job-template:
     name: 'hc2vpp-csit-verify-{stream}-{os}'
@@ -111,7 +111,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'csit-verify'
+                    comment-contains-value: 'verify-csit$'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
@@ -148,10 +148,10 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml, /var/log/honeycomb/honeycomb.log'
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: ''
+            output-path: 'csit'
