@@ -5,12 +5,12 @@ set -xeu -o pipefail
 if [ "${OS}" == "ubuntu1404" ]; then
 
     ./packaging/deb/trusty/debuild.sh
-    cp ./packaging/deb/trusty/*.deb ./
+    cp ./packaging/deb/trusty/*.deb ./csit
 
 elif [ "${OS}" == "ubuntu1604" ]; then
 
     ./packaging/deb/xenial/debuild.sh
-    cp ./packaging/deb/xenial/*.deb ./
+    cp ./packaging/deb/xenial/*.deb ./csit
 fi
 
 cd csit

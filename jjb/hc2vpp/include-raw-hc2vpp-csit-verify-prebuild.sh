@@ -10,4 +10,4 @@ if [ $? != 0 ]; then
     exit
 fi
 
-./resources/tools/download_hc_build_pkgs.sh
+csit/resources/tools/download_hc_build_pkgs.sh
