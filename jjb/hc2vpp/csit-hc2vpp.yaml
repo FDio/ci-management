@@ -111,7 +111,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'verify-csit$'
+                    comment-contains-value: 'verify-csit'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
