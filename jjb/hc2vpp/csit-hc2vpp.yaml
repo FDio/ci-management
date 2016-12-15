@@ -21,7 +21,7 @@
     name: 'hc2vpp-csit-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: verify-{os}
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -76,7 +76,7 @@
     name: 'hc2vpp-csit-verify-{stream}-{os}'
 
     project-type: maven
-    node: verify-{os}
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -93,7 +93,9 @@
         - os-parameter:
             os: '{os}'
         - maven-project-parameter:
-            maven: 'mvn33'
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -131,7 +133,7 @@
             !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
     maven:
-        maven-name: 'mvn33'
+        maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} -DskipTests'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
