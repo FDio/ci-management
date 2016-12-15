@@ -16,7 +16,7 @@
     name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: centos7-basebuild-4c-4g
     concurrent: true
 
     logrotate:
