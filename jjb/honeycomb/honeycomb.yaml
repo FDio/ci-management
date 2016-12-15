@@ -20,7 +20,7 @@
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
-    node: verify-{os}
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -57,7 +57,7 @@
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
-        maven-name: 'mvn33'
+        maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -73,7 +73,7 @@
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
-    node: merge-{os}
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
 
     logrotate:
@@ -88,7 +88,9 @@
         - os-parameter:
             os: '{os}'
         - maven-project-parameter:
-            maven: 'mvn33'
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -111,7 +113,7 @@
             branch: '{branch}'
 
     maven:
-        maven-name: 'mvn33'
+        maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
@@ -122,7 +124,7 @@
 
     postbuilders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'honeycomb-settings'
             settings-type: cfp
@@ -150,7 +152,7 @@
 - job-template:
     name: 'honeycomb-benchmark-master'
     project-type: maven
-    node: verify-ubuntu1604
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-ubuntu1604
 
     logrotate:
@@ -165,7 +167,9 @@
         - os-parameter:
             os: 'ubuntu1604'
         - maven-project-parameter:
-            maven: 'mvn33'
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
         - repo-name-parameter:
             repo-name: 'master.ubuntu.xenial.main'
 
@@ -185,7 +189,7 @@
         - timed: '@daily'
 
     maven:
-        maven-name: 'mvn33'
+        maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
         goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
