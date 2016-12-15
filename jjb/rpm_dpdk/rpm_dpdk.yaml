@@ -18,7 +18,7 @@
     name: 'rpm_dpdk-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -61,7 +61,7 @@
     name: 'rpm_dpdk-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -117,7 +117,7 @@
     name: 'rpm_dpdk-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
