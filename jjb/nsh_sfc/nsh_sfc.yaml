@@ -28,7 +28,7 @@
     name: 'nsh_sfc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -46,6 +46,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -64,7 +66,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'nsh_sfc-settings'
             settings-type: cfp
@@ -91,7 +93,7 @@
     name: 'nsh_sfc-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -109,6 +111,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -140,7 +144,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'nsh_sfc-settings'
             settings-type: cfp
@@ -167,7 +171,7 @@
     name: 'nsh_sfc-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -182,6 +186,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-exec:
+            maven-version: 'mvn33'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -201,6 +207,13 @@
             branch: '{branch}'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'nsh_sfc-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - config-file-provider:
             files:
               - file-id: 'nsh_sfc-settings'
@@ -222,7 +235,7 @@
     name: 'nsh_sfc-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -279,7 +292,7 @@
     name: 'nsh_sfc-verify-docs-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -295,6 +308,8 @@
             branch: '{branch}'
         - os-parameter:
             os: 'ubuntu1604'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -313,7 +328,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'vpp-settings'
             settings-type: cfp
@@ -332,7 +347,7 @@
     name: 'nsh_sfc-merge-docs-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -348,6 +363,8 @@
             branch: '{branch}'
         - os-parameter:
             os: 'ubuntu1604'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -382,7 +399,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'vpp-settings'
             settings-type: cfp
