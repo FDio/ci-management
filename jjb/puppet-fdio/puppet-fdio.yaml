@@ -16,7 +16,7 @@
     name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -70,7 +70,7 @@
     name: 'puppet-fdio-verify-beaker-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
