@@ -18,7 +18,7 @@
     name: 'csit-validate-pylint-{stream}'
 
     project-type: freestyle
-    node: verify
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     logrotate:
