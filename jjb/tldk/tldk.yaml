@@ -18,7 +18,7 @@
     name: '{project}-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -62,7 +62,7 @@
     name: '{project}-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -115,7 +115,7 @@
     name: '{project}-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
