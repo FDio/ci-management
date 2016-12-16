@@ -209,4 +209,4 @@
                   display-table: true
                   format: 'csv'
                   inclusion-flag: 'include-by-string'
-                  exclude: 'Score'
+                  exclude: 'Score, Score Error (99,9%)'
