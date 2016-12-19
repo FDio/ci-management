@@ -302,7 +302,7 @@
     name: 'nsh_sfc-verify-docs-{stream}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     logrotate:
@@ -357,7 +357,7 @@
     name: 'nsh_sfc-merge-docs-{stream}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     logrotate:
