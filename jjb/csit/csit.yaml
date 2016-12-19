@@ -567,6 +567,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -587,7 +589,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'csit-settings'
             settings-type: cfp
@@ -626,6 +628,8 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -655,7 +659,7 @@
 
     builders:
         - maven-target:
-            maven-version: 'mvn33'
+            maven-version: 'mvn33-new'
             goals: '--version'
             settings: 'csit-settings'
             settings-type: cfp
