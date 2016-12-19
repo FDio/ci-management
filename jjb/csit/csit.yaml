@@ -553,7 +553,7 @@
     name: 'csit-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -612,7 +612,7 @@
     name: 'csit-docs-merge-{stream}'
 
     project-type: freestyle
-    node: 'verify-ubuntu1604'
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
