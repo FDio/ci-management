@@ -23,7 +23,7 @@
     name: 'deb_dpdk-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -66,7 +66,7 @@
     name: 'deb_dpdk-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-image-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -122,7 +122,7 @@
     name: 'deb_dpdk-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'merge-{os}'
+    node: '{os}-basebuild-4c-4g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -137,6 +137,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -156,6 +158,13 @@
             branch: '{branch}'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'deb_dpdk-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - config-file-provider:
             files:
               - file-id: 'deb_dpdk-settings'
