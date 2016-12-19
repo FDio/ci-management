@@ -19,7 +19,7 @@
     name: 'trex-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -59,7 +59,7 @@
     name: 'trex-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: 'verify-{os}'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
