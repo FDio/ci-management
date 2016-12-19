@@ -134,6 +134,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - maven-exec:
+            maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
@@ -151,6 +153,13 @@
             branch: '{branch}'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'rpm_dpdk-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - config-file-provider:
             files:
               - file-id: 'rpm_dpdk-settings'
