@@ -38,7 +38,7 @@
     name: 'csit-vpp-functional-{stream}-virl'
 
     project-type: freestyle
-    node: verify-ubuntu1604
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     logrotate:
@@ -85,7 +85,7 @@
     name: 'csit-vpp-perf-{stream}-{type}'
 
     project-type: freestyle
-    node: verify-ubuntu1604
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: false
 
     logrotate:
@@ -270,7 +270,7 @@
     description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch and create corresponding operational branch in case of success.'
 
     project-type: freestyle
-    node: verify-ubuntu1604
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: false
 
     logrotate:
@@ -329,7 +329,7 @@
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
-    node: verify-ubuntu1604
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: false
 
     logrotate:
@@ -377,7 +377,7 @@
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
-    node: verify-ubuntu1604
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: false
 
     logrotate:
