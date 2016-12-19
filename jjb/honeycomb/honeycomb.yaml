@@ -200,17 +200,62 @@
 
     publishers:
         - plot:
-            - title: 'Infrastructure CFG write benchmark'
+            - title: 'Infrastructure CFG write benchmark (simple-container)'
               yaxis: 'ops/second'
-              csv-file-name: 'benchmark.csv'
+              csv-file-name: 'simple-container.csv'
               group: 'infra-bench'
               keep-records: true
               numbuilds: '20'
               style: 'line'
               use-description: false
               series:
-                - file: 'infra/it/benchmark/target/benchmark.csv'
+                - file: 'infra/it/benchmark/target/simple-container.csv'
                   display-table: true
                   format: 'csv'
                   inclusion-flag: 'include-by-string'
-                  exclude: 'Score, Score Error (99,9%)'
+                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+        - plot:
+            - title: 'Infrastructure CFG write benchmark (list-in-container)'
+              yaxis: 'ops/second'
+              csv-file-name: 'list-in-container.csv'
+              group: 'infra-bench'
+              keep-records: true
+              numbuilds: '20'
+              style: 'line'
+              use-description: false
+              series:
+                - file: 'infra/it/benchmark/target/list-in-container.csv'
+                  display-table: true
+                  format: 'csv'
+                  inclusion-flag: 'include-by-string'
+                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+        - plot:
+            - title: 'Infrastructure CFG write benchmark (complex-list-in-container)'
+              yaxis: 'ops/second'
+              csv-file-name: 'complex-list-in-container.csv'
+              group: 'infra-bench'
+              keep-records: true
+              numbuilds: '20'
+              style: 'line'
+              use-description: false
+              series:
+                - file: 'infra/it/benchmark/target/complex-list-in-container.csv'
+                  display-table: true
+                  format: 'csv'
+                  inclusion-flag: 'include-by-string'
+                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+        - plot:
+            - title: 'Infrastructure CFG read benchmark'
+              yaxis: 'ops/second'
+              csv-file-name: 'operational-read.csv'
+              group: 'infra-bench'
+              keep-records: true
+              numbuilds: '20'
+              style: 'line'
+              use-description: false
+              series:
+                - file: 'infra/it/benchmark/target/operational-read.csv'
+                  display-table: true
+                  format: 'csv'
+                  inclusion-flag: 'include-by-string'
+                  exclude: 'simple-container,list-in-container,complex-list-in-container'
