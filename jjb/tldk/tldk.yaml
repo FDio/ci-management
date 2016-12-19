@@ -52,10 +52,6 @@
 
     builders:
         - shell:
-            !include-raw-escape: gtest-build.sh
-        - inject:
-            properties-file: gtest-env.prop
-        - shell:
             !include-raw-escape: include-raw-build.sh
 
 - job-template:
