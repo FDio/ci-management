@@ -210,10 +210,6 @@
             branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
         - maven-target:
             maven-version: 'mvn33-new'
             goals: '--version'
@@ -221,6 +217,10 @@
             settings-type: cfp
             global-settings: 'global-settings'
             global-settings-type: cfp
+        - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
+            !include-raw-escape: include-raw-vpp-build.sh
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
