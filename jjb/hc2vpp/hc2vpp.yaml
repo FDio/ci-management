@@ -73,6 +73,8 @@
     publishers:
         - email-notification:
             email-prefix: '[hc2vpp]'
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-verify-image-{stream}-{os}'
@@ -139,6 +141,8 @@
     publishers:
         - email-notification:
             email-prefix: '[hc2vpp]'
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-merge-{stream}-{os}'
@@ -202,6 +206,8 @@
             branch: '{stream}'
         - email-notification:
             email-prefix: '[hc2vpp]'
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-integration-{stream}-{os}'
@@ -285,3 +291,5 @@
             id: ''
             unique-version: true
             deploy-unstable: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
