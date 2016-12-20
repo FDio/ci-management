@@ -69,6 +69,8 @@
     publishers:
         - email-notification:
             email-prefix: '[honeycomb]'
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
@@ -148,6 +150,8 @@
             id: ''
             unique-version: true
             deploy-unstable: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'honeycomb-benchmark-master'
@@ -259,3 +263,5 @@
                   format: 'csv'
                   inclusion-flag: 'include-by-string'
                   exclude: 'simple-container,list-in-container,complex-list-in-container'
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
