@@ -89,6 +89,10 @@
                 - include-raw-nsh_sfc-build.sh
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
 
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
 - job-template:
     name: 'nsh_sfc-verify-image-{stream}-{os}'
 
@@ -166,6 +170,9 @@
                 - ../scripts/setup_vpp_plugin_dev_env.sh
                 - include-raw-nsh_sfc-build.sh
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'nsh_sfc-merge-{stream}-{os}'
@@ -230,6 +237,10 @@
                 - ../scripts/setup_vpp_plugin_dev_env.sh
                 - include-raw-nsh_sfc-build.sh
                 - ../scripts/cleanup_vpp_plugin_dev_env.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'nsh_sfc-integration-{stream}-{os}'
@@ -298,6 +309,10 @@
                 - ../scripts/maven_push_functions.sh
                 - include-raw-nsh_sfc-pkg-push.sh
 
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
 - job-template:
     name: 'nsh_sfc-verify-docs-{stream}'
 
@@ -350,8 +365,9 @@
         - shell:
             !include-raw-escape: include-raw-nsh_sfc-docs.sh
 
-
-
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'nsh_sfc-merge-docs-{stream}'
@@ -420,3 +436,7 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape: include-raw-nsh_sfc-docs.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
