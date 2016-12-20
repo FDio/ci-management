@@ -114,7 +114,7 @@ ubuntu_systems() {
 
     # DEB Install GCC packages
     echo "---> Installing GCC-5 packages $(date +'%Y%m%dT%H%M%S')"
-    GCC_PKGS="cpp gcc g++ cmake"
+    GCC_PKGS="cpp gcc g++ cmake lcov"
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
     sudo apt-get update
     apt install -y ${GCC_PKGS}
