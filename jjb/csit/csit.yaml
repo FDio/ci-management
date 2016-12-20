@@ -80,6 +80,8 @@
         - robot-report:
             output-path: ''
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-{stream}-{type}'
@@ -264,6 +266,8 @@
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-weekly'
@@ -323,6 +327,8 @@
                     remote: origin
                     name: 'refs/heads/{branch-id}-$DATE'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-semiweekly'
@@ -371,6 +377,8 @@
         - robot-report:
             output-path: 'csit/archive'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-verify-perf-master-nightly-all'
@@ -548,6 +556,8 @@
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-docs-verify-{stream}'
@@ -609,6 +619,8 @@
             only-if-success: true
             default-excludes: false
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-docs-merge-{stream}'
@@ -679,6 +691,8 @@
             only-if-success: true
             default-excludes: false
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - parameter:
     name: test-type-parameter
