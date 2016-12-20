@@ -57,6 +57,10 @@
             !include-raw-escape:
                 - include-raw-rpm_dpdk-pkg-build.sh
 
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33'
+
 - job-template:
     name: 'rpm_dpdk-verify-image-{stream}-{os}'
 
@@ -112,6 +116,9 @@
         - shell:
             !include-raw-escape:
                 - include-raw-rpm_dpdk-pkg-build.sh
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33'
 
 - job-template:
     name: 'rpm_dpdk-merge-{stream}-{os}'
@@ -171,4 +178,8 @@
                 - ../scripts/maven_push_functions.sh
                 - include-raw-rpm_dpdk-pkg-build.sh
                 - include-raw-rpm_dpdk-pkg-push.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33'
 
