@@ -62,6 +62,10 @@
             !include-raw-escape:
                 - include-raw-deb_dpdk-build.sh
 
+    publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'deb_dpdk-verify-image-{stream}-{os}'
 
@@ -117,6 +121,10 @@
         - shell:
             !include-raw-escape:
                 - include-raw-deb_dpdk-build.sh
+
+    publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'deb_dpdk-merge-{stream}-{os}'
@@ -180,3 +188,7 @@
                 - include-raw-deb_dpdk-build.sh
                 - ../scripts/maven_push_functions.sh
                 - include-raw-deb_dpdk-pkg-push.sh
+
+    publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
