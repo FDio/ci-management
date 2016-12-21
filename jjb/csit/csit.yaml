@@ -22,6 +22,9 @@
         - master:
             branch: 'master'
             branch-id: 'oper'
+        - '1701':
+            branch: 'rls1701'
+            branch-id: 'oper-rls1701'
     stream:
         - master:
             branch: 'master'
@@ -32,6 +35,9 @@
         - '1609':
             branch: 'rls1609'
             branch-id: 'oper-rls1609'
+        - '1701':
+            branch: 'rls1701'
+            branch-id: 'oper-rls1701'
 
 
 - job-template:
