@@ -48,6 +48,9 @@
         - archive-artifacts:
             artifacts: 'job_output/*'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'ci-management-merge-jjb'
 
@@ -84,6 +87,10 @@
             pip freeze
             jenkins-jobs --version
             jenkins-jobs update --recursive --delete-old --workers 4 jjb/
+
+    publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: ci-management-verify-zuul
