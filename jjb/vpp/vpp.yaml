@@ -112,6 +112,8 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
@@ -167,6 +169,10 @@
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape: include-raw-vpp-build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
@@ -235,6 +241,8 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
@@ -290,6 +298,9 @@
         - robot-report:
             output-path: 'csit'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'vpp-csit-verify-hw-perf-{stream}-{type}'
 
@@ -344,6 +355,9 @@
 
         - robot-report:
             output-path: 'csit'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - parameter:
     name: type-parameter
@@ -412,6 +426,8 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
@@ -487,3 +503,5 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
