@@ -109,3 +109,7 @@
             ./scripts/prepare-node.sh
             ./scripts/allow-local-ssh-root.sh
             ./scripts/ci-beaker.sh {os}
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
