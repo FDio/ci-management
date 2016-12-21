@@ -48,6 +48,9 @@
         - archive-artifacts:
             artifacts: 'job_output/*'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'ci-management-merge-jjb'
 
