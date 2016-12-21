@@ -4,7 +4,7 @@ set +e  # Do not affect the build result if some part of archiving fails.
 
 ARCHIVES_DIR="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER"
 [ "$LOGS_SERVER" ] || LOGS_SERVER="https://logs.fd.io"
-[ "$LOGS_REPO_URL" ] || LOGS_REPO_URL="https://nexus.fd.io/content/sites/logs/"
+[ "$LOGS_REPO_URL" ] || LOGS_REPO_URL="https://nexus.fd.io/service/local/repositories/logs"
 
 echo "Build logs: <a href=\"$LOGS_SERVER/$SILO/$ARCHIVES_DIR\">$LOGS_SERVER/$SILO/$ARCHIVES_DIR</a>"
 
