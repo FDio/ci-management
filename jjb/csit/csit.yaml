@@ -646,7 +646,7 @@
     scm:
         - gerrit-trigger-scm:
             credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
+            refspec: ''
             choosing-strategy: 'gerrit'
 
     wrappers:
@@ -657,12 +657,19 @@
 
     triggers:
         - reverse:
-            jobs: 'csit-vpp-verify-master-weekly'
+            jobs: 'csit-vpp-verify-{stream}-weekly'
             result: 'success'
         - gerrit:
+            server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: 'run-docs'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
             skip-vote:
                 successful: true
                 failed: true
