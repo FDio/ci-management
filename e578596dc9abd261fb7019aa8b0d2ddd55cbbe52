@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_28d2a9d2",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-01-03T16:13:06Z",
+      "side": 1,
+      "message": "Removing the refspec but keeping the choosing-strategy as \u0027gerrit\u0027 is a major cause for woe and sorrow as you\u0027re not going to be getting a proper checkout.\n\nIf the intent is to always use the HEAD of the repository (which a merge job should be doing) then you need to set the choosing-strategy to \u0027default\u0027.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 39
+      },
+      "revId": "e578596dc9abd261fb7019aa8b0d2ddd55cbbe52",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
