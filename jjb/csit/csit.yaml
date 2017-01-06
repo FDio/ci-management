@@ -1,13 +1,16 @@
 - project:
     name: csit
     description: 'CSIT jenkins jobs.'
+    os:
+        - 'ubuntu1604'
+        - 'centos7'
 
     jobs:
         - 'csit-dpdk-perf-{stream}-{type}'
         - 'csit-vpp-perf-{stream}-{type}'
-        - 'csit-vpp-functional-{stream}-virl'
-        - 'csit-vpp-verify-{stream_timed}-weekly'
-        - 'csit-vpp-verify-{stream_timed}-semiweekly'
+        - 'csit-vpp-functional-{stream}-{os}-virl'
+        - 'csit-vpp-verify-{stream_timed}-{os}-weekly'
+        - 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
         - 'csit-vpp-verify-perf-master-nightly-all'
         - 'csit-docs-merge-{stream}'
         - 'csit-docs-verify-{stream}'
@@ -43,10 +46,10 @@
 
 
 - job-template:
-    name: 'csit-vpp-functional-{stream}-virl'
+    name: 'csit-vpp-functional-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -95,7 +98,7 @@
     name: 'csit-dpdk-perf-{stream}-{type}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -147,7 +150,7 @@
     name: 'csit-vpp-perf-{stream}-{type}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -1263,11 +1266,11 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-verify-{stream_timed}-weekly'
-    description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch and create corresponding operational branch in case of success.'
+    name: 'csit-vpp-verify-{stream_timed}-{os}-weekly'
+    description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch.'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -1302,9 +1305,6 @@
     builders:
         - shell:
             !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
-        - shell: 'echo "DATE=`date +%y%m%d`" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
 
     publishers:
         - archive-artifacts:
@@ -1313,22 +1313,16 @@
 
         - robot-report:
             output-path: ''
-        - git:
-               push-only-if-success: true
-               branches:
-                - branch:
-                    remote: origin
-                    name: 'refs/heads/{branch-id}-$DATE'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-verify-{stream_timed}-semiweekly'
+    name: 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -1378,7 +1372,7 @@
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
