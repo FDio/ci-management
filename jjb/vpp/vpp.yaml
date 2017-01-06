@@ -40,8 +40,8 @@
 - project:
     name: vpp-misc
     jobs:
-        - 'vpp-csit-verify-virl-{stream}'
-        - 'vpp-csit-verify-hw-perf-{stream}-{type}'
+        - 'vpp-csit-verify-virl-{stream}-{os-csit}'
+        - 'vpp-csit-verify-hw-perf-{stream}-{os-csit}-{type}'
     project: 'vpp'
     stream:
         - master:
@@ -60,7 +60,11 @@
             branch: 'stable/1701'
             repo-stream-part: 'stable.1609'
 
-    os: ubuntu1604
+    os-csit:
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+        - centos7:
+            repo-os-part: 'centos7'
     type:
         - all
         - short
@@ -249,10 +253,10 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-virl-{stream}'
+    name: 'vpp-csit-verify-virl-{stream}-{os-csit}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os-csit}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -267,7 +271,7 @@
         - gerrit-parameter:
             branch: '{branch}'
         - os-parameter:
-            os: '{os}'
+            os: '{os-csit}'
         - is-csit-vpp-job-parameter:
             is-csit-vpp-job: 'True'
 
@@ -306,10 +310,10 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-hw-perf-{stream}-{type}'
+    name: 'vpp-csit-verify-hw-perf-{stream}-{os-csit}-{type}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os-csit}-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -324,7 +328,7 @@
         - gerrit-parameter:
             branch: '{branch}'
         - os-parameter:
-            os: '{os}'
+            os: '{os-csit}'
         - type-parameter:
             type: '{type}'
         - is-csit-vpp-job-parameter:
