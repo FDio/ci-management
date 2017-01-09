@@ -4,9 +4,8 @@ set -xe -o pipefail
 
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/csit
-[ "$DOC_FILE" ] || DOC_FILE=csit.docs.tar.gz
 [ "$DOC_DIR" ] || DOC_DIR=resources/tools/doc_gen
-[ "$SITE_DIR" ] || SITE_DIR=${DOC_DIR}/_build
+[ "$BUILD_DIR" ] || BUILD_DIR=_build
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
 cd ${DOC_DIR}
@@ -22,7 +21,7 @@ fi
 
 if [[ ${JOB_NAME} == *merge* ]]; then
 
-  cd ${SITE_DIR}
+  cd ${BUILD_DIR}
 
   cat > pom.xml << EOF
   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
