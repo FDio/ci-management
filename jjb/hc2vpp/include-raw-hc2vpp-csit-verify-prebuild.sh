@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xeu -o pipefail
 
-current_dir = `pwd`
+current_dir=`pwd`
 cd ${WORKSPACE}
 
 # Clone csit and run package download script
