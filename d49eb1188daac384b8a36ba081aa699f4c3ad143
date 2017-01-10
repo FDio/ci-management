@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_c1d1bbfc",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "1T1C (everywhere)",
+      "range": {
+        "startLine": 189,
+        "startChar": 54,
+        "endLine": 189,
+        "endChar": 69
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_e1ecb7c9",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "fix name (everywhere)",
+      "range": {
+        "startLine": 189,
+        "startChar": 76,
+        "endLine": 189,
+        "endChar": 80
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_c13f7b24",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "lets stick to lower case in file names (everywhere)",
+      "range": {
+        "startLine": 194,
+        "startChar": 59,
+        "endLine": 194,
+        "endChar": 62
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_a1f58f84",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "same logic as ipv4-base -\u003e ipv6-base",
+      "range": {
+        "startLine": 328,
+        "startChar": 60,
+        "endLine": 328,
+        "endChar": 64
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_61efa7b1",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 557,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 20
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_e13a7735",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 882,
+        "endChar": 8
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_0136a352",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 8
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_21319f5a",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1016,
+        "endChar": 8
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_412cab02",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-01-10T14:01:54Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1117,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 20
+      },
+      "revId": "d49eb1188daac384b8a36ba081aa699f4c3ad143",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
