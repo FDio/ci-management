@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_fe6d7605",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-10T09:37:58Z",
+      "side": 1,
+      "message": "The value must be: centos7\n\nThe corresponding jenkins build executor is: centos7-basebuild-4c-4g",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_3e641e21",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-10T09:37:58Z",
+      "side": 1,
+      "message": "We need to think about these weekly jobs - based on current implementation both job would lead to creation of the same oper branch - we need to avoid this situation.",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_5ea7ea4f",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-10T09:37:58Z",
+      "side": 1,
+      "message": "Please, do not use os parameter in csit-docs-verify-{stream} job - we don\u0027t need it now as we use the same test case version for both distros so no need to run this check two times.\nI appologize that I gave you wrong info in the e-mail.",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
