@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a2585a7_37756198",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2017-01-11T14:28:09Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5a2585a7_fe6d7605",
+      "range": {
+        "startLine": 6,
+        "startChar": 11,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2585a7_3e641e21",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5a2585a7_177a6588",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2017-01-11T14:28:09Z",
+      "side": 1,
+      "message": "I am not sure how to fix this. Don\u0027t we want to run weekly jobs on centos as well?",
+      "parentUuid": "5a2585a7_3e641e21",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2585a7_5ea7ea4f",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-10T09:37:58Z",
       "side": 1,
       "message": "Please, do not use os parameter in csit-docs-verify-{stream} job - we don\u0027t need it now as we use the same test case version for both distros so no need to run this check two times.\nI appologize that I gave you wrong info in the e-mail.",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "0d72330f69c54b9dca76d59bf6d2caaeea9604f1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_f76eb9c8",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2017-01-11T14:28:09Z",
+      "side": 1,
+      "message": "I think we want to run docs-verify on Centos7 platform as well as ubuntu because of potential differences in python packaging when rendering the docs. I can take this out of this patch but we may want to think about this.",
+      "parentUuid": "5a2585a7_5ea7ea4f",
       "range": {
         "startLine": 16,
         "startChar": 36,
