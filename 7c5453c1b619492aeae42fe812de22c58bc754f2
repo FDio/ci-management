@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_cd468a23",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-01-12T16:53:22Z",
+      "side": 1,
+      "message": "Already included in the packer images builds: https://git.fd.io/ci-management/tree/packer/provision/basebuild.sh#n13\n\nhttps://git.fd.io/ci-management/tree/packer/provision/basebuild.sh#n89",
+      "revId": "7c5453c1b619492aeae42fe812de22c58bc754f2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_ad4b3e2a",
+        "filename": "vagrant/lib/bootstrap-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-01-12T16:53:22Z",
+      "side": 1,
+      "message": "Already included in the packer build:\n\nhttps://git.fd.io/ci-management/tree/packer/provision/basebuild.sh#n93\n\nhttps://git.fd.io/ci-management/tree/packer/provision/basebuild.sh#n24",
+      "revId": "7c5453c1b619492aeae42fe812de22c58bc754f2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
