@@ -8,7 +8,6 @@
     os:
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'true'
     stream:
         - master:
             branch: 'master'
@@ -120,7 +119,7 @@
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar site site:deploy'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'honeycomb-settings'
         settings-type: cfp
