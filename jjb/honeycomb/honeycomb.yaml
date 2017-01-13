@@ -8,7 +8,7 @@
     os:
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'true'
+            skip-site: 'false'
     stream:
         - master:
             branch: 'master'
