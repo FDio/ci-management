@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_4bf721f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-01-16T15:34:59Z",
+      "side": 1,
+      "message": "Why are you modifying the job?\n\nWe really want our commit messages to be more useful. This particular message is not so useful. For guidance on how to write good messages please read: http://chris.beams.io/posts/git-commit/",
+      "revId": "e9748ac7ed95d500be1f28b4ea2d93f53c7f5c04",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
