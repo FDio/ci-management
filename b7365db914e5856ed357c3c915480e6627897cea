@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_79363754",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-01-17T21:06:06Z",
+      "side": 1,
+      "message": "Looks like there\u0027s a maven deploy here too.",
+      "range": {
+        "startLine": 297,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 34
+      },
+      "revId": "b7365db914e5856ed357c3c915480e6627897cea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
