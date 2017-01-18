@@ -294,5 +294,9 @@
     publishers:
         - email-notification:
             email-prefix: '[hc2vpp]'
+        - maven-deploy:
+            id: ''
+            unique-version: true
+            deploy-unstable: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
