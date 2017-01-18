@@ -104,6 +104,8 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
+            !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-build.sh
     publishers:
         - archive:
