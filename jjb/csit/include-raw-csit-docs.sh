@@ -24,7 +24,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
 
   cd ${WORKSPACE}
 
-  mkdir -p $(dirname ${RESOURCES_DIR})
+  mkdir -p ${RESOURCES_DIR}
   mv -f ${BUILD_DIR}/* ${RESOURCES_DIR}
   cd ${SITE_DIR}
 
