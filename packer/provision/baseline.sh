@@ -49,7 +49,7 @@ rh_systems() {
     # separate group installs from package installs since a non-existing
     # group with dnf based systems (F21+) will fail the install if such
     # a group does not exist
-    yum install -y -q unzip xz puppet git perl-XML-XPath wget make
+    yum install -y -q unzip xz puppet git git-review perl-XML-XPath wget make
 
     # All of our systems require Java (because of Jenkins)
     # Install all versions of the OpenJDK devel but force 1.7.0 to be the
@@ -109,7 +109,7 @@ EOF
 
     # add in stuff we know we need
     echo "---> Installing base packages"
-    apt-get install -qq unzip xz-utils puppet git libxml-xpath-perl make wget > /dev/null
+    apt-get install -qq unzip xz-utils puppet git git-review libxml-xpath-perl make wget > /dev/null
 
     # install Java 7
     echo "---> Configuring OpenJDK"
