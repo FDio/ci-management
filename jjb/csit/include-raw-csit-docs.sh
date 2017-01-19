@@ -7,7 +7,7 @@ set -xe -o pipefail
 [ "$DOC_DIR" ] || DOC_DIR=resources/tools/doc_gen
 [ "$BUILD_DIR" ] || BUILD_DIR=${DOC_DIR}/_build
 [ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site
-[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/html
+[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/doc
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
 cd ${DOC_DIR}
