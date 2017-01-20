@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_4e0dea3d",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-01-20T05:48:16Z",
+      "side": 1,
+      "message": "this needs to be set to false to have site deployed (before ub1404 merge was deploying site)",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "247134c09e5c42d5ad63d2e57e0561ec4ea14c46",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
