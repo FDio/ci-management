@@ -11,7 +11,6 @@
 
 case "$(facter operatingsystem)" in
   Ubuntu)
-    apt-get update
     # make sure that the ca-certs are properly updated
     /usr/sbin/update-ca-certificates
 
