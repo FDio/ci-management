@@ -123,15 +123,8 @@ EOF
 
     # disable unattended upgrades & daily updates
     echo '---> Disabling automatic daily upgrades'
-    apt-get remove unattended-upgrades
-    if [ -f /usr/bin/systemctl ]
-    then
-        systemctl stop apt.systemd.daily
-        systemctl disable apt.systemd.daily
-    else
-        /etc/init.d/unattended-upgrades stop
-        update-rc.d -f unattended-upgrades remove
-    fi
+    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
+    echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
 }
 
 all_systems() {
