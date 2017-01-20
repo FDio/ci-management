@@ -22,6 +22,29 @@
       "revId": "247134c09e5c42d5ad63d2e57e0561ec4ea14c46",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_1135c7d9",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-01-20T06:20:44Z",
+      "side": 1,
+      "message": "Here is another issue - will integration job for all OSes invoked after merge (we need to update ub14/16 debs and centos rpms)?\nRemerged https://gerrit.fd.io/r/#/c/4566/ and it looks like \nonly ub16 integration job was invoked...",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 69
+      },
+      "revId": "247134c09e5c42d5ad63d2e57e0561ec4ea14c46",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
