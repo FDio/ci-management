@@ -2,6 +2,7 @@
     name: hc2vpp
     jobs:
         - 'hc2vpp-verify-{stream}-{os}'
+        - 'hc2vpp-merge-{stream}-{os}'
         - 'hc2vpp-integration-{stream}-{os}'
         - 'hc2vpp-verify-image-{stream}-{os}'
     project: 'hc2vpp'
@@ -15,28 +16,6 @@
         - centos7:
             repo-os-part: 'centos7'
             skip-site: 'true'
-    stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1701':
-            branch: 'stable/1701'
-            repo-stream-part: 'stable.1701'
-
-- project:
-    # Only 1 merge job is possible to push artifacts so pick a preferred OS
-    # to prevent jobs from colliding with each other trying to push artifacts
-    # to Nexus.
-    name: hc2vpp-merge
-    jobs:
-        - 'hc2vpp-merge-{stream}-{os}'
-
-    project: 'hc2vpp'
-    os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'true'
-
     stream:
         - master:
             branch: 'master'
