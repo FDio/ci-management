@@ -5,13 +5,14 @@
         - 'hc2vpp-csit-integration-{stream}-{os}'
         - 'hc2vpp-csit-verify-{stream}-{os}'
     project: 'hc2vpp'
-    branch: 'master'
-    branch-id: 'master'
     build-artifact-num-to-keep: 10
     stream:
         - master:
             branch: 'master'
             repo-stream-part: 'master'
+        - '1701':
+            branch: 'stable/1701'
+            repo-stream-part: 'stable.1701'
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
@@ -21,7 +22,7 @@
     name: 'hc2vpp-csit-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1404-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -35,6 +36,7 @@
             project: '{project}'
         - os-parameter:
             os: '{os}'
+        - repo_stream_part: '{repo-stream-part}'
 
     scm:
         - git-scm:
@@ -47,7 +49,7 @@
 
     triggers:
         - reverse:
-            jobs: 'hc2vpp-verify-{stream}-{os}'
+            jobs: 'hc2vpp-integration-{stream}-{os}'
             result: 'success'
 
     prebuilders:
@@ -76,7 +78,7 @@
     name: 'hc2vpp-csit-verify-{stream}-{os}'
 
     project-type: maven
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1404-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
