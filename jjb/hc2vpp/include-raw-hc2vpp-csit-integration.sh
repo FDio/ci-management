@@ -20,7 +20,7 @@ else
     # make sure that bootstrap.sh is executable
     chmod +x bootstrap-hc2vpp-integration.sh
     # run the script
-    ./bootstrap-hc2vpp-integration.sh
+    ./bootstrap-hc2vpp-integration.sh "stable."${STREAM}
 fi
 
 # vim: ts=4 ts=4 sts=4 et :
