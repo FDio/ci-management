@@ -2,7 +2,10 @@
 set -xeu -o pipefail
 
 # Clone csit and start tests
-git clone https://gerrit.fd.io/r/csit --branch master
+if [ ${STREAM} == 'master' ]; then
+    git clone https://gerrit.fd.io/r/csit --branch master
+else
+        git clone https://gerrit.fd.io/r/csit --branch 'rls'${STREAM}
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
@@ -20,7 +23,11 @@ else
     # make sure that bootstrap.sh is executable
     chmod +x bootstrap-hc2vpp-integration.sh
     # run the script
-    ./bootstrap-hc2vpp-integration.sh
+    if [ ${STREAM} == 'master' ]; then
+        ./bootstrap-hc2vpp-integration.sh ${STREAM}
+    else
+        ./bootstrap-hc2vpp-integration.sh 'stable.'${STREAM}
+    fi
 fi
 
 # vim: ts=4 ts=4 sts=4 et :
