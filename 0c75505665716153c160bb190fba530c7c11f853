@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_09ddde70",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-30T10:31:01Z",
+      "side": 1,
+      "message": "We need os related semiweekly job.",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "0c75505665716153c160bb190fba530c7c11f853",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_89e9ce1c",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-30T10:31:01Z",
+      "side": 1,
+      "message": "missing apostrophe: \u0027u",
+      "range": {
+        "startLine": 340,
+        "startChar": 10,
+        "endLine": 340,
+        "endChar": 11
+      },
+      "revId": "0c75505665716153c160bb190fba530c7c11f853",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_29f89ae4",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-30T10:31:01Z",
+      "side": 1,
+      "message": "We need os related semiweekly job.",
+      "range": {
+        "startLine": 397,
+        "startChar": 10,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "0c75505665716153c160bb190fba530c7c11f853",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_69eea224",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-01-30T10:31:01Z",
+      "side": 1,
+      "message": "missing apostrophe: \u0027u",
+      "range": {
+        "startLine": 401,
+        "startChar": 10,
+        "endLine": 401,
+        "endChar": 11
+      },
+      "revId": "0c75505665716153c160bb190fba530c7c11f853",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
