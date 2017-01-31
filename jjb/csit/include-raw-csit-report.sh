@@ -4,13 +4,13 @@ set -xe -o pipefail
 
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/csit
-[ "$REPORT_DIR" ] || REPORT_DIR=resources/tools/report_gen
+[ "$DOC_DIR" ] || DOC_DIR=resources/tools/report_gen
 [ "$BUILD_DIR" ] || BUILD_DIR=${DOC_DIR}/_build
 [ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/report
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
-cd ${REPORT_DIR}
+cd ${DOC_DIR}
 chmod +x ./run_report.sh
 ./run_report.sh ${GERRIT_BRANCH}
 
