@@ -10,9 +10,10 @@ set -xe -o pipefail
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/report
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 
-cd ${DOC_DIR}
-chmod +x ./run_report.sh
-./run_report.sh ${GERRIT_BRANCH}
+chmod +x ${DOC_DIR}
+chmod +x ${DOC_DIR}/run_report.sh
+
+${DOC_DIR}/run_report.sh ${GERRIT_BRANCH}
 
 retval=$?
 if [ ${retval} -ne "0" ]; then
