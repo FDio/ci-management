@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_9804727f",
+        "filename": "jenkins-scripts/basic_settings.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-02-01T20:26:22Z",
+      "side": 1,
+      "message": "this might be more appropriate:\nperl -pi -e \u0027unless(m{(security|fd\\.io)}){ s{://[^/]+/}{://ubuntu-cd.mirror.iweb.ca/} }\u0027 /etc/apt/sources.list",
+      "revId": "a6d9028be083f5f884f4f991d24908e2865b46e7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
