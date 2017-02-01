@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_58d16acc",
+        "filename": "jenkins-scripts/basic_settings.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-02-01T22:05:44Z",
+      "side": 1,
+      "message": "This will in fact break it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 85,
+        "endLine": 22,
+        "endChar": 91
+      },
+      "revId": "bb540b02ab09be0688fd8f94fef97222aaa06707",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
