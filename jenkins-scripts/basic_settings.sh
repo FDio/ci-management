@@ -17,6 +17,9 @@ case "$(facter operatingsystem)" in
 
     # attach to the fd.io.dev apt repo
     echo 'deb http://nexus.fd.io/content/repositories/fd.io.dev/ ./' >> /etc/apt/sources.list
+
+    # Configure Ubuntu mirror
+    echo 'deb http://ca.archive.ubuntu.com/ubuntu/ ./' >> /etc/apt/sources.list
     ;;
   *)
     # Do nothing on other distros for now
