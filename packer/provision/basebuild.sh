@@ -121,7 +121,7 @@ ubuntu_systems() {
 
     # DEB Install VPP packages to shorten build times
     echo "---> Installing VPP DEB_DEPENDS packages $(date +'%Y%m%dT%H%M%S')"
-    VPP_PKGS="curl build-essential autoconf automake bison libssl-dev ccache debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent"
+    VPP_PKGS="curl build-essential autoconf automake bison libssl-dev ccache debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent pkg-config"
     apt install -y ${VPP_PKGS}
 
     # DEB Install latest kernel and uio
