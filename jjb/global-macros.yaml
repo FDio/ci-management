@@ -81,6 +81,14 @@
             default: '{is-csit-vpp-job}'
             description: "Parameter is True if this is a CSIT vpp job."
 
+- parameter:
+    name: stream-parameter
+    parameters:
+        - string:
+            name: STREAM
+            default: '{stream}'
+            description: "Stream job parameter to be used in shell scripts."
+
 
 ##### SCMS
 - scm:
