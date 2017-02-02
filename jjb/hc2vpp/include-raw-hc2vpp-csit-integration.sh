@@ -5,7 +5,8 @@ set -xeu -o pipefail
 if [ ${STREAM} == 'master' ]; then
     git clone https://gerrit.fd.io/r/csit --branch master
 else
-        git clone https://gerrit.fd.io/r/csit --branch 'rls'${STREAM}
+    git clone https://gerrit.fd.io/r/csit --branch 'rls'${STREAM}
+fi
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
