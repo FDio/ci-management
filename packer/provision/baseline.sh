@@ -142,6 +142,12 @@ Defaults:jenkins !requiretty
 jenkins ALL = NOPASSWD: /usr/bin/update-alternatives
 EOF
 
+    # Enable Hugepages
+    puppet module install thias-sysctl --version 1.0.6
+    puppet apply -e "sysctl {'vm.nr_hugepages': value => '128'}"
+    mkdir /mnt/huge
+    echo "none /mnt/huge hugetlbfs mode=01777,size=2097152 0 0" >> /etc/fstab
+
     # Do any Distro specific installations here
     echo "Checking distribution"
     FACTER_OS=$(/usr/bin/facter operatingsystem)
