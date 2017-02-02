@@ -6,8 +6,9 @@ cd ${WORKSPACE}
 
 # Get CSIT branch from which to test from
 # running build-root/scripts/csit-test-branch
-if [ -x csit-test-branch ]; then
-    CSIT_BRANCH=`csit-test-branch`;
+if [ -f csit-test-branch ]; then
+    chmod +x csit-test-branch
+    CSIT_BRANCH=`./csit-test-branch`
 fi
 
 # Clone csit and start tests
