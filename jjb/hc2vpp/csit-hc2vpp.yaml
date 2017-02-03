@@ -80,6 +80,7 @@
 
     project-type: maven
     node: 'ubuntu1404-basebuild-4c-4g'
+    jdk: openjdk8-{os}
     concurrent: true
 
     logrotate:
