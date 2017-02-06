@@ -6,7 +6,7 @@ rh_systems() {
 
     # RH Install build tools
     echo "---> Installing RH build tools $(date +'%Y%m%dT%H%M%S')"
-    RH_TOOLS_PKGS="@development redhat-lsb glibc-static java-1.8.0-openjdk-devel yum-utils openssl-devel apr-devel indent"
+    RH_TOOLS_PKGS="@development redhat-lsb glibc-static java-1.8.0-openjdk-devel yum-utils openssl-devel apr-devel indent rpm"
     yum install -y ${RH_TOOLS_PKGS}
 
     # Memory leakage checks
@@ -15,7 +15,7 @@ rh_systems() {
     # RH Install Python dependencies
     ###REMOVED mysql-devel
     echo "---> Installing RH Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools python-pip openssl-devel"
+    RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools python-pip kernel-devel"
     yum install -y ${RH_PYTHON_PKGS}
 
     # RH Install Documentation packages
@@ -26,7 +26,7 @@ rh_systems() {
 
     # RH Install GCC packages
     echo "---> Installing RH GCC packages $(date +'%Y%m%dT%H%M%S')"
-    RH_GCC_PKGS="cpp gcc c++ cmake"
+    RH_GCC_PKGS="cpp gcc c++ cmake make"
     yum install -y ${RH_GCC_PKGS}
 
     # RH Install components to build Ganglia modules
@@ -46,6 +46,10 @@ rh_systems() {
     # RH Install TLDK dependencies
     RH_TLKD_PKGS="libpcap-devel libcap-devel"
     yum install -y ${RH_TLKD_PKGS}
+
+    # RH Install Puppet packages
+    PUPPET_PKGS="libxml2-devel libxslt-devel ruby-devel zlib-devel"
+    yum install -y ${PUPPET_PKGS}
 
     # RH Install debuginfo packages
     #echo "---> Installing debug packages $(date +'%Y%m%dT%H%M%S')"
@@ -114,16 +118,21 @@ ubuntu_systems() {
 
     # DEB Install GCC packages
     echo "---> Installing GCC-5 packages $(date +'%Y%m%dT%H%M%S')"
-    GCC_PKGS="cpp gcc g++ cmake lcov"
+    GCC_PKGS="cpp gcc g++ cmake lcov gcc-multilib"
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
     sudo apt-get update
     apt install -y ${GCC_PKGS}
 
     # DEB Install VPP packages to shorten build times
     echo "---> Installing VPP DEB_DEPENDS packages $(date +'%Y%m%dT%H%M%S')"
-    VPP_PKGS="curl build-essential autoconf automake bison libssl-dev ccache debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent pkg-config"
+    VPP_PKGS="curl build-essential autoconf automake bison libssl-dev ccache debhelper dkms git libtool libganglia1-dev libapr1-dev dh-systemd libconfuse-dev git-review exuberant-ctags cscope indent pkg-config emacs"
     apt install -y ${VPP_PKGS}
 
+    # DEB Install CSIT packages
+    CSIT_PKGS="libxml2 libxml2-dev libxslt-dev zlib1g-dev bc unzip"
+    apt install -y ${CSIT_PKGS}
+    pip install
+ 
     # DEB Install latest kernel and uio
     echo "---> Installing kernel image and header packages $(date +'%Y%m%dT%H%M%S')"
     DEB_PKGS="linux-image-extra-virtual linux-headers-virtual linux-headers-`uname -r`"
@@ -147,7 +156,7 @@ ubuntu_systems() {
 
     # DEB Manipulation tools, edits debugger, and LSB
     echo "---> Installing tools packages $(date +'%Y%m%dT%H%M%S')"
-    TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb lsb-release"
+    TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb lsb-release gdbserver"
     apt install -y ${TOOL_PKGS}
 
     # DEB Clean up packages for a smaller image
