@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_08b6ea3d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-02-07T11:58:38Z",
+      "side": 1,
+      "message": "Please, remove this part. We will move creation of CSIT operational branch to separate job.",
+      "range": {
+        "startLine": 337,
+        "startChar": 139,
+        "endLine": 337,
+        "endChar": 202
+      },
+      "revId": "985a38adb09d19d7563b197bd7a77324014f587a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_48acf2ed",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-02-07T11:58:38Z",
+      "side": 1,
+      "message": "Please, remove this part. We will move creation of CSIT operational branch to separate job.",
+      "range": {
+        "startLine": 375,
+        "startChar": 8,
+        "endLine": 377,
+        "endChar": 43
+      },
+      "revId": "985a38adb09d19d7563b197bd7a77324014f587a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_28b9a62e",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-02-07T11:58:38Z",
+      "side": 1,
+      "message": "Please, remove this part. We will move creation of CSIT operational branch to separate job.",
+      "range": {
+        "startLine": 386,
+        "startChar": 8,
+        "endLine": 391,
+        "endChar": 56
+      },
+      "revId": "985a38adb09d19d7563b197bd7a77324014f587a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
