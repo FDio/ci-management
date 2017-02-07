@@ -21,9 +21,9 @@ if [ $? != 0 ]; then
 fi
 
 if [ ${STREAM} == 'master' ]; then
-    ./csit/resources/tools/download_hc_build_pkgs.sh ${STREAM}
+    ./csit/resources/tools/download_hc_build_pkgs.sh ${STREAM} ${OS}
 else
-    ./csit/resources/tools/download_hc_build_pkgs.sh 'stable.'${STREAM}
+    ./csit/resources/tools/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
 fi
 
 cd ${current_dir}

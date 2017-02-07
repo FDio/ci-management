@@ -25,9 +25,9 @@ else
     chmod +x bootstrap-hc2vpp-integration.sh
     # run the script
     if [ ${STREAM} == 'master' ]; then
-        ./bootstrap-hc2vpp-integration.sh ${STREAM}
+        ./bootstrap-hc2vpp-integration.sh ${STREAM} ${OS}
     else
-        ./bootstrap-hc2vpp-integration.sh 'stable.'${STREAM}
+        ./bootstrap-hc2vpp-integration.sh 'stable.'${STREAM} ${OS}
     fi
 fi
 

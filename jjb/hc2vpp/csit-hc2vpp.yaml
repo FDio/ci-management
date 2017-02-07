@@ -17,12 +17,15 @@
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
             skip-site: 'true'
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+            skip-site: 'true'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: 'ubuntu1404-basebuild-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
@@ -79,7 +82,7 @@
     name: 'hc2vpp-csit-verify-{stream}-{os}'
 
     project-type: maven
-    node: 'ubuntu1404-basebuild-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
     concurrent: true
 
