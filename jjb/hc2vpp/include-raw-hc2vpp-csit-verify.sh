@@ -23,7 +23,7 @@ else
     # make sure that bootstrap.sh is executable
     chmod +x bootstrap-hc2vpp-verify.sh
     # run the script
-    ./bootstrap-hc2vpp-verify.sh
+    ./bootstrap-hc2vpp-verify.sh ${OS}
 fi
 
 # vim: ts=4 ts=4 sts=4 et :
