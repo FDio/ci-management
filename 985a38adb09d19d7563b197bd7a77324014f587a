@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_fe19147a",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-02-08T12:24:15Z",
+      "side": 1,
+      "message": "No change needed in semi-weekly job.",
+      "parentUuid": "3a3291f1_e8eefe8a",
+      "range": {
+        "startLine": 337,
+        "startChar": 139,
+        "endLine": 337,
+        "endChar": 202
+      },
+      "revId": "985a38adb09d19d7563b197bd7a77324014f587a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_48acf2ed",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 9
