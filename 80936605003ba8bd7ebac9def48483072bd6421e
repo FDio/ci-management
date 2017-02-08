@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_9e57b002",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-02-08T12:29:59Z",
+      "side": 1,
+      "message": "please remove {os} from perf jobs. Otherwise the history will be lost.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "80936605003ba8bd7ebac9def48483072bd6421e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
