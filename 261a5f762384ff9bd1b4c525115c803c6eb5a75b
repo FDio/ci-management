@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_fe68f488",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-08T15:06:06Z",
+      "side": 1,
+      "message": "Since this isn\u0027t being added to the fstab it won\u0027t survive a reboot",
+      "revId": "261a5f762384ff9bd1b4c525115c803c6eb5a75b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
