@@ -16,7 +16,6 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
-            skip-site: 'true'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
