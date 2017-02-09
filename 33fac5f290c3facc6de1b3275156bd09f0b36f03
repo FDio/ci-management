@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_39ce965b",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-02-09T11:01:27Z",
+      "side": 1,
+      "message": "this param (also for ub14) was probably copied from hc2vpp merge jobs. You never set it to false (which is understandable - there is no need to build site for csit testing),\nso why not to remove site related params from mvn cmd?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "33fac5f290c3facc6de1b3275156bd09f0b36f03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_19dbda1c",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-02-09T11:01:27Z",
+      "side": 1,
+      "message": "if you want to speed build time, you can also add\n-Dcheckstyle.skip\u003dtrue",
+      "range": {
+        "startLine": 147,
+        "startChar": 178,
+        "endLine": 147,
+        "endChar": 189
+      },
+      "revId": "33fac5f290c3facc6de1b3275156bd09f0b36f03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_59d162fa",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-02-09T11:01:27Z",
+      "side": 1,
+      "message": "can be removed",
+      "range": {
+        "startLine": 147,
+        "startChar": 106,
+        "endLine": 147,
+        "endChar": 177
+      },
+      "revId": "33fac5f290c3facc6de1b3275156bd09f0b36f03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
