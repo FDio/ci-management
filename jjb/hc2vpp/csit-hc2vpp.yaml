@@ -16,7 +16,6 @@
     os:
         - ubuntu1404:
             repo-os-part: 'ubuntu.trusty.main'
-            skip-site: 'true'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
@@ -141,7 +140,7 @@
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} -DskipTests'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
         maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
         settings: 'hc2vpp-settings'
         settings-type: cfp
