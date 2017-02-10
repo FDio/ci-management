@@ -1,10 +1,10 @@
 #!/bin/bash
 set -xe -o pipefail
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
-[ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp_make_test
+[ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_DIR" ] || DOC_DIR=build-root/test-doc/build/html
 [ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site
-[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
+[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/vpp_make_test
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 [ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
 
@@ -18,7 +18,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
   cat > pom.xml << EOF
   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.fd.vpp_make_test</groupId>
+    <groupId>io.fd.vpp</groupId>
     <artifactId>docs</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
