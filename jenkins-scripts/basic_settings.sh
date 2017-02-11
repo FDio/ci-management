@@ -11,6 +11,10 @@
 
 case "$(facter operatingsystem)" in
   Ubuntu)
+    # catch extra auto-update scripts that were missed in packer
+    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodicne
+    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/20auto-upgrades
+
     apt-get update
     # make sure that the ca-certs are properly updated
     /usr/sbin/update-ca-certificates
