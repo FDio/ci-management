@@ -103,6 +103,16 @@ Dpkg::Options {
 
 EOF
 
+    # make jdk8 available
+    add-apt-repository -y ppa:openjdk-r/ppa > /dev/null
+    # We need to force openjdk-8-jdk to install
+    apt-get install -qq openjdk-8-jdk > /dev/null
+
+    # disable unattended upgrades & daily updates
+    echo '---> Disabling automatic daily upgrades'
+    perl -pi -e 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
+    perl -pi -e 's/"1"/"0"/g' /etc/apt/apt.conf.d/20auto-upgrades
+
     echo "---> Updating operating system"
     apt-get update -qq > /dev/null
     apt-get upgrade -qq > /dev/null
@@ -115,12 +125,6 @@ EOF
     echo "---> Configuring OpenJDK"
     apt-get install -qq openjdk-7-jdk > /dev/null
 
-    # make jdk8 available
-    add-apt-repository -y ppa:openjdk-r/ppa > /dev/null
-    apt-get update -qq > /dev/null
-    # We need to force openjdk-8-jdk to install
-    apt-get install -qq openjdk-8-jdk > /dev/null
-
     # make sure that we still default to openjdk 7
     update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
     update-alternatives --set javac /usr/lib/jvm/java-7-openjdk-amd64/bin/javac
@@ -129,10 +133,6 @@ EOF
     # stack commands to initialize Heat template based systems.
     apt-get install -qq jq > /dev/null
 
-    # disable unattended upgrades & daily updates
-    echo '---> Disabling automatic daily upgrades'
-    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
-    echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
 }
 
 all_systems() {

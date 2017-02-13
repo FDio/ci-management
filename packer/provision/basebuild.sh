@@ -80,6 +80,24 @@ rh_systems() {
 
 ubuntu_systems() {
 
+    # DEB add Toolchain repo
+    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+    #Configuring thirdparty Nexus repo
+    echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./" > /etc/apt/sources.list.d/FD.io.thirdparty.list
+
+    # DEB Install PPA packages
+    echo "---> Adding '$1' PPA $(date +'%Y%m%dT%H%M%S')"
+    dpkg -l software-properties-common > /dev/null 2>&1 || software-properties-common
+
+    listfile=$(perl -e "print(q{$1} =~ m{^ppa:(.+)/ppa})")-ppa-${CODENAME}.list
+      if [ ! -f /etc/apt/sources.list.d/${listfile} ]
+      then
+        do_retry sudo apt-add-repository -y $1
+      fi
+
+    apt-get update
+
     # DEB cloud packages
     echo "---> Installing cloud packages $(date +'%Y%m%dT%H%M%S')"
     CLOUD_PKGS="cloud-initramfs-dyn-netconf cloud-initramfs-growroot cloud-initramfs-rescuevol"
@@ -111,17 +129,16 @@ ubuntu_systems() {
         do_retry sudo apt-add-repository -y $1
       fi
 
+    apt-get update
     #Retry to prevent timeout failure
-    echo "---> Updating package index $(date +'%Y%m%dT%H%M%S')"
-    do_retry sudo apt-get update
-    echo "<--- Updating package index $(date +'%Y%m%dT%H%M%S')"
-    echo "<--- Adding '$1' PPA $(date +'%Y%m%dT%H%M%S')"
+    #echo "---> Updating package index $(date +'%Y%m%dT%H%M%S')"
+    #do_retry sudo apt-get update
+    #echo "<--- Updating package index $(date +'%Y%m%dT%H%M%S')"
+    #echo "<--- Adding '$1' PPA $(date +'%Y%m%dT%H%M%S')"
 
     # DEB Install GCC packages
     echo "---> Installing GCC-5 packages $(date +'%Y%m%dT%H%M%S')"
     GCC_PKGS="cpp gcc g++ cmake lcov gcc-multilib"
-    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    sudo apt-get update
     apt install -y ${GCC_PKGS}
 
     # DEB Install VPP packages to shorten build times
@@ -134,16 +151,11 @@ ubuntu_systems() {
     # DEB Install CSIT packages
     CSIT_PKGS="libxml2 libxml2-dev libxslt-dev zlib1g-dev bc unzip"
     apt install -y ${CSIT_PKGS}
-    pip install
 
     # DEB Install latest kernel and uio
     echo "---> Installing kernel image and header packages $(date +'%Y%m%dT%H%M%S')"
     DEB_PKGS="linux-image-extra-virtual linux-headers-virtual linux-headers-`uname -r`"
     apt install -y ${DEB_PKGS}
-
-    #Configuring thirdparty Nexus repo
-    echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./" > /etc/apt/sources.list.d/FD.io.thirdparty.list
-    apt-get update
 
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
@@ -161,9 +173,6 @@ ubuntu_systems() {
     echo "---> Installing tools packages $(date +'%Y%m%dT%H%M%S')"
     TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb lsb-release gdbserver"
     apt install -y ${TOOL_PKGS}
-
-    # DEB Clean up packages for a smaller image
-    apt-get update
 
     # DEB Updating CA certificates
     echo "---> Forcing CA certificate update $(date +'%Y%m%dT%H%M%S')"
