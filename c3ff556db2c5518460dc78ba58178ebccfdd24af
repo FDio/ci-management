@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a3291f1_53f25a9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-02-13T19:42:48Z",
+      "side": 1,
+      "message": "Not sure why perl -pi is better than sed. Can you explain in the commit message why we need to do this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_73f55682",
+        "filename": "jenkins-scripts/basic_settings.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-02-13T19:42:48Z",
+      "side": 1,
+      "message": "Does this line cause us grief?\n\nBasically during system initialization this apt-get update will be called and then will run thus taking the lock right?\n\nSo if the job starts before this line is done the lock is not let go?\n\nOr am I misunderstanding how this all works? (Is admittedly not well versed in Ubuntu)",
+      "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_1305f279",
         "filename": "packer/provision/basebuild.sh",
         "patchSetId": 3
