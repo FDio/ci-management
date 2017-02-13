@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_1305f279",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-02-13T19:33:44Z",
+      "side": 1,
+      "message": "is this a dup of 89-99 above?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
