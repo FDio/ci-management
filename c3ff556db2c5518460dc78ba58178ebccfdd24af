@@ -22,6 +22,46 @@
       "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d3fe4a6b",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-13T19:38:20Z",
+      "side": 1,
+      "message": "If you\u0027re making changes to this particular script you need to port the changes to all of our projects using packer.\n\nbaseline.sh is supposed to be common everywhere.",
+      "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b303be72",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-13T19:38:20Z",
+      "side": 1,
+      "message": "As an FYI there is outstanding work from ECOMP and ODL that needs to be ported into this script to make it more robust\n\nAlso, is there a service we can disable since we can\u0027t remove the package without i breaking cloud-init? I would like to see us just make sure that we\u0027re not constantly hunting these config files",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 65
+      },
+      "revId": "c3ff556db2c5518460dc78ba58178ebccfdd24af",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
