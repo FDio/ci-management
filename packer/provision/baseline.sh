@@ -103,10 +103,6 @@ Dpkg::Options {
 
 EOF
 
-    echo "---> Updating operating system"
-    apt-get update -qq > /dev/null
-    apt-get upgrade -qq > /dev/null
-
     # add in stuff we know we need
     echo "---> Installing base packages"
     apt-get install -qq unzip xz-utils puppet git git-review libxml-xpath-perl make wget > /dev/null
@@ -117,7 +113,6 @@ EOF
 
     # make jdk8 available
     add-apt-repository -y ppa:openjdk-r/ppa > /dev/null
-    apt-get update -qq > /dev/null
     # We need to force openjdk-8-jdk to install
     apt-get install -qq openjdk-8-jdk > /dev/null
 
@@ -131,8 +126,13 @@ EOF
 
     # disable unattended upgrades & daily updates
     echo '---> Disabling automatic daily upgrades'
-    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
-    echo 'APT::Periodic::Unattended-Upgrade "0";' >> /etc/apt/apt.conf.d/10periodic
+    perl -pi -e 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodic
+    perl -pi -e 's/"1"/"0"/g' /etc/apt/apt.conf.d/20auto-upgrades
+
+    echo "---> Updating operating system"
+    apt-get update -qq > /dev/null
+    apt-get upgrade -qq > /dev/null
+
 }
 
 all_systems() {

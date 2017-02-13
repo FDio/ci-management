@@ -80,6 +80,12 @@ rh_systems() {
 
 ubuntu_systems() {
 
+    # DEB add Toolchain repo
+    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+    #Configuring thirdparty Nexus repo
+    echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./" > /etc/apt/sources.list.d/FD.io.thirdparty.list
+
     # DEB cloud packages
     echo "---> Installing cloud packages $(date +'%Y%m%dT%H%M%S')"
     CLOUD_PKGS="cloud-initramfs-dyn-netconf cloud-initramfs-growroot cloud-initramfs-rescuevol"
@@ -111,17 +117,16 @@ ubuntu_systems() {
         do_retry sudo apt-add-repository -y $1
       fi
 
+    apt-get update
     #Retry to prevent timeout failure
-    echo "---> Updating package index $(date +'%Y%m%dT%H%M%S')"
-    do_retry sudo apt-get update
-    echo "<--- Updating package index $(date +'%Y%m%dT%H%M%S')"
-    echo "<--- Adding '$1' PPA $(date +'%Y%m%dT%H%M%S')"
+    #echo "---> Updating package index $(date +'%Y%m%dT%H%M%S')"
+    #do_retry sudo apt-get update
+    #echo "<--- Updating package index $(date +'%Y%m%dT%H%M%S')"
+    #echo "<--- Adding '$1' PPA $(date +'%Y%m%dT%H%M%S')"
 
     # DEB Install GCC packages
     echo "---> Installing GCC-5 packages $(date +'%Y%m%dT%H%M%S')"
     GCC_PKGS="cpp gcc g++ cmake lcov gcc-multilib"
-    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    sudo apt-get update
     apt install -y ${GCC_PKGS}
 
     # DEB Install VPP packages to shorten build times
@@ -141,10 +146,6 @@ ubuntu_systems() {
     DEB_PKGS="linux-image-extra-virtual linux-headers-virtual linux-headers-`uname -r`"
     apt install -y ${DEB_PKGS}
 
-    #Configuring thirdparty Nexus repo
-    echo "deb [trusted=yes] https://nexus.fd.io/content/repositories/thirdparty ./" > /etc/apt/sources.list.d/FD.io.thirdparty.list
-    apt-get update
-
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
     echo "---> Installing deb_dpdk packages $(date +'%Y%m%dT%H%M%S')"
@@ -161,9 +162,6 @@ ubuntu_systems() {
     echo "---> Installing tools packages $(date +'%Y%m%dT%H%M%S')"
     TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb lsb-release gdbserver"
     apt install -y ${TOOL_PKGS}
-
-    # DEB Clean up packages for a smaller image
-    apt-get update
 
     # DEB Updating CA certificates
     echo "---> Forcing CA certificate update $(date +'%Y%m%dT%H%M%S')"
