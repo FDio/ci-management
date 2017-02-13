@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_d3e76ae3",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-02-13T18:15:29Z",
+      "side": 1,
+      "message": "I would move these lines up to 88-89 to make sure the repos are all listed/configured, and running apt-get update before any package installs",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 18
+      },
+      "revId": "dcc2467d6f03646cc2775e46127ebeffcd2a891a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f3e266d4",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-02-13T18:15:29Z",
+      "side": 1,
+      "message": "any idea what this line does? it doesn\u0027t install anything",
+      "revId": "dcc2467d6f03646cc2775e46127ebeffcd2a891a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b3ecdec8",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-02-13T18:15:29Z",
+      "side": 1,
+      "message": "Move these to 105, similar, make sure the repos are configured and apt-get update has been run before package installs",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 35
+      },
+      "revId": "dcc2467d6f03646cc2775e46127ebeffcd2a891a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
