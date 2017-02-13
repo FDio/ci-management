@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_93ca024e",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-02-13T17:50:49Z",
+      "side": 1,
+      "message": "Go ahead and just remove these two lines",
+      "revId": "6a9ba67ba4bcd2da03529823c7f62c7144014d95",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
