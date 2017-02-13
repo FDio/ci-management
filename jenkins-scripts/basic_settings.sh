@@ -11,11 +11,6 @@
 
 case "$(facter operatingsystem)" in
   Ubuntu)
-    # catch extra auto-update scripts that were missed in packer
-    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/10periodicne
-    sed -ine 's/"1"/"0"/g' /etc/apt/apt.conf.d/20auto-upgrades
-
-    apt-get update
     # make sure that the ca-certs are properly updated
     /usr/sbin/update-ca-certificates
 
@@ -24,6 +19,7 @@ case "$(facter operatingsystem)" in
 
     # Configure Ubuntu mirror
     perl -pi -e 'unless(m{(security|fd\.io)}){ s{://[^/]+/}{://ca.archive.ubuntu.com/} }' /etc/apt/sources.list
+    apt-get update
     ;;
   *)
     # Do nothing on other distros for now
