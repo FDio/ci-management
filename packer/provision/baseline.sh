@@ -117,7 +117,7 @@ EOF
 
     # Wrap apt-get to wait for the lock to become available for operation
     # http://askubuntu.com/questions/132059/how-to-make-a-package-manager-wait-if-another-instance-of-apt-is-running
-    cat <<EOF >> /usr/local/bin/apt-get
+    cat << 'EOF' >> /usr/local/bin/apt-get
 #!/bin/bash
 
 i=0
