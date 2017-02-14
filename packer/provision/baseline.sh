@@ -149,7 +149,7 @@ EOF
 
             # force auto-update services off and mask them so they can't
             # be started
-            for i in apt-daily{service,timer}
+            for i in apt-daily.{service,timer}
             do
                 systemctl disable ${i}
                 systemctl mask ${i}
