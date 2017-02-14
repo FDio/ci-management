@@ -11,7 +11,7 @@ if [ -f csit-test-branch ]; then
     CSIT_BRANCH=`./csit-test-branch`
 fi
 
-# Clone csit and start tests
+# Clone csit and download VPP packages
 git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}
 
 # If the git clone fails, complain clearly and exit
@@ -19,6 +19,8 @@ if [ $? != 0 ]; then
     echo "Failed to run: git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}"
     exit
 fi
+
+cd csit
 
 if [ ${STREAM} == 'master' ]; then
     ./csit/resources/tools/download_hc_build_pkgs.sh ${STREAM}
