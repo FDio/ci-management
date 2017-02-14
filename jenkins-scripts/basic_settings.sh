@@ -19,7 +19,6 @@ case "$(facter operatingsystem)" in
 
     # Configure Ubuntu mirror
     perl -pi -e 'unless(m{(security|fd\.io)}){ s{://[^/]+/}{://ca.archive.ubuntu.com/} }' /etc/apt/sources.list
-    apt-get update
     ;;
   *)
     # Do nothing on other distros for now
