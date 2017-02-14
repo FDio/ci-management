@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_566248d9",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-14T03:57:30Z",
+      "side": 1,
+      "message": "Change to 4 space soft tab",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "174e61881055441eec958666377c09a7fbaf41c4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_365fbc10",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-14T03:57:30Z",
+      "side": 1,
+      "message": "Change to 4 space soft tab",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "174e61881055441eec958666377c09a7fbaf41c4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_169cc0bf",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-14T03:57:30Z",
+      "side": 1,
+      "message": "Change to 4 space soft tab",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 1
+      },
+      "revId": "174e61881055441eec958666377c09a7fbaf41c4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
