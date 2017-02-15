@@ -9,3 +9,6 @@
     build-artifact-num-to-keep: 5
     # Timeout in minutes
     build-timeout: 360
+
+    # fd.io branch defaults
+    branch: master
