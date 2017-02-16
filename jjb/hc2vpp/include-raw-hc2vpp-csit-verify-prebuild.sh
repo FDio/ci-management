@@ -9,6 +9,8 @@ cd ${WORKSPACE}
 if [ -f csit-test-branch ]; then
     chmod +x csit-test-branch
     CSIT_BRANCH=`./csit-test-branch`
+else
+    CSIT_BRANCH='master'
 fi
 
 # Clone csit and download VPP packages
@@ -23,9 +25,9 @@ fi
 cd csit
 
 if [ ${STREAM} == 'master' ]; then
-    ./csit/resources/tools/download_hc_build_pkgs.sh ${STREAM} ${OS}
+    ./resources/tools/download_hc_build_pkgs.sh ${STREAM} ${OS}
 else
-    ./csit/resources/tools/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
+    ./resources/tools/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
 fi
 
 cd ${current_dir}
