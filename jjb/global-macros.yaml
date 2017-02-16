@@ -337,3 +337,60 @@
                   variable: 'GLOBAL_SETTINGS_FILE'
                 - file-id: '{settings-file}'
                   variable: 'SETTINGS_FILE'
+
+- property:
+    name: fdio-infra-properties
+    properties:
+        - build-discarder:
+            days-to-keep: '{build-days-to-keep}'
+            num-to-keep: '{build-num-to-keep}'
+
+
+- builder:
+    name: packer-validate
+    builders:
+        - config-file-provider:
+            files:
+                - file-id: 'packer-cloud-env'
+                  variable: 'CLOUDENV'
+        - shell: |
+            #!/bin/bash
+            cd packer
+            varfiles="../packer/vars/*"
+            templates="../packer/templates/*"
+            provision="../packer/provision/*.sh"
+            for v in $varfiles; do
+                [[ "${v##*/}" =~ ^(cloud-env.*)$ ]] && continue
+                for t in $templates; do
+                    export PACKER_LOG="yes" && \
+                    export PACKER_LOG_PATH="packer-validate-${v##*/}-${t##*/}.log" && \
+                                packer.io validate -var-file=$CLOUDENV \
+                                -var-file=$v $t
+                    if [ $? -ne 0 ]; then
+                        break
+                    fi
+                done
+            done
+            for p in $provision; do
+                /bin/bash -n $p > provision-validate-${p##*/}.log 2>&1
+                if [ $? -ne 0 ]; then
+                    break
+                fi
+            done
+
+
+- builder:
+    name: packer-build
+    builders:
+        - config-file-provider:
+            files:
+                - file-id: 'packer-cloud-env'
+                  variable: 'CLOUDENV'
+        - shell: |
+            #!/bin/bash
+            cd packer
+            export PACKER_LOG="yes" && \
+            export PACKER_LOG_PATH="packer-build.log" && \
+                        packer.io build -var-file=$CLOUDENV \
+                         -var-file=../packer/vars/{platform}.json \
+                         ../packer/templates/{template}.json
