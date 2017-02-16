@@ -177,6 +177,14 @@ all_systems() {
     echo "ServerAliveCountMax 30"   | sudo tee -a ${SSH_CFG} >/dev/null 2>&1
     echo "ServerAliveInterval 10"   | sudo tee -a ${SSH_CFG} >/dev/null 2>&1
 
+    # Following installs hashicorp's packer binary which is required  for
+    # ci-management-{verify,merge}-packer jobs
+    mkdir /tmp/packer.io
+    cd /tmp/packer.io
+    wget https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip
+    unzip packer_0.12.2_linux_amd64.zip -d /usr/local/bin/
+    # note: rename to packer.io to avoid conflict with cracklib packer
+    mv /usr/local/bin/packer /usr/local/bin/packer.io
 }
 
 echo "---> Detecting OS"
