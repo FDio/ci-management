@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_28ff4d69",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-23T16:22:47Z",
+      "side": 1,
+      "message": "Please do an 80 character wrapped line",
+      "revId": "750f853c2e6b18cb59e5934c6b0666542e42ae25",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
