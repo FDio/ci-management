@@ -16,13 +16,15 @@ rh_systems() {
     # RH Install Python dependencies
     ###REMOVED mysql-devel
     echo "---> Installing RH Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools python-pip kernel-devel"
+    RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
+    python-pip kernel-devel"
     yum install -y ${RH_PYTHON_PKGS}
 
     # RH Install Documentation packages
     ###Removed python-pyparsing
     echo "---> Installing RH documentation packages $(date +'%Y%m%dT%H%M%S')"
-    RH_DOC_PKGS="doxygen graphviz python-jinja2 asciidoc dblatex source-highlight python-sphinx"
+    RH_DOC_PKGS="doxygen graphviz python-jinja2 asciidoc \
+    dblatex source-highlight python-sphinx libxml2 libffi-devel python-cffi"
     yum install -y install ${RH_DOC_PKGS}
 
     # RH Install GCC packages
@@ -40,12 +42,13 @@ rh_systems() {
 
     # RH Install VPP packages to shorten build times
     echo "---> Installing VPP dependencies $(date +'%Y%m%dT%H%M%S')"
-    RH_VPP_PKGS="curl autoconf automake bison ccache dkms git libtool libconfuse-dev git-review cscope"
+    RH_VPP_PKGS="curl autoconf automake bison ccache dkms git libtool \
+    libconfuse-dev git-review cscope"
     yum install -y ${RH_VPP_PKGS}
 
     yum groupinstall "Development Tools"
     # RH Install TLDK dependencies
-    RH_TLKD_PKGS="libpcap-devel libcap-devel"
+    RH_TLKD_PKGS="libpcap-devel libcap-devel scapy"
     yum install -y ${RH_TLKD_PKGS}
 
     # RH Install Puppet packages
@@ -100,12 +103,14 @@ ubuntu_systems() {
 
     # DEB cloud packages
     echo "---> Installing cloud packages $(date +'%Y%m%dT%H%M%S')"
-    CLOUD_PKGS="cloud-initramfs-dyn-netconf cloud-initramfs-growroot cloud-initramfs-rescuevol"
+    CLOUD_PKGS="cloud-initramfs-dyn-netconf cloud-initramfs-growroot \
+    cloud-initramfs-rescuevol"
     apt install -y ${CLOUD_PKGS}
 
     # DEB Install Python dependencies
     echo "---> Installing Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    PYTHON_PKGS="python-dev python-virtualenv python-setuptools python-pip libssl-dev libmysqlclient-dev python2.7"
+    PYTHON_PKGS="python-dev python-virtualenv python-setuptools python-pip \
+    libssl-dev libmysqlclient-dev python2.7"
     apt install -y ${PYTHON_PKGS}
 
     # Memory leakage checks
@@ -113,7 +118,8 @@ ubuntu_systems() {
 
     # DEB Install Documentation packages
     echo "---> Installing documentation packages $(date +'%Y%m%dT%H%M%S')"
-    DOC_PKGS="doxygen graphviz python-pyparsing python-jinja2 asciidoc dblatex source-highlight"
+    DOC_PKGS="doxygen graphviz python-pyparsing python-jinja2 asciidoc \
+    dblatex source-highlight"
     apt install -y ${DOC_PKGS}
 
     # DEB Install the correct version of toolchain packages
@@ -149,12 +155,16 @@ ubuntu_systems() {
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
     echo "---> Installing deb_dpdk packages $(date +'%Y%m%dT%H%M%S')"
-    DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev debian-xcontrol devscripts pristine-tar dh-python python-sphinx libpcap0.8-dev libstdc++5 python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme"
+    DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev debian-xcontrol devscripts \
+    pristine-tar dh-python python-sphinx libpcap0.8-dev libstdc++5 \
+    python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme"
     apt install -y ${DEB_DPDK_PKGS}
 
     sudo apt install -y libcap-dev libpcap-dev
 
-    TEXLIVE_PKGS="texlive-fonts-recommended tex-common texlive-base texlive-binaries texlive-pictures texlive-latex-recommended preview-latex-style texlive-latex-extra"
+    TEXLIVE_PKGS="texlive-fonts-recommended tex-common texlive-base \
+    texlive-binaries texlive-pictures texlive-latex-recommended \
+    preview-latex-style texlive-latex-extra"
     apt install -y ${TEXLIVE_PKGS}
     echo "<--- Installing deb_dpdk packages $(date +'%Y%m%dT%H%M%S')"
 
