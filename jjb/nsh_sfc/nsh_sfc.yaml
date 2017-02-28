@@ -33,6 +33,7 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: true
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -182,6 +183,7 @@
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -250,6 +252,7 @@
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -322,6 +325,7 @@
     project-type: freestyle
     node: ubuntu1604-basebuild-4c-4g
     concurrent: true
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -378,6 +382,7 @@
     project-type: freestyle
     node: ubuntu1604-basebuild-4c-4g
     concurrent: true
+    jdk: openjdk8-{os}
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
