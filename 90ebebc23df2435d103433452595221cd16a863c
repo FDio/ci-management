@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_891ac015",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:24:31Z",
+      "side": 1,
+      "message": "All the other statements use {os} is this one being singled out on purpose?",
+      "revId": "90ebebc23df2435d103433452595221cd16a863c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
