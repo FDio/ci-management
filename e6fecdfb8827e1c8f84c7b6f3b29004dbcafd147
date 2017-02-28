@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_a9f69cd5",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c9f9e8c9",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8903e0b7",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6900b4aa",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_492df845",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2932aca7",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This line should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_0927f065",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 76
+      },
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e92b842e",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-02-28T19:23:06Z",
+      "side": 1,
+      "message": "This should be indented to help indicate that it\u0027s a continuation of the previous line",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "e6fecdfb8827e1c8f84c7b6f3b29004dbcafd147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
