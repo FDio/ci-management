@@ -1,0 +1,113 @@
+---
+
+- job-template:
+    name: '{project-name}-verify-{stream}-{os}'
+
+    # Job template for FD.io verify jobs
+    #
+    # The purpose of this template is to setup a FD.io verify job
+    #
+    # Required variables:
+    # stream:  release stream
+    # os:      os version
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+    concurrent: true
+
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+          build-number-to-keep: '{build-num-to-keep}'
+          artifact-days-to-keep: '{artifact-days-to-keep}'
+          artifact-number-to-keep: '{artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: '{project-name}-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+          build-number-to-keep: '{build-num-to-keep}'
+          artifact-days-to-keep: '{artifact-days-to-keep}'
+          artifact-number-to-keep: '{artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: '{project-name}-integration-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+          build-number-to-keep: '{build-num-to-keep}'
+          artifact-days-to-keep: '{artifact-days-to-keep}'
+          artifact-number-to-keep: '{artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
