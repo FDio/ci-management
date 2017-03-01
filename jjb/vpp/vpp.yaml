@@ -61,6 +61,7 @@
             repo-stream-part: 'stable.1609'
 
     os: ubuntu1604
+    repo-os-part: 'ubuntu.xenial.main'
     type:
         - all
         - short
@@ -86,6 +87,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -108,7 +111,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-test-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
     publishers:
         - archive:
             artifacts: 'build-root/*.rpm,build-root/*.deb'
@@ -139,6 +144,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -172,7 +179,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -230,7 +239,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
@@ -268,6 +279,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
         - is-csit-vpp-job-parameter:
             is-csit-vpp-job: 'True'
 
@@ -290,7 +303,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
         - shell:
             !include-raw-escape: include-raw-vpp-csit-functional.sh
 
@@ -325,6 +340,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
         - type-parameter:
             type: '{type}'
         - is-csit-vpp-job-parameter:
@@ -348,7 +365,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
         - shell:
             !include-raw-escape: include-raw-vpp-csit-verify-perf.sh
 
