@@ -108,7 +108,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-test-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_dpkg_vpp_dev_env.sh
+                - include-raw-vpp-build.sh
     publishers:
         - archive:
             artifacts: 'build-root/*.rpm,build-root/*.deb'
@@ -172,7 +174,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_dpkg_vpp_dev_env.sh
+                - include-raw-vpp-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -230,7 +234,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_dpkg_vpp_dev_env.sh
+                - include-raw-vpp-build.sh
         - provide-maven-settings:
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
@@ -290,7 +296,9 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_dpkg_vpp_dev_env.sh
+                - include-raw-vpp-build.sh
         - shell:
             !include-raw-escape: include-raw-vpp-csit-functional.sh
 
@@ -348,7 +356,9 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-build.sh
+            !include-raw-escape:
+                - ../scripts/setup_dpkg_vpp_dev_env.sh
+                - include-raw-vpp-build.sh
         - shell:
             !include-raw-escape: include-raw-vpp-csit-verify-perf.sh
 
