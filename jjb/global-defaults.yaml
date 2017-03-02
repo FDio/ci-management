@@ -1,14 +1,26 @@
+---
 # GLOBAL jenkins defaults
 
 - defaults:
     name: global
 
     build-days-to-keep: 30
+    # the below discarder values are hard coded into the macro and are only here
+    # for documentation purposes
     build-num-to-keep: 40
     build-artifact-days-to-keep: -1
     build-artifact-num-to-keep: 5
+
+    # default gerrit server definition
+    server-name: 'fdio'
+
     # Timeout in minutes
     build-timeout: 360
+
+    archive-artifacts: ''
+
+    # Set default maven version used for everything
+    maven-version: 'mvn33'
 
     # fd.io branch defaults
     branch: master

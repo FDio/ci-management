@@ -1,0 +1,876 @@
+---
+- job-template:
+    # Job template for Java merge jobs
+    #
+    # Required Variables:
+    #     stream:    git branch (eg. stable/$RELEASE or master)
+    #     os:        OS version (eg. CentOS/Ubuntu 14.04/Ubuntu 16.04)
+
+    name: '{project-name}-merge-{stream}-{os}'
+
+    project-type: freestyle
+    concurrent: false
+    node: '{os}-basebuild-4c-4g'
+
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - fdio-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          os: '{os}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '**'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: '--version'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: '{maven-version}'
+
+
+- job-template:
+    # Job template for Java verify jobs
+    #
+    # Required Variables:
+    # stream:    git branch (eg. stable/$RELEASE or master)
+    # os:        OS version (eg. CentOS/Ubuntu 14.04/Ubuntu 16.04)
+
+    name: '{project-name}-verify-{stream}-{os}'
+
+    project-type: freestyle
+    concurrent: true
+    node: '{build-node}'
+
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - fdio-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          os: '{os}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '**'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: 'clean install'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: '{maven-version}'
+
+#- job-template:
+#    # Job template for Java verify jobs with POM not at the root
+#    #
+#    # The purpose of this job template is to run "maven clean install" for
+#    # projects using this template.
+#    #
+#    # Required Variables:
+#    #     branch:    git branch (eg. stable/lithium or master)
+#    #     pom:       name/location of the pom.xml file relative to the workspace
+#    #     pattern:   ant file-path pattern relative to the workspace used to
+#    #                trigger the job
+#
+#    name: '{project-name}-{stream}-{subproject}-verify-java'
+#
+#    project-type: freestyle
+#    concurrent: true
+#    node: '{build-node}'
+#
+#    properties:
+#      - ecomp-infra-properties:
+#          build-days-to-keep: '{build-days-to-keep}'
+#
+#    parameters:
+#      - ecomp-infra-parameters:
+#          project: '{project}'
+#          branch: '{branch}'
+#          refspec: 'refs/heads/{branch}'
+#          artifacts: '{archive-artifacts}'
+#      - maven-exec:
+#          maven-version: '{maven-version}'
+#
+#    scm:
+#      - gerrit-trigger-scm:
+#          refspec: '$GERRIT_REFSPEC'
+#          choosing-strategy: 'gerrit'
+#
+#    wrappers:
+#      - ecomp-infra-wrappers:
+#          build-timeout: '{build-timeout}'
+#
+#    triggers:
+#      - gerrit-trigger-patch-submitted:
+#          server: '{server-name}'
+#          project: '{project}'
+#          branch: '{branch}'
+#          files: '{pattern}'
+#
+#    builders:
+#      - provide-maven-settings:
+#          global-settings-file: 'global-settings'
+#          settings-file: '{mvn-settings}'
+#      - maven-target:
+#          maven-version: '{maven-version}'
+#          pom: '{pom}'
+#          goals: 'clean install'
+#          settings: '{mvn-settings}'
+#          settings-type: cfp
+#          global-settings: 'global-settings'
+#          global-settings-type: cfp
+#
+#     publishers:
+#       - ecomp-infra-shiplogs:
+#           maven-version: '{maven-version}'
+
+- job-template:
+    # Job template for Java daily release jobs
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    name: '{project-name}-{stream}-{os}-release-daily'
+
+    project-type: freestyle
+    node: '{build-node}'
+    maven-deploy-properties:
+    properties:
+      - fdio-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - fdio-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          os: '{os}'
+          refspec: 'refs/heads/{branch}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 11 AM UTC
+      - timed: 'H 11 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          os: '{os}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: 'clean deploy sonar:sonar -Dsonar.host.url=${{SONAR}}'
+          properties:
+            - '{maven-deploy-properties}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+- job-template:
+    # Job template for Java daily release jobs
+    #
+    # The purpose of this job template is to run "maven version && maven clean
+    # deploy" for projects using this template.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    name: '{project-name}-{stream}-release-version-java-daily'
+
+    project-type: freestyle
+    node: '{build-node}'
+    maven-deploy-properties:
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 11 AM UTC
+      - timed: 'H 11 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - inject:
+          properties-file: version.properties
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: 'versions:set versions:update-child-modules versions:commit'
+          properties:
+            - 'newVersion=${{release_version}}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: 'clean deploy sonar:sonar -Dsonar.host.url=${{SONAR}}'
+          properties:
+            - '{maven-deploy-properties}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+- job-template:
+    # Job template for Java daily release jobs with POM not at the root
+    #
+    # The purpose of this job template is to run "maven version && maven clean
+    # deploy" for projects using this template.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    #     pom:       name/location of the pom.xml file relative to the workspace
+
+
+    name: '{project-name}-{stream}-{subproject}-release-java-daily'
+
+    project-type: freestyle
+    node: '{build-node}'
+    maven-deploy-properties:
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 11 AM UTC
+      - timed: 'H 11 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          pom: '{pom}'
+          goals: 'clean deploy sonar:sonar -Dsonar.host.url=${{SONAR}}'
+          properties:
+            - '{maven-deploy-properties}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+- job-template:
+    # Job template for Java merge jobs
+    #
+    # The purpose of this job template is to run "maven clean deploy" for
+    # projects using this template.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    name: '{project-name}-{stream}-merge-java'
+
+    project-type: freestyle
+    node: '{build-node}'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '**'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-target:
+          maven-version: '{maven-version}'
+          # yamllint disable rule:line-length
+          goals: 'clean deploy'
+          # yamllint enable
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+#     publishers:
+#       - ecomp-infra-shiplogs:
+#           maven-version: '{maven-version}'
+
+- job-template:
+    # Job template for Java merge jobs that should also be triggered by upstream
+    # merges
+    #
+    # Required Variables:
+    #   stream:         release stream
+    #   branch:         git branch
+    #   dependencies:   fully qualified upstream job name to trigger on
+    #                   this may be ''
+    name: '{project-name}-{stream}-downstream-merge-java'
+
+    project-type: freestyle
+    node: '{build-node}'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - reverse:
+          jobs: '{dependencies}'
+          result: 'success'
+      - gerrit-trigger-patch-merged:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '**'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-target:
+          maven-version: '{maven-version}'
+          # yamllint disable rule:line-length
+          goals: 'clean deploy'
+          # yamllint enable
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+#     publishers:
+#       - ecomp-infra-shiplogs:
+#           maven-version: '{maven-version}'
+
+- job-template:
+    # Job template for Java merge jobs with POM not at the root
+    #
+    # The purpose of this job template is to run "maven clean deploy" for
+    # projects using this template.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    #     pom:       name/location of the pom.xml file relative to the workspace
+    #     pattern:   ant file-path pattern relative to the workspace used to
+    #                trigger the job
+
+    name: '{project-name}-{stream}-{subproject}-merge-java'
+
+    project-type: freestyle
+    node: '{build-node}'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '{pattern}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-target:
+          maven-version: '{maven-version}'
+          pom: '{pom}'
+          # yamllint disable rule:line-length
+          goals: 'clean deploy'
+          # yamllint enable
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+#     publishers:
+#       - ecomp-infra-shiplogs:
+#           maven-version: '{maven-version}'
+
+- job-template:
+    name: '{project-name}-{stream}-docker-java-daily'
+    project-type: freestyle
+    node: 'ubuntu1604-docker-8c-8g'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 12 AM UTC
+      - timed: 'H 12 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - docker-login
+
+      - maven-docker-push-daily:
+          maven-version: '{maven-version}'
+          mvn-settings: '{mvn-settings}'
+          pom: '{docker-pom}'
+          # use default as mvn-profile if profile is not needed
+          mvn-profile: '{mvn-profile}'
+
+- job-template:
+    name: '{project-name}-{stream}-docker-java-shell-daily'
+    project-type: freestyle
+    node: 'ubuntu1604-docker-8c-8g'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 12 AM UTC
+      - timed: 'H 12 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - docker-login
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: '{mvn-goals}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+      - shell: '{script}'
+
+- job-template:
+    name: '{project-name}-{stream}-aai-docker-java-daily'
+    project-type: freestyle
+    node: 'ubuntu1604-docker-8c-8g'
+
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 12 AM UTC
+      - timed: 'H 12 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+
+      - docker-login
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          pom: 'pom.xml'
+          goals: 'clean install -DskipTests'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          pom: '{pom}'
+          goals: '{mvn-goals}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+          properties:
+            - maven.test.skip=true
+            - docker.pull.registry=nexus3.openecomp.org:10001
+            - docker.push.registry=nexus3.openecomp.org:10003
+
+      - shell: !include-raw-escape: include-docker-push.sh
+
+- job-template:
+    # Job template for Java daily release jobs
+    #
+    # The purpose of this job template is to run
+    #   - change version in all POM files to the release version specified
+    #     in version.properties. This is done using a script instread of
+    #     the mvn version plugin that assumes some specific parent structure.
+    #   - runs maven clean deploy sonar
+    #
+    # The POM files are required to use the Maven staging plugin so the deploy
+    # does not deploy directly to the release repo.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    name: '{project-name}-{stream}-release-version2-java-daily'
+
+    project-type: freestyle
+    node: '{build-node}'
+    maven-deploy-properties:
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 11 AM UTC
+      - timed: 'H 11 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-install:
+          maven-version: '{maven-version}'
+
+      - inject:
+          properties-file: version.properties
+
+      - shell: !include-raw-escape: include-update-pom-versions.sh
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          goals: 'clean deploy sonar:sonar -Dsonar.host.url=${{SONAR}}'
+          properties:
+            - '{maven-deploy-properties}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+
+- job-template:
+    # Job template for Java daily release jobs
+    #
+    # The purpose of this job template is to run
+    #   - change version in all POM files to the release version specified
+    #     in version.properties. This is done using a script instread of
+    #     the mvn version plugin that assumes some specific parent structure.
+    #   - runs maven clean deploy sonar
+    #
+    # The POM files are required to use the Maven staging plugin so the deploy
+    # does not deploy directly to the release repo.
+    #
+    # Required Variables:
+    #     branch:    git branch (eg. stable/lithium or master)
+    #     pom:       name/location of the pom.xml file relative to the workspace
+    #     pattern:   ant file-path pattern relative to the workspace used to
+    #                trigger the job
+
+    name: '{project-name}-{stream}-{subproject}-release-version2-java-daily'
+
+    project-type: freestyle
+    node: '{build-node}'
+    maven-deploy-properties:
+    properties:
+      - ecomp-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    parameters:
+      - ecomp-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          refspec: 'refs/heads/{branch}'
+          artifacts: '{archive-artifacts}'
+      - maven-exec:
+          maven-version: '{maven-version}'
+
+    scm:
+      - gerrit-trigger-scm:
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - ecomp-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      # 11 AM UTC
+      - timed: 'H 11 * * *'
+      - gerrit-trigger-release-manually:
+          server: '{server-name}'
+          project: '{project}'
+          branch: '{branch}'
+          files: '{pattern}'
+
+    builders:
+      - provide-maven-settings:
+          global-settings-file: 'global-settings'
+          settings-file: '{mvn-settings}'
+      - maven-install:
+          maven-version: '{maven-version}'
+
+      - inject:
+          properties-file: version.properties
+
+      - shell: !include-raw-escape: include-update-pom-versions.sh
+
+      - maven-target:
+          maven-version: '{maven-version}'
+          pom: '{pom}'
+          goals: 'clean deploy sonar:sonar -Dsonar.host.url=${{SONAR}}'
+          properties:
+            - '{maven-deploy-properties}'
+          settings: '{mvn-settings}'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
