@@ -17,7 +17,7 @@ echo DISTRIB_CODENAME: $DISTRIB_CODENAME
 echo DISTRIB_DESCRIPTION: $DISTRIB_DESCRIPTION
 
 function setup {
-    if [ -z ${REPO_NAME} ]; then
+    if ! [ -z ${REPO_NAME} ]; then
         echo "INSTALLING VPP-DPKG-DEV from apt/yum repo"
         REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
         echo "REPO_URL: ${REPO_URL}"
