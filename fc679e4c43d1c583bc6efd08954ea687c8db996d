@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_5defeeb0",
+        "filename": "jjb/scripts/setup_vpp_dpdk_dev_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-03-02T21:38:29Z",
+      "side": 1,
+      "message": "If you do\n\n #!/bin/bash -x\n\nJenkins will print out every command that\u0027s run in the script (useful for debugging if something goes wrong).",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "fc679e4c43d1c583bc6efd08954ea687c8db996d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_7df2aa9b",
+        "filename": "jjb/scripts/setup_vpp_dpdk_dev_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-03-02T21:38:29Z",
+      "side": 1,
+      "message": "Duplicate of above.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "fc679e4c43d1c583bc6efd08954ea687c8db996d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
