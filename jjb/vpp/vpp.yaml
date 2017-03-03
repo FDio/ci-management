@@ -115,7 +115,7 @@
                 - include-raw-vpp-build.sh
     publishers:
         - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb'
+            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
@@ -250,7 +250,7 @@
                 - include-raw-vpp-maven-push.sh
     publishers:
         - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb'
+            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
