@@ -35,7 +35,7 @@ enabled=1
 gpgcheck=0
 EOF
             sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
-            sudo yum -y install vpp-dpdk-dev || true
+            sudo yum -y install vpp-dpdk-devel || true
         fi
     fi
 }
