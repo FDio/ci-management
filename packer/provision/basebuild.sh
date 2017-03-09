@@ -195,6 +195,9 @@ all_systems() {
     unzip packer_0.12.2_linux_amd64.zip -d /usr/local/bin/
     # note: rename to packer.io to avoid conflict with cracklib packer
     mv /usr/local/bin/packer /usr/local/bin/packer.io
+
+    # Install packagecloud.io
+    gem install package_cloud
 }
 
 echo "---> Detecting OS"
