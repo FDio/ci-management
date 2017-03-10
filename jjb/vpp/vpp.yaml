@@ -688,7 +688,7 @@
         - os-parameter:
             os: '{os}'
         - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}.staging'
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
