@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ls -l ~/.package_cloud
+
 if [ "${OS}" == "ubuntu1404" ]; then
     DEBS=$(find . -type f -iname '*.deb')
     for i in $DEBS
