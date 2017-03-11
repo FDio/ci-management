@@ -21,6 +21,6 @@ elif [ "${OS}" == "centos7" ]; then
     SRCRPMS=$(find . -type f -name '*.src.rpm')
     for i in $RPMS $SRPMS $SRCRPMS
     do
-        package_cloud push fdio/test/centos7 "$i"
+        package_cloud push fdio/test/centos/7/os/x86_64/ "$i"
     done
 fi
