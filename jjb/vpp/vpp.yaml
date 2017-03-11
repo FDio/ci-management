@@ -708,6 +708,11 @@
 
 
     builders:
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/home/jenkins'
+                #variable: 'SETTINGS_FILE'
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
