@@ -704,7 +704,7 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'test-packagecloud'
+            comment-trigger-value: 'test-pkgcloud'
 
 
     builders:
