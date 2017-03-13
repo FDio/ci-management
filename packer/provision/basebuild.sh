@@ -17,7 +17,7 @@ rh_systems() {
     ###REMOVED mysql-devel
     echo "---> Installing RH Python dependencies $(date +'%Y%m%dT%H%M%S')"
     RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
-      python-pip kernel-devel"
+      python-pip kernel-devel epel-rpm-macros"
     yum install -y ${RH_PYTHON_PKGS}
 
     # RH Install Documentation packages
