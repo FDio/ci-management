@@ -14,8 +14,6 @@
             branch: 'stable/1701'
             repo-stream-part: 'stable.1701'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
 
@@ -54,17 +52,9 @@
             jobs: 'hc2vpp-integration-{stream}-{os}'
             result: 'success'
 
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
-
     builders:
         - shell:
             !include-raw-escape: include-raw-hc2vpp-csit-integration.sh
-
-    postbuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - archive-artifacts:
@@ -134,8 +124,6 @@
                 notbuilt: true
 
     prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
         - shell:
             !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
@@ -152,8 +140,6 @@
     postbuilders:
         - shell:
             !include-raw-escape: include-raw-hc2vpp-csit-verify.sh
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.7.0-openjdk-amd64||echo 'ignoring failure';fi
 
     publishers:
         - archive-artifacts:
