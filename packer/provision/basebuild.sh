@@ -18,7 +18,9 @@ rh_systems() {
     echo "---> Installing RH Python dependencies $(date +'%Y%m%dT%H%M%S')"
     RH_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
       python-pip kernel-devel epel-rpm-macros"
+    pip install --upgrade pip
     yum install -y ${RH_PYTHON_PKGS}
+    pip install pypcap
 
     # RH Install Documentation packages
     ###Removed python-pyparsing
