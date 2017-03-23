@@ -15,7 +15,7 @@ case "$(facter operatingsystem)" in
     /usr/sbin/update-ca-certificates
 
     # attach to the fd.io.dev apt repo
-    echo 'deb http://nexus.fd.io/content/repositories/fd.io.dev/ ./' >> /etc/apt/sources.list
+#    echo 'deb http://nexus.fd.io/content/repositories/fd.io.dev/ ./' >> /etc/apt/sources.list
 
     # Configure Ubuntu mirror
     perl -pi -e 'unless(m{(security|fd\.io)}){ s{://[^/]+/}{://ca.archive.ubuntu.com/} }' /etc/apt/sources.list
