@@ -111,8 +111,9 @@ ubuntu_systems() {
 
     # DEB Install Python dependencies
     echo "---> Installing Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    PYTHON_PKGS="python-dev python-virtualenv python-setuptools python-pip \
-      libssl-dev libmysqlclient-dev python2.7 libffi-dev python-cffi"
+    PYTHON_PKGS="python-all python-dev python-virtualenv python-setuptools \
+      python-pip libssl-dev libmysqlclient-dev python2.7 libffi-dev \
+      python-cffi"
     apt install -y ${PYTHON_PKGS}
 
     # Memory leakage checks
