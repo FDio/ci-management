@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+BUILD_TOOLS_GROUP="'Development Tools'"
+BUILD_TOOLS_SINGLE="cmake"
+LIBSSL_LIBEVENT="libevent-devel openssl-devel"
+LONGBOW_DEPS=""
+LIBPARC_DEPS="longbow $LIBSSL_LIBEVENT"
+LIBCCNX_COMMON_DEPS="$LIBPARC_DEPS libparc"
+LIBCCNX_TRANSPORT_RTA_DEPS="$LIBCCNX_COMMON_DEPS libccnx-common"
+LIBCCNX_PORTAL_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS boost-devel"
+METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet boost-devel"
