@@ -267,6 +267,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -336,6 +339,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -405,6 +411,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -474,6 +483,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -543,6 +555,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+    - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -612,6 +627,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -681,6 +699,9 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - reverse:
+            jobs: 'cicn-libicnet-merge-{stream}-{os}'
+            result: 'failure'
 
     builders:
         - maven-target:
