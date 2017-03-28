@@ -66,8 +66,19 @@ build_package() {
 
     # Figure out what system we are running on
     if [ -f /etc/lsb-release ];then
+
+        BUILD_TOOLS="build-essential cmake"
+        LIBSSL_LIBEVENT="libevent-dev libssl-dev"
+        LONGBOW_DEPS=""
+        LIBPARC_DEPS="longbow $LIBSSL_LIBEVENT"
+        LIBCCNX_COMMON_DEPS="$LIBPARC_DEPS libparc"
+        LIBCCNX_TRANSPORT_RTA_DEPS="$LIBCCNX_COMMON_DEPS libccnx-common"
+        LIBCCNX_PORTAL_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev"
+        METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev libboost-filesystem-dev"
+
         . /etc/lsb-release
-        source ./ubuntu-dependencies
         DEB=ON
         RPM=OFF
 
@@ -76,7 +87,19 @@ build_package() {
         fi
 
     elif [ -f /etc/redhat-release ];then
-        source ./centos-dependencies
+
+        BUILD_TOOLS_GROUP="'Development Tools'"
+        BUILD_TOOLS_SINGLE="cmake"
+        LIBSSL_LIBEVENT="libevent-devel openssl-devel"
+        LONGBOW_DEPS=""
+        LIBPARC_DEPS="longbow $LIBSSL_LIBEVENT"
+        LIBCCNX_COMMON_DEPS="$LIBPARC_DEPS libparc"
+        LIBCCNX_TRANSPORT_RTA_DEPS="$LIBCCNX_COMMON_DEPS libccnx-common"
+        LIBCCNX_PORTAL_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS boost-devel"
+        METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
+        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet boost-devel"
+
         sudo yum install -y redhat-lsb
         DISTRIB_ID=`lsb_release -si`
         DISTRIB_RELEASE=`lsb_release -sr`
