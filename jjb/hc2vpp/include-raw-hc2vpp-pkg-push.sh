@@ -1,6 +1,20 @@
 #!/bin/bash
+# determine JVPP version used in maven build
+if [ "${OS}" == "centos7" ]; then
+    VERSION=`yum list installed vpp-api-java | grep vpp-api-java | awk '{ printf $2; }'`
+else
+    VERSION=`apt list --installed | grep vpp-api-java | awk '{ printf $2; }'`
+fi
+
+# write a file that will echo VPP dependencies
+echo -n 'echo' > vpp_dependencies
+echo " \"vpp (= ${VERSION}), vpp-plugins(= ${VERSION})\"" >> vpp_dependencies
+chmod +x vpp_dependencies
+
 if [ "${OS}" == "centos7" ]; then
 
+    # overwrite default dependencies file
+    mv vpp_dependencies packaging/rpm/
     # Build the rpms
     ./packaging/rpm/rpmbuild.sh
 
@@ -14,6 +28,8 @@ if [ "${OS}" == "centos7" ]; then
     done
 elif [ "${OS}" == "ubuntu1404" ]; then
 
+    # overwrite default dependencies file
+    mv vpp_dependencies packaging/deb/common/
     # Build the debs
     ./packaging/deb/trusty/debuild.sh
 
@@ -25,6 +41,8 @@ elif [ "${OS}" == "ubuntu1404" ]; then
     done
 elif [ "${OS}" == "ubuntu1604" ]; then
 
+    # overwrite default dependencies file
+    mv vpp_dependencies packaging/deb/common/
     # Build the debs
     ./packaging/deb/xenial/debuild.sh
 
