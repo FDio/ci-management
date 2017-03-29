@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_1737da4f",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-03-29T18:09:08Z",
+      "side": 1,
+      "message": "Lets not do a new job, rather, lets have the existing merge job push the packages to both packagecloud and nexus repos.",
+      "revId": "341190dd3ce892536d2d871431fb60ad4d6de966",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f739ee41",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-03-29T18:09:08Z",
+      "side": 1,
+      "message": "You\u0027ll want to do a version of the packagecloud script that pushes to the correct repo (fdio/master fdio/1704 etc)",
+      "revId": "341190dd3ce892536d2d871431fb60ad4d6de966",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
