@@ -13,7 +13,7 @@ else
     CSIT_BRANCH='master'
 fi
 
-# Clone csit and download VPP packages
+# Clone csit
 git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}
 
 # If the git clone fails, complain clearly and exit
@@ -24,6 +24,7 @@ fi
 
 cd csit
 
+# download VPP packages
 if [ ${STREAM} == 'master' ]; then
     ./resources/tools/download_hc_build_pkgs.sh ${STREAM} ${OS}
 else
