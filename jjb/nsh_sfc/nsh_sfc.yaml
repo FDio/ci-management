@@ -26,6 +26,9 @@
         - '1701':
             branch: 'stable/1701'
             repo-stream-part: 'stable.1701'
+        - '1704':
+            branch: 'stable/1704'
+            repo-stream-part: 'stable.1704'
 
 - job-template:
     name: 'nsh_sfc-verify-{stream}-{os}'
