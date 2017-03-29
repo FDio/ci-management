@@ -9,6 +9,7 @@
         - 'vpp-make-test-docs-merge-{stream}'
         - 'vpp-make-test-docs-verify-{stream}'
         - 'vpp-test-packagecloud-{stream}-{os}'
+        - 'vpp-packagecould-merge-{stream}-{os}'
 
     project: 'vpp'
     os:
@@ -692,6 +693,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - stream-parameter:
+            stream: '{stream}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -728,7 +731,7 @@
                 - include-raw-vpp-build.sh
         - shell:
             !include-raw-escape:
-                - include-raw-vpp-packagecloud-push.sh
+                - ../scripts/packagecloud_push.sh
 
     publishers:
         - archive:
@@ -739,4 +742,3 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-
