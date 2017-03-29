@@ -1,12 +1,16 @@
 #!/bin/bash
 set -xeu -o pipefail
 
-# Clone csit and start tests
-if [ ${STREAM} == 'master' ]; then
-    git clone https://gerrit.fd.io/r/csit --branch master
+# Get CSIT branch
+if [ -f csit-test-branch ]; then
+    chmod +x csit-test-branch
+    CSIT_BRANCH=`./csit-test-branch`
 else
-    git clone https://gerrit.fd.io/r/csit --branch 'rls'${STREAM}
+    CSIT_BRANCH='master'
 fi
+
+# Clone csit
+git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
