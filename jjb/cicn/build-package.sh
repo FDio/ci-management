@@ -3,28 +3,54 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-update_cmake_repo_trusty() {
-    sudo apt-get install -y --allow-unauthenticated software-properties-common
-    sudo add-apt-repository --yes ppa:george-edison55/cmake-3.x
-}
+# Parameters:
+# $1 = Distribution [trusty / CentOS]
+#
+update_cmake_repo() {
 
-update_cmake_repo_centos() {
-    sudo cat << EOF > cmake.repo
+    DISTRIBUTION=$1
+
+    if [ "$DISTRIBUTION" == "trusty" ]; then
+        sudo apt-get install -y --allow-unauthenticated software-properties-common
+        sudo add-apt-repository --yes ppa:george-edison55/cmake-3.x
+    elif [ "$DISTRIBUTION" == "CentOS" ]; then
+        sudo cat << EOF > cmake.repo
 [cmake-repo]
 name=Repo for cmake3
 baseurl=http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/
 enabled=1
 gpgcheck=0
 EOF
-    sudo cat << EOF > jsoncpp.repo
+        sudo cat << EOF > jsoncpp.repo
 [jsoncp-repo]
 name=Repo for jsoncpp
 baseurl=http://dl.fedoraproject.org/pub/epel/7/x86_64/
 enabled=1
 gpgcheck=0
 EOF
-    sudo mv cmake.repo /etc/yum.repos.d/cmake.repo
-    sudo mv jsoncpp.repo /etc/yum.repos.d/jsoncpp.repo
+        sudo mv cmake.repo /etc/yum.repos.d/cmake.repo
+        sudo mv jsoncpp.repo /etc/yum.repos.d/jsoncpp.repo
+    fi
+}
+
+# Parameters:
+# $1 = Distribution codename
+#
+update_qt_repo() {
+    DISTRIBUTION_CODENAME=$1
+
+    if [ "$DISTRIBUTION_CODENAME" != "trusty" ] && [ "$DISTRIBUTION_CODENAME" != "xenial" ]; then
+        echo "No valid distribution specified when calling 'update_qt_repo'. Exiting.."
+        exit -1
+    fi
+
+    sudo apt-get install -y --allow-unauthenticated software-properties-common
+    sudo add-apt-repository --yes ppa:beineri/opt-qt571-$DISTRIBUTION_CODENAME
+
+    wget -q -O - http://archive.getdeb.net/getdeb-archive.key | sudo apt-key add -
+    sudo sh -c "echo 'deb http://archive.getdeb.net/ubuntu $DISTRIBUTION_CODENAME-getdeb apps' >> /etc/apt/sources.list.d/getdeb.list"
+
+    sudo apt-get update
 }
 
 setup() {
@@ -41,14 +67,14 @@ setup() {
 
     if [ $DISTRIB_ID == "Ubuntu" ]; then
         if [ "$DISTRIB_CODENAME" == "trusty" ]; then
-            update_cmake_repo_trusty
+            update_cmake_repo $DISTRIB_CODENAME
         fi
 
         echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
 
         sudo apt-get update
     elif [ "$DISTRIB_ID" == "CentOS" ]; then
-        update_cmake_repo_centos
+        update_cmake_repo $DISTRIB_ID
         sudo cat << EOF > fdio-master.repo
 [fdio-master]
 name=fd.io master branch latest merge
@@ -77,6 +103,7 @@ build_package() {
         LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev"
         METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
         HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev libboost-filesystem-dev"
+        VPP_PLUGIN_DEPS="vpp-dev vpp-dpkg-dev"
 
         . /etc/lsb-release
         DEB=ON
