@@ -3,8 +3,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-source ./build-package.sh
-
 PACKAGE_NAME="LIBPARC"
 PACKAGE_DEPS="LIBPARC_DEPS"
 cd libparc

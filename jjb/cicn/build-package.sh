@@ -77,6 +77,7 @@ build_package() {
         LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev"
         METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
         HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev libboost-filesystem-dev"
+        VPP_PLUGIN_DEPS="vpp-dev vpp-dpkg-dev"
 
         . /etc/lsb-release
         DEB=ON
