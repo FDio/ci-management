@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_02179a52",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-03-30T13:33:26Z",
+      "side": 1,
+      "message": "From Jenkins documentation:\n\nThe tag !include-raw-escape: treats the given string or list of strings as filenames to be opened as one or more data blobs, which should be escaped before being read in as string data. This allows job-templates to use this tag to include scripts from files without needing to escape braces in the original file.",
+      "parentUuid": "3a3291f1_42a6c2c2",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 31
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_02e2fa02",
         "filename": "jjb/hc2vpp/include-raw-hc2vpp-integration-prebuild.sh",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-30T06:08:39Z",
       "side": 1,
       "message": "we need to run vpp and hc2vpp as a part of this job in order to perform some basic tests, therefore vpp-plugins is needed",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_42cc8235",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-integration-prebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-03-30T13:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_02e2fa02",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_62c9be25",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-integration-prebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-03-30T13:33:26Z",
+      "side": 1,
+      "message": "Yes, including specifically which file failed the check. Should also fail the job without building anything, but I\u0027m not 100% sure.",
+      "parentUuid": "3a3291f1_22adf69c",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_c2f512cc",
         "filename": "jjb/hc2vpp/include-raw-hc2vpp-pkg-push.sh",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_c2d752be",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-pkg-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-03-30T13:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_c2f512cc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_02b0baf2",
         "filename": "jjb/hc2vpp/include-raw-hc2vpp-pkg-push.sh",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2017-03-30T06:08:39Z",
       "side": 1,
       "message": "we need to run some simple tests before push",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_bdac6736",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-pkg-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-03-30T13:33:26Z",
+      "side": 1,
+      "message": "no change, pending discussion",
+      "parentUuid": "3a3291f1_02b0baf2",
       "range": {
         "startLine": 21,
         "startChar": 4,
