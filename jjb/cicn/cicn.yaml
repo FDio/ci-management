@@ -198,6 +198,7 @@
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
+        - timed: '@daily'
 
     builders:
         - maven-target:
