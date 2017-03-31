@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e -o pipefail
 
+apt_get=/usr/local/apt-get
+
 # Figure out what system we are running on
 if [ -f /etc/lsb-release ];then
     . /etc/lsb-release
@@ -24,8 +26,8 @@ function setup {
         # Setup by installing vpp-dev and vpp-lib
         if [ $DISTRIB_ID == "Ubuntu" ]; then
             echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
-            sudo apt-get update || true
-            sudo apt-get -y --force-yes install vpp-dpdk-dev || true
+            sudo ${apt_get} update || true
+            sudo ${apt_get} -y --force-yes install vpp-dpdk-dev || true
         elif [[ $DISTRIB_ID == "CentOS" ]]; then
             sudo cat << EOF > fdio-master.repo
 [fdio-master]

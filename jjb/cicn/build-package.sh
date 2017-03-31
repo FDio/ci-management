@@ -3,8 +3,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+apt_get=/usr/local/apt-get
+
 update_cmake_repo_trusty() {
-    sudo apt-get install -y --allow-unauthenticated software-properties-common
+    sudo ${apt_get} install -y --allow-unauthenticated software-properties-common
     sudo add-apt-repository --yes ppa:george-edison55/cmake-3.x
 }
 
@@ -46,7 +48,7 @@ setup() {
 
         echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
 
-        sudo apt-get update
+        sudo ${apt_get} update
     elif [ "$DISTRIB_ID" == "CentOS" ]; then
         update_cmake_repo_centos
         sudo cat << EOF > fdio-master.repo
@@ -122,7 +124,7 @@ build_package() {
     setup $DISTRIB_ID $DISTRIB_CODENAME
 
     if [ $DISTRIB_ID == "Ubuntu" ]; then
-        echo $BUILD_TOOLS ${!PACKAGE_DEPS} | xargs sudo apt-get install -y --allow-unauthenticated
+        echo $BUILD_TOOLS ${!PACKAGE_DEPS} | xargs sudo ${apt_get} install -y --allow-unauthenticated
     elif [ $DISTRIB_ID == "CentOS" ]; then
         echo $BUILD_TOOLS_GROUP | xargs sudo yum groupinstall -y --nogpgcheck || true
         echo $BUILD_TOOLS_SINGLE | xargs sudo yum install -y --nogpgcheck || true

@@ -2,6 +2,8 @@
 
 set -e -o pipefail
 
+apt_get=/usr/local/apt-get
+
 # print the current slave hostname
 hostname
 
@@ -28,8 +30,8 @@ then
     echo "*******************************************************************"
 fi
 
-sudo apt-get update
-sudo apt-get install -y ${MISSING_PKGS}
+sudo ${apt_get} update
+sudo ${apt_get} install -y ${MISSING_PKGS}
 
 pkg_version=$(dpkg-parsechangelog --show-field Version)
 orig_version=$(echo ${pkg_version} | perl -pe 's/-.+$//; s/~/-/') # remove debian suffix, replace ~rc1 with -rc1, for instance
