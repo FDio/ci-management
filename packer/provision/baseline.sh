@@ -122,7 +122,8 @@ EOF
 
 i=0
 tput sc
-while [ fuser /var/lib/dpkg/lock >/dev/null 2>&1 || fuser /var/lib/apt/lists/lock >/dev/null 2>&1 ]; do
+LOCKFILES="/var/lib/dpkg/lock /var/lib/apt/lists/lock"
+while [ fuser ${LOCKFILES} >/dev/null 2>&1 ]; do
     case $(($i % 4)) in
         0 ) j="-" ;;
         1 ) j="\\" ;;
