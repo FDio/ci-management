@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_e5a6d50f",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 784
+      },
+      "writtenOn": "2017-03-31T21:32:48Z",
+      "side": 1,
+      "message": "LOCKFILE will be empty, since it\u0027s LOCKFILES",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "5deb73954843224c430f7c26dcf3e43167445682",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
