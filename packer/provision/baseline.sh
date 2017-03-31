@@ -120,12 +120,11 @@ EOF
     cat << 'EOF' >> /usr/local/bin/apt-get
 #!/bin/bash
 
+TERM=dumb
 i=0
 tput sc
 LOCKFILES="/var/lib/dpkg/lock /var/lib/apt/lists/lock"
-WASLOCKED=0
-while [ fuser ${LOCKFILES} >/dev/null 2>&1 ]; do
-    WASLOCKED=$?
+while [ fuser -v ${LOCKFILES} ]; do
     case $(($i % 4)) in
         0 ) j="-" ;;
         1 ) j="\\" ;;
@@ -138,10 +137,11 @@ while [ fuser ${LOCKFILES} >/dev/null 2>&1 ]; do
     ((i=i+1))
 done
 
-if [ $WASLOCKED==0 ]
+if [ $i==0 ]
 then
   /usr/bin/apt-get "$@"
 else
+  sleep 1
   exec /usr/local/bin/apt-get "$@"
 fi
 
