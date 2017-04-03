@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-apt_get=/usr/local/apt-get
+apt_get=`which apt-get`
 
 PACKAGE_NAME="VIPER"
 VIPER_DEPS_UBUNTU="zlib1g-dev git-core build-essential libxml2-dev libcurl4-openssl-dev \

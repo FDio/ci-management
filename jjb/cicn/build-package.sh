@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-apt_get=/usr/local/apt-get
+apt_get=`which apt-get`
 
 # Parameters:
 # $1 = Distribution [trusty / CentOS]
