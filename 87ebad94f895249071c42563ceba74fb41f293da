@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_03431915",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-integration-prebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-04-03T15:42:30Z",
+      "side": 1,
+      "message": "still don\u0027t see vpp-plugins",
+      "parentUuid": "3a3291f1_42cc8235",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_22adf69c",
         "filename": "jjb/hc2vpp/include-raw-hc2vpp-integration-prebuild.sh",
         "patchSetId": 5
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "no change, pending discussion",
       "parentUuid": "3a3291f1_02b0baf2",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "87ebad94f895249071c42563ceba74fb41f293da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_233cd592",
+        "filename": "jjb/hc2vpp/include-raw-hc2vpp-pkg-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-04-03T15:42:30Z",
+      "side": 1,
+      "message": "I think it is worth testing if the jenkins slave, the job is build on, is able to run vpp + hc and read operational state of interfaces via curl",
+      "parentUuid": "3a3291f1_bdac6736",
       "range": {
         "startLine": 21,
         "startChar": 4,
