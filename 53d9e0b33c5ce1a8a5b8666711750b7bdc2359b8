@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_c872d0ac",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-03T07:56:46Z",
+      "side": 1,
+      "message": "ndrdisc",
+      "range": {
+        "startLine": 147,
+        "startChar": 52,
+        "endLine": 147,
+        "endChar": 62
+      },
+      "revId": "53d9e0b33c5ce1a8a5b8666711750b7bdc2359b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a869c4bf",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-03T07:56:46Z",
+      "side": 1,
+      "message": "pdrdisc",
+      "range": {
+        "startLine": 180,
+        "startChar": 52,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "53d9e0b33c5ce1a8a5b8666711750b7bdc2359b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
