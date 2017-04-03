@@ -143,6 +143,74 @@
         - robot-report:
             output-path: ''
 
+        - plot:
+            - title: '64B-1t1c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "L2XCFWD")]'
+            - title: '64B-2t2c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "L2XCFWD")]'
+            - title: '64B-4t4c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "4T4C") and contains(@tags, "L2XCFWD")]'
+            - title: '64B-1t1c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and not(contains(@tags,"NDRDISC")) and contains(@tags, "1T1C") and contains(@tags, "L2XCFWD")]'
+            - title: '64B-2t2c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-5.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and not(contains(@tags,"NDRDISC")) and contains(@tags, "2T2C") and contains(@tags, "L2XCFWD")]'
+            - title: '64B-4t4c-eth-l2xcbase-testpmd-ndrpdrdisc'
+              group: 'RFC2544: Xconnect'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dpdk-perf-{stream}-{type}-l2-6.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "DPDK") and contains(@tags, "BASE") and contains(@tags, "PDRDISC") and not(contains(@tags,"NDRDISC")) and contains(@tags, "4T4C") and contains(@tags, "L2XCFWD")]'
+
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -196,139 +264,6 @@
             output-path: ''
 
         - plot:
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-1.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-2.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-3.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-4.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-5.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, NDR'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:NDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-6.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"NDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=1, rss=1, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-7.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=1, rss=1, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-8.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="1"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=2, rss=1, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-9.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=2, rss=1, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-10.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="2"]'
-            - title: 'RFC2544 binary search with 64B, worker-thread=4, rss=2, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-11.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64" and contains(@tags,"PDR") and @workerthreads="4"]'
-            - title: 'RFC2544 binary search with 78B, worker-thread=4, rss=2, PDR=0.5%'
-              yaxis: 'Packets Per Second'
-              group: 'RFC2544:PDR'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-vpp-perf-{stream}-{type}-12.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="78" and contains(@tags,"PDR") and @workerthreads="4"]'
-
             - title: '64B-1t1c-eth-l2*-ndrdisc'
               group: 'RFC2544: Xconnect and Bridge Domain'
               yaxis: 'Packets Per Second'
