@@ -1,9 +1,10 @@
 #!/bin/bash
 # basic build script example
-set -euo pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 PACKAGE_NAME="METIS"
 PACKAGE_DEPS="METIS_DEPS"
-cd metis
+pushd metis
 build_package $PACKAGE_NAME $PACKAGE_DEPS
+popd
