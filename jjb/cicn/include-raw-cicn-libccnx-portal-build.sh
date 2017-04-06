@@ -1,9 +1,10 @@
 #!/bin/bash
 # basic build script example
-set -euo pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 PACKAGE_NAME="LIBCCNX_PORTAL"
 PACKAGE_DEPS="LIBCCNX_PORTAL_DEPS"
-cd libccnx-portal
+pushd libccnx-portal
 build_package $PACKAGE_NAME $PACKAGE_DEPS
+popd

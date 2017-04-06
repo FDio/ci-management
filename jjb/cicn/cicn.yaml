@@ -13,7 +13,7 @@
     stream:
         - master:
             branch: 'cframework/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -33,7 +33,7 @@
     stream:
         - master:
             branch: 'cframework/libparc'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -53,7 +53,7 @@
     stream:
         - master:
             branch: 'ccnxlibs/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -73,7 +73,7 @@
     stream:
         - master:
             branch: 'ccnxlibs/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -93,7 +93,7 @@
     stream:
         - master:
             branch: 'ccnxlibs/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -113,7 +113,7 @@
     stream:
         - master:
             branch: 'libicnet/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -133,7 +133,7 @@
     stream:
         - master:
             branch: 'sb-forwarder/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -153,7 +153,7 @@
     stream:
         - master:
             branch: 'http-server/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -171,7 +171,7 @@
     stream:
         - master:
             branch: 'cicn-plugin/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -189,7 +189,23 @@
     stream:
         - master:
             branch: 'viper/master'
-            repo-stream-part: 'cicn.master'
+            repo-stream-part: 'master'
+    type:
+        - short
+        - long
+
+- project:
+    name: cicn-radio-emulators
+    jobs:
+        - 'cicn-radio-emulators-merge-{stream}-{os}'
+    project: 'cicn'
+    os:
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+    stream:
+        - master:
+            branch: 'vicn/master'
+            repo-stream-part: 'master'
     type:
         - short
         - long
@@ -249,7 +265,7 @@
                 - build-package.sh
                 - include-raw-cicn-longbow-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-longbow-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -322,7 +338,7 @@
                 - build-package.sh
                 - include-raw-cicn-libparc-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-libparc-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -395,7 +411,7 @@
                 - build-package.sh
                 - include-raw-cicn-libccnx-common-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-libccnx-common-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -468,7 +484,7 @@
                 - build-package.sh
                 - include-raw-cicn-libccnx-transport-rta-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-libccnx-transport-rta-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -541,7 +557,7 @@
                 - build-package.sh
                 - include-raw-cicn-libccnx-portal-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-libccnx-portal-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -614,7 +630,7 @@
                 - build-package.sh
                 - include-raw-cicn-libicnet-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-libicnet-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -687,7 +703,7 @@
                 - build-package.sh
                 - include-raw-cicn-metis-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-metis-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -760,7 +776,7 @@
                 - build-package.sh
                 - include-raw-cicn-http-server-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-http-server-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -831,7 +847,7 @@
                 - build-package.sh
                 - include-raw-cicn-http-server-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-vpp-plugin-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -904,7 +920,7 @@
                 - build-package.sh
                 - include-raw-cicn-viper-build.sh
         - provide-maven-settings:
-            settings-file: 'cicn-viper-settings'
+            settings-file: 'cicn-settings'
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
@@ -913,6 +929,74 @@
     publishers:
         - archive:
             artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'cicn-radio-emulators-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - timed: '@daily'
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'cicn-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - shell:
+            !include-raw-escape:
+                - build-package.sh
+                - include-raw-cicn-radio-emulators-build.sh
+        - provide-maven-settings:
+            settings-file: 'cicn-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-cicn-maven-push.sh
+    publishers:
+        - archive:
+            artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true

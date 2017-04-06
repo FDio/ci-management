@@ -1,6 +1,6 @@
 #!/bin/bash
 # basic build script example
-set -euo pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 apt_get=`which apt-get`
@@ -223,6 +223,8 @@ build_package() {
     rm -rf *
     cmake -DCMAKE_INSTALL_PREFIX=/usr -DRPM_PACKAGE=$RPM -DDEB_PACKAGE=$DEB -DDISTRIBUTION=$DISTRIB_CODENAME -DARCHITECTURE=$ARCHITECTURE ..
     make package
+
+    popd
 
     echo "*******************************************************************"
     echo "* $PACKAGE_NAME BUILD SUCCESSFULLY COMPLETED"

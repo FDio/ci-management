@@ -1,6 +1,6 @@
 #!/bin/bash
 # basic build script example
-set -euo pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 apt_get=`which apt-get`
@@ -92,5 +92,7 @@ sudo make install
 popd
 
 # Build viper
+pushd .
 build
 make package
+popd
