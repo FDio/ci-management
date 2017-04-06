@@ -55,36 +55,68 @@ update_qt_repo() {
     sudo ${apt_get} update
 }
 
-setup() {
-
+# Parameters:
+# $1 = Distribution id
+# $2 = Distribution codename
+#
+update_fdio_repo() {
     DISTRIB_ID=$1
     DISTRIB_CODENAME=$2
 
     if ! [ -z ${REPO_NAME} ]; then
-        REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
-        echo "REPO_URL: ${REPO_URL}"
-    else
-        exit -1
-    fi
+        REPO_CICN_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
+        REPO_VPP_URL=""
 
-    if [ $DISTRIB_ID == "Ubuntu" ]; then
-        if [ "$DISTRIB_CODENAME" == "trusty" ]; then
-            update_cmake_repo $DISTRIB_CODENAME
-        fi
+        if [ "$DISTRIB_ID" == "Ubuntu" ]; then
 
-        echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
+            if [ "$DISTRIB_CODENAME" == "xenial" ]; then
+                REPO_VPP_URL="${NEXUSPROXY}/content/repositories/fd.io.stable.1701.ubuntu.xenial.main/"
+            elif [ "$DISTRIB_CODENAME" == "trusty" ]; then
+                REPO_VPP_URL="${NEXUSPROXY}/content/repositories/fd.io.stable.1701.ubuntu.trusty.main/"
+            else
+                echo "Distribution $DISTRIB_CODENAME is not supported"
+                exit -1
+            fi
 
-        sudo ${apt_get} update
-    elif [ "$DISTRIB_ID" == "CentOS" ]; then
-        update_cmake_repo $DISTRIB_ID
-        sudo cat << EOF > fdio-master.repo
+            echo "deb ${REPO_VPP_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
+            echo "deb ${REPO_CICN_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.master.list
+
+        elif [ "$DISTRIB_ID" == "CentOS" ]; then
+            REPO_VPP_URL="${NEXUSPROXY}/content/repositories/fd.io.centos7/"
+                    sudo cat << EOF > fdio-master.repo
 [fdio-master]
 name=fd.io master branch latest merge
 baseurl=${REPO_URL}
 enabled=1
 gpgcheck=0
 EOF
-        sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
+            sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
+        else
+            echo "Distribution $DISTRIB_CODENAME is not supported"
+        fi
+    else
+        exit -1
+    fi
+
+}
+
+setup() {
+
+    DISTRIB_ID=$1
+    DISTRIB_CODENAME=$2
+
+    if [ "$DISTRIB_ID" == "Ubuntu" ]; then
+        if [ "$DISTRIB_CODENAME" == "trusty" ]; then
+            update_cmake_repo $DISTRIB_CODENAME
+        fi
+
+        update_fdio_repo $DISTRIB_ID $DISTRIB_CODENAME
+
+        sudo ${apt_get} update || true
+
+    elif [ "$DISTRIB_ID" == "CentOS" ]; then
+        update_cmake_repo $DISTRIB_ID
+        update_fdio_repo $DISTRIB_ID $DISTRIB_CODENAME
     fi
 }
 
@@ -105,7 +137,7 @@ build_package() {
         LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev"
         METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
         HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev libboost-filesystem-dev"
-        VPP_PLUGIN_DEPS="vpp-dev vpp-dpkg-dev"
+        VPP_PLUGIN_DEPS="vpp-dev vpp-dpdk-dev"
 
         . /etc/lsb-release
         DEB=ON
@@ -184,9 +216,6 @@ build_package() {
     else
         echo "Cannot find cat /etc/bootstrap-functions.sha"
     fi
-
-    echo "sha1sum of this script: ${0}"
-    sha1sum $0
 
     # Make the package
     mkdir -p build && pushd build
