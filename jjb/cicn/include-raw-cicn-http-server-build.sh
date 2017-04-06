@@ -1,6 +1,6 @@
 #!/bin/bash
 # basic build script example
-set -euo pipefail
+set -euxo pipefail
 IFS=$'\n\t'
 
 PACKAGE_NAME="HTTP_SERVER"
