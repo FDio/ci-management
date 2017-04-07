@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_aea3054e",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "package_cloud\u003d/usr/local/bin/package_cloud",
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_aebae56b",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "move before\nif [ \"$FACTER_OSVER\" \u003d\u003d \"14.04\" ]",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8e8a89bd",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "$package_cloud",
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_eec0ede1",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 14,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6e851dac",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "$package_cloud",
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_0e65791d",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "build-root",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2e8f15ce",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "$package_cloud",
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_ee67cd23",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-07T18:32:56Z",
+      "side": 1,
+      "message": "strip trailing whitespace",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "e09079ca3b9ba92e20891d01a99faef6f57091dc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
