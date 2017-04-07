@@ -32,7 +32,7 @@
             repo-os-part: 'centos7'
     stream:
         - master:
-            branch: 'cframework/libparc'
+            branch: 'cframework/master'
             repo-stream-part: 'master'
     type:
         - short
