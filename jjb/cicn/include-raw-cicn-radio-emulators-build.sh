@@ -3,7 +3,8 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
-apt_get=`which apt-get`
+APT_PATH=`which apt-get` || true
+apt_get=${$APT_PATH:-"/usr/local/bin/apt-get"}
 
 PACKAGE_NAME="RADIO_EMULATOR"
 RADIO_EMULATOR_DEPS_UBUNTU="pkg-config libboost-all-dev libsqlite3-dev libopenmpi-dev libxml2-dev libwebsocketpp-dev"
