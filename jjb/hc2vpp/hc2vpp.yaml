@@ -261,7 +261,8 @@
     prebuilders:
         - shell: |
             if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
-
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
