@@ -22,6 +22,30 @@
       "revId": "031387f5a145665ac540d0f88d88d511c74c2910",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f4f2fa6d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2017-04-10T10:15:50Z",
+      "side": 1,
+      "message": "We can remove it when support of VPP 16.06 is officially cancelled (EOL declared).",
+      "parentUuid": "3a3291f1_094c539d",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "031387f5a145665ac540d0f88d88d511c74c2910",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
