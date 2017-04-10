@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_8f8a83bd",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "Spelling: do you mean FACTOR here?\n\nAlso, where is {$FACTER_OS} coming from?  I don\u0027t see it in parameters being passed to the job.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_4f949be1",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "where is {$FACTER_OSVER} coming from?  I don\u0027t see it in parameters being passed to the job.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_cfb76b85",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "Could we go with \"OS Release push of packages to package cloud not supported\" to be more specific.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2f8f0fce",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "Is there a case here to echo OS Release not supported for non Ubuntu/Centos OSes?",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_afa3ff4d",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "As commented previously, please do not introduce a new job, please do this from existing merge jobs.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_cfa08b45",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2017-04-10T16:25:46Z",
+      "side": 1,
+      "message": "As commented previously... please do *not* do this as a new job.  Please simply push from existing merge jobs.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
