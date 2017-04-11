@@ -395,7 +395,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}'
+            jobs: 'cicn-libparc-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -468,7 +468,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-common-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -541,7 +541,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -614,7 +614,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -687,7 +687,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
