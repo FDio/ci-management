@@ -69,7 +69,7 @@ for item in jvpp*.jar; do
     # Version = 17.01
     basefile=$(basename -s .jar "$item")
     artifactId=$(echo "$basefile" | cut -d '-' -f 1-2)
-    version=$(echo "$basefile" | cut -d '-' -f 3)
+    version=`./jvpp-version`
     mvn install:install-file -Dfile=${item} -DgroupId=io.fd.vpp -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=jar -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
 done
 
