@@ -262,7 +262,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-longbow-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -335,7 +334,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-libparc-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -395,7 +393,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}'
+            jobs: 'cicn-libparc-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -408,7 +406,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-libccnx-common-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -468,7 +465,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-common-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -481,7 +478,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-libccnx-transport-rta-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -541,7 +537,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -554,7 +550,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-libccnx-portal-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -614,7 +609,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -627,7 +622,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-libicnet-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -687,7 +681,7 @@
             name: '{project}'
             branch: '{branch}'
         - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}, cicn-libparc-merge-{stream}-{os}, cicn-libccnx-common-merge-{stream}-{os}, cicn-libccnx-transport-rta-merge-{stream}-{os}, cicn-libccnx-portal-merge-{stream}-{os}'
+            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
             result: 'failure'
 
     builders:
@@ -700,7 +694,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-metis-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -773,7 +766,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-http-server-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -844,7 +836,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-vpp-plugin-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -917,7 +908,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-viper-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
@@ -985,7 +975,6 @@
             global-settings-type: cfp
         - shell:
             !include-raw-escape:
-                - build-package.sh
                 - include-raw-cicn-radio-emulators-build.sh
         - provide-maven-settings:
             settings-file: 'cicn-settings'
