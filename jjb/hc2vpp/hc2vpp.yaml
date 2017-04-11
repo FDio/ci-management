@@ -232,6 +232,8 @@
             project: '{project}'
         - os-parameter:
             os: '{os}'
+        - stream-parameter:
+            stream: '{stream}'
         - maven-project-parameter:
             maven: 'mvn33-new'
         - maven-exec:
