@@ -141,9 +141,9 @@ build_package() {
         LIBCCNX_COMMON_DEPS="$LIBPARC_DEPS libparc"
         LIBCCNX_TRANSPORT_RTA_DEPS="$LIBCCNX_COMMON_DEPS libccnx-common"
         LIBCCNX_PORTAL_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
-        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev"
-        METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
-        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev libboost-filesystem-dev"
+        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS libboost-system-dev libccnx-portal"
+        METIS_DEPS="$LIBCCNX_PORTAL_DEPS libccnx-portal"
+        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet libboost-regex-dev"
         VPP_PLUGIN_DEPS="vpp-dev vpp-dpdk-dev"
 
         . /etc/lsb-release
@@ -164,9 +164,9 @@ build_package() {
         LIBCCNX_COMMON_DEPS="$LIBPARC_DEPS libparc"
         LIBCCNX_TRANSPORT_RTA_DEPS="$LIBCCNX_COMMON_DEPS libccnx-common"
         LIBCCNX_PORTAL_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
-        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS boost-devel"
-        METIS_DEPS="$LIBCCNX_TRANSPORT_RTA_DEPS libccnx-transport-rta"
-        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet boost-devel"
+        LIBICNET_DEPS="$LIBCCNX_PORTAL_DEPS boost-devel libccnx-portal"
+        METIS_DEPS="$LIBCCNX_PORTAL_DEPS libccnx-portal"
+        HTTP_SERVER_DEPS="$LIBICNET_DEPS libicnet"
 
         sudo yum install -y redhat-lsb
         DISTRIB_ID=`lsb_release -si`
