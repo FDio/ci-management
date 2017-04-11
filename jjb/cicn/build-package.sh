@@ -3,7 +3,8 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
-apt_get=`which apt-get`
+APT_PATH=`which apt-get` || true
+apt_get=${APT_PATH:-"/usr/local/bin/apt-get"}
 
 # Parameters:
 # $1 = Distribution [trusty / CentOS]
@@ -83,14 +84,20 @@ update_fdio_repo() {
 
         elif [ "$DISTRIB_ID" == "CentOS" ]; then
             REPO_VPP_URL="${NEXUSPROXY}/content/repositories/fd.io.centos7/"
-                    sudo cat << EOF > fdio-master.repo
-[fdio-master]
+                    sudo cat << EOF > fdio.repo
+[fdio-vpp-master]
 name=fd.io master branch latest merge
-baseurl=${REPO_URL}
+baseurl=${REPO_VPP_URL}
+enabled=1
+gpgcheck=0
+
+[fdio-cicn-master]
+name=fd.io master branch latest merge
+baseurl=${REPO_CICN_URL}
 enabled=1
 gpgcheck=0
 EOF
-            sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
+            sudo mv fdio.repo /etc/yum.repos.d/fdio.repo
         else
             echo "Distribution $DISTRIB_CODENAME is not supported"
         fi
