@@ -3,6 +3,6 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
-PACKAGE_NAME="LIBICNET"
-PACKAGE_DEPS="LIBICNET_DEPS"
-build_package $PACKAGE_NAME $PACKAGE_DEPS
+pushd scripts
+bash build-package.sh
+popd
