@@ -60,6 +60,8 @@ fi
 rm vpp-api-java*
 
 # install jvpp jars into maven repo, so that maven picks them up when building hc2vpp
+version=`./jvpp-version`
+
 current_dir=`pwd`
 cd /usr/share/java
 
@@ -69,7 +71,6 @@ for item in jvpp*.jar; do
     # Version = 17.01
     basefile=$(basename -s .jar "$item")
     artifactId=$(echo "$basefile" | cut -d '-' -f 1-2)
-    version=$(echo "$basefile" | cut -d '-' -f 3)
     mvn install:install-file -Dfile=${item} -DgroupId=io.fd.vpp -DartifactId=${artifactId} -Dversion=${version} -Dpackaging=jar -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
 done
 
