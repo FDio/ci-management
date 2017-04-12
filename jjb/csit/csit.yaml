@@ -17,6 +17,7 @@
         - 'csit-report-merge-{stream}'
         - 'csit-vpp-perf-trend-daily-{stream}'
         - 'csit-dev-trending-semi-weekly-{stream}'
+        - 'csit-vpp-perf-check-{stream}'
 
     project: 'csit'
     branch: 'master'
@@ -3421,6 +3422,110 @@
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+
+- job-template:
+    name: 'csit-vpp-perf-check-{stream}'
+
+    description: |
+      consumer
+          csit-dev perf code base checks
+      objective
+          check csit perf code base
+      job
+          name
+              csit-vpp-perf-check
+          duration
+              see below
+          number of TCs
+              see below
+          trigger
+              see below
+      perf test-cases selection
+          all CSIT perf suites
+      keywords
+          format - keyword, tag_list
+              verify-perf-ndrdisc, NDRDISC
+                  ~215 TCs, ~11 hr
+              verify-perf-pdrdisc, PDRDISC
+                  ~215 TCs, ~11 hr
+              verify-perf-ndrchk, NDRCHK
+                  ~132 TCs, ~3 hrs
+      default tags for vpp startup config and perf test type
+          1T1C
+              one worker thread, one core
+          2T2C
+              two worker thread, two core
+      results
+          jjb verify
+              PASS/FAIL
+          archive
+              LF jenkins only
+          present
+              no
+          analyse
+              csit project
+                  catch malfunctions
+                  catch degradataions
+
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ndrdisc'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-pdrdisc'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ndrchk'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-check.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - parameter:
     name: test-type-parameter
