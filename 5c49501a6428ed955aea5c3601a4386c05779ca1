@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_903f3bd6",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-12T18:38:46Z",
+      "side": 1,
+      "message": "https://docs.puppet.com/facter/\n\nI\u0027m not certain it\u0027s getting set.  Perhaps we should use:\nFACTER_OS\u003d$(/usr/bin/facter operatingsystem)",
+      "parentUuid": "3a3291f1_8f8a83bd",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_4f949be1",
         "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-10T16:25:46Z",
       "side": 1,
       "message": "where is {$FACTER_OSVER} coming from?  I don\u0027t see it in parameters being passed to the job.",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_5021d3b2",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-12T18:38:46Z",
+      "side": 1,
+      "message": "FACTER_OSVER\u003d$(/usr/bin/facter operatingsystemrelease)",
+      "parentUuid": "3a3291f1_4f949be1",
       "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
@@ -64,6 +100,24 @@
       "writtenOn": "2017-04-10T16:25:46Z",
       "side": 1,
       "message": "Is there a case here to echo OS Release not supported for non Ubuntu/Centos OSes?",
+      "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_30308700",
+        "filename": "jjb/vpp/include-raw-vpp-packagecloud-push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-04-12T18:38:46Z",
+      "side": 1,
+      "message": "I agree, there should be a:\n\n    *)\n        echo \"---\u003e OS Release ${FACTER_OS} is not supported\"\n    ;;",
+      "parentUuid": "3a3291f1_2f8f0fce",
       "revId": "5c49501a6428ed955aea5c3601a4386c05779ca1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
