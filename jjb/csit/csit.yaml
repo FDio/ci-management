@@ -17,6 +17,7 @@
         - 'csit-report-merge-{stream}'
         - 'csit-vpp-perf-trend-daily-{stream}'
         - 'csit-vpp-perf-trend-semi-weekly-{stream}'
+        - 'csit-vpp-perf-check-{stream}'
 
     project: 'csit'
     branch: 'master'
@@ -2633,6 +2634,895 @@
             fingerprint: false
             only-if-success: true
             default-excludes: false
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-perf-trend-daily-{stream}'
+
+    description: |
+      Purpose of this job is to validate latest vpp build from corresponding
+      branch stored in nexus against verified CSIT codebase of corresponding
+      branch.
+
+      objective
+          daily perf trending of vpp master build
+      job
+         name
+             csit-vpp-perf-trend-daily
+         trigger
+             scheduled daily
+      perf test-cases selection
+          all CSIT perf suites
+      default tags for vpp startup config and perf test type
+          1T1C - one worker thread, one core
+          2T2C - two worker threads, two cores
+          X520 - Intel x520-DA2 NIC
+          NDRDISC - discovery of NDR throughput
+      results
+          jjb verify - no
+          present
+              jenkins trending graphs
+
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - timed: 'H H(20-23) * * *'
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-trend-daily.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+        - plot:
+            - title: '64B-1t1c-eth-l2*-ndrdisc'
+              group: 'RFC2544: Xconnect and Bridge Domain'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-l2-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: '64B-2t2c-eth-l2*-ndrdisc'
+              group: 'RFC2544: Xconnect and Bridge Domain'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-l2-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+
+            - title: '64B-1t1c-ethip4-ip4*-ndrdisc'
+              group: 'RFC2544: IPv4 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv4-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: '64B-2t2c-ethip4-ip4*-ndrdisc'
+              group: 'RFC2544: IPv4 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv4-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+
+            - title: '78B-1t1c-ethip6-ip6*-ndrdisc'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv6-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: '78B-2t2c-ethip6-ip6*-ndrdisc'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv6-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-*-vhost-*-ndrdisc'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-vhost-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+            - title: '64B-2t2c-*-vhost-*-ndrdisc'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-vhost-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+
+- job-template:
+    name: 'csit-vpp-perf-trend-semi-weekly-{stream}'
+
+    description: |
+      Purpose of this job is to validate latest vpp build from corresponding
+      branch stored in nexus against verified CSIT codebase of corresponding
+      branch.
+
+      consumer
+          csit-dev trending semi-weekly
+      objective
+          semi-weekly perf trending of vpp master build job
+          name
+              csit-vpp-perf-trend-semi-weekly
+          trigger
+              scheduled semi-weekly
+      perf test-cases selection
+          all CSIT perf suites
+      default tags for vpp startup config and perf test type
+          1T1C - one worker thread, one core
+          2T2C - two worker threads, two cores
+          X710 - Intel x710 Fortville NIC
+          XL710 - Intel xl710 Fortville NIC
+          NDRDISC - discovery of NDR throughput
+      results
+          jjb verify - no
+          present
+              jenkins trending graphs
+
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - timed: 'H H(20-23) * * 2,6'
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-trend-semi-weekly.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+        - plot:
+            - title: '64B-1t1c-eth-l2*-ndrdisc'
+              group: 'RFC2544: Xconnect and Bridge Domain'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-l2-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+            - title: '64B-2t2c-eth-l2*-ndrdisc'
+              group: 'RFC2544: Xconnect and Bridge Domain'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-l2-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
+
+            - title: '64B-1t1c-ethip4-ip4*-ndrdisc'
+              group: 'RFC2544: IPv4 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv4-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
+            - title: '64B-2t2c-ethip4-ip4*-ndrdisc'
+              group: 'RFC2544: IPv4 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv4-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
+
+            - title: '78B-1t1c-ethip6-ip6*-ndrdisc'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv6-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
+            - title: '78B-2t2c-ethip6-ip6*-ndrdisc'
+              group: 'RFC2544: IPv6 base, scale, feature'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv6-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels - LISP, VXLAN, GPE, GRE'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in software: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Crypto in hardware: IP4FWD, IP6FWD'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in software'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '64B-2t2c-ethip4*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-1t1c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-3.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+            - title: '78B-2t2c-ethip6*-ndrdisc'
+              group: 'RFC2544: Overlay tunnels with crypto in hardware'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-4.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
+
+            - title: '64B-1t1c-*-vhost-*-ndrdisc'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-1.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+            - title: '64B-2t2c-*-vhost-*-ndrdisc'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+            - title: '64B-2t2c-*-vhost-*-ndrdisc'
+              group: 'RFC2544: vhost-user'
+              yaxis: 'Packets Per Second'
+              num-builds: '20'
+              keep-records: True
+              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-2.csv'
+              series:
+                  - file: 'output_perf_data.xml'
+                    format: xml
+                    xpath-type: 'nodeset'
+                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
+
+- job-template:
+    name: 'csit-vpp-perf-check-{stream}'
+
+    description: |
+      consumer
+          csit-dev perf code base checks
+      objective
+          check csit perf code base
+      job
+          name
+              csit-vpp-perf-check
+          trigger
+              see below
+      perf test-cases selection
+          all CSIT perf suites
+      keywords
+          format - keyword, tag_list
+              verify-perf-ndrdisc, NDRDISC
+              verify-perf-pdrdisc, PDRDISC
+              verify-perf-ndrchk, NDRCHK
+      default tags for vpp startup config and perf test type
+          1T1C
+              one worker thread, one core
+          2T2C
+              two worker threads, two cores
+      results
+          jjb verify
+              PASS/FAIL
+          present
+              no
+          analyse
+              csit project
+                  catch malfunctions
+                  catch degradations
+
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ndrdisc'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-pdrdisc'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ndrchk'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-check.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
