@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_4bf48886",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3438,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "as per below i would avoid specification",
+      "range": {
+        "startLine": 3437,
+        "startChar": 0,
+        "endLine": 3438,
+        "endChar": 23
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6bf9847f",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3440,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "as per below i would not specify directly",
+      "range": {
+        "startLine": 3439,
+        "startChar": 0,
+        "endLine": 3440,
+        "endChar": 23
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8b02706d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3452,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "Adding more TCs this will not be true and must be updated. Please remove or rephrase",
+      "range": {
+        "startLine": 3447,
+        "startChar": 0,
+        "endLine": 3452,
+        "endChar": 34
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_eb05747a",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3457,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "cores",
+      "range": {
+        "startLine": 3457,
+        "startChar": 37,
+        "endLine": 3457,
+        "endChar": 41
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_0bd7a0ee",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3457,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "threads",
+      "range": {
+        "startLine": 3457,
+        "startChar": 25,
+        "endLine": 3457,
+        "endChar": 31
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2bdc9c11",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3462,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "Jenkins console log?",
+      "range": {
+        "startLine": 3462,
+        "startChar": 14,
+        "endLine": 3462,
+        "endChar": 29
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_4bcda85c",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3468,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "Did you mean: degradations",
+      "range": {
+        "startLine": 3468,
+        "startChar": 24,
+        "endLine": 3468,
+        "endChar": 37
+      },
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_ab364c50",
+        "filename": "jjb/csit/include-raw-csit-vpp-perf-check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-04-13T07:11:48Z",
+      "side": 1,
+      "message": "Not sure about this. Why we cannot use same way as before in include-raw-csit-vpp-perf-hw.sh?",
+      "revId": "dbb425e1edf8a6695486429ffd9e58ec88b47a4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
