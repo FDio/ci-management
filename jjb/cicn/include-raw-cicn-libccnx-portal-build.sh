@@ -3,8 +3,6 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
-PACKAGE_NAME="LIBCCNX_PORTAL"
-PACKAGE_DEPS="LIBCCNX_PORTAL_DEPS"
-pushd libccnx-portal
-build_package $PACKAGE_NAME $PACKAGE_DEPS
+pushd libccnx-portal/scripts
+bash build-package.sh
 popd

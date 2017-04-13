@@ -3,8 +3,6 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
-PACKAGE_NAME="LIBCCNX_COMMON"
-PACKAGE_DEPS="LIBCCNX_COMMON_DEPS"
-pushd libccnx-common
-build_package $PACKAGE_NAME $PACKAGE_DEPS
+pushd libccnx-common/scripts
+bash build-package.sh
 popd
