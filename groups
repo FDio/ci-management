@@ -1,3 +1,4 @@
 # UUID                                                                        	Group Name
 #
+global:Anonymous-Users                                                        	Anonymous Users
 ldap:cn=fdio-gerrit-ci-management-committers,ou=Groups,dc=freestandards,dc=org	ldap/fdio-gerrit-ci-management-committers
