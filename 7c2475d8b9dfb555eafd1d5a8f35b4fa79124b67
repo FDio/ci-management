@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_ff652b1e",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "Given the code flow and how things are coming together this isn\u0027t needed at all",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_1fa59746",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "This is only used by the Ubuntu section and should be moved there",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_3fa8531f",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "The below code only uses this in the CentOS section. However, it only works if the LSB modules are isntalled and CentOS by default does not have these. You should move this to the CentOS section and use operatingsystemmajrelease instead of lsbmajdistrelease",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_5faf9f2a",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "Since this is only being used by the CentOS section it should be moved there",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_7fb25b95",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "This should be moved into the Ubuntu section",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_9fb9877b",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "This should be moved into to the CentOS section",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_df6a6fed",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "Since both 14.04 and 16.04 are now executing the exact same command, just with different data in the variables this can be reduced to just a single call without the complexity of an if statement.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_bf6b23f0",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T14:56:51Z",
+      "side": 1,
+      "message": "Given that all of this is parameterized, there\u0027s no need for an if statement",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "7c2475d8b9dfb555eafd1d5a8f35b4fa79124b67",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
