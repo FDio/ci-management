@@ -236,6 +236,10 @@
             branch: '{branch}'
 
     builders:
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/home/jenkins'
         - maven-target:
             maven-version: 'mvn33-new'
             goals: '--version'
