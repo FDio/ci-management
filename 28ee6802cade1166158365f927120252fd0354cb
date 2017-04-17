@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_a2f66af7",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-04-17T21:51:39Z",
+      "side": 1,
+      "message": "If you know the actual version you\u0027re promoting and the files all have that version in it then you could do a search against the staging repo to get all the packages of a given type and filter for the ones of the given version. Then you could do a promote on each of those to the release repository.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "28ee6802cade1166158365f927120252fd0354cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
