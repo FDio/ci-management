@@ -9,6 +9,7 @@
         - 'vpp-make-test-docs-merge-{stream}'
         - 'vpp-make-test-docs-verify-{stream}'
         - 'vpp-test-packagecloud-{stream}-{os}'
+        - 'vpp-promote-{stream}-{os}'
 
     project: 'vpp'
     os:
@@ -240,6 +241,10 @@
         - config-file-provider:
             files:
               - file-id: '.packagecloud'
+                target: '/home/jenkins'
+        - config-file-provider:
+            files:
+              - file-id: 'packagecloud_api'
                 target: '/home/jenkins'
         - maven-target:
             maven-version: 'mvn33-new'
@@ -777,3 +782,64 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'vpp-promote-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    logrotate:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'test-pkgcloud'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins'
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_promote.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
