@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_42ab4675",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2653,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3a3291f1_2ba01c9e",
+      "range": {
+        "startLine": 2650,
+        "startChar": 0,
+        "endLine": 2653,
+        "endChar": 18
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_6ba4e4a5",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-13T06:43:09Z",
       "side": 1,
       "message": "Intel x520-DA2",
+      "range": {
+        "startLine": 2661,
+        "startChar": 17,
+        "endLine": 2661,
+        "endChar": 29
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_22a83a76",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_6ba4e4a5",
       "range": {
         "startLine": 2661,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_02b9becb",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2666,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "3a3291f1_0b9b2073",
+      "range": {
+        "startLine": 2666,
+        "startChar": 14,
+        "endLine": 2666,
+        "endChar": 42
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_0b720049",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-04-13T06:43:09Z",
       "side": 1,
       "message": "csit-vpp-trending-semi-weekly-{stream}\n\nnaming convention was {what-we-are-verifying}-{what is being verified}-{purpose}-{the rest}\n\nthe above csit-dev does not makes sense to me.",
+      "range": {
+        "startLine": 3031,
+        "startChar": 16,
+        "endLine": 3031,
+        "endChar": 19
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e2bd92b8",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3031,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Changed to \"csit-vpp-perf-trend-semi-weekly-{stream}\"",
+      "parentUuid": "3a3291f1_0b720049",
       "range": {
         "startLine": 3031,
         "startChar": 16,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_c2ae1681",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3047,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3a3291f1_eb90d444",
+      "range": {
+        "startLine": 3044,
+        "startChar": 0,
+        "endLine": 3047,
+        "endChar": 18
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_ab9acc60",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2017-04-13T06:43:09Z",
       "side": 1,
       "message": "extra space\ntwo cores",
+      "range": {
+        "startLine": 3054,
+        "startChar": 17,
+        "endLine": 3054,
+        "endChar": 18
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a2b30ae8",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_ab9acc60",
       "range": {
         "startLine": 3054,
         "startChar": 17,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_82cc8e6b",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3055,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_2baedc85",
+      "range": {
+        "startLine": 3055,
+        "startChar": 17,
+        "endLine": 3055,
+        "endChar": 21
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_ebb7b4d6",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_62c9a258",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_ebb7b4d6",
+      "range": {
+        "startLine": 3056,
+        "startChar": 18,
+        "endLine": 3056,
+        "endChar": 23
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_8bb4b0d1",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 6
@@ -197,6 +389,30 @@
       "writtenOn": "2017-04-13T06:43:09Z",
       "side": 1,
       "message": "same as above, confusing. We are fully archiving only Jenkins console logs, the rest is limited in history of Jenkins",
+      "range": {
+        "startLine": 3061,
+        "startChar": 14,
+        "endLine": 3061,
+        "endChar": 42
+      },
+      "revId": "a89a6dffb6a6215794cafbdcb4016ea46c38ee4f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_42c22635",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 3061,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-04-18T07:44:54Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3a3291f1_8bb4b0d1",
       "range": {
         "startLine": 3061,
         "startChar": 14,
