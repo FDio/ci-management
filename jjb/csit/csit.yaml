@@ -12,7 +12,7 @@
         - 'csit-vpp-verify-{stream_timed}-{os}-weekly'
         - 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
         - 'csit-vpp-verify-perf-master-nightly-all'
-        - 'csit-docs-merge-{stream}'
+        - 'csit-docs-merge-{stream_timed}'
         - 'csit-docs-verify-{stream}'
         - 'csit-report-merge-{stream}'
 
@@ -2481,7 +2481,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-docs-merge-{stream}'
+    name: 'csit-docs-merge-{stream_timed}'
 
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
@@ -2515,7 +2515,7 @@
 
     triggers:
         - reverse:
-            jobs: 'csit-vpp-verify-{stream}-weekly'
+            jobs: 'csit-vpp-verify-{stream_timed}-ubuntu1604-weekly'
             result: 'success'
         - gerrit:
             server-name: 'Primary'
