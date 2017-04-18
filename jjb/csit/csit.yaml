@@ -18,6 +18,7 @@
         - 'csit-vpp-perf-trend-daily-{stream}'
         - 'csit-vpp-perf-trend-semi-weekly-{stream}'
         - 'csit-vpp-perf-check-{stream}'
+        - 'csit-vpp-perf-ndrchk-daily-{stream}'
 
     project: 'csit'
     branch: 'master'
@@ -3515,6 +3516,73 @@
             properties-file: variables.prop
         - shell:
             !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-check.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-perf-ndrchk-daily-{stream}'
+
+    description: |
+      objective
+          check vpp perf ndr chk daily
+      job
+          name
+              csit-vpp-perf-ndrchk-daily
+          trigger
+              daily
+      perf test-cases selection
+          all CSIT perf suites
+      default tags for vpp startup config and perf test type
+          1T1C - one worker thread, one core
+          2T2C - two worker threads, two cores
+      results
+          jjb verify
+              PASS/FAIL
+          present
+              no
+          analyse
+              csit project
+                  catch malfunctions
+                  catch degradations
+
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - timed: 'H H(2-4) * * *'
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-ndrchk-daily.sh
 
     publishers:
         - archive-artifacts:
