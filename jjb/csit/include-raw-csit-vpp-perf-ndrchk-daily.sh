@@ -37,7 +37,7 @@ BRANCH_NAME=$(echo ${BRANCH_NAME#origin/})
 # checkout to the required branch
 git checkout ${BRANCH_NAME}
 
-export TEST_TAG="PERFTEST_SEMI_WEEKLY"
+export TEST_TAG="PERFTEST_NDRCHK_DAILY"
 
 # execute csit bootstrap script if it exists
 if [ -e bootstrap-verify-perf.sh ]
