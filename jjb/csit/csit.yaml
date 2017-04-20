@@ -19,6 +19,7 @@
         - 'csit-vpp-perf-trend-semi-weekly-{stream}'
         - 'csit-vpp-perf-check-{stream}'
         - 'csit-vpp-perf-ndrchk-daily-{stream}'
+        - 'csit-vpp-perf-verify-{stream}'
 
     project: 'csit'
     branch: 'master'
@@ -3511,9 +3512,6 @@
                 notbuilt: false
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
         - shell:
             !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-check.sh
 
@@ -3583,6 +3581,113 @@
             properties-file: variables.prop
         - shell:
             !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-ndrchk-daily.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-perf-verify-{stream}'
+
+    description: |
+      objective
+          perf verify - per csit gerrit patch
+      job
+          name
+              csit-vpp-perf-verify
+          trigger
+              keyword in comment to csit patch
+      perf test-cases selection
+          test-cases selected using trigger keywords paired with tags
+          all test-cases are labelled with CSIT RF topic tags defined in
+          csit/docs/tag_documentation.rst
+      proposed keywords
+          focus on testing specified vpp packet processing path
+          format - keyword - tag_list
+          perf_verify_ip4 - IP4Base, IP4Scale2M
+          perf_verify_ip6 - IP6Base, IP6Scale2M
+          perf_verify_l2 - L2XC, L2BD
+          perf_verify_lisp - 4Lisp, 6Lisp
+          perf_verify_vxlan - Vxlan
+          perf_verify_vhost - Vhost
+      default tags for vpp startup config and perf test type
+          1T1C
+              one worker thread, one core
+          X520
+              x520 Niantic NIC
+          NDRDISC
+              discovery of NDR throughput
+      results
+          jjb verify
+              PASS/FAIL
+          present
+              no
+          analyse
+              no
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '1440'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-l2'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ip4'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ip6'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-lisp'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-vxlan'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-vhost'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
+
+    builders:
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-verify.sh
 
     publishers:
         - archive-artifacts:
