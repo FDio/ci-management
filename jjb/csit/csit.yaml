@@ -15,10 +15,10 @@
         - 'csit-docs-merge-{stream_timed}'
         - 'csit-docs-verify-{stream}'
         - 'csit-report-merge-{stream}'
-        - 'csit-vpp-perf-trend-daily-{stream}'
-        - 'csit-vpp-perf-trend-semi-weekly-{stream}'
+        - 'csit-vpp-perf-trend-daily-master'
+        - 'csit-vpp-perf-trend-semi-weekly-master'
         - 'csit-vpp-perf-check-{stream}'
-        - 'csit-vpp-perf-ndrchk-daily-{stream}'
+        - 'csit-vpp-perf-ndrchk-daily-master'
         - 'csit-vpp-perf-verify-{stream}'
 
     project: 'csit'
@@ -2641,7 +2641,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-trend-daily-{stream}'
+    name: 'csit-vpp-perf-trend-daily-master'
 
     description: |
       Purpose of this job is to validate latest vpp build from corresponding
@@ -2714,7 +2714,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-l2-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-l2-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2725,7 +2725,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-l2-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-l2-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2737,7 +2737,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv4-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv4-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2748,7 +2748,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv4-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv4-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2760,7 +2760,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv6-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv6-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2771,7 +2771,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-ipv6-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv6-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2783,7 +2783,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2794,7 +2794,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2805,7 +2805,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2816,7 +2816,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2828,7 +2828,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2839,7 +2839,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2850,7 +2850,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2861,7 +2861,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-sw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2873,7 +2873,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2884,7 +2884,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2895,7 +2895,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2906,7 +2906,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-crypto-hw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2918,7 +2918,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2929,7 +2929,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2940,7 +2940,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2951,7 +2951,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-sw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2963,7 +2963,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2974,7 +2974,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2985,7 +2985,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -2996,7 +2996,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-encap-crypto-hw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3008,7 +3008,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-vhost-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-vhost-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3019,7 +3019,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-vpp-perf-trend-daily-{stream}-vhost-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-daily-master-vhost-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3027,7 +3027,7 @@
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
 
 - job-template:
-    name: 'csit-vpp-perf-trend-semi-weekly-{stream}'
+    name: 'csit-vpp-perf-trend-semi-weekly-master'
 
     description: |
       Purpose of this job is to validate latest vpp build from corresponding
@@ -3102,7 +3102,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-l2-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-l2-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3113,7 +3113,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-l2-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-l2-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3125,7 +3125,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv4-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv4-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3136,7 +3136,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv4-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv4-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3148,7 +3148,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv6-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv6-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3159,7 +3159,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-ipv6-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv6-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3171,7 +3171,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3182,7 +3182,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3193,7 +3193,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3204,7 +3204,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3216,7 +3216,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3227,7 +3227,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3238,7 +3238,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3249,7 +3249,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-sw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3261,7 +3261,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3272,7 +3272,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3283,7 +3283,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3294,7 +3294,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-crypto-hw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3306,7 +3306,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3317,7 +3317,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3328,7 +3328,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3339,7 +3339,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-sw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3351,7 +3351,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3362,7 +3362,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3373,7 +3373,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-3.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-3.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3384,7 +3384,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-encap-crypto-hw-4.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-4.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3396,7 +3396,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-1.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-vhost-1.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3407,21 +3407,7 @@
               yaxis: 'Packets Per Second'
               num-builds: '20'
               keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-2.csv'
-              series:
-                  - file: 'output_perf_data.xml'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
-                    format: xml
-                    xpath-type: 'nodeset'
-                    xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
-            - title: '64B-2t2c-*-vhost-*-ndrdisc'
-              group: 'RFC2544: vhost-user'
-              yaxis: 'Packets Per Second'
-              num-builds: '20'
-              keep-records: True
-              csv-file-name: 'csit-dev-trending-semi-weekly-{stream}-vhost-2.csv'
+              csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-vhost-2.csv'
               series:
                   - file: 'output_perf_data.xml'
                     format: xml
@@ -3527,7 +3513,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-ndrchk-daily-{stream}'
+    name: 'csit-vpp-perf-ndrchk-daily-master'
 
     description: |
       objective
