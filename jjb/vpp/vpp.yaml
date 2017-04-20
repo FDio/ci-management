@@ -45,7 +45,7 @@
     name: vpp-misc
     jobs:
         - 'vpp-csit-verify-virl-{stream}'
-        - 'vpp-csit-verify-hw-perf-{stream}-{type}'
+        - 'vpp-csit-verify-hw-perf-{stream}'
     project: 'vpp'
     stream:
         - master:
@@ -67,10 +67,7 @@
             branch: 'stable/1704'
             repo-stream-part: 'stable.1704'
     os: ubuntu1604
-    type:
-        - all
-        - short
-        - long
+
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
@@ -336,7 +333,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-hw-perf-{stream}-{type}'
+    name: 'vpp-csit-verify-hw-perf-{stream}'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
@@ -357,8 +354,6 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.ubuntu.xenial.main'
-        - type-parameter:
-            type: '{type}'
         - is-csit-vpp-job-parameter:
             is-csit-vpp-job: 'True'
 
@@ -373,10 +368,32 @@
             build-timeout: 30
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'verify-perf-{type}'
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-l2'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-ip4'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-ip6'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-lisp'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-vxlan'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-vhost'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - shell:
