@@ -12,7 +12,7 @@ set -xe -o pipefail
 
 cd ${DOC_DIR}
 chmod +x ./run_doc.sh
-./run_doc.sh
+./run_doc.sh ${GERRIT_BRANCH}
 
 retval=$?
 if [ ${retval} -ne "0" ]; then
