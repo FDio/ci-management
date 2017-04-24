@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+2: Ed Warnicke <hagbard@gmail.com>
+Code-Review+1: Maciek Konstantynowicz <mkonstan@cisco.com>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Mon, 24 Apr 2017 15:08:14 +0000
+Reviewed-on: https://gerrit.fd.io/r/6330
+Project: ci-management
+Branch: refs/heads/master
