@@ -1,7 +1,10 @@
 #!/bin/bash
 set -xeu -o pipefail
 
-export TEST_TAG="PERFTEST_${TYPE^^}"
+TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
+    | grep -oE 'vpp-verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost)' \
+    | awk '{print toupper($0)}'`
+export TEST_TAG=${TRIGGER}
 
 # Get CSIT branch from which to test from
 # running build-root/scripts/csit-test-branch
