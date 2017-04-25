@@ -260,6 +260,9 @@
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
                 - include-raw-vpp-maven-push.sh
+        - shell:
+            !include-raw-escape:
+                - ../scripts/packagecloud_push.sh
 
     publishers:
         - archive:

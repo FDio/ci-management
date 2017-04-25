@@ -2,6 +2,8 @@
 
 # PCIO_CO is a Jenkins Global Environment variable
 
+sleep 10
+
 FACTER_OS=$(/usr/bin/facter operatingsystem)
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
