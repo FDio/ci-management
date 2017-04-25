@@ -1334,6 +1334,8 @@
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: '1440'
 
+    disabled: true
+
     triggers:
         - timed: '0 20 * * 0,2,4'
 
