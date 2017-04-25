@@ -22,13 +22,21 @@ elif [ "${OS}" == "centos7" ]; then
     CLASS=""
 fi
 
-if [ "${STREAM}" == "master" ]; then
-    STREAM_PART="master"
+# determine nexus repository to download VPP packages from
+if [ -e vpp-stream ]; then
+    # override file present, use the specified repo
+    STREAM_PART=`./vpp-stream`
 else
-    STREAM_PART="stable.${STREAM}"
+    if [ "${STREAM}" == "master" ]; then
+        # use the newest master
+        STREAM_PART=".master"
+    else
+        # use stable version from branch
+        STREAM_PART=".stable.${STREAM}"
+    fi
 fi
 
-REPO="fd.io.${STREAM_PART}.${OS_PART}"
+REPO="fd.io${STREAM_PART}.${OS_PART}"
 
 for ART in ${ARTIFACTS}; do
     for PAC in ${PACKAGE}; do
