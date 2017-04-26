@@ -8,6 +8,15 @@ VERSION="RELEASE"
 GROUP="io.fd.vpp"
 ARTIFACTS="vpp-api-java"
 
+VERSION=`./vpp-version`
+if [ "${VERSION}" != 'RELEASE' ]; then
+    if [ "${OS}" == "centos7" ]; then
+        VERSION="${VERSION}.x86_64"
+    else
+        VERSION="${VERSION}_amd64"
+    fi
+fi
+
 if [ "${OS}" == "ubuntu1404" ]; then
     OS_PART="ubuntu.trusty.main"
     PACKAGE="deb deb.md5"
@@ -22,21 +31,13 @@ elif [ "${OS}" == "centos7" ]; then
     CLASS=""
 fi
 
-# determine nexus repository to download VPP packages from
-if [ -e vpp-stream ]; then
-    # override file is present, use the specified repo
-    STREAM_PART=`./vpp-stream`
+if [ "${STREAM}" == "master" ]; then
+    STREAM_PART="master"
 else
-    if [ "${STREAM}" == "master" ]; then
-        # use the newest master
-        STREAM_PART=".master"
-    else
-        # use stable version from branch
-        STREAM_PART=".stable.${STREAM}"
-    fi
+    STREAM_PART="stable.${STREAM}"
 fi
 
-REPO="fd.io${STREAM_PART}.${OS_PART}"
+REPO="fd.io.${STREAM_PART}.${OS_PART}"
 
 for ART in ${ARTIFACTS}; do
     for PAC in ${PACKAGE}; do
