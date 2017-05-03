@@ -447,7 +447,14 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape: include-raw-nsh_sfc-docs.sh
-
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+        - archive:
+            artifacts: 'build-root/docs/html/*'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+
