@@ -376,6 +376,12 @@
             !include-raw-escape: include-raw-nsh_sfc-docs.sh
 
     publishers:
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
