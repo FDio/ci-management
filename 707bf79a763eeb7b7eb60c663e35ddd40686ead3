@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_5e5a7484",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-05-15T13:32:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we specify the client more explicitly here?\nE.g.\nname: csit-hc2vpp-dol-boron\ndescription: [...] using ODL Boron SR3 client\n\nor just in the description (supporting more than one odl client version is not a priority now)",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "707bf79a763eeb7b7eb60c663e35ddd40686ead3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_bef8384a",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 174
+      },
+      "writtenOn": "2017-05-15T13:32:32Z",
+      "side": 1,
+      "message": "It looks like a lot of repeated configuration. Could we instead have new parameter defined in hc2vpp-csit-integration-{stream}-{os} project and later passed to sh scripts?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "707bf79a763eeb7b7eb60c663e35ddd40686ead3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
