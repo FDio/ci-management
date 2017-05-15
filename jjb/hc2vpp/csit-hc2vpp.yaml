@@ -4,6 +4,8 @@
     jobs:
         - 'hc2vpp-csit-integration-{stream}-{os}'
         - 'hc2vpp-csit-verify-{stream}-{os}'
+        - 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
+        - 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
     project: 'hc2vpp'
     build-artifact-num-to-keep: 10
     stream:
@@ -19,6 +21,8 @@
     os:
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
+    odl:
+        - boron
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
@@ -96,6 +100,8 @@
             maven-version: 'mvn33-new'
         - stream-parameter:
             stream: '{stream}'
+        - odl-parameter:
+            odl: '{odl}'
 
     scm:
         - gerrit-trigger-scm:
@@ -152,3 +158,148 @@
 
         - robot-report:
             output-path: 'csit'
+
+- job-template:
+    name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - os-parameter:
+            os: '{os}'
+        - stream-parameter:
+            stream: '{stream}'
+        - odl-parameter:
+            odl: '{odl}'
+
+    scm:
+        - git-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            branch: '{branch}'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - reverse:
+            jobs: 'hc2vpp-integration-{stream}-{os}'
+            result: 'success'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-integration-odl.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            latest-only: false
+        - email-notification:
+            email-prefix: '[hc2vpp]'
+
+        - robot-report:
+            output-path: 'csit'
+
+- job-template:
+    name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
+
+    project-type: maven
+    node: '{os}-basebuild-4c-4g'
+    jdk: openjdk8-{os}
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
+        - odl-parameter:
+            odl: '{odl}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-csit'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
+
+    prebuilders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
+
+    maven:
+        maven-name: 'mvn33-new'
+        root-pom: 'pom.xml'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+        settings: 'hc2vpp-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
+
+    postbuilders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-verify-odl.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            latest-only: false
+        - email-notification:
+            email-prefix: '[hc2vpp]'
+
+        - robot-report:
+            output-path: 'csit'
+
+- parameter:
+    name: odl-parameter
+    parameters:
+        - string:
+            name: ODL
+            default: '{odl}'
+            description: "ODL version parameter."
