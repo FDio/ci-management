@@ -12,8 +12,6 @@
 
     project: 'vpp'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -518,9 +516,6 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-ubuntu1404'
-            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
@@ -656,9 +651,6 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-ubuntu1404'
-            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
