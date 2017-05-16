@@ -1282,7 +1282,7 @@
 
     wrappers:
         - fdio-infra-wrappers:
-            build-timeout: 480
+            build-timeout: '600'
 
     triggers:
         - timed: '0 4 * * 2,6'
