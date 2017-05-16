@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a2f8d8d_06e70242",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-05-16T10:52:56Z",
+      "side": 1,
+      "message": "Job name changed to:\nhc2vpp-csit-integration-odl-boron-master-centos7",
+      "parentUuid": "1a2f8d8d_5e5a7484",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "707bf79a763eeb7b7eb60c663e35ddd40686ead3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a2f8d8d_bef8384a",
         "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-15T13:32:32Z",
       "side": 1,
       "message": "It looks like a lot of repeated configuration. Could we instead have new parameter defined in hc2vpp-csit-integration-{stream}-{os} project and later passed to sh scripts?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "707bf79a763eeb7b7eb60c663e35ddd40686ead3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_c64d7a74",
+        "filename": "jjb/hc2vpp/csit-hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 197
+      },
+      "writtenOn": "2017-05-16T10:52:56Z",
+      "side": 1,
+      "message": "The \"job-template\" sections have to be duplicated one way or another. \n\nI can use a single \"project\" definition for all jobs, but this will also create ODL jobs for 17.01 stream. Do we want those, and should they be using the same ODL versions?",
+      "parentUuid": "1a2f8d8d_bef8384a",
       "range": {
         "startLine": 175,
         "startChar": 0,
