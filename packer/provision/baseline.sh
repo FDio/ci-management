@@ -208,6 +208,28 @@ EOF
 
 }
 
+opensuse_systems() {
+    # SELinux?
+
+    echo "---> Updating operating system"
+    zypper clean
+    zypper update
+
+    # add in components we need or want on systems
+    echo "---> Installing base packages"
+    zypper install unzip xz puppet git git-review perl-XML-XPath wget make
+
+    # All of our systems require Java (because of Jenkins)
+    # Install all versions of the OpenJDK devel but force 1.7.0 to be
+    # the
+    # default
+    echo "---> Configuring OpenJDK"
+    zypper install 'java-*-openjdk-devel'
+
+    # Needed to parse OpenStack commands used by infra stack commands
+    # to initialize Heat template based systems.
+    zypper install  jq
+
 all_systems() {
     # Allow jenkins access to update-alternatives command to switch java version
     cat <<EOF >/etc/sudoers.d/89-jenkins-user-defaults
