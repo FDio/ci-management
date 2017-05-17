@@ -17,7 +17,8 @@ IFS=','
 for i in "basebuild,basebuild" \
          "centos,centos" \
          "ubuntu1404,ubuntu1404" \
-         "ubuntu1604,ubuntu1604"
+         "ubuntu1604,ubuntu1604" \
+         "opensuse,opensuse"
 do set -- $i
     if [[ $HOST == *"$1"* ]]; then
         SYSTEM_TYPE="$2"

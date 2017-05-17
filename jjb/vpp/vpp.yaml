@@ -16,6 +16,9 @@
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
             repo-os-part: 'centos7'
+        - opensuse:
+            repo-os-part: 'opensuse'
+
     stream:
         - master:
             branch: 'master'
