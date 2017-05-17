@@ -35,7 +35,16 @@ fi
 
 mkdir /home/jenkins/.ssh
 mkdir /w
-cp -r /home/${OS}/.ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
+
+if [ "$OS" = "opensuse" ];
+then
+  OS_USER="root"
+else
+  OS_USER="$OS"
+fi
+
+#Generate ssh key for use by Robot jobs
+cp -r /home/${OS_USER}/.ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
 # Generate ssh key for use by Robot jobs
 echo -e 'y\n' | ssh-keygen -N "" -f /home/jenkins/.ssh/id_rsa -t rsa
 chown -R jenkins:jenkins /home/jenkins/.ssh /w

@@ -182,6 +182,65 @@ ubuntu_systems() {
     echo "<--- Forcing CA certificate update $(date +'%Y%m%dT%H%M%S')"
 }
 
+opensuse_systems() {
+
+    # openSuSE Install build tools
+    echo "---> Installing openSuSE build tools $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_TOOLS_PKGS="glibc-devel-static java-1_8_0-openjdk-devel yum-utils \
+    openssl indent pkg-config emacs"
+    zypper install -y "${OPENSUSE_TOOLS_PKGS}"
+
+    # Memory leakage checks
+    zypper install -y valgrind
+
+    # openSuSE Install Python dependencies
+    echo "---> Installing openSuSE Python dependencies $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
+    python-pip python-wheel libmysqlclient-dev kernel-devel"
+    zypper install -y "${OPENSUSE_PYTHON_PKGS}"
+
+    # openSuSE Install Documentation packages
+    echo "---> Installing openSuSE documentation packages $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_DOC_PKGS="doxygen graphviz python-jinja2 asciidoc dblatex \
+    source-highlight python-sphinx libxml2 libffi-devel python-cffi \
+    python-pyparsing libstdc++6 python-sphinx_rtd_theme"
+    zypper install -y "${OPENSUSE_DOC_PKGS}"
+
+    # openSuSE Install GCC packages
+    echo "---> Installing openSuSE GCC packages $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_GCC_PKGS="cpp gcc gcc-c++ cmake make lcov"
+    zypper install -y "${OPENSUSE_GCC_PKGS}"
+
+    # openSuSE Install components to build Ganglia modules
+    # ganglia-devel not available for 42.3
+    echo "---> Installing openSuSE components $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_GANGLIA_MODS="libconfuse-devel python-mock rrdtool rrdtool-devel \
+    libapr1 libapr1-devel libexpat-devel pcre-devel"
+    zypper install -y "${OPENSUSE_GANGLIA_MODS}"
+
+    # openSuSE Install VPP packages to shorten build times
+    echo "---> Installing VPP dependencies $(date +'%Y%m%dT%H%M%S')"
+    OPENSUSE_VPP_PKGS="curl autoconf automake bison ccache git libtool \
+    git-review ctags cscope libxml2-tools unzip lsb-release devscripts"
+    zypper install -y "${OPENSUSE_VPP_PKGS}"
+
+    # openSuSE Install TLDK dependencies
+    OPENSUSE_TLKD_PKGS="libpcap-devel libcap-devel"
+    yum install -y "${OPENSUSE_TLKD_PKGS}"
+    zypper -n install -t pattern devel_basis
+
+    # openSuSE Manipulation tools, edits debugger, and LSB
+    echo "---> Installing tools packages $(date +'%Y%m%dT%H%M%S')"
+    TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb  gdbserver"
+    zypper install -y "${TOOL_PKGS}"
+
+
+    # openSuSE Install Puppet packages
+    PUPPET_PKGS="libxml2-devel libxslt-devel ruby-devel zlib-devel"
+    zypper install -y "${PUPPET_PKGS}"
+
+}
+
 all_systems() {
 
     echo 'Configure keep alive to prevent timeout during testing'
@@ -214,6 +273,10 @@ case "${ORIGIN}" in
     ubuntu)
         echo "---> Ubuntu system detected"
         ubuntu_systems
+    ;;
+    opensuse)
+        echo "---> openSuSE system detected"
+        opensuse_systems
     ;;
     *)
         echo "---> Unknown operating system"
