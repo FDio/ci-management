@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_e682b151",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-17T14:41:46Z",
+      "side": 1,
+      "message": "Missing closing }",
+      "revId": "0a42576a88fa7b5ba1784c7251129b10de1077e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_c687b560",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-17T14:41:46Z",
+      "side": 1,
+      "message": "Need opensuse OS detection and calling of the configuration subroutine",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 4
+      },
+      "revId": "0a42576a88fa7b5ba1784c7251129b10de1077e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
