@@ -208,6 +208,30 @@ EOF
 
 }
 
+opensuse_systems() {
+    # SELinux?
+
+    echo "---> Updating operating system"
+    zypper -n clean
+    zypper -n update
+
+    # add in components we need or want on systems
+    echo "---> Installing base packages"
+    zypper install -y unzip xz puppet git git-review perl-XML-XPath wget make
+
+    # All of our systems require Java (because of Jenkins)
+    # Install all versions of the OpenJDK devel but force 1.7.0 to be
+    # the
+    # default
+    echo "---> Configuring OpenJDK"
+    zypper install -y 'java-*-openjdk-devel'
+
+    # Needed to parse OpenStack commands used by infra stack commands
+    # to initialize Heat template based systems.
+    zypper install -y jq
+
+}
+
 all_systems() {
     # Allow jenkins access to update-alternatives command to switch java version
     cat <<EOF >/etc/sudoers.d/89-jenkins-user-defaults
@@ -238,10 +262,15 @@ echo "---> Attempting to detect OS"
 ORIGIN=$(if [ -e /etc/redhat-release ]
     then
         echo redhat
-    else
+    else [ -e /etc/os-release ]
+      DIST="$(grep "\<ID\>" /etc/os-release)"
+      if [ $DIST = "ID=ubuntu" ]
+      then
         echo ubuntu
+      else
+        echo opensuse
+      fi
     fi)
-#ORIGIN=$(logname)
 
 case "${ORIGIN}" in
     fedora|centos|redhat)
@@ -251,6 +280,10 @@ case "${ORIGIN}" in
     ubuntu)
         echo "---> Ubuntu system detected"
         ubuntu_systems
+    ;;
+    opensuse)
+        echo "---> openSuSE system detected"
+        opensuse_systems
     ;;
     *)
         echo "---> Unknown operating system"
