@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_dfe9b41b",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-18T16:18:17Z",
+      "side": 1,
+      "message": "Missing closing }",
+      "revId": "b3b85e1d1947e00eef2321db3a24ac36e1215b37",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_ff8c7081",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-18T16:18:17Z",
+      "side": 1,
+      "message": "You need a space before the close bracket\n\nAdditionally, I don\u0027t think /etc/lsb/release is a valid test. If the lsb package for RH systems were installed (not default) it would also match as /etc/lsb/release is defined as _the_ release file that all LSB compliant distros have.",
+      "range": {
+        "startLine": 263,
+        "startChar": 14,
+        "endLine": 263,
+        "endChar": 31
+      },
+      "revId": "b3b85e1d1947e00eef2321db3a24ac36e1215b37",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
