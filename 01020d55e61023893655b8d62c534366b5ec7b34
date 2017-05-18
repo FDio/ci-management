@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_1f4e1cc2",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-18T21:41:33Z",
+      "side": 1,
+      "message": "Still need a closing \u0027}\u0027",
+      "revId": "01020d55e61023893655b8d62c534366b5ec7b34",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_3f51d862",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-18T21:41:33Z",
+      "side": 1,
+      "message": "This still needs a space before the \u0027]\u0027",
+      "revId": "01020d55e61023893655b8d62c534366b5ec7b34",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_ff4a30ab",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-18T21:41:33Z",
+      "side": 1,
+      "message": "You need to make a call to opensuse_systems for your function to be fired",
+      "revId": "01020d55e61023893655b8d62c534366b5ec7b34",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
