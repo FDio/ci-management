@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2f8d8d_50d133fa",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-19T18:18:57Z",
+      "side": 1,
+      "message": "Have you tested if this actually produces the desired echo on the two distributions?",
+      "range": {
+        "startLine": 265,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 7
+      },
+      "revId": "73f3511def9574b18324c7fb0e81b467f94283e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
