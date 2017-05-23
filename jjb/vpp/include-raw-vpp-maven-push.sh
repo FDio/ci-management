@@ -10,7 +10,7 @@ GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
 
-if [ "${OS}" == "ubuntu1404" ]; then
+if [ "${OS}" == "ubuntu1604" ]; then
     # Find the files
     JARS=$(find . -type f -iname '*.jar')
     DEBS=$(find . -type f -iname '*.deb')
@@ -19,12 +19,6 @@ if [ "${OS}" == "ubuntu1404" ]; then
         push_jar "$i"
     done
 
-    for i in $DEBS
-    do
-        push_deb "$i"
-    done
-elif [ "${OS}" == "ubuntu1604" ]; then
-    DEBS=$(find . -type f -iname '*.deb')
     for i in $DEBS
     do
         push_deb "$i"
