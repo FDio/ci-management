@@ -2,7 +2,7 @@
 # basic build script example
 set -e -o pipefail
 echo "Looking for jars/debs/rpms to publish"
-if [ "${OS}" == "ubuntu1404" ]; then
+if [ "${OS}" == "ubuntu1604" ]; then
     # Find the files
     DEBS=$(find . -type f -iname '*.deb')
     echo "Found DEBS=${DEBS}"

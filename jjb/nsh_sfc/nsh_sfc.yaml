@@ -10,8 +10,6 @@
 
     project: 'nsh_sfc'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -415,7 +413,7 @@
 
     triggers:
         - reverse:
-            jobs: 'nsh_sfc-merge-{stream}-ubuntu1404'
+            jobs: 'nsh_sfc-merge-{stream}-ubuntu1604'
             result: 'success'
         - gerrit:
             server-name: 'Primary'
