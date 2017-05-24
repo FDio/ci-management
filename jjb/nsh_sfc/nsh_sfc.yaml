@@ -7,6 +7,8 @@
         - 'nsh_sfc-verify-image-{stream}-{os}'
         - 'nsh_sfc-verify-docs-{stream}'
         - 'nsh_sfc-merge-docs-{stream}'
+        - 'csit-nsh_sfc-verify-perf-{stream}'
+        - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
 
     project: 'nsh_sfc'
     os:
@@ -455,4 +457,100 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
+- job-template:
+    name: 'csit-nsh_sfc-verify-perf-{stream}'
 
+    project-type: freestyle
+    node: 'ubuntu1604-basebuild-4c-4g'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 30
+
+    triggers:
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - shell:
+            !include-raw-escape: jjb/nsh_sfc/include-raw-csit-nsh_sfc-perf-hw.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml, output_perf_data.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: ''
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+       - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'report.html, log.html, output.xml'
+            latest-only: false
+
+        - robot-report:
+            output-path: ''
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
