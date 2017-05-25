@@ -24,6 +24,23 @@
     odl:
         - boron
 
+- project:
+    name: csit-hc2vpp-perf
+    description: 'jenkins jobs to test Hc2vpp performance.'
+    jobs:
+        - 'hc2vpp-csit-perf-{stream}-{os}'
+    project: 'hc2vpp'
+    build-artifact-num-to-keep: 10
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+    os:
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+    odl:
+        - boron
+
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
 
@@ -295,6 +312,73 @@
 
         - robot-report:
             output-path: 'csit'
+
+- job-template:
+    name: 'hc2vpp-csit-perf-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+    concurrent: false
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - os-parameter:
+            os: '{os}'
+        - stream-parameter:
+            stream: '{stream}'
+        - odl-parameter:
+            odl: '{odl}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf'
+
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-hc2vpp-csit-perf.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot-report:
+            output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - parameter:
     name: odl-parameter

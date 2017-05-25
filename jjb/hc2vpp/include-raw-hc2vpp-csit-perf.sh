@@ -20,18 +20,18 @@ fi
 
 cd csit
 # execute csit bootstrap script if it exists
-if [ ! -e bootstrap-hc2vpp-integration-odl.sh ]
+if [ ! -e bootstrap-hc2vpp-perf.sh ]
 then
     echo 'ERROR: No bootstrap-hc2vpp-integration.sh found'
     exit 1
 else
     # make sure that bootstrap.sh is executable
-    chmod +x bootstrap-hc2vpp-integration-odl.sh
+    chmod +x bootstrap-hc2vpp-perf.sh
     # run the script
     if [ ${STREAM} == 'master' ]; then
-        ./bootstrap-hc2vpp-integration-odl.sh ${STREAM} ${OS} ${ODL}
+        ./bootstrap-hc2vpp-perf.sh ${STREAM} ${OS} ${ODL}
     else
-        ./bootstrap-hc2vpp-integration-odl.sh 'stable.'${STREAM} ${OS} ${ODL}
+        ./bootstrap-hc2vpp-perf.sh 'stable.'${STREAM} ${OS} ${ODL}
     fi
 fi
 

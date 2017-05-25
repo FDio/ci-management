@@ -14,7 +14,7 @@ git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
-    echo "Failed to run: git clone https://gerrit.fd.io/r/csit --branch master"
+    echo "Failed to run: git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}"
     exit
 fi
 
