@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_73d0d253",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-05-25T08:31:40Z",
+      "side": 1,
+      "message": "use different trigger, this one is used by csit-vpp jobs. You can use e.g. verify-nsh-perf-{}",
+      "range": {
+        "startLine": 495,
+        "startChar": 36,
+        "endLine": 495,
+        "endChar": 47
+      },
+      "revId": "d997c5751197ab7e8384c0b76d3c9aaf604ba80b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
