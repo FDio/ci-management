@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_24732eb3",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-05-26T21:07:30Z",
+      "side": 1,
+      "message": "missing closing }",
+      "revId": "2a0abd6897bad6bfccac4a32f60c3379b0504bef",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
