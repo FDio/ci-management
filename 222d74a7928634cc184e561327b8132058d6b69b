@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_7e609935",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-05-26T08:13:29Z",
+      "side": 1,
+      "message": "see https://jenkins.fd.io/job/ci-management-verify-jjb/1825/console\n\nJenkinsJobsException: comment-trigger-value parameter missing to format {comment-trigger-value}\n\nYou must define the trigger which will be trigger this job\nsee e.g. ci-management/jjb/vpp/vpp.yaml --\u003e job: \u0027vpp-csit-verify-hw-perf-{stream}\u0027",
+      "revId": "222d74a7928634cc184e561327b8132058d6b69b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
