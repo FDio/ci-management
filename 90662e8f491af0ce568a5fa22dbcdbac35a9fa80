@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_def545cc",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-05-26T04:37:12Z",
+      "side": 1,
+      "message": "Please remove or define",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 26
+      },
+      "revId": "90662e8f491af0ce568a5fa22dbcdbac35a9fa80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_be0291b2",
+        "filename": "jjb/nsh_sfc/nsh_sfc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-05-26T04:37:12Z",
+      "side": 1,
+      "message": "Please remove or define",
+      "range": {
+        "startLine": 495,
+        "startChar": 55,
+        "endLine": 495,
+        "endChar": 63
+      },
+      "revId": "90662e8f491af0ce568a5fa22dbcdbac35a9fa80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
