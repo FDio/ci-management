@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_3ffe9b6c",
+        "filename": "jjb/nsh_sfc/include-raw-csit-nsh_sfc-perf-hw.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-05-29T14:04:54Z",
+      "side": 1,
+      "message": "you do not need this as you are not setting it.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 36
+      },
+      "revId": "c5e5c220dae51376b46a2b0d0f4aa3e3df9e3509",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
