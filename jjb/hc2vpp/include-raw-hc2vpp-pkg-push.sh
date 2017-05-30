@@ -34,18 +34,6 @@ if [ "${OS}" == "centos7" ]; then
     do
         push_rpm "$i"
     done
-elif [ "${OS}" == "ubuntu1404" ]; then
-
-    # Build the debs
-    ./packaging/deb/trusty/debuild.sh
-
-    # Find the files
-    DEBS=$(find . -type f -iname '*.deb')
-    # publish hc2vpp packages
-    for i in $DEBS
-    do
-        push_deb "$i"
-    done
 elif [ "${OS}" == "ubuntu1604" ]; then
 
     # Build the debs

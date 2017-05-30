@@ -58,9 +58,6 @@
             name: 'honeycomb'
             branch: '{branch}'
 
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
