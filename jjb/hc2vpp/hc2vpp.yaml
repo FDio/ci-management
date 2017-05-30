@@ -7,12 +7,9 @@
         - 'hc2vpp-verify-image-{stream}-{os}'
     project: 'hc2vpp'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
-            skip-site: 'false'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'true'
+            skip-site: 'false'
         - centos7:
             repo-os-part: 'centos7'
             skip-site: 'true'
@@ -63,9 +60,6 @@
             name: 'hc2vpp'
             branch: '{branch}'
 
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
@@ -131,9 +125,6 @@
                 unstable: true
                 notbuilt: true
 
-    prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
@@ -261,8 +252,6 @@
             result: 'success'
 
     prebuilders:
-        - shell: |
-            if [ "${{OS}}" == "ubuntu1404" ];then sudo update-java-alternatives -s /usr/lib/jvm/java-1.8.0-openjdk-amd64||echo 'ignoring failure';fi
         - shell:
             !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
     maven:

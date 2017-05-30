@@ -17,11 +17,7 @@ if [ "${VERSION}" != 'RELEASE' ]; then
     fi
 fi
 
-if [ "${OS}" == "ubuntu1404" ]; then
-    OS_PART="ubuntu.trusty.main"
-    PACKAGE="deb deb.md5"
-    CLASS="deb"
-elif [ "${OS}" == "ubuntu1604" ]; then
+if [ "${OS}" == "ubuntu1604" ]; then
     OS_PART="ubuntu.xenial.main"
     PACKAGE="deb deb.md5"
     CLASS="deb"
