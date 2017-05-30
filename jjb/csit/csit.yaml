@@ -2718,7 +2718,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-l2-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
@@ -2729,7 +2729,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-l2-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
@@ -2741,7 +2741,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv4-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
@@ -2752,7 +2752,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv4-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
@@ -2764,7 +2764,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv6-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
@@ -2775,7 +2775,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-ipv6-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
@@ -2787,7 +2787,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -2798,7 +2798,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -2809,7 +2809,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -2820,7 +2820,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -2832,7 +2832,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2843,7 +2843,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2854,7 +2854,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2865,7 +2865,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-sw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2877,7 +2877,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2888,7 +2888,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2899,7 +2899,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2910,7 +2910,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-crypto-hw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2922,7 +2922,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2933,7 +2933,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2944,7 +2944,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2955,7 +2955,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-sw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2967,7 +2967,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2978,7 +2978,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -2989,7 +2989,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3000,7 +3000,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-encap-crypto-hw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3012,7 +3012,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-vhost-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
@@ -3023,7 +3023,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-daily-master-vhost-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
@@ -3106,7 +3106,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-l2-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
@@ -3117,7 +3117,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-l2-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "BASE") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "L2BDMACSTAT") or contains(@tags, "L2BDMACLRN") or contains(@tags, "L2XCFWD"))]'
@@ -3129,7 +3129,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv4-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP4FWD")]'
@@ -3140,7 +3140,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv4-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP4FWD")]'
@@ -3152,7 +3152,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv6-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IP6FWD")]'
@@ -3163,7 +3163,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-ipv6-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and (contains(@tags, "BASE") or contains(@tags, "SCALE") or contains(@tags, "FEATURE")) and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IP6FWD")]'
@@ -3175,7 +3175,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -3186,7 +3186,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -3197,7 +3197,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -3208,7 +3208,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE"))]'
@@ -3220,7 +3220,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3231,7 +3231,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3242,7 +3242,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3253,7 +3253,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-sw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3265,7 +3265,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3276,7 +3276,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP4FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3287,7 +3287,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3298,7 +3298,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-crypto-hw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "IP6FWD") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3310,7 +3310,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3321,7 +3321,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3332,7 +3332,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3343,7 +3343,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-sw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECSW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3355,7 +3355,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3366,7 +3366,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3377,7 +3377,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-3.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3388,7 +3388,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-encap-crypto-hw-4.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="78B" and not(contains(@tags, "VHOST")) and contains(@tags, "ENCAP") and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and (contains(@tags, "VXLAN") or contains(@tags, "VXLANGPE") or contains(@tags, "LISP") or contains(@tags, "LISPGPE") or contains(@tags, "GRE")) and contains(@tags, "IPSECHW") and (contains(@tags, "IPSECTRAN") or contains(@tags, "IPSECTUN"))]'
@@ -3400,7 +3400,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-vhost-1.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "1T1C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
@@ -3411,7 +3411,7 @@
               keep-records: True
               csv-file-name: 'csit-vpp-perf-trend-semi-weekly-master-vhost-2.csv'
               series:
-                  - file: 'output_perf_data.xml'
+                  - file: 'csit/output_perf_data.xml'
                     format: xml
                     xpath-type: 'nodeset'
                     xpath: '//*[@framesize="64B" and contains(@tags, "NDRDISC") and contains(@tags, "2T2C") and contains(@tags, "VHOST") and (contains(@tags, "ETH") or contains(@tags, "DOT1Q") or contains(@tags, "VXLAN"))]'
