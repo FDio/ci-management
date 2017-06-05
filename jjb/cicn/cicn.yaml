@@ -177,6 +177,8 @@
             repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
+        - centos7:
+            repo-os-part: 'centos7'
     stream:
         - master:
             branch: 'cicn-plugin/master'
