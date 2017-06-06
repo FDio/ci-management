@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_ad181385",
+        "filename": "jjb/csit/include-raw-csit-hc2vpp-verify.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-06T12:25:26Z",
+      "side": 1,
+      "message": "integration",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "631d15f857c5d65abd17f8877423d264a8bb9384",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
