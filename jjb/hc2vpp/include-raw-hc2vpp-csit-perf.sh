@@ -22,7 +22,7 @@ cd csit
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-hc2vpp-perf.sh ]
 then
-    echo 'ERROR: No bootstrap-hc2vpp-integration.sh found'
+    echo 'ERROR: No bootstrap-hc2vpp-perf.sh found'
     exit 1
 else
     # make sure that bootstrap.sh is executable
