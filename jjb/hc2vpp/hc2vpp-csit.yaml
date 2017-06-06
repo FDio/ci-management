@@ -1,5 +1,5 @@
 - project:
-    name: csit-hc2vpp
+    name: hc2vpp-csit
     description: 'jenkins jobs to test Hc2vpp features.'
     jobs:
         - 'hc2vpp-csit-integration-{stream}-{os}'
