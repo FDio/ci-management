@@ -14,8 +14,6 @@
     os:
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
     stream:
         - master:
             branch: 'master'
@@ -490,7 +488,7 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'nsh_sfc perf weekly'
+            comment-trigger-value: 'nsh_sfc_perf_weekly'
 
     builders:
         - shell:
@@ -525,6 +523,10 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -533,13 +535,14 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-       - fdio-infra-wrappers:
+        - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
+        - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
+            comment-trigger-value: 'nsh_sfc_func'
 
     builders:
         - shell:
