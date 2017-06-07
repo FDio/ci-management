@@ -145,11 +145,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive'
+            output-path: 'archive'
 
         - plot:
             - title: '64B-1t1c-eth-l2xcbase-testpmd-ndrdisc'
@@ -265,11 +265,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive'
+            output-path: 'archive'
 
         - plot:
             - title: '64B-1t1c-eth-l2*-ndrdisc'
