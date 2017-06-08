@@ -2,7 +2,7 @@
     name: csit-hc2vpp
     description: 'jenkins jobs to verify Hc2vpp functional and performance tests.'
     jobs:
-        - 'csit-hc2vpp-verify-func'
+        - 'csit-hc2vpp-verify-func-{os}'
         - 'csit-hc2vpp-verify-perf'
     project: 'csit'
     branch: 'master'
@@ -13,7 +13,7 @@
             repo-os-part: 'ubuntu.xenial.main'
 
 - job-template:
-    name: 'csit-hc2vpp-verify-func'
+    name: 'csit-hc2vpp-verify-func-{os}'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
@@ -73,7 +73,7 @@
     name: 'csit-hc2vpp-verify-perf'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: false
 
     logrotate:
@@ -120,11 +120,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive'
+            output-path: 'archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
