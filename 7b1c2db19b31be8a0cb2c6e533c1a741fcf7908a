@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_e05a8282",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "The commit message summary line should be written in present-tense imperative-style as the character width for the 1st line is only 52 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_c05f7e71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "This is outside the scope of this patch so no need to mention that in the commit message.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_80518664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "I think we can do without this message as the summary implies this.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_20ef7a89",
+        "filename": "jenkins-scripts/create_jenkins_user.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Line 16 already does this. You can check the $OS variable that already exists.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_a0892acc",
+        "filename": "jenkins-scripts/create_jenkins_user.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Does OpenSUSE\u0027s cloudimg not create a opensuse user?",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_c0ed3e8d",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 191,
+        "endChar": 44
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_a0024a3c",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 200,
+        "startChar": 21,
+        "endLine": 200,
+        "endChar": 45
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_80ff4634",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 207,
+        "startChar": 22,
+        "endLine": 207,
+        "endChar": 42
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_60fc523f",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 212,
+        "startChar": 22,
+        "endLine": 212,
+        "endChar": 42
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_40f94e4c",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 219,
+        "startChar": 22,
+        "endLine": 219,
+        "endChar": 46
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_20965af1",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 225,
+        "startChar": 22,
+        "endLine": 225,
+        "endChar": 42
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_009b5619",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 229,
+        "startChar": 19,
+        "endLine": 229,
+        "endChar": 40
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_e09f2202",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 235,
+        "startChar": 22,
+        "endLine": 235,
+        "endChar": 34
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_c0a41e59",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:13:55Z",
+      "side": 1,
+      "message": "Double quote to prevent globbing.\nhttps://github.com/koalaman/shellcheck/wiki/SC2086",
+      "range": {
+        "startLine": 240,
+        "startChar": 22,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "7b1c2db19b31be8a0cb2c6e533c1a741fcf7908a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
