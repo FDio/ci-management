@@ -3505,11 +3505,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive'
+            output-path: 'archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3679,11 +3679,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive'
+            output-path: 'archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
