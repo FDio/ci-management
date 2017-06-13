@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_402caeab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:55:19Z",
+      "side": 1,
+      "message": "The commit message summary line should be written in present-tense imperative-style as the character width for the 1st line is only 52 characters.\n\nSo this should simply just say \"Add OpenSUSE image\"",
+      "revId": "96ae9d15f5c8693431f95ed8d0bd5f51ba172e10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_407eeeaf",
+        "filename": "jenkins-scripts/create_jenkins_user.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:55:19Z",
+      "side": 1,
+      "message": "Delete this line entirely. As mentioned on line 16 this variable is already configured.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "96ae9d15f5c8693431f95ed8d0bd5f51ba172e10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_4055ce1b",
+        "filename": "jenkins-scripts/create_jenkins_user.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-06-13T18:55:19Z",
+      "side": 1,
+      "message": "I\u0027d rewrite the entire if-else block as follows:\n\n    if [ \"$OS\" \u003d \"opensuse\" ];\n    then\n      OS_USER\u003d\"root\"\n    else\n      OS_USER\u003d\"$OS\"\n    fi\n    \n    cp /home/${OS_USER}/.ssh/authorized_keys /home/jenkins/.ssh/authorized_keys\n    \n    # Generate ssh key for use by Robot jobs\n    echo -e \u0027y\\n\u0027 | ssh-keygen -N \"\" -f /home/jenkins/.ssh/id_rsa -t rsa\n    chown -R jenkins:jenkins /home/jenkins/.ssh /w",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "96ae9d15f5c8693431f95ed8d0bd5f51ba172e10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
