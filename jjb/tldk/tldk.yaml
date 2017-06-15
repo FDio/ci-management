@@ -8,9 +8,7 @@
 
     project: 'tldk'
     os:
-        - ubuntu1404
         - ubuntu1604
-        - centos7
     stream:
         - master:
             branch: 'master'
