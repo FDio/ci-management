@@ -23,6 +23,8 @@ if [ $? != 0 ]; then
 fi
 
 cp build-root/*.deb csit/
+cp dpdk/vpp-dpdk-dev*.deb csit/
+
 cd csit
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-verify-perf.sh ]

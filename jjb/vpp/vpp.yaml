@@ -311,13 +311,14 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
+            !include-raw-escape:
+                - include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
                 - include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-csit-functional.sh
+            !include-raw-escape:
+                - include-raw-vpp-csit-functional.sh
 
     publishers:
         - archive-artifacts:
@@ -396,10 +397,10 @@
     builders:
         - shell:
             !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
                 - include-raw-vpp-build.sh
         - shell:
-            !include-raw-escape: include-raw-vpp-csit-verify-perf.sh
+            !include-raw-escape:
+                - include-raw-vpp-csit-verify-perf.sh
 
     publishers:
         - archive-artifacts:

@@ -39,8 +39,8 @@ then
     echo "Building using \"make verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
-    echo "Building using \"build-root/vagrant/build.sh\""
-    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
+    echo "Building using \"make verify\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
