@@ -26,6 +26,7 @@ function setup {
             echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
             sudo apt-get update || true
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
+            sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
         elif [[ $DISTRIB_ID == "CentOS" ]]; then
             sudo cat << EOF > fdio-master.repo
 [fdio-master]

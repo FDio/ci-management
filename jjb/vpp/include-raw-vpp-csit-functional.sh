@@ -18,6 +18,13 @@ if [ $? != 0 ]; then
 fi
 
 cp build-root/*.deb csit/
+if [ -e dpdk/vpp-dpdk-dkms*.deb ]
+then
+    cp dpdk/vpp-dpdk-dkms*.deb csit/
+else
+    cp /var/cache/apt/archives/vpp-dpdk-dkms*.deb csit/
+fi
+
 cd csit
 # execute csit bootstrap script if it exists
 if [ -e bootstrap.sh ]
