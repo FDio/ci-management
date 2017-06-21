@@ -2690,7 +2690,7 @@
           build-timeout: '1440'
 
     triggers:
-        - timed: 'H H(20-23) * * *'
+        - timed: 'H H(17-20) * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -3078,7 +3078,7 @@
           build-timeout: '1440'
 
     triggers:
-        - timed: 'H H(20-23) * * 2,6'
+        - timed: 'H H(17-20) * * 2,6'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -3561,7 +3561,7 @@
           build-timeout: '1440'
 
     triggers:
-        - timed: 'H H(2-4) * * *'
+        - timed: 'H H(0-2) * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
