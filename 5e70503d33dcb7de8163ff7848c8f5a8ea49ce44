@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_d5b87f2c",
+        "filename": "jjb/vpp/include-raw-vpp-csit-functional.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2017-06-23T13:55:18Z",
+      "side": 1,
+      "message": "This path does not look right to me.  What build target places build output into the dpdk source dirctory?\n\nAFAIK, all build output lives somewhere under build-root...",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b5b50b33",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2017-06-23T13:55:18Z",
+      "side": 1,
+      "message": "This path does not look right to me.  What build target places build output into the dpdk source dirctory?\n\nAFAIK, all build output lives somewhere under build-root...",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
