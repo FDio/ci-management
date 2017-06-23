@@ -45,6 +45,30 @@
       "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_15961795",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-06-23T13:59:14Z",
+      "side": 1,
+      "message": "When i did make install-dpdk-dev then build are in dpdk/ feel free to check ;)",
+      "parentUuid": "da6255ed_b5b50b33",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
