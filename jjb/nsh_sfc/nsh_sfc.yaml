@@ -7,8 +7,6 @@
         - 'nsh_sfc-verify-image-{stream}-{os}'
         - 'nsh_sfc-verify-docs-{stream}'
         - 'nsh_sfc-merge-docs-{stream}'
-        - 'csit-nsh_sfc-verify-perf-{stream}'
-        - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
 
     project: 'nsh_sfc'
     os:
@@ -27,6 +25,32 @@
         - '1704':
             branch: 'stable/1704'
             repo-stream-part: 'stable.1704'
+
+- project:
+    name: nsh_sfc-misc
+    jobs:
+        - 'nsh_sfc-csit-verify-perf-{stream}'
+        - 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
+
+    project: 'nsh_sfc'
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+        - '1609':
+            branch: 'stable/1609'
+            repo-stream-part: 'stable.1609'
+        - '1701':
+            branch: 'stable/1701'
+            repo-stream-part: 'stable.1609'
+        - '1704':
+            branch: 'stable/1704'
+            repo-stream-part: 'stable.1704'
+        - '1707':
+            branch: 'stable/1707'
+            repo-stream-part: 'stable.1707'
+
+    os: ubuntu1604
 
 - job-template:
     name: 'nsh_sfc-verify-{stream}-{os}'
@@ -456,7 +480,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-nsh_sfc-verify-perf-{stream}'
+    name: 'nsh_sfc-csit-verify-perf-{stream}'
 
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
@@ -473,6 +497,10 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
 
     scm:
         - gerrit-trigger-scm:
@@ -488,25 +516,25 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'nsh_sfc_perf_weekly'
+            comment-trigger-value: 'nsh_sfc_perf'
 
     builders:
         - shell:
-            !include-raw-escape: jjb/nsh_sfc/include-raw-csit-nsh_sfc-perf-hw.sh
+            !include-raw-escape: include-raw-nsh_sfc-csit-perf-hw.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/output_perf_data.xml'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: ''
+            output-path: 'csit/archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
+    name: 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
@@ -526,7 +554,7 @@
         - os-parameter:
             os: '{os}'
         - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
 
     scm:
         - gerrit-trigger-scm:
@@ -546,15 +574,15 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
+            !include-raw-escape: include-raw-nsh_sfc-csit-functional-virl.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: ''
+            output-path: 'csit/archive'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
