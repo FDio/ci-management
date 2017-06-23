@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_b24521b5",
+        "filename": "jjb/tldk/include-raw-csit-tldk-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-23T10:50:47Z",
+      "side": 1,
+      "message": "Add:\n# If the git clone fails, complain clearly and exit\nif [ $? !\u003d 0 ]; then\n    echo \"Failed to run: git clone https://gerrit.fd.io/r/tldk\"\n    exit 1\nfi",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "ca4262bb6e7f24ec653f2e16f6c2bdcdbbf247a1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_92121db3",
+        "filename": "jjb/tldk/include-raw-csit-tldk-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-23T10:50:47Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "ca4262bb6e7f24ec653f2e16f6c2bdcdbbf247a1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_7217a9a4",
+        "filename": "jjb/tldk/include-raw-csit-tldk-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-23T10:50:47Z",
+      "side": 1,
+      "message": "exit 1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "ca4262bb6e7f24ec653f2e16f6c2bdcdbbf247a1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
