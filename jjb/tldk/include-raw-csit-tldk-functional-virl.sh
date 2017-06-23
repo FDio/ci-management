@@ -1,6 +1,9 @@
 #!/bin/bash
 set -xeu -o pipefail
 
+# Clone tldk and start tests
+git clone https://gerrit.fd.io/r/tldk
+
 # Clone csit and start tests
 git clone https://gerrit.fd.io/r/csit
 
