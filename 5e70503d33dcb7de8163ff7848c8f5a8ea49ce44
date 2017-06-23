@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_35f8fbe4",
+        "filename": "jjb/vpp/include-raw-vpp-csit-functional.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2017-06-23T14:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6255ed_d5b87f2c",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_b5b50b33",
         "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "When i did make install-dpdk-dev then build are in dpdk/ feel free to check ;)",
       "parentUuid": "da6255ed_b5b50b33",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_55f36f0a",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2017-06-23T14:31:37Z",
+      "side": 1,
+      "message": "Sorry. I stand corrected.  I had tried that, but since vpp-dpkd-dev was already installed, the build did not happen.  \n\nDo we know that there is no possibility of a previous package version being installed at the beginning of the test?  \n\nIt might make sense run \u0027dpkg -P vpp-dpdk-dev\u0027 prior to the \u0027make UNATTENDED\u003dyes dev",
+      "parentUuid": "da6255ed_15961795",
       "range": {
         "startLine": 26,
         "startChar": 8,
