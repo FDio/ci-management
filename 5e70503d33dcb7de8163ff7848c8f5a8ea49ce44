@@ -117,6 +117,30 @@
       "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d56bdf83",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-06-23T18:08:06Z",
+      "side": 1,
+      "message": "dpkg -P is done in dpdk/Makefile and the result is exactly same/newer, so the logic is actually inside dpdk/Makefile. Or am I missing something? This is just post mortem test if newer version is built there or old one is in apt-cache...\nNot sure what do you mean by previous package, but logic is in makefie.",
+      "parentUuid": "da6255ed_55f36f0a",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5e70503d33dcb7de8163ff7848c8f5a8ea49ce44",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
