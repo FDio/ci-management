@@ -1,13 +1,22 @@
 #!/bin/bash
 set -xeu -o pipefail
 
+# Clone tldk and start tests
+git clone https://gerrit.fd.io/r/tldk
+
+# If the git clone fails, complain clearly and exit
+if [ $? != 0 ]; then
+    echo "Failed to run: git clone https://gerrit.fd.io/r/tldk"
+    exit 1
+fi
+
 # Clone csit and start tests
 git clone https://gerrit.fd.io/r/csit
 
 # If the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
     echo "Failed to run: git clone https://gerrit.fd.io/r/csit"
-exit
+    exit 1
 fi
 
 cd csit
