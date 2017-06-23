@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_12dbcdee",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3786,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-23T11:19:08Z",
+      "side": 1,
+      "message": "it is good to copy all items to be archived into a special dir (e.g. archive) at the end of bootstrap script and here use only: \nartifacts: \u0027archive/*.*\u0027\nYou can then easily add and/or remove item by changing the bootstrap, no ci-mgmt commit is needed then.",
+      "range": {
+        "startLine": 3786,
+        "startChar": 12,
+        "endLine": 3786,
+        "endChar": 58
+      },
+      "revId": "2624a4be49dddbafb5cbc32e2b483598bf07dadb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f2d719be",
+        "filename": "jjb/nsh_sfc/include-raw-nsh_sfc-csit-perf-hw.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-23T11:19:08Z",
+      "side": 1,
+      "message": "exit 1",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "2624a4be49dddbafb5cbc32e2b483598bf07dadb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
