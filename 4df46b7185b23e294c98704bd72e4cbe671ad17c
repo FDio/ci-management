@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_465d03e9",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3734,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2017-06-26T11:11:15Z",
+      "side": 1,
+      "message": "be aware that you have to move robot files in your bootstrap.sh to archive dir. Get inspired with bootstrap for performance.",
+      "range": {
+        "startLine": 3734,
+        "startChar": 23,
+        "endLine": 3734,
+        "endChar": 36
+      },
+      "revId": "4df46b7185b23e294c98704bd72e4cbe671ad17c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
