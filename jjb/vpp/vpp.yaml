@@ -316,7 +316,11 @@
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: 'vpp-verify-functional-virl'
-
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - shell:
