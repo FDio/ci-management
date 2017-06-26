@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_a62cbf4b",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-26T11:22:11Z",
+      "side": 1,
+      "message": "longer name is better, e.g. verify-tldk-func",
+      "range": {
+        "startLine": 205,
+        "startChar": 36,
+        "endLine": 205,
+        "endChar": 45
+      },
+      "revId": "f0ec092536fc3e2cd7e08e69a12f2562447c083d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
