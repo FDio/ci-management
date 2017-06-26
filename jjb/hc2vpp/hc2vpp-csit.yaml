@@ -82,13 +82,13 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit/archive'
 
 - job-template:
     name: 'hc2vpp-csit-verify-{stream}-{os}'
@@ -168,13 +168,13 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit/archive'
 
 - job-template:
     name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
@@ -219,13 +219,13 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit/archive'
 
 - job-template:
     name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
@@ -305,13 +305,13 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
         - email-notification:
             email-prefix: '[hc2vpp]'
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit/archive'
 
 - job-template:
     name: 'hc2vpp-csit-perf-{stream}-{os}'

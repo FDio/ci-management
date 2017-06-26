@@ -62,12 +62,14 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit/honeycomb.log'
+            artifacts: 'archive/*.*'
             latest-only: false
+
         - email-notification:
             email-prefix: '[csit]'
+
         - robot-report:
-            output-path: 'csit'
+            output-path: 'archive'
 
 - job-template:
     name: 'csit-hc2vpp-verify-perf'
@@ -122,6 +124,9 @@
         - archive-artifacts:
             artifacts: 'archive/*.*'
             latest-only: false
+
+        - email-notification:
+            email-prefix: '[csit]'
 
         - robot-report:
             output-path: 'archive'
