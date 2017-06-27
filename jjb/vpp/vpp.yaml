@@ -311,6 +311,8 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - timed: 'H */2 * * *'
+
         - gerrit:
             server-name: 'Primary'
             trigger-on:
