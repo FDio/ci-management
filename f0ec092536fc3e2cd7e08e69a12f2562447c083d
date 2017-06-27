@@ -22,6 +22,30 @@
       "revId": "f0ec092536fc3e2cd7e08e69a12f2562447c083d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a1bca96d",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 580
+      },
+      "writtenOn": "2017-06-27T00:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da6255ed_a62cbf4b",
+      "range": {
+        "startLine": 205,
+        "startChar": 36,
+        "endLine": 205,
+        "endChar": 45
+      },
+      "revId": "f0ec092536fc3e2cd7e08e69a12f2562447c083d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
