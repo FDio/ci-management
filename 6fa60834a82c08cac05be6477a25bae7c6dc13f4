@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_3c5c6025",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2017-06-27T05:59:12Z",
+      "side": 1,
+      "message": "We usually use hyphens: verify-tldk-func",
+      "range": {
+        "startLine": 205,
+        "startChar": 36,
+        "endLine": 205,
+        "endChar": 52
+      },
+      "revId": "6fa60834a82c08cac05be6477a25bae7c6dc13f4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
