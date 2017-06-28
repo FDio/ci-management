@@ -199,9 +199,10 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
+        - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
+            comment-trigger-value: 'verify-tldk-func'
 
     builders:
         - shell:
