@@ -25,6 +25,9 @@
         - '1704':
             branch: 'stable/1704'
             repo-stream-part: 'stable.1704'
+        - '1707':
+            branch: 'stable/1707'
+            repo-stream-part: 'stable.1707'
 
 - project:
     name: nsh_sfc-misc
