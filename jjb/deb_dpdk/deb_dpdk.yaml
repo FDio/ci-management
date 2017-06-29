@@ -18,6 +18,9 @@
         - 1611:
             branch: '16.11.x'
             repo-stream-part: 'deb_dpdk_1611'
+        - 1705:
+            branch: '17.05.x'
+            repo-stream-part: 'deb_dpdk_1705'
 
 - job-template:
     name: 'deb_dpdk-verify-{stream}-{os}'
