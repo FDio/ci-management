@@ -19,6 +19,9 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+# Move the tldk to the csit dir
+sudo mv -f ./tldk/ ./csit/
+
 cd csit
 
 # execute nsh_sfc bootstrap script if it exists
