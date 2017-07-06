@@ -25,9 +25,9 @@ fi
 cd csit
 
 if [ ${STREAM} == 'master' ]; then
-    ./resources/tools/download_hc_build_pkgs.sh ${STREAM} ${OS}
+    ./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}
 else
-    ./resources/tools/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
+    ./resources/tools/scripts/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
 fi
 
 cd ${current_dir}
