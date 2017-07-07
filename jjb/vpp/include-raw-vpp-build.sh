@@ -32,16 +32,16 @@ echo "CC=${CC}"
 echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 # If and only if we are doing verify *after* make verify was made to work
 # and we are not a CSIT job just building packages, then use make verify,
-# else use the old extras/vagrant/build.sh
+# else use the old build-root/vagrant/build.sh
 if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
     echo "Building using \"make verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
-    echo "Building using \"make extras/vagrant/build.sh\""
+    echo "Building using \"make build-root/vagrant/build.sh\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
-    [ "x${DRYRUN}" == "xTrue" ] || extras/vagrant/build.sh
+    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
 fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
