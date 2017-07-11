@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ef53b16a",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-07-11T20:13:31Z",
+      "side": 1,
+      "message": "Are you expecting that there is going to be data in this file that you need to concatenate onto? If not, the first call really should be a \u003e not \u003e\u003e",
+      "range": {
+        "startLine": 7,
+        "startChar": 82,
+        "endLine": 7,
+        "endChar": 97
+      },
+      "revId": "d2aa8396f9e53d3c92fae45a15a9c73fb29627f0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cf50f560",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-07-11T20:13:31Z",
+      "side": 1,
+      "message": "Are you expecting that there is going to be data in this file that you need to concatenate onto? If not, the first call really should be \u003e not \u003e\u003e",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 76
+      },
+      "revId": "d2aa8396f9e53d3c92fae45a15a9c73fb29627f0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_af4db9c6",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-07-11T20:13:31Z",
+      "side": 1,
+      "message": "This line is \u003e 80 characters, you should do a wrap on it.",
+      "revId": "d2aa8396f9e53d3c92fae45a15a9c73fb29627f0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6fc7c113",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-07-11T20:13:31Z",
+      "side": 1,
+      "message": "You need to add in a config-file-provider builder that adds in your package_cloud configuration file",
+      "revId": "d2aa8396f9e53d3c92fae45a15a9c73fb29627f0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
