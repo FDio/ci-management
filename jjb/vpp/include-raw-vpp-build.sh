@@ -40,6 +40,7 @@ then
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
     echo "Building using \"make build-root/vagrant/build.sh\""
+    [ "x${DRYRUN}" == "xTrue" ] || make install-dep
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
     [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
 fi
