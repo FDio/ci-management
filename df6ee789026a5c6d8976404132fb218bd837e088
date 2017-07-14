@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_7009dd94",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 407
+      },
+      "writtenOn": "2017-07-14T09:49:44Z",
+      "side": 1,
+      "message": "possible license header missing here and all other scripts?",
+      "revId": "df6ee789026a5c6d8976404132fb218bd837e088",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
