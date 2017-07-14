@@ -4,7 +4,7 @@
         - '{project}-verify-{stream}-{os}'
         - '{project}-merge-{stream}-{os}'
         - '{project}-verify-image-{stream}-{os}'
-        - 'csit-tldk-verify-func-{stream}-{os}-virl'
+        - 'tldk-csit-verify-func-{stream}-{os}-virl'
 
     project: 'tldk'
     os:
@@ -170,7 +170,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-tldk-verify-func-{stream}-{os}-virl'
+    name: 'tldk-csit-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
@@ -206,7 +206,7 @@
 
     builders:
         - shell:
-            !include-raw-escape: include-raw-csit-tldk-functional-virl.sh
+            !include-raw-escape: include-raw-tldk-csit-functional-virl.sh
 
     publishers:
         - archive-artifacts:
