@@ -170,6 +170,7 @@
 
         - robot-report:
             output-path: 'archive'
+            other-files: '*.*'
 
         - plot:
             - title: '64B-1t1c-eth-l2xcbase-testpmd-ndrdisc'
@@ -290,6 +291,7 @@
 
         - robot-report:
             output-path: 'archive'
+            other-files: '*.*'
 
         - plot:
             - title: '64B-1t1c-eth-l2*-ndrdisc'
@@ -2781,6 +2783,7 @@
 
         - robot-report:
             output-path: 'csit/archive'
+            other-files: '*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3169,6 +3172,7 @@
 
         - robot-report:
             output-path: 'csit/archive'
+            other-files: '*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3585,6 +3589,7 @@
 
         - robot-report:
             output-path: 'archive'
+            other-files: '*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3652,6 +3657,7 @@
 
         - robot-report:
             output-path: 'csit/archive'
+            other-files: '*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3759,6 +3765,7 @@
 
         - robot-report:
             output-path: 'archive'
+            other-files: '*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
