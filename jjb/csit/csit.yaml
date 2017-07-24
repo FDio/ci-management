@@ -168,9 +168,10 @@
             artifacts: 'archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - plot:
             - title: '64B-1t1c-eth-l2xcbase-testpmd-ndrdisc'
@@ -289,9 +290,10 @@
             artifacts: 'archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - plot:
             - title: '64B-1t1c-eth-l2*-ndrdisc'
@@ -2781,9 +2783,10 @@
             artifacts: 'csit/archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3170,9 +3173,10 @@
             artifacts: 'csit/archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3587,9 +3591,10 @@
             artifacts: 'archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3655,9 +3660,10 @@
             artifacts: 'csit/archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
@@ -3763,9 +3769,10 @@
             artifacts: 'archive/*.*'
             latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
-            other-files: '*.*'
+        - robot:
+            output-path: archive
+            other-files:
+              - *.*
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
