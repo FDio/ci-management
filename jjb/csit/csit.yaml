@@ -2784,7 +2784,7 @@
             latest-only: false
 
         - robot:
-            output-path: archive
+            output-path: 'csit/archive'
             other-files:
               - '*.*'
 
@@ -3174,7 +3174,7 @@
             latest-only: false
 
         - robot:
-            output-path: archive
+            output-path: 'csit/archive'
             other-files:
               - '*.*'
 
@@ -3661,7 +3661,7 @@
             latest-only: false
 
         - robot:
-            output-path: archive
+            output-path: 'csit/archive'
             other-files:
               - '*.*'
 
