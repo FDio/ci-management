@@ -3788,6 +3788,10 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -3803,7 +3807,7 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'csit_nsh_sfc_perf'
+            comment-trigger-value: 'csit_nsh_sfc_perf_{stream}'
 
     builders:
         - shell:
@@ -3840,6 +3844,8 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -3855,7 +3861,7 @@
         - gerrit-trigger-manually-triggered:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'csit_nsh_sfc_func'
+            comment-trigger-value: 'csit_nsh_sfc_func_{stream}'
 
     builders:
         - shell:

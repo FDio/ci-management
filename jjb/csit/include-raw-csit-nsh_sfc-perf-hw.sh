@@ -10,6 +10,10 @@ fi
 # make sure that bootstrap-verify-perf.sh is executable
 chmod +x bootstrap-verify-perf-nsh_sfc.sh
 # run the script
-./bootstrap-verify-perf-nsh_sfc.sh
+if [ ${STREAM} == 'master' ]; then
+    ./bootstrap-verify-perf-nsh_sfc.sh ${STREAM} ${OS}
+else
+    ./bootstrap-verify-perf-nsh_sfc.sh 'stable.'${STREAM} ${OS}
+fi
 
 # vim: ts=4 ts=4 sts=4 et :

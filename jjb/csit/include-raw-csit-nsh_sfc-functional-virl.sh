@@ -7,7 +7,11 @@ then
     # make sure that bootstrap-nsh_sfc-functional-virl.sh is executable
     chmod +x bootstrap-nsh_sfc-functional-virl.sh
     # run the script
-    ./bootstrap-nsh_sfc-functional-virl.sh
+    if [ ${STREAM} == 'master' ]; then
+        ./bootstrap-nsh_sfc-functional-virl.sh ${STREAM} ${OS}
+    else
+        ./bootstrap-nsh_sfc-functional-virl.sh 'stable.'${STREAM} ${OS}
+    fi
 else
     echo 'ERROR: No bootstrap-nsh_sfc-functional-virl.sh found'
     exit 1
