@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4e6583_a8c7f363",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-07-27T19:39:07Z",
+      "side": 1,
+      "message": "Not sure why there\u0027s a leading tab here but it should be removed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "47fd8703448857f49742da6811767681bf144f55",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4e6583_88c43760",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3809,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-07-27T19:39:07Z",
+      "side": 1,
+      "message": "Why do we want to hardcode master here?\n\nThis means that if you run \"csit_nsh_sfc_perf_non-master-branch. The job will never trigger for non-master branch.\n\nSo this change effectively breaks the manual trigger for all branches except master. I\u0027m not sure this is what you want to happen.",
+      "revId": "47fd8703448857f49742da6811767681bf144f55",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
