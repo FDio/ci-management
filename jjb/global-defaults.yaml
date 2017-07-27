@@ -12,3 +12,8 @@
 
     # fd.io branch defaults
     branch: master
+
+    # lf-infra defaults
+    jenkins-ssh-credential: fdio-jenkins
+    gerrit-server-name: Primary
+    git-url: 'ssh://rotterdam-jobbuilder@git.opendaylight.org:29418'

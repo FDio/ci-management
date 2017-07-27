@@ -1,8 +1,7 @@
 - project:
     name: ci-management-jobs
     jobs:
-        - 'ci-management-verify-jjb'
-        - 'ci-management-merge-jjb'
+        - '{project-name}-ci-jobs'
         - 'ci-management-verify-packer'
         - 'ci-management-merge-packer-{platforms}-{templates}'
 
@@ -15,92 +14,9 @@
         - basebuild
 
     project: ci-management
+    project-name: '{project}'
     branch: master
-
-- job-template:
-    name: ci-management-verify-jjb
-
-    project-type: freestyle
-    node: jjb
-    concurrent: true
-
-    logrotate:
-        daysToKeep: 30
-        numToKeep: 10
-        artifactDaysToKeep: -1
-        artifactNumToKeep: 5
-
-    parameters:
-        - project-parameter:
-            project: '{project}'
-
-    scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
-
-    wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
-
-    triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
-
-    builders:
-        - shell: |
-            jenkins-jobs test --recursive -o job_output jjb/
-        - ci-management-check-unicode
-
-    publishers:
-        - archive-artifacts:
-            artifacts: 'job_output/*'
-
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'ci-management-merge-jjb'
-
-    project-type: freestyle
-    node: jjb
-
-    logrotate:
-        daysToKeep: 30
-        numToKeep: 40
-        artifactDaysToKeep: -1
-        artifactNumToKeep: 5
-
-    parameters:
-        - project-parameter:
-            project: '{project}'
-
-    scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
-
-    wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
-
-    triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-
-    builders:
-        - shell: |
-            pip freeze
-            jenkins-jobs --version
-            jenkins-jobs update --recursive --delete-old --workers 4 jjb/
-
-    publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+    build-node: jjb
 
 - job-template:
     name: ci-management-verify-zuul

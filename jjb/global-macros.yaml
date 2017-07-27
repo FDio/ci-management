@@ -323,12 +323,6 @@
 
 ###### BUILDERS
 - builder:
-    name: ci-management-check-unicode
-    builders:
-        - shell: |
-            $WORKSPACE/scripts/check-unicode.sh jjb/
-
-- builder:
     name: provide-maven-settings
     builders:
         - config-file-provider:
