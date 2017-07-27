@@ -525,6 +525,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - reverse:
+            jobs: 'vpp-merge-{stream}-ubuntu1604'
+            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
@@ -660,6 +663,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - reverse:
+            jobs: 'vpp-merge-{stream}-ubuntu1604'
+            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
