@@ -3806,7 +3806,6 @@
     triggers:
         - gerrit-trigger-manually-triggered:
             name: '{project}'
-            branch: '{branch}'
             comment-trigger-value: 'csit_nsh_sfc_perf_{stream}'
 
     builders:
@@ -3860,7 +3859,6 @@
     triggers:
         - gerrit-trigger-manually-triggered:
             name: '{project}'
-            branch: '{branch}'
             comment-trigger-value: 'csit_nsh_sfc_func_{stream}'
 
     builders:
