@@ -39,6 +39,24 @@
       "revId": "47fd8703448857f49742da6811767681bf144f55",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4e6583_884557b5",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3809,
+      "author": {
+        "id": 591
+      },
+      "writtenOn": "2017-07-28T02:17:11Z",
+      "side": 1,
+      "message": "Indeed i use the branch: \u0027{branch}\u0027 for the trigger in the last version.\n\nMy test case code had submitted to the CSIT project on the master branch, i just can use the csit_nsh_sfc_func_master to trigger a jenkis job and i try use the csit_nsh_sfc_perf_1707 to trigger a jenkis job but failed.\n\nIt means that if i want use the csit_nsh_sfc_perf_1707 to trigger a jenkis job, I must submit the code on the rls1707 for review, right?\n\nI want my review patch set code can trigger in the every branch for the every VPP+NSH stream version, i don\u0027t know my think is make sense or not.",
+      "parentUuid": "5a4e6583_88c43760",
+      "revId": "47fd8703448857f49742da6811767681bf144f55",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
