@@ -57,6 +57,24 @@
       "revId": "47fd8703448857f49742da6811767681bf144f55",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4e6583_487e3fe6",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3809,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-07-28T02:59:53Z",
+      "side": 1,
+      "message": "So if you want to test against the branch 1707 then yes your code MUST be submitted to the 1707 branch. Otherwise it will be against the wrong branch of the code.\n\nThis sounds like this patch is unneeded to me and that you were just incorrectly submitting 1707 branch code to the master branch when you mean to push it to the 1707 branch.",
+      "parentUuid": "5a4e6583_884557b5",
+      "revId": "47fd8703448857f49742da6811767681bf144f55",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
