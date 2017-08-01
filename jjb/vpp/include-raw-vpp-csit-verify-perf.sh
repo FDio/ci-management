@@ -2,7 +2,7 @@
 set -xeu -o pipefail
 
 TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-    | grep -oE 'vpp-verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost)' \
+    | grep -oE 'vpp-verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost|acl)' \
     | awk '{print toupper($0)}'`
 export TEST_TAG=${TRIGGER}
 
