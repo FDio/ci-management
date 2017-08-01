@@ -389,6 +389,8 @@
                     comment-contains-value: 'vpp-verify-perf-vxlan'
                 - comment-added-contains-event:
                     comment-contains-value: 'vpp-verify-perf-vhost'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-acl'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
