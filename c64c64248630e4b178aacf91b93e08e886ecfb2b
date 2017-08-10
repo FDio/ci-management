@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4b7175_8a51cfda",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T17:26:19Z",
+      "side": 1,
+      "message": "Adding this job change in should be a separate submission",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "c64c64248630e4b178aacf91b93e08e886ecfb2b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4b7175_8a68af88",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T17:26:19Z",
+      "side": 1,
+      "message": "Fix the comment block to cleanly wrap on 80 characters. Also, this states that JDK 1.7 is forced to the default, but I don\u0027t see any sort of forcing happening",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 13
+      },
+      "revId": "c64c64248630e4b178aacf91b93e08e886ecfb2b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
