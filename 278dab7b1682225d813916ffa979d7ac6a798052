@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4b7175_6aee938d",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 18
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T19:31:44Z",
+      "side": 1,
+      "message": "No need for this extra line. You can add it with the change that adds in the job configuration",
+      "revId": "278dab7b1682225d813916ffa979d7ac6a798052",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
