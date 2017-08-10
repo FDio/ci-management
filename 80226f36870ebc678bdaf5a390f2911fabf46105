@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4b7175_eaf843c6",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T17:31:51Z",
+      "side": 1,
+      "message": "Line wrap at 80 characters",
+      "revId": "80226f36870ebc678bdaf5a390f2911fabf46105",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4b7175_caf587cc",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T17:31:51Z",
+      "side": 1,
+      "message": "Line wrap at 80 characters",
+      "revId": "80226f36870ebc678bdaf5a390f2911fabf46105",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4b7175_6a2c534b",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T17:31:51Z",
+      "side": 1,
+      "message": "Why is this being added to the merge job, but not to the promote job?",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 43
+      },
+      "revId": "80226f36870ebc678bdaf5a390f2911fabf46105",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
