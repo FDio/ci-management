@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a4b7175_4accf735",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T19:30:08Z",
+      "side": 1,
+      "message": "I would put the | before the \\ continuation character",
+      "revId": "d165cbfe87f396f85174d54b7d9a30fc5fc4099c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4b7175_8a4aefaa",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T19:30:08Z",
+      "side": 1,
+      "message": "Dangling white space",
+      "range": {
+        "startLine": 12,
+        "startChar": 67,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "d165cbfe87f396f85174d54b7d9a30fc5fc4099c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a4b7175_6ac7b313",
+        "filename": "jjb/scripts/packagecloud_promote.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-08-10T19:30:08Z",
+      "side": 1,
+      "message": "Line should be indented 4 spaces",
+      "revId": "d165cbfe87f396f85174d54b7d9a30fc5fc4099c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
