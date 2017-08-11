@@ -41,7 +41,7 @@ if [ "$OS" = "opensuse" ];
 then
   OS_USER="root"
 else
-  OS_USER="$OS"
+  OS_USER="home/${OS}"
 fi
 #Generate ssh key for use by Robot jobs
 cp -r /${OS_USER}/.ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
