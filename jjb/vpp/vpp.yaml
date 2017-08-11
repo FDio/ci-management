@@ -247,7 +247,7 @@
                 target: '/home/jenkins'
         - config-file-provider:
             files:
-              - file-id: 'packagecloud_api'
+              - file-id: 'packagecloud-api'
                 target: '/home/jenkins'
         - maven-target:
             maven-version: 'mvn33-new'
@@ -833,7 +833,7 @@
               target: '/home/jenkins'
       - config-file-provider:
           files:
-            - file-id: 'packagecloud_api'
+            - file-id: 'packagecloud-api'
               target: '/home/jenkins'
       - shell:
           !include-raw-escape: include-raw-vpp-checkstyle.sh
