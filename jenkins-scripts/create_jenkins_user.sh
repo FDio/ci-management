@@ -16,7 +16,7 @@
 OS=$(facter operatingsystem | tr '[:upper:]' '[:lower:]')
 
 groupadd jenkins
-useradd -m -s /bin/bash jenkins
+useradd -m -s /bin/bash -g jenkins jenkins
 
 # Check if docker group exists
 grep -q docker /etc/group
