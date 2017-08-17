@@ -96,6 +96,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - archive-artifacts-parameter:
+            archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
 
     scm:
         - gerrit-trigger-scm:
