@@ -211,9 +211,11 @@ EOF
 opensuse_systems() {
     # SELinux?
 
+    zypper --non-interactive --gpg-auto-import-keys ar -n refresh \
+        http://download.opensuse.org/repositories/Cloud:/Tools/openSUSE_Leap_42.3/ Cloud:Tools.repo
+    zypper clean -a
+
     echo "---> Updating operating system"
-    zypper -n clean
-    zypper -n update
 
     # add in components we need or want on systems
     echo "---> Installing base packages"
