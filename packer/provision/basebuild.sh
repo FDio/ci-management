@@ -31,7 +31,7 @@ rh_systems() {
 
     # RH Install GCC packages
     echo "---> Installing RH GCC packages $(date +'%Y%m%dT%H%M%S')"
-    RH_GCC_PKGS="cpp gcc c++ cmake make"
+    RH_GCC_PKGS="cpp gcc gcc6 c++ cmake make distribution-release"
     yum install -y ${RH_GCC_PKGS}
 
     # RH Install components to build Ganglia modules
@@ -184,61 +184,71 @@ ubuntu_systems() {
 
 opensuse_systems() {
 
-    # openSuSE Install build tools
-    echo "---> Installing openSuSE build tools $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_TOOLS_PKGS="glibc-devel-static java-1_8_0-openjdk-devel yum-utils \
-    openssl indent pkg-config emacs"
-    zypper install -y "${OPENSUSE_TOOLS_PKGS}"
+    function install_pkgs ()
+    {
+        for pkgs in "$@"; do
+            zypper -y "$pkgs"
+        done
+    }
 
-    # Memory leakage checks
-    zypper install -y valgrind
+     # Update to latest available packages and security bug-fixes
+     zypper update -y
 
-    # openSuSE Install Python dependencies
-    echo "---> Installing openSuSE Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
-    python-pip python-wheel libmysqlclient-dev kernel-devel"
-    zypper install -y "${OPENSUSE_PYTHON_PKGS}"
+    # Install openSuSE Development tool packages
+    echo "--->Installing Development tool packages $(date +'%Y%m%dT%H%M%S')"
+    ODTL="java-1_8_0-openjdk-devel indent pkg-config lcov cscope libtool ctags \
+        bison libxml2-tools libxslt-devel python-virtualenv libopenssl-devel"
+    install_pkgs "$ODTL"
 
-    # openSuSE Install Documentation packages
-    echo "---> Installing openSuSE documentation packages $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_DOC_PKGS="doxygen graphviz python-jinja2 asciidoc dblatex \
-    source-highlight python-sphinx libxml2 libffi-devel python-cffi \
-    python-pyparsing libstdc++6 python-sphinx_rtd_theme"
-    zypper install -y "${OPENSUSE_DOC_PKGS}"
+    # Install openSuSE Development resources and libraries
+    echo "--->Installing DEV resources & libraries $(date +'%Y%m%dT%H%M%S')"
+    ODRL="kernel-devel libffi-devel libconfuse-devel libapr1 libapr1-devel \
+        libexpat-devel pcre-devel libxml2-devel ruby-devel zlib-devel \
+        glibc-devel-static libstdc++6"
+    install_pkgs "$ODRL"
 
-    # openSuSE Install GCC packages
-    echo "---> Installing openSuSE GCC packages $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_GCC_PKGS="cpp gcc gcc-c++ cmake make lcov"
-    zypper install -y "${OPENSUSE_GCC_PKGS}"
+    # Install openSuSE Packaging utilities and resources
+    echo "--->Installing PKG utilities & resources $(date +'%Y%m%dT%H%M%S')"
+    OPP="yum-utils"
+    install_pkgs "$OPP"
 
-    # openSuSE Install components to build Ganglia modules
-    # ganglia-devel not available for 42.3
-    echo "---> Installing openSuSE components $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_GANGLIA_MODS="libconfuse-devel python-mock rrdtool rrdtool-devel \
-    libapr1 libapr1-devel libexpat-devel pcre-devel"
-    zypper install -y "${OPENSUSE_GANGLIA_MODS}"
+    # Install openSuSE Python resources and libraries
+    echo "--->Installing Python resources & libraries $(date +'%Y%m%dT%H%M%S')"
+    OPRL="python-devel python-setuptools python-pip python-wheel python-mock \
+        python3-devel python3-pip python-rpm-macros shadow libnuma-devel \
+        python3"
+    install_pkgs "$OPRL"
 
-    # openSuSE Install VPP packages to shorten build times
-    echo "---> Installing VPP dependencies $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_VPP_PKGS="curl autoconf automake bison ccache git libtool \
-    git-review ctags cscope libxml2-tools unzip lsb-release devscripts"
-    zypper install -y "${OPENSUSE_VPP_PKGS}"
+    # Install openSuSE Documentation packages
+    echo "---> Installing Documentation packages $(date +'%Y%m%dT%H%M%S')"
+    ODP="doxygen graphviz asciidoc dblatex source-highlight python-sphinx \
+        libxml2 python-jinja2 python-cffi python-pyparsing \
+        python-sphinx_rtd_theme"
+    install_pkgs "$ODP"
 
-    # openSuSE Install TLDK dependencies
-    OPENSUSE_TLKD_PKGS="libpcap-devel libcap-devel"
-    yum install -y "${OPENSUSE_TLKD_PKGS}"
+    # Install openSuSE Compliation packages
+    echo "--->Installing Compliation packages $(date +'%Y%m%dT%H%M%S')"
+    OCP="cpp gcc gcc-c++ cmake make"
+    install_pkgs "$OCP"
+
+    # Install openSuSE Debugging tool packages
+    echo "--->Installing Debugging tool packages $(date +'%Y%m%dT%H%M%S')"
+    ODTP="valgrind rrdtool rrdtool-devel autoconf automake ccache chrpath"
+    install_pkgs "$ODTP"
+
+    # Install openSuSE Misc tool packages
+    echo "--->Installing Misc tool packages $(date +'%Y%m%dT%H%M%S')"
+    OMTP="openssl emacs curl git git-review unzip lsb-release devscripts \
+        iproute2 ethtool vlan bridge-utils vim gdb gdbserver"
+    install_pkgs "$OMTP"
+
+    # Install openSuSE TLDK dependencies
+    OTD="libpcap-devel libcap-devel"
+    yum install -y "${OTD}"
     zypper -n install -t pattern devel_basis
 
-    # openSuSE Manipulation tools, edits debugger, and LSB
-    echo "---> Installing tools packages $(date +'%Y%m%dT%H%M%S')"
-    TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb  gdbserver"
-    zypper install -y "${TOOL_PKGS}"
-
-
-    # openSuSE Install Puppet packages
-    PUPPET_PKGS="libxml2-devel libxslt-devel ruby-devel zlib-devel"
-    zypper install -y "${PUPPET_PKGS}"
-
+    # Leap 42.3 does not have a recent NASM version and VPP requires NASM 2.12 minimum so installing from TW repo
+    zypper install -y https://download.opensuse.org/tumbleweed/repo/oss/suse/x86_64/nasm-2.13.01-2.1.x86_64.rpm
 }
 
 all_systems() {
