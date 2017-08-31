@@ -21,7 +21,7 @@
       "ssh_username": "{{user `cloud_user`}}",
       "image_name": "{{user `distro`}} - basebuild - {{isotime \"20060102-1504\"}}",
       "source_image_name": "{{user `base_image`}}",
-      "flavor": "v1-standard-1",
+      "flavor": "bbcb7eb5-5c8d-498f-9d7e-307c575d3566",
       "availability_zone": "ca-ymq-2",
       "networks": [
         "{{user `stack_network`}}"
