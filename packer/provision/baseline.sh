@@ -211,13 +211,18 @@ EOF
 opensuse_systems() {
     # SELinux?
 
-    echo "---> Updating operating system"
-    zypper -n clean
-    zypper -n update
+    cp /etc/cloud/cloud.cfg /etc/cloud/cloud.cfg.orig
+
+    zypper clean -a
+    zypper --non-interactive --gpg-auto-import-keys ar \
+        http://download.opensuse.org/update/leap/42.3/oss/openSUSE:Leap:42.3:Update.repo
+    zypper --gpg-auto-import-keys ref
+    zypper --non-interactive --gpg-auto-import-keys ar \
+        http://download.opensuse.org/repositories/Cloud:/Tools/openSUSE_Leap_42.3/ Cloud:Tools.repo
 
     # add in components we need or want on systems
     echo "---> Installing base packages"
-    zypper install -y unzip xz puppet git git-review perl-XML-XPath wget make
+    zypper install -y unzip xz puppet git git-review perl-XML-XPath wget make libstdc++-devel ruby-devel
 
     # All of our systems require Java (because of Jenkins)
     echo "---> Configuring OpenJDK"
