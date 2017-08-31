@@ -211,21 +211,32 @@ EOF
 opensuse_systems() {
     # SELinux?
 
-    echo "---> Updating operating system"
-    zypper -n clean
-    zypper -n update
+    # Replacing cloud.cfg, it's not supported by cloud-init
+    cp /etc/cloud/cloud.cfg /etc/cloud/cloud.cfg.orig
 
-    # add in components we need or want on systems
+    # Clean and add repos and refresh
+    zypper clean -a
+    zypper --non-interactive --gpg-auto-import-keys ar \
+        http://download.opensuse.org/update/leap/42.3/oss/openSUSE:Leap:42.3:Update.repo
+    zypper --gpg-auto-import-keys ref
+    zypper --non-interactive --gpg-auto-import-keys ar \
+        http://download.opensuse.org/repositories/Cloud:/Tools/openSUSE_Leap_42.3/ Cloud:Tools.repo
+
+    # Add in components we need or want on systems
     echo "---> Installing base packages"
-    zypper install -y unzip xz puppet git git-review perl-XML-XPath wget make
+    zypper -n install unzip xz puppet perl-XML-XPath
+
+    # Instlal tools
+    echo "---> Installing tools packages"
+    zypper -n install git git-review wget libstdc++-devel ruby-devel
 
     # All of our systems require Java (because of Jenkins)
     echo "---> Configuring OpenJDK"
-    zypper install -y 'java-*-openjdk-devel'
+    zypper -n install 'java-*-openjdk-devel'
 
     # Needed to parse OpenStack commands used by infra stack commands
     # to initialize Heat template based systems.
-    zypper install -y jq
+    zypper -n install jq
 
 }
 
