@@ -238,6 +238,23 @@
         - short
         - long
 
+- project:
+    name: cicn-vicn
+    jobs:
+        - 'cicn-vicn-verify-{stream}-{os}'
+        - 'cicn-vicn-merge-{stream}-{os}'
+    project: 'cicn'
+    os:
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+    stream:
+        - master:
+            branch: 'vicn/master'
+            repo-stream-part: 'master'
+    type:
+        - short
+        - long
+
 - job-template:
     name: 'cicn-longbow-merge-{stream}-{os}'
 
@@ -1570,7 +1587,7 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'cicn-android-sdk-verify-{stream}-{os}'
+    name: 'cicn-vicn-verify-{stream}-{os}'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
@@ -1608,8 +1625,58 @@
     builders:
         - shell:
             !include-raw-escape:
-                - include-raw-cicn-android-sdk-build.sh
+                - include-raw-cicn-vicn-build.sh
 
     publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'cicn-vicn-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-patch-merged:
+            name: '{project}'
+            branch: '{branch}'
+        - timed: '@daily'
+
+    builders:
+        - shell:
+            !include-raw-escape:
+                - include-raw-cicn-vicn-build.sh
+    publishers:
+        - archive:
+            artifacts: '*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
