@@ -78,7 +78,7 @@
     name: 'vpp-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
     concurrent: true
 
     logrotate:
@@ -136,7 +136,7 @@
     name: 'vpp-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
     concurrent: true
 
     logrotate:
@@ -199,7 +199,7 @@
     name: 'vpp-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -285,7 +285,7 @@
     name: 'vpp-csit-verify-virl-{stream}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
     concurrent: true
 
     logrotate:
@@ -348,7 +348,7 @@
     name: 'vpp-csit-verify-hw-perf-{stream}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
     concurrent: false
 
     logrotate:
@@ -442,7 +442,7 @@
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-2c-8g
+    node: ubuntu1604-basebuild-4c-16g
     concurrent: true
 
     logrotate:
@@ -503,7 +503,7 @@
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-2c-8g
+    node: ubuntu1604-basebuild-4c-16g
     concurrent: true
 
     logrotate:
@@ -580,7 +580,7 @@
     name: 'vpp-make-test-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-2c-8g
+    node: ubuntu1604-basebuild-4c-16g
     concurrent: true
 
     logrotate:
@@ -641,7 +641,7 @@
     name: 'vpp-make-test-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-2c-8g
+    node: ubuntu1604-basebuild-4c-16g
     concurrent: true
 
     logrotate:
@@ -718,7 +718,7 @@
     name: 'vpp-test-packagecloud-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
     concurrent: true
 
     logrotate:
@@ -788,7 +788,7 @@
     name: 'vpp-promote-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-2c-8g'
+    node: '{os}-basebuild-4c-16g'
 
     logrotate:
       daysToKeep: '{build-days-to-keep}'
