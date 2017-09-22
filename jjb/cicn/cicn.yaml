@@ -1555,6 +1555,12 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -1650,6 +1656,12 @@
             branch: '{branch}'
         - os-parameter:
             os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
         - gerrit-trigger-scm:
@@ -1668,12 +1680,26 @@
         - timed: '@daily'
 
     builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'cicn-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
         - shell:
             !include-raw-escape:
                 - include-raw-cicn-vicn-build.sh
+        - provide-maven-settings:
+            settings-file: 'cicn-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-cicn-maven-push.sh
     publishers:
         - archive:
-            artifacts: 'build/*.deb,build/*.rpm'
+            artifacts: 'build/*.rpm,build/*.deb'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
