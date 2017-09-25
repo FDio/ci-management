@@ -398,6 +398,8 @@
                     comment-contains-value: 'vpp-verify-perf-vhost'
                 - comment-added-contains-event:
                     comment-contains-value: 'vpp-verify-perf-acl'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-memif'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'

@@ -3689,6 +3689,7 @@
           perf_verify_lisp - 4Lisp, 6Lisp
           perf_verify_vxlan - Vxlan
           perf_verify_vhost - Vhost
+          perf_verify_memif - Memif
       default tags for vpp startup config and perf test type
           1T1C
               one worker thread, one core
@@ -3745,6 +3746,8 @@
                     comment-contains-value: 'verify-perf-vxlan'
                 - comment-added-contains-event:
                     comment-contains-value: 'verify-perf-vhost'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-memif'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
