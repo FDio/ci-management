@@ -26,6 +26,7 @@
             repo-os-part: 'ubuntu.xenial.main'
     odl:
         - boron
+        - carbon
 
 - project:
     name: csit-hc2vpp-perf
