@@ -321,6 +321,12 @@
       - workspace-cleanup:
           fail-build: false
 
+- publisher:
+    name: retry-build-on-builder-error
+    publishers:
+      - naginator:
+          max-failed-builds: 1
+
 ###### BUILDERS
 - builder:
     name: ci-management-check-unicode
