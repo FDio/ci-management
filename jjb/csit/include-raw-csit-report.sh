@@ -4,7 +4,7 @@ set -xe -o pipefail
 
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/csit
-[ "$DOC_DIR" ] || DOC_DIR=resources/tools/report_gen
+[ "$DOC_DIR" ] || DOC_DIR=resources/tools/presentation
 [ "$BUILD_DIR" ] || BUILD_DIR=${DOC_DIR}/_build
 [ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources/report
