@@ -131,14 +131,14 @@
                 - include-raw-vpp-build.sh
     publishers:
         - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb,core'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
+            archive-artifacts: '/tmp/vpp-failed-unittests/*/*,**/core'
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
