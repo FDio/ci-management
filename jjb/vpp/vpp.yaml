@@ -138,7 +138,7 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
+            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
 - job-template:
     name: 'vpp-verify-image-{stream}-{os}'
