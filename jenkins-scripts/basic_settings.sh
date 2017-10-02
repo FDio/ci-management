@@ -18,7 +18,7 @@ case "$(facter operatingsystem)" in
 #    echo 'deb http://nexus.fd.io/content/repositories/fd.io.dev/ ./' >> /etc/apt/sources.list
 
     # Configure Ubuntu mirror
-    perl -pi -e 'unless(m{(security|fd\.io)}){ s{://[^/]+/}{://ca.archive.ubuntu.com/} }' /etc/apt/sources.list
+    perl -pi -e 'unless(m{fd\.io}){ s{://[^/]+/}{://ca.archive.ubuntu.com/} }' /etc/apt/sources.list
     ;;
   *)
     # Do nothing on other distros for now
