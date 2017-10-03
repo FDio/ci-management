@@ -21,6 +21,9 @@
         - '1707':
             branch: 'stable/1707'
             repo-stream-part: 'stable.1707'
+        - '1710':
+            branch: 'stable/1710'
+            repo-stream-part: 'stable.1710'
     os:
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
