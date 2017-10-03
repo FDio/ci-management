@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_2fdd3771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-10-03T19:49:04Z",
+      "side": 1,
+      "message": "Please fix your commit message to be a) easily readable and b) to conform to good message style see the linked blog post on writing good messages.\n\nhttps://chris.beams.io/posts/git-commit/",
+      "revId": "227945f847304fd676032e399eff7a79cd57f6ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
