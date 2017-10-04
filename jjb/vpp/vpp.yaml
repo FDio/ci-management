@@ -893,10 +893,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
+        - gerrit-trigger-patch-submitted:
             name: '{project}'
             branch: '{branch}'
-            comment-trigger-value: 'test-cpoc'
 
     builders:
         - shell:
