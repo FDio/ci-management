@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_d7dd1516",
+        "filename": "packer/templates/basebuild.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-10-05T17:39:29Z",
+      "side": 1,
+      "message": "Why are you using the flavor-id instead of the flavor-name?",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "c182570eb954e7a4a76eeb650abcb8c4fc757381",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
