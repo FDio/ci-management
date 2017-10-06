@@ -184,10 +184,14 @@ ubuntu_systems() {
 
 opensuse_systems() {
 
+    # Update to latest available packages and security bug-fixes
+    echo "---> Updating openSuSE system to latest available packages $(date +'%Y%m%dT%H%M%S')"
+    zypper update -y
+
     # openSuSE Install build tools
     echo "---> Installing openSuSE build tools $(date +'%Y%m%dT%H%M%S')"
     OPENSUSE_TOOLS_PKGS="glibc-devel-static java-1_8_0-openjdk-devel yum-utils \
-    openssl indent pkg-config emacs"
+    openssl indent pkg-config emacs chrpath shadow libnuma-devel clang3_8 indent"
     zypper install -y "${OPENSUSE_TOOLS_PKGS}"
 
     # Memory leakage checks
@@ -195,8 +199,8 @@ opensuse_systems() {
 
     # openSuSE Install Python dependencies
     echo "---> Installing openSuSE Python dependencies $(date +'%Y%m%dT%H%M%S')"
-    OPENSUSE_PYTHON_PKGS="python-devel python-virtualenv python-setuptools \
-    python-pip python-wheel libmysqlclient-dev kernel-devel"
+    OPENSUSE_PYTHON_PKGS="python-devel python3-devel python-virtualenv python-setuptools \
+    python-pip python3-pip python-rpm-macros python-wheel libmysqlclient-dev kernel-devel python3"
     zypper install -y "${OPENSUSE_PYTHON_PKGS}"
 
     # openSuSE Install Documentation packages
@@ -221,7 +225,7 @@ opensuse_systems() {
     # openSuSE Install VPP packages to shorten build times
     echo "---> Installing VPP dependencies $(date +'%Y%m%dT%H%M%S')"
     OPENSUSE_VPP_PKGS="curl autoconf automake bison ccache git libtool \
-    git-review ctags cscope libxml2-tools unzip lsb-release devscripts"
+    git-review ctags cscope libxml2-tools unzip distribution-release devscripts"
     zypper install -y "${OPENSUSE_VPP_PKGS}"
 
     # openSuSE Install TLDK dependencies
@@ -234,11 +238,13 @@ opensuse_systems() {
     TOOL_PKGS="iproute2 ethtool vlan bridge-utils vim gdb  gdbserver"
     zypper install -y "${TOOL_PKGS}"
 
+    # Leap 42.3 does not have a recent NASM version and VPP requires NASM 2.12 minimum so installing from TW repo
+    echo "---> Installing NASM from tumbleweed $(date +'%Y%m%dT%H%M%S')"
+    zypper install -y https://download.opensuse.org/tumbleweed/repo/oss/suse/x86_64/nasm-2.13.01-2.1.x86_64.rpm
 
     # openSuSE Install Puppet packages
     PUPPET_PKGS="libxml2-devel libxslt-devel ruby-devel zlib-devel"
     zypper install -y "${PUPPET_PKGS}"
-
 }
 
 all_systems() {
