@@ -173,8 +173,6 @@
         - 'cicn-vpp-plugin-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
