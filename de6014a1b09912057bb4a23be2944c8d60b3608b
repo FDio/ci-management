@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_c32b17ea",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2017-10-09T13:55:26Z",
+      "side": 1,
+      "message": "Please break the line with a \\ just before the URL. Long lines make it harder to read",
+      "revId": "de6014a1b09912057bb4a23be2944c8d60b3608b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
