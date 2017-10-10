@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_07137ab9",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-10T08:11:07Z",
+      "side": 1,
+      "message": "sorry, the packages are \"libclang llvm-clang\" not \"clang3_8\"",
+      "parentUuid": "1a486d77_e7a61ec1",
+      "range": {
+        "startLine": 200,
+        "startChar": 14,
+        "endLine": 200,
+        "endChar": 21
+      },
+      "revId": "de6014a1b09912057bb4a23be2944c8d60b3608b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_877c0a22",
         "filename": "packer/provision/baseline.sh",
         "patchSetId": 5
