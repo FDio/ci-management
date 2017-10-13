@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_10b6093e",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-13T08:24:03Z",
+      "side": 1,
+      "message": "If you don\u0027t use the --no-gpgcheck here you\u0027re going to have troubles everytime the command \"zypper refresh\" is called...",
+      "range": {
+        "startLine": 214,
+        "startChar": 40,
+        "endLine": 214,
+        "endChar": 46
+      },
+      "revId": "08ce2507fd25c743d756b426412c21e9d4c84b08",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_703addce",
         "filename": "packer/provision/baseline.sh",
         "patchSetId": 9
