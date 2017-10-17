@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_ffe9f61a",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-17T06:00:31Z",
+      "side": 1,
+      "message": "You completely ignored both my patches and comments.\n\nThis is a patch addressing openSUSE: why are you applying modifications to the RedHat portion of the script?\nBeside, gcc6 and distribution-release are required by openSUSE.",
+      "range": {
+        "startLine": 34,
+        "startChar": 58,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_dfee3a22",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-17T06:00:31Z",
+      "side": 1,
+      "message": "Why didn\u0027t you add also the \"check-devel\" package required to run unit-tests which I had in my patch (v.12)?",
+      "range": {
+        "startLine": 208,
+        "startChar": 38,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_bff37e09",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-17T06:00:31Z",
+      "side": 1,
+      "message": "\"lsb-release\" package is not required for openSUSE and once my other patchset is merged it won\u0027t be required for any distribution really.\nOn the other hand, the package \"distribution-release\" which I had in my patchset (v.12) has been dropped in yours. That package is required and needs to be added.",
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9ff8c2e6",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-17T06:00:31Z",
+      "side": 1,
+      "message": "Ok, why did you ignore my patch again?\nOn Leap 42.3 zypper does not properly import keys and we required to run the manual key installation with the \"rpm\" command (I had it in v.12 of this patch).\nNot doing that causes issues any time we invoke \"zypper refresh\", causing the usual error with rejected key.\nPlease, include the changes I made in v.12 of this patch.",
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
