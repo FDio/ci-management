@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_3a779c04",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-10-17T23:57:25Z",
+      "side": 1,
+      "message": "revert the above change",
+      "parentUuid": "1a486d77_ffe9f61a",
+      "range": {
+        "startLine": 34,
+        "startChar": 58,
+        "endLine": 34,
+        "endChar": 65
+      },
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_dfee3a22",
         "filename": "packer/provision/basebuild.sh",
         "patchSetId": 13
@@ -48,6 +72,47 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_5ad818ef",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-10-17T23:57:25Z",
+      "side": 1,
+      "message": "add check-devel",
+      "parentUuid": "1a486d77_dfee3a22",
+      "range": {
+        "startLine": 208,
+        "startChar": 38,
+        "endLine": 208,
+        "endChar": 46
+      },
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_1ae2a09f",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-10-17T23:57:25Z",
+      "side": 1,
+      "message": "add gcc6",
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_bff37e09",
         "filename": "packer/provision/basebuild.sh",
         "patchSetId": 13
@@ -59,6 +124,41 @@
       "writtenOn": "2017-10-17T06:00:31Z",
       "side": 1,
       "message": "\"lsb-release\" package is not required for openSUSE and once my other patchset is merged it won\u0027t be required for any distribution really.\nOn the other hand, the package \"distribution-release\" which I had in my patchset (v.12) has been dropped in yours. That package is required and needs to be added.",
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_3ae55ca8",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-10-17T23:57:25Z",
+      "side": 1,
+      "message": "add distribution-release (keep lsb-release)",
+      "parentUuid": "1a486d77_bff37e09",
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_faeea48a",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 121
+      },
+      "writtenOn": "2017-10-17T23:57:25Z",
+      "side": 1,
+      "message": "add cloud-init",
       "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
