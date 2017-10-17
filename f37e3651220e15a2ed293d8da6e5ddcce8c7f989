@@ -79,6 +79,29 @@
       "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9a81f04c",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-17T14:57:25Z",
+      "side": 1,
+      "message": "Ok, this command actually works and seems to be forcing the importing of keys during the refresh operation.\n\nHaving said that, the --gpg-auto-import-keys for the \"ar\" is useless and does not do anything at all wrt keys importing.",
+      "range": {
+        "startLine": 217,
+        "startChar": 33,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "f37e3651220e15a2ed293d8da6e5ddcce8c7f989",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
