@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a486d77_b5571f02",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-18T07:58:48Z",
+      "side": 1,
+      "message": "You have \"libclang\" and \"llvm-clang\" also in the next list (ODRL) of packages.",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "61f8f009d5f1b0098e729eb0859f9147dfa19740",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_fa31040c",
         "filename": "packer/provision/baseline.sh",
         "patchSetId": 15
