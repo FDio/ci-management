@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_fa31040c",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-18T07:00:41Z",
+      "side": 1,
+      "message": "Nit picking: blank space in the URI (after the last /)",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 99
+      },
+      "revId": "61f8f009d5f1b0098e729eb0859f9147dfa19740",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_da364803",
+        "filename": "packer/provision/baseline.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-18T07:00:41Z",
+      "side": 1,
+      "message": "Line 221 can be removed now since no updates are being performed.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 41
+      },
+      "revId": "61f8f009d5f1b0098e729eb0859f9147dfa19740",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
