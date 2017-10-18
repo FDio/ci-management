@@ -28,7 +28,6 @@
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
     odl:
-        - boron
         - carbon
 
 - project:
