@@ -56,12 +56,6 @@
         - master:
             branch: 'master'
             branch-id: 'oper'
-        - '1606':
-            branch: 'rls1606'
-            branch-id: 'oper-rls1606'
-        - '1609':
-            branch: 'rls1609'
-            branch-id: 'oper-rls1609'
         - '1701':
             branch: 'rls1701'
             branch-id: 'oper-rls1701'
