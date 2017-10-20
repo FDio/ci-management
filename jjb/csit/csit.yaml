@@ -149,8 +149,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-perf-timeout}'
+        - fdio-infra-wrappers-build-perf-timeout:
+            build-perf-timeout: '{build-perf-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:
