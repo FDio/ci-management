@@ -136,14 +136,6 @@
             fail: true
 
 - wrapper:
-    name: build-perf-timeout
-    wrappers:
-        - timeout:
-            type: no-activity
-            timeout: 2880
-            fail: true
-
-- wrapper:
     # This wrapper is used for all jobs that require no-activity timeouts
     name: fdio-infra-wrappers-non-activity-timeout
     wrappers:
@@ -174,23 +166,6 @@
       - ssh-agent-credentials:
           users:
               - 'jenkins-gerrit-credentials'
-      - jclouds:
-          single-use: True
-      - openstack:
-          single-use: True
-
-- wrapper:
-    # This wrapper is used for all performence jobs that require timeouts
-    name: fdio-infra-wrappers-build-perf-timeout
-    wrappers:
-      - timeout:
-          type: no-activity
-          timeout: '{build-perf-timeout}'
-          fail: true
-      - timestamps
-      - ssh-agent-credentials:
-          users:
-            - 'jenkins-gerrit-credentials'
       - jclouds:
           single-use: True
       - openstack:

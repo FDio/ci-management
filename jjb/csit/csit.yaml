@@ -98,8 +98,6 @@
     wrappers:
         - fdio-infra-wrappers:
             build-timeout: '{build-timeout}'
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
 
     triggers:
         - gerrit-trigger-patch-submitted:
@@ -149,8 +147,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-build-perf-timeout:
-            build-perf-timeout: '{build-perf-timeout}'
+        - fdio-infra-wrappers-non-activity-timeout:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:
@@ -271,8 +269,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
+        - fdio-infra-wrappers-non-activity-timeout:
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:
@@ -1259,10 +1257,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:
@@ -1314,10 +1310,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 600
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - timed: '0 4 * * 0'
@@ -1363,10 +1357,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 600
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - timed: '0 4 * * 2,6'
@@ -1477,10 +1469,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-patch-submitted:
@@ -1540,10 +1530,8 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - reverse:
@@ -1619,10 +1607,8 @@
             choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit:
@@ -1711,10 +1697,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - timed: 'H H(17-20) * * *'
@@ -2103,10 +2087,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - timed: 'H H(17-20) * * 2,6'
@@ -2507,10 +2489,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit:
@@ -2594,10 +2574,8 @@
             branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - timed: 'H H(0-2) * * *'
@@ -2684,10 +2662,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit:
@@ -2766,10 +2742,8 @@
             choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-perf-timeout}'
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 360
+            build-timeout: '{build-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:
