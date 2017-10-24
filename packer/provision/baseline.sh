@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TEST
+
 # vim: ts=4 sw=4 sts=4 et tw=72 :
 
 # force any errors to cause the script and job to end in failure
