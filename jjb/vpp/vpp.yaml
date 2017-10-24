@@ -10,6 +10,7 @@
         - 'vpp-make-test-docs-verify-{stream}'
         - 'vpp-test-packagecloud-{stream}-{os}'
         - 'vpp-promote-{stream}-{os}'
+        - 'vpp-test-poc-verify-{stream}-{os}'
 
     project: 'vpp'
     os:
