@@ -5,8 +5,6 @@
         - 'cicn-longbow-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -26,8 +24,6 @@
         - 'cicn-libparc-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -47,8 +43,6 @@
         - 'cicn-libccnx-common-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -68,8 +62,6 @@
         - 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -89,8 +81,6 @@
         - 'cicn-libccnx-portal-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -110,8 +100,6 @@
         - 'cicn-libicnet-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -131,8 +119,6 @@
         - 'cicn-metis-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
@@ -152,8 +138,6 @@
         - 'cicn-http-server-merge-{stream}-{os}'
     project: 'cicn'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
         - centos7:
