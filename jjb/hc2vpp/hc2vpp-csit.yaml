@@ -125,6 +125,8 @@
             stream: '{stream}'
         - odl-parameter:
             odl: '{odl}'
+        - hc-parameter:
+            hc: '{hc}'
 
     scm:
         - gerrit-trigger-scm:
@@ -137,11 +139,15 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-csit'
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+            comment-trigger-value: 'verify-csit-default'
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+            comment-trigger-value: 'verify-csit honeycomb={hc}'
+
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
@@ -393,3 +399,11 @@
             name: ODL
             default: '{odl}'
             description: "ODL version parameter."
+
+- parameter:
+    name: hc-commit
+    parameters:
+        - string:
+            name: HC
+            default: '{hc}'
+            description: "Honeycomb infra commit ID to build HC2VPP against."
