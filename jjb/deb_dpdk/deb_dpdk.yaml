@@ -7,8 +7,6 @@
 
     project: 'deb_dpdk'
     os:
-        - ubuntu1404:
-            repo-os-part: 'ubuntu.trusty.main'
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
     stream:
