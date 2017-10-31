@@ -216,7 +216,7 @@
 - job-template:
     name: 'ci-management-verify-packer'
     project-type: freestyle
-    node: ubuntu1404-basebuild-4c-4g
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     properties:
@@ -285,7 +285,7 @@
 - job-template:
     name: 'ci-management-merge-packer-{platforms}-{templates}'
     project-type: freestyle
-    node: ubuntu1404-basebuild-4c-4g
+    node: ubuntu1604-basebuild-4c-4g
     concurrent: true
 
     properties:
