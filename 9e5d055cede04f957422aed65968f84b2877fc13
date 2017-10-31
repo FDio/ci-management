@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "16c69c61_c2dccd4d",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 750
+      },
+      "writtenOn": "2017-10-31T14:34:11Z",
+      "side": 1,
+      "message": "Hi Andrew,\nI think this is more a coding-style thing rather than a need. It looks nicer (IMHO) like this rather than having many times the instruction \"zypper -n install\" to install the various packages.",
+      "parentUuid": "7bbab186_8ee64cdf",
+      "revId": "9e5d055cede04f957422aed65968f84b2877fc13",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99114ed2_294c8e58",
         "filename": "packer/provision/basebuild.sh",
         "patchSetId": 20
