@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xeu -o pipefail
+set -xe -o pipefail
 
 # Parse optional arguments from gerrit comment trigger
 for i in ${GERRIT_EVENT_COMMENT_TEXT}; do
@@ -25,7 +25,7 @@ if [ -n "${hc_commit_id}" ]; then
     cd honeycomb
     ref=`git ls-remote -q | grep ${hc_commit_id} | awk '{print $2}'`
     git fetch origin ${ref} && git checkout FETCH_HEAD
-    mvn clean install -DskipTests -Dcheckstyle.skip -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r
+    mvn clean install -DskipTests -Dcheckstyle.skip -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
     if [ $? != 0 ]; then
         echo "Honeycomb infra build failed."
         exit 1
