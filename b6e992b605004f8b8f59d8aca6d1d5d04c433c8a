@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5bed870_cb4605b8",
+        "filename": "jjb/hc2vpp/hc2vpp-csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2017-10-31T14:39:31Z",
+      "side": 1,
+      "message": "I thought we had a global macro that takes care of this?",
+      "revId": "b6e992b605004f8b8f59d8aca6d1d5d04c433c8a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
