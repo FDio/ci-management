@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "739211e5_16a8f9c9",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2017-11-01T14:40:10Z",
+      "side": 1,
+      "message": "Actually this was added because unlike RH and Ubuntu systems openSUSE wasn\u0027t reading the packages variables as individual packages.",
+      "parentUuid": "7bbab186_8ee64cdf",
+      "revId": "9e5d055cede04f957422aed65968f84b2877fc13",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99114ed2_294c8e58",
         "filename": "packer/provision/basebuild.sh",
         "patchSetId": 20
