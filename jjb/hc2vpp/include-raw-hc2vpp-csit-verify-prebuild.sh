@@ -31,6 +31,8 @@ if [ -n "${hc_commit_id}" ]; then
         exit 1
     fi
     cd ${WORKSPACE}
+    # Clean up when done. Leftover build files interfere with building hc2vpp.
+    rm -rf honeycomb
 fi
 
 # TODO: Add option to build custom VPP and NSH packages

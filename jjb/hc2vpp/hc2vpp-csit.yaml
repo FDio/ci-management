@@ -295,6 +295,9 @@
                 notbuilt: true
 
     prebuilders:
+        - provide-maven-settings:
+            settings-file: 'honeycomb-settings'
+            global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
