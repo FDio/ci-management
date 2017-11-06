@@ -245,7 +245,7 @@
     name: 'csit-vpp-perf-{stream}-{type}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: true
 
     logrotate:
@@ -1583,7 +1583,7 @@
     name: 'csit-report-merge-{stream}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: false
 
     logrotate:
