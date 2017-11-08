@@ -10,7 +10,7 @@ function setup {
         REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
         echo "REPO_URL: ${REPO_URL}"
         # Setup by installing vpp-dev and vpp-lib
-        if [ "$OS_ID" == "Ubuntu" ]; then
+        if [ "$OS_ID" == "ubuntu" ]; then
             echo "deb ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
             sudo apt-get update || true
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
