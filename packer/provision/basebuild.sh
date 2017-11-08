@@ -160,7 +160,8 @@ ubuntu_systems() {
     echo "---> Installing deb_dpdk packages $(date +'%Y%m%dT%H%M%S')"
     DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev debian-xcontrol devscripts \
       pristine-tar dh-python python-sphinx libpcap0.8-dev libstdc++5 \
-      python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme"
+      python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme \
+      python3 python3-sphinx python3-sphinx-rtd-theme libnuma-dev"
     apt install -y ${DEB_DPDK_PKGS}
 
     sudo apt install -y libcap-dev libpcap-dev
@@ -220,8 +221,7 @@ opensuse_systems() {
     # Install openSUSE Python resources and libraries
     echo "--->Installing Python resources & libraries $(date +'%Y%m%dT%H%M%S')"
     OPRL="python-devel python-setuptools python-pip python-wheel python-mock \
-        python3-devel python3-pip python-rpm-macros shadow libnuma-devel \
-        python3"
+        python3-devel python3-pip python-rpm-macros shadow libnuma-devel" 
     install_pkgs "$OPRL"
 
     # Install openSUSE Documentation packages
@@ -277,6 +277,9 @@ all_systems() {
     mv /usr/local/bin/packer /usr/local/bin/packer.io
 
     # Install packagecloud.io
+    apt-get update
+    apt-get install ruby-dev
+    gem install rake
     gem install package_cloud
 }
 
