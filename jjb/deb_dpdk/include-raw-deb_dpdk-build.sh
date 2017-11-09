@@ -32,7 +32,7 @@ sudo apt-get update
 sudo apt-get install -y ${MISSING_PKGS}
 
 pkg_version=$(dpkg-parsechangelog --show-field Version)
-orig_version=$(echo ${pkg_version} | perl -pe 's/-.+$//; s/~/-/') # remove debian suffix, replace ~rc1 with -rc1, for instance
+orig_version=$(echo ${pkg_version} | perl -pe 's/-.+$//') # remove debian suffix
 orig_tarball=$(git ls-tree remotes/origin/pristine-tar | perl -ne "print /(dpdk_${orig_version}.orig.+).id/")
 
 pristine-tar checkout ${orig_tarball}
