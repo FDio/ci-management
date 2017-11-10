@@ -6,6 +6,8 @@
         - 'ci-management-verify-packer'
         - 'ci-management-merge-packer-{platforms}-{templates}'
 
+    build-node: 'centos7-basebuild-4c-4g'
+
     platforms:
         - centos
         - ubuntu-16.04
@@ -20,7 +22,7 @@
     name: ci-management-verify-jjb
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
     concurrent: true
 
     logrotate:
@@ -49,9 +51,19 @@
             branch: '{branch}'
 
     builders:
-        - shell: |
-            jenkins-jobs test --recursive -o job_output jjb/
-        - ci-management-check-unicode
+          - config-file-provider:
+              files:
+                - file-id: 'jjbini'
+                  variable: 'JJBINI'
+          - shell: |
+              virtualenv $WORKSPACE/venv
+              source $WORKSPACE/venv/bin/activate
+              pip install --upgrade pip
+              pip freeze
+              pip install jenkins-job-builder
+              jenkins-jobs -l DEBUG --conf $JJBINI test -o archives/job_output jjb/
+              gzip archives/job_output/*
+          - ci-management-check-unicode
 
     publishers:
         - archive-artifacts:
@@ -64,7 +76,7 @@
     name: 'ci-management-merge-jjb'
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
 
     logrotate:
         daysToKeep: 30
@@ -92,10 +104,20 @@
             branch: '{branch}'
 
     builders:
-        - shell: |
-            pip freeze
-            jenkins-jobs --version
-            jenkins-jobs update --recursive --delete-old --workers 4 jjb/
+      - config-file-provider:
+              files:
+                - file-id: 'jjbini'
+                  variable: 'JJBINI'
+      - shell: |
+          virtualenv $WORKSPACE/venv
+          source $WORKSPACE/venv/bin/activate
+          pip install --upgrade pip
+          pip freeze
+          pip install jenkins-job-builder
+          jenkins-jobs -l DEBUG --conf $JJBINI test -o archives/job_output jjb/
+          gzip archives/job_output/*
+      - ci-management-check-unicode
+
 
     publishers:
         - fdio-infra-shiplogs:
@@ -105,7 +127,7 @@
     name: ci-management-verify-zuul
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
     concurrent: true
 
     logrotate:
@@ -132,7 +154,7 @@
     name: ci-management-merge-zuul
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
 
     logrotate:
         daysToKeep: 30
@@ -216,7 +238,7 @@
 - job-template:
     name: 'ci-management-verify-packer'
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{build-node}'
     concurrent: true
 
     properties:
@@ -285,7 +307,7 @@
 - job-template:
     name: 'ci-management-merge-packer-{platforms}-{templates}'
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{build-node}'
     concurrent: true
 
     properties:
