@@ -6,6 +6,8 @@
         - 'ci-management-verify-packer'
         - 'ci-management-merge-packer-{platforms}-{templates}'
 
+    build-node: 'centos7-basebuild-4c-4g'
+
     platforms:
         - centos
         - ubuntu-16.04
@@ -20,7 +22,7 @@
     name: ci-management-verify-jjb
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
     concurrent: true
 
     logrotate:
@@ -64,7 +66,7 @@
     name: 'ci-management-merge-jjb'
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
 
     logrotate:
         daysToKeep: 30
@@ -105,7 +107,7 @@
     name: ci-management-verify-zuul
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
     concurrent: true
 
     logrotate:
@@ -132,7 +134,7 @@
     name: ci-management-merge-zuul
 
     project-type: freestyle
-    node: jjb
+    node: '{build-node}'
 
     logrotate:
         daysToKeep: 30
@@ -216,7 +218,7 @@
 - job-template:
     name: 'ci-management-verify-packer'
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{build-node}'
     concurrent: true
 
     properties:
@@ -285,7 +287,7 @@
 - job-template:
     name: 'ci-management-merge-packer-{platforms}-{templates}'
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: '{build-node}'
     concurrent: true
 
     properties:
