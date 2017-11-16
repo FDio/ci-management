@@ -865,7 +865,7 @@
     name: 'vpp-test-poc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-s'
+    node: '{os}-m'
     concurrent: true
 
     logrotate:
