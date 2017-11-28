@@ -43,23 +43,13 @@ echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
-    if [ "$OS_ID" == "opensuse" ]; then
-        echo "Building for openSUSE"
-        [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
-    else
-        echo "Building using \"make verify\""
-        [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
-    fi
+    echo "Building using \"make verify\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
-    if [ "$OS_ID" == "opensuse" ]; then
-        echo "Building for openSUSE"
-        [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
-    else
-        echo "Building using \"make build-root/vagrant/build.sh\""
-        [ "x${DRYRUN}" == "xTrue" ] || make install-dep
-        [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
-        [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
-    fi
+    echo "Building using \"make build-root/vagrant/build.sh\""
+    [ "x${DRYRUN}" == "xTrue" ] || make install-dep
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
+    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
 fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
