@@ -2680,6 +2680,8 @@
                     comment-contains-value: 'verify-perf-vhost'
                 - comment-added-contains-event:
                     comment-contains-value: 'verify-perf-memif'
+                - comment-added-contains-event:
+                    comment-contains-value: 'verify-perf-ipsechw'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
