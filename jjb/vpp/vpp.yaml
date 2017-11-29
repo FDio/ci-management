@@ -409,6 +409,8 @@
                     comment-contains-value: 'vpp-verify-perf-acl'
                 - comment-added-contains-event:
                     comment-contains-value: 'vpp-verify-perf-memif'
+                - comment-added-contains-event:
+                    comment-contains-value: 'vpp-verify-perf-ipsechw'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
