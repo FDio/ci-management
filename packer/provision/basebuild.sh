@@ -215,7 +215,7 @@ opensuse_systems() {
 
     # Install openSUSE Packaging utilities and resources
     echo "--->Installing PKG utilities & resources $(date +'%Y%m%dT%H%M%S')"
-    OPP="yum-utils"
+    OPP="yum-utils rpm-build"
     install_pkgs "$OPP"
 
     # Install openSUSE Python resources and libraries
