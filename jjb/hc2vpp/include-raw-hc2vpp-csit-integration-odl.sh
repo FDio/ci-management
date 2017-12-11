@@ -19,6 +19,7 @@ if [ $? != 0 ]; then
 fi
 
 cd csit
+echo "CSIT commit-id: $(git rev-parse HEAD)"
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-hc2vpp-integration-odl.sh ]
 then
