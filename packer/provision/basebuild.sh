@@ -210,7 +210,8 @@ opensuse_systems() {
     echo "--->Installing DEV resources & libraries $(date +'%Y%m%dT%H%M%S')"
     ODRL="kernel-devel libffi-devel libconfuse-devel libapr1 libapr1-devel \
         libexpat-devel pcre-devel libxml2-devel ruby-devel zlib-devel \
-        glibc-devel-static libstdc++6 libclang llvm-clang check-devel"
+        glibc-devel-static libstdc++6 libclang llvm-clang check-devel \
+	libboost_headers-devel libboost_thread-devel"
     install_pkgs "$ODRL"
 
     # Install openSUSE Packaging utilities and resources
@@ -231,7 +232,7 @@ opensuse_systems() {
         python-sphinx_rtd_theme"
     install_pkgs "$ODP"
 
-    # Install openSUSE Compliation packages
+    # Install openSUSE Compilation packages
     echo "--->Installing Compliation packages $(date +'%Y%m%dT%H%M%S')"
     OCP="cpp gcc gcc-c++ cmake make gcc6 libstdc++-devel ruby-devel"
     install_pkgs "$OCP"
