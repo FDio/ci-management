@@ -65,7 +65,7 @@ fi
 rm vpp-api-java*
 
 # install jvpp jars into maven repo, so that maven picks them up when building hc2vpp
-version=`./jvpp-version`
+version=`./jvpp/version`
 
 current_dir=`pwd`
 cd /usr/share/java
