@@ -15,6 +15,8 @@
             branch: 'master'
         - '1710':
             branch: 'rls1710'
+        - '1801':
+            branch: 'rls1801'
 
 - job-template:
     name: 'csit-hc2vpp-verify-func-{stream}-{os}'
