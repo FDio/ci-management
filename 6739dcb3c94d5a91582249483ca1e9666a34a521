@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11737ed3_a19a0882",
+        "filename": "jjb/scripts/setup_vpp_ubuntu_docker_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-01-17T16:45:55Z",
+      "side": 1,
+      "message": "Year should be 2018 since that\u0027s when this file was first introduced.\n\nThe copyright should be the org that wrote \u003e 50% of the code in the file. So I think should be Cisco Systems, Inc. ?",
+      "revId": "6739dcb3c94d5a91582249483ca1e9666a34a521",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
