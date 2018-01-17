@@ -927,4 +927,6 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+        - retry-build-on-builder-error
+
 
