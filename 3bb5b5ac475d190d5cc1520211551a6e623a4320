@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53c1e96e_e4c94859",
+        "filename": "jjb/scripts/setup_vpp_ubuntu_docker_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-01-17T14:59:07Z",
+      "side": 1,
+      "message": "All code files should have a license header. Bash scripts included.",
+      "revId": "3bb5b5ac475d190d5cc1520211551a6e623a4320",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
