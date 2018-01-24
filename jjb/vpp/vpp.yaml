@@ -124,7 +124,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
+        - gerrit-trigger-trivial-patch-submitted:
             name: '{project}'
             branch: '{branch}'
 
