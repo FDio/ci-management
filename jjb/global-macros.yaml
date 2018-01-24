@@ -195,6 +195,28 @@
                       branch-pattern: '**/{branch}'
 
 - trigger:
+    name: gerrit-trigger-hubris-patch-submitted
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - patchset-created-event:
+                    exclude-drafts: 'false'
+                    exclude-trivial-rebase: 'true'
+                    exclude-no-code-change: 'true'
+                - draft-published-event
+                - comment-added-contains-event:
+                    comment-contains-value: 'recheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'reverify'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{name}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+
+- trigger:
     name: gerrit-trigger-manually-triggered
     triggers:
         - gerrit:
