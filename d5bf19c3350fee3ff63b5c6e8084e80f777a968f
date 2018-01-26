@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bdcd013_5beb357c",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-01-26T18:05:07Z",
+      "side": 1,
+      "message": "These 3 lines need to be indented by 2 more spaces each.",
+      "range": {
+        "startLine": 55,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 32
+      },
+      "revId": "d5bf19c3350fee3ff63b5c6e8084e80f777a968f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
