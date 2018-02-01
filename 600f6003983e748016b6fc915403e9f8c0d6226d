@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ef617b_ea2a47b3",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2018-02-01T23:58:47Z",
+      "side": 1,
+      "message": "It would be good to add a macro if this is commonly used across jobs.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "600f6003983e748016b6fc915403e9f8c0d6226d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "933c4b05_7ecd78f1",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2018-02-01T23:58:47Z",
+      "side": 1,
+      "message": "It would be good to add a macro if this is commonly used across jobs.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 36
+      },
+      "revId": "600f6003983e748016b6fc915403e9f8c0d6226d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
