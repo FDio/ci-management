@@ -253,7 +253,6 @@
     publishers:
         - email-ext:
             recipients: 'nobody@projectrotterdam.info'
-            reply-to:
             content-type: default
             subject: '{email-prefix} $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
             body: |
