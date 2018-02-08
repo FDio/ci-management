@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87984eb5_6382b803",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2018-02-08T15:40:51Z",
+      "side": 0,
+      "message": "I think that 17.10 should remain.  I would interpret the \"last two\" releases as discussed on the email list to mean the last two released releases.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "27920cbb9d2aea5833f863ce0ae76b1828c6bebe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f57fcd_0a88e357",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2018-02-08T15:40:51Z",
+      "side": 0,
+      "message": "Same here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 1
+      },
+      "revId": "27920cbb9d2aea5833f863ce0ae76b1828c6bebe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
