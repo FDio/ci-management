@@ -9,7 +9,7 @@
         - 'vpp-make-test-docs-merge-{stream}'
         - 'vpp-make-test-docs-verify-{stream}'
         - 'vpp-promote-{stream}-{os}'
-        - 'vpp-test-poc-verify-{stream}-{os}'
+        - 'vpp-cpoc-verify-{stream}-{os}'
 
     project: 'vpp'
     os:
@@ -706,10 +706,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-test-poc-verify-{stream}-{os}'
+    name: 'vpp-cpoc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-m'
+    node: '{os}-us'
     concurrent: true
 
     logrotate:
@@ -743,6 +743,9 @@
             name: '{project}'
             branch: '{branch}'
             comment-trigger-value: 'test-cpoc'
+        - gerrit-trigger-trivial-patch-submitted-skip-vote:
+            name: '{project}'
+            branch: '{branch}'
 
     builders:
         - shell:
@@ -764,6 +767,9 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - retry-build-on-builder-error
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 
