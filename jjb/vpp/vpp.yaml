@@ -709,7 +709,7 @@
     name: 'vpp-cpoc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: '{os}-s'
     concurrent: true
 
     logrotate:
