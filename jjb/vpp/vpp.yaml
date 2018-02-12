@@ -24,9 +24,6 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
-        - test:
-            branch: 'stable/test'
-            repo-stream-part: 'stable.test'
         - '1710':
             branch: 'stable/1710'
             repo-stream-part: 'stable.1710'
@@ -47,9 +44,6 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
-        - test:
-            branch: 'stable/test'
-            repo-stream-part: 'stable.test'
         - '1710':
             branch: 'stable/1710'
             repo-stream-part: 'stable.1710'
