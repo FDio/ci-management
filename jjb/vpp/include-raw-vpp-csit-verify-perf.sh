@@ -12,14 +12,19 @@ if [ -x build-root/scripts/csit-test-branch ]; then
     CSIT_BRANCH=`build-root/scripts/csit-test-branch`;
 fi
 
-# Clone csit and start tests
-git clone --depth 1 https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH:-csit-verified}
+# check CSIT_BRANCH value
+if [ "$CSIT_BRANCH" == "" ]; then
+    echo "CSIT_BRANCH not provided => 'latest' will be used"
+    CSIT_BRANCH="latest"
+fi
 
-# If the git clone fails, complain clearly and exit
+# clone csit
+git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
+
+# if the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
-    echo "Failed to run: git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH:-csit-verified}"
-    echo "No such branch ${CSIT_BRANCH:-csit-verified} in https://gerrit.fd.io/r/csit"
-    exit
+    echo "Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit"
+    exit 1
 fi
 
 cp build-root/*.deb csit/
@@ -31,6 +36,43 @@ else
 fi
 
 cd csit
+
+if [ "$CSIT_BRANCH" == "latest" ]; then
+    # set required CSIT branch_id based on VPP master branch; by default use 'oper'
+    case "$VPP_BRANCH" in
+        master )
+            BRANCH_ID="oper"
+            ;;
+        stable/1710 )
+            BRANCH_ID="oper-rls1710"
+            ;;
+        stable/1801 )
+            BRANCH_ID="oper-rls1801"
+            ;;
+        * )
+            BRANCH_ID="oper"
+    esac
+
+    # get the latest verified version of the required branch
+    CSIT_BRANCH=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
+
+    if [ "${CSIT_BRANCH}" == "" ]; then
+        echo "No verified CSIT branch found - exiting"
+        exit 1
+    fi
+
+    # remove 'origin/' from the branch name
+    CSIT_BRANCH=$(echo ${CSIT_BRANCH#origin/})
+fi
+
+# checkout the required csit branch
+git checkout ${CSIT_BRANCH}
+
+if [ $? != 0 ]; then
+    echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
+    exit 1
+fi
+
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-verify-perf.sh ]
 then

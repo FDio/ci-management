@@ -309,6 +309,7 @@
             branch: '{branch}'
 
     builders:
+        - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
         - shell:
             !include-raw-escape:
                 - include-raw-vpp-checkstyle.sh
@@ -401,6 +402,7 @@
                 notbuilt: false
 
     builders:
+        - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
