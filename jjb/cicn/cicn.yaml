@@ -349,6 +349,12 @@
                 - include-raw-cicn-longbow-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -466,6 +472,12 @@
                 - include-raw-cicn-libparc-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -583,6 +595,12 @@
                 - include-raw-cicn-libccnx-common-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -700,6 +718,12 @@
                 - include-raw-cicn-libccnx-transport-rta-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -817,6 +841,12 @@
                 - include-raw-cicn-libccnx-portal-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -934,6 +964,12 @@
                 - include-raw-cicn-libicnet-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'build/*.rpm,build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1051,6 +1087,12 @@
                 - include-raw-cicn-metis-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'metis/build/*.rpm,metis/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1168,6 +1210,12 @@
                 - include-raw-cicn-http-server-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'build/*.rpm,build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1283,6 +1331,12 @@
                 - include-raw-cicn-vpp-plugin-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1400,6 +1454,12 @@
                 - include-raw-cicn-viper-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1515,6 +1575,12 @@
                 - include-raw-cicn-radio-emulators-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1616,6 +1682,12 @@
                 - include-raw-cicn-android-sdk-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'iGetAndroid/app/build/outputs/apk/*.apk,MetisForwarder/app/build/outputs/apk/*.apk,build/viper/viper-armv7//build/outputs/apk/*.apk'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
@@ -1731,5 +1803,11 @@
                 - include-raw-cicn-vicn-build.sh
 
     publishers:
+        - archive:
+            artifacts: 'build/*.rpm,build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
