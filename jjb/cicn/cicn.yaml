@@ -3,6 +3,8 @@
     jobs:
         - 'cicn-longbow-verify-{stream}-{os}'
         - 'cicn-longbow-merge-{stream}-{os}'
+        - 'cicn-longbow-docs-verify-{stream}'
+        - 'cicn-longbow-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -22,6 +24,8 @@
     jobs:
         - 'cicn-libparc-verify-{stream}-{os}'
         - 'cicn-libparc-merge-{stream}-{os}'
+        - 'cicn-libparc-docs-verify-{stream}'
+        - 'cicn-libparc-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -41,6 +45,8 @@
     jobs:
         - 'cicn-libccnx-common-verify-{stream}-{os}'
         - 'cicn-libccnx-common-merge-{stream}-{os}'
+        - 'cicn-libccnx-common-docs-verify-{stream}'
+        - 'cicn-libccnx-common-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -60,6 +66,8 @@
     jobs:
         - 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
         - 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
+        - 'cicn-libccnx-transport-rta-docs-verify-{stream}'
+        - 'cicn-libccnx-transport-rta-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -79,6 +87,8 @@
     jobs:
         - 'cicn-libccnx-portal-verify-{stream}-{os}'
         - 'cicn-libccnx-portal-merge-{stream}-{os}'
+        - 'cicn-libccnx-portal-docs-verify-{stream}'
+        - 'cicn-libccnx-portal-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -98,6 +108,8 @@
     jobs:
         - 'cicn-libicnet-verify-{stream}-{os}'
         - 'cicn-libicnet-merge-{stream}-{os}'
+#        - 'cicn-libicnet-docs-verify-{stream}'
+#        - 'cicn-libicnet-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -117,6 +129,8 @@
     jobs:
         - 'cicn-metis-verify-{stream}-{os}'
         - 'cicn-metis-merge-{stream}-{os}'
+        - 'cicn-metis-docs-verify-{stream}'
+        - 'cicn-metis-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -136,6 +150,8 @@
     jobs:
         - 'cicn-http-server-verify-{stream}-{os}'
         - 'cicn-http-server-merge-{stream}-{os}'
+#        - 'cicn-http-server-docs-verify-{stream}'
+#        - 'cicn-http-server-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -155,6 +171,8 @@
     jobs:
         - 'cicn-vpp-plugin-verify-{stream}-{os}'
         - 'cicn-vpp-plugin-merge-{stream}-{os}'
+#        - 'cicn-vpp-plugin-docs-verify-{stream}'
+#        - 'cicn-vpp-plugin-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -174,6 +192,8 @@
     jobs:
         - 'cicn-viper-verify-{stream}-{os}'
         - 'cicn-viper-merge-{stream}-{os}'
+#        - 'cicn-viper-docs-verify-{stream}'
+#        - 'cicn-viper-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -191,6 +211,8 @@
     jobs:
         - 'cicn-radio-emulators-verify-{stream}-{os}'
         - 'cicn-radio-emulators-merge-{stream}-{os}'
+#        - 'cicn-radio-emulators-docs-verify-{stream}'
+#        - 'cicn-radio-emulators-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -208,6 +230,8 @@
     jobs:
         - 'cicn-android-sdk-verify-{stream}-{os}'
         - 'cicn-android-sdk-merge-{stream}-{os}'
+#        - 'cicn-android-sdk-docs-verify-{stream}'
+#        - 'cicn-android-sdk-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -225,6 +249,8 @@
     jobs:
         - 'cicn-vicn-verify-{stream}-{os}'
         - 'cicn-vicn-merge-{stream}-{os}'
+#        - 'cicn-vicn-docs-verify-{stream}'
+#        - 'cicn-vicn-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -351,6 +377,84 @@
     publishers:
         - archive:
             artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'cicn-longbow-docs-merge-{stream}'
+
+    project-type: freestyle
+    node: ubuntu1604-basebuild-8c-32g
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
+            result: 'success'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'run-docs'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'cicn-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - include-raw-cicn-longbow-build-docs.sh
+    publishers:
+        - archive:
+            artifacts: 'build/documentation/*.tar'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
