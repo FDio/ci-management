@@ -243,6 +243,7 @@
                 - include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape:
+                - ../scripts/setup_vpp_ubuntu_docker_test.sh
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
                 - include-raw-vpp-build.sh
         - shell:
