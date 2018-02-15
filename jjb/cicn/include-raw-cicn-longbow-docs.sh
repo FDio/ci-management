@@ -1,8 +1,6 @@
 #!/bin/bash
 set -xe -o pipefail
 
-SCRIPT_PATH=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
-
 update_cmake_repo() {
     cat /etc/resolv.conf
     echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
