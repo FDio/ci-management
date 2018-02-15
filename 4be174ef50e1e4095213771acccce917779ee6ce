@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb8cca19_6b1769d9",
+        "filename": "jjb/scripts/setup_vpp_ubuntu_docker_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2018-02-15T16:34:05Z",
+      "side": 1,
+      "message": "Please remove whitespace",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "4be174ef50e1e4095213771acccce917779ee6ce",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
