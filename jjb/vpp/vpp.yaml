@@ -57,7 +57,7 @@
     name: 'vpp-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-8c-32g'
+    node: '{os}-us'
     concurrent: true
 
     logrotate:
@@ -97,6 +97,8 @@
         - shell:
             !include-raw-escape: include-raw-vpp-test-checkstyle.sh
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
                 - include-raw-vpp-build.sh
@@ -110,12 +112,16 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-8c-32g'
+    node: '{os}-us'
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -173,6 +179,8 @@
         - shell:
             !include-raw-escape: include-raw-vpp-checkstyle.sh
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
                 - include-raw-vpp-build.sh
@@ -196,12 +204,16 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
 
     project-type: freestyle
-    node: '{os}-basebuild-8c-32g'
+    node: '{os}-us'
     concurrent: true
 
     logrotate:
@@ -261,6 +273,12 @@
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
+
 
 - job-template:
     name: 'vpp-csit-verify-hw-perf-{stream}'
@@ -365,7 +383,7 @@
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: ubuntu1604-us
     concurrent: true
 
     logrotate:
@@ -411,6 +429,8 @@
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-docs.sh
     publishers:
         - archive:
@@ -421,12 +441,16 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: ubuntu1604-us
     concurrent: true
 
     logrotate:
@@ -488,6 +512,8 @@
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-docs.sh
     publishers:
         - archive:
@@ -498,12 +524,17 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
+
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: ubuntu1604-us
     concurrent: true
 
     logrotate:
@@ -549,6 +580,8 @@
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-make-test-docs.sh
     publishers:
         - archive:
@@ -559,12 +592,16 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: ubuntu1604-us
     concurrent: true
 
     logrotate:
@@ -626,6 +663,8 @@
             settings-file: 'vpp-settings'
             global-settings-file: 'global-settings'
         - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
             !include-raw-escape: include-raw-vpp-make-test-docs.sh
     publishers:
         - archive:
@@ -636,6 +675,10 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-promote-{stream}-{os}'
@@ -706,7 +749,7 @@
     name: 'vpp-cpoc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-s'
+    node: '{os}-us'
     concurrent: true
 
     logrotate:
@@ -740,9 +783,6 @@
             name: '{project}'
             branch: '{branch}'
             comment-trigger-value: 'test-cpoc'
-        - gerrit-trigger-trivial-patch-submitted-skip-vote:
-            name: '{project}'
-            branch: '{branch}'
 
     builders:
         - shell:
