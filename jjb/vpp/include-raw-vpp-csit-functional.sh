@@ -15,13 +15,11 @@ fi
 
 # clone csit
 git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
-
 # if the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
     echo "Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit"
     exit 1
 fi
-
 cp build-root/*.deb csit/
 if [ -e dpdk/vpp-dpdk-dkms*.deb ]
 then
@@ -29,10 +27,16 @@ then
 else
     cp /var/cache/apt/archives/vpp-dpdk-dkms*.deb csit/
 fi
-
-cd csit
-
-if [ "$CSIT_BRANCH" == "latest" ]; then
+# Check for CSIT_REF test file
+if [ -e CSIT_REF ]; then
+    source CSIT_REF
+fi
+# If also testing a specific csit refpoint look for CSIT_REF
+if [[ -v CSIT_REF ]]; then
+    (cd csit ; git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF && git checkout FETCH_HEAD)
+else
+    cd csit
+    if [ "$CSIT_BRANCH" == "latest" ]; then
     # set required CSIT branch_id based on VPP master branch; by default use 'oper'
     case "$VPP_BRANCH" in
         master )
@@ -47,25 +51,21 @@ if [ "$CSIT_BRANCH" == "latest" ]; then
         * )
             BRANCH_ID="oper"
     esac
-
     # get the latest verified version of the required branch
     CSIT_BRANCH=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
-
     if [ "${CSIT_BRANCH}" == "" ]; then
         echo "No verified CSIT branch found - exiting"
         exit 1
     fi
-
     # remove 'origin/' from the branch name
     CSIT_BRANCH=$(echo ${CSIT_BRANCH#origin/})
-fi
-
-# checkout the required csit branch
-git checkout ${CSIT_BRANCH}
-
-if [ $? != 0 ]; then
-    echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
-    exit 1
+    fi
+    # checkout the required csit branch
+    git checkout ${CSIT_BRANCH}
+    if [ $? != 0 ]; then
+        echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
+        exit 1
+    fi
 fi
 
 # execute csit bootstrap script if it exists
