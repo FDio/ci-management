@@ -16,6 +16,18 @@ fi
 # clone csit
 git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
 
+# Check for CSIT_REF test file
+if [ -e CSIT_REF ]; then
+    source CSIT_REF
+fi
+
+# If also testing a specific csit refpoint look for CSIT_REF
+if [[ ! -v CSIT_REF ]]; then
+    echo "no CSIT_REF set"
+else
+    (cd csit ; git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF && git checkout FETCH_HEAD)
+fi
+
 # if the git clone fails, complain clearly and exit
 if [ $? != 0 ]; then
     echo "Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit"
