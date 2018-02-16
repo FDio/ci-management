@@ -22,6 +22,18 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+# Check for CSIT_REF test file
+if [ -e CSIT_REF ]; then
+    source CSIT_REF
+fi
+
+# If also testing a specific csit refpoint look for CSIT_REF
+if [[ ! -v CSIT_REF ]]; then
+    echo "no CSIT_REF set"
+else
+    (cd csit ; git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF && git checkout FETCH_HEAD)
+fi
+
 cp build-root/*.deb csit/
 if [ -e dpdk/vpp-dpdk-dkms*.deb ]
 then
