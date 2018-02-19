@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff94a887_43988f90",
+        "filename": "jjb/vpp/include-raw-vpp-csit-functional.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2018-02-19T15:31:44Z",
+      "side": 1,
+      "message": "1. This should be placed after check if git clone fails (lines 31-35 below)\n\n2. This stuff needs to be aligned with code on lines 45-81 - we need to use CSIT_REF or checkout of required CSIT operational branch.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "b81d51d606e40e5a09e46c298d842570cf9a40f8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
