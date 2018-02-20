@@ -15,6 +15,8 @@ update_cmake_repo() {
     export PATH=/opt/cmake/bin:$PATH
 }
 
+pushd longbow
+
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH="io/fd/cicn/longbow"
 [ "$DOC_FILE" ] || DOC_FILE="cicn.longbow.docs.zip"
@@ -71,3 +73,5 @@ EOF
   ${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}" -T 4C
   cd -
 fi
+
+popd longbow
