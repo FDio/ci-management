@@ -221,6 +221,9 @@
             repo-name: '{repo-stream-part}.ubuntu.xenial.main'
         - is-csit-vpp-job-parameter:
             is-csit-vpp-job: 'True'
+        - string:
+            name: CSIT_REF
+            description: "Also testing CSIT_REF"
 
     scm:
         - gerrit-trigger-scm:
