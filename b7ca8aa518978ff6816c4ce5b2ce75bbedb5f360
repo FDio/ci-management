@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "645d33a8_4987d398",
+        "filename": "jjb/vpp/include-raw-vpp-csit-functional.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2018-02-20T15:50:00Z",
+      "side": 1,
+      "message": "I guess it should be:\n\n# clone csit\ngit clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit\n\n# if the git clone fails, complain clearly and exit\nif [ $? !\u003d 0 ]; then\n    echo \"Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit\"\n    exit 1\nfi\n\ncp build-root/*.deb csit/\nif [ -e dpdk/vpp-dpdk-dkms*.deb ]\nthen\n    cp dpdk/vpp-dpdk-dkms*.deb csit/\nelse\n    cp /var/cache/apt/archives/vpp-dpdk-dkms*.deb csit/\nfi\n\n# Check for CSIT_REF test file\nif [ -e CSIT_REF ]; then\n    source CSIT_REF\nfi\n\n# If also testing a specific csit refpoint look for CSIT_REF\nif [[ -v CSIT_REF ]]; then\n    (cd csit ; git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF \u0026\u0026 git checkout FETCH_HEAD)\nelse\n    cd csit\n\tif [ \"$CSIT_BRANCH\" \u003d\u003d \"latest\" ]; then\n    # set required CSIT branch_id based on VPP master branch; by default use \u0027oper\u0027\n    case \"$VPP_BRANCH\" in\n        master )\n            BRANCH_ID\u003d\"oper\"\n            ;;\n        stable/1710 )\n            BRANCH_ID\u003d\"oper-rls1710\"\n            ;;\n        stable/1801 )\n            BRANCH_ID\u003d\"oper-rls1801\"\n            ;;\n        * )\n            BRANCH_ID\u003d\"oper\"\n    esac\n\n    # get the latest verified version of the required branch\n    CSIT_BRANCH\u003d$(echo $(git branch -r | grep -E \"${BRANCH_ID}-[0-9]+\" | tail -n 1))\n\n    if [ \"${CSIT_BRANCH}\" \u003d\u003d \"\" ]; then\n        echo \"No verified CSIT branch found - exiting\"\n        exit 1\n    fi\n\n    # remove \u0027origin/\u0027 from the branch name\n    CSIT_BRANCH\u003d$(echo ${CSIT_BRANCH#origin/})\n\tfi\n\n\t# checkout the required csit branch\n\tgit checkout ${CSIT_BRANCH}\n\n\tif [ $? !\u003d 0 ]; then\n\t\techo \"Failed to checkout the required CSIT branch: ${CSIT_BRANCH}\"\n\t\texit 1\n\tfi\nfi\n\nto use either specific csit refpoint or vrified csit branch",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "b7ca8aa518978ff6816c4ce5b2ce75bbedb5f360",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
