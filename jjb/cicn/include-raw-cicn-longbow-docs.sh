@@ -40,8 +40,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
   mv -f ${DOC_DIR} ${RESOURCES_DIR}
   cd ${SITE_DIR}
   find . -type f '(' -name '*.md5' -o -name '*.dot' -o -name '*.map' ')' -delete
-  cat > pom.xml <<EOF
- EOF
+  cat > pom.xml << EOF
   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.fd.vpp</groupId>

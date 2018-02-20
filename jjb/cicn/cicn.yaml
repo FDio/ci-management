@@ -454,7 +454,7 @@
                 - include-raw-cicn-longbow-docs.sh
     publishers:
         - archive:
-            artifacts: 'build/documentation/*.tar'
+            artifacts: 'longbow/build/documentation/*.tar'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
@@ -516,7 +516,7 @@
                 - include-raw-cicn-longbow-docs.sh
     publishers:
         - archive:
-            artifacts: 'build/documentation/*.tar'
+            artifacts: 'longbow/build/documentation/*.tar'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
