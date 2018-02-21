@@ -17,13 +17,14 @@ if ! [ -z ${DOCKER_TEST} ] ; then
 fi
 
 if [ "${OS_ID}" == "ubuntu" ]; then
-    dpkg-query -W -f='${binary:Package}\t${Version}\n'
-    pip list
+    dpkg-query -W -f='${binary:Package}\t${Version}\n' || true
+    pip list || true
 elif [ "${OS_ID}" == "centos" ]; then
-    yum list installed
-    pip list
+    yum list installed || true
+    pip list || true
 elif [ "${OS_ID}" == "opensuse" ]; then
-    pip list
+    yum list installed || true
+    pip list || true
 fi
 if [ "x${IS_CSIT_VPP_JOB}" == "xTrue" ]; then
 	(cd dpdk ; apt-get download vpp-dpdk-dkms > /dev/null 2>&1) || true
