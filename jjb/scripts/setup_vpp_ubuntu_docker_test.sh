@@ -23,7 +23,6 @@ elif [ "${OS_ID}" == "centos" ]; then
     yum list installed
     pip list
 elif [ "${OS_ID}" == "opensuse" ]; then
-    yum list installed
     pip list
 fi
 if [ "x${IS_CSIT_VPP_JOB}" == "xTrue" ]; then
