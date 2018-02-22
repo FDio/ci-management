@@ -223,9 +223,9 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'recheck-os'
+                    comment-contains-value: 'os-check'
                 - comment-added-contains-event:
-                    comment-contains-value: 'reverify-os'
+                    comment-contains-value: 'os-verify'
             projects:
                 - project-compare-type: 'ANT'
                   project-pattern: '{name}'
@@ -311,7 +311,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'remerge-os'
+                    comment-contains-value: 'os-merge'
             projects:
                 - project-compare-type: 'ANT'
                   project-pattern: '{name}'
