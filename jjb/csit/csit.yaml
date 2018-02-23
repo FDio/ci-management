@@ -32,7 +32,7 @@
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
         - 'csit-vpp-perf-check-{stream}'
-        - 'csit-vpp-perf-ndrchk-daily-master'
+        - 'csit-vpp-perf-mrr-daily-master'
         - 'csit-vpp-perf-verify-{stream}'
         - 'csit-nsh_sfc-verify-perf-{stream}'
         - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
@@ -2447,7 +2447,7 @@
           format - keyword, tag_list
               verify-perf-ndrdisc, NDRDISC
               verify-perf-pdrdisc, PDRDISC
-              verify-perf-ndrchk, NDRCHK
+              verify-perf-mrr, MRR
       default tags for vpp startup config and perf test type
           1T1C
               one worker thread, one core
@@ -2498,7 +2498,7 @@
                 - comment-added-contains-event:
                     comment-contains-value: 'verify-perf-pdrdisc'
                 - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-ndrchk'
+                    comment-contains-value: 'verify-perf-mrr'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
@@ -2529,14 +2529,14 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-ndrchk-daily-master'
+    name: 'csit-vpp-perf-mrr-daily-master'
 
     description: |
       objective
-          check vpp perf ndr chk daily
+          check vpp perf mrr daily
       job
           name
-              csit-vpp-perf-ndrchk-daily
+              csit-vpp-perf-mrr-daily
           trigger
               daily
       perf test-cases selection
@@ -2579,7 +2579,7 @@
         - inject:
             properties-file: variables.prop
         - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-ndrchk-daily.sh
+            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-mrr-daily.sh
 
     publishers:
         - archive-artifacts:
