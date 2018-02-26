@@ -24,8 +24,8 @@
     jobs:
         - 'cicn-libparc-verify-{stream}-{os}'
         - 'cicn-libparc-merge-{stream}-{os}'
-        # - 'cicn-libparc-docs-verify-{stream}'
-        # - 'cicn-libparc-docs-merge-{stream}'
+        - 'cicn-libparc-docs-verify-{stream}'
+        - 'cicn-libparc-docs-merge-{stream}'
     project: 'cicn'
     os:
         - ubuntu1604:
@@ -561,6 +561,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - reverse:
+            jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
+            result: 'success'
         - gerrit-trigger-patch-merged:
             name: '{project}'
             branch: '{branch}'
@@ -646,6 +649,144 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'cicn-libparc-docs-merge-{stream}'
+
+    project-type: freestyle
+    node: ubuntu1604-basebuild-8c-32g
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'run-docs'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'cicn-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - include-raw-cicn-libparc-docs.sh
+    publishers:
+        - archive:
+            artifacts: 'libparc/build/documentation/*.tar'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'cicn-libparc-docs-verify-{stream}'
+
+    project-type: freestyle
+    node: ubuntu1604-basebuild-8c-32g
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
+    builders:
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - provide-maven-settings:
+            settings-file: 'cicn-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - include-raw-cicn-libparc-docs.sh
+    publishers:
+        - archive:
+            artifacts: 'libparc/build/documentation/*.tar'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 
 - job-template:
     name: 'cicn-libccnx-common-merge-{stream}-{os}'
