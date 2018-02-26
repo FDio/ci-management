@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-    | grep -oE 'verify-perf-(ndrdisc|pdrdisc|ndrchk)' \
+    | grep -oE 'verify-perf-(ndrdisc|pdrdisc|mrr)' \
     | awk '{print toupper($0)}'`
 export TEST_TAG=${TRIGGER}
 

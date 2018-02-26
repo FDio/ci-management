@@ -7,6 +7,11 @@ if [ "$BRANCH_ID" == "" ]; then
     BRANCH_ID="master"
 fi
 
+# make sure there is no csit directory
+if [ -d "./csit/" ]; then
+    rm -rf ./csit/
+fi
+
 # clone csit
 git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
 
@@ -32,15 +37,17 @@ BRANCH_NAME=$(echo ${BRANCH_NAME#origin/})
 # checkout to the required branch
 git checkout ${BRANCH_NAME}
 
+export TEST_TAG="PERFTEST_MRR_DAILY"
+
 # execute csit bootstrap script if it exists
-if [ -e bootstrap-vpp-verify-nightly.sh ]
+if [ -e bootstrap-verify-perf.sh ]
 then
     # make sure that bootstrap.sh is executable
-    chmod +x bootstrap-vpp-verify-nightly.sh
+    chmod +x bootstrap-verify-perf.sh
     # run the script
-    ./bootstrap-vpp-verify-nightly.sh
+    ./bootstrap-verify-perf.sh
 else
-    echo 'ERROR: No bootstrap-vpp-verify-nightly.sh found'
+    echo 'ERROR: No bootstrap-verify-perf.sh found'
     exit 1
 fi
 
