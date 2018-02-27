@@ -16,6 +16,9 @@ if ! [ -z ${DOCKER_TEST} ] ; then
         echo "/dev/shm remounted"
 fi
 
+##container server node detection
+grep search /etc/resolv.conf  || true
+
 if [ "${OS_ID}" == "ubuntu" ]; then
     dpkg-query -W -f='${binary:Package}\t${Version}\n' || true
     pip list || true
@@ -26,6 +29,7 @@ elif [ "${OS_ID}" == "opensuse" ]; then
     yum list installed || true
     pip list || true
 fi
+
 if [ "x${IS_CSIT_VPP_JOB}" == "xTrue" ]; then
 	(cd dpdk ; apt-get download vpp-dpdk-dkms > /dev/null 2>&1) || true
     ls -l dpdk/*.deb || true
