@@ -31,7 +31,7 @@ echo "Current directory: $(pwd)"
 update_cmake_repo
 mkdir -p build
 pushd build
-cmake ..
+cmake -DDOC_ONLY=ON ..
 make documentation
 popd
 
