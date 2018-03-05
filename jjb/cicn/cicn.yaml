@@ -684,6 +684,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - reverse:
+            jobs: 'cicn-libparc-merge-{stream}-ubuntu1604'
+            result: 'success'
         - gerrit:
             server-name: 'Primary'
             trigger-on:
