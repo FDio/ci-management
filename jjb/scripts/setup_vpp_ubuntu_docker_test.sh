@@ -29,9 +29,3 @@ elif [ "${OS_ID}" == "opensuse" ]; then
     yum list installed || true
     pip list || true
 fi
-
-if [ "x${IS_CSIT_VPP_JOB}" == "xTrue" ]; then
-    (cp /w/dpdk/vpp-dpdk-dkms*.deb ./dpdk/ > /dev/null 2>&1 ) || true
-    ls -l dpdk/*.deb || true
-    echo "csit vpp-dpdk-dkms package download"
-fi
