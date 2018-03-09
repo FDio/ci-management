@@ -32,7 +32,8 @@ if [ -e dpdk/vpp-dpdk-dkms*.deb ]
 then
     cp dpdk/vpp-dpdk-dkms*.deb csit/
 else
-    cp /w/dpdk/vpp-dpdk-dkms*.deb csit/
+    cp /w/dpdk/vpp-dpdk-dkms*.deb csit/ 2>/dev/null || :
+    cp /var/cache/apt/archives/vpp-dpdk-dkms*.deb csit/ 2>/dev/null || :
 fi
 
 cd csit
