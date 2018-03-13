@@ -29,3 +29,15 @@ elif [ "${OS_ID}" == "opensuse" ]; then
     yum list installed || true
     pip list || true
 fi
+
+##This will remove any previously installed dpdk for old branch builds
+
+if [ "${GERRIT_BRANCH}" != "master" ]; then
+    if [ "${OS_ID}" == "ubuntu" ]; then
+        apt-get -y remove vpp-dpdk-dev || true
+        apt-get -y remove vpp-dpdk-dkms || true
+    elif [ "${OS_ID}" == "centos" ]; then
+        yum -y erase vpp-dpdk-devel || true
+        yum clean all || true
+    fi
+fi
