@@ -39,5 +39,7 @@ if [ "${GERRIT_BRANCH}" != "master" ]; then
     elif [ "${OS_ID}" == "centos" ]; then
         yum -y erase vpp-dpdk-devel || true
         yum clean all || true
+    elif [ "${OS_ID}" == "opensuse" ]; then
+        yum -y erase vpp-dpdk-devel || true
     fi
 fi
