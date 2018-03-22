@@ -1678,7 +1678,7 @@
     scm:
         - gerrit-trigger-scm:
             credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
+            refspec: ''
             choosing-strategy: 'default'
 
     wrappers:
@@ -1689,22 +1689,6 @@
         - reverse:
             jobs: 'csit-vpp-perf-mrr-daily-master'
             result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-trending'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
 
     builders:
         - maven-target:
