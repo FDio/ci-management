@@ -1942,7 +1942,7 @@
                 - include-raw-cicn-android-sdk-build.sh
     publishers:
         - archive:
-            artifacts: 'iGetAndroid/app/build/outputs/apk/*.apk,MetisForwarder/app/build/outputs/apk/*.apk,build/viper/viper-armv7//build/outputs/apk/*.apk'
+            artifacts: 'IGetAndroid/app/build/outputs/apk/release/*.apk,MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,HttpServer/app/build/outputs/apk/release/*.apk,build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
