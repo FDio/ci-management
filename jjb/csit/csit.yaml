@@ -2643,7 +2643,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: 'H H(0-2) * * *'
+        - timed: 'H H(21-22) * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
