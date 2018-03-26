@@ -12,8 +12,7 @@ set -xe -o pipefail
 
 cd ${DOC_DIR}
 chmod +x ./run_cpta.sh
-./run_cpta.sh
-retval=$?
+STATUS=$(./run_cpta.sh | tail -1)
 
 cd ${WORKSPACE}
 
@@ -53,8 +52,8 @@ ${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
 
 cd -
 
-
-if [ ${retval} -ne "0" ]; then
-  echo "FAIL"
+if [ ${STATUS} == "PASS" ]; then
+    exit 0
+else
+    exit 1
 fi
-exit ${retval}
