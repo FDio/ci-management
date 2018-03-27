@@ -288,7 +288,7 @@
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
         - naginator:
             rerun-unstable-builds: true
-            max-failed-builds: 1
+            max-failed-builds: 2
             fixed-delay: 10
 
 - job-template:
