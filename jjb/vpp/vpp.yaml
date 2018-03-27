@@ -40,6 +40,7 @@
         - 'vpp-csit-verify-virl-{stream}'
         - 'vpp-csit-verify-os-virl-{stream}'
         - 'vpp-csit-verify-hw-perf-{stream}'
+        - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
         - master:
@@ -96,6 +97,8 @@
                 - patchset-uploaded-event: 'false'
                 - comment-added-contains-event:
                     comment-contains-value: 'betacheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstyle_success'
             projects:
                 - project-compare-type: 'ANT'
                   project-pattern: '{project}'
@@ -226,6 +229,74 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+- job-template:
+    name: 'vpp-checkstyle-verify-{stream}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: '$GERRIT_REFSPEC'
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - patchset-uploaded-event: 'false'
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstylecheck'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            gerrit-build-successful-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+            failed-message: 'Checkstyle failed. No further verify jobs will be started.'
+            successful-message: 'checkstyle_success'
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-vpp-checkstyle.sh
+        - shell:
+            !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+
+    publishers:
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 10
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
