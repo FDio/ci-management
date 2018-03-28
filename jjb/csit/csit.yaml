@@ -1689,6 +1689,12 @@
         - reverse:
             jobs: 'csit-vpp-perf-mrr-daily-master'
             result: 'success'
+        - reverse:
+            jobs: 'csit-vpp-perf-mrr-daily-master'
+            result: 'unstable'
+        - reverse:
+            jobs: 'csit-vpp-perf-mrr-daily-master'
+            result: 'failure'
 
     builders:
         - maven-target:
@@ -2627,7 +2633,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: 'H H(21-22) * * *'
+        - timed: 'H H(2-3,16-17) * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
