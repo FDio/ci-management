@@ -1010,6 +1010,19 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
+        - trigger:
+            project: 'csit-trending-daily-master'
+            threshold: 'SUCCESS'
+
+        - trigger:
+            project: 'csit-trending-daily-master'
+            threshold: 'UNSTABLE'
+
+        - trigger:
+            project: 'csit-trending-daily-master'
+            threshold: 'FAILURE'
+
+
 - job-template:
     name: 'csit-vpp-perf-verify-{stream}'
 
