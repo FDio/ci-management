@@ -282,10 +282,14 @@
                       branch-pattern: '**/{branch}'
             override-votes: true
             gerrit-build-notbuilt-verified-value: 0
-            gerrit-build-successful-verified-value: 0
             notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
             failed-message: 'Checkstyle failed. No further verify jobs will be started.'
             successful-message: 'checkstyle_success'
+            skip-vote:
+                successful: true
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - shell:
