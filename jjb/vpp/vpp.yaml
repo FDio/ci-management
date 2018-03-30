@@ -154,10 +154,6 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: true
-            max-failed-builds: 1
-            fixed-delay: 10
 
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
@@ -269,8 +265,14 @@
         - gerrit:
             server-name: 'Primary'
             trigger-on:
+                - patchset-created-event:
+                    exclude-drafts: 'true'
+                    exclude-trivial-rebase: 'false'
+                    exclude-no-code-change: 'true'
                 - comment-added-contains-event:
                     comment-contains-value: 'checkstylecheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'foobartest'
             projects:
                 - project-compare-type: 'ANT'
                   project-pattern: '{project}'
@@ -279,7 +281,6 @@
                       branch-pattern: '**/{branch}'
             override-votes: true
             gerrit-build-notbuilt-verified-value: 0
-            gerrit-build-successful-verified-value: 1
             notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
             failed-message: 'Checkstyle failed. No further verify jobs will be started.'
             successful-message: 'checkstyle_success'
@@ -338,15 +339,22 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstyle_success'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{name}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-test-checkstyle.sh
         - shell:
             !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
         - shell:
@@ -649,17 +657,25 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstyle_success'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
 
     builders:
         - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
         - inject:
             properties-file: variables.prop
-        - shell:
-            !include-raw-escape:
-                - include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -891,9 +907,20 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstyle_success'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{name}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
 
     builders:
         - maven-target:
@@ -1042,9 +1069,20 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'checkstyle_success'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{name}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
 
     builders:
         - maven-target:
