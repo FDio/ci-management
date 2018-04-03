@@ -679,12 +679,6 @@
     triggers:
         - reverse:
             jobs: 'csit-vpp-perf-mrr-daily-master'
-            result: 'success'
-        - reverse:
-            jobs: 'csit-vpp-perf-mrr-daily-master'
-            result: 'unstable'
-        - reverse:
-            jobs: 'csit-vpp-perf-mrr-daily-master'
             result: 'failure'
 
     builders:
@@ -988,7 +982,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: 'H H(2-3,16-17) * * *'
+        - timed: '0 2,16 * * *'
 
     builders:
         - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1007,20 +1001,12 @@
             other-files:
               - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'SUCCESS'
-
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'UNSTABLE'
-
         - trigger:
             project: 'csit-trending-daily-master'
             threshold: 'FAILURE'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 
 - job-template:
