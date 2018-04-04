@@ -32,6 +32,7 @@
             repo-os-part: 'ubuntu.xenial.main'
     odl:
         - carbon
+        - oxygen
 
 - project:
     name: csit-hc2vpp-perf
