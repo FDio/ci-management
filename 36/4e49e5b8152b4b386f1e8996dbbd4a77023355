@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Marco Varlese <marco.varlese@suse.de>
+Code-Review+2: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Wed, 04 Apr 2018 15:09:11 +0000
+Reviewed-on: https://gerrit.fd.io/r/11501
+Project: ci-management
+Branch: refs/heads/master
