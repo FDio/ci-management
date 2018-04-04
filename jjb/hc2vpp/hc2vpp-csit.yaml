@@ -12,15 +12,6 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
-        - '1701':
-            branch: 'stable/1701'
-            repo-stream-part: 'stable.1701'
-        - '1704':
-            branch: 'stable/1704'
-            repo-stream-part: 'stable.1704'
-        - '1707':
-            branch: 'stable/1707'
-            repo-stream-part: 'stable.1707'
         - '1710':
             branch: 'stable/1710'
             repo-stream-part: 'stable.1710'
