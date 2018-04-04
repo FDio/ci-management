@@ -226,7 +226,7 @@
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
+                - include-raw-vpp-arm-build.sh
     publishers:
         - archive:
             artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
