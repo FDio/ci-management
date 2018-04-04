@@ -32,5 +32,12 @@ elif [ "${OS}" == "centos7" ]; then
     do
         push_rpm "$i"
     done
+elif [ "${OS}" == "opensuse" ]; then
+    # Find the files
+    RPMS=$(find . -type f -iname '*.rpm')
+    for i in $RPMS
+    do
+        push_rpm "$i"
+    done
 fi
 # vim: ts=4 sw=4 sts=4 et ft=sh :
