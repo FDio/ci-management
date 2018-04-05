@@ -32,7 +32,7 @@ elif [ "${OS}" == "centos7" ]; then
     do
         push_rpm "$i"
     done
-elif [ "${OS}" == "opensusenotready" ]; then
+elif [ "${OS}" == "opensuse" ]; then
     # Find the files
     RPMS=$(find . -type f -iname '*.rpm')
     for i in $RPMS
