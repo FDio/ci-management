@@ -257,6 +257,12 @@ opensuse_systems() {
     # minimum so installing from TW repo
     zypper install -y \
         https://download.opensuse.org/tumbleweed/repo/oss/suse/x86_64/nasm-2.13.01-2.2.x86_64.rpm
+
+    # Leap 42.3 does not have a recent INDENT version
+    # Other distros in Jenkins run 2.2.11 so let's align Leap 42.3 too to avoid
+    # build checks differences and false-positives
+    zypper install -y \
+        https://download.opensuse.org/repositories/devel:/tools/openSUSE_Leap_42.3/x86_64/indent-2.2.11-67.d_t.3.x86_64.rpm
 }
 
 all_systems() {
