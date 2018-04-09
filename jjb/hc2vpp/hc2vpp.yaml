@@ -23,6 +23,9 @@
         - '1801':
             branch: 'stable/1801'
             repo-stream-part: 'stable.1801'
+        - '1804':
+            branch: 'stable/1804'
+            repo-stream-part: 'stable.1804'
 
 - job-template:
     name: 'hc2vpp-verify-{stream}-{os}'
