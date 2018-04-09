@@ -161,7 +161,8 @@ ubuntu_systems() {
     DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev debian-xcontrol devscripts \
       pristine-tar dh-python python-sphinx libpcap0.8-dev libstdc++5 \
       python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme \
-      python3 python3-sphinx python3-sphinx-rtd-theme libnuma-dev"
+      python3 python3-sphinx python3-sphinx-rtd-theme libnuma-dev \
+      libibverbs-dev"
     apt install -y ${DEB_DPDK_PKGS}
 
     sudo apt install -y libcap-dev libpcap-dev
