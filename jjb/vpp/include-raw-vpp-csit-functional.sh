@@ -52,6 +52,9 @@ else
             stable/1801 )
                 BRANCH_ID="oper-rls1801"
                 ;;
+            stable/1804 )
+                BRANCH_ID="oper-rls1804"
+                ;;
             * )
                 BRANCH_ID="oper"
         esac
