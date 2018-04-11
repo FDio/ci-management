@@ -120,7 +120,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
@@ -174,7 +174,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
@@ -319,7 +319,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
@@ -443,7 +443,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
@@ -625,7 +625,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
@@ -771,7 +771,7 @@
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
+        numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
         artifactNumToKeep: '{build-artifact-num-to-keep}'
 
