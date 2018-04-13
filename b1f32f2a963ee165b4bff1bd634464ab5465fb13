@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a55c45e6_5efe0dc9",
+        "filename": "jjb/csit/include-raw-csit-dmm-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-04-13T14:10:32Z",
+      "side": 1,
+      "message": "The job itself should already handle cloning the repo via the Jenkins git plugin right?",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "b1f32f2a963ee165b4bff1bd634464ab5465fb13",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
