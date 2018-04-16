@@ -164,7 +164,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
@@ -309,7 +309,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
@@ -373,7 +373,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 2
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-clang'
@@ -427,7 +427,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-os-{stream}-{os}'
@@ -580,7 +580,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-merge-os-{stream}-{os}'
@@ -744,7 +744,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 
 - job-template:
@@ -983,7 +983,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
@@ -1066,7 +1066,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 
 - job-template:
@@ -1134,7 +1134,7 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}'
@@ -1217,6 +1217,6 @@
         - naginator:
             rerun-unstable-builds: true
             max-failed-builds: 1
-            fixed-delay: 10
+            fixed-delay: 90
 
 
