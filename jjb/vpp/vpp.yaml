@@ -80,11 +80,15 @@
     name: vpp-arm
     jobs:
         - 'vpp-arm-verify-{stream}-{os}'
+        - 'vpp-arm-merge-{stream}-{os}'
     project: 'vpp'
     stream:
         - master:
             branch: 'master'
             repo-stream-part: 'master'
+        - '1804':
+            branch: 'stable/1804'
+            repo-stream-part: 'stable.1804'
     os:
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
@@ -213,11 +217,6 @@
                   branches:
                     - branch-compare-type: 'ANT'
                       branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
             override-votes: true
             gerrit-build-notbuilt-verified-value: 0
             notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
@@ -238,6 +237,107 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+- job-template:
+    name: 'vpp-arm-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}arm-us'
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: 100
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'default'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'armmerge'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+
+    builders:
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/home/jenkins'
+        - config-file-provider:
+            files:
+              - file-id: 'packagecloud_api'
+                target: '/home/jenkins'
+        - maven-target:
+            maven-version: 'mvn33-new'
+            goals: '--version'
+            settings: 'vpp-settings'
+            settings-type: cfp
+            global-settings: 'global-settings'
+            global-settings-type: cfp
+        - shell:
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+        - shell:
+            !include-raw-escape:
+                - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-build.sh
+        - provide-maven-settings:
+            settings-file: 'vpp-settings'
+            global-settings-file: 'global-settings'
+        - shell:
+            !include-raw-escape:
+                - ../scripts/maven_push_functions.sh
+                - include-raw-vpp-maven-push.sh
+        - shell:
+            !include-raw-escape:
+                - ../scripts/packagecloud_push.sh
+
+    publishers:
+        - archive:
+            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: true
+            max-failed-builds: 1
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-checkstyle-verify-{stream}'
