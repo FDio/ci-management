@@ -204,22 +204,10 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'armcheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'checkstyle_success'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{project}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            override-votes: true
-            gerrit-build-notbuilt-verified-value: 0
-            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+        - gerrit-trigger-trivial-patch-submitted:
+            name: '{project}'
+            branch: '{branch}'
+
     builders:
         - shell:
             !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -281,20 +269,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'armmerge'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{project}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            override-votes: true
-            gerrit-build-notbuilt-verified-value: 0
-            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+        - gerrit-trigger-patch-merged:
+            name: '{project}'
+            branch: '{branch}'
 
     builders:
         - config-file-provider:
