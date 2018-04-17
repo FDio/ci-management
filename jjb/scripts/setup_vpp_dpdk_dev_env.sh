@@ -25,6 +25,16 @@ gpgcheck=0
 EOF
             sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
             sudo yum -y install vpp-dpdk-devel || true
+        elif [ "$OS_ID" == "opensuse" ]; then
+            sudo cat << EOF > fdio-master.repo
+[fdio-master]
+name=fd.io master branch latest merge
+baseurl=${REPO_URL}
+enabled=1
+gpgcheck=0
+EOF
+            sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
+            sudo yum -y install vpp-dpdk-devel || true
         fi
     fi
 }
