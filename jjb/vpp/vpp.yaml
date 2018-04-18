@@ -91,7 +91,7 @@
             repo-stream-part: 'stable.1804'
     os:
       - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+          repo-os-part: 'ubuntu-arm.xenial.main'
 
 - job-template:
     name: 'vpp-beta-verify-{stream}-{os}'
