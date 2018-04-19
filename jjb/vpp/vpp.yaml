@@ -15,8 +15,6 @@
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
           repo-os-part: 'centos7'
-      - opensuse:
-          repo-os-part: 'opensuse'
 
     stream:
         - master:
@@ -82,8 +80,6 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - osleap15:
-          repo-os-part: 'osleap15'
 
 - project:
     name: vpp-arm
@@ -400,6 +396,8 @@
             rerun-unstable-builds: true
             max-failed-builds: 1
             fixed-delay: 90
+
+
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
