@@ -10,6 +10,7 @@ GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
 
+# TODO: Should ${OS} be part of filename, so it gets included in classifier?
 if [ "${OS}" == "ubuntu1604" ]; then
     # Find the files
     JARS=$(find . -type f -iname '*.jar')

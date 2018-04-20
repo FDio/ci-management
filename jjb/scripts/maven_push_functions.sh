@@ -31,7 +31,7 @@ function push_file ()
     # Disable checks for doublequote to prevent glob / splitting
     # shellcheck disable=SC2086
     $MVN org.apache.maven.plugins:maven-deploy-plugin:deploy-file \
-        -Dfile=$push_file -DrepositoryId=$repoId \
+        -B -Dfile=$push_file -DrepositoryId=$repoId \
         -Durl=$url -DgroupId=$GROUP_ID \
         -Dversion=$version -DartifactId=$artifactId \
         -Dtype=$file_type $d_classifier\
@@ -69,9 +69,9 @@ function push_deb ()
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
-    version=$(echo "$basefile" | cut -f 2- -d '_')
+    version=$(echo "$basefile" | cut -f 2 -d '_')
+    classifier=$(echo "$basefile" | cut -f 3- -d '_')
     file_type=deb
-    classifier=deb
 
     push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" "$file_type" "$classifier"
 }
@@ -90,5 +90,6 @@ function push_rpm ()
     fi
     artifactId=$(rpm -qp --queryformat="%{name}" "$rpmfile")
     version=$(rpm -qp --queryformat="%{version}" "$rpmfile")
+    # TODO: Separate %{arch} into classifier.
     push_file "$rpmfile" "$repoId" "$url" "${version}-${rpmrelease}" "$artifactId" rpm
 }
