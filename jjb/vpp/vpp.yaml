@@ -187,7 +187,7 @@
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -247,7 +247,7 @@
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -337,7 +337,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -473,7 +473,7 @@
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 2
             fixed-delay: 90
 
@@ -527,7 +527,7 @@
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -680,7 +680,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -844,7 +844,7 @@
             maven-version: 'mvn33-new'
 
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -1083,7 +1083,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -1166,7 +1166,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -1234,7 +1234,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
@@ -1317,7 +1317,7 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
-            rerun-unstable-builds: true
+            rerun-unstable-builds: false
             max-failed-builds: 1
             fixed-delay: 90
 
