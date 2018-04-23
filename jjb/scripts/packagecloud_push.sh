@@ -1,11 +1,14 @@
 #!/bin/bash
-
 # PCIO_CO is a Jenkins Global Environment variable
+
+set -xe -o pipefail
+
+echo "STARTING PACKAGECLOUD PUSH"
 
 sleep 10
 
 FACTER_OS=$(/usr/bin/facter operatingsystem)
-if [ -f ~/.packagecloud ]; then
+if [ -f /root/.packagecloud ]; then
     case "$FACTER_OS" in
       Ubuntu)
         FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
