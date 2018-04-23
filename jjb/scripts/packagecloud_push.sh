@@ -21,5 +21,11 @@ if [ -f /root/.packagecloud ]; then
         RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
         package_cloud push "${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/" ${RPMS}
       ;;
+      OpenSuSE)
+        FACTER_OSMAJREL=$(/usr/bin/facter operatingsystemmajrelease)
+        FACTER_ARCH=$(/usr/bin/facter architecture)
+        RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
+        package_cloud push "${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/" ${RPMS}
+      ;;
     esac
 fi
