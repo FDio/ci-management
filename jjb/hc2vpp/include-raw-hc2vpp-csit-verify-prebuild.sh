@@ -13,6 +13,9 @@ for i in ${GERRIT_EVENT_COMMENT_TEXT}; do
         *nsh_sfc=*)
             nsh_commit_id=`echo "${i}" | cut -d = -f2-`
         ;;
+        *csit=*)
+            csit_commit_id=`echo "${i}" | cut -d = -f2-`
+        ;;
         *)
         ;;
     esac
@@ -55,6 +58,16 @@ if [ $? != 0 ]; then
 fi
 
 cd csit
+
+# If CSIT commit ID is given, checkout the specified commit
+if [ -n "${csit_commit_id}" ]; then
+    # Example:
+    # ...
+    # e8f326efebb58e28dacb9ebb653baf95aad1448c refs/changes/08/11808/1
+    # ...
+    ref=`git ls-remote -q | grep ${csit_commit_id} | awk '{print $2}'`
+    git fetch origin ${ref} && git checkout FETCH_HEAD
+fi
 
 # Download VPP packages
 if [ ${STREAM} == 'master' ]; then
