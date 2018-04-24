@@ -31,8 +31,8 @@ sha1sum $0
 make UNATTENDED=yes install-dep
 make UNATTENDED=yes dpdk-install-dev
 make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang install-packages
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang sample-plugin-install
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp libmemif-install
+#make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang sample-plugin-install
+#make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp libmemif-install
 
 
 echo "*******************************************************************"
