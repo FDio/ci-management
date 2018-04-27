@@ -106,9 +106,27 @@
     node: '{os}-us'
     concurrent: true
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'beavercheck'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            gerrit-build-successful-verified-value: 1
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+            skip-vote:
+                successful: true
+                failed: false
+                unstable: false
+                notbuilt: false
+
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -197,9 +215,26 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'beavermerge'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+            override-votes: true
+            gerrit-build-notbuilt-verified-value: 0
+            gerrit-build-successful-verified-value: 1
+            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+            skip-vote:
+                successful: true
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - config-file-provider:
