@@ -23,6 +23,19 @@ if [ "${OS}" == "ubuntu1604" ]; then
     do
         push_deb "$i"
     done
+elif [ "${OS}" == "ubuntu1804" ]; then
+    # Find the files
+    JARS=$(find . -type f -iname '*.jar')
+    DEBS=$(find . -type f -iname '*.deb')
+    for i in $JARS
+    do
+        push_jar "$i"
+    done
+
+    for i in $DEBS
+    do
+        push_deb "$i"
+    done
 elif [ "${OS}" == "centos7" ]; then
     # Find the files
     RPMS=$(find . -type f -iname '*.rpm')
