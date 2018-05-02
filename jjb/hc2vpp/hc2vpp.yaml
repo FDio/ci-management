@@ -10,9 +10,11 @@
         - ubuntu1604:
             repo-os-part: 'ubuntu.xenial.main'
             skip-site: 'false'
+            skip-jar-deploy: 'false'
         - centos7:
             repo-os-part: 'centos7'
             skip-site: 'true'
+            skip-jar-deploy: 'true'
     stream:
         - master:
             branch: 'master'
@@ -232,9 +234,12 @@
             maven: 'mvn33-new'
         - maven-exec:
             maven-version: 'mvn33-new'
-
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - string:
+            name: SKIP_JAR_DEPLOY
+            default: '{skip-jar-deploy}'
+            description: "Skips deployment of hc2vpp jars if variable is set to true"
 
     scm:
         - git-scm:
@@ -292,5 +297,6 @@
             id: ''
             unique-version: true
             deploy-unstable: false
+            release-env-var: SKIP_JAR_DEPLOY
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
