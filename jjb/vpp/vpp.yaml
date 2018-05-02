@@ -106,7 +106,7 @@
     node: '{os}-us'
     concurrent: true
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
@@ -282,7 +282,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
@@ -437,6 +437,10 @@
             trigger-on:
                 - comment-added-contains-event:
                     comment-contains-value: 'checkstylecheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'recheck'
+                - comment-added-contains-event:
+                    comment-contains-value: 'reverify'
             projects:
                 - project-compare-type: 'ANT'
                   project-pattern: '{project}'
@@ -506,15 +510,11 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-test-checkstyle.sh
         - shell:
             !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
         - shell:
@@ -570,7 +570,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
@@ -721,7 +721,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
@@ -729,9 +729,6 @@
         - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
         - inject:
             properties-file: variables.prop
-        - shell:
-            !include-raw-escape:
-                - include-raw-vpp-checkstyle.sh
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -892,7 +889,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
@@ -1043,7 +1040,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-trivial-patch-submitted:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
