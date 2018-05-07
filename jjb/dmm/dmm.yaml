@@ -23,7 +23,7 @@
 
     project: 'dmm'
     os:
-        - ubuntu1404
+        - ubuntu1604
     stream:
         - master:
             branch: 'master'
