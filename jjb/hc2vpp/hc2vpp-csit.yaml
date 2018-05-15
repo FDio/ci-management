@@ -90,6 +90,9 @@
         - robot-report:
             output-path: 'csit/archive'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'hc2vpp-csit-verify-{stream}-{os}'
 
@@ -179,6 +182,9 @@
         - robot-report:
             output-path: 'csit/archive'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
 
@@ -229,6 +235,9 @@
 
         - robot-report:
             output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
@@ -318,6 +327,9 @@
 
         - robot-report:
             output-path: 'csit/archive'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-perf-{stream}-{os}'

@@ -81,6 +81,9 @@
         - robot-report:
             output-path: 'archive'
 
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
 - job-template:
     name: 'csit-hc2vpp-verify-perf-{stream}'
 
