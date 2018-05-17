@@ -365,6 +365,8 @@
             build-timeout: '{build-timeout}'
 
     triggers:
+        - timed: '@weekly'
+
         - gerrit:
             server-name: 'Primary'
             trigger-on:
