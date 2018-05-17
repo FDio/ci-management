@@ -190,6 +190,17 @@ EOF
                 systemctl mask ${i}
             done
         ;;
+        18.04)
+            apt-get install openjdk-8-jdk
+
+            # force auto-update services off and mask them so they can't
+            # be started
+            for i in apt-daily.{service,timer}
+            do
+                systemctl disable ${i}
+                systemctl mask ${i}
+            done
+        ;;
         *)
             echo "---> Unknown Ubuntu version $FACTER_OSVER"
             exit 1
