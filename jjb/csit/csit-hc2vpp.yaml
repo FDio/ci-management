@@ -54,17 +54,10 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-hc2vpp-func'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
+        - gerrit-trigger-manually-triggered:
+            comment-trigger-value: 'verify-hc2vpp-func'
+            name: '{project}'
+            branch: '{branch}'
 
     builders:
         - shell:
@@ -118,18 +111,10 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-hc2vpp-perf'
-
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
+        - gerrit-trigger-manually-triggered:
+            comment-trigger-value: 'verify-hc2vpp-perf'
+            name: '{project}'
+            branch: '{branch}'
 
     builders:
         - shell:
