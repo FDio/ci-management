@@ -153,7 +153,7 @@ ubuntu_systems() {
     # DEB Install latest kernel and uio
     echo "---> Installing kernel image and header packages $(date +'%Y%m%dT%H%M%S')"
     DEB_PKGS="linux-image-extra-virtual linux-headers-virtual linux-headers-`uname -r`"
-    apt install -y ${DEB_PKGS}
+    #apt install -y ${DEB_PKGS}
 
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
