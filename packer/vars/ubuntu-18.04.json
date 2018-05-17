@@ -1,0 +1,7 @@
+{
+  "base_image": "Ubuntu 18.04 (2018-05-07) - LF upload",
+  "cloud_user": "ubuntu",
+
+  "distro": "Ubuntu 18.04",
+  "cloud_user_data": "provision/null_data.sh"
+}

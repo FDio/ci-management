@@ -150,10 +150,12 @@ ubuntu_systems() {
     CSIT_PKGS="libxml2 libxml2-dev libxslt-dev zlib1g-dev bc unzip"
     apt install -y ${CSIT_PKGS}
 
+    if [ $FACTER_LSBNAME = xenial ]; then
     # DEB Install latest kernel and uio
     echo "---> Installing kernel image and header packages $(date +'%Y%m%dT%H%M%S')"
-    DEB_PKGS="linux-image-extra-virtual linux-headers-virtual linux-headers-`uname -r`"
+    DEB_PKGS="linux-image-extra-virtual linux-headers-virtual"
     apt install -y ${DEB_PKGS}
+    fi
 
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
