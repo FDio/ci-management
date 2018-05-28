@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a1133fa_2ffe14e8",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2018-05-28T05:10:09Z",
+      "side": 1,
+      "message": "presentation",
+      "range": {
+        "startLine": 716,
+        "startChar": 40,
+        "endLine": 716,
+        "endChar": 50
+      },
+      "revId": "3371c5217f17a47e903fc52ff4b0572e51beaa4a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
