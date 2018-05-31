@@ -29,6 +29,7 @@
         - 'csit-docs-merge-{stream_timed}'
         - 'csit-docs-verify-{stream}'
         - 'csit-report-merge-{stream}'
+        - 'csit-report-merge-1801_2'
         - 'csit-trending-daily-master'
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
