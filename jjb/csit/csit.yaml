@@ -639,7 +639,7 @@
 
     publishers:
         - archive:
-            artifacts: 'resources/tools/report_gen/csit.report.tar.gz'
+            artifacts: 'resources/tools/presentation/csit.report.tar.gz'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
