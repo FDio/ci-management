@@ -1,0 +1,148 @@
+- project:
+    name: hc2vpp-benchmark
+    description: 'Jenkins jobs to run Hc2vpp benchmarks.'
+    jobs:
+        - 'hc2vpp-benchmark-jvpp-{stream}'
+    project: 'hc2vpp'
+    os:
+        - ubuntu1604:
+            repo-os-part: 'ubuntu.xenial.main'
+            skip-site: 'false'
+            skip-jar-deploy: 'false'
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+
+- job-template:
+    name: 'hc2vpp-benchmark-jvpp-{stream}'
+    project-type: maven
+    node: ubuntu1604-basebuild-4c-4g
+    jdk: openjdk8-ubuntu1604
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - os-parameter:
+            os: 'ubuntu1604'
+        - maven-project-parameter:
+            maven: 'mvn33-new'
+        - maven-exec:
+            maven-version: 'mvn33-new'
+        - repo-name-parameter:
+            repo-name: 'master.ubuntu.xenial.main'
+
+    scm:
+        - git-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            branch: 'master'
+
+    wrappers:
+        - ssh-agent-credentials:
+            users:
+                - 'jenkins-gerrit-credentials'
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit-trigger-manually-triggered:
+            name: '{project}'
+            branch: '{branch}'
+            comment-trigger-value: 'hc2vpp-jvpp-benchmark'
+
+    maven:
+        maven-name: 'mvn33-new'
+        root-pom: 'pom.xml'
+        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
+        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+        settings: 'hc2vpp-settings'
+        settings-type: cfp
+        global-settings: 'global-settings'
+        global-settings-type: cfp
+
+# 1. Download vpp packages from Nexus
+# 2. Unpack vpp-api-java package and install jvpp jars to local maven repo
+# 3. Build benchmark from hc2vpp project using maven (use branch based on {stream})
+# 4. Reserve testbed, then install VPP packages and copy jvpp-benchmark-executable.jar
+# 5. run benchmark by invoking:
+# sudo java -jar ./target/jvpp-benchmark-1.18.07-SNAPSHOT-executable.jar -wi 0 -i 1 -rff jvpp-benchmark-results.csv
+# 6. Archive logs and csv file with results
+
+# First version should live in CSIT
+
+
+jjv/csit:
+csit-vpp-api-java-perf-{stream}
+manual-trigger 'verify-vpp-api-java-perf'
+
+1) Download most recent VPP packages from Nexus
+2) Unpack JVPP jars included in vpp-api-java package and install to local maven repo
+3) Build jvpp-benchmark from hc2vpp project (use hc2vpp branch based on {stream})
+4) Run bootstrap-api-java-perf.sh
+
+csit:
+In Run bootstrap-api-java-per.sh
+1) Reserve testbed, then install VPP packages and copy jvpp-benchmark-executable.jar
+2) Run jvpp-benchmark by invoking
+sudo java -jar ./target/jvpp-benchmark-1.18.07-SNAPSHOT-executable.jar -wi 0 -i 1 -rff jvpp-benchmark-results.csv
+3) Archive logs and csv file with results
+
+jjb/vpp:
+vpp-csit-verify-api-java-perf-{stream}
+manual-trigger vpp-verify-perf-api-java
+
+1) Build VPP packages
+2) Install JVPP jars to local maven repo
+3) Build jvpp-benchmark from hc2vpp project (use hc2vpp branch based on {stream})
+4) Clone CSIT (based on csit-test-branch) and run bootstrap-api-java-per.sh
+
+csit:
+Same as above
+
+jjb/hc2vpp:
+hc2vpp-csit-verify-api-java-perf-{stream}
+manual-trigger verify-perf-api-java
+
+1) Download most recent VPP packages from Nexus
+2) Unpack JVPP jars included in vpp-api-java package and install to local maven repo
+3) Build jvpp-benchmark from hc2vpp projec
+4) Run bootstrap-api-java-perf.sh
+
+csit:
+Same as above
+
+Alternative that does not require building benchmark
+
+1) Download most recent jvpp-benchmark-executable jar from nexus
+2) unpack it and deremine matching vpp version (would require including vpp version to java-api jars, e.g. meta inf)
+3) Download matching VPP packages
+4) Clone CSIT
+...
+
+
+#
+# install jvpp jars to maven before building hc2vpp to be sure there is no API mismatch
+# then we need to run CSIT script the same way it is done for perf job
+
+# add post build script that runs benchmark and produces csv file
+# sudo java -jar ./target/jvpp-benchmark-1.18.07-SNAPSHOT-executable.jar -wi 0 -i 1 -rff jvpp-benchmark-results.csv
+# make the file visible in job output
+# make the job run on CSIT hardware
+# use plot publisher for visualization
+# create jira ticket to
+# a) create job for hc2vpp
+# b) create job for vpp
+
+
+    publishers:
+        - archive-artifacts:
+            artifacts: FIXME 'it/jvpp-benchmark/target/*.*'
+            latest-only: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
