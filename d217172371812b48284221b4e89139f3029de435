@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71ec685f_1addfd05",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2018-06-04T07:09:55Z",
+      "side": 1,
+      "message": "csit-dpdk-perf-mrr-weekly-master",
+      "range": {
+        "startLine": 1096,
+        "startChar": 14,
+        "endLine": 1096,
+        "endChar": 38
+      },
+      "revId": "d217172371812b48284221b4e89139f3029de435",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
