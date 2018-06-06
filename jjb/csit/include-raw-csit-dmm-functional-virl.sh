@@ -14,6 +14,15 @@
 
 set -xeu -o pipefail
 
+# Clone dmm and start tests
+git clone https://gerrit.fd.io/r/dmm
+
+# If the git clone fails, complain clearly and exit
+if [ $? != 0 ]; then
+    echo "Failed to run: git clone https://gerrit.fd.io/r/dmm"
+    exit 1
+fi
+
 # execute DMM bootstrap script if it exists
 if [ -e bootstrap-DMM.sh ]
 then
