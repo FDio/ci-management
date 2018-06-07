@@ -7,8 +7,8 @@
 
     project: 'deb_dpdk'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+        - ubuntu1804:
+            repo-os-part: 'ubuntu.bionic.main'
     stream:
         - 1607:
             branch: 'deb_dpdk_16.07'
