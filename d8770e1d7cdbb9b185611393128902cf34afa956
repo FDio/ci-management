@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bdfece3_5b7ca556",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-06-12T20:41:42Z",
+      "side": 1,
+      "message": "is there a reason you\u0027re removing the linux-headers-`uname -r` from this install?",
+      "revId": "d8770e1d7cdbb9b185611393128902cf34afa956",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
