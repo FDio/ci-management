@@ -1,9 +1,8 @@
 #!/bin/bash
 
-TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-    | grep -oE 'verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost|memif|ipsechw)' \
-    | awk '{print toupper($0)}'`
-export TEST_TAG=${TRIGGER}
+export TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} | grep -oE '(csit-perftest)+(.+)'`
+export TEST_TAG="VERIFY-PERF-PATCH"
+export TEST_TAG_ARRAY=${TRIGGER#$"csit-perftest"}
 
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-verify-perf.sh ]
