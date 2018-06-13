@@ -1,10 +1,15 @@
 #!/bin/bash
+
 set -xeu -o pipefail
 
-TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-    | grep -oE 'vpp-verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost|acl|memif|ipsechw)' \
-    | awk '{print toupper($0)}'`
-export TEST_TAG=${TRIGGER}
+if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
+    TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
+        | grep -oE '(perftest)+[[:space:]]*(.*)'`
+else
+    export TRIGGER=''
+fi
+export TEST_TAG="VERIFY-PERF-PATCH"
+export TEST_TAG_STRING=${TRIGGER#$"perftest"}
 
 # Get CSIT branch from which to test from
 # running build-root/scripts/csit-test-branch
