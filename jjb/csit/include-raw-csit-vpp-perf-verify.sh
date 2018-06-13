@@ -1,9 +1,17 @@
 #!/bin/bash
 
-TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-    | grep -oE 'verify-perf-(l2|ip4|ip6|lisp|vxlan|vhost|memif|ipsechw)' \
-    | awk '{print toupper($0)}'`
-export TEST_TAG=${TRIGGER}
+set -xeu -o pipefail
+
+if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
+    TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
+        | grep -oE '(perftest$|perftest[[:space:]].+$)'`
+else
+    TRIGGER=''
+fi
+# Export test type.
+export TEST_TAG="VERIFY-PERF-PATCH"
+# Export test tags as string.
+export TEST_TAG_STRING=${TRIGGER#$"perftest"}
 
 # execute csit bootstrap script if it exists
 if [ ! -e bootstrap-verify-perf.sh ]
