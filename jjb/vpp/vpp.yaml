@@ -799,23 +799,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-l2'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-ip4'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-ip6'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-lisp'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-vxlan'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-vhost'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-acl'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-memif'
-                - comment-added-contains-event:
-                    comment-contains-value: 'vpp-verify-perf-ipsechw'
+                    comment-contains-value: 'perftest'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
