@@ -34,7 +34,6 @@
         - 'csit-vpp-perf-{stream}-{type}'
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
-        - 'csit-vpp-perf-check-{stream}'
         - 'csit-vpp-perf-mrr-daily-master'
         - 'csit-vpp-perf-verify-{stream}'
         - 'csit-nsh_sfc-verify-perf-{stream}'
@@ -916,106 +915,6 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-check-{stream}'
-
-    description: |
-      consumer
-          csit-dev perf code base checks
-      objective
-          check csit perf code base
-      job
-          name
-              csit-vpp-perf-check
-          trigger
-              see below
-      perf test-cases selection
-          all CSIT perf suites
-      keywords
-          format - keyword, tag_list
-              verify-perf-ndrdisc, NDRDISC
-              verify-perf-pdrdisc, PDRDISC
-              verify-perf-mrr, MRR
-      default tags for vpp startup config and perf test type
-          1T1C
-              one worker thread, one core
-          2T2C
-              two worker threads, two cores
-      results
-          jjb verify
-              PASS/FAIL
-          present
-              no
-          analyse
-              csit project
-                  catch malfunctions
-                  catch degradations
-
-    project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
-    concurrent: true
-
-    logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-
-    scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
-
-    wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
-
-    triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-ndrdisc'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-pdrdisc'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-mrr'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
-
-    builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-vpp-perf-check.sh
-
-    publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
-
-        - robot:
-            output-path: archive
-            other-files:
-              - '*.*'
-
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-
-- job-template:
     name: 'csit-vpp-perf-mrr-daily-master'
 
     description: |
@@ -1167,26 +1066,22 @@
           trigger
               keyword in comment to csit patch
       perf test-cases selection
-          test-cases selected using trigger keywords paired with tags
+          test-cases selected using trigger keyword followed by tags
           all test-cases are labelled with CSIT RF topic tags defined in
           csit/docs/tag_documentation.rst
       proposed keywords
           focus on testing specified vpp packet processing path
-          format - keyword - tag_list
-          perf_verify_ip4 - IP4Base, IP4Scale2M
-          perf_verify_ip6 - IP6Base, IP6Scale2M
-          perf_verify_l2 - L2XC, L2BD
-          perf_verify_lisp - 4Lisp, 6Lisp
-          perf_verify_vxlan - Vxlan
-          perf_verify_vhost - Vhost
-          perf_verify_memif - Memif
+          format - csit-perftest tag_list
       default tags for vpp startup config and perf test type
+          IP4BASE, IP6BASE, L2XCBASE, L2BDBASE
+          64B/78B
+              64B/78B packet size
           1T1C
               one worker thread, one core
-          X520
-              x520 Niantic NIC
-          NDRDISC
-              discovery of NDR throughput
+          X710
+              x710 Fortville NIC
+          MRR
+              MDR throughput
       results
           jjb verify
               PASS/FAIL
@@ -1225,21 +1120,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-l2'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-ip4'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-ip6'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-lisp'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-vxlan'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-vhost'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-memif'
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf-ipsechw'
+                    comment-contains-value: 'csit-perftest'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
