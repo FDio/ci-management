@@ -21,7 +21,19 @@ grep search /etc/resolv.conf  || true
 
 if [ "${OS_ID}" == "ubuntu" ]; then
     dpkg-query -W -f='${binary:Package}\t${Version}\n' || true
+    echo "************************************************************************"
+    echo "pip list:"
     pip list || true
+    echo "************************************************************************"
+    echo "Contents of /var/cache/vpp/python/virtualenv/lib/python2.7/site-packages:"
+    ls -lth /var/cache/vpp/python/virtualenv/lib/python2.7/site-packages || true
+    echo "************************************************************************"
+    echo "Contents of br Downloads:"
+    ls -lth /w/Downloads || true
+    echo "************************************************************************"
+    echo "Contents of /w/dpdk for test folks:"
+    echo "************************************************************************"
+    ls -lth /w/dpdk || true
 elif [ "${OS_ID}" == "centos" ]; then
     yum list installed || true
     pip list || true
