@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7491efac_3cae8beb",
+        "filename": "jjb/scripts/setup_vpp_ubuntu_docker_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-06-20T19:06:27Z",
+      "side": 1,
+      "message": "I like \"pip freeze\" more. Some debug-oriented people even prefer \"pipdeptree\".\nhttps://github.com/naiquevin/pipdeptree",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 12
+      },
+      "revId": "e039d0d932443955ef8ca89d15e4e951aba08f0c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
