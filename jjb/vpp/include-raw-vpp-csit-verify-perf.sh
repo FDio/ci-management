@@ -44,41 +44,45 @@ else
 fi
 
 cd csit
+# If also testing a specific csit refpoint look for CSIT_REF
+if [[ -v CSIT_REF ]]; then
+    git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF && git checkout FETCH_HEAD
+else
+    if [ "$CSIT_BRANCH" == "latest" ]; then
+        # set required CSIT branch_id based on VPP master branch; by default use 'oper'
+        case "$VPP_BRANCH" in
+            master )
+                BRANCH_ID="oper"
+                ;;
+            stable/1710 )
+                BRANCH_ID="oper-rls1710"
+                ;;
+            stable/1801 )
+                BRANCH_ID="oper-rls1801"
+                ;;
+            * )
+                BRANCH_ID="oper"
+        esac
 
-if [ "$CSIT_BRANCH" == "latest" ]; then
-    # set required CSIT branch_id based on VPP master branch; by default use 'oper'
-    case "$VPP_BRANCH" in
-        master )
-            BRANCH_ID="oper"
-            ;;
-        stable/1710 )
-            BRANCH_ID="oper-rls1710"
-            ;;
-        stable/1801 )
-            BRANCH_ID="oper-rls1801"
-            ;;
-        * )
-            BRANCH_ID="oper"
-    esac
+        # get the latest verified version of the required branch
+        CSIT_BRANCH=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
 
-    # get the latest verified version of the required branch
-    CSIT_BRANCH=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
+        if [ "${CSIT_BRANCH}" == "" ]; then
+            echo "No verified CSIT branch found - exiting"
+            exit 1
+        fi
 
-    if [ "${CSIT_BRANCH}" == "" ]; then
-        echo "No verified CSIT branch found - exiting"
-        exit 1
+        # remove 'origin/' from the branch name
+        CSIT_BRANCH=$(echo ${CSIT_BRANCH#origin/})
     fi
 
-    # remove 'origin/' from the branch name
-    CSIT_BRANCH=$(echo ${CSIT_BRANCH#origin/})
-fi
+    # checkout the required csit branch
+    git checkout ${CSIT_BRANCH}
 
-# checkout the required csit branch
-git checkout ${CSIT_BRANCH}
-
-if [ $? != 0 ]; then
-    echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
-    exit 1
+    if [ $? != 0 ]; then
+        echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
+        exit 1
+    fi
 fi
 
 # execute csit bootstrap script if it exists
