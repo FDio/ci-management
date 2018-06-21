@@ -282,7 +282,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
+        - gerrit-trigger-checkstyle-nonvoting:
             name: '{project}'
             branch: '{branch}'
 
@@ -303,10 +303,6 @@
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
             archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-arm-merge-{stream}-{os}'
@@ -393,10 +389,6 @@
             default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-checkstyle-verify-{stream}'
