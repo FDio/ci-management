@@ -764,7 +764,7 @@
 
     project-type: freestyle
     node: '{os}-basebuild-8c-32g'
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -783,6 +783,10 @@
             repo-name: '{repo-stream-part}.ubuntu.xenial.main'
         - is-csit-vpp-job-parameter:
             is-csit-vpp-job: 'True'
+        - gerrit-refspec-parameter
+        - gerrit-event-type-parameter
+        - gerrit-event-comment-text-parameter
+        - gerrit-csit-refspec-parameter
 
     scm:
         - gerrit-trigger-scm:
@@ -792,7 +796,7 @@
 
     wrappers:
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 30
+            build-timeout: 300
 
     triggers:
         - gerrit:
@@ -816,21 +820,24 @@
         - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
         - inject:
             properties-file: variables.prop
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - shell:
-            !include-raw-escape:
-                - include-raw-vpp-csit-verify-perf.sh
+#        - shell:
+#            !include-raw-escape:
+#                - ../scripts/setup_vpp_dpdk_dev_env.sh
+#                - include-raw-vpp-build.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - prepare-for-parent-test.sh
+#                #- ../scripts/setup_vpp_dpdk_dev_env.sh
+#                - include-raw-vpp-build.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - compare-child-to-parent-test.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+            artifacts: 'csit/report.html, csit/log.html, csit/output.xml, csit_/report.html, csit_/log.html, csit_/output.xml'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit_'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
