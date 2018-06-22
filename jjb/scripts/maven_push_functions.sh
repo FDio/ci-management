@@ -30,12 +30,12 @@ function push_file ()
 
     # Disable checks for doublequote to prevent glob / splitting
     # shellcheck disable=SC2086
-    $MVN org.apache.maven.plugins:maven-deploy-plugin:deploy-file \
-        -Dfile=$push_file -DrepositoryId=$repoId \
+    echo "$MVN org.apache.maven.plugins:maven-deploy-plugin:deploy-file \
+        -B -Dfile=$push_file -DrepositoryId=$repoId \
         -Durl=$url -DgroupId=$GROUP_ID \
         -Dversion=$version -DartifactId=$artifactId \
         -Dtype=$file_type $d_classifier\
-        -gs $GLOBAL_SETTINGS_FILE -s $SETTINGS_FILE
+        -gs $GLOBAL_SETTINGS_FILE -s $SETTINGS_FILE"
 
     # make sure the script bombs if we fail an upload
     if [ "$?" != '0' ]; then
@@ -69,9 +69,9 @@ function push_deb ()
 
     basefile=$(basename -s .deb "$debfile")
     artifactId=$(echo "$basefile" | cut -f 1 -d '_')
-    version=$(echo "$basefile" | cut -f 2- -d '_')
+    version=$(echo "$basefile" | cut -f 2 -d '_')
+    classifier=$(echo "$basefile" | cut -f 3- -d '_')
     file_type=deb
-    classifier=deb
 
     push_file "$debfile" "$repoId" "$url" "$version" "$artifactId" "$file_type" "$classifier"
 }
@@ -84,11 +84,13 @@ function push_rpm ()
 
     if grep -qE '\.s(rc\.)?rpm' <<<"$rpmfile"
     then
-        rpmrelease=$(rpm -qp --queryformat="%{release}.src" "$rpmfile")
+        build=$(rpm -qp --queryformat="%{release}" "$rpmfile")
+        classifier="src"
     else
-        rpmrelease=$(rpm -qp --queryformat="%{release}.%{arch}" "$rpmfile")
+        build=$(rpm -qp --queryformat="%{release}" "$rpmfile")
+        classifier=$(rpm -qp --queryformat="%{arch}" "$rpmfile")
     fi
     artifactId=$(rpm -qp --queryformat="%{name}" "$rpmfile")
     version=$(rpm -qp --queryformat="%{version}" "$rpmfile")
-    push_file "$rpmfile" "$repoId" "$url" "${version}-${rpmrelease}" "$artifactId" rpm
+    push_file "$rpmfile" "$repoId" "$url" "${version}-${build}" "$artifactId" rpm "$classifier"
 }
