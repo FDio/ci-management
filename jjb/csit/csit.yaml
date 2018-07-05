@@ -39,7 +39,7 @@
         - 'csit-nsh_sfc-verify-perf-{stream}'
         - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
         - 'csit-tldk-verify-func-{stream}-{os}-virl'
-        - 'csit-dmm-functional-{stream}-{os}-virl'
+        - 'csit-dmm-functional-{stream}-ubuntu1604-virl'
 
     project: 'csit'
     branch: 'master'
@@ -1311,10 +1311,10 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-dmm-functional-{stream}-{os}-virl'
+    name: 'csit-dmm-functional-{stream}-ubuntu1604-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     logrotate:
