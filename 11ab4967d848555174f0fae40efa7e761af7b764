@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a538b0af_705b5ec6",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1049
+      },
+      "writtenOn": "2018-07-09T13:44:05Z",
+      "side": 1,
+      "message": "Currently we are facing issue with installing DPDK16.04 on the Jenkins Centos machines.\n\nSo, we want to disable dmm-csit Centos job until we support DPDK18.02 in the coming releases.",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 50
+      },
+      "revId": "11ab4967d848555174f0fae40efa7e761af7b764",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
