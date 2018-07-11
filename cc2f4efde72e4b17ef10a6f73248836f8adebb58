@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1240cc01_c2e1e7b2",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-07-11T10:40:15Z",
+      "side": 1,
+      "message": "MRR",
+      "range": {
+        "startLine": 1097,
+        "startChar": 27,
+        "endLine": 1097,
+        "endChar": 30
+      },
+      "revId": "cc2f4efde72e4b17ef10a6f73248836f8adebb58",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
