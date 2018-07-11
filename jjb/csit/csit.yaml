@@ -1,4 +1,4 @@
-# Copyright (c) 2017 Cisco and/or its affiliates.
+# Copyright (c) 2018 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -18,6 +18,14 @@
     os:
         - 'ubuntu1604'
         - 'centos7'
+    topo:
+        - '2n'
+        - '3n'
+
+    arch:
+        - 'skx'
+        - 'hsw'
+        - 'arm'
 
     jobs:
         - 'csit-vpp-functional-{stream}-{os}-virl'
@@ -35,7 +43,7 @@
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
         - 'csit-vpp-perf-mrr-daily-master'
-        - 'csit-vpp-perf-verify-{stream}'
+        - 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
         - 'csit-nsh_sfc-verify-perf-{stream}'
         - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
         - 'csit-tldk-verify-func-{stream}-{os}-virl'
@@ -1055,16 +1063,17 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-verify-{stream}'
+    name: 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
 
     description: |
       objective
           perf verify - per csit gerrit patch
       job
           name
-              csit-vpp-perf-verify
+              csit-vpp-perf-verify-{stream}-{topo}-{arch}
           trigger
-              keyword in comment to csit patch
+              keyword in comment to csit patch:
+              csit-{topo}-{arch}-perftest <TAGS>
       perf test-cases selection
           test-cases selected using trigger keyword followed by tags
           all test-cases are labelled with CSIT RF topic tags defined in
@@ -1073,11 +1082,11 @@
           focus on testing specified vpp packet processing path
           format - csit-perftest tag_list
       default tags for vpp startup config and perf test type
-          IP4BASE, IP6BASE, L2XCBASE, L2BDBASE
+          IP4BASE, IP6BASE, L2BDBASE
           64B/78B
               64B/78B packet size
-          1T1C
-              one worker thread, one core
+          1C
+              one core
           X710
               x710 Fortville NIC
           MRR
@@ -1120,7 +1129,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'csit-perftest'
+                    comment-contains-value: 'csit-{topo}-{arch}-perftest'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
