@@ -89,6 +89,21 @@
             default: '{stream}'
             description: "Stream job parameter to be used in shell scripts."
 
+- parameter:
+    name: topo-parameter
+    parameters:
+        - string:
+            name: TOPO
+            default: '{topo}'
+            description: "Topology parameter"
+
+- parameter:
+    name: arch-parameter
+    parameters:
+        - string:
+            name: ARCH
+            default: '{arch}'
+            description: "Architecture parameter"
 
 ##### SCMS
 - scm:
