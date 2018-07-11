@@ -1,4 +1,4 @@
-# Copyright (c) 2017 Cisco and/or its affiliates.
+# Copyright (c) 2018 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -18,6 +18,14 @@
     os:
         - 'ubuntu1604'
         - 'centos7'
+    topo:
+        - '2n'
+        - '3n'
+
+    arch:
+        - 'skx'
+        - 'hsw'
+        - 'arm'
 
     jobs:
         - 'csit-vpp-functional-{stream}-{os}-virl'
@@ -35,7 +43,7 @@
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
         - 'csit-vpp-perf-mrr-daily-master'
-        - 'csit-vpp-perf-verify-{stream}'
+        - 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
         - 'csit-nsh_sfc-verify-perf-{stream}'
         - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
         - 'csit-tldk-verify-func-{stream}-{os}-virl'
@@ -1055,40 +1063,46 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-verify-{stream}'
+    name: 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
 
     description: |
-      objective
-          perf verify - per csit gerrit patch
-      job
-          name
-              csit-vpp-perf-verify
-          trigger
-              keyword in comment to csit patch
-      perf test-cases selection
-          test-cases selected using trigger keyword followed by tags
-          all test-cases are labelled with CSIT RF topic tags defined in
-          csit/docs/tag_documentation.rst
-      proposed keywords
-          focus on testing specified vpp packet processing path
-          format - csit-perftest tag_list
-      default tags for vpp startup config and perf test type
-          IP4BASE, IP6BASE, L2XCBASE, L2BDBASE
-          64B/78B
-              64B/78B packet size
-          1T1C
-              one worker thread, one core
-          X710
-              x710 Fortville NIC
-          MRR
-              MDR throughput
-      results
-          jjb verify
-              PASS/FAIL
-          present
-              no
-          analyse
-              no
+      <ul>
+          <li>objective
+              <ul>
+                  <li>perf verify - per csit gerrit patch
+              </ul>
+          <li>job
+              <ul>
+                  <li>name: <b>csit-vpp-perf-verify-{stream}-{topo}-{arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-{topo}-{arch}-perftest tag_list</b>
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected using trigger keyword followed by tags
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>proposed keywords
+              <ul>
+                  <li>focus on testing specified vpp packet processing path
+                  <li>format: csit-{topo}-{arch}-perftest tag_list
+              </ul>
+          <li>default tags for vpp startup config and perf test type
+              <ul>
+                  <li>IP4BASE, IP6BASE, L2BDBASE
+                  <li>64B/78B: 64B/78B packet size
+                  <li>1C: one core
+                  <li>X710: x710 Fortville NIC
+                  <li>MRR: MRR throughput
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: false
@@ -1120,7 +1134,7 @@
             server-name: 'Primary'
             trigger-on:
                 - comment-added-contains-event:
-                    comment-contains-value: 'csit-perftest'
+                    comment-contains-value: 'csit-{topo}-{arch}-perftest'
             projects:
               - project-compare-type: 'ANT'
                 project-pattern: '{project}'
