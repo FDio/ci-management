@@ -1105,7 +1105,7 @@
       </ul>
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
