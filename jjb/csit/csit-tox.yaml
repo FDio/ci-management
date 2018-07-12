@@ -2,20 +2,16 @@
     name: csit-validate
 
     jobs:
-        - 'csit-validate-pylint-{stream}'
+        - 'csit-verify-tox-{stream}'
 
     project: 'csit'
     branch: 'master'
     stream:
         - master:
             branch: 'master'
-        - '1606':
-            branch: 'rls1606'
-        - '1609':
-            branch: 'rls1609'
 
 - job-template:
-    name: 'csit-validate-pylint-{stream}'
+    name: 'csit-verify-tox-{stream}'
 
     project-type: freestyle
     node: ubuntu1604-basebuild-4c-4g
@@ -32,6 +28,7 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - gerrit-refspec-parameter
 
     scm:
         - gerrit-trigger-scm:
@@ -53,11 +50,11 @@
         # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
         # See jjb/integration from ODL
         - shell:
-            !include-raw-escape: include-raw-csit-pylint.sh
+            ./tox.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'pylint.log'
+            artifacts: '*.log'
             latest-only: false
         - violations:
             pylint:
