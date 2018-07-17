@@ -160,7 +160,7 @@
             latest-only: false
 
         - robot-report:
-            output-path: ''
+            output-path: 'csit'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
