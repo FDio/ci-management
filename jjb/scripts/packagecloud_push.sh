@@ -1,7 +1,7 @@
 #!/bin/bash
 # PCIO_CO is a Jenkins Global Environment variable
 
-set -xe -o pipefail
+set -x
 
 echo "STARTING PACKAGECLOUD PUSH"
 
