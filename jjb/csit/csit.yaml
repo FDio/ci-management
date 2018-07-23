@@ -60,6 +60,9 @@
         - master:
             branch: 'master'
             branch-id: 'oper'
+        - '1807':
+            branch: 'rls1807'
+            branch-id: 'oper-rls1807'
     stream:
         - master:
             branch: 'master'
@@ -76,6 +79,9 @@
         - '1804':
             branch: 'rls1804'
             branch-id: 'oper-rls1804'
+        - '1807':
+            branch: 'rls1807'
+            branch-id: 'oper-rls1807'
 
 
 - job-template:
