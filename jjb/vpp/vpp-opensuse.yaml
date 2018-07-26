@@ -31,6 +31,9 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
+        - '1807':
+            branch: 'stable/1807'
+            repo-stream-part: 'stable.1807'
 
 - job-template:
     name: 'vpp-verify-{stream}-opensuse'
