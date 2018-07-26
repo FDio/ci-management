@@ -42,6 +42,22 @@
             description: "GERRIT_REFSPEC parameter not given by trigger"
 
 - parameter:
+    name: gerrit-event-type-parameter
+    parameters:
+        - string:
+            name: GERRIT_EVENT_TYPE
+            default: ''
+            description: "GERRIT_EVENT_TYPE parameter not given by trigger"
+
+- parameter:
+    name: gerrit-event-comment-text-parameter
+    parameters:
+        - string:
+            name: GERRIT_EVENT_COMMENT_TEXT
+            default: ''
+            description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
+
+- parameter:
     name: maven-project-parameter
     parameters:
         - string:
@@ -72,6 +88,14 @@
             name: CC
             default: '{cc}'
             description: "CC parameter, can be gnu or clang"
+
+- parameter:
+    name: gerrit-csit-refspec-parameter
+    parameters:
+        - string:
+            name: CSIT_REF
+            default: ''
+            description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository"
 
 - parameter:
     name: is-csit-vpp-job-parameter
