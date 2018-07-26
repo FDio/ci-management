@@ -39,7 +39,7 @@
         - 'csit-dpdk-perf-{stream}-{type}'
         - 'csit-dpdk-perf-verify-{stream}-{topo}-{arch}'
         - 'csit-dpdk-perf-mrr-weekly-master'
-        - 'csit-ligato-perf-{stream}-{type}'
+        - 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
         - 'csit-vpp-perf-{stream}-{type}'
         - 'csit-vpp-perf-trend-daily-master'
         - 'csit-vpp-perf-trend-semi-weekly-master'
@@ -340,10 +340,12 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-ligato-perf-{stream}-{type}'
+    name: 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
+
+    description: TODO
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: true
 
     logrotate:
@@ -357,9 +359,20 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
-        - type-parameter:
-            type: '{type}'
-
+        - is-csit-vpp-job-parameter:
+            is-csit-vpp-job: 'True'
+        - gerrit-refspec-parameter
+        - gerrit-event-type-parameter
+        - gerrit-event-comment-text-parameter
+        - gerrit-csit-refspec-parameter
+        - string:
+            name: CSIT_PERF_TRIAL_DURATION
+            default: "1.0"
+            description: "Duration of a trial measurement in BMRR tests."
+        - string:
+            name: CSIT_PERF_TRIAL_MULTIPLICITY
+            default: "10"
+            description: "Number of subsamples for BMRR tests."
     scm:
         - gerrit-trigger-scm:
             credentials-id: 'jenkins-gerrit-credentials'
@@ -371,10 +384,22 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'verify-perf-ligato-{type}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'csit-ligato-{topo}-{arch}-perftest'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - shell:
