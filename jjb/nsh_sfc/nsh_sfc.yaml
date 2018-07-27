@@ -526,7 +526,7 @@
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: 30
+          build-timeout: '{build-perf-timeout}'
 
     triggers:
         - gerrit-trigger-manually-triggered:

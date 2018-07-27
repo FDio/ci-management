@@ -365,7 +365,7 @@
 
     wrappers:
         - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+            build-timeout: '{build-perf-timeout}'
 
     triggers:
         - timed: '@weekly'
