@@ -1,5 +1,4 @@
-#########################################################################
-#
+#!/bin/bash
 # Copyright (c) 2018 Huawei Technologies Co.,Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#########################################################################
-#!/bin/bash
 
 set -xeu -o pipefail
 
-# Clone dmm and start tests
-git clone https://gerrit.fd.io/r/dmm
-
-# If the git clone fails, complain clearly and exit
-if [ $? != 0 ]; then
-    echo "Failed to run: git clone https://gerrit.fd.io/r/dmm"
-    exit 1
-fi
+cd ../
 
 # Clone csit and start tests
 git clone https://gerrit.fd.io/r/csit
