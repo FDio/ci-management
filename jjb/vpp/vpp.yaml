@@ -834,14 +834,14 @@
                 - prepare-build-parent.sh
                 - include-raw-vpp-build.sh
                 - prepare-test-new.sh
-                - include-raw-vpp-csit-verify-perf.sh
-                - prepare-test-parent.sh
-                - include-raw-vpp-csit-verify-perf.sh
-                - compare-test-results.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - prepare-test-parent.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - compare-test-results.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit_new/report.html, csit_new/log.html, csit_new/output.xml, csit_parent/report.html, csit_parent/log.html, csit_parent/output.xml'
+            artifacts: 'csit_new/report.html, csit_new/log.html, csit_new/output.xml, csit_parent/report.html, csit_parent/log.html, csit_parent/output.xml, build_new/**/*.deb, build_parent/**/*.deb'
             latest-only: false
 
         - robot-report:
