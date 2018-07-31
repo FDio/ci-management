@@ -1223,8 +1223,8 @@
     parameters:
         - project-parameter:
             project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+        - gerrit-refspec-parameter:
+            refspec: '{branch}'
 
     scm:
         - gerrit-trigger-scm:
