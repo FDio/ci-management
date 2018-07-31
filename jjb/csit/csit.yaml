@@ -1223,9 +1223,10 @@
     parameters:
         - project-parameter:
             project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-
+        - gerrit-refspec-parameter:
+            refspec: '{branch}'
+        - gerrit-event-type-parameter
+        - gerrit-event-comment-text-parameter
     scm:
         - gerrit-trigger-scm:
             credentials-id: 'jenkins-gerrit-credentials'
