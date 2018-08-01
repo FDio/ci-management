@@ -829,11 +829,7 @@
             properties-file: variables.prop
         - shell:
             !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-                - prepare-build-parent.sh
-                - include-raw-vpp-build.sh
-                - prepare-test-new.sh
+                - download-builds.sh
                 - include-raw-vpp-csit-verify-perf.sh
                 - prepare-test-parent.sh
                 - include-raw-vpp-csit-verify-perf.sh
