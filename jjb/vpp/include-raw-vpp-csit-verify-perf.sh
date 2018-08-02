@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -xeu -o pipefail
+set -exu
 
 if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
     TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
