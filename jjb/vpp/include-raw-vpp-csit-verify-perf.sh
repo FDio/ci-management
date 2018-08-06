@@ -1,6 +1,9 @@
 #!/bin/bash
 
-set -xeu -o pipefail
+set -exu -o pipefail
+
+# Avoid failure if CSIT_BRANCH is not set.
+CSIT_BRANCH="${CSIT_BRANCH:-}"
 
 if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
     TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
