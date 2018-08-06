@@ -14,8 +14,6 @@
 
 set -xeu -o pipefail
 
-cd ../
-
 # Clone csit and start tests
 git clone https://gerrit.fd.io/r/csit
 
@@ -25,8 +23,10 @@ if [ $? != 0 ]; then
     exit 1
 fi
 
+mkdir -p ./csit/dmm/
+
 # Move the dmm to the csit dir
-sudo mv -f ./dmm/ ./csit/
+rsync -av --progress --exclude="csit" . ./csit/dmm/
 
 cd csit
 
