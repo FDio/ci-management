@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62295a48_57541709",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-06T11:58:13Z",
+      "side": 1,
+      "message": "Can you add a link to an explanation why the regular expression has to be as complicated as this (also with respect to line 464)?",
+      "range": {
+        "startLine": 460,
+        "startChar": 54,
+        "endLine": 460,
+        "endChar": 63
+      },
+      "revId": "8e78bf818e3de5efc2c66a193827678285ae11d2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
