@@ -23,7 +23,7 @@
 
     project: 'dmm'
     os:
-        - ubuntu1604
+        - 'ubuntu1604'
     stream:
         - master:
             branch: 'master'
@@ -145,10 +145,9 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
+        - gerrit-trigger-patch-submitted:
             name: 'dmm'
             branch: '{branch}'
-            comment-trigger-value: 'verify-dmm-func'
 
     builders:
         - shell:
