@@ -56,7 +56,7 @@
     name: vpp-misc
     jobs:
         - 'vpp-csit-verify-virl-{stream}'
-        - 'vpp-csit-verify-hw-perf-{stream}-2n-skx'
+        - 'vpp-csit-verify-hw-perf-{stream}-up'
         - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
@@ -759,7 +759,7 @@
             fixed-delay: 90
 
 - job-template:
-    name: 'vpp-csit-verify-hw-perf-{stream}-2n-skx'
+    name: 'vpp-csit-verify-hw-perf-{stream}-up'
 
     project-type: freestyle
     node: '{os}-basebuild-8c-32g'
@@ -834,21 +834,21 @@
                 - prepare-build-parent.sh
                 - include-raw-vpp-build.sh
                 - prepare-test-new.sh
-                - include-raw-vpp-csit-verify-perf.sh
-                - prepare-test-parent.sh
-                - include-raw-vpp-csit-verify-perf.sh
-                - compare-test-results.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - prepare-test-parent.sh
+#                - include-raw-vpp-csit-verify-perf.sh
+#                - compare-test-results.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit_new/report.html, csit_new/log.html, csit_new/output.xml, csit_parent/report.html, csit_parent/log.html, csit_parent/output.xml'
+            artifacts: 'csit_new/report.html, csit_new/log.html, csit_new/output.xml, csit_parent/report.html, csit_parent/log.html, csit_parent/output.xml, build_new/**/*.deb, build_parent/**/*.deb'
             latest-only: false
 
         - robot-report:
             output-path: 'csit_new'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+#        - fdio-infra-shiplogs:
+#            maven-version: 'mvn33-new'
 
 - parameter:
     name: type-parameter
