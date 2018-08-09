@@ -1,3 +1,4 @@
+---
 #########################################################################
 #
 # Copyright (c) 2018 Huawei Technologies Co.,Ltd.
@@ -17,19 +18,19 @@
 - project:
     name: dmm
     jobs:
-        - 'dmm-verify-{stream}-checkstyle'
-        - 'dmm-verify-{stream}-{os}'
-        - 'dmm-merge-{stream}-{os}'
-        - 'dmm-csit-verify-func-{stream}-{os}-virl'
+      - 'dmm-verify-{stream}-checkstyle'
+      - 'dmm-verify-{stream}-{os}'
+      - 'dmm-merge-{stream}-{os}'
+      - 'dmm-csit-verify-func-{stream}-{os}-virl'
 
     project: 'dmm'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
 
     stream:
-        - master:
-            branch: 'master'
+      - master:
+          branch: 'master'
 
 - job-template:
     name: 'dmm-verify-{stream}-checkstyle'
@@ -39,37 +40,37 @@
     concurrent: true
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: 'dmm'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: 'dmm'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: 'dmm'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: 'dmm'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-dmm-test-checkstyle.sh
+      - shell:
+          !include-raw-escape: include-raw-dmm-test-checkstyle.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -83,37 +84,37 @@
     concurrent: true
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: 'dmm'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: 'dmm'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: 'dmm'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: 'dmm'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-build.sh
+      - shell:
+          !include-raw-escape: include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -126,37 +127,37 @@
     node: '{os}-basebuild-4c-4g'
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: 'dmm'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: 'dmm'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: 'dmm'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: 'dmm'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-build.sh
+      - shell:
+          !include-raw-escape: include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -170,44 +171,44 @@
     concurrent: true
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: 'dmm'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: 'dmm'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-       - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: 'dmm'
-            branch: '{branch}'
-            comment-trigger-value: 'verify-dmm-func'
+      - gerrit-trigger-manually-triggered:
+          name: 'dmm'
+          branch: '{branch}'
+          comment-trigger-value: 'verify-dmm-func'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-dmm-csit-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-dmm-csit-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit'
+      - robot-report:
+          output-path: 'csit'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
