@@ -24,7 +24,9 @@
 
     project: 'dmm'
     os:
-        - ubuntu1604
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
     stream:
         - master:
             branch: 'master'
