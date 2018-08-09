@@ -24,9 +24,7 @@
       - 'dmm-csit-verify-func-{stream}-{os}-virl'
 
     project: 'dmm'
-    os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+    os: ubuntu1604
 
     stream:
       - master:
