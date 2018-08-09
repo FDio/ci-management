@@ -12,12 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd build/
-cmake ..
-make checkstyle
-if [ $? -eq 0 ]; then
-    echo "DMM checkstyle is SUCCESS"
+if grep 'checkstyle' CMakeLists.txt > /dev/null
+then
+    cd build/
+    cmake ..
+    make checkstyle
+    if [ $? -eq 0 ]; then
+        echo "DMM checkstyle is SUCCESS"
+    else
+        echo "DMM checkstyle has FAILED"
+        exit 1
+    fi
 else
-    echo "DMM checkstyle has FAILED"
+    echo "Can't find checkstyle target in CMakeLists.txt- skipping test checkstyle"
     exit 1
 fi
