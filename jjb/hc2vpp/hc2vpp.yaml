@@ -287,6 +287,9 @@
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
                 - include-raw-hc2vpp-pkg-push.sh
+        - shell:
+            !include-raw-escape:
+                - ../scripts/packagecloud_push.sh
     reporters:
         - findbugs
 
