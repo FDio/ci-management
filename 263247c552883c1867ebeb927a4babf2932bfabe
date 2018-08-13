@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60a56f4d_6ab29a0b",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-13T08:01:42Z",
+      "side": 1,
+      "message": "Some of the jobs might need more RAM for rebot phase, but we can bump the value if we see job failure.",
+      "range": {
+        "startLine": 802,
+        "startChar": 35,
+        "endLine": 802,
+        "endChar": 37
+      },
+      "revId": "263247c552883c1867ebeb927a4babf2932bfabe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
