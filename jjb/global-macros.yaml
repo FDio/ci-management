@@ -105,6 +105,31 @@
             default: '{arch}'
             description: "Architecture parameter"
 
+- parameter:
+    name: gerrit-event-type-parameter
+    parameters:
+        - string:
+            name: GERRIT_EVENT_TYPE
+            default: ''
+            description: "GERRIT_EVENT_TYPE parameter not given by trigger"
+
+- parameter:
+    name: gerrit-event-comment-text-parameter
+    parameters:
+        - string:
+            name: GERRIT_EVENT_COMMENT_TEXT
+            default: ''
+            description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
+
+- parameter:
+    name: gerrit-csit-refspec-parameter
+    parameters:
+        - string:
+            name: CSIT_REF
+            default: ''
+            description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
+            # FIXME: Wrap long lines.
+
 ##### SCMS
 - scm:
     name: git-scm
