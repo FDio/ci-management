@@ -56,7 +56,7 @@
     name: vpp-misc
     jobs:
         - 'vpp-csit-verify-virl-{stream}'
-        - 'vpp-csit-verify-hw-perf-{stream}'
+        - 'vpp-csit-verify-perf-{stream}-2n-skx'
         - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
@@ -491,8 +491,6 @@
             max-failed-builds: 1
             fixed-delay: 90
 
-
-
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
 
@@ -767,11 +765,11 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-hw-perf-{stream}'
+    name: 'vpp-csit-verify-perf-{stream}-2n-skx'
 
     project-type: freestyle
     node: '{os}-basebuild-8c-32g'
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -787,9 +785,19 @@
         - os-parameter:
             os: '{os}'
         - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
-        - is-csit-vpp-job-parameter:
-            is-csit-vpp-job: 'True'
+            repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+        - gerrit-refspec-parameter
+        - gerrit-event-type-parameter
+        - gerrit-event-comment-text-parameter
+        - gerrit-csit-refspec-parameter
+        - string:
+            name: CSIT_PERF_TRIAL_DURATION
+            default: "1.0"
+            description: "Duration of a trial measurement in BMRR tests."
+        - string:
+            name: CSIT_PERF_TRIAL_MULTIPLICITY
+            default: "30"
+            description: "Number of subsamples for BMRR tests."
 
     scm:
         - gerrit-trigger-scm:
@@ -799,7 +807,7 @@
 
     wrappers:
         - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 30
+            build-timeout: 300
 
     triggers:
         - gerrit:
@@ -820,24 +828,17 @@
                 notbuilt: false
 
     builders:
-        - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
         - shell:
             !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - shell:
-            !include-raw-escape:
-                - include-raw-vpp-csit-verify-perf.sh
+                - clone-csit-run-main.sh
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
+            artifacts: 'csit_new/report.html, csit_new/log.html, csit_new/output.xml, csit_parent/report.html, csit_parent/log.html, csit_parent/output.xml'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit/archive/*.*'
+            output-path: 'csit_new'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
