@@ -707,6 +707,7 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - gerrit-refspec-parameter
         - maven-exec:
             maven-version: 'mvn33-new'
 
@@ -855,13 +856,14 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
+        - gerrit-refspec-parameter
         - maven-exec:
             maven-version: 'mvn33-new'
 
     scm:
         - gerrit-trigger-scm:
             credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
+            refspec: '$GERRIT_REFSPEC'
             choosing-strategy: 'default'
 
     wrappers:
