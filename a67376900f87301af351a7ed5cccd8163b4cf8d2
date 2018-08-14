@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb81c50b_b20eee55",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-14T14:59:45Z",
+      "side": 1,
+      "message": "This is ok for Sandbox, but wrong for production.",
+      "range": {
+        "startLine": 718,
+        "startChar": 32,
+        "endLine": 718,
+        "endChar": 38
+      },
+      "revId": "a67376900f87301af351a7ed5cccd8163b4cf8d2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
