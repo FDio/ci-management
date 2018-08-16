@@ -31,6 +31,9 @@
         - 1805:
             branch: '18.05.x'
             repo-stream-part: 'deb_dpdk_1805'
+        - 1808:
+            branch: '18.08.x'
+            repo-stream-part: 'deb_dpdk_1808'
 
 - job-template:
     name: 'deb_dpdk-verify-{stream}-{os}'
