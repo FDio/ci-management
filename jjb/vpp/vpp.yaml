@@ -461,6 +461,8 @@
                   forbidden-file-paths:
                     - compare-type: REG_EXP
                       pattern: .*docs\/.*
+                    - compare-type: REG_EXP
+                      pattern: .*extras\/emacs\/.*
                   disable-strict-forbidden-file-verification: 'true'
             override-votes: true
             gerrit-build-notbuilt-verified-value: 0
