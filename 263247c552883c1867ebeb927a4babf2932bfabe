@@ -22,6 +22,30 @@
       "revId": "263247c552883c1867ebeb927a4babf2932bfabe",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d54860ae_667720cd",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-08-18T06:45:02Z",
+      "side": 1,
+      "message": "I am aware but number of 8g-32u is limited. Also I want to start politely and just increase if we need it. So I agree we will monitor. Still I want to optimize the size of output.xml so we won\u0027t need more resources.",
+      "parentUuid": "60a56f4d_6ab29a0b",
+      "range": {
+        "startLine": 802,
+        "startChar": 35,
+        "endLine": 802,
+        "endChar": 37
+      },
+      "revId": "263247c552883c1867ebeb927a4babf2932bfabe",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
