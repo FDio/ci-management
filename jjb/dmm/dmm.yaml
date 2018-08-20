@@ -24,7 +24,7 @@
       - 'dmm-csit-verify-func-{stream}-{os}-virl'
 
     project: 'dmm'
-    os: ubuntu1604
+    os: 'ubuntu1604'
 
     stream:
       - master:
@@ -191,10 +191,9 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-trigger-patch-submitted:
           name: 'dmm'
           branch: '{branch}'
-          comment-trigger-value: 'verify-dmm-func'
 
     builders:
       - shell:
