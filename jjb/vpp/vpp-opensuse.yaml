@@ -129,17 +129,10 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'checkstyle_success'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+        - gerrit-trigger-checkstyle-nonvoting:
+            name: '{project}'
+            branch: '{branch}'
+            branch-pattern: '**/{branch}'
 
     builders:
         - shell:
