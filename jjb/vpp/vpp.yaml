@@ -838,11 +838,11 @@
 
     publishers:
         - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+            artifacts: 'csit/archive/*.*'
             latest-only: false
 
         - robot-report:
-            output-path: 'csit'
+            output-path: 'csit/archive/*.*'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
