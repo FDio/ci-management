@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2a4697a7_06559cdf",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-21T14:39:47Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "74c69713_0ceb7ce7",
+      "range": {
+        "startLine": 841,
+        "startChar": 29,
+        "endLine": 841,
+        "endChar": 36
+      },
+      "revId": "f50b576bf60e50155e7efa167fb704fcefc90cc6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41c53a6c_68bf0c66",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "We had this in past and nothing happens, RF plugin just takes only specific files.",
       "parentUuid": "41c53a6c_68bf0c66",
+      "range": {
+        "startLine": 845,
+        "startChar": 38,
+        "endLine": 845,
+        "endChar": 42
+      },
+      "revId": "f50b576bf60e50155e7efa167fb704fcefc90cc6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa5da413_0ce76a57",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-21T14:39:47Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "b786302d_0269e1c4",
       "range": {
         "startLine": 845,
         "startChar": 38,
