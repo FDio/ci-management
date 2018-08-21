@@ -297,7 +297,7 @@
 
     builders:
         - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+            !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
