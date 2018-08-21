@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5b7f84_dc885548",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-21T13:37:47Z",
+      "side": 1,
+      "message": "Now when I think about it, our bootstrap already copies from ${ARCHIVE_DIR}/ to ${WORKSPACE}/archives/, so we can archive \u0027archives/*.*\u0027.\nBut \u0027csit/archive/*.*\" might be safer when the job is aborted, not sure which is better.",
+      "range": {
+        "startLine": 841,
+        "startChar": 29,
+        "endLine": 841,
+        "endChar": 36
+      },
+      "revId": "f50b576bf60e50155e7efa167fb704fcefc90cc6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c53a6c_68bf0c66",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-21T13:37:47Z",
+      "side": 1,
+      "message": "In archive, we can have other files than just Robot output. I think the Robot plugin will not be happy with those files. I am not even sure output-path can point to files (as opposed to a single directory).",
+      "range": {
+        "startLine": 845,
+        "startChar": 38,
+        "endLine": 845,
+        "endChar": 42
+      },
+      "revId": "f50b576bf60e50155e7efa167fb704fcefc90cc6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
