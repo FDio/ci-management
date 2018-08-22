@@ -343,6 +343,15 @@
                 variable: 'SETTINGS_FILE'
               - file-id: 'global-settings'
                 variable: 'GLOBAL_SETTINGS_FILE'
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/root'
+        - config-file-provider:
+            files:
+              - file-id: 'packagecloud_api'
+                target: '/root'
+
         - shell:
             !include-raw-escape: ../scripts/create_maven_env.sh
         - inject:
