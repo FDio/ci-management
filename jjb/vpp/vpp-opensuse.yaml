@@ -132,7 +132,6 @@
         - gerrit-trigger-checkstyle-nonvoting:
             name: '{project}'
             branch: '{branch}'
-            branch-pattern: '**/{branch}'
 
     builders:
         - shell:
