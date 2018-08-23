@@ -259,6 +259,16 @@
             jobs: 'vpp-merge-{stream}-{os},hc2vpp-merge-{stream}-{os}'
             result: 'success'
 
+    builders:
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/home/jenkins/.packagecloud'
+        - config-file-provider:
+            files:
+              - file-id: 'packagecloud_api'
+                target: '/home/jenkins/packagecloud_api'
+
     prebuilders:
         - shell:
             !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
