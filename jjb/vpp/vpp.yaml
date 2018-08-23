@@ -735,7 +735,7 @@
 
     wrappers:
         - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+            build-timeout: '90'
 
     triggers:
         - gerrit-trigger-checkstyle-nonvoting:
@@ -765,11 +765,6 @@
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-csit-verify-hw-perf-{stream}'
