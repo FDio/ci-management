@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b12d59_18392ba4",
+        "filename": "jjb/vpp/vpp-opensuse.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-23T08:35:02Z",
+      "side": 1,
+      "message": "Hmm, why are we using this trigger, instead of (for example) gerrit-trigger-trivial-patch-submitted or gerrit-trigger-os-trivial-patch-submitted?",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "66f5316ef29ea6dd62dd3f57f2e5fc162a33f829",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
