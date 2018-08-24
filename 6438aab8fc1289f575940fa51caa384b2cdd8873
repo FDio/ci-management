@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e5c0d55_9e4e2f31",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-24T16:39:47Z",
+      "side": 1,
+      "message": "Other jobs also include this:\n  ../scripts/packagecloud_push.sh",
+      "range": {
+        "startLine": 331,
+        "startChar": 31,
+        "endLine": 331,
+        "endChar": 32
+      },
+      "revId": "6438aab8fc1289f575940fa51caa384b2cdd8873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
