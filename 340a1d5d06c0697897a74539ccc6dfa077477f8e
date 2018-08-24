@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a83b40af_15dc5033",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-08-24T15:24:30Z",
+      "side": 1,
+      "message": "I assume that this file is supposed to be named .packagecloud ? If so than the target must be /home/jenkins/.packagecloud as the config-file-provider needs a fully qualified name if you\u0027re giving it a target.",
+      "revId": "340a1d5d06c0697897a74539ccc6dfa077477f8e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2c3cf0a_858a91cf",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-08-24T15:24:30Z",
+      "side": 1,
+      "message": "I assume that this file is supposed to be named packagecloud_api ? If so than the target must be /home/jenkins/packagecloud_api as the config-file-provider needs a fully qualified name if you\u0027re giving it a target.",
+      "revId": "340a1d5d06c0697897a74539ccc6dfa077477f8e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
