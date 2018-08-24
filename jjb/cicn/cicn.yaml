@@ -306,6 +306,14 @@
         - timed: '@daily'
 
     builders:
+        - config-file-provider:
+            files:
+              - file-id: '.packagecloud'
+                target: '/home/jenkins/.packagecloud'
+        - config-file-provider:
+            files:
+              - file-id: 'packagecloud_api'
+                target: '/home/jenkins/packagecloud_api'
         - maven-target:
             maven-version: 'mvn33-new'
             goals: '--version'
@@ -323,6 +331,10 @@
             !include-raw-escape:
                 - ../scripts/maven_push_functions.sh
                 - include-raw-cicn-maven-push.sh
+        - shell:
+            !include-raw-escape:
+                - ../scripts/packagecloud_push.sh
+
     publishers:
         - archive:
             artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
