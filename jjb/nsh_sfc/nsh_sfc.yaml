@@ -346,11 +346,11 @@
         - config-file-provider:
             files:
               - file-id: '.packagecloud'
-                target: '/home/jenkins'
+                target: '/home/jenkins/.packagecloud'
         - config-file-provider:
             files:
               - file-id: 'packagecloud_api'
-                target: '/home/jenkins'
+                target: '/home/jenkins/packagecloud_api'
 
         - shell:
             !include-raw-escape: ../scripts/create_maven_env.sh
