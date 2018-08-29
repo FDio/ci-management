@@ -1,3 +1,4 @@
+---
 - project:
     name: hc2vpp-csit
     description: 'jenkins jobs to test Hc2vpp features.'
@@ -21,9 +22,10 @@
         - '1807':
             branch: 'stable/1807'
             repo-stream-part: 'stable.1807'
-    os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+
+    os: 'ubuntu1604'
+    repo-os-part: 'ubuntu.xenial.main'
+
     odl:
         - oxygen
 
@@ -38,9 +40,10 @@
         - master:
             branch: 'master'
             repo-stream-part: 'master'
-    os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+
+    os: 'ubuntu1604'
+    repo-os-part: 'ubuntu.xenial.main'
+
     odl:
         - boron
 
