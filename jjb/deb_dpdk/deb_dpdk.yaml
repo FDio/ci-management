@@ -1,3 +1,4 @@
+---
 - project:
     name: deb_dpdk
     jobs:
@@ -6,9 +7,9 @@
         - 'deb_dpdk-verify-image-{stream}-{os}'
 
     project: 'deb_dpdk'
-    os:
-        - ubuntu1804:
-            repo-os-part: 'ubuntu.bionic.main'
+    os: 'ubuntu1804'
+    repo-os-part: 'ubuntu.bionic.main'
+
     stream:
         - 1607:
             branch: 'deb_dpdk_16.07'
