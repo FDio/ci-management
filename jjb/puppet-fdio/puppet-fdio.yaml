@@ -1,12 +1,13 @@
+---
 - project:
     name: puppet-fdio
     jobs:
         - 'puppet-module-unit'
         - 'puppet-fdio-verify-beaker-{stream}-{os}'
     project: 'puppet-fdio'
-    os:
-        - centos7:
-            repo-os-part: 'centos7'
+    os: 'centos7'
+    repo-os-part: 'centos7'
+
     stream:
         - master:
             branch: 'master'
