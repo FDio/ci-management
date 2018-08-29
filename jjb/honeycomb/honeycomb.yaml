@@ -1,3 +1,4 @@
+---
 - project:
     name: honeycomb
     jobs:
@@ -5,9 +6,9 @@
         - 'honeycomb-merge-{stream}-{os}'
         - 'honeycomb-benchmark-master'
     project: 'honeycomb'
-    os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+    os: 'ubuntu1604'
+    repo-os-part: 'ubuntu.xenial.main'
+    
     stream:
         - master:
             branch: 'master'
