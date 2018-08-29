@@ -5,9 +5,8 @@
         - 'vpp-merge-{stream}-opensuse'
 
     project: 'vpp'
-    os:
-      - opensuse:
-          repo-os-part: 'opensuse'
+    os: 'opensuse'
+    repo-os-part: 'opensuse'
 
     stream:
         - '1801':
@@ -24,9 +23,9 @@
         - 'vpp-merge-{stream}-osleap15'
 
     project: 'vpp'
-    os:
-      - opensuse:
-          repo-os-part: 'opensuse'
+    os: 'opensuse'
+    repo-os-part: 'opensuse'
+
     stream:
         - master:
             branch: 'master'
