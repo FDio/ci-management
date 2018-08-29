@@ -26,14 +26,12 @@
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
-    odl:
-        - oxygen
+    odl: 'oxygen'
 
 - project:
     name: csit-hc2vpp-perf
     description: 'jenkins jobs to test Hc2vpp performance.'
-    jobs:
-        - 'hc2vpp-csit-perf-{stream}-{os}'
+    jobs: 'hc2vpp-csit-perf-{stream}-{os}'
     project: 'hc2vpp'
     build-artifact-num-to-keep: 10
     stream:
@@ -44,8 +42,7 @@
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
-    odl:
-        - boron
+    odl: 'boron'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
