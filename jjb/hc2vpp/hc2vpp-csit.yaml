@@ -26,8 +26,7 @@
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
-    odl:
-        - oxygen
+    odl: 'oxygen'
 
 - project:
     name: csit-hc2vpp-perf
@@ -44,8 +43,7 @@
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
-    odl:
-        - boron
+    odl: 'boron'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
