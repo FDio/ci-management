@@ -301,6 +301,7 @@
         - shell:
             !include-raw-escape:
                 - ../scripts/setup_vpp_dpdk_dev_env.sh
+                - include-raw-vpp-parallel-vars.sh
                 - include-raw-vpp-arm-build.sh
     publishers:
         - archive:
