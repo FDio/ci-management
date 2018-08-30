@@ -22,6 +22,30 @@
       "revId": "dd1698c7c7417ee6eae4e3166a26e1c905f329ea",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2326dfd0_34e2534f",
+        "filename": "jjb/vpp/include-raw-vpp-parallel-vars.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-30T11:40:19Z",
+      "side": 1,
+      "message": "Looking at line 10, I bet they should be valid at once. :)",
+      "parentUuid": "12d92728_71794c95",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "dd1698c7c7417ee6eae4e3166a26e1c905f329ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
