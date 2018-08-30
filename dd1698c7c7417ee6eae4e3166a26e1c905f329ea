@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d92728_71794c95",
+        "filename": "jjb/vpp/include-raw-vpp-parallel-vars.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-08-30T11:37:10Z",
+      "side": 1,
+      "message": "Are those mutual exclusive? Or should they be valid at once? I am just curious if condition i valid.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "dd1698c7c7417ee6eae4e3166a26e1c905f329ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
