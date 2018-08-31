@@ -107,7 +107,7 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
+        - gerrit-trigger-patch-submitted-skip-vote:
             name: '{project}'
             branch: '{branch}'
 
