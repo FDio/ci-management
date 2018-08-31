@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "670e042c_0d0ac153",
+        "filename": "jjb/vpp/include-raw-vpp-parallel-vars.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-08-31T10:26:32Z",
+      "side": 1,
+      "message": "Can you name this variable differently?\nIt has different value than the variable in line 28, and line 24 looks needlesly self-referential.",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "d543418e29bca7dffee313256f444eaf144b9ea0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
