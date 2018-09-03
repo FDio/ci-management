@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad68dd1f_6d050462",
+        "filename": "jjb/vpp/include-raw-vpp-csit-verify-perf.sh",
+        "patchSetId": 57
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-09-03T08:27:14Z",
+      "side": 0,
+      "message": "Oh, this is the BRANCH_ID you were referring to. I will prepare code for this, possibly in preparatory CSIT Change.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 21
+      },
+      "revId": "d3284294e301bee3e3aadd7f0dae80973db40a6c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
