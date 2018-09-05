@@ -288,7 +288,7 @@
 
     wrappers:
         - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+            build-timeout: 120
 
     triggers:
         - gerrit-trigger-checkstyle:
@@ -350,7 +350,7 @@
 
     wrappers:
         - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+            build-timeout: 120
 
     triggers:
         - gerrit-trigger-patch-merged:
