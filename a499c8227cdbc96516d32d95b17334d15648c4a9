@@ -46,6 +46,30 @@
       "revId": "a499c8227cdbc96516d32d95b17334d15648c4a9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2c467cf_9b798096",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 61
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-09-06T12:00:09Z",
+      "side": 1,
+      "message": "I checked the code, and CSIT files from git are not copied there. Only results.txt is there in addition, which is short nad interesting enough to archive.",
+      "parentUuid": "717dc2b2_6e38787f",
+      "range": {
+        "startLine": 838,
+        "startChar": 24,
+        "endLine": 838,
+        "endChar": 156
+      },
+      "revId": "a499c8227cdbc96516d32d95b17334d15648c4a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
