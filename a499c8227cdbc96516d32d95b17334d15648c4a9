@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef0ba4b4_d84cfaf3",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 61
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-09-06T11:30:39Z",
+      "side": 1,
+      "message": "I would prefer *, so in feature if we decide to add more files we do not need to keep in mind to update this. This is aligned with all other jobs. Do not worry about jenkins-robot plugin. It will pick only what is needed.",
+      "range": {
+        "startLine": 838,
+        "startChar": 24,
+        "endLine": 838,
+        "endChar": 156
+      },
+      "revId": "a499c8227cdbc96516d32d95b17334d15648c4a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
