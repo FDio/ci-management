@@ -70,6 +70,30 @@
       "revId": "a499c8227cdbc96516d32d95b17334d15648c4a9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "466a6b63_a554837c",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 61
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-09-06T12:20:08Z",
+      "side": 1,
+      "message": "In past we used this for pre-processing of output.xml so extracted lightweight version of XML was produced and consumed by plot engine - then it was replaced by PAL as no longer needed but in future we want to archive coredumps/telemetry",
+      "parentUuid": "f2c467cf_9b798096",
+      "range": {
+        "startLine": 838,
+        "startChar": 24,
+        "endLine": 838,
+        "endChar": 156
+      },
+      "revId": "a499c8227cdbc96516d32d95b17334d15648c4a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
