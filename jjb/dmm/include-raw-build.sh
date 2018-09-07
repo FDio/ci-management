@@ -3,7 +3,7 @@
 set -e -o pipefail
 
 # Make DMM
-./scripts/build.sh
+./scripts/build.sh all
 
 echo "*******************************************************************"
 echo "* DMM BUILD SUCCESSFULLY COMPLETED"
