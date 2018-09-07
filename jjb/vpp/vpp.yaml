@@ -833,10 +833,10 @@
                   - branch-compare-type: 'ANT'
                     branch-pattern: '**/{branch}'
             skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
+                successful: true
+                failed: true
+                unstable: true
+                notbuilt: true
 
     builders:
         - shell:
