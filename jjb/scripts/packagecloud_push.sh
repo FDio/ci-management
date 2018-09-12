@@ -8,7 +8,7 @@ echo "STARTING PACKAGECLOUD PUSH"
 sleep 10
 
 FACTER_OS=$(/usr/bin/facter operatingsystem)
-if [ -f /root/.packagecloud ]; then
+if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
       Ubuntu)
         FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
