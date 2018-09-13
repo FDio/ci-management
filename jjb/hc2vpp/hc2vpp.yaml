@@ -1,33 +1,34 @@
+---
 - project:
     name: hc2vpp
     jobs:
-        - 'hc2vpp-verify-{stream}-{os}'
-        - 'hc2vpp-merge-{stream}-{os}'
-        - 'hc2vpp-integration-{stream}-{os}'
-        - 'hc2vpp-verify-image-{stream}-{os}'
+      - 'hc2vpp-verify-{stream}-{os}'
+      - 'hc2vpp-merge-{stream}-{os}'
+      - 'hc2vpp-integration-{stream}-{os}'
+      - 'hc2vpp-verify-image-{stream}-{os}'
     project: 'hc2vpp'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-            skip-site: 'false'
-            skip-jar-deploy: 'false'
-        - centos7:
-            repo-os-part: 'centos7'
-            skip-site: 'true'
-            skip-jar-deploy: 'true'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+          skip-site: 'false'
+          skip-jar-deploy: 'false'
+      - centos7:
+          repo-os-part: 'centos7'
+          skip-site: 'true'
+          skip-jar-deploy: 'true'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
 
 - job-template:
     name: 'hc2vpp-verify-{stream}-{os}'
@@ -37,49 +38,49 @@
     jdk: openjdk8-{os}
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: 'hc2vpp'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: 'hc2vpp'
+          branch: '{branch}'
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     publishers:
-        - email-notification:
-            email-prefix: '[hc2vpp]'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - email-notification:
+          email-prefix: '[hc2vpp]'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-verify-image-{stream}-{os}'
@@ -89,62 +90,62 @@
     jdk: openjdk8-{os}
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-images'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-images'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     publishers:
-        - email-notification:
-            email-prefix: '[hc2vpp]'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - email-notification:
+          email-prefix: '[hc2vpp]'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-merge-{stream}-{os}'
@@ -153,63 +154,63 @@
     jdk: openjdk8-{os}
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - ssh-agent-credentials:
+          users:
+            - 'jenkins-gerrit-credentials'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: 'hc2vpp'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: 'hc2vpp'
+          branch: '{branch}'
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Ddocs.hc.folder=io/fd/hc2vpp -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Ddocs.hc.folder=io/fd/hc2vpp -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     reporters:
-        - findbugs
+      - findbugs
 
     publishers:
-        - sonar:
-            jdk: 'openjdk8-{os}'
-            language: 'java'
-            branch: '{stream}'
-        - email-notification:
-            email-prefix: '[hc2vpp]'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - sonar:
+          jdk: 'openjdk8-{os}'
+          language: 'java'
+          branch: '{stream}'
+      - email-notification:
+        email-prefix: '[hc2vpp]'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-integration-{stream}-{os}'
@@ -218,60 +219,59 @@
     jdk: openjdk8-{os}
 
     logrotate:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - string:
-            name: SKIP_JAR_DEPLOY
-            default: '{skip-jar-deploy}'
-            description: "Skips deployment of hc2vpp jars if variable is set to true"
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: SKIP_JAR_DEPLOY
+          default: '{skip-jar-deploy}'
+          description: "Skips deployment of hc2vpp jars if variable is set to true"
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            branch: '{branch}'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          branch: '{branch}'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - ssh-agent-credentials:
+          users:
+            - 'jenkins-gerrit-credentials'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-{os},hc2vpp-merge-{stream}-{os}'
-            result: 'success'
-
-    builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/home/jenkins/.packagecloud'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/home/jenkins/packagecloud_api'
+      - reverse:
+          jobs: 'vpp-merge-{stream}-{os},hc2vpp-merge-{stream}-{os}'
+          result: 'success'
 
     prebuilders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
+>>    - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
+
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
     maven:
         maven-name: 'mvn33-new'
         root-pom: 'pom.xml'
@@ -283,33 +283,33 @@
         global-settings-type: cfp
 
     postbuilders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'hc2vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'hc2vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-hc2vpp-pkg-push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'hc2vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'hc2vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+            - ../scripts/maven_push_functions.sh
+            - include-raw-hc2vpp-pkg-push.sh
+      - shell:
+          !include-raw-escape:
+            - ../scripts/packagecloud_push.sh
     reporters:
         - findbugs
 
     publishers:
-        - email-notification:
-            email-prefix: '[hc2vpp]'
-        - maven-deploy:
-            id: ''
-            unique-version: true
-            deploy-unstable: false
-            release-env-var: SKIP_JAR_DEPLOY
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - email-notification:
+          email-prefix: '[hc2vpp]'
+      - maven-deploy:
+          id: ''
+          unique-version: true
+          deploy-unstable: false
+          release-env-var: SKIP_JAR_DEPLOY
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
