@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "839ae6fb_2f33bc72",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 893
+      },
+      "writtenOn": "2018-09-13T18:10:05Z",
+      "side": 1,
+      "message": "it\u0027s tripping on this \u003e char.",
+      "revId": "03b263e2bf5650f0e95eb40bcba58480bd56aa90",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
