@@ -11,19 +11,11 @@ function setup {
         echo "REPO_URL: ${REPO_URL}"
         # Setup by installing vpp-dev and vpp-lib
         if [ "$OS_ID" == "ubuntu" ]; then
-            echo "deb [trusted=yes] ${REPO_URL} ./" | sudo tee /etc/apt/sources.list.d/99fd.io.list
-            sudo apt-get update || true
+            curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
             sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
         elif [ "$OS_ID" == "centos" ]; then
-            sudo cat << EOF > fdio-master.repo
-[fdio-master]
-name=fd.io master branch latest merge
-baseurl=${REPO_URL}
-enabled=1
-gpgcheck=0
-EOF
-            sudo mv fdio-master.repo /etc/yum.repos.d/fdio-master.repo
+            curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
             sudo yum -y install vpp-dpdk-devel || true
         elif [ "$OS_ID" == "opensuse" ]; then
             sudo cat << EOF > fdio-master.repo
