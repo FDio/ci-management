@@ -15,6 +15,9 @@ function setup {
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
             sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
         elif [ "$OS_ID" == "centos" ]; then
+            if [ -f /etc/yum.repos.d/fdio-master.repo ]; then
+                rm /etc/yum.repos.d/fdio-master.repo
+            fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
             sudo yum -y install vpp-dpdk-devel || true
         elif [ "$OS_ID" == "opensuse" ]; then
