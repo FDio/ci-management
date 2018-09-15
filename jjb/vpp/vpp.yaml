@@ -147,6 +147,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
