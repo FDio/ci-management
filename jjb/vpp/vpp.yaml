@@ -289,6 +289,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -524,6 +526,8 @@
             os: '{os}'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.{repo-os-part}'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -584,6 +588,8 @@
             os: 'ubuntu1604'
         - repo-name-parameter:
             repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -735,6 +741,8 @@
         - string:
             name: CSIT_REF
             description: "Also testing CSIT_REF"
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -809,6 +817,8 @@
             name: CSIT_PERF_TRIAL_MULTIPLICITY
             default: "30"
             description: "Number of subsamples for BMRR tests."
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -885,6 +895,8 @@
             os: 'ubuntu1604'
         - maven-exec:
             maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -952,6 +964,8 @@
             os: 'ubuntu1604'
         - maven-exec:
             maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -1036,6 +1050,8 @@
             os: 'ubuntu1604'
         - maven-exec:
             maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
@@ -1103,6 +1119,8 @@
             os: 'ubuntu1604'
         - maven-exec:
             maven-version: 'mvn33-new'
+        - stream-parameter:
+            stream: '{stream}'
 
     scm:
         - gerrit-trigger-scm:
