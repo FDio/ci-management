@@ -7,6 +7,11 @@ echo "STARTING PACKAGECLOUD PUSH"
 
 sleep 10
 
+if [ -f /usr/bin/zypper ]; then
+  echo "Since zypper exists, us it to install facter"
+  zypper -n install facter
+fi
+
 FACTER_OS=$(/usr/bin/facter operatingsystem)
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
