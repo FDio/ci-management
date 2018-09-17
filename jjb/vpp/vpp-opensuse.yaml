@@ -233,11 +233,11 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+                - ../scripts/packagecloud_push.sh
         - shell:
             !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
+                - ../scripts/maven_push_functions.sh
+                - include-raw-vpp-maven-push.sh
 
     publishers:
         - archive:
@@ -325,11 +325,11 @@
             global-settings-file: 'global-settings'
         - shell:
             !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+                - ../scripts/packagecloud_push.sh
         - shell:
             !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
+                - ../scripts/maven_push_functions.sh
+                - include-raw-vpp-maven-push.sh
 
     publishers:
         - archive:
