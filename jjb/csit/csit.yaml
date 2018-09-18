@@ -699,6 +699,21 @@
             !include-raw-escape: include-raw-csit-cpta.sh
 
     publishers:
+        - email-ext:
+            recipients: 'tifrank@cisco.com, csit-report@lists.fd.io'
+            reply-to: ''
+            content-type: 'text'
+            subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
+            attachments: '_build/_static/vpp/jenkins-alert-failed-tests.*'
+            body: |
+                FD.io CSIT Trending Alert - failed tests
+
+                $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS
+
+                See attachment for the list of the failed tests.
+
+            always: true
+
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
 
