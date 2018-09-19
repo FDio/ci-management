@@ -48,10 +48,13 @@ if [ "${GERRIT_BRANCH}" != "master" ]; then
     if [ "${OS_ID}" == "ubuntu" ]; then
         apt-get -y remove vpp-dpdk-dev || true
         apt-get -y remove vpp-dpdk-dkms || true
+        apt-get -y remove vpp-dev-contrib || true
     elif [ "${OS_ID}" == "centos" ]; then
         yum -y erase vpp-dpdk-devel || true
+        yum -y erase vpp-dev-contrib || true
         yum clean all || true
     elif [ "${OS_ID}" == "opensuse" ]; then
         yum -y erase vpp-dpdk-devel || true
+        yum -y erase vpp-dev-contrib || true
     fi
 fi
