@@ -305,7 +305,7 @@
             build-timeout: 120
 
     triggers:
-        - gerrit-trigger-checkstyle-nonvoting:
+        - gerrit-trigger-checkstyle:
             name: '{project}'
             branch: '{branch}'
 
