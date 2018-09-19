@@ -704,7 +704,7 @@
             reply-to: ''
             content-type: 'text'
             subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
-            attachments: '_build/_static/vpp/failed-tests.tar.gz'
+            attachments: '/w/workspace/csit-trending-daily-master/resources/tools/presentation/_build/_static/vpp/failed-tests.tar.gz'
             body: |
                 FD.io CSIT Trending Alert - failed tests
 
@@ -713,6 +713,7 @@
                 See attachment for the list of the failed tests.
 
             always: true
+            failure: false
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
