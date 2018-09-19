@@ -16,15 +16,17 @@ function setup {
                 rm /etc/apt/sources.list.d/99fd.io.list
             fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
-            sudo apt-get -y --force-yes install vpp-dpdk-dev || true
-            sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
+            #sudo apt-get -y --force-yes install vpp-dpdk-dev || true
+            #sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
+            sudo apt-get -y --force-yes install vpp-dev-contrib || true
         elif [ "$OS_ID" == "centos" ]; then
             if [ -f /etc/yum.repos.d/fdio-master.repo ]; then
                 echo "Deleting: /etc/yum.repos.d/fdio-master.repo"
                 rm /etc/yum.repos.d/fdio-master.repo
             fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
-            sudo yum -y install vpp-dpdk-devel || true
+            #sudo yum -y install vpp-dpdk-devel || true
+            sudo yum -y install vpp-dev-contrib || true
         elif [ "$OS_ID" == "opensuse" ]; then
             REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
             echo "REPO_URL: ${REPO_URL}"
@@ -36,7 +38,8 @@ enabled=1
 gpgcheck=0
 EOF
             sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
-            sudo yum -y install vpp-dpdk-devel || true
+            #sudo yum -y install vpp-dpdk-devel || true
+            sudo yum -y install vpp-dev-contrib || true
         fi
     fi
 }
