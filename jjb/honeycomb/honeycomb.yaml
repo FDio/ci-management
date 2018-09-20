@@ -8,7 +8,7 @@
     project: 'honeycomb'
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
-    
+
     stream:
         - master:
             branch: 'master'
@@ -128,13 +128,6 @@
         global-settings-type: cfp
 
     postbuilders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'honeycomb-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
         - provide-maven-settings:
             settings-file: 'honeycomb-settings'
             global-settings-file: 'global-settings'
@@ -159,7 +152,7 @@
 - job-template:
     name: 'honeycomb-benchmark-master'
     project-type: maven
-    node: ubuntu1604-basebuild-4c-4g 
+    node: ubuntu1604-basebuild-4c-4g
     jdk: openjdk8-ubuntu1604
 
     logrotate:
