@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23cab5a6_43e1385a",
+        "filename": "jjb/ci-management/ci-jobs.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-09-20T20:47:14Z",
+      "side": 1,
+      "message": "Trailing spaces on lines 5 and 8.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 2
+      },
+      "revId": "ea078bda798fa016cbbb88acb88656f9f7e724b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a37ecb_64c5f68b",
+        "filename": "jjb/defaults.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-09-20T20:47:14Z",
+      "side": 1,
+      "message": "Two spaces where there should be one.",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "ea078bda798fa016cbbb88acb88656f9f7e724b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29d32652_cb379037",
+        "filename": "jjb/defaults.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-09-20T20:47:14Z",
+      "side": 1,
+      "message": "This is fine, but will need to be changed in global-defaults.yaml.",
+      "range": {
+        "startLine": 5,
+        "startChar": 10,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "ea078bda798fa016cbbb88acb88656f9f7e724b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
