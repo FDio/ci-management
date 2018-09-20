@@ -283,13 +283,6 @@
         global-settings-type: cfp
 
     postbuilders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hc2vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
       - provide-maven-settings:
           settings-file: 'hc2vpp-settings'
           global-settings-file: 'global-settings'
