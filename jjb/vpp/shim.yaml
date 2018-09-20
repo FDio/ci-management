@@ -1,0 +1,68 @@
+- project:
+    name: vpp-csit-shim
+    jobs:
+        - 'vpp-csit-shim-{stream}'
+
+    project: 'vpp'
+    stream:
+        - master:
+            branch: 'master'
+            repo-stream-part: 'master'
+    os: ubuntu1604
+
+- job-template:
+    name: 'vpp-csit-shim-{stream}'
+
+    project-type: freestyle
+    node: 'foo'
+    concurrent: true
+
+    logrotate:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+        - os-parameter:
+            os: '{os}'
+        - repo-name-parameter:
+            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+
+    scm:
+        - gerrit-trigger-scm:
+            credentials-id: 'jenkins-gerrit-credentials'
+            refspec: ''
+            choosing-strategy: 'gerrit'
+
+    wrappers:
+        - fdio-infra-wrappers:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'shimcheck'
+            projects:
+                - project-compare-type: 'ANT'
+                  project-pattern: '{project}'
+                  branches:
+                    - branch-compare-type: 'ANT'
+                      branch-pattern: '**/{branch}'
+
+            skip-vote:
+                successful: true
+                failed: false
+                unstable: false
+                notbuilt: false
+
+    builders:
+        - shell:
+            !include-raw-escape: include-raw-vpp-test-shim.sh
+
