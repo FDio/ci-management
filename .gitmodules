@@ -1,3 +1,6 @@
 [submodule "jjb/global-jjb"]
 	path = jjb/global-jjb
 	url = https://github.com/lfit/releng-global-jjb
+[submodule "releng-global-jjb"]
+	path = releng-global-jjb
+	url = https://github.com/lfit/releng-global-jjb.git
