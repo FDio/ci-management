@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4396266_bf6d30d1",
+        "filename": ".gitmodules",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-09-21T15:36:59Z",
+      "side": 1,
+      "message": "We already have (probably different version of) this. Will the two submodules work, or should we remove the old one?",
+      "range": {
+        "startLine": 3,
+        "startChar": 31,
+        "endLine": 3,
+        "endChar": 48
+      },
+      "revId": "ac0db5b711bdff5b6ab164e30aa292f7c3611f9d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
