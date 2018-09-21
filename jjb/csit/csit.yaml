@@ -690,7 +690,7 @@
             goals: '--version'
             settings: 'csit-settings'
             settings-type: cfp
-            global-settings: 'global-settings'
+            global-settings: 'global-settings'l
             global-settings-type: cfp
         - provide-maven-settings:
             settings-file: 'csit-settings'
@@ -704,7 +704,7 @@
             reply-to: ''
             content-type: 'text'
             subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
-            attachments: '/w/workspace/csit-trending-daily-master/resources/tools/presentation/_build/_static/vpp/failed-tests.tar.gz'
+            attachments: '**/_build/_static/vpp/failed-tests*.tar.gz'
             body: |
                 FD.io CSIT Trending Alert - failed tests
 
