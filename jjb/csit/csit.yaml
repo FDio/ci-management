@@ -704,7 +704,7 @@
             reply-to: ''
             content-type: 'text'
             subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
-            attachments: '/w/workspace/csit-trending-daily-master/resources/tools/presentation/_build/_static/vpp/failed-tests.tar.gz'
+            attachments: '*/failed-tests*.tar.gz'
             body: |
                 FD.io CSIT Trending Alert - failed tests
 
