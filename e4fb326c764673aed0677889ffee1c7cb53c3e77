@@ -46,6 +46,30 @@
       "revId": "e4fb326c764673aed0677889ffee1c7cb53c3e77",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3259e431_355fce3d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2018-09-24T18:35:44Z",
+      "side": 1,
+      "message": "Invite to the sandbox has been sent. Please let me know if I should abandon my change.",
+      "parentUuid": "23dbdb88_65aae350",
+      "range": {
+        "startLine": 707,
+        "startChar": 26,
+        "endLine": 707,
+        "endChar": 28
+      },
+      "revId": "e4fb326c764673aed0677889ffee1c7cb53c3e77",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
