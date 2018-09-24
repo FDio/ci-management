@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e91457b6_374372ff",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 893
+      },
+      "writtenOn": "2018-09-24T19:32:08Z",
+      "side": 0,
+      "message": "The reason you are seeing that error is this template section was deleted (190-195) buteh vpp docs verify job is still referenced somewhere.",
+      "revId": "480602ad57206b0d047b880124e0eead0b7a6a39",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
