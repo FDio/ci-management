@@ -39,7 +39,7 @@
         - 'csit-dpdk-perf-mrr-weekly-master'
         - 'csit-dpdk-perf-mrr-weekly-master-2n-skx'
         - 'csit-dpdk-perf-mrr-weekly-master-3n-skx'
-        - 'csit-ligato-perf-{stream}-{type}'
+        - 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
         - 'csit-vpp-perf-mrr-daily-master'
         - 'csit-vpp-perf-mrr-daily-master-2n-skx'
         - 'csit-vpp-perf-mrr-daily-master-3n-skx'
@@ -225,10 +225,49 @@
             maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-ligato-perf-{stream}-{type}'
+    name: 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>perf verify - per csit gerrit patch
+              </ul>
+          <li>job
+              <ul>
+                  <li>name: <b>csit-ligato-perf-verify-{stream}-{topo}-{arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit--ligato-{topo}-{arch}-perftest tag_list</b>
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected using trigger keyword followed by tags
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>proposed keywords
+              <ul>
+                  <li>focus on testing specified Kubernetes orchestrated topologies
+                  <li>format: csit-ligato-{topo}-{arch}-perftest tag_list
+              </ul>
+          <li>default tags for vpp startup config and perf test type
+              <ul>
+                  <li>IP4BASE, IP6BASE, L2BDBASE
+                  <li>64B/78B: 64B/78B packet size
+                  <li>1C: one core
+                  <li>X710: x710 Fortville NIC
+                  <li>MRR: MRR throughput
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-8c-32g'
     concurrent: true
 
     logrotate:
@@ -242,8 +281,9 @@
             project: '{project}'
         - gerrit-parameter:
             branch: '{branch}'
-        - type-parameter:
-            type: '{type}'
+        - gerrit-refspec-parameter
+        - gerrit-event-type-parameter
+        - gerrit-event-comment-text-parameter
 
     scm:
         - gerrit-trigger-scm:
@@ -256,10 +296,22 @@
             build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'verify-perf-ligato-{type}'
+        - gerrit:
+            server-name: 'Primary'
+            trigger-on:
+                - comment-added-contains-event:
+                    comment-contains-value: 'csit-ligato-{topo}-{arch}-perftest'
+            projects:
+              - project-compare-type: 'ANT'
+                project-pattern: '{project}'
+                branches:
+                  - branch-compare-type: 'ANT'
+                    branch-pattern: '**/{branch}'
+            skip-vote:
+                successful: false
+                failed: false
+                unstable: false
+                notbuilt: false
 
     builders:
         - shell:
