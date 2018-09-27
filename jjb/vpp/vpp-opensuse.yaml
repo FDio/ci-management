@@ -300,11 +300,11 @@
         - config-file-provider:
             files:
               - file-id: '.packagecloud'
-                target: '/home/jenkins'
+                target: '/root'
         - config-file-provider:
             files:
               - file-id: 'packagecloud_api'
-                target: '/home/jenkins'
+                target: '/root'
         - maven-target:
             maven-version: 'mvn33-new'
             goals: '--version'

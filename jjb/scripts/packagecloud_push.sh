@@ -8,11 +8,11 @@ echo "STARTING PACKAGECLOUD PUSH"
 sleep 10
 
 if [ -f /usr/bin/zypper ]; then
-  echo "Since zypper exists, us it to install facter"
-  zypper -n install facter
+    FACTER_OS="openSUSE"
+else
+    FACTER_OS=$(/usr/bin/facter operatingsystem)
 fi
 
-FACTER_OS=$(/usr/bin/facter operatingsystem)
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
       Ubuntu)
@@ -26,10 +26,11 @@ if [ -f ~/.packagecloud ]; then
         RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
         package_cloud push "${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/" ${RPMS}
       ;;
-      OpenSuSE)
-        FACTER_OSREL=$(/usr/bin/facter operatingsystemrelease)
+      openSUSE)
+        # Use /etc/os-release on openSUSE to get $VERSION
+        . /etc/os-release
         RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
-        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${FACTER_OSREL}/" ${RPMS}
+        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${RPMS}
       ;;
     esac
 fi
