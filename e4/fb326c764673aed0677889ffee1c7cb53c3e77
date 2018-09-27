@@ -1,0 +1,9 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Peter Mikus <pmikus@cisco.com>
+Code-Review+1: Jan Gelety <jgelety@cisco.com>
+Code-Review+2: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Thu, 27 Sep 2018 14:58:57 +0000
+Reviewed-on: https://gerrit.fd.io/r/14927
+Project: ci-management
+Branch: refs/heads/master
