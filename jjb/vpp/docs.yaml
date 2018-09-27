@@ -37,7 +37,7 @@
 
     project-type: freestyle
     node: ubuntu1604-us
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -106,7 +106,7 @@
 
     project-type: freestyle
     node: ubuntu1604-us
-    concurrent: true
+    concurrent: false
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -192,7 +192,7 @@
 
     project-type: freestyle
     node: ubuntu1604-us
-    concurrent: false
+    concurrent: true
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -262,7 +262,7 @@
 
     project-type: freestyle
     node: ubuntu1604-us
-    concurrent: true
+    concurrent: false
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
@@ -407,7 +407,7 @@
 
     project-type: freestyle
     node: ubuntu1604-us
-    concurrent: true
+    concurrent: false
 
     logrotate:
         daysToKeep: '{build-days-to-keep}'
