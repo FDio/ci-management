@@ -35,10 +35,11 @@
           project: '{project}'
 
     scm:
-      - gerrit-trigger-scm:
+      - gerrit-trigger-scm-recursive:
           credentials-id: 'jenkins-gerrit-credentials'
           refspec: '$GERRIT_REFSPEC'
           choosing-strategy: 'gerrit'
+          submodule-recursive: true
 
     wrappers:
       - fdio-infra-wrappers:
@@ -78,10 +79,11 @@
           project: '{project}'
 
     scm:
-      - gerrit-trigger-scm:
+      - gerrit-trigger-scm-recursive:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+          submodule-recursive: true
 
     wrappers:
       - fdio-infra-wrappers:
@@ -128,6 +130,7 @@
           branches:
             - '$GERRIT_BRANCH'
           choosing-strategy: 'gerrit'
+          submodule-recursive: true
 
     wrappers:
       - fdio-infra-wrappers:
@@ -197,6 +200,7 @@
           branches:
             - '$GERRIT_BRANCH'
           choosing-strategy: 'default'
+          submodule-recursive: true
 
     wrappers:
       - fdio-infra-wrappers:

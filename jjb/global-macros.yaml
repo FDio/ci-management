@@ -156,6 +156,20 @@
             choosing-strategy: '{choosing-strategy}'
 
 - scm:
+    name: gerrit-trigger-scm-recursive
+    scm:
+        - git:
+            credentials-id: '{credentials-id}'
+            url: '$GIT_BASE'
+            refspec: '{refspec}'
+            branches:
+                - 'origin/$GERRIT_BRANCH'
+            skip-tag: true
+            choosing-strategy: '{choosing-strategy}'
+            submodule:
+              recursive: '{submodule-recursive}'
+
+- scm:
     name: zuul-trigger-scm
     scm:
       - git:
