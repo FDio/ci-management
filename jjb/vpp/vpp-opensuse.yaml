@@ -42,7 +42,7 @@
     node: 'opensuse-us'
     concurrent: true
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -104,7 +104,7 @@
     node: 'osleap15-us'
     concurrent: true
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -165,7 +165,7 @@
     project-type: freestyle
     node: 'opensuse-us'
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -259,7 +259,7 @@
     project-type: freestyle
     node: 'osleap15-us'
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: 100
         artifactDaysToKeep: '{build-artifact-days-to-keep}'

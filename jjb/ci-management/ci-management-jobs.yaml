@@ -24,7 +24,7 @@
     node: jjb
     concurrent: true
 
-    logrotate:
+    build-discarder:
       daysToKeep: 30
       numToKeep: 10
       artifactDaysToKeep: -1
@@ -68,7 +68,7 @@
     project-type: freestyle
     node: jjb
 
-    logrotate:
+    build-discarder:
       daysToKeep: 30
       numToKeep: 40
       artifactDaysToKeep: -1

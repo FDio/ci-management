@@ -39,7 +39,7 @@
     node: ubuntu1604-us
     concurrent: true
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -108,7 +108,7 @@
     node: ubuntu1604-us
     concurrent: false
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -194,7 +194,7 @@
     node: ubuntu1604-us
     concurrent: true
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -264,7 +264,7 @@
     node: ubuntu1604-us
     concurrent: false
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -340,7 +340,7 @@
     node: ubuntu1604-us
     concurrent: true
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
@@ -409,7 +409,7 @@
     node: ubuntu1604-us
     concurrent: false
 
-    logrotate:
+    build-discarder:
         daysToKeep: '{build-days-to-keep}'
         numToKeep: '{build-num-to-keep}'
         artifactDaysToKeep: '{build-artifact-days-to-keep}'
