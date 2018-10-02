@@ -1,193 +1,190 @@
+---
 # Global macros
 
 #### PARAMETERS
 - parameter:
     name: project-parameter
     parameters:
-        - string:
-            name: PROJECT
-            default: '{project}'
-            description: "JJB configured PROJECT parameter to identify a Gerrit project"
+      - string:
+          name: PROJECT
+          default: '{project}'
+          # yamllint disable-line rule:line-length
+          description: "JJB configured PROJECT parameter to identify a Gerrit project"
+          # yamllint enable rule:line-length
 
 - parameter:
     name: gerrit-parameter
     parameters:
-        - string:
-            name: GERRIT_BRANCH
-            default: '{branch}'
-            description: "JJB configured GERRIT_BRANCH parameter"
+      - string:
+          name: GERRIT_BRANCH
+          default: '{branch}'
+          description: "JJB configured GERRIT_BRANCH parameter"
 
 - parameter:
     name: gerrit-project-parameter
     parameters:
-        - string:
-            name: GERRIT_PROJECT
-            default: '{project}'
-            description: "GERRIT_PROJECT parameter if not given by trigger"
+      - string:
+          name: GERRIT_PROJECT
+          default: '{project}'
+          description: "GERRIT_PROJECT parameter if not given by trigger"
 
 - parameter:
     name: os-parameter
     parameters:
-        - string:
-            name: OS
-            default: '{os}'
-            description: "OS parameter"
+      - string:
+          name: OS
+          default: '{os}'
+          description: "OS parameter"
 
 - parameter:
     name: gerrit-refspec-parameter
     parameters:
-        - string:
-            name: GERRIT_REFSPEC
-            default: '{refspec}'
-            description: "GERRIT_REFSPEC parameter not given by trigger"
+      - string:
+          name: GERRIT_REFSPEC
+          default: '{refspec}'
+          description: "GERRIT_REFSPEC parameter not given by trigger"
 
 - parameter:
     name: maven-project-parameter
     parameters:
-        - string:
-            name: MAVEN_SELECTOR
-            default: '{maven}'
-            description: 'Maven selector to be used by shell scripts'
+      - string:
+          name: MAVEN_SELECTOR
+          default: '{maven}'
+          description: 'Maven selector to be used by shell scripts'
 
 - parameter:
     name: maven-exec
     parameters:
       - string:
           name: MVN
+          # yamllint disable rule:line-length
           default: '/w/tools/hudson.tasks.Maven_MavenInstallation/{maven-version}/bin/mvn'
+          # yamllint enable rule:line-length
           description: 'Maven selector to be used by shell scripts'
 
 - parameter:
     name: repo-name-parameter
     parameters:
-        - string:
-            name: REPO_NAME
-            default: '{repo-name}'
-            description: 'Name of repo to which to publish packaging'
+      - string:
+          name: REPO_NAME
+          default: '{repo-name}'
+          description: 'Name of repo to which to publish packaging'
 
 - parameter:
     name: compiler-parameter
     parameters:
-        - string:
-            name: CC
-            default: '{cc}'
-            description: "CC parameter, can be gnu or clang"
+      - string:
+          name: CC
+          default: '{cc}'
+          description: "CC parameter, can be gnu or clang"
 
 - parameter:
     name: is-csit-vpp-job-parameter
     parameters:
-        - string:
-            name: IS_CSIT_VPP_JOB
-            default: '{is-csit-vpp-job}'
-            description: "Parameter is True if this is a CSIT vpp job."
+      - string:
+          name: IS_CSIT_VPP_JOB
+          default: '{is-csit-vpp-job}'
+          description: "Parameter is True if this is a CSIT vpp job."
 
 - parameter:
     name: stream-parameter
     parameters:
-        - string:
-            name: STREAM
-            default: '{stream}'
-            description: "Stream job parameter to be used in shell scripts."
+      - string:
+          name: STREAM
+          default: '{stream}'
+          description: "Stream job parameter to be used in shell scripts."
 
 - parameter:
     name: topo-parameter
     parameters:
-        - string:
-            name: TOPO
-            default: '{topo}'
-            description: "Topology parameter"
+      - string:
+          name: TOPO
+          default: '{topo}'
+          description: "Topology parameter"
 
 - parameter:
     name: arch-parameter
     parameters:
-        - string:
-            name: ARCH
-            default: '{arch}'
-            description: "Architecture parameter"
+      - string:
+          name: ARCH
+          default: '{arch}'
+          description: "Architecture parameter"
 
 - parameter:
     name: gerrit-event-type-parameter
     parameters:
-        - string:
-            name: GERRIT_EVENT_TYPE
-            default: ''
-            description: "GERRIT_EVENT_TYPE parameter not given by trigger"
+      - string:
+          name: GERRIT_EVENT_TYPE
+          default: ''
+          description: "GERRIT_EVENT_TYPE parameter not given by trigger"
 
 - parameter:
     name: gerrit-event-comment-text-parameter
     parameters:
-        - string:
-            name: GERRIT_EVENT_COMMENT_TEXT
-            default: ''
-            description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
+      - string:
+          name: GERRIT_EVENT_COMMENT_TEXT
+          default: ''
+          # yamllint disable rule:line-length
+          description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
+          # yamllint enable rule:line-length
 
 - parameter:
     name: gerrit-csit-refspec-parameter
     parameters:
-        - string:
-            name: CSIT_REF
-            default: ''
-            description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
-            # FIXME: Wrap long lines.
+      - string:
+          name: CSIT_REF
+          default: ''
+          # yamllint disable rule:line-length
+          description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
+          # yamllint enable rule:line-length
 
 ##### SCMS
 - scm:
     name: git-scm
     scm:
-        - git:
-            credentials-id: '{credentials-id}'
-            url: '$GIT_BASE'
-            refspec: ''
-            branches:
-                - 'origin/{branch}'
-            skip-tag: true
-            wipe-workspace: true
+      - git:
+          credentials-id: '{credentials-id}'
+          url: '$GIT_BASE'
+          refspec: ''
+          branches:
+            - 'origin/{branch}'
+          skip-tag: true
+          wipe-workspace: true
 
 - scm:
     name: gerrit-trigger-scm
     scm:
-        - git:
-            credentials-id: '{credentials-id}'
-            url: '$GIT_BASE'
-            refspec: '{refspec}'
-            branches:
-                - 'origin/$GERRIT_BRANCH'
-            skip-tag: true
-            choosing-strategy: '{choosing-strategy}'
+      - git:
+          credentials-id: '{credentials-id}'
+          url: '$GIT_BASE'
+          refspec: '{refspec}'
+          branches:
+            - 'origin/$GERRIT_BRANCH'
+          skip-tag: true
+          choosing-strategy: '{choosing-strategy}'
 
 - scm:
     name: gerrit-trigger-scm-recursive
     scm:
-        - git:
-            credentials-id: '{credentials-id}'
-            url: '$GIT_BASE'
-            refspec: '{refspec}'
-            branches:
-                - 'origin/$GERRIT_BRANCH'
-            skip-tag: true
-            choosing-strategy: '{choosing-strategy}'
-            submodule:
-              recursive: '{submodule-recursive}'
-
-- scm:
-    name: zuul-trigger-scm
-    scm:
       - git:
-          url: '$ZUUL_URL/$ZUUL_PROJECT'
+          credentials-id: '{credentials-id}'
+          url: '$GIT_BASE'
           refspec: '{refspec}'
           branches:
-            - '{commit}'
+            - 'origin/$GERRIT_BRANCH'
           skip-tag: true
-          wipe-workspace: true
+          choosing-strategy: '{choosing-strategy}'
+          submodule:
+            recursive: '{submodule-recursive}'
 
 ###### WRAPPERS
 - wrapper:
     name: build-timeout
     wrappers:
-        - timeout:
-            type: absolute
-            timeout: 360
-            fail: true
+      - timeout:
+          type: absolute
+          timeout: 360
+          fail: true
 
 - wrapper:
     # This wrapper is used for all jobs that require no-activity timeouts
@@ -202,9 +199,9 @@
           users:
             - 'jenkins-gerrit-credentials'
       - jclouds:
-          single-use: True
+          single-use: true
       - openstack:
-          single-use: True
+          single-use: true
 
 - wrapper:
     # This wrapper is required for all jobs as it configures the wrappers
@@ -219,224 +216,228 @@
       - timestamps
       - ssh-agent-credentials:
           users:
-              - 'jenkins-gerrit-credentials'
+            - 'jenkins-gerrit-credentials'
       - jclouds:
-          single-use: True
+          single-use: true
       - openstack:
-          single-use: True
+          single-use: true
 
 ###### TRIGGERS
 - trigger:
     name: gerrit-trigger-patch-submitted
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - patchset-created-event:
-                    exclude-drafts: 'true'
-                    exclude-trivial-rebase: 'false'
-                    exclude-no-code-change: 'false'
-                - draft-published-event
-                - comment-added-contains-event:
-                    comment-contains-value: 'recheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'reverify'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'false'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
 
 - trigger:
     name: gerrit-trigger-trivial-patch-submitted
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - patchset-created-event:
-                    exclude-drafts: 'true'
-                    exclude-trivial-rebase: 'false'
-                    exclude-no-code-change: 'true'
-                - draft-published-event
-                - comment-added-contains-event:
-                    comment-contains-value: 'recheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'reverify'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'true'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
 
 - trigger:
     name: gerrit-trigger-os-trivial-patch-submitted
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'os-check'
-                - comment-added-contains-event:
-                    comment-contains-value: 'os-verify'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'os-check'
+            - comment-added-contains-event:
+                comment-contains-value: 'os-verify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
 
 - trigger:
     name: gerrit-trigger-trivial-patch-submitted-skip-vote
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - patchset-created-event:
-                    exclude-drafts: 'true'
-                    exclude-trivial-rebase: 'false'
-                    exclude-no-code-change: 'true'
-                - draft-published-event
-                - comment-added-contains-event:
-                    comment-contains-value: 'recheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'reverify'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'true'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
 - trigger:
     name: gerrit-trigger-manually-triggered
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: '{comment-trigger-value}'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: '{comment-trigger-value}'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
 
 - trigger:
     name: gerrit-trigger-patch-merged
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - change-merged-event
-                - comment-added-contains-event:
-                    comment-contains-value: 'remerge'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            # Force Jenkins always vote the values it should already have voted
-            # during the prior verify phase
-            override-votes: true
-            gerrit-build-started-verified-value: 1
-            gerrit-build-successful-verified-value: 1
-            gerrit-build-failed-verified-value: 1
-            gerrit-build-unstable-verified-value: 1
-            gerrit-build-notbuilt-verified-value: 1
-            gerrit-build-started-codereview-value: 0
-            gerrit-build-successful-codereview-value: 0
-            gerrit-build-failed-codereview-value: 0
-            gerrit-build-unstable-codereview-value: 0
-            gerrit-build-notbuilt-codereview-value: 0
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - change-merged-event
+            - comment-added-contains-event:
+                comment-contains-value: 'remerge'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          # Force Jenkins always vote the values it should already have voted
+          # during the prior verify phase
+          override-votes: true
+          gerrit-build-started-verified-value: 1
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
+          gerrit-build-started-codereview-value: 0
+          gerrit-build-successful-codereview-value: 0
+          gerrit-build-failed-codereview-value: 0
+          gerrit-build-unstable-codereview-value: 0
+          gerrit-build-notbuilt-codereview-value: 0
 
 - trigger:
     name: gerrit-trigger-os-patch-merged
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'os-merge'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            # Force Jenkins always vote the values it should already have voted
-            # during the prior verify phase
-            override-votes: true
-            gerrit-build-started-verified-value: 1
-            gerrit-build-successful-verified-value: 1
-            gerrit-build-failed-verified-value: 1
-            gerrit-build-unstable-verified-value: 1
-            gerrit-build-notbuilt-verified-value: 1
-            gerrit-build-started-codereview-value: 0
-            gerrit-build-successful-codereview-value: 0
-            gerrit-build-failed-codereview-value: 0
-            gerrit-build-unstable-codereview-value: 0
-            gerrit-build-notbuilt-codereview-value: 0
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'os-merge'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          # Force Jenkins always vote the values it should already have voted
+          # during the prior verify phase
+          override-votes: true
+          gerrit-build-started-verified-value: 1
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
+          gerrit-build-started-codereview-value: 0
+          gerrit-build-successful-codereview-value: 0
+          gerrit-build-failed-codereview-value: 0
+          gerrit-build-unstable-codereview-value: 0
+          gerrit-build-notbuilt-codereview-value: 0
 
 # Publishers
 - publisher:
     name: archive-artifacts
     publishers:
-        - archive:
-            artifacts: '{artifacts}'
-            allow-empty: true
-            fingerprint: true
-            latest-only: true
+      - archive:
+          artifacts: '{artifacts}'
+          allow-empty: true
+          fingerprint: true
+          latest-only: true
 
 - publisher:
     name: email-notification
     publishers:
-        - email-ext:
-            recipients: 'nobody@projectrotterdam.info'
-            reply-to: ''
-            content-type: default
-            subject: '{email-prefix} $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
-            body: |
-                $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+      - email-ext:
+          recipients: 'nobody@projectrotterdam.info'
+          reply-to: ''
+          content-type: default
+          # yamllint disable rule:line-length
+          subject: '{email-prefix} $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
+          # yamllint enable rule:line-length
+          body: |
+              $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
 
-                Check console output at $BUILD_URL to view the results.
-            unstable: true
-            fixed: true
-            send-to:
-                - developers
-                - recipients
+              Check console output at $BUILD_URL to view the results.
+          unstable: true
+          fixed: true
+          send-to:
+            - developers
+            - recipients
 
 - publisher:
     name: jacoco-report
     publishers:
-        - jacoco:
-            exec-pattern: '**/**.exec'
-            class-pattern: '**/classes'
-            source-pattern: '**/src/main/java'
-            exclusion-pattern: '**/gen**,**/generated-sources/**,**/yang-gen**,**/pax/**'
-            status-update: true
-            targets:
-                - branch:
-                    healthy: 10
-                    unhealthy: 20
-                - method:
-                    healthy: 50
-                    unhealthy: 40
+      - jacoco:
+          exec-pattern: '**/**.exec'
+          class-pattern: '**/classes'
+          source-pattern: '**/src/main/java'
+          # yamllint disable rule:line-length
+          exclusion-pattern: '**/gen**,**/generated-sources/**,**/yang-gen**,**/pax/**'
+          # yamllint enable rule:line-length
+          status-update: true
+          targets:
+            - branch:
+              healthy: 10
+              unhealthy: 20
+            - method:
+              healthy: 50
+              unhealthy: 40
 
 - publisher:
     name: robot-report
     publishers:
-        - robot:
-            output-path: '{output-path}'
-            other-files: ''
+      - robot:
+          output-path: '{output-path}'
+          other-files: ''
 
 - publisher:
     name: fdio-infra-shiplogs
@@ -476,72 +477,73 @@
 - builder:
     name: ci-management-check-unicode
     builders:
-        - shell: |
-            $WORKSPACE/scripts/check-unicode.sh jjb/
+      - shell: |
+          $WORKSPACE/scripts/check-unicode.sh jjb/
 
 - builder:
     name: provide-maven-settings
     builders:
-        - config-file-provider:
-            files:
-                - file-id: '{global-settings-file}'
-                  variable: 'GLOBAL_SETTINGS_FILE'
-                - file-id: '{settings-file}'
-                  variable: 'SETTINGS_FILE'
+      - config-file-provider:
+          files:
+            - file-id: '{global-settings-file}'
+              variable: 'GLOBAL_SETTINGS_FILE'
+            - file-id: '{settings-file}'
+              variable: 'SETTINGS_FILE'
 
 - property:
     name: fdio-infra-properties
     properties:
-        - build-discarder:
-            days-to-keep: '{build-days-to-keep}'
-            num-to-keep: '{build-num-to-keep}'
+      - build-discarder:
+          days-to-keep: '{build-days-to-keep}'
+          num-to-keep: '{build-num-to-keep}'
 
 
 - builder:
     name: packer-validate
     builders:
-        - config-file-provider:
-            files:
-                - file-id: 'packer-cloud-env'
-                  variable: 'CLOUDENV'
-        - shell: |
-            #!/bin/bash
-            cd packer
-            varfiles="../packer/vars/*"
-            templates="../packer/templates/*"
-            provision="../packer/provision/*.sh"
-            for v in $varfiles; do
-                [[ "${v##*/}" =~ ^(cloud-env.*)$ ]] && continue
-                for t in $templates; do
-                    export PACKER_LOG="yes" && \
-                    export PACKER_LOG_PATH="packer-validate-${v##*/}-${t##*/}.log" && \
-                                packer.io validate -var-file=$CLOUDENV \
-                                -var-file=$v $t
-                    if [ $? -ne 0 ]; then
-                        break
-                    fi
-                done
-            done
-            for p in $provision; do
-                /bin/bash -n $p > provision-validate-${p##*/}.log 2>&1
-                if [ $? -ne 0 ]; then
-                    break
-                fi
-            done
-
+      - config-file-provider:
+          files:
+            - file-id: 'packer-cloud-env'
+              variable: 'CLOUDENV'
+      # yamllint disable rule:line-length
+      - shell: |
+          #!/bin/bash
+          cd packer
+          varfiles="../packer/vars/*"
+          templates="../packer/templates/*"
+          provision="../packer/provision/*.sh"
+          for v in $varfiles; do
+              [[ "${v##*/}" =~ ^(cloud-env.*)$ ]] && continue
+              for t in $templates; do
+                  export PACKER_LOG="yes" && \
+                  export PACKER_LOG_PATH="packer-validate-${v##*/}-${t##*/}.log" && \
+                              packer.io validate -var-file=$CLOUDENV \
+                              -var-file=$v $t
+                  if [ $? -ne 0 ]; then
+                     break
+                  fi
+              done
+          done
+          for p in $provision; do
+              /bin/bash -n $p > provision-validate-${p##*/}.log 2>&1
+              if [ $? -ne 0 ]; then
+                 break
+              fi
+          done
+      # yamllint enable
 
 - builder:
     name: packer-build
     builders:
-        - config-file-provider:
-            files:
-                - file-id: 'packer-cloud-env'
-                  variable: 'CLOUDENV'
-        - shell: |
-            #!/bin/bash
-            cd packer
-            export PACKER_LOG="yes" && \
-            export PACKER_LOG_PATH="packer-build.log" && \
-                        packer.io build -var-file=$CLOUDENV \
-                         -var-file=../packer/vars/{platform}.json \
-                         ../packer/templates/{template}.json
+      - config-file-provider:
+          files:
+            - file-id: 'packer-cloud-env'
+              variable: 'CLOUDENV'
+      - shell: |
+          #!/bin/bash
+          cd packer
+          export PACKER_LOG="yes" && \
+          export PACKER_LOG_PATH="packer-build.log" && \
+                      packer.io build -var-file=$CLOUDENV \
+                      -var-file=../packer/vars/{platform}.json \
+                      ../packer/templates/{template}.json
