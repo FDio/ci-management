@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "145e84b1_28689e6d",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-03T18:18:07Z",
+      "side": 1,
+      "message": "gerrit-trigger-scm-recursive",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 26
+      },
+      "revId": "272a5c455974c7fd51b610a994810b268e5aa5d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e60b0da_768ee9f9",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-03T18:18:07Z",
+      "side": 1,
+      "message": "gerrit-trigger-scm-recursive",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 197,
+        "endChar": 26
+      },
+      "revId": "272a5c455974c7fd51b610a994810b268e5aa5d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55051c16_924c5dd8",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-03T18:18:07Z",
+      "side": 1,
+      "message": "\u0027gerrit\u0027",
+      "range": {
+        "startLine": 202,
+        "startChar": 29,
+        "endLine": 202,
+        "endChar": 38
+      },
+      "revId": "272a5c455974c7fd51b610a994810b268e5aa5d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
