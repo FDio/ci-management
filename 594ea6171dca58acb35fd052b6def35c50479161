@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "033322fa_a26836dc",
+        "filename": "jjb/vpp/vpp-opensuse.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-05T14:12:22Z",
+      "side": 1,
+      "message": "Also lines 211 and 215?",
+      "range": {
+        "startLine": 303,
+        "startChar": 24,
+        "endLine": 303,
+        "endChar": 31
+      },
+      "revId": "594ea6171dca58acb35fd052b6def35c50479161",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
