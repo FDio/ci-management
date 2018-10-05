@@ -26,7 +26,7 @@
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
-    odl: 'oxygen'
+    odl: 'fluorine'
 
 - project:
     name: csit-hc2vpp-perf
