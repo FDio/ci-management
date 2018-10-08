@@ -40,6 +40,7 @@
         - 'csit-dpdk-perf-mrr-weekly-master-2n-skx'
         - 'csit-dpdk-perf-mrr-weekly-master-3n-skx'
         - 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
+        - 'csit-ligato-perf-ndrpdr-weekly-master-3n-hsw'
         - 'csit-vpp-perf-mrr-daily-master'
         - 'csit-vpp-perf-mrr-daily-master-2n-skx'
         - 'csit-vpp-perf-mrr-daily-master-3n-skx'
@@ -955,6 +956,74 @@
             output-path: 'csit/archive'
             other-files:
               - '*.*'
+
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-ligato-perf-ndrpdr-weekly-master-3n-hsw'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>check ligato perf mrr daily
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>all CSIT LIGATO MRR perf suites
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: csit project (catch malfunctions/degradations)
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'ubuntu1804-basebuild-4c-4g'
+    concurrent: true
+
+    build-discarder:
+        daysToKeep: '{build-days-to-keep}'
+        numToKeep: '{build-num-to-keep}'
+        artifactDaysToKeep: '{build-artifact-days-to-keep}'
+        artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+        - project-parameter:
+            project: '{project}'
+        - gerrit-parameter:
+            branch: '{branch}'
+
+    wrappers:
+        - fdio-infra-wrappers-non-activity-timeout:
+            build-timeout: '{build-timeout}'
+
+    triggers:
+        - timed: '0 2,16 * * *'
+
+    builders:
+        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+        - inject:
+            properties-file: variables.prop
+        - shell:
+            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+
+    publishers:
+        - archive-artifacts:
+            artifacts: 'csit/archive/*.*'
+            latest-only: false
+
+        - robot:
+            output-path: 'csit/archive'
+            other-files:
+              - '*.*'
+
+        - trigger:
+            project: 'csit-trending-daily-master'
+            threshold: 'FAILURE'
 
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
