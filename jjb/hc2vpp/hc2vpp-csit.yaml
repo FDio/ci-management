@@ -3,25 +3,25 @@
     name: hc2vpp-csit
     description: 'jenkins jobs to test Hc2vpp features.'
     jobs:
-        - 'hc2vpp-csit-integration-{stream}-{os}'
-        - 'hc2vpp-csit-verify-{stream}-{os}'
-        - 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
-        - 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
+      - 'hc2vpp-csit-integration-{stream}-{os}'
+      - 'hc2vpp-csit-verify-{stream}-{os}'
+      - 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
+      - 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
     project: 'hc2vpp'
     build-artifact-num-to-keep: 10
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
 
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
@@ -32,13 +32,13 @@
     name: csit-hc2vpp-perf
     description: 'jenkins jobs to test Hc2vpp performance.'
     jobs:
-        - 'hc2vpp-csit-perf-{stream}-{os}'
+      - 'hc2vpp-csit-perf-{stream}-{os}'
     project: 'hc2vpp'
     build-artifact-num-to-keep: 10
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
 
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
@@ -53,49 +53,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            branch: '{branch}'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'hc2vpp-integration-{stream}-{os}'
-            result: 'success'
+      - reverse:
+          jobs: 'hc2vpp-integration-{stream}-{os}'
+          result: 'success'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-integration.sh
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-integration.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
-        - email-notification:
-            email-prefix: '[hc2vpp]'
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
+      - email-notification:
+          email-prefix: '[hc2vpp]'
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-verify-{stream}-{os}'
@@ -106,88 +106,89 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - odl-parameter:
-            odl: '{odl}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - odl-parameter:
+          odl: '{odl}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-csit'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-csit'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     prebuilders:
-        - provide-maven-settings:
-            settings-file: 'honeycomb-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
+      - provide-maven-settings:
+          settings-file: 'honeycomb-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     postbuilders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-verify.sh
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-verify.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
-        - email-notification:
-            email-prefix: '[hc2vpp]'
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
+      - email-notification:
+          email-prefix: '[hc2vpp]'
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
@@ -197,51 +198,51 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
-        - odl-parameter:
-            odl: '{odl}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - odl-parameter:
+          odl: '{odl}'
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            branch: '{branch}'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'hc2vpp-integration-{stream}-{os}'
-            result: 'success'
+      - reverse:
+          jobs: 'hc2vpp-integration-{stream}-{os}'
+          result: 'success'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-integration-odl.sh
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-integration-odl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
-        - email-notification:
-            email-prefix: '[hc2vpp]'
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
+      - email-notification:
+          email-prefix: '[hc2vpp]'
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
@@ -252,88 +253,89 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - odl-parameter:
-            odl: '{odl}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - odl-parameter:
+          odl: '{odl}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-csit'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-csit'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     prebuilders:
-        - provide-maven-settings:
-            settings-file: 'honeycomb-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
+      - provide-maven-settings:
+          settings-file: 'honeycomb-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     postbuilders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-verify-odl.sh
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-verify-odl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
-        - email-notification:
-            email-prefix: '[hc2vpp]'
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
+      - email-notification:
+          email-prefix: '[hc2vpp]'
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'hc2vpp-csit-perf-{stream}-{os}'
@@ -343,71 +345,71 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
-        - odl-parameter:
-            odl: '{odl}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - odl-parameter:
+          odl: '{odl}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '@weekly'
+      - timed: '@weekly'
 
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-perf'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-perf'
 
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: false
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-hc2vpp-csit-perf.sh
+      - shell:
+          !include-raw-escape: include-raw-hc2vpp-csit-perf.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - parameter:
     name: odl-parameter
     parameters:
-        - string:
-            name: ODL
-            default: '{odl}'
-            description: "ODL version parameter."
+      - string:
+          name: ODL
+          default: '{odl}'
+          description: "ODL version parameter."

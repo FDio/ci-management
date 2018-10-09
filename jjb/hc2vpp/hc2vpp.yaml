@@ -69,6 +69,7 @@
     maven:
       maven-name: 'mvn33-new'
       root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
       maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
       settings: 'hc2vpp-settings'
@@ -134,6 +135,7 @@
     maven:
       maven-name: 'mvn33-new'
       root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
       maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
       settings: 'hc2vpp-settings'
@@ -192,6 +194,7 @@
     maven:
       maven-name: 'mvn33-new'
       root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Ddocs.hc.folder=io/fd/hc2vpp -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
       maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
       settings: 'hc2vpp-settings'
@@ -240,6 +243,7 @@
       - string:
           name: SKIP_JAR_DEPLOY
           default: '{skip-jar-deploy}'
+          # yamllint disable-line rule:line-length
           description: "Skips deployment of hc2vpp jars if variable is set to true"
 
     scm:
@@ -273,14 +277,15 @@
       - shell:
           !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'hc2vpp-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'hc2vpp-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     postbuilders:
       - maven-target:
@@ -295,13 +300,13 @@
           global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
-            - ../scripts/maven_push_functions.sh
-            - include-raw-hc2vpp-pkg-push.sh
+          - ../scripts/maven_push_functions.sh
+          - include-raw-hc2vpp-pkg-push.sh
       - shell:
           !include-raw-escape:
-            - ../scripts/packagecloud_push.sh
+          - ../scripts/packagecloud_push.sh
     reporters:
-        - findbugs
+      - findbugs
 
     publishers:
       - email-notification:
