@@ -1,39 +1,40 @@
+---
 - trigger:
     name: gerrit-trigger-checkstyle
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'checkstyle_success'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
 
 - trigger:
     name: gerrit-trigger-checkstyle-nonvoting
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'checkstyle_success'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{name}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
-            override-votes: true
-            gerrit-build-successful-verified-value: 1
-            gerrit-build-failed-verified-value: 1
-            gerrit-build-unstable-verified-value: 1
-            gerrit-build-notbuilt-verified-value: 1
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+            - branch-compare-type: 'ANT'
+              branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
+          override-votes: true
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
