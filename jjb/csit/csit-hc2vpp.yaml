@@ -1,10 +1,10 @@
 ---
 - project:
     name: csit-hc2vpp
-    description: 'jenkins jobs to verify Hc2vpp functional and performance tests.'
+    description: 'jenkins jobs verify Hc2vpp functional and performance tests'
     jobs:
-        - 'csit-hc2vpp-verify-func-{stream}-{os}'
-        - 'csit-hc2vpp-verify-perf-{stream}'
+      - 'csit-hc2vpp-verify-func-{stream}-{os}'
+      - 'csit-hc2vpp-verify-perf-{stream}'
     project: 'csit'
     branch: 'master'
     build-artifact-num-to-keep: 10
@@ -12,17 +12,17 @@
     repo-os-part: 'ubuntu.xenial.main'
 
     stream:
-        - master:
-            branch: 'master'
-        - '1801':
-            branch: 'rls1801'
-        - '1804':
-            branch: 'rls1804'
-        - '1807':
-            branch: 'rls1807'
-        - '1810':
-            branch: 'rls1810'
-            branch-id: 'oper-rls1810'
+      - master:
+          branch: 'master'
+      - '1801':
+          branch: 'rls1801'
+      - '1804':
+          branch: 'rls1804'
+      - '1807':
+          branch: 'rls1807'
+      - '1810':
+          branch: 'rls1810'
+          branch-id: 'oper-rls1810'
 
 - job-template:
     name: 'csit-hc2vpp-verify-func-{stream}-{os}'
@@ -32,54 +32,54 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'verify-hc2vpp-func'
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'verify-hc2vpp-func'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-hc2vpp-verify-func.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-hc2vpp-verify-func.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - email-notification:
-            email-prefix: '[csit]'
+      - email-notification:
+          email-prefix: '[csit]'
 
-        - robot-report:
-            output-path: 'archive'
+      - robot-report:
+          output-path: 'archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-hc2vpp-verify-perf-{stream}'
@@ -89,51 +89,51 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'verify-hc2vpp-perf'
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'verify-hc2vpp-perf'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-hc2vpp-verify-perf.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-hc2vpp-verify-perf.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - email-notification:
-            email-prefix: '[csit]'
+      - email-notification:
+          email-prefix: '[csit]'
 
-        - robot-report:
-            output-path: 'archive'
+      - robot-report:
+          output-path: 'archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
