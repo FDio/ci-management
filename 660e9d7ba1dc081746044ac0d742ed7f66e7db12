@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66d4a38e_c2455785",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "This would be a good place to use just \"disable\" rather than \"disable-line\". But better than that would be to just correct the line lengths here, and get rid of the yamllint comments.",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e193763_9c02a57a",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "Open paren, but no close.",
+      "range": {
+        "startLine": 52,
+        "startChar": 67,
+        "endLine": 52,
+        "endChar": 139
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1995754a_2335b1d7",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 340,
+        "startChar": 4,
+        "endLine": 340,
+        "endChar": 38
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c768986d_648969ae",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 394,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 38
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84566d37_5ee795f6",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 431,
+        "startChar": 10,
+        "endLine": 431,
+        "endChar": 44
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908a1f4b_c257f885",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T23:42:11Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 448,
+        "startChar": 4,
+        "endLine": 448,
+        "endChar": 38
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
