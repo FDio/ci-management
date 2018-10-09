@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d6a5abf_3ca1a2f8",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-09T08:01:53Z",
+      "side": 1,
+      "message": "Thanks, my bad (my intention was ndrpdr-weekly), but yesterday on call it was agreed to switch to daily and I made a typo with quick edit.",
+      "parentUuid": "4c69c9d0_711209b6",
+      "range": {
+        "startLine": 964,
+        "startChar": 28,
+        "endLine": 964,
+        "endChar": 40
+      },
+      "revId": "acde191ff10898420543c55272f74d9b519fb29d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e0ff18b_98d2af4e",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 3
