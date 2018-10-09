@@ -2,12 +2,12 @@
 - project:
     name: docs
     jobs:
-        - 'vpp-sphinx-docs-merge-{stream}'
-        - 'vpp-sphinx-docs-verify-{stream}'
-        - 'vpp-docs-merge-{stream}'
-        - 'vpp-docs-verify-{stream}'
-        - 'vpp-make-test-docs-merge-{stream}'
-        - 'vpp-make-test-docs-verify-{stream}'
+      - 'vpp-sphinx-docs-merge-{stream}'
+      - 'vpp-sphinx-docs-verify-{stream}'
+      - 'vpp-docs-merge-{stream}'
+      - 'vpp-docs-verify-{stream}'
+      - 'vpp-make-test-docs-merge-{stream}'
+      - 'vpp-make-test-docs-verify-{stream}'
 
     project: 'vpp'
     os:
@@ -15,24 +15,24 @@
           repo-os-part: 'ubuntu.xenial.main'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
     type:
-        - short
-        - long
+      - short
+      - long
 
 
 - job-template:
@@ -43,66 +43,67 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/docs/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
@@ -112,83 +113,83 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'vpp-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-docs.sh
-    publishers:
-        - archive:
-            artifacts: 'build-root/docs/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-docs.sh
 
+    publishers:
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-sphinx-docs-verify-{stream}'
@@ -198,67 +199,68 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-sphinx-docs-verify'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-sphinx-docs-verify'
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/docs/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-sphinx-docs-merge-{stream}'
@@ -268,73 +270,74 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-sphinx-docs-merged'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-sphinx-docs-merged'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/docs/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}'
@@ -344,66 +347,67 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-make-test-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-make-test-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/test-doc/build/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/test-doc/build/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}'
@@ -413,79 +417,80 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'vpp-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-make-test-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-make-test-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/test-doc/build/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/test-doc/build/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
