@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64d784c9_ce60baab",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 1071,
+        "startChar": 10,
+        "endLine": 1071,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57455e0a_73905058",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 1764,
+        "startChar": 10,
+        "endLine": 1764,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "283cb5b7_d6d6d8f3",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 1817,
+        "startChar": 10,
+        "endLine": 1817,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9f0ea0f_e768e43e",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 1890,
+        "startChar": 10,
+        "endLine": 1890,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b733b522_acb29484",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 1943,
+        "startChar": 10,
+        "endLine": 1943,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3fdd82_909b4921",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2002,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 2002,
+        "startChar": 10,
+        "endLine": 2002,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14884d73_3a3ad766",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:35:14Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, and can be removed.",
+      "range": {
+        "startLine": 2055,
+        "startChar": 10,
+        "endLine": 2055,
+        "endChar": 44
+      },
+      "revId": "015d1a4a1f5dd55c2a3a2e749be954c2aac8f2d4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
