@@ -2,16 +2,16 @@
 - project:
     name: puppet-fdio
     jobs:
-        - 'puppet-module-unit'
-        - 'puppet-fdio-verify-beaker-{stream}-{os}'
+      - 'puppet-module-unit'
+      - 'puppet-fdio-verify-beaker-{stream}-{os}'
     project: 'puppet-fdio'
     os: 'centos7'
     repo-os-part: 'centos7'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
 
 - job-template:
     name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
@@ -21,40 +21,40 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell: |
-            ./scripts/prepare-node.sh
-            ./scripts/ci-unit-tests.sh {puppet_version}
+      - shell: |
+          ./scripts/prepare-node.sh
+          ./scripts/ci-unit-tests.sh {puppet_version}
 
 - job-group:
     name: 'puppet-module-unit'
@@ -75,41 +75,41 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell: |
-            ./scripts/prepare-node.sh
-            ./scripts/allow-local-ssh-root.sh
-            ./scripts/ci-beaker.sh {os}
+      - shell: |
+          ./scripts/prepare-node.sh
+          ./scripts/allow-local-ssh-root.sh
+          ./scripts/ci-beaker.sh {os}
 
     publishers:
       - fdio-infra-shiplogs:
