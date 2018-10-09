@@ -2,8 +2,8 @@
 - project:
     name: vpp
     jobs:
-        - 'vpp-verify-{stream}-{os}'
-        - 'vpp-merge-{stream}-{os}'
+      - 'vpp-verify-{stream}-{os}'
+      - 'vpp-merge-{stream}-{os}'
 
     project: 'vpp'
     os:
@@ -13,30 +13,30 @@
           repo-os-part: 'centos7'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
 
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: vpp-clang
     jobs:
-        - 'vpp-verify-{stream}-clang'
+      - 'vpp-verify-{stream}-clang'
 
     project: 'vpp'
     os:
@@ -48,58 +48,58 @@
           repo-os-part: 'opensuse'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
 
 - project:
     name: vpp-misc
     jobs:
-        - 'vpp-csit-verify-virl-{stream}'
-        - 'vpp-checkstyle-verify-{stream}'
+      - 'vpp-csit-verify-virl-{stream}'
+      - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
     os: ubuntu1604
 
 - project:
     name: vpp-perpatch
     jobs:
-        - 'vpp-csit-verify-perf-{stream}-2n-skx'
+      - 'vpp-csit-verify-perf-{stream}-2n-skx'
     project: 'vpp'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
     os: ubuntu1604
 
 - project:
     name: vpp-master-only
     jobs:
-        - 'vpp-beta-verify-{stream}-{os}'
-        - 'vpp-beta-merge-{stream}-{os}'
+      - 'vpp-beta-verify-{stream}-{os}'
+      - 'vpp-beta-merge-{stream}-{os}'
     project: 'vpp'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -107,22 +107,22 @@
 - project:
     name: vpp-arm
     jobs:
-        - 'vpp-arm-verify-{stream}-{os}'
-        - 'vpp-arm-merge-{stream}-{os}'
+      - 'vpp-arm-verify-{stream}-{os}'
+      - 'vpp-arm-merge-{stream}-{os}'
     project: 'vpp'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
     os:
       - ubuntu1604:
           repo-os-part: 'ubuntu-arm.xenial.main'
@@ -134,59 +134,60 @@
     node: '{os}-us'
     concurrent: true
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-beta-merge-{stream}-{os}'
@@ -195,85 +196,84 @@
     node: '{os}-us'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 120
+      - fdio-infra-wrappers:
+          build-timeout: 120
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/root'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/root'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
-
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-vpp-maven-push.sh
 
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
@@ -283,56 +283,57 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 120
+      - fdio-infra-wrappers:
+          build-timeout: 120
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-parallel-vars.sh
-                - include-raw-vpp-arm-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-parallel-vars.sh
+          - include-raw-vpp-arm-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
 - job-template:
     name: 'vpp-arm-merge-{stream}-{os}'
@@ -341,84 +342,84 @@
     node: '{os}arm-us'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 120
+      - fdio-infra-wrappers:
+          build-timeout: 120
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/root'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/root'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-arm-build.sh
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-arm-build.sh
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-vpp-maven-push.sh
 
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-checkstyle-verify-{stream}'
@@ -428,89 +429,91 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - patchset-created-event:
-                    exclude-drafts: 'true'
-                    exclude-trivial-rebase: 'false'
-                    exclude-no-code-change: 'true'
-                - draft-published-event
-                - comment-added-contains-event:
-                    comment-contains-value: 'checkstylecheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'docsonly'
-                - comment-added-contains-event:
-                    comment-contains-value: 'recheck'
-                - comment-added-contains-event:
-                    comment-contains-value: 'reverify'
-            projects:
-                - project-compare-type: 'ANT'
-                  project-pattern: '{project}'
-                  branches:
-                    - branch-compare-type: 'ANT'
-                      branch-pattern: '**/{branch}'
-                  file-paths:
-                    - compare-type: REG_EXP
-                      pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
-                  forbidden-file-paths:
-                    - compare-type: REG_EXP
-                      pattern: .*docs\/.*
-                    - compare-type: REG_EXP
-                      pattern: .*extras\/emacs\/.*
-                  disable-strict-forbidden-file-verification: 'true'
-            override-votes: true
-            gerrit-build-notbuilt-verified-value: 0
-            gerrit-build-successful-verified-value: 1
-            notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
-            failed-message: 'Checkstyle failed. No further verify jobs will be started.'
-            successful-message: 'checkstyle_success'
-            skip-vote:
-                successful: true
-                failed: false
-                unstable: false
-                notbuilt: false
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'true'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstylecheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'docsonly'
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+              file-paths:
+                - compare-type: REG_EXP
+                  pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
+              forbidden-file-paths:
+                - compare-type: REG_EXP
+                  pattern: .*docs\/.*
+                - compare-type: REG_EXP
+                  pattern: .*extras\/emacs\/.*
+              disable-strict-forbidden-file-verification: 'true'
+          override-votes: true
+          gerrit-build-notbuilt-verified-value: 0
+          gerrit-build-successful-verified-value: 1
+          # yamllint disable-line rule:line-length
+          notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+          # yamllint disable-line rule:line-length
+          failed-message: 'Checkstyle failed. No further verify jobs will be started.'
+          successful-message: 'checkstyle_success'
+          skip-vote:
+            successful: true
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-test-checkstyle.sh
 
     publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: true
-            max-failed-builds: 1
-            fixed-delay: 90
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: true
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
@@ -520,59 +523,60 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: 120
+      - fdio-infra-wrappers:
+          build-timeout: 120
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 2
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-clang'
@@ -582,53 +586,54 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-clang-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-clang-build.sh
+
     publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
@@ -637,90 +642,90 @@
     node: '{os}-us'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/root'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/root'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-vpp-maven-push.sh
 
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-csit-verify-virl-{stream}'
@@ -730,66 +735,66 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
-        - is-csit-vpp-job-parameter:
-            is-csit-vpp-job: 'True'
-        - string:
-            name: CSIT_REF
-            description: "Also testing CSIT_REF"
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - is-csit-vpp-job-parameter:
+          is-csit-vpp-job: 'True'
+      - string:
+          name: CSIT_REF
+          description: "Also testing CSIT_REF"
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '90'
+      - fdio-infra-wrappers:
+          build-timeout: '90'
 
     triggers:
-        - gerrit-trigger-checkstyle-nonvoting:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle-nonvoting:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_ubuntu_docker_test.sh
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - shell:
-            !include-raw-escape:
-                - include-raw-vpp-csit-functional.sh
+      - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-vpp-csit-functional.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit'
+      - robot-report:
+          output-path: 'csit'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'vpp-csit-verify-perf-{stream}-2n-skx'
@@ -799,84 +804,84 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.bionic.main'
-        - gerrit-refspec-parameter
-        - gerrit-event-type-parameter
-        - gerrit-event-comment-text-parameter
-        - gerrit-csit-refspec-parameter
-        - string:
-            name: CSIT_PERF_TRIAL_DURATION
-            default: "1.0"
-            description: "Duration of a trial measurement in BMRR tests."
-        - string:
-            name: CSIT_PERF_TRIAL_MULTIPLICITY
-            default: "30"
-            description: "Number of subsamples for BMRR tests."
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-csit-refspec-parameter
+      - string:
+          name: CSIT_PERF_TRIAL_DURATION
+          default: "1.0"
+          description: "Duration of a trial measurement in BMRR tests."
+      - string:
+          name: CSIT_PERF_TRIAL_MULTIPLICITY
+          default: "30"
+          description: "Number of subsamples for BMRR tests."
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: 300
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 300
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'perftest'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'perftest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - clone-csit-run-main.sh
+      - shell:
+          !include-raw-escape:
+          - clone-csit-run-main.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit_new/*.*, csit_parent/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit_new/*.*, csit_parent/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit_new/'
+      - robot-report:
+          output-path: 'csit_new/'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - parameter:
     name: type-parameter
 
     parameters:
-        - string:
-            name: TYPE
-            default: '{type}'
-            description: "TYPE parameter if not given by trigger"
+      - string:
+          name: TYPE
+          default: '{type}'
+          description: "TYPE parameter if not given by trigger"

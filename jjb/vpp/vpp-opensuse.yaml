@@ -2,41 +2,41 @@
 - project:
     name: opensuse423
     jobs:
-        - 'vpp-verify-{stream}-opensuse'
-        - 'vpp-merge-{stream}-opensuse'
+      - 'vpp-verify-{stream}-opensuse'
+      - 'vpp-merge-{stream}-opensuse'
 
     project: 'vpp'
     os: 'opensuse'
     repo-os-part: 'opensuse'
 
     stream:
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
 
 - project:
     name: osleap15
     jobs:
-        - 'vpp-verify-{stream}-osleap15'
-        - 'vpp-merge-{stream}-osleap15'
+      - 'vpp-verify-{stream}-osleap15'
+      - 'vpp-merge-{stream}-osleap15'
 
     project: 'vpp'
     os: 'opensuse'
     repo-os-part: 'opensuse'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
-        - '1810':
-            branch: 'stable/1810'
-            repo-stream-part: 'stable.1810'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
 
 - job-template:
     name: 'vpp-verify-{stream}-opensuse'
@@ -46,59 +46,60 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'opensuse'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.opensuse'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'opensuse'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.opensuse'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 2
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-osleap15'
@@ -108,59 +109,60 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'opensuse'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.opensuse'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'opensuse'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.opensuse'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-checkstyle:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-            archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 2
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-merge-{stream}-opensuse'
@@ -169,92 +171,92 @@
     node: 'opensuse-us'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'opensuse'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.opensuse'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'opensuse'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.opensuse'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/home/jenkins'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/home/jenkins'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-vpp-maven-push.sh
 
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'vpp-merge-{stream}-osleap15'
@@ -263,87 +265,87 @@
     node: 'osleap15-us'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: 100
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'opensuse'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - stream-parameter:
-            stream: '{stream}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.opensuse'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'opensuse'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.opensuse'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/root'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/root'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape: include-raw-vpp-checkstyle.sh
-        - shell:
-            !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/setup_vpp_dpdk_dev_env.sh
-                - include-raw-vpp-build.sh
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-vpp-maven-push.sh
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-build.sh
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-vpp-maven-push.sh
 
     publishers:
-        - archive:
-            artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
+      - archive:
+          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
