@@ -1,267 +1,285 @@
+---
 - project:
     name: cicn-longbow
     jobs:
-        - 'cicn-longbow-verify-{stream}-{os}'
-        - 'cicn-longbow-merge-{stream}-{os}'
-        - 'cicn-longbow-docs-verify-{stream}'
-        - 'cicn-longbow-docs-merge-{stream}'
+      - 'cicn-longbow-verify-{stream}-{os}'
+      - 'cicn-longbow-merge-{stream}-{os}'
+      - 'cicn-longbow-docs-verify-{stream}'
+      - 'cicn-longbow-docs-merge-{stream}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'cframework/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'cframework/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-libparc
     jobs:
-        - 'cicn-libparc-verify-{stream}-{os}'
-        - 'cicn-libparc-merge-{stream}-{os}'
-        - 'cicn-libparc-docs-verify-{stream}'
-        - 'cicn-libparc-docs-merge-{stream}'
+      - 'cicn-libparc-verify-{stream}-{os}'
+      - 'cicn-libparc-merge-{stream}-{os}'
+      - 'cicn-libparc-docs-verify-{stream}'
+      - 'cicn-libparc-docs-merge-{stream}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'cframework/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'cframework/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-libccnx-common
     jobs:
-        - 'cicn-libccnx-common-verify-{stream}-{os}'
-        - 'cicn-libccnx-common-merge-{stream}-{os}'
-        # - 'cicn-libccnx-common-docs-verify-{stream}'
-        # - 'cicn-libccnx-common-docs-merge-{stream}'
+      - 'cicn-libccnx-common-verify-{stream}-{os}'
+      - 'cicn-libccnx-common-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'ccnxlibs/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'ccnxlibs/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-libccnx-transport-rta
     jobs:
-        - 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
-        - 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
-        # - 'cicn-libccnx-transport-rta-docs-verify-{stream}'
-        # - 'cicn-libccnx-transport-rta-docs-merge-{stream}'
+      - 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
+      - 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'ccnxlibs/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'ccnxlibs/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-libccnx-portal
     jobs:
-        - 'cicn-libccnx-portal-verify-{stream}-{os}'
-        - 'cicn-libccnx-portal-merge-{stream}-{os}'
-        # - 'cicn-libccnx-portal-docs-verify-{stream}'
-        # - 'cicn-libccnx-portal-docs-merge-{stream}'
+      - 'cicn-libccnx-portal-verify-{stream}-{os}'
+      - 'cicn-libccnx-portal-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'ccnxlibs/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'ccnxlibs/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-libicnet
     jobs:
-        - 'cicn-libicnet-verify-{stream}-{os}'
-        - 'cicn-libicnet-merge-{stream}-{os}'
-#        - 'cicn-libicnet-docs-verify-{stream}'
-#        - 'cicn-libicnet-docs-merge-{stream}'
+      - 'cicn-libicnet-verify-{stream}-{os}'
+      - 'cicn-libicnet-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'libicnet/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'libicnet/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-metis
     jobs:
-        - 'cicn-metis-verify-{stream}-{os}'
-        - 'cicn-metis-merge-{stream}-{os}'
-        # - 'cicn-metis-docs-verify-{stream}'
-        # - 'cicn-metis-docs-merge-{stream}'
+      - 'cicn-metis-verify-{stream}-{os}'
+      - 'cicn-metis-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'sb-forwarder/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'sb-forwarder/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-http-server
     jobs:
-        - 'cicn-http-server-verify-{stream}-{os}'
-        - 'cicn-http-server-merge-{stream}-{os}'
-#        - 'cicn-http-server-docs-verify-{stream}'
-#        - 'cicn-http-server-docs-merge-{stream}'
+      - 'cicn-http-server-verify-{stream}-{os}'
+      - 'cicn-http-server-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'http-server/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'http-server/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-vpp-plugin
     jobs:
-        - 'cicn-vpp-plugin-verify-{stream}-{os}'
-        - 'cicn-vpp-plugin-merge-{stream}-{os}'
-#        - 'cicn-vpp-plugin-docs-verify-{stream}'
-#        - 'cicn-vpp-plugin-docs-merge-{stream}'
+      - 'cicn-vpp-plugin-verify-{stream}-{os}'
+      - 'cicn-vpp-plugin-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+
     stream:
-        - master:
-            branch: 'cicn-plugin/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'cicn-plugin/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-viper
     jobs:
-        - 'cicn-viper-verify-{stream}-{os}'
-        - 'cicn-viper-merge-{stream}-{os}'
-#        - 'cicn-viper-docs-verify-{stream}'
-#        - 'cicn-viper-docs-merge-{stream}'
+      - 'cicn-viper-verify-{stream}-{os}'
+      - 'cicn-viper-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
     stream:
-        - master:
-            branch: 'viper/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'viper/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-radio-emulators
     jobs:
-        - 'cicn-radio-emulators-verify-{stream}-{os}'
-        - 'cicn-radio-emulators-merge-{stream}-{os}'
-#        - 'cicn-radio-emulators-docs-verify-{stream}'
-#        - 'cicn-radio-emulators-docs-merge-{stream}'
+      - 'cicn-radio-emulators-verify-{stream}-{os}'
+      - 'cicn-radio-emulators-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
     stream:
-        - master:
-            branch: 'vicn/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'vicn/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-android-sdk
     jobs:
-        - 'cicn-android-sdk-verify-{stream}-{os}'
-        - 'cicn-android-sdk-merge-{stream}-{os}'
-#        - 'cicn-android-sdk-docs-verify-{stream}'
-#        - 'cicn-android-sdk-docs-merge-{stream}'
+      - 'cicn-android-sdk-verify-{stream}-{os}'
+      - 'cicn-android-sdk-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
     stream:
-        - master:
-            branch: 'android-sdk/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'android-sdk/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - project:
     name: cicn-vicn
     jobs:
-        - 'cicn-vicn-verify-{stream}-{os}'
-        - 'cicn-vicn-merge-{stream}-{os}'
-#        - 'cicn-vicn-docs-verify-{stream}'
-#        - 'cicn-vicn-docs-merge-{stream}'
+      - 'cicn-vicn-verify-{stream}-{os}'
+      - 'cicn-vicn-merge-{stream}-{os}'
+
     project: 'cicn'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
     stream:
-        - master:
-            branch: 'vicn/master'
-            repo-stream-part: 'master'
+      - master:
+          branch: 'vicn/master'
+          repo-stream-part: 'master'
+
     type:
-        - short
-        - long
+      - short
+      - long
 
 - job-template:
     name: 'cicn-longbow-merge-{stream}-{os}'
@@ -270,80 +288,80 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - timed: '@daily'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - timed: '@daily'
 
     builders:
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/home/jenkins/.packagecloud'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/home/jenkins/packagecloud_api'
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-longbow-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-longbow-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
-        - archive:
-            artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-verify-{stream}-{os}'
@@ -353,48 +371,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-longbow-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-longbow-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-docs-merge-{stream}'
@@ -404,75 +422,76 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-longbow-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-longbow-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'longbow/build/documentation/*.tar'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'longbow/build/documentation/*.tar'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-docs-verify-{stream}'
@@ -482,59 +501,60 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-longbow-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-longbow-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'longbow/build/documentation/*.tar'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'longbow/build/documentation/*.tar'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-merge-{stream}-{os}'
@@ -543,73 +563,74 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-longbow-merge-{stream}-{os}'
-            result: 'failure'
+      - reverse:
+          jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-longbow-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libparc-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libparc-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-verify-{stream}-{os}'
@@ -619,48 +640,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libparc-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libparc-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-docs-merge-{stream}'
@@ -670,75 +691,76 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'cicn-libparc-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'cicn-libparc-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libparc-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libparc-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'libparc/build/documentation/*.tar'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libparc/build/documentation/*.tar'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-docs-verify-{stream}'
@@ -748,59 +770,60 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libparc-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libparc-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'libparc/build/documentation/*.tar'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libparc/build/documentation/*.tar'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 
 - job-template:
@@ -810,70 +833,71 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libparc-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libparc-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-common-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-common-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-common-verify-{stream}-{os}'
@@ -883,48 +907,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-common-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-common-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
@@ -933,70 +957,72 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libccnx-common-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libccnx-common-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-transport-rta-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-transport-rta-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
@@ -1006,48 +1032,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-transport-rta-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-transport-rta-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-portal-merge-{stream}-{os}'
@@ -1056,70 +1083,71 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-portal-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-portal-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-portal-verify-{stream}-{os}'
@@ -1129,48 +1157,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libccnx-portal-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libccnx-portal-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libicnet-merge-{stream}-{os}'
@@ -1179,70 +1207,71 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libicnet-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libicnet-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libicnet-verify-{stream}-{os}'
@@ -1252,48 +1281,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-libicnet-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-libicnet-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-metis-merge-{stream}-{os}'
@@ -1302,70 +1331,71 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libccnx-portal-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-metis-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-metis-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'metis/build/*.rpm,metis/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'metis/build/*.rpm,metis/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-metis-verify-{stream}-{os}'
@@ -1375,48 +1405,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-metis-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-metis-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'metis/build/*.rpm,metis/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'metis/build/*.rpm,metis/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-http-server-merge-{stream}-{os}'
@@ -1425,70 +1455,71 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libicnet-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libicnet-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-http-server-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-http-server-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-http-server-verify-{stream}-{os}'
@@ -1498,48 +1529,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-http-server-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-http-server-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vpp-plugin-merge-{stream}-{os}'
@@ -1548,68 +1579,69 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - timed: '@daily'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - timed: '@daily'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-vpp-plugin-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-vpp-plugin-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vpp-plugin-verify-{stream}-{os}'
@@ -1619,48 +1651,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-vpp-plugin-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-vpp-plugin-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-viper-merge-{stream}-{os}'
@@ -1669,70 +1701,72 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - reverse:
-            jobs: 'cicn-libicnet-merge-{stream}-{os}'
-            result: 'failure'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - reverse:
+          jobs: 'cicn-libicnet-merge-{stream}-{os}'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-viper-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-viper-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-viper-verify-{stream}-{os}'
@@ -1742,48 +1776,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-viper-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-viper-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-radio-emulators-merge-{stream}-{os}'
@@ -1792,68 +1827,70 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - timed: '@daily'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - timed: '@daily'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-radio-emulators-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-radio-emulators-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-radio-emulators-verify-{stream}-{os}'
@@ -1863,48 +1900,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-radio-emulators-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-radio-emulators-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-android-sdk-merge-{stream}-{os}'
@@ -1913,54 +1951,56 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - timed: '@daily'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - timed: '@daily'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-android-sdk-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-android-sdk-build.sh
+
     publishers:
-        - archive:
-            artifacts: 'IGetAndroid/app/build/outputs/apk/release/*.apk,MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,HttpServer/app/build/outputs/apk/release/*.apk,build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'IGetAndroid/app/build/outputs/apk/release/*.apk,MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,HttpServer/app/build/outputs/apk/release/*.apk,build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-android-sdk-verify-{stream}-{os}'
@@ -1970,48 +2010,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-android-sdk-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-android-sdk-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'iGetAndroid/app/build/outputs/apk/*.apk,MetisForwarder/app/build/outputs/apk/*.apk,build/viper/viper-armv7//build/outputs/apk/*.apk'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          # yamllint disable-line rule:line-length
+          artifacts: 'iGetAndroid/app/build/outputs/apk/*.apk,MetisForwarder/app/build/outputs/apk/*.apk,build/viper/viper-armv7//build/outputs/apk/*.apk'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vicn-merge-{stream}-{os}'
@@ -2020,68 +2061,69 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
-        - timed: '@daily'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+      - timed: '@daily'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'cicn-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-vicn-build.sh
-        - provide-maven-settings:
-            settings-file: 'cicn-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape:
-                - ../scripts/maven_push_functions.sh
-                - include-raw-cicn-maven-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'cicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-vicn-build.sh
+      - provide-maven-settings:
+          settings-file: 'cicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-cicn-maven-push.sh
+
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vicn-verify-{stream}-{os}'
@@ -2091,45 +2133,45 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-cicn-vicn-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-cicn-vicn-build.sh
 
     publishers:
-        - archive:
-            artifacts: 'build/*.rpm,build/*.deb'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build/*.rpm,build/*.deb'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
