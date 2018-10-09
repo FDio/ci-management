@@ -223,8 +223,10 @@
           !include-raw-escape: include-raw-tldk-csit-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+      - archive-artifacts: >
+          **/csit/report.html
+          **/csit/log.html
+          **/csit/output.html
           latest-only: false
 
       - robot-report:
