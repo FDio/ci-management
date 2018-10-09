@@ -224,8 +224,11 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
-          latest-only: false
+        artifacts: >
+          **/csit/report.html,
+          **/csit/log.html,
+          **/csit/output.xml
+        latest-only: false
 
       - robot-report:
           output-path: ''
