@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f19f30f_ee82ca97",
+        "filename": "jjb/hc2vpp/hc2vpp-csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "When using disable-line, you don\u0027t need to re-enable the rule. Disable-line only affects the next next line.",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d0b071_5c4d3f68",
+        "filename": "jjb/hc2vpp/hc2vpp-csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed, same as above.",
+      "range": {
+        "startLine": 318,
+        "startChar": 6,
+        "endLine": 318,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b47e342e_d945b39b",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 74,
+        "startChar": 6,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f96bc052_57122282",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 141,
+        "startChar": 6,
+        "endLine": 141,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c9e026c_cb387597",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa4b0e78_b154d5f2",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 251,
+        "startChar": 10,
+        "endLine": 251,
+        "endChar": 44
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc17d4e_c4976c6b",
+        "filename": "jjb/hc2vpp/hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-09T22:31:58Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 288,
+        "startChar": 6,
+        "endLine": 288,
+        "endChar": 40
+      },
+      "revId": "2cab55a20af35007b6c9cd1a96e792d7f014692a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
