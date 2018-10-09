@@ -1,14 +1,15 @@
+---
 - project:
     name: csit-validate
 
     jobs:
-        - 'csit-validate-pylint-{stream}'
+      - 'csit-validate-pylint-{stream}'
 
     project: 'csit'
     branch: 'master'
     stream:
-        - master:
-            branch: 'master'
+      - master:
+          branch: 'master'
 
 - job-template:
     name: 'csit-validate-pylint-{stream}'
@@ -18,48 +19,51 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        # This is where we will need to insert a step with a script that pulls all the
-        # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
-        # See jjb/integration from ODL
-        - shell:
-            !include-raw-escape: include-raw-csit-pylint.sh
+      # yamllint disable-line rule:line-length
+      # This is where we will need to insert a step with a script that pulls all the
+      # yamllint disable-line rule:line-length
+      # allocated IP addresses and injecting as vars into the env. (see Opendaylight script: include-raw-integration-get-slave-addresses.sh
+      # yamllint enable rule:line-length
+      # See jjb/integration from ODL
+      - shell:
+          !include-raw-escape: include-raw-csit-pylint.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'pylint.log'
-            latest-only: false
-        - violations:
-            pylint:
-                min: 10
-                max: 250
-                unstable: 250
-                pattern: 'pylint.log'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive-artifacts:
+          artifacts: 'pylint.log'
+          latest-only: false
+      - violations:
+          pylint:
+            min: 10
+            max: 250
+            unstable: 250
+            pattern: 'pylint.log'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
