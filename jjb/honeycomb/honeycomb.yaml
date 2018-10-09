@@ -2,26 +2,26 @@
 - project:
     name: honeycomb
     jobs:
-        - 'honeycomb-verify-{stream}-{os}'
-        - 'honeycomb-merge-{stream}-{os}'
-        - 'honeycomb-benchmark-master'
+      - 'honeycomb-verify-{stream}-{os}'
+      - 'honeycomb-merge-{stream}-{os}'
+      - 'honeycomb-benchmark-master'
     project: 'honeycomb'
     os: 'ubuntu1604'
     repo-os-part: 'ubuntu.xenial.main'
 
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
 
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
@@ -31,49 +31,51 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: 'honeycomb'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: 'honeycomb'
+          branch: '{branch}'
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'honeycomb-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
+      # yamllint enable rule:line-length
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'honeycomb-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     publishers:
-        - email-notification:
-            email-prefix: '[honeycomb]'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - email-notification:
+          email-prefix: '[honeycomb]'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
@@ -82,79 +84,81 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: '{os}'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - ssh-agent-credentials:
+          users:
+            - 'jenkins-gerrit-credentials'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: 'honeycomb'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: 'honeycomb'
+          branch: '{branch}'
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar site site:deploy'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'honeycomb-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar site site:deploy'
+      # yamllint enable rule:line-length
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'honeycomb-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     postbuilders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'honeycomb-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'honeycomb-settings'
-            global-settings-file: 'global-settings'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'honeycomb-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'honeycomb-settings'
+          global-settings-file: 'global-settings'
 
     reporters:
-        - findbugs
+      - findbugs
 
     publishers:
-        - sonar:
-            jdk: 'openjdk8-{os}'
-            language: 'java'
-            branch: '{stream}'
-        - email-notification:
-            email-prefix: '[honeycomb]'
-        - maven-deploy:
-            id: ''
-            unique-version: true
-            deploy-unstable: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - sonar:
+          jdk: 'openjdk8-{os}'
+          language: 'java'
+          branch: '{stream}'
+      - email-notification:
+          email-prefix: '[honeycomb]'
+      - maven-deploy:
+          id: ''
+          unique-version: true
+          deploy-unstable: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'honeycomb-benchmark-master'
@@ -163,105 +167,118 @@
     jdk: openjdk8-ubuntu1604
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-project-parameter:
-            maven: 'mvn33-new'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: 'master.ubuntu.xenial.main'
+      - project-parameter:
+          project: '{project}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: 'master.ubuntu.xenial.main'
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            branch: 'master'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: 'master'
 
     wrappers:
-        - ssh-agent-credentials:
-            users:
-                - 'jenkins-gerrit-credentials'
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - ssh-agent-credentials:
+          users:
+            - 'jenkins-gerrit-credentials'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '@daily'
+      - timed: '@daily'
 
     maven:
-        maven-name: 'mvn33-new'
-        root-pom: 'pom.xml'
-        goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
-        maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-        settings: 'honeycomb-settings'
-        settings-type: cfp
-        global-settings: 'global-settings'
-        global-settings-type: cfp
+      maven-name: 'mvn33-new'
+      root-pom: 'pom.xml'
+      # yamllint disable-line rule:line-length
+      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
+      # yamllint enable rule:line-length
+      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+      settings: 'honeycomb-settings'
+      settings-type: cfp
+      global-settings: 'global-settings'
+      global-settings-type: cfp
 
     publishers:
-        - plot:
-            - title: 'Infrastructure CFG write benchmark (simple-container)'
-              yaxis: 'ops/second'
-              csv-file-name: 'simple-container.csv'
-              group: 'infra-bench'
-              keep-records: true
-              numbuilds: '20'
-              style: 'line'
-              use-description: false
-              series:
-                - file: 'infra/it/benchmark/target/simple-container.csv'
-                  display-table: true
-                  format: 'csv'
-                  inclusion-flag: 'include-by-string'
-                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
-            - title: 'Infrastructure CFG write benchmark (list-in-container)'
-              yaxis: 'ops/second'
-              csv-file-name: 'list-in-container.csv'
-              group: 'infra-bench'
-              keep-records: true
-              numbuilds: '20'
-              style: 'line'
-              use-description: false
-              series:
-                - file: 'infra/it/benchmark/target/list-in-container.csv'
-                  display-table: true
-                  format: 'csv'
-                  inclusion-flag: 'include-by-string'
-                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
-            - title: 'Infrastructure CFG write benchmark (complex-list-in-container)'
-              yaxis: 'ops/second'
-              csv-file-name: 'complex-list-in-container.csv'
-              group: 'infra-bench'
-              keep-records: true
-              numbuilds: '20'
-              style: 'line'
-              use-description: false
-              series:
-                - file: 'infra/it/benchmark/target/complex-list-in-container.csv'
-                  display-table: true
-                  format: 'csv'
-                  inclusion-flag: 'include-by-string'
-                  exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
-            - title: 'Infrastructure CFG read benchmark'
-              yaxis: 'ops/second'
-              csv-file-name: 'operational-read.csv'
-              group: 'infra-bench'
-              keep-records: true
-              numbuilds: '20'
-              style: 'line'
-              use-description: false
-              series:
-                - file: 'infra/it/benchmark/target/operational-read.csv'
-                  display-table: true
-                  format: 'csv'
-                  inclusion-flag: 'include-by-string'
-                  exclude: 'simple-container,list-in-container,complex-list-in-container'
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - plot:
+          - title: 'Infrastructure CFG write benchmark (simple-container)'
+            yaxis: 'ops/second'
+            csv-file-name: 'simple-container.csv'
+            group: 'infra-bench'
+            keep-records: true
+            numbuilds: '20'
+            style: 'line'
+            use-description: false
+            series:
+              - file: 'infra/it/benchmark/target/simple-container.csv'
+                display-table: true
+                format: 'csv'
+                inclusion-flag: 'include-by-string'
+                # yamllint disable-line rule:line-length
+                exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+                # yamllint enable rule:line-length
+          - title: 'Infrastructure CFG write benchmark (list-in-container)'
+            yaxis: 'ops/second'
+            csv-file-name: 'list-in-container.csv'
+            group: 'infra-bench'
+            keep-records: true
+            numbuilds: '20'
+            style: 'line'
+            use-description: false
+            series:
+              - file: 'infra/it/benchmark/target/list-in-container.csv'
+                display-table: true
+                format: 'csv'
+                inclusion-flag: 'include-by-string'
+                # yamllint disable-line rule:line-length
+                exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+                # yamllint enable rule:line-length
+          # yamllint disable-line rule:line-length
+          - title: 'Infrastructure CFG write benchmark (complex-list-in-container)'
+            # yamllint enable rule:line-length
+            yaxis: 'ops/second'
+            csv-file-name: 'complex-list-in-container.csv'
+            group: 'infra-bench'
+            keep-records: true
+            numbuilds: '20'
+            style: 'line'
+            use-description: false
+            series:
+              - file: 'infra/it/benchmark/target/complex-list-in-container.csv'
+                display-table: true
+                format: 'csv'
+                inclusion-flag: 'include-by-string'
+                # yamllint disable-line rule:line-length
+                exclude: 'persistence=true freq=1,persistence=true freq=10,persistence=false freq=1,persistence=false freq=10'
+                # yamllint enable rule:line-length
+          - title: 'Infrastructure CFG read benchmark'
+            yaxis: 'ops/second'
+            csv-file-name: 'operational-read.csv'
+            group: 'infra-bench'
+            keep-records: true
+            numbuilds: '20'
+            style: 'line'
+            use-description: false
+            series:
+              - file: 'infra/it/benchmark/target/operational-read.csv'
+                display-table: true
+                format: 'csv'
+                inclusion-flag: 'include-by-string'
+                # yamllint disable-line rule:line-length
+                exclude: 'simple-container,list-in-container,complex-list-in-container'
+                # yamllint enable rule:line-length
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
