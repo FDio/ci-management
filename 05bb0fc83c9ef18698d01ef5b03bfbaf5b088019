@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e1a319b_f1c9a133",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2018-10-10T01:59:05Z",
+      "side": 1,
+      "message": "move these line to the project section.",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 30
+      },
+      "revId": "05bb0fc83c9ef18698d01ef5b03bfbaf5b088019",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03ce1d64_874c0520",
         "filename": "jjb/tldk/tldk.yaml",
         "patchSetId": 1
