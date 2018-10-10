@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "cba52dfa_5a18bfc0",
+        "filename": "jjb/csit/csit-vpp-pylint.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-10T05:10:12Z",
+      "side": 1,
+      "message": "Remove this useless commentary from line :49 to :54",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "033c08cc_8c372f1a",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-10T05:10:12Z",
+      "side": 1,
+      "message": "Can we do:\n\n    description: |\n      Purpose of this job is to validate CSIT code of\n      corresponding branch against verified vpp build from\n      corresponding branch.\n\u003cblank line\u003e",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 141
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1995754a_2335b1d7",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 4
@@ -64,6 +110,29 @@
         "startChar": 4,
         "endLine": 340,
         "endChar": 38
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0cc7680_d3cb2a2e",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-10T05:10:12Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 168
       },
       "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
@@ -94,6 +163,29 @@
     },
     {
       "key": {
+        "uuid": "bfe8dfb5_eca7f03b",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-10T05:10:12Z",
+      "side": 1,
+      "message": "rename script to relative path?\ninclude-raw-csit-vpp-verify-semiweekly.sh",
+      "range": {
+        "startLine": 430,
+        "startChar": 31,
+        "endLine": 430,
+        "endChar": 81
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84566d37_5ee795f6",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 4
@@ -110,6 +202,29 @@
         "startChar": 10,
         "endLine": 431,
         "endChar": 44
+      },
+      "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "542bea4d_0f96bb7d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-10T05:10:12Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 176
       },
       "revId": "660e9d7ba1dc081746044ac0d742ed7f66e7db12",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
