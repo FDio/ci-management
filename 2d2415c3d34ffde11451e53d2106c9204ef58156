@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e78e51_93f89cac",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:47:05Z",
+      "side": 1,
+      "message": "Either this and the lower enable can be removed, or the two disable-line calls could be replaced by a disable and enable set encompassing both lines.",
+      "range": {
+        "startLine": 494,
+        "startChar": 10,
+        "endLine": 494,
+        "endChar": 44
+      },
+      "revId": "2d2415c3d34ffde11451e53d2106c9204ef58156",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
