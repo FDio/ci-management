@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ab98d6_4d00e463",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1d2a8f5_80959ce4",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 127,
+        "startChar": 6,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "178f0da4_0bb0fe8f",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 207,
+        "startChar": 6,
+        "endLine": 207,
+        "endChar": 40
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6429842_f920e08a",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 231,
+        "startChar": 16,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81408b33_640369db",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 50
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd41aeb_e8138f80",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 250,
+        "startChar": 12,
+        "endLine": 250,
+        "endChar": 46
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c66561a_96de57f0",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 50
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c63dd4c_1ba6c076",
+        "filename": "jjb/honeycomb/honeycomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-10T00:05:27Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 281,
+        "startChar": 16,
+        "endLine": 281,
+        "endChar": 50
+      },
+      "revId": "1a61df96a7020d6d964db28909055292cc19025f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
