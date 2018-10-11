@@ -36,13 +36,21 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 echo "CC=${CC}"
-
-make UNATTENDED=yes install-dep
-make UNATTENDED=yes dpdk-install-dev
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp wipe-all install-packages
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp sample-plugin-install
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp libmemif-install
-make UNATTENDED=yes pkg-deb
+echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
+# If and only if we are doing verify *after* make verify was made to work
+# and we are not a CSIT job just building packages, then use make verify,
+# else use the old build-root/vagrant/build.sh
+if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
+        [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
+then
+    echo "Building using \"make verify\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
+else
+    echo "Building using \"make build-root/vagrant/build.sh\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
+    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
+fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
     if [ "x${REBASE_NEEDED}" == "x1" ]; then
