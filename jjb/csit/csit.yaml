@@ -11,78 +11,78 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+---
 - project:
     name: csit
     description: 'CSIT jenkins jobs.'
     os:
-        - 'ubuntu1604'
-        - 'centos7'
+      - 'ubuntu1604'
+      - 'centos7'
+
     topo:
-        - '2n'
-        - '3n'
+      - '2n'
+      - '3n'
 
     arch:
-        - 'skx'
-        - 'hsw'
-        - 'arm'
+      - 'skx'
+      - 'hsw'
+      - 'arm'
 
     jobs:
-        - 'csit-vpp-functional-{stream}-{os}-virl'
-        - 'csit-vpp-verify-{stream_timed}-{os}-weekly'
-        - 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
-        - 'csit-docs-merge-{stream_timed}'
-        - 'csit-docs-verify-{stream}'
-        - 'csit-report-merge-{stream}'
-        - 'csit-trending-daily-master'
-        - 'csit-dpdk-perf-verify-{stream}-{topo}-{arch}'
-        - 'csit-dpdk-perf-mrr-weekly-master'
-        - 'csit-dpdk-perf-mrr-weekly-master-2n-skx'
-        - 'csit-dpdk-perf-mrr-weekly-master-3n-skx'
-        - 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
-        - 'csit-ligato-perf-mrr-daily-master-3n-hsw'
-        - 'csit-vpp-perf-mrr-daily-master'
-        - 'csit-vpp-perf-mrr-daily-master-2n-skx'
-        - 'csit-vpp-perf-mrr-daily-master-3n-skx'
-        - 'csit-vpp-perf-ndrpdr-weekly-master-3n-hsw'
-        - 'csit-vpp-perf-ndrpdr-weekly-master-2n-skx'
-        - 'csit-vpp-perf-ndrpdr-weekly-master-3n-skx'
-        - 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
-        - 'csit-nsh_sfc-verify-perf-{stream}'
-        - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
-        - 'csit-tldk-verify-func-{stream}-{os}-virl'
-        - 'csit-dmm-functional-{stream}-ubuntu1604-virl'
+      - 'csit-vpp-functional-{stream}-{os}-virl'
+      - 'csit-vpp-verify-{stream_timed}-{os}-weekly'
+      - 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
+      - 'csit-docs-merge-{stream_timed}'
+      - 'csit-docs-verify-{stream}'
+      - 'csit-report-merge-{stream}'
+      - 'csit-trending-daily-master'
+      - 'csit-dpdk-perf-verify-{stream}-{topo}-{arch}'
+      - 'csit-dpdk-perf-mrr-weekly-master'
+      - 'csit-dpdk-perf-mrr-weekly-master-2n-skx'
+      - 'csit-dpdk-perf-mrr-weekly-master-3n-skx'
+      - 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
+      - 'csit-ligato-perf-mrr-daily-master-3n-hsw'
+      - 'csit-vpp-perf-mrr-daily-master'
+      - 'csit-vpp-perf-mrr-daily-master-2n-skx'
+      - 'csit-vpp-perf-mrr-daily-master-3n-skx'
+      - 'csit-vpp-perf-ndrpdr-weekly-master-3n-hsw'
+      - 'csit-vpp-perf-ndrpdr-weekly-master-2n-skx'
+      - 'csit-vpp-perf-ndrpdr-weekly-master-3n-skx'
+      - 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
+      - 'csit-nsh_sfc-verify-perf-{stream}'
+      - 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
+      - 'csit-tldk-verify-func-{stream}-{os}-virl'
+      - 'csit-dmm-functional-{stream}-ubuntu1604-virl'
 
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
     build-artifact-num-to-keep: 10
     type:
-        - all
+      - all
     stream_timed:
-        - master:
-            branch: 'master'
-            branch-id: 'oper'
-        - '1810':
-            branch: 'rls1810'
-            branch-id: 'oper-rls1810'
+      - master:
+          branch: 'master'
+          branch-id: 'oper'
+      - '1810':
+          branch: 'rls1810'
+          branch-id: 'oper-rls1810'
     stream:
-        - master:
-            branch: 'master'
-            branch-id: 'oper'
-        - '1801':
-            branch: 'rls1801'
-            branch-id: 'oper-rls1801'
-        - '1804':
-            branch: 'rls1804'
-            branch-id: 'oper-rls1804'
-        - '1807':
-            branch: 'rls1807'
-            branch-id: 'oper-rls1807'
-        - '1810':
-            branch: 'rls1810'
-            branch-id: 'oper-rls1810'
-
+      - master:
+          branch: 'master'
+          branch-id: 'oper'
+      - '1801':
+          branch: 'rls1801'
+          branch-id: 'oper-rls1801'
+      - '1804':
+          branch: 'rls1804'
+          branch-id: 'oper-rls1804'
+      - '1807':
+          branch: 'rls1807'
+          branch-id: 'oper-rls1807'
+      - '1810':
+          branch: 'rls1810'
+          branch-id: 'oper-rls1810'
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-{os}-virl'
@@ -92,46 +92,46 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'report.html, log.html, output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: ''
+      - robot-report:
+          output-path: ''
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-dpdk-perf-verify-{stream}-{topo}-{arch}'
@@ -175,65 +175,66 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'csit-dpdk-{topo}-{arch}-perftest'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'csit-dpdk-{topo}-{arch}-perftest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: false
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: archive
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-ligato-perf-verify-{stream}-{topo}-{arch}'
 
+    # yamllint disable rule:line-length
     description: |
       <ul>
           <li>objective
@@ -272,228 +273,237 @@
                   <li>analyse: no
               </ul>
       </ul>
+      # yamllint enable rule:line-length
 
     project-type: freestyle
     node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - gerrit-refspec-parameter
-        - gerrit-event-type-parameter
-        - gerrit-event-comment-text-parameter
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'csit-ligato-{topo}-{arch}-perftest'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'csit-ligato-{topo}-{arch}-perftest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: false
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: archive
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-{os}-weekly'
+    # yamllint disable-line rule:line-length
     description: 'Purpose of this job is to validate CSIT code of corresponding branch against verified vpp build from corresponding branch.'
+    # yamllint enable rule:line-length
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            branch: '{branch}'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 4 * * 0'
+      - timed: '0 4 * * 0'
 
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'csit-vpp-ref-verify'
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'csit-vpp-ref-verify'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'report.html, log.html, output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: ''
+      - robot-report:
+          output-path: ''
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
+    # yamllint disable-line rule:line-length
     description: 'Purpose of this job is to validate latest vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
+    # yamllint enable rule:line-length
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 4 * * 2,6'
+      - timed: '0 4 * * 2,6'
 
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'csit-verify-vpp'
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'csit-verify-vpp'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-semiweekly.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          # yamllint disable-line rule:line-length
+          !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-semiweekly.sh
+          # yamllint enable rule:line-length
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-centos7-nightly'
+    # yamllint disable-line rule:line-length
     description: 'Purpose of this job is to validate latest centos7 vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
+    # yamllint enable rule:line-length
 
     project-type: freestyle
     node: centos7-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - git-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            branch: '{branch}'
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: 'H H(3-4) * * *'
+      - timed: 'H H(3-4) * * *'
 
-        - gerrit-trigger-manually-triggered:
-            comment-trigger-value: 'vpp-verify-func-centos7'
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'vpp-verify-func-centos7'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-vpp-functional-virl.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-vpp-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-docs-verify-{stream}'
@@ -503,58 +513,58 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'csit-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'csit-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-csit-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'csit-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'csit-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-csit-docs.sh
 
     publishers:
-        - archive:
-            artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
+      - archive:
+          artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-docs-merge-{stream_timed}'
@@ -564,74 +574,74 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'csit-vpp-verify-{stream_timed}-ubuntu1604-weekly'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'csit-vpp-verify-{stream_timed}-ubuntu1604-weekly'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'csit-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'csit-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-csit-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'csit-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'csit-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-csit-docs.sh
 
     publishers:
-        - archive:
-            artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
+      - archive:
+          artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-report-merge-{stream}'
@@ -641,71 +651,71 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-report'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-report'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'csit-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'csit-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-csit-report.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'csit-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'csit-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-csit-report.sh
 
     publishers:
-        - archive:
-            artifacts: 'resources/tools/presentation/csit.report.tar.gz'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
+      - archive:
+          artifacts: 'resources/tools/presentation/csit.report.tar.gz'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-trending-daily-master'
@@ -715,67 +725,68 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'csit-vpp-perf-mrr-daily-master'
-            result: 'failure'
+      - reverse:
+          jobs: 'csit-vpp-perf-mrr-daily-master'
+          result: 'failure'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'csit-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'csit-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-csit-cpta.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'csit-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'csit-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-csit-cpta.sh
 
     publishers:
-        - email-ext:
-            recipients: 'tifrank@cisco.com, csit-report@lists.fd.io'
-            reply-to: ''
-            content-type: 'text'
-            subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
-            attachments: '**/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/failed-tests*.tar.gz'
-            body: |
+      - email-ext:
+          recipients: 'tifrank@cisco.com, csit-report@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
+          # yamllint disable-line rule:line-length
+          attachments: '**/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/failed-tests*.tar.gz'
+          body: |
                 FD.io CSIT Trending Alert - failed tests
 
                 $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS
 
                 See attachment for the list of the failed tests.
 
-            always: true
-            failure: false
+          always: true
+          failure: false
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-3n-hsw'
@@ -802,43 +813,43 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-2n-skx'
@@ -865,43 +876,43 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-3n-skx'
@@ -928,43 +939,43 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-ligato-perf-mrr-daily-master-3n-hsw'
@@ -992,47 +1003,47 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 16 * * *'
+      - timed: '0 16 * * *'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master'
@@ -1060,47 +1071,47 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 2,16 * * *'
+      - timed: '0 2,16 * * *'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master-2n-skx'
@@ -1128,47 +1139,47 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 2,16 * * *'
+      - timed: '0 2,16 * * *'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master-3n-skx'
@@ -1196,47 +1207,47 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 2,16 * * *'
+      - timed: '0 2,16 * * *'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master'
@@ -1264,47 +1275,47 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master-2n-skx'
@@ -1332,47 +1343,47 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master-3n-skx'
@@ -1400,47 +1411,47 @@
     concurrent: false
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - timed: '0 0 * * 6'
+      - timed: '0 0 * * 6'
 
     builders:
-        - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-        - inject:
-            properties-file: variables.prop
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: 'csit/archive'
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: 'csit/archive'
+          other-files:
+            - '*.*'
 
-        - trigger:
-            project: 'csit-trending-daily-master'
-            threshold: 'FAILURE'
+      - trigger:
+          project: 'csit-trending-daily-master'
+          threshold: 'FAILURE'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 
 - job-template:
@@ -1490,64 +1501,64 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - gerrit-refspec-parameter
-        - gerrit-event-type-parameter
-        - gerrit-event-comment-text-parameter
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'csit-{topo}-{arch}-perftest'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: false
-                failed: false
-                unstable: false
-                notbuilt: false
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'csit-{topo}-{arch}-perftest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: false
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot:
-            output-path: archive
-            other-files:
-              - '*.*'
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-nsh_sfc-verify-perf-{stream}'
@@ -1557,51 +1568,51 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers-non-activity-timeout:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'csit_nsh_sfc_perf_{stream}'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'csit_nsh_sfc_perf_{stream}'
 
     builders:
-        - shell:
-            !include-raw-escape: jjb/csit/include-raw-csit-nsh_sfc-perf-hw.sh
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-nsh_sfc-perf-hw.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
+      - robot-report:
+          output-path: 'archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
@@ -1611,51 +1622,51 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - stream-parameter:
-            stream: '{stream}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'csit_nsh_sfc_func_{stream}'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'csit_nsh_sfc_func_{stream}'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
+      - robot-report:
+          output-path: 'archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-tldk-verify-func-{stream}-{os}-virl'
@@ -1665,49 +1676,49 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'csit_verify_tldk_func'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'csit_verify_tldk_func'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-tldk-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-tldk-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'archive'
+      - robot-report:
+          output-path: 'archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'csit-dmm-functional-{stream}-ubuntu1604-virl'
@@ -1717,52 +1728,52 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'csit_verify_dmm_func'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'csit_verify_dmm_func'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-csit-dmm-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-csit-dmm-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'report.html, log.html, output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'report.html, log.html, output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: ''
+      - robot-report:
+          output-path: ''
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - parameter:
     name: test-type-parameter
     parameters:
-        - string:
-            name: TYPE
-            default: '{type}'
-            description: "Test TYPE parameter if not given by trigger"
+      - string:
+          name: TYPE
+          default: '{type}'
+          description: "Test TYPE parameter if not given by trigger"
