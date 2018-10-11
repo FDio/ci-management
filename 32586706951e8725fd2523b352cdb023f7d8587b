@@ -22,6 +22,30 @@
       "revId": "32586706951e8725fd2523b352cdb023f7d8587b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c4498c0_a16de349",
+        "filename": "jjb/rpm_dpdk/rpm_dpdk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2018-10-11T19:01:41Z",
+      "side": 1,
+      "message": "you can run yamllint on the yaml file",
+      "parentUuid": "3a4c9a78_e28b102d",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "32586706951e8725fd2523b352cdb023f7d8587b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
