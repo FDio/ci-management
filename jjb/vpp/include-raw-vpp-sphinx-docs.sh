@@ -3,19 +3,19 @@ set -xe -o pipefail
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
-[ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
-[ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site/
+[ "$DOC_DIR" ] || DOC_DIR=./docs/_build/html
+[ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
 [ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
 
-make doxygen
+make docs-venv
+make docs
 
 if [[ ${JOB_NAME} == *merge* ]]; then
   mkdir -p $(dirname ${RESOURCES_DIR})
   mv -f ${DOC_DIR} ${RESOURCES_DIR}
   cd ${SITE_DIR}
-  find . -type f '(' -name '*.md5' -o -name '*.dot' -o -name '*.map' ')' -delete
   cat > pom.xml << EOF
   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -40,7 +40,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
     <distributionManagement>
       <site>
         <id>fdio-site</id>
-        <url>dav:${DOCS_REPO_URL}/${PROJECT_PATH}/${VERSION}</url>
+        <url>dav:${DOCS_REPO_URL}/${PROJECT_PATH}/v${VERSION}</url>
       </site>
     </distributionManagement>
   </project>

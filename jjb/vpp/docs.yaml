@@ -2,8 +2,6 @@
 - project:
     name: docs
     jobs:
-      - 'vpp-sphinx-docs-merge-{stream}'
-      - 'vpp-sphinx-docs-verify-{stream}'
       - 'vpp-docs-merge-{stream}'
       - 'vpp-docs-verify-{stream}'
       - 'vpp-make-test-docs-merge-{stream}'
@@ -34,6 +32,27 @@
       - short
       - long
 
+- project:
+    name: sphinx
+    jobs:
+      - 'vpp-sphinx-docs-merge-{stream}'
+      - 'vpp-sphinx-docs-verify-{stream}'
+
+    project: 'vpp'
+    os:
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1810':
+          branch: 'stable/1810'
+          repo-stream-part: 'stable.1810'
+    type:
+      - short
+      - long
 
 - job-template:
     name: 'vpp-docs-verify-{stream}'
@@ -92,18 +111,18 @@
           !include-raw-escape: include-raw-vpp-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'build-root/docs/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
+        - archive:
+            artifacts: 'docs/_build/html/*'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: false
+            max-failed-builds: 1
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
@@ -249,18 +268,18 @@
           !include-raw-escape: include-raw-vpp-sphinx-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'build-root/docs/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
+        - archive:
+            artifacts: 'docs/_build/html/*'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: false
+            max-failed-builds: 1
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-sphinx-docs-merge-{stream}'
@@ -326,18 +345,18 @@
           !include-raw-escape: include-raw-vpp-sphinx-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'build-root/docs/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
+        - archive:
+            artifacts: 'docs/_build/html/*'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: false
+            max-failed-builds: 1
+            fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}'
