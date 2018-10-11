@@ -20,6 +20,9 @@
             branch: 'rls1804'
         - '1807':
             branch: 'rls1807'
+        - '1810':
+            branch: 'rls1810'
+            branch-id: 'oper-rls1810'
 
 - job-template:
     name: 'csit-hc2vpp-verify-func-{stream}-{os}'
