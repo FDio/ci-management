@@ -11,21 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+---
 - project:
     name: tldk
     jobs:
-        - '{project}-verify-{stream}-{os}'
-        - '{project}-merge-{stream}-{os}'
-        - '{project}-verify-image-{stream}-{os}'
-        - 'tldk-csit-verify-func-{stream}-{os}-virl'
+      - '{project}-verify-{stream}-{os}'
+      - '{project}-merge-{stream}-{os}'
+      - '{project}-verify-image-{stream}-{os}'
+      - 'tldk-csit-verify-func-{stream}-{os}-virl'
 
     project: 'tldk'
     os:
-        - ubuntu1604
+      - ubuntu1604
     stream:
-        - master:
-            branch: 'master'
+      - master:
+          branch: 'master'
 
 - job-template:
     name: '{project}-verify-{stream}-{os}'
@@ -35,41 +35,41 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: gtest-build.sh
-        - inject:
-            properties-file: gtest-env.prop
-        - shell:
-            !include-raw-escape: include-raw-build.sh
+      - shell:
+          !include-raw-escape: gtest-build.sh
+      - inject:
+          properties-file: gtest-env.prop
+      - shell:
+          !include-raw-escape: include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -83,54 +83,54 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-images'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-images'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - shell:
-            !include-raw-escape: gtest-build.sh
-        - inject:
-            properties-file: gtest-env.prop
-        - shell:
-            !include-raw-escape: include-raw-build.sh
+      - shell:
+          !include-raw-escape: gtest-build.sh
+      - inject:
+          properties-file: gtest-env.prop
+      - shell:
+          !include-raw-escape: include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -143,41 +143,41 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape: gtest-build.sh
-        - inject:
-            properties-file: gtest-env.prop
-        - shell:
-            !include-raw-escape: include-raw-build.sh
+      - shell:
+          !include-raw-escape: gtest-build.sh
+      - inject:
+          properties-file: gtest-env.prop
+      - shell:
+          !include-raw-escape: include-raw-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -191,44 +191,44 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-       - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'verify-tldk-func'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'verify-tldk-func'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-tldk-csit-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-tldk-csit-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+          latest-only: false
 
-        - robot-report:
-            output-path: ''
+      - robot-report:
+          output-path: ''
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
