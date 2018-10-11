@@ -92,7 +92,7 @@
             !include-raw-escape: include-raw-vpp-docs.sh
     publishers:
         - archive:
-            artifacts: 'build-root/docs/html/*'
+            artifacts: 'docs/_build/html/*'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
@@ -248,7 +248,7 @@
             !include-raw-escape: include-raw-vpp-sphinx-docs.sh
     publishers:
         - archive:
-            artifacts: 'build-root/docs/html/*'
+            artifacts: 'docs/_build/html/*'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
@@ -324,7 +324,7 @@
             !include-raw-escape: include-raw-vpp-sphinx-docs.sh
     publishers:
         - archive:
-            artifacts: 'build-root/docs/html/*'
+            artifacts: 'docs/_build/html/*'
             allow-empty: 'true'
             fingerprint: false
             only-if-success: true
