@@ -1,70 +1,71 @@
+---
 - project:
     name: nsh_sfc
     jobs:
-        - 'nsh_sfc-verify-{stream}-{os}'
-        - 'nsh_sfc-merge-{stream}-{os}'
-        - 'nsh_sfc-integration-{stream}-{os}'
-        - 'nsh_sfc-verify-image-{stream}-{os}'
-        - 'nsh_sfc-verify-docs-{stream}'
-        - 'nsh_sfc-merge-docs-{stream}'
+      - 'nsh_sfc-verify-{stream}-{os}'
+      - 'nsh_sfc-merge-{stream}-{os}'
+      - 'nsh_sfc-integration-{stream}-{os}'
+      - 'nsh_sfc-verify-image-{stream}-{os}'
+      - 'nsh_sfc-verify-docs-{stream}'
+      - 'nsh_sfc-merge-docs-{stream}'
 
     project: 'nsh_sfc'
     os:
-        - ubuntu1604:
-            repo-os-part: 'ubuntu.xenial.main'
-        - centos7:
-            repo-os-part: 'centos7'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1609':
-            branch: 'stable/1609'
-            repo-stream-part: 'stable.1609'
-        - '1701':
-            branch: 'stable/1701'
-            repo-stream-part: 'stable.1701'
-        - '1704':
-            branch: 'stable/1704'
-            repo-stream-part: 'stable.1704'
-        - '1707':
-            branch: 'stable/1707'
-            repo-stream-part: 'stable.1707'
-        - '1710':
-            branch: 'stable/1710'
-            repo-stream-part: 'stable.1710'
-        - '1801':
-            branch: 'stable/1801'
-            repo-stream-part: 'stable.1801'
-        - '1804':
-            branch: 'stable/1804'
-            repo-stream-part: 'stable.1804'
-        - '1807':
-            branch: 'stable/1807'
-            repo-stream-part: 'stable.1807'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1609':
+          branch: 'stable/1609'
+          repo-stream-part: 'stable.1609'
+      - '1701':
+          branch: 'stable/1701'
+          repo-stream-part: 'stable.1701'
+      - '1704':
+          branch: 'stable/1704'
+          repo-stream-part: 'stable.1704'
+      - '1707':
+          branch: 'stable/1707'
+          repo-stream-part: 'stable.1707'
+      - '1710':
+          branch: 'stable/1710'
+          repo-stream-part: 'stable.1710'
+      - '1801':
+          branch: 'stable/1801'
+          repo-stream-part: 'stable.1801'
+      - '1804':
+          branch: 'stable/1804'
+          repo-stream-part: 'stable.1804'
+      - '1807':
+          branch: 'stable/1807'
+          repo-stream-part: 'stable.1807'
 - project:
     name: nsh_sfc-misc
     jobs:
-        - 'nsh_sfc-csit-verify-perf-{stream}'
-        - 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
+      - 'nsh_sfc-csit-verify-perf-{stream}'
+      - 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
 
     project: 'nsh_sfc'
     stream:
-        - master:
-            branch: 'master'
-            repo-stream-part: 'master'
-        - '1609':
-            branch: 'stable/1609'
-            repo-stream-part: 'stable.1609'
-        - '1701':
-            branch: 'stable/1701'
-            repo-stream-part: 'stable.1609'
-        - '1704':
-            branch: 'stable/1704'
-            repo-stream-part: 'stable.1704'
-        - '1707':
-            branch: 'stable/1707'
-            repo-stream-part: 'stable.1707'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+      - '1609':
+          branch: 'stable/1609'
+          repo-stream-part: 'stable.1609'
+      - '1701':
+          branch: 'stable/1701'
+          repo-stream-part: 'stable.1609'
+      - '1704':
+          branch: 'stable/1704'
+          repo-stream-part: 'stable.1704'
+      - '1707':
+          branch: 'stable/1707'
+          repo-stream-part: 'stable.1707'
 
     os: ubuntu1604
 
@@ -77,62 +78,62 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'nsh_sfc-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - config-file-provider:
-            files:
-              - file-id: 'nsh_sfc-settings'
-                variable: 'SETTINGS_FILE'
-              - file-id: 'global-settings'
-                variable: 'GLOBAL_SETTINGS_FILE'
-        - shell:
-            !include-raw-escape: ../scripts/create_maven_env.sh
-        - inject:
-            properties-file: maven_env.txt
-        - shell:
-            !include-raw-escape:
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/setup_vpp_plugin_dev_env.sh
-                - include-raw-nsh_sfc-build.sh
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'nsh_sfc-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - config-file-provider:
+          files:
+            - file-id: 'nsh_sfc-settings'
+              variable: 'SETTINGS_FILE'
+            - file-id: 'global-settings'
+              variable: 'GLOBAL_SETTINGS_FILE'
+      - shell:
+          !include-raw-escape: ../scripts/create_maven_env.sh
+      - inject:
+          properties-file: maven_env.txt
+      - shell:
+          !include-raw-escape:
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+          - ../scripts/setup_vpp_plugin_dev_env.sh
+          - include-raw-nsh_sfc-build.sh
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -146,75 +147,76 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-images'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-images'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'nsh_sfc-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - config-file-provider:
-            files:
-              - file-id: 'nsh_sfc-settings'
-                variable: 'SETTINGS_FILE'
-              - file-id: 'global-settings'
-                variable: 'GLOBAL_SETTINGS_FILE'
-        - shell:
-            !include-raw-escape: ../scripts/create_maven_env.sh
-        - inject:
-            properties-file: maven_env.txt
-        - shell:
-            !include-raw-escape:
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/setup_vpp_plugin_dev_env.sh
-                - include-raw-nsh_sfc-build.sh
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'nsh_sfc-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - config-file-provider:
+          files:
+            - file-id: 'nsh_sfc-settings'
+              variable: 'SETTINGS_FILE'
+            - file-id: 'global-settings'
+              variable: 'GLOBAL_SETTINGS_FILE'
+      - shell:
+          !include-raw-escape: ../scripts/create_maven_env.sh
+      - inject:
+          properties-file: maven_env.txt
+      - shell:
+          !include-raw-escape:
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+          - ../scripts/setup_vpp_plugin_dev_env.sh
+          - include-raw-nsh_sfc-build.sh
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
@@ -227,62 +229,62 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'nsh_sfc-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - config-file-provider:
-            files:
-              - file-id: 'nsh_sfc-settings'
-                variable: 'SETTINGS_FILE'
-              - file-id: 'global-settings'
-                variable: 'GLOBAL_SETTINGS_FILE'
-        - shell:
-            !include-raw-escape: ../scripts/create_maven_env.sh
-        - inject:
-            properties-file: maven_env.txt
-        - shell:
-            !include-raw-escape:
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/setup_vpp_plugin_dev_env.sh
-                - include-raw-nsh_sfc-build.sh
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'nsh_sfc-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - config-file-provider:
+          files:
+            - file-id: 'nsh_sfc-settings'
+              variable: 'SETTINGS_FILE'
+            - file-id: 'global-settings'
+              variable: 'GLOBAL_SETTINGS_FILE'
+      - shell:
+          !include-raw-escape: ../scripts/create_maven_env.sh
+      - inject:
+          properties-file: maven_env.txt
+      - shell:
+          !include-raw-escape:
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+          - ../scripts/setup_vpp_plugin_dev_env.sh
+          - include-raw-nsh_sfc-build.sh
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -296,77 +298,77 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'vpp-merge-{stream}-{os},nsh_sfc-merge-{stream}-{os}'
-            result: 'success'
+      - reverse:
+          jobs: 'vpp-merge-{stream}-{os},nsh_sfc-merge-{stream}-{os}'
+          result: 'success'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'nsh_sfc-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'nsh_sfc-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
 
-        - config-file-provider:
-            files:
-              - file-id: 'nsh_sfc-settings'
-                variable: 'SETTINGS_FILE'
-              - file-id: 'global-settings'
-                variable: 'GLOBAL_SETTINGS_FILE'
-        - config-file-provider:
-            files:
-              - file-id: '.packagecloud'
-                target: '/home/jenkins/.packagecloud'
-        - config-file-provider:
-            files:
-              - file-id: 'packagecloud_api'
-                target: '/home/jenkins/packagecloud_api'
+      - config-file-provider:
+          files:
+            - file-id: 'nsh_sfc-settings'
+              variable: 'SETTINGS_FILE'
+            - file-id: 'global-settings'
+              variable: 'GLOBAL_SETTINGS_FILE'
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
 
-        - shell:
-            !include-raw-escape: ../scripts/create_maven_env.sh
-        - inject:
-            properties-file: maven_env.txt
-        - shell:
-            !include-raw-escape:
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/setup_vpp_plugin_dev_env.sh
-                - include-raw-nsh_sfc-build.sh
-                - ../scripts/cleanup_vpp_plugin_dev_env.sh
-                - ../scripts/maven_push_functions.sh
-                - include-raw-nsh_sfc-pkg-push.sh
-        - shell:
-            !include-raw-escape:
-                - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape: ../scripts/create_maven_env.sh
+      - inject:
+          properties-file: maven_env.txt
+      - shell:
+          !include-raw-escape:
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+          - ../scripts/setup_vpp_plugin_dev_env.sh
+          - include-raw-nsh_sfc-build.sh
+          - ../scripts/cleanup_vpp_plugin_dev_env.sh
+          - ../scripts/maven_push_functions.sh
+          - include-raw-nsh_sfc-pkg-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -381,49 +383,49 @@
     jdk: openjdk8-ubuntu1604
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-nsh_sfc-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-nsh_sfc-docs.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -438,74 +440,75 @@
     jdk: openjdk8-{os}
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: 'ubuntu1604'
-        - maven-exec:
-            maven-version: 'mvn33-new'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - reverse:
-            jobs: 'nsh_sfc-merge-{stream}-ubuntu1604'
-            result: 'success'
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'run-docs'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - reverse:
+          jobs: 'nsh_sfc-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'vpp-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - provide-maven-settings:
-            settings-file: 'vpp-settings'
-            global-settings-file: 'global-settings'
-        - shell:
-            !include-raw-escape: include-raw-nsh_sfc-docs.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-nsh_sfc-docs.sh
+
     publishers:
-        - archive:
-            artifacts: 'build-root/docs/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - archive:
+          artifacts: 'build-root/docs/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'nsh_sfc-csit-verify-perf-{stream}'
@@ -515,51 +518,51 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: 30
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'nsh_sfc_perf'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'nsh_sfc_perf'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-nsh_sfc-csit-perf-hw.sh
+      - shell:
+          !include-raw-escape: include-raw-nsh_sfc-csit-perf-hw.sh
 
-    publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+    pulishers:
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
@@ -569,48 +572,48 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-manually-triggered:
-            name: '{project}'
-            branch: '{branch}'
-            comment-trigger-value: 'nsh_sfc_func'
+      - gerrit-trigger-manually-triggered:
+          name: '{project}'
+          branch: '{branch}'
+          comment-trigger-value: 'nsh_sfc_func'
 
     builders:
-        - shell:
-            !include-raw-escape: include-raw-nsh_sfc-csit-functional-virl.sh
+      - shell:
+          !include-raw-escape: include-raw-nsh_sfc-csit-functional-virl.sh
 
     publishers:
-        - archive-artifacts:
-            artifacts: 'csit/archive/*.*'
-            latest-only: false
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
 
-        - robot-report:
-            output-path: 'csit/archive'
+      - robot-report:
+          output-path: 'csit/archive'
 
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
