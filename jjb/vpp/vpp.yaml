@@ -114,6 +114,17 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu-arm.bionic.main'
+
+- project:
+    name: vpp-arm-old
+    jobs:
+      - 'vpp-arm-old-verify-{stream}-{os}'
+      - 'vpp-arm-merge-{stream}-{os}'
+    project: 'vpp'
+    stream:
       - '1804':
           branch: 'stable/1804'
           repo-stream-part: 'stable.1804'
@@ -284,7 +295,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-arm-verify-{stream}-{os}'
+    name: 'vpp-arm-old-verify-{stream}-{os}'
 
     project-type: freestyle
     node: '{os}arm-us'
@@ -320,6 +331,69 @@
 
     triggers:
       - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-arm-build-no-test.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+- job-template:
+    name: 'vpp-arm-verify-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}arm-us'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-checkstyle-nonvoting:
           name: '{project}'
           branch: '{branch}'
 

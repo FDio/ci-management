@@ -10,12 +10,12 @@ else
         # NODE_NAME is jenkins-SOMEHEX
         if [[ $NODE_NAME != $NODE_LABEL ]]
         then
-            # Found label such as ubuntu1604arm-us
+            # Found label such as ubuntu1804arm-us
             break
         fi
     done
 
-    if [[ $NODE_LABEL == 'ubuntu1604arm-us' ]]
+    if [[ $NODE_LABEL == 'ubuntu1804arm-us' ]]
     then
         CORES=16
     fi
@@ -24,4 +24,4 @@ fi
 echo "Using MAKE_PARALLEL_FLAGS='-j $CORES' TEST_JOBS=$CORES for parallel build/test"
 
 export MAKE_PARALLEL_FLAGS="-j $CORES"
-TEST_JOBS=$CORES
+export TEST_JOBS=$CORES
