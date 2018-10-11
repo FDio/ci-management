@@ -2,39 +2,39 @@
 - project:
     name: deb_dpdk
     jobs:
-        - 'deb_dpdk-verify-{stream}-{os}'
-        - 'deb_dpdk-merge-{stream}-{os}'
-        - 'deb_dpdk-verify-image-{stream}-{os}'
+      - 'deb_dpdk-verify-{stream}-{os}'
+      - 'deb_dpdk-merge-{stream}-{os}'
+      - 'deb_dpdk-verify-image-{stream}-{os}'
 
     project: 'deb_dpdk'
     os: 'ubuntu1804'
     repo-os-part: 'ubuntu.bionic.main'
 
     stream:
-        - 1607:
-            branch: 'deb_dpdk_16.07'
-            repo-stream-part: 'deb_dpdk_1607'
-        - 1611:
-            branch: '16.11.x'
-            repo-stream-part: 'deb_dpdk_1611'
-        - 1705:
-            branch: '17.05.x'
-            repo-stream-part: 'deb_dpdk_1705'
-        - 1708:
-            branch: '17.08.x'
-            repo-stream-part: 'deb_dpdk_1708'
-        - 1711:
-            branch: '17.11.x'
-            repo-stream-part: 'deb_dpdk_1711'
-        - 1802:
-            branch: '18.02.x'
-            repo-stream-part: 'deb_dpdk_1802'
-        - 1805:
-            branch: '18.05.x'
-            repo-stream-part: 'deb_dpdk_1805'
-        - 1808:
-            branch: '18.08.x'
-            repo-stream-part: 'deb_dpdk_1808'
+      - 1607:
+          branch: 'deb_dpdk_16.07'
+          repo-stream-part: 'deb_dpdk_1607'
+      - 1611:
+          branch: '16.11.x'
+          repo-stream-part: 'deb_dpdk_1611'
+      - 1705:
+          branch: '17.05.x'
+          repo-stream-part: 'deb_dpdk_1705'
+      - 1708:
+          branch: '17.08.x'
+          repo-stream-part: 'deb_dpdk_1708'
+      - 1711:
+          branch: '17.11.x'
+          repo-stream-part: 'deb_dpdk_1711'
+      - 1802:
+          branch: '18.02.x'
+          repo-stream-part: 'deb_dpdk_1802'
+      - 1805:
+          branch: '18.05.x'
+          repo-stream-part: 'deb_dpdk_1805'
+      - 1808:
+          branch: '18.08.x'
+          repo-stream-part: 'deb_dpdk_1808'
 
 - job-template:
     name: 'deb_dpdk-verify-{stream}-{os}'
@@ -44,44 +44,44 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-submitted:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-deb_dpdk-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-deb_dpdk-build.sh
 
     publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'deb_dpdk-verify-image-{stream}-{os}'
@@ -91,57 +91,57 @@
     concurrent: true
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: '$GERRIT_REFSPEC'
-            choosing-strategy: 'gerrit'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit:
-            server-name: 'Primary'
-            trigger-on:
-                - comment-added-contains-event:
-                    comment-contains-value: 'verify-images'
-            projects:
-              - project-compare-type: 'ANT'
-                project-pattern: '{project}'
-                branches:
-                  - branch-compare-type: 'ANT'
-                    branch-pattern: '**/{branch}'
-            skip-vote:
-                successful: true
-                failed: true
-                unstable: true
-                notbuilt: true
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify-images'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
     builders:
-        - shell:
-            !include-raw-escape:
-                - include-raw-deb_dpdk-build.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-deb_dpdk-build.sh
 
     publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'deb_dpdk-merge-{stream}-{os}'
@@ -150,62 +150,62 @@
     node: '{os}-basebuild-4c-4g'
 
     build-discarder:
-        daysToKeep: '{build-days-to-keep}'
-        numToKeep: '{build-num-to-keep}'
-        artifactDaysToKeep: '{build-artifact-days-to-keep}'
-        artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-        - project-parameter:
-            project: '{project}'
-        - gerrit-parameter:
-            branch: '{branch}'
-        - os-parameter:
-            os: '{os}'
-        - maven-exec:
-            maven-version: 'mvn33-new'
-        - repo-name-parameter:
-            repo-name: '{repo-stream-part}.{repo-os-part}'
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
-        - gerrit-trigger-scm:
-            credentials-id: 'jenkins-gerrit-credentials'
-            refspec: ''
-            choosing-strategy: 'default'
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
-        - fdio-infra-wrappers:
-            build-timeout: '{build-timeout}'
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
 
     triggers:
-        - gerrit-trigger-patch-merged:
-            name: '{project}'
-            branch: '{branch}'
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
-        - maven-target:
-            maven-version: 'mvn33-new'
-            goals: '--version'
-            settings: 'deb_dpdk-settings'
-            settings-type: cfp
-            global-settings: 'global-settings'
-            global-settings-type: cfp
-        - config-file-provider:
-            files:
-              - file-id: 'deb_dpdk-settings'
-                variable: 'SETTINGS_FILE'
-              - file-id: 'global-settings'
-                variable: 'GLOBAL_SETTINGS_FILE'
-        - shell:
-            !include-raw-escape: ../scripts/create_maven_env.sh
-        - inject:
-            properties-file: maven_env.txt
-        - shell:
-            !include-raw-escape:
-                - include-raw-deb_dpdk-build.sh
-                - ../scripts/maven_push_functions.sh
-                - include-raw-deb_dpdk-pkg-push.sh
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'deb_dpdk-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - config-file-provider:
+          files:
+            - file-id: 'deb_dpdk-settings'
+              variable: 'SETTINGS_FILE'
+            - file-id: 'global-settings'
+              variable: 'GLOBAL_SETTINGS_FILE'
+      - shell:
+          !include-raw-escape: ../scripts/create_maven_env.sh
+      - inject:
+          properties-file: maven_env.txt
+      - shell:
+          !include-raw-escape:
+          - include-raw-deb_dpdk-build.sh
+          - ../scripts/maven_push_functions.sh
+          - include-raw-deb_dpdk-pkg-push.sh
 
     publishers:
-        - fdio-infra-shiplogs:
-            maven-version: 'mvn33-new'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
