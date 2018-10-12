@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da833f4_1b4f1eb3",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-12T10:09:20Z",
+      "side": 1,
+      "message": "This does not help, we need to specify current HEAD of origin branch, somehow.\n\nExample: When merging https://gerrit.fd.io/r/15195\nthe merge job https://logs.fd.io/production/vex-yul-rot-jenkins-1/ci-management-merge-jjb/1725/console-timestamp.log.gz\nhas checked out the gerrit commit 9d4e23a629206c8a88f07328f63f77c28f7ab368,\nnot the merge commit dd68019fa8c60cfaf80495f4de4e2ec8a4c60ab5.\nThat has resulted in deletion of jobs added in the meantime by https://gerrit.fd.io/r/15192.",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "8907d0a67fe1cec69a40a7a216624f4d0672c1c6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
