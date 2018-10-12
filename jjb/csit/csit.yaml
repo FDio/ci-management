@@ -14,7 +14,7 @@
 ---
 - project:
     name: csit
-    description: 'CSIT jenkins jobs.'
+    description: 'CSIT Jenkins jobs.'
     os:
       - 'ubuntu1604'
       - 'centos7'
