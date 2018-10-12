@@ -22,6 +22,30 @@
       "revId": "8907d0a67fe1cec69a40a7a216624f4d0672c1c6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a07b08b0_f86d1cd1",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2018-10-12T11:06:00Z",
+      "side": 1,
+      "message": "I believe $GERRIT_BRANCH should accomplish what you need here.",
+      "parentUuid": "5da833f4_1b4f1eb3",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "8907d0a67fe1cec69a40a7a216624f4d0672c1c6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
