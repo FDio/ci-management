@@ -864,11 +864,12 @@
     builders:
       - shell:
           !include-raw-escape:
-          - clone-csit-run-main.sh
+            - clone-csit-run-main.sh
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit_new/*.*, csit_parent/*.*'
+          # FIXME: Do not archive builds in production.
+          artifacts: 'csit_new/**/*.*, csit_parent/**/*.*, build_new/**/*.*, build_parent/**/*.*'
           latest-only: false
 
       - robot-report:
