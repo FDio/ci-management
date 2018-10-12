@@ -188,6 +188,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -590,6 +593,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -741,6 +745,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -1292,6 +1297,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1360,6 +1368,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1428,6 +1439,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:

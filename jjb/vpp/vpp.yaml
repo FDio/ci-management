@@ -892,7 +892,7 @@
     builders:
       - shell:
           !include-raw-escape:
-          - clone-csit-run-main.sh
+            - clone-csit-run-main.sh
 
     publishers:
       - archive-artifacts:
