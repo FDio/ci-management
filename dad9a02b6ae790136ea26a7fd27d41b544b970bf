@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8376fe4_d086a787",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-12T10:58:22Z",
+      "side": 1,
+      "message": "The combination of \"skip-vote\" and \"false\" is a double negative (the logical one), so this setting makes the job vote on all results.",
+      "range": {
+        "startLine": 113,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "dad9a02b6ae790136ea26a7fd27d41b544b970bf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
