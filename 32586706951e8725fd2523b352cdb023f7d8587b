@@ -46,6 +46,30 @@
       "revId": "32586706951e8725fd2523b352cdb023f7d8587b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78562328_037bf07b",
+        "filename": "jjb/rpm_dpdk/rpm_dpdk.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-10-12T16:39:45Z",
+      "side": 1,
+      "message": "Thanks.\n\nAfter some searching I have found that this is actualy fault of JJB, using exclamation mark (line 118) as an ordinary character, not as specifier for local tag. See [0].\n\nI have tried to search for a bugreport on JJB, but [1] does not interact with me.\n\nLooking at other CI project repos, I believe they solve the issue by bundling each file into one line:\n\n    - shell: !include-raw-escape: include-raw-rpm_dpdk-pkg-build.sh\n\nIf that creates long lines, it is because the \"include-raw-\" part of the filename is totally uninformative and should be dropped.\n\n[0] https://github.com/adrienverge/yamllint/issues/49\n[1] https://storyboard.openstack.org/#!/project/723",
+      "parentUuid": "4c4498c0_a16de349",
+      "range": {
+        "startLine": 119,
+        "startChar": 10,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "32586706951e8725fd2523b352cdb023f7d8587b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
