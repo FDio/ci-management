@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51b56b1c_f47a6021",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-12T08:38:57Z",
+      "side": 1,
+      "message": "I need to check with Ed. This was in his demo job for scheduling on skylakes.",
+      "parentUuid": "61e60439_dfd5d919",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "16cf2201f2c51fc3ae92ce6387f650b184050c80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca31a4e7_264e4b69",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0610d53a_b270b8d4",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-12T08:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca31a4e7_264e4b69",
+      "range": {
+        "startLine": 84,
+        "startChar": 20,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "16cf2201f2c51fc3ae92ce6387f650b184050c80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7773296_741206db",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-11T12:34:28Z",
       "side": 1,
       "message": "I recomment skipping all votes at first, only enabling them when results show to be reliable.",
+      "range": {
+        "startLine": 111,
+        "startChar": 20,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "16cf2201f2c51fc3ae92ce6387f650b184050c80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f46323e_232617b4",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2018-10-12T08:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7773296_741206db",
       "range": {
         "startLine": 111,
         "startChar": 20,
