@@ -892,17 +892,17 @@
     builders:
       - shell:
           !include-raw-escape:
-          - clone-csit-run-main.sh
+            - clone-csit-run-main.sh
 
     publishers:
       - archive-artifacts:
           artifacts: >
-            **/csit_new/*.*,
-            **/csit_parent/*.*
+            **/csit_new/**/*.*,
+            **/csit_parent/**/*.*
           latest-only: false
 
       - robot-report:
-          output-path: 'csit_new/'
+          output-path: 'csit_new/0/'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
