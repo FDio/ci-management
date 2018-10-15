@@ -856,7 +856,7 @@
           description: "Duration of a trial measurement in BMRR tests."
       - string:
           name: CSIT_PERF_TRIAL_MULTIPLICITY
-          default: "30"
+          default: "8"
           description: "Number of subsamples for BMRR tests."
       - stream-parameter:
           stream: '{stream}'
