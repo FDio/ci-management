@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b50b5308_e5245584",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-15T17:11:05Z",
+      "side": 1,
+      "message": "According to the old code this is also a comma-separated list so the commas should not be removed either.",
+      "revId": "850a2f88c441dd368cfcff9cc00ced0f15b4d95b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}

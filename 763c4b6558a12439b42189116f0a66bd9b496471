@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "489ce4de_e95c5e1b",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-15T17:11:05Z",
+      "side": 0,
+      "message": "Accidentally removed this causing invalid syntax.",
+      "range": {
+        "startLine": 227,
+        "startChar": 10,
+        "endLine": 227,
+        "endChar": 20
+      },
+      "revId": "763c4b6558a12439b42189116f0a66bd9b496471",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
