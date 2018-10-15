@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f75be3c_97638ed1",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-15T22:34:20Z",
+      "side": 1,
+      "message": "This needs to be indented by 2 to be under \"archive-artifacts\".",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "1a3dbd9ed81fc9932dac64cebbe51c82eebc1bd6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
