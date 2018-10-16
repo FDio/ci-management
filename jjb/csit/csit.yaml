@@ -124,7 +124,10 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'report.html, log.html, output.xml'
+          artifacts: >
+            **/csit/report.html,
+            **/csit/log.html,
+            **/csit/output.xml
           latest-only: false
 
       - robot-report:
@@ -385,7 +388,10 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'report.html, log.html, output.xml'
+          artifacts: >
+            **/csit/report.html,
+            **/csit/log.html,
+            **/csit/output.xml
           latest-only: false
 
       - robot-report:
@@ -1761,7 +1767,10 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'report.html, log.html, output.xml'
+          artifacts: >
+            **/csit/report.html,
+            **/csit/log.html,
+            **/csit/output.xml
           latest-only: false
 
       - robot-report:
