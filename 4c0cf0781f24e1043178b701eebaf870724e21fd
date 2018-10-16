@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1ab1f6a_1e2cacc4",
+        "filename": "jjb/tldk/tldk.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-16T18:25:30Z",
+      "side": 1,
+      "message": "This line needs to be indented by exactly 2 spaces (and the ** lines below needs to be indented by 2 as well.\n\nThis is because \"artifacts\" is a parameter of \"archive-artifacts\" so the indent needs to be there so that JJB parses the parameter properly.",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 17
+      },
+      "revId": "4c0cf0781f24e1043178b701eebaf870724e21fd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
