@@ -176,7 +176,11 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -267,7 +271,11 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -326,7 +334,11 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -413,7 +425,11 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -565,7 +581,12 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
+
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -715,7 +736,11 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/*.rpm,build-root/*.deb,dpdk/*.rpm,dpdk/*.deb'
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -787,7 +812,10 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+          artifacts: >
+            **/csit/report.html,
+            **/csit/log.html,
+            **/csit/output.xml
           latest-only: false
 
       - robot-report:
@@ -868,7 +896,9 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit_new/*.*, csit_parent/*.*'
+          artifacts: >
+            **/csit_new/*.*,
+            **/csit_parent/*.*
           latest-only: false
 
       - robot-report:
