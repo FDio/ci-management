@@ -787,7 +787,10 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit/report.html, csit/log.html, csit/output.xml'
+          artifacts: >
+            **/csit/report.html,
+            **/csit/log.html,
+            **/csit/output.xml
           latest-only: false
 
       - robot-report:
@@ -868,7 +871,9 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'csit_new/*.*, csit_parent/*.*'
+          artifacts: >
+            **/csit_new/*.*,
+            **/csit_parent/*.*
           latest-only: false
 
       - robot-report:
