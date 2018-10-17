@@ -14,8 +14,6 @@
     stream:
       - master:
           branch: 'master'
-      - '1801':
-          branch: 'rls1801'
       - '1804':
           branch: 'rls1804'
       - '1807':
