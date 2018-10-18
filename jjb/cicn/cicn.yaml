@@ -355,7 +355,9 @@
 
     publishers:
       - archive:
-          artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+          artifacts: >
+            **/longbow/build/*.rpm,
+            **/longbow/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -406,7 +408,9 @@
 
     publishers:
       - archive:
-          artifacts: 'longbow/build/*.rpm,longbow/build/*.deb'
+          artifacts: >
+            **/longbow/build/*.rpm,
+            **/longbow/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -624,7 +628,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
+          artifacts: >
+            **/libparc/build/*.rpm,
+            **/libparc/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -675,7 +681,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libparc/build/*.rpm,libparc/build/*.deb'
+          artifacts: >
+            **/libparc/build/*.rpm,
+            **/libparc/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -891,7 +899,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
+          artifacts: >
+            **/libccnx-common/build/*.rpm,
+            **/libccnx-common/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -942,7 +952,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libccnx-common/build/*.rpm,libccnx-common/build/*.deb'
+          artifacts: >
+            **/libccnx-common/build/*.rpm,
+            **/libccnx-common/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1015,8 +1027,9 @@
 
     publishers:
       - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
+          artifacts: >
+            **/libccnx-transport-rta/build/*.rpm,
+            **/libccnx-transport-rta/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1068,7 +1081,9 @@
     publishers:
       - archive:
           # yamllint disable-line rule:line-length
-          artifacts: 'libccnx-transport-rta/build/*.rpm,libccnx-transport-rta/build/*.deb'
+          artifacts: >
+            **/libccnx-transport-rta/build/*.rpm,
+            **/libccnx-transport-rta/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1141,7 +1156,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
+          artifacts: >
+            **/libccnx-portal/build/*.rpm,
+            **/libccnx-portal/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1192,7 +1209,9 @@
 
     publishers:
       - archive:
-          artifacts: 'libccnx-portal/build/*.rpm,libccnx-portal/build/*.deb'
+          artifacts: >
+            **/libccnx-portal/build/*.rpm,
+            **/libccnx-portal/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1265,7 +1284,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1316,7 +1337,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1389,7 +1412,9 @@
 
     publishers:
       - archive:
-          artifacts: 'metis/build/*.rpm,metis/build/*.deb'
+          artifacts: >
+            **/metis/build/*.rpm,
+            **/metis/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1440,7 +1465,9 @@
 
     publishers:
       - archive:
-          artifacts: 'metis/build/*.rpm,metis/build/*.deb'
+          artifacts: >
+            **/metis/build/*.rpm,
+            **/metis/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1513,7 +1540,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1564,7 +1593,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1635,7 +1666,9 @@
 
     publishers:
       - archive:
-          artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
+          artifacts: >
+            **/cicn-plugin/build/*.rpm,
+            **/cicn-plugin/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1686,7 +1719,9 @@
 
     publishers:
       - archive:
-          artifacts: 'cicn-plugin/build/*.rpm,cicn-plugin/build/*.deb'
+          artifacts: >
+            **/cicn-plugin/build/*.rpm,
+            **/cicn-plugin/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1759,8 +1794,11 @@
 
     publishers:
       - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb,
+            **/libdash/build/*.rpm,
+            **/libdash/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1811,8 +1849,11 @@
 
     publishers:
       - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: 'build/*.rpm,build/*.deb,libdash/build/*.rpm,libdash/build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb,
+            **/libdash/build/*.rpm,
+            **/libdash/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1884,7 +1925,11 @@
     publishers:
       - archive:
           # yamllint disable-line rule:line-length
-          artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
+          artifacts: >
+            **/emu-radio/build/*.rpm,
+            **/emu-radio/build/*.deb,
+            **/emu-radio/ns3-packages/*.rpm,
+            **/emu-radio/ns3-packages/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1936,7 +1981,12 @@
     publishers:
       - archive:
           # yamllint disable-line rule:line-length
-          artifacts: 'emu-radio/build/*.rpm,emu-radio/build/*.deb,emu-radio/ns3-packages/*.rpm,emu-radio/ns3-packages/*.deb'
+          artifacts: >
+            **/emu-radio/build/*.rpm,
+            **/emu-radio/build/*.deb,
+            **/emu-radio/ns3-packages/*.rpm,
+            **/emu-radio/ns3-packages/*.deb
+
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -1993,8 +2043,11 @@
 
     publishers:
       - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: 'IGetAndroid/app/build/outputs/apk/release/*.apk,MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,HttpServer/app/build/outputs/apk/release/*.apk,build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk'
+          artifacts: >
+            **/IGetAndroid/app/build/outputs/apk/release/*.apk,
+            **/MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,
+            **/HttpServer/app/build/outputs/apk/release/*.apk,
+            **/build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -2046,7 +2099,10 @@
     publishers:
       - archive:
           # yamllint disable-line rule:line-length
-          artifacts: 'iGetAndroid/app/build/outputs/apk/*.apk,MetisForwarder/app/build/outputs/apk/*.apk,build/viper/viper-armv7//build/outputs/apk/*.apk'
+          artifacts: >
+            **/iGetAndroid/app/build/outputs/apk/*.apk,
+            **/MetisForwarder/app/build/outputs/apk/*.apk,
+            **/build/viper/viper-armv7//build/outputs/apk/*.apk
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -2117,7 +2173,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -2168,7 +2226,9 @@
 
     publishers:
       - archive:
-          artifacts: 'build/*.rpm,build/*.deb'
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
