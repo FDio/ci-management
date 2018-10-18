@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8289ec4b_7887e598",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1537
+      },
+      "writtenOn": "2018-10-18T14:26:27Z",
+      "side": 1,
+      "message": "Should this row also be changed?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 78
+      },
+      "revId": "3d317104a0b9512f8f643b568d209b8424562f0e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
