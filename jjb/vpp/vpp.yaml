@@ -856,7 +856,7 @@
           description: "Duration of a trial measurement in BMRR tests."
       - string:
           name: CSIT_PERF_TRIAL_MULTIPLICITY
-          default: "30"
+          default: "8"
           description: "Number of subsamples for BMRR tests."
       - stream-parameter:
           stream: '{stream}'
@@ -897,12 +897,12 @@
     publishers:
       - archive-artifacts:
           artifacts: >
-            **/csit_new/*.*,
-            **/csit_parent/*.*
+            **/csit_new/**/*.*,
+            **/csit_parent/**/*.*
           latest-only: false
 
       - robot-report:
-          output-path: 'csit_new/'
+          output-path: 'csit_new/0/'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
