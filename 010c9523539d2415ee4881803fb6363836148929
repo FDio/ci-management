@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adc791e_c6c0e564",
+        "filename": "jjb/dmm/include-raw-dmm-csit-functional-virl.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1049
+      },
+      "writtenOn": "2018-10-25T12:31:46Z",
+      "side": 0,
+      "message": "Hello all, this command is excluding all folders named csit(inside dmm repo as well), because of which DMM functional job is not able to access the scripts inside dmm/scripts/csit/ path.\nkindly help to merge as soon as possible",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "010c9523539d2415ee4881803fb6363836148929",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
