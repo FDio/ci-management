@@ -26,7 +26,7 @@ fi
 mkdir -p ./csit/dmm/
 
 # Move the dmm to the csit dir
-rsync -av --progress --exclude="csit" . ./csit/dmm/
+rsync -av --progress --exclude="./csit" . ./csit/dmm/
 
 cd csit
 
