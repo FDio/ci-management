@@ -11,5 +11,10 @@
     build-timeout: 360
     build-perf-timeout: 5760
 
+    # global-jjb
+    gerrit-server-name: gerrit.fd.io
+    jenkins-ssh-credential: rotterdam-jobbuilder
+    lftools-version: <1.0.0
+
     # fd.io branch defaults
     branch: master
