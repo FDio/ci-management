@@ -1,9 +1,17 @@
 ---
 - project:
+    name: ci-management-ci-jobs
+    jobs:
+      - '{project-name}-ci-jobs'
+
+    project: ci-management
+    project-name: ci-management
+    build-node: centos7-builder-2c-2g
+    jjb-version: 2.6.0
+
+- project:
     name: ci-management-jobs
     jobs:
-      - 'ci-management-verify-jjb'
-      - 'ci-management-merge-jjb'
       - 'ci-management-verify-packer'
       - 'ci-management-merge-packer-{platforms}-{templates}'
 
