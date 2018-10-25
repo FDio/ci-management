@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1c2240_94d4ca9b",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-25T22:08:36Z",
+      "side": 1,
+      "message": "Should add `build-timeout: 30` here.",
+      "revId": "087de93af1cdf0b4a9b53725e196914d28f2431e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87aa10d0_0e651f9f",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 6
+      },
+      "writtenOn": "2018-10-25T22:08:36Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be hardcoding the timeout in job-templates. This should have been defined at the project section.\n\nRegardless this is a job template that\u0027s no longer used so the effect here won\u0027t result in a change in the job config.",
+      "revId": "087de93af1cdf0b4a9b53725e196914d28f2431e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
