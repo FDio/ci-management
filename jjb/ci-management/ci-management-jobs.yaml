@@ -95,7 +95,7 @@
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: 60
 
     triggers:
       - gerrit-trigger-patch-merged:
