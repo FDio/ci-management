@@ -460,8 +460,17 @@
                 - SUCCESS
                 - UNSTABLE
               build-steps:
-                - lf-infra-sysstat
-                - lf-infra-ship-logs
+                - shell: !include-raw: include-raw-deploy-archives.sh
+                - maven-target:
+                    maven-version: '{maven-version}'
+                    pom: '.archives/deploy-archives.xml'
+                    goals: 'clean deploy -V -B -q -Dmaven.repo.local=/tmp/r'
+                    settings: 'jenkins-log-archives-settings'
+                    settings-type: cfp
+                    global-settings: 'global-settings'
+                    global-settings-type: cfp
+                - description-setter:
+                    regexp: '^Build logs: .*'
           mark-unstable-if-failed: true
       - workspace-cleanup:
           fail-build: false
