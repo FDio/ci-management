@@ -67,7 +67,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'foo'
+    node: 'vpp-csit-device'
     concurrent: true
 
     build-discarder:
