@@ -1768,10 +1768,7 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: >
-            **/csit/report.html,
-            **/csit/log.html,
-            **/csit/output.xml
+          artifacts: 'archive/*.*'
           latest-only: false
 
       - robot-report:
