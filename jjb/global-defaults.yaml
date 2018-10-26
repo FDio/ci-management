@@ -12,7 +12,7 @@
     build-perf-timeout: 5760
 
     # global-jjb
-    gerrit-server-name: gerrit.fd.io
+    gerrit-server-name: Primary
     jenkins-ssh-credential: jenkins-gerrit-credentials
     lftools-version: <1.0.0
 
