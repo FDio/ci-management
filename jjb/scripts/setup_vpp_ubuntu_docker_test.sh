@@ -12,7 +12,7 @@ set -e -o pipefail
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 
 if ! [ -z ${DOCKER_TEST} ] ; then
-		mount -o remount /dev/shm -o size=512M || true
+		sudo mount -o remount /dev/shm -o size=512M || true
         echo "/dev/shm remounted"
 fi
 
@@ -46,15 +46,15 @@ fi
 
 if [ "${GERRIT_BRANCH}" != "master" ]; then
     if [ "${OS_ID}" == "ubuntu" ]; then
-        apt-get -y remove vpp-dpdk-dev || true
-        apt-get -y remove vpp-dpdk-dkms || true
-        apt-get -y remove vpp-ext-deps || true
+        sudo apt-get -y remove vpp-dpdk-dev || true
+        sudo apt-get -y remove vpp-dpdk-dkms || true
+        sudo apt-get -y remove vpp-ext-deps || true
     elif [ "${OS_ID}" == "centos" ]; then
-        yum -y erase vpp-dpdk-devel || true
-        yum -y erase vpp-ext-deps || true
-        yum clean all || true
+        sudo yum -y erase vpp-dpdk-devel || true
+        sudo yum -y erase vpp-ext-deps || true
+        sudo yum clean all || true
     elif [ "${OS_ID}" == "opensuse" ]; then
-        yum -y erase vpp-dpdk-devel || true
-        yum -y erase vpp-ext-deps || true
+        sudo yum -y erase vpp-dpdk-devel || true
+        sudo yum -y erase vpp-ext-deps || true
     fi
 fi

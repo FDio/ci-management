@@ -13,7 +13,7 @@ function setup {
         if [ "$OS_ID" == "ubuntu" ]; then
             if [ -f /etc/apt/sources.list.d/99fd.io.list ];then
                 echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
-                rm /etc/apt/sources.list.d/99fd.io.list
+                sudo rm /etc/apt/sources.list.d/99fd.io.list
             fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
@@ -22,7 +22,7 @@ function setup {
         elif [ "$OS_ID" == "centos" ]; then
             if [ -f /etc/yum.repos.d/fdio-master.repo ]; then
                 echo "Deleting: /etc/yum.repos.d/fdio-master.repo"
-                rm /etc/yum.repos.d/fdio-master.repo
+                sudo rm /etc/yum.repos.d/fdio-master.repo
             fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
             sudo yum -y install vpp-dpdk-devel || true
