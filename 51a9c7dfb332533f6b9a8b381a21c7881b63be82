@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e20c8396_b739e5a0",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "Don\u0027t need to re-enable after disable-line.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33d1e28a_61310071",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "This could be a disable-line, removing the need to re-enable after one line.",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 60,
+        "endChar": 45
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55fc1508_8f2df652",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "This could be a disable-line.",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 45
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "065bb9db_f2545434",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "This could be a disable-line.",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 45
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acb7ff7a_ac6c9011",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "This could be a disable-line.",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 45
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3022adc_cbb38686",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-10-30T19:41:59Z",
+      "side": 1,
+      "message": "This could be a disable-line.",
+      "range": {
+        "startLine": 423,
+        "startChar": 10,
+        "endLine": 423,
+        "endChar": 45
+      },
+      "revId": "51a9c7dfb332533f6b9a8b381a21c7881b63be82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
