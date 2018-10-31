@@ -64,9 +64,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1810':
-          branch: 'rls1810'
-          branch-id: 'oper-rls1810'
     stream:
       - master:
           branch: 'master'
