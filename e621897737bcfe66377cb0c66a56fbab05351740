@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3c8a729_3943c9a2",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-11-02T11:47:03Z",
+      "side": 1,
+      "message": "Wrong indent level.",
+      "range": {
+        "startLine": 271,
+        "startChar": 6,
+        "endLine": 271,
+        "endChar": 8
+      },
+      "revId": "e621897737bcfe66377cb0c66a56fbab05351740",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
