@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c116ec8f_b192957d",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "This should be disable-line, if you do it this way, and don\u0027t subsequently do a \u0027# yamllint enable\u0027 then you\u0027ve got this turned off for the rest of the file!",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd246f5b_59ff7633",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 125,
+        "startChar": 21,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a8a1da0_262c56d7",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 134,
+        "startChar": 21,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d131d3e2_4724aa7b",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 399,
+        "startChar": 21,
+        "endLine": 399,
+        "endChar": 28
+      },
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dcffd7c_3a8fc87e",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 418,
+        "startChar": 21,
+        "endLine": 418,
+        "endChar": 28
+      },
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfafc0c6_7c38fd8b",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2018-11-05T17:52:05Z",
+      "side": 1,
+      "message": "Wise choice to do this as a disable block. It would, however be better to move the following shell script into an included file so that ShellCheck can run against it!",
+      "revId": "51cbe55a164ab4e14c032c3d3176bda779dce1c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
