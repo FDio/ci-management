@@ -110,7 +110,7 @@
     parameters:
         - string:
             name: GERRIT_EVENT_TYPE
-            default: ''
+            default: 'coment-added'
             description: "GERRIT_EVENT_TYPE parameter not given by trigger"
 
 - parameter:
@@ -118,7 +118,7 @@
     parameters:
         - string:
             name: GERRIT_EVENT_COMMENT_TEXT
-            default: ''
+            default: 'csit-2n-skx-perftest soakANDl2patch'
             description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
 
 - parameter:
@@ -126,7 +126,7 @@
     parameters:
         - string:
             name: CSIT_REF
-            default: ''
+            default: 'refs/changes/39/15239/5'
             description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
             # FIXME: Wrap long lines.
 
