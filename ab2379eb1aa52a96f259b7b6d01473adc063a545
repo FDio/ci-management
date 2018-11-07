@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afe92749_2943a5e0",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2018-11-07T13:21:05Z",
+      "side": 1,
+      "message": "Can we create versions of the two macros in jjb/vpp/vpp-macros.yaml so that they have configurable comment-contains-value value?\n\nThat way we can save lines in many job definitions.",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 249,
+        "endChar": 14
+      },
+      "revId": "ab2379eb1aa52a96f259b7b6d01473adc063a545",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
