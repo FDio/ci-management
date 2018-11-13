@@ -1,0 +1,6 @@
+{
+  "base_image": "LF - CentOS 7.1808 (2018-09-06)",
+  "distro": "CentOS 7",
+  "ssh_user": "centos",
+  "cloud_user_data": "common-packer/provision/rh-user_data.sh"
+}
