@@ -1,7 +1,0 @@
-{
-  "base_image": "openSuSE LEAP 42.3 (2017-05-17) - LF upload",
-  "cloud_user": "root",
-
-  "distro": "openSuSE LEAP 42.3",
-  "cloud_user_data": "provision/null_data.sh"
-}
