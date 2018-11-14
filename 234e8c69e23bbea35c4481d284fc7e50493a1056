@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194d5821_cc4069b1",
+        "filename": "jjb/sweetcomb/sweetcomb.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2018-11-14T22:40:37Z",
+      "side": 1,
+      "message": "You need to remove builders or add the scripts for example\n!include-raw-escape: include-raw-build.sh",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "234e8c69e23bbea35c4481d284fc7e50493a1056",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
