@@ -372,7 +372,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 4 * * 0'
+      - timed: '0 0 30 2 0'
 
       - gerrit-trigger-manually-triggered:
           comment-trigger-value: 'csit-vpp-ref-verify'
@@ -424,7 +424,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 4 * * 2,6'
+      - timed: '0 0 30 2 0'
 
       - gerrit-trigger-manually-triggered:
           comment-trigger-value: 'csit-verify-vpp'
@@ -483,7 +483,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: 'H H(3-4) * * *'
+      - timed: '0 0 30 2 0'
 
       - gerrit-trigger-manually-triggered:
           comment-trigger-value: 'vpp-verify-func-centos7'
@@ -833,7 +833,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -896,7 +896,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -959,7 +959,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1023,7 +1023,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 16 * * *'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1091,7 +1091,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 2,16 * * *'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1159,7 +1159,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 2,16 * * *'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1227,7 +1227,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 2,16 * * *'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1295,7 +1295,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1363,7 +1363,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -1431,7 +1431,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'

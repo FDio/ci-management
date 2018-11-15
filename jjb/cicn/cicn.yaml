@@ -321,7 +321,7 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
+      - timed: '0 0 30 2 0'
 
     builders:
       - config-file-provider:
@@ -1643,7 +1643,7 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
+      - timed: '0 0 30 2 0'
 
     builders:
       - maven-target:
@@ -1901,7 +1901,7 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
+      - timed: '0 0 30 2 0'
 
     builders:
       - maven-target:
@@ -2034,7 +2034,7 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
+      - timed: '0 0 30 2 0'
 
     builders:
       - shell:
@@ -2150,7 +2150,7 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
+      - timed: '0 0 30 2 0'
 
     builders:
       - maven-target:
