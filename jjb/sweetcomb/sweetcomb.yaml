@@ -1,0 +1,120 @@
+---
+#########################################################################
+#
+# Copyright (c) 2018 Intel and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#########################################################################
+
+- project:
+    name: sweetcomb
+    jobs:
+      - 'sweetcomb-verify-{stream}-{os}'
+      - 'sweetcomb-merge-{stream}-{os}'
+
+    project: 'sweetcomb'
+    os:
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+      - centos7:
+          repo-os-part: 'centos7'
+    stream:
+      - master:
+          branch: 'master'
+
+- job-template:
+    name: 'sweetcomb-verify-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: 'sweetcomb'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          name: 'sweetcomb'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: include-raw-build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'sweetcomb-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-basebuild-4c-4g'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: 'sweetcomb'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: 'sweetcomb'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: include-raw-build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
