@@ -1,2 +1,21 @@
 ---
 - import_playbook: ../common-packer/provision/baseline.yaml
+
+- hosts: all
+  become_user: root
+  become_method: sudo
+
+  pre_tasks:
+    - include_role: name=lfit.system-update
+
+  tasks:
+    - name: 'Install PackageCloud'
+      command: 'sudo gem install package_cloud'
+
+  roles:
+    - lfit.mono-install
+
+  post_tasks:
+    - name: System Reseal
+      script: ../common-packer/provision/system-reseal.sh
+      become: true
