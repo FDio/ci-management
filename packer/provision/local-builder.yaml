@@ -1,2 +1,43 @@
 ---
 - import_playbook: ../common-packer/provision/baseline.yaml
+
+- hosts: all
+  become_user: root
+  become_method: sudo
+
+  pre_tasks:
+    - include_role: name=lfit.system-update
+
+  tasks:
+    - name: 'Install ruby-dev'
+      apt:
+        name: ruby-dev
+        state: present
+      become: true
+
+    - name: 'Install rake gem'
+      command: 'gem install rake'
+      become: true
+
+    - name: 'Install PackageCloud'
+      command: 'gem install package_cloud'
+      become: true
+
+    - name: 'Load operating system specific variables'
+      include_vars: "{{ item }}"
+      with_first_found:
+        - "{{ ansible_os_family }}.yaml"
+      skip: true
+
+    - name: 'Install FD.io Required Packages'
+      package:
+        name: "{{ fdio_required_packages_distro }}"
+        become: true
+
+  roles:
+    - lfit.mono-install
+
+  post_tasks:
+    - name: System Reseal
+      script: ../common-packer/provision/system-reseal.sh
+      become: true
