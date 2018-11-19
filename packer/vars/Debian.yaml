@@ -1,0 +1,13 @@
+---
+fdio_required_packages_distro:
+    - gdb
+    - gdbserver
+    - bridge-utils
+    - texlive-fonts-recommended
+    - tex-common
+    - texlive-base
+    - texlive-binaries
+    - texlive-pictures
+    - texlive-latex-recommended
+    - preview-latex-style
+    - texlive-latex-extra
