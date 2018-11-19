@@ -1,2 +1,73 @@
 ---
 - import_playbook: ../common-packer/provision/baseline.yaml
+
+- hosts: all
+  become_user: root
+  become_method: sudo
+
+  pre_tasks:
+    - include_role: name=lfit.system-update
+
+  tasks:
+    - name: 'Install FD.io Required Packages apt'
+      apt:
+        name:
+          - gdb
+          - ruby-dev
+          - zip
+        state: present
+      when: ansible_os_family == 'Debian'
+      become: true
+
+    - name: 'Install FD.io Required Packages yum'
+      yum:
+        name:
+          - gdb
+          - gdbserver
+          - bridge-utils
+          - texlive-fonts-recommended
+          - tex-common
+          - texlive-base
+          - texlive-binaries
+          - texlive-pictures
+          - texlive-latex-recommended
+          - preview-latex-style
+          - texlive-latex-extra
+          - apr-devel
+          - asciidoc
+          - autoconf
+          - ccache
+          - dblatex
+          - dkms
+          - epel-rpm-macros
+          - ganglia-devel
+          - glibc-static
+          - kernel-devel
+          - libcap-devel
+          - libconfuse-devel
+          - libconfuse-devel
+          - python-sphinx
+          - redhat-lsb
+          - ruby-devel
+          - scapy
+          - source-highlight
+          - valgrind
+        state: present
+      when: ansible_os_family == 'RedHat'
+      become: true
+
+    - name: 'Install rake gem'
+      command: 'gem install rake'
+      become: true
+
+    - name: 'Install PackageCloud'
+      command: 'gem install package_cloud'
+      become: true
+
+  roles:
+    - lfit.mono-install
+
+  post_tasks:
+    - name: System Reseal
+      script: ../common-packer/provision/system-reseal.sh
+      become: true
