@@ -1,0 +1,4 @@
+---
+fdio_required_packages: "{{ fdio_required_packages_common }} + {{ fdio_required_packages_distro }}"
+fdio_required_packages_common:
+    - zip
