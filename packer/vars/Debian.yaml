@@ -1,0 +1,3 @@
+---
+fdio_required_packages_distro:
+    - gdb
