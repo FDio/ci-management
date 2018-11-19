@@ -1,2 +1,13 @@
 ---
 - import_playbook: ../common-packer/provision/baseline.yaml
+
+  pre_tasks:
+    - include_role: name=lfit.system-update
+
+  roles:
+    - lfit.mono-install
+
+  post_tasks:
+    - name: System Reseal
+      script: ../common-packer/provision/system-reseal.sh
+      become: true
