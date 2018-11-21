@@ -1463,6 +1463,7 @@
 
     description: |
       <ul>
+          <li><b>RUNNING PERIODICALLY TO SPOT TESTBED PERFORMANCE OSCILLATIONS</b>
           <li>objective
               <ul>
                   <li>perf verify - per csit gerrit patch
@@ -1527,25 +1528,10 @@
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: '{build-timeout}'
+          build-timeout: '40000'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-{topo}-{arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - timed: '0 */2 * * *'
 
     builders:
       - shell:

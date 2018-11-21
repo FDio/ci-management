@@ -40,7 +40,7 @@
     parameters:
       - string:
           name: GERRIT_REFSPEC
-          default: '{refspec}'
+          default: 'refs/changes/39/15239/17'
           description: "GERRIT_REFSPEC parameter not given by trigger"
 
 - parameter:
@@ -113,7 +113,7 @@
     parameters:
       - string:
           name: GERRIT_EVENT_TYPE
-          default: ''
+          default: 'comment-added'
           description: "GERRIT_EVENT_TYPE parameter not given by trigger"
 
 - parameter:
@@ -121,7 +121,7 @@
     parameters:
       - string:
           name: GERRIT_EVENT_COMMENT_TEXT
-          default: ''
+          default: 'csit-2n-skx-perftest soakANDl2patch'
           # yamllint disable-line rule:line-length
           description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
 
@@ -130,7 +130,7 @@
     parameters:
       - string:
           name: CSIT_REF
-          default: ''
+          default: 'refs/changes/39/15239/17'
           # yamllint disable-line rule:line-length
           description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
 
