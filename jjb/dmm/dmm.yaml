@@ -205,7 +205,7 @@
           latest-only: false
 
       - robot-report:
-          output-path: 'csit'
+          output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'

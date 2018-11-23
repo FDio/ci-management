@@ -1769,7 +1769,7 @@
           latest-only: false
 
       - robot-report:
-          output-path: ''
+          output-path: 'archive'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
