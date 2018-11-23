@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e26fec3_e1a82a54",
+        "filename": "jjb/dmm/dmm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1049
+      },
+      "writtenOn": "2018-11-23T12:23:49Z",
+      "side": 1,
+      "message": "getting below error for this job, will this change fix the problem ?\n\n09:23:27 ‘csit/archive/*.*’ doesn’t match anything, but ‘*.*’ does. Perhaps that’s what you mean?\n09:23:27 No artifacts found that match the file pattern \"csit/archive/*.*\". Configuration error?",
+      "range": {
+        "startLine": 208,
+        "startChar": 24,
+        "endLine": 208,
+        "endChar": 36
+      },
+      "revId": "17195e410a61f4a186e06f379572adeef7dca6cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
