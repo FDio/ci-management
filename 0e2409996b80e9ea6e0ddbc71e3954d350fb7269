@@ -16,6 +16,29 @@
       "revId": "0e2409996b80e9ea6e0ddbc71e3954d350fb7269",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa21a2c1_a8d151fc",
+        "filename": "packer/provision/local-builder.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-11-28T20:46:05Z",
+      "side": 1,
+      "message": "In addition to the missing \"f\", this doesn\u0027t seem to correspond directly to anything. I believe it needs a \"vars/main.yaml\" to connect \"fdio_required_packages\" to \"fdio_required_packages_distro\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 39
+      },
+      "revId": "0e2409996b80e9ea6e0ddbc71e3954d350fb7269",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
