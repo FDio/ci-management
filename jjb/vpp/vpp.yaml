@@ -164,7 +164,7 @@
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: '75'
 
     builders:
       - shell:
