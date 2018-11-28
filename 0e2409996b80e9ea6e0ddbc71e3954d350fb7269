@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8119a1a2_441af4ad",
+        "filename": "packer/provision/local-builder.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 893
+      },
+      "writtenOn": "2018-11-28T20:37:49Z",
+      "side": 1,
+      "message": "\"f\" missing in \"fdio\" here.",
+      "revId": "0e2409996b80e9ea6e0ddbc71e3954d350fb7269",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
