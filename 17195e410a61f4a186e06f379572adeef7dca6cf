@@ -69,6 +69,30 @@
       "revId": "17195e410a61f4a186e06f379572adeef7dca6cf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f328f1db_a311d9ed",
+        "filename": "jjb/dmm/dmm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1049
+      },
+      "writtenOn": "2018-11-29T05:01:40Z",
+      "side": 1,
+      "message": "Hi Vratko Polak,\n\nOnce this patch[https://gerrit.fd.io/r/#/c/15547/4/bootstrap-DMM.sh] gets merged, then the files will be moved to :csit/archive\"",
+      "parentUuid": "53062a5c_f58136d3",
+      "range": {
+        "startLine": 208,
+        "startChar": 24,
+        "endLine": 208,
+        "endChar": 36
+      },
+      "revId": "17195e410a61f4a186e06f379572adeef7dca6cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
