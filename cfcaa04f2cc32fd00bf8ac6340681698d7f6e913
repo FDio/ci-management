@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e0d5cab_ab53c111",
+        "filename": "packer/provision/local-builder.yaml",
+        "patchSetId": 34
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2018-12-10T18:17:40Z",
+      "side": 1,
+      "message": "I believe these should be in the \"apt\" task, rather than \"yum\".",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "cfcaa04f2cc32fd00bf8ac6340681698d7f6e913",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
