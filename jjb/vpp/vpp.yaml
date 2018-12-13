@@ -425,7 +425,7 @@
     name: 'vpp-arm-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: '{os}arm-m'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
