@@ -9,7 +9,7 @@
     - include_role: name=lfit.system-update
 
   tasks:
-    - name: 'Install FD.io Required Packages apt'
+    - name: 'Install FD.io Required 16.04 Packages'
       apt:
         name:
           - gdb
@@ -60,10 +60,66 @@
           - ruby-dev
           - zip
         state: present
-      when: ansible_os_family == 'Debian'
+      # yamllint disable-line rule:line-length
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
       become: true
 
-    - name: 'Install FD.io Required Packages yum'
+    - name: 'Install FD.io Required 18.04 Packages'
+      apt:
+        name:
+          - gdb
+          - gdbserver
+          - bridge-utils
+          - texlive-fonts-recommended
+          - tex-common
+          - texlive-base
+          - texlive-binaries
+          - texlive-pictures
+          - texlive-latex-recommended
+          - preview-latex-style
+          - texlive-latex-extra
+          - cloud-initramfs-growroot
+          - cloud-initramfs-rescuevol
+          - libmysqlclient-dev
+          - doxygen
+          - python-pyparsing
+          - asciidoc
+          - dblatex
+          - source-highlight
+          - lcov
+          - gcc-multilib
+          - bison
+          - ccache
+          - dkms
+          - libganglia1-dev
+          - libapr1-dev
+          - libconfuse-dev
+          - exuberant-ctags
+          - cscope
+          - indent
+          - emacs
+          - libxslt-dev
+          - bc
+          - linux-image-extra-virtual
+          - google-mock
+          - debian-xcontrol
+          - pristine-tar
+          - python-sphinx
+          - libstdc++5
+          - python-scapy
+          - inkscape
+          - python-sphinx-rtd-theme
+          - python3-sphinx
+          - libnuma-dev
+          - libibverbs-dev
+          - ruby-dev
+          - zip
+        state: present
+      # yamllint disable-line rule:line-length
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+      become: true
+
+    - name: 'Install FD.io Required CentOS 7 Packages'
       yum:
         name:
           - apr-devel
