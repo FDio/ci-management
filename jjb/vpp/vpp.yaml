@@ -481,11 +481,13 @@
           global-settings: 'global-settings'
           global-settings-type: cfp
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-parallel-vars.sh
           - include-raw-vpp-arm-build.sh
+
       - provide-maven-settings:
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
