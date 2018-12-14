@@ -1,0 +1,7 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+2: Eric Ball <eball@linuxfoundation.org>
+Submitted-by: Eric Ball <eball@linuxfoundation.org>
+Submitted-at: Fri, 14 Dec 2018 18:48:45 +0000
+Reviewed-on: https://gerrit.fd.io/r/16489
+Project: ci-management
+Branch: refs/heads/master
