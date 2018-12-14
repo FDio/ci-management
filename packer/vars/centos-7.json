@@ -1,5 +1,5 @@
 {
-  "base_image": "ZZZCI - CentOS7 - builder - x86_64 - 20181114-003804.858",
+  "base_image": "ZZCI - CentOS 7 - builder - x86_64 - 20181114-003804.858",
   "distro": "CentOS 7",
   "ssh_user": "centos",
   "cloud_user_data": "common-packer/provision/rh-user_data.sh"
