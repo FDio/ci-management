@@ -486,7 +486,7 @@
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
           - include-raw-vpp-parallel-vars.sh
-          - include-raw-vpp-arm-build.sh
+          - include-raw-vpp-arm-build-no-test.sh
 
       - provide-maven-settings:
           settings-file: 'vpp-settings'
