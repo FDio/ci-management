@@ -122,7 +122,7 @@
     name: vpp-arm-old
     jobs:
       - 'vpp-arm-old-verify-{stream}-{os}'
-      - 'vpp-arm-merge-{stream}-{os}'
+      - 'vpp-arm-old-merge-{stream}-{os}'
     project: 'vpp'
     stream:
       - '1804':
@@ -486,7 +486,95 @@
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
           - include-raw-vpp-parallel-vars.sh
-          - include-raw-vpp-arm-build.sh
+          - include-raw-vpp-arm-build-no-test.sh
+
+      - provide-maven-settings:
+          settings-file: 'vpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build-root/*.rpm,
+            **/build-root/*.deb,
+            **/dpdk/*.rpm,
+            **/dpdk/*.deb
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'vpp-arm-old-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}arm-m'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - include-raw-vpp-parallel-vars.sh
+          - include-raw-vpp-arm-build-no-test.sh
 
       - provide-maven-settings:
           settings-file: 'vpp-settings'

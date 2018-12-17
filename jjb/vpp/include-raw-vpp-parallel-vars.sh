@@ -15,7 +15,7 @@ else
         fi
     done
 
-    if [[ $NODE_LABEL == 'ubuntu1804arm-us' ]]
+    if [[ $NODE_LABEL == ubuntu*arm-* ]]
     then
         CORES=16
     fi
