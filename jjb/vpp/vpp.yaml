@@ -199,10 +199,6 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-beta-merge-{stream}-{os}'
@@ -600,10 +596,6 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-      - naginator:
-          rerun-unstable-builds: true
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
@@ -668,10 +660,6 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 2
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-clang'
@@ -725,10 +713,6 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
