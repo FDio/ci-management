@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3657b1a9_b75de9a3",
+        "filename": "packer/vars/centos-7.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-01-02T17:27:01Z",
+      "side": 1,
+      "message": "I do not like this part.\nDo we have a document with guidelines for image naming?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "3a19fde470bedaed30de399afce2c0d9a2f1fa68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
