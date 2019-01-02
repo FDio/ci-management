@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "513a68f5_a0234d82",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-01-02T12:54:28Z",
+      "side": 1,
+      "message": "By the way, where do we keep a document describing the triggers? If it lists the jobs triggered, it will need an update.",
+      "range": {
+        "startLine": 269,
+        "startChar": 34,
+        "endLine": 269,
+        "endChar": 53
+      },
+      "revId": "d3843b4d83160005820a43cc5ebf41dfd0b8d7b7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
