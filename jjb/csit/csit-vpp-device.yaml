@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Cisco and/or its affiliates.
+# Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -23,9 +23,15 @@
       - 'skx'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{topo}-{arch}'
+      - 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-semiweekly'
+      - 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-weekly'
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
+    stream_timed:
+      - master:
+          branch: 'master'
+          branch-id: 'oper'
     stream:
       - master:
           branch: 'master'
@@ -114,6 +120,156 @@
             failed: true
             unstable: true
             notbuilt: true
+
+    builders:
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
+
+    publishers:
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-semiweekly'
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>Validate latest vpp build from corresponding branch stored
+                      in nexus against verified CSIT codebase of corresponding
+                      branch.
+              </ul>
+          <li>test-cases selection
+              <ul>
+                  <li>pre-selected test-cases
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>default tags for vpp-device test type
+              <ul>
+                  <li>devicetest
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'vpp-csit-device'
+    concurrent: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - timed: '0 4 * * 2,6'
+
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'csit-verify-vpp'
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
+
+    publishers:
+      - archive-artifacts:
+          artifacts: 'archive/*.*'
+          latest-only: false
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-weekly'
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>Validate CSIT code of corresponding branch against
+                      verified vpp build from corresponding branch.
+              </ul>
+          <li>test-cases selection
+              <ul>
+                  <li>pre-selected test-cases
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>default tags for vpp-device test type
+              <ul>
+                  <li>devicetest
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'vpp-csit-device'
+    concurrent: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - timed: '0 4 * * 0'
+
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'csit-vpp-ref-verify'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
