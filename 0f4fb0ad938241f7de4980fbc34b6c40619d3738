@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ccad311_ce751f1a",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-01-03T17:43:11Z",
+      "side": 1,
+      "message": "We need https://gerrit.fd.io/r/16663 merged for this.",
+      "range": {
+        "startLine": 219,
+        "startChar": 22,
+        "endLine": 219,
+        "endChar": 40
+      },
+      "revId": "0f4fb0ad938241f7de4980fbc34b6c40619d3738",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
