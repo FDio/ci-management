@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e374df4d_e768fdea",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-01-03T13:51:21Z",
+      "side": 1,
+      "message": "Fixed, results: https://jenkins.fd.io/sandbox/job/csit-vpp-device-master-ubuntu1804-1n-skx-semiweekly/6/console",
+      "parentUuid": "400f71e7_6359cfa8",
+      "range": {
+        "startLine": 200,
+        "startChar": 31,
+        "endLine": 200,
+        "endChar": 73
+      },
+      "revId": "d3843b4d83160005820a43cc5ebf41dfd0b8d7b7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "513a68f5_a0234d82",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 1
