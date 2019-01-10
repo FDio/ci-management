@@ -204,7 +204,7 @@
 
     publishers:
       - archive-artifacts:
-          artifacts: 'archive/*.*'
+          artifacts: 'csit/archive/*.*'
           latest-only: false
       - robot:
           output-path: archive
