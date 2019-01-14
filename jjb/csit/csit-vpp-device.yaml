@@ -207,7 +207,7 @@
           artifacts: 'csit/archive/*.*'
           latest-only: false
       - robot:
-          output-path: archive
+          output-path: 'csit/archive'
           other-files:
             - '*.*'
       - fdio-infra-shiplogs:
