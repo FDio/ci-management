@@ -28,6 +28,9 @@
       - '1810':
           branch: 'stable/1810'
           repo-stream-part: 'stable.1810'
+      - '1901':
+          branch: 'stable/1901'
+          repo-stream-part: 'stable.1901'
     type:
       - short
       - long
