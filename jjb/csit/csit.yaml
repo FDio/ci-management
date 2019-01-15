@@ -64,6 +64,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
+      - '1901':
+          branch: 'rls1901'
+          branch-id: 'oper-rls1901'
     stream:
       - master:
           branch: 'master'
@@ -80,6 +83,9 @@
       - '1810':
           branch: 'rls1810'
           branch-id: 'oper-rls1810'
+      - '1901':
+          branch: 'rls1901'
+          branch-id: 'oper-rls1901'
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-{os}-virl'

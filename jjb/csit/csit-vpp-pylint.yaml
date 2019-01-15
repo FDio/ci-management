@@ -10,6 +10,8 @@
     stream:
       - master:
           branch: 'master'
+      - '1901':
+          branch: 'rls1901'
 
 - job-template:
     name: 'csit-validate-pylint-{stream}'
