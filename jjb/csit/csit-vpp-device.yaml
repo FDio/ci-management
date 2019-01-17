@@ -205,6 +205,9 @@
           branch: '{branch}'
 
     builders:
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
       - shell:
           !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
 
