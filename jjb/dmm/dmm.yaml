@@ -21,7 +21,7 @@
       - 'dmm-verify-{stream}-checkstyle'
       - 'dmm-verify-{stream}-{os}'
       - 'dmm-merge-{stream}-{os}'
-      - 'dmm-csit-verify-func-{stream}-{os}-virl'
+      - 'dmm-csit-verify-func-master-{os}-virl'
 
     project: 'dmm'
     os: 'ubuntu1604'
@@ -29,6 +29,8 @@
     stream:
       - master:
           branch: 'master'
+      - non-dpdk:
+          branch: 'none-dpdk'
 
 - job-template:
     name: 'dmm-verify-{stream}-checkstyle'
@@ -162,7 +164,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'dmm-csit-verify-func-{stream}-{os}-virl'
+    name: 'dmm-csit-verify-func-master-{os}-virl'
 
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
