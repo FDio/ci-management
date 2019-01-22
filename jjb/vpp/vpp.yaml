@@ -32,10 +32,6 @@
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
 
-    type:
-      - short
-      - long
-
 - project:
     name: vpp-clang
     jobs:
@@ -966,7 +962,7 @@
           build-timeout: '90'
 
     triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
+      - gerrit-trigger-csit-virltest:
           name: '{project}'
           branch: '{branch}'
 
@@ -1045,22 +1041,9 @@
           build-timeout: 300
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
+      - gerrit-trigger-csit-perftest:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -1079,12 +1062,3 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
-- parameter:
-    name: type-parameter
-
-    parameters:
-      - string:
-          name: TYPE
-          default: '{type}'
-          description: "TYPE parameter if not given by trigger"
