@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Luca Muscariello <lumuscar+fdio@cisco.com>
+Code-Review+2: Ed Warnicke <hagbard@gmail.com>
+Submitted-by: Ed Warnicke <hagbard@gmail.com>
+Submitted-at: Tue, 22 Jan 2019 17:39:32 +0000
+Reviewed-on: https://gerrit.fd.io/r/16888
+Project: ci-management
+Branch: refs/heads/master
