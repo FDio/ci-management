@@ -39,8 +39,8 @@
 
     project: 'vpp'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - centos7:
           repo-os-part: 'centos7'
       - opensuse:
@@ -772,7 +772,7 @@
     name: 'vpp-verify-{stream}-clang'
 
     project-type: freestyle
-    node: 'ubuntu1604-us'
+    node: 'ubuntu1804-us'
     concurrent: true
 
     build-discarder:
@@ -789,7 +789,7 @@
       - os-parameter:
           os: 'ubuntu1604'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
 
