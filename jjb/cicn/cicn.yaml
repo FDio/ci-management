@@ -9,6 +9,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -33,6 +35,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -55,6 +59,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -77,6 +83,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -99,6 +107,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -121,6 +131,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -143,6 +155,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -165,6 +179,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -187,6 +203,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
       - centos7:
@@ -321,7 +339,6 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
 
     builders:
       - config-file-provider:
@@ -1643,7 +1660,6 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
 
     builders:
       - maven-target:
@@ -1901,7 +1917,6 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
 
     builders:
       - maven-target:
@@ -2034,7 +2049,6 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
 
     builders:
       - shell:
@@ -2150,7 +2164,6 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
-      - timed: '@daily'
 
     builders:
       - maven-target:
