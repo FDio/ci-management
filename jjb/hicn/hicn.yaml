@@ -23,6 +23,17 @@
       - short
       - long
 
+- project:
+    name: hicn-misc
+    jobs:
+      - 'hicn-checkstyle-verify-{stream}'
+    project: 'vpp'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    os: ubuntu1604
+
 - job-template:
     name: 'hicn-checkstyle-verify-{stream}'
 
