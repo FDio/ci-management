@@ -30,6 +30,10 @@
     stream:
       - master:
           branch: 'master'
+          repo-stream-part: 'master'
+      - '1901':
+          branch: 'stable/1901'
+          repo-stream-part: 'stable.1901'
 
 - job-template:
     name: 'sweetcomb-verify-{stream}-{os}'
