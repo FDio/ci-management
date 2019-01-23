@@ -3,6 +3,7 @@
     name: hicn
     jobs:
       - 'hicn-verify-{stream}-{os}'
+      - 'hicn-checkstyle-verify-{stream}'
       - 'hicn-merge-{stream}-{os}'
 
     project: 'hicn'
