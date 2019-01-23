@@ -16,6 +16,24 @@
       "revId": "12fc5ca10842973410ebaee705efe8ba454168b2",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e5c7aa5_aefc6ba5",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2019-01-23T18:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd97a0b2_767fc341",
+      "revId": "12fc5ca10842973410ebaee705efe8ba454168b2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
