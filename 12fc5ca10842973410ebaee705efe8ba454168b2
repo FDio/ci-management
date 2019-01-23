@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd97a0b2_767fc341",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-01-23T18:08:09Z",
+      "side": 1,
+      "message": "Please remove whitespace",
+      "revId": "12fc5ca10842973410ebaee705efe8ba454168b2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
