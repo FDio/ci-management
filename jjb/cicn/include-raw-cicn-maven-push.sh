@@ -10,7 +10,7 @@ GROUP_ID="io.fd.${PROJECT}"
 BASEURL="${NEXUSPROXY}/content/repositories/fd.io."
 BASEREPOID='fdio-'
 
-if [ "${OS}" == "ubuntu1404" ]; then
+if [ "${OS}" == "ubuntu1604" ]; then
     # Find the files
     JARS=$(find . -type f -iname '*.jar')
     DEBS=$(find . -type f -iname '*.deb')
@@ -23,8 +23,15 @@ if [ "${OS}" == "ubuntu1404" ]; then
     do
         push_deb "$i"
     done
-elif [ "${OS}" == "ubuntu1604" ]; then
+elif [ "${OS}" == "ubuntu1804" ]; then
+    # Find the files
+    JARS=$(find . -type f -iname '*.jar')
     DEBS=$(find . -type f -iname '*.deb')
+    for i in $JARS
+    do
+        push_jar "$i"
+    done
+
     for i in $DEBS
     do
         push_deb "$i"
@@ -35,6 +42,13 @@ elif [ "${OS}" == "centos7" ]; then
     SRPMS=$(find . -type f -iname '*.srpm')
     SRCRPMS=$(find . -type f -name '*.src.rpm')
     for i in $RPMS $SRPMS $SRCRPMS
+    do
+        push_rpm "$i"
+    done
+elif [ "${OS}" == "opensuse" ]; then
+    # Find the files
+    RPMS=$(find . -type f -iname '*.rpm')
+    for i in $RPMS
     do
         push_rpm "$i"
     done
