@@ -104,7 +104,7 @@
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
-          stream: '{stream}'
+          stream: 'release'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
 
