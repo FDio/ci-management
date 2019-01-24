@@ -324,6 +324,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'release'
 
     scm:
       - gerrit-trigger-scm:
@@ -602,6 +604,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'release'
 
     scm:
       - gerrit-trigger-scm:
@@ -625,6 +629,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -642,6 +654,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -876,6 +891,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -896,6 +913,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -913,6 +938,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1004,6 +1032,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1024,6 +1054,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1041,6 +1079,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1133,6 +1174,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1153,6 +1196,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1170,6 +1221,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1261,6 +1315,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1281,6 +1337,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1298,7 +1362,10 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
-
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+    
     publishers:
       - archive:
           artifacts: >
@@ -1389,6 +1456,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1409,6 +1478,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1426,6 +1503,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1517,6 +1597,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1537,6 +1619,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1554,6 +1644,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1645,6 +1738,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1662,6 +1757,14 @@
           branch: '{branch}'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1679,6 +1782,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1770,6 +1876,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1790,6 +1898,14 @@
           result: 'failure'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1807,6 +1923,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -1902,6 +2021,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -1919,6 +2040,14 @@
           branch: '{branch}'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -1936,6 +2065,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
@@ -2149,6 +2281,8 @@
           maven-version: 'mvn33-new'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: 'master'
 
     scm:
       - gerrit-trigger-scm:
@@ -2166,6 +2300,14 @@
           branch: '{branch}'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/home/jenkins/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/home/jenkins/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -2183,6 +2325,9 @@
           !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-cicn-maven-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - archive:
