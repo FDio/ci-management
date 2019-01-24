@@ -15,15 +15,33 @@
 
 set -exuo pipefail
 
+# Clone CSIT git repository and proceed with entry script located there.
+#
+# Variables read:
+# - WORKSPACE - Jenkins workspace to create csit subdirectory in.
+# - BRANCH_ID - CSIT operational branch to be used for test.
+# Directories updated:
+# - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
+# - Multiple other side effects by entry script(s), see CSIT repository.
+
 cd "${WORKSPACE}"
 git clone https://gerrit.fd.io/r/csit --depth=1 --no-single-branch --no-checkout
-pushd "${WORKSPACE}/csit"
-if [[ -n "${CSIT_REF-}" ]]; then
-    git fetch --depth=1 https://gerrit.fd.io/r/csit "${CSIT_REF}"
-    git checkout FETCH_HEAD
-else
-    git checkout HEAD
+# Check BRANCH_ID value.
+if [[ -z "${BRANCH_ID-}" ]]; then
+    echo "BRANCH_ID not provided => 'oper' belonging to master will be used."
+    BRANCH_ID="oper"
 fi
+pushd "${WORKSPACE}/csit"
+# Get the latest verified version of the required branch.
+BRANCH_NAME=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
+if [[ -z "${BRANCH_NAME-}" ]]; then
+    echo "No verified CSIT branch found - exiting!"
+    exit 1
+fi
+# Remove 'origin/' from the branch name.
+BRANCH_NAME=$(echo ${BRANCH_NAME#origin/})
+# Checkout the required csit branch.
+git checkout "${BRANCH_NAME}"
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
-source "${csit_entry_dir}/with_oper_for_vpp.sh" "bootstrap_vpp_device.sh"
+source "${csit_entry_dir}/bootstrap_vpp_device.sh"
