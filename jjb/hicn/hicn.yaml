@@ -23,6 +23,17 @@
       - short
       - long
 
+- project:
+    name: hicn-misc
+    jobs:
+      - 'hicn-checkstyle-verify-{stream}'
+    project: 'hicn'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    os: ubuntu1604
+
 - job-template:
     name: 'hicn-checkstyle-verify-{stream}'
 
@@ -82,11 +93,6 @@
               file-paths:
                 - compare-type: REG_EXP
                   pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
-              forbidden-file-paths:
-                - compare-type: REG_EXP
-                  pattern: .*docs\/.*
-                - compare-type: REG_EXP
-                  pattern: .*extras\/emacs\/.*
               disable-strict-forbidden-file-verification: 'true'
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
