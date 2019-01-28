@@ -17,7 +17,7 @@
     name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
 
     project-type: freestyle
-    node: centos7-basebuild-4c-4g
+    node: centos7-builder-4c-4g
     concurrent: true
 
     build-discarder:
@@ -71,7 +71,7 @@
     name: 'puppet-fdio-verify-beaker-{stream}-{os}'
 
     project-type: freestyle
-    node: centos7-basebuild-4c-4g
+    node: centos7-builder-4c-4g
     concurrent: true
 
     build-discarder:
