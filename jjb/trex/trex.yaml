@@ -19,7 +19,7 @@
     name: 'trex-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -63,7 +63,7 @@
     name: 'trex-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
