@@ -36,7 +36,7 @@
     name: 'dmm-verify-{stream}-checkstyle'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: ubuntu1604-builder-8c-8g
     concurrent: true
 
     build-discarder:
@@ -80,7 +80,7 @@
     name: 'dmm-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: ubuntu1604-builder-8c-8g
     concurrent: true
 
     build-discarder:
@@ -124,8 +124,7 @@
     name: 'dmm-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
-
+    node: ubuntu1604-builder-8c-8g
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
       numToKeep: '{build-num-to-keep}'
@@ -167,7 +166,7 @@
     name: 'dmm-csit-verify-func-master-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: ubuntu1604-builder-8c-8g
     concurrent: true
 
     build-discarder:
