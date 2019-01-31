@@ -265,3 +265,19 @@
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
+
+- project:
+    name: '{project}-sonar'
+    jobs:
+      - gerrit-maven-sonar
+    cron: '@daily'
+    build-node: ubuntu1604-builder-4c-4g
+    project: 'hicn'
+    branch: 'master'
+    mvn-settings: 'hicn-settings'
+    mvn-goals: 'clean-install'
+    mvn-ops: '-Xmx1024m -XX:MaxPermSize=256m'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
