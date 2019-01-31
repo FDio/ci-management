@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40344987_50b642ab",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 909
+      },
+      "writtenOn": "2019-01-31T22:04:57Z",
+      "side": 1,
+      "message": "add also \nproject: hicn",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 22
+      },
+      "revId": "354fefeb84cb2c68d515e3b69f0f184dce3a88e0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
