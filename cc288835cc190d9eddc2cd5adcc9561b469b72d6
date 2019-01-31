@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c264b21b_bd2aa2e8",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 909
+      },
+      "writtenOn": "2019-01-31T20:38:56Z",
+      "side": 1,
+      "message": "You forgot to add gerrit-maven-sonar which is the job that triggers the sonar verification. \n\nIf you need these verify and merge job i recommend placing them in anothre project block and have this block exclusively for the sonar job.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 34
+      },
+      "revId": "cc288835cc190d9eddc2cd5adcc9561b469b72d6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
