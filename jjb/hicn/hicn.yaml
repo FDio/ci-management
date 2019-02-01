@@ -34,6 +34,12 @@
           repo-stream-part: 'master'
     os: ubuntu1604
 
+- project:
+    name: hicn
+    views:
+      - project-view
+    project-name: hicn
+
 - job-template:
     name: 'hicn-checkstyle-verify-{stream}'
 
