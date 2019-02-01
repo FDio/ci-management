@@ -20,6 +20,9 @@
     jobs:
       - 'sweetcomb-verify-{stream}-{os}'
       - 'sweetcomb-merge-{stream}-{os}'
+    views:
+      - project-view
+    project-name: sweetcomb
 
     project: 'sweetcomb'
     os:
@@ -113,4 +116,3 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
