@@ -271,6 +271,7 @@
     project: hicn
     project-name: hicn
     mvn-settings: hicn
+    maven-version: 'mvn33-new'
     branch: master
     build-node: ubuntu1604-builder-4c-4g
     jobs:
