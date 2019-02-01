@@ -35,6 +35,12 @@
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
 
+- project:
+    name: sweetcomb
+    views:
+      - project-view
+    project-name: sweetcomb
+
 - job-template:
     name: 'sweetcomb-verify-{stream}-{os}'
 
@@ -113,4 +119,3 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
