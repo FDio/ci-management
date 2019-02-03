@@ -54,7 +54,6 @@
 - project:
     name: vpp-misc
     jobs:
-      - 'vpp-csit-verify-virl-{stream}'
       - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
@@ -82,12 +81,13 @@
     name: vpp-perpatch
     jobs:
       - 'vpp-csit-verify-perf-{stream}-2n-skx'
+      - 'vpp-csit-verify-device-{stream}-1n-skx'
     project: 'vpp'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-    os: ubuntu1604
+    os: ubuntu1804
 
 - project:
     name: vpp-master-only
@@ -922,10 +922,10 @@
           fixed-delay: 90
 
 - job-template:
-    name: 'vpp-csit-verify-virl-{stream}'
+    name: 'vpp-csit-verify-device-{stream}-1n-skx'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'vpp-csit-device'
     concurrent: true
 
     build-discarder:
@@ -942,12 +942,13 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - is-csit-vpp-job-parameter:
           is-csit-vpp-job: 'True'
-      - string:
-          name: CSIT_REF
-          description: "Also testing CSIT_REF"
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-csit-refspec-parameter
       - stream-parameter:
           stream: '{stream}'
 
@@ -962,7 +963,7 @@
           build-timeout: '90'
 
     triggers:
-      - gerrit-trigger-csit-virltest:
+      - gerrit-trigger-csit-devicetest:
           name: '{project}'
           branch: '{branch}'
 
@@ -975,16 +976,12 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
           - ../scripts/setup_vpp_dpdk_dev_env.sh
           - include-raw-vpp-build.sh
-      - shell:
-          !include-raw-escape:
           - include-raw-vpp-csit-functional.sh
 
     publishers:
       - archive-artifacts:
           artifacts: >
-            **/csit/report.html,
-            **/csit/log.html,
-            **/csit/output.xml
+            **/csit/*.*,
           latest-only: false
 
       - robot-report:

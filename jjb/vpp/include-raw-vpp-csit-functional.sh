@@ -1,103 +1,47 @@
-#!/bin/bash
-set -xeu -o pipefail
+#!/usr/bin/env bash
 
-# Get CSIT branch from which to test from
-# running build-root/scripts/csit-test-branch
-if [ -x build-root/scripts/csit-test-branch ]; then
-    CSIT_BRANCH=`build-root/scripts/csit-test-branch`;
+# Copyright (c) 2019 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+set -exuo pipefail
+
+# Clone CSIT git repository and proceed with entry script located there.
+#
+# Variables read:
+# - WORKSPACE - Jenkins workspace to create csit subdirectory in.
+# - CSIT_REF - Override ref of CSIT git repository to checkout.
+# Directories updated:
+# - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
+# - Multiple other side effects by entry script(s), see CSIT repository.
+
+cd "${WORKSPACE}"
+git clone https://gerrit.fd.io/r/csit --depth=1 --no-single-branch --no-checkout
+# Check BRANCH_ID value.
+if [[ -z "${BRANCH_ID-}" ]]; then
+    echo "BRANCH_ID not provided => 'oper' belonging to master will be used."
+    BRANCH_ID="oper"
 fi
-
-# check CSIT_BRANCH value
-if [ "$CSIT_BRANCH" == "" ]; then
-    echo "CSIT_BRANCH not provided => 'latest' will be used"
-    CSIT_BRANCH="latest"
-fi
-
-# clone csit
-git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
-
-# if the git clone fails, complain clearly and exit
-if [ $? != 0 ]; then
-    echo "Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit"
+pushd "${WORKSPACE}/csit"
+# Get the latest verified version of the required branch.
+BRANCH_NAME=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
+if [[ -z "${BRANCH_NAME-}" ]]; then
+    echo "No verified CSIT branch found - exiting!"
     exit 1
 fi
-
-cp build-root/*.deb csit/
-if [ -e dpdk/vpp-dpdk-dkms*.deb ]
-then
-    cp dpdk/vpp-dpdk-dkms*.deb csit/
-else
-    cp /w/dpdk/vpp-dpdk-dkms*.deb csit/
-fi
-
-# Check for CSIT_REF test file
-if [ -e CSIT_REF ]; then
-    source CSIT_REF
-fi
-
-# If also testing a specific csit refpoint look for CSIT_REF
-if [[ -v CSIT_REF ]]; then
-    (cd csit ; git fetch ssh://rotterdam-jobbuilder@gerrit.fd.io:29418/csit $CSIT_REF && git checkout FETCH_HEAD)
-else
-    cd csit
-    if [ "$CSIT_BRANCH" == "latest" ]; then
-        # set required CSIT branch_id based on VPP master branch; by default use 'oper'
-        case "$VPP_BRANCH" in
-            master )
-                BRANCH_ID="oper"
-                ;;
-            stable/1710 )
-                BRANCH_ID="oper-rls1710"
-                ;;
-            stable/1801 )
-                BRANCH_ID="oper-rls1801"
-                ;;
-            stable/1804 )
-                BRANCH_ID="oper-rls1804"
-                ;;
-            stable/1807 )
-                BRANCH_ID="oper-rls1807"
-                ;;
-            stable/1810 )
-                BRANCH_ID="oper-rls1810"
-                ;;
-            stable/1901 )
-                BRANCH_ID="oper-rls1901"
-                ;;
-            * )
-                BRANCH_ID="oper"
-        esac
-
-        # get the latest verified version of the required branch
-        CSIT_BRANCH=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
-
-        if [ "${CSIT_BRANCH}" == "" ]; then
-            echo "No verified CSIT branch found - exiting"
-            exit 1
-        fi
-
-        # remove 'origin/' from the branch name
-        CSIT_BRANCH=$(echo ${CSIT_BRANCH#origin/})
-    fi
-    # checkout the required csit branch
-    git checkout ${CSIT_BRANCH}
-
-    if [ $? != 0 ]; then
-        echo "Failed to checkout the required CSIT branch: ${CSIT_BRANCH}"
-        exit 1
-    fi
-fi
-
-# execute csit bootstrap script if it exists
-if [ -e bootstrap.sh ]
-then
-    # make sure that bootstrap.sh is executable
-    chmod +x bootstrap.sh
-    # run the script
-    ./bootstrap.sh *.deb
-else
-    echo 'ERROR: No bootstrap.sh found'
-    exit 1
-fi
-
-# vim: ts=4 ts=4 sts=4 et :
+# Remove 'origin/' from the branch name.
+BRANCH_NAME=$(echo ${BRANCH_NAME#origin/})
+# Checkout the required csit branch.
+git checkout "${BRANCH_NAME}"
+popd
+csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
+source "${csit_entry_dir}/bootstrap_vpp_device.sh"
