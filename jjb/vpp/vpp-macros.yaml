@@ -60,13 +60,13 @@
             notbuilt: true
 
 - trigger:
-    name: gerrit-trigger-csit-virltest
+    name: gerrit-trigger-csit-devicetest
     triggers:
       - gerrit:
           server-name: 'Primary'
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'virltest'
+                comment-contains-value: 'devicetest'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{name}'
