@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d238c56_a0b26c21",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-04T14:34:41Z",
+      "side": 1,
+      "message": "I think there was some reason for the bigger node,\nbut we can fix later if needed.",
+      "range": {
+        "startLine": 1509,
+        "startChar": 32,
+        "endLine": 1509,
+        "endChar": 37
+      },
+      "revId": "d38e2c9f8936f9d55b45efd0b1bae0cdaaf93d0e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
