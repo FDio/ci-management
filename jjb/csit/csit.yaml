@@ -58,8 +58,7 @@
     branch: 'master'
     branch-id: 'oper'
     build-artifact-num-to-keep: 10
-    type:
-      - all
+
     stream_timed:
       - master:
           branch: 'master'
@@ -177,7 +176,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -819,7 +818,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -882,7 +881,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -945,7 +944,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -1077,7 +1076,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1145,7 +1144,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1213,7 +1212,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1281,7 +1280,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -1349,7 +1348,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -1417,7 +1416,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
@@ -1507,7 +1506,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1779,11 +1778,3 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
-- parameter:
-    name: test-type-parameter
-    parameters:
-      - string:
-          name: TYPE
-          default: '{type}'
-          description: "Test TYPE parameter if not given by trigger"
