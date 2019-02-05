@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c79f9a8_a45143d5",
+        "filename": "jjb/vpp/include-raw-vpp-csit-device.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-05T11:38:48Z",
+      "side": 1,
+      "message": "This is the only relevant difference from include-raw-vpp-csit-perf.sh\n\nI am not sure whether include-raw-escape supports arguments. If yes, use \"$@\" here; if not, put the subsequent command into a variable. Either way, use just one script to launch both entries.\n\nAlso, change the file name. The include-raw part is meaningless. I propose \"run_with_scit.sh\".",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "f5f3e6ccd006467c30bac171e9e0fe2488fe04a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abe2da07_b5af775b",
+        "filename": "jjb/vpp/include-raw-vpp-csit-perf.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-05T11:38:48Z",
+      "side": 1,
+      "message": "See the previous comment for my stance on file names.",
+      "revId": "f5f3e6ccd006467c30bac171e9e0fe2488fe04a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c42fcd6_b9a9f66e",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-05T11:38:48Z",
+      "side": 1,
+      "message": "Question for VPP developers: Can a cherry-pick from master (to a stable branch) fail (on device test)?\nIf yes, the device job should stay in vpp-misc.",
+      "range": {
+        "startLine": 84,
+        "startChar": 25,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "f5f3e6ccd006467c30bac171e9e0fe2488fe04a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70cebf77_f3265a52",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-05T11:38:48Z",
+      "side": 1,
+      "message": "I think the perf job will work fine, but please make sure it does (on Sandbox).",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "f5f3e6ccd006467c30bac171e9e0fe2488fe04a9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
