@@ -299,6 +299,12 @@
       - short
       - long
 
+- project:
+    name: cicn-view
+    views:
+      - project-view
+    project-name: cicn
+
 - job-template:
     name: 'cicn-longbow-merge-{stream}-{os}'
 
@@ -1365,7 +1371,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-    
+
     publishers:
       - archive:
           artifacts: >
