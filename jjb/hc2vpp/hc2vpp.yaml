@@ -33,6 +33,12 @@
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
 
+- project:
+    name: hc2vpp-view
+    views:
+      - project-view
+    project-name: hc2vpp
+
 - job-template:
     name: 'hc2vpp-verify-{stream}-{os}'
     project-type: maven
