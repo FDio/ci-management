@@ -1,0 +1,170 @@
+- project:
+    name: hicn-docs
+    jobs:
+      - 'hicn-docs-merge-{stream}'
+      - 'hicn-docs-verify-{stream}'
+
+    project: 'hicn'
+    os:
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    type:
+      - short
+      - long
+
+- job-template:
+    name: 'hicn-docs-verify-{stream}'
+
+    project-type: freestyle
+    node: ubuntu1604-us
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'hicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'hicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-hicn-docs.sh
+
+    publishers:
+        - archive:
+            artifacts: 'build/lib/doc/html/*'
+            allow-empty: 'true'
+            fingerprint: false
+            only-if-success: true
+            default-excludes: false
+        - fdio-infra-shiplogs:
+            maven-version: 'mvn33-new'
+        - naginator:
+            rerun-unstable-builds: false
+            max-failed-builds: 1
+            fixed-delay: 90
+
+- job-template:
+    name: 'hicn-docs-merge-{stream}'
+
+    project-type: freestyle
+    node: ubuntu1604-us
+    concurrent: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1604'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - reverse:
+          jobs: 'hicn-merge-{stream}-ubuntu1604'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
+
+    builders:
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'hicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - provide-maven-settings:
+          settings-file: 'hicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape: include-raw-hicn-docs.sh
+
+    publishers:
+      - archive:
+          artifacts: 'build/lib/doc/html/*'
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
