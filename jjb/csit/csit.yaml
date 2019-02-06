@@ -87,6 +87,12 @@
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
 
+- project:
+    name: csit-view
+    views:
+      - project-view
+    project-name: csit
+
 - job-template:
     name: 'csit-vpp-functional-{stream}-{os}-virl'
 
