@@ -32,6 +32,12 @@
       - non-dpdk:
           branch: 'none-dpdk'
 
+- project:
+    name: dmm-view
+    views:
+      - project-view
+    project-name: dmm
+
 - job-template:
     name: 'dmm-verify-{stream}-checkstyle'
 
