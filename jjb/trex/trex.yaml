@@ -15,6 +15,12 @@
       - master:
           branch: 'master'
 
+- project:
+    name: trex-view
+    views:
+      - project-view
+    project-name: trex
+
 - job-template:
     name: 'trex-verify-{stream}-{os}'
 
