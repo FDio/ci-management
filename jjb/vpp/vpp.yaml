@@ -143,6 +143,12 @@
       - ubuntu1604:
           repo-os-part: 'ubuntu-arm.xenial.main'
 
+- project:
+  name: vpp-view
+  views:
+    - project-view
+  project-name: vpp
+
 - job-template:
     name: 'vpp-beta-verify-{stream}-{os}'
 
