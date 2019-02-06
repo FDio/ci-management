@@ -36,6 +36,12 @@
           branch: '18.08.x'
           repo-stream-part: 'deb_dpdk_1808'
 
+- project:
+    name: deb_dpdk-view
+    views:
+      - project-view
+    project-name: deb_dpdk
+
 - job-template:
     name: 'deb_dpdk-verify-{stream}-{os}'
 
