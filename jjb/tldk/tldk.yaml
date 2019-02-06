@@ -27,6 +27,12 @@
       - master:
           branch: 'master'
 
+- project:
+    name: tldk-view
+    view:
+      - project-view
+    project-name: tldk
+
 - job-template:
     name: '{project}-verify-{stream}-{os}'
 
