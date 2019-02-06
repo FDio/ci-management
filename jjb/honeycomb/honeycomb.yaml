@@ -26,6 +26,12 @@
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
 
+- project:
+    name: honeycomb-view
+    views:
+      - project-view
+    project-name: honeycomb
+
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
