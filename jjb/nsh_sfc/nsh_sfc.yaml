@@ -69,6 +69,12 @@
 
     os: ubuntu1604
 
+- project:
+  name: nsh-sfc-view
+  views:
+    - project-view
+  project-name: nsh_sfc
+
 - job-template:
     name: 'nsh_sfc-verify-{stream}-{os}'
 
