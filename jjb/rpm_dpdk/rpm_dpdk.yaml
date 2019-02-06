@@ -15,6 +15,12 @@
           branch: 'master'
           repo-stream-part: 'master'
 
+- project:
+    name: rpm-dpdk-view
+    views:
+      - project-view:
+    project-name: rpm-dpdk
+
 - job-template:
     name: 'rpm_dpdk-verify-{stream}-{os}'
 
