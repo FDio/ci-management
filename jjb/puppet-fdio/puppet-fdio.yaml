@@ -13,6 +13,12 @@
           branch: 'master'
           repo-stream-part: 'master'
 
+- project:
+    name: puppet-fdio-view
+    views:
+      - project-view
+    project-name: puppet-fdio
+
 - job-template:
     name: 'puppet-fdio-verify-unit-{puppet_version}-{stream}-{os}'
 
