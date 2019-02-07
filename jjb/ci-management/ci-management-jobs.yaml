@@ -6,7 +6,7 @@
 
     project: ci-management
     project-name: ci-management
-    build-node: centos7-builder-4c-4g
+    build-node: centos7-basebuild-4c-4g
     build-timeout: 30
     jjb-version: 2.6.0
 
