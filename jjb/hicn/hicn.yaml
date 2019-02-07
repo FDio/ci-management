@@ -279,6 +279,6 @@
     mvn-settings: hicn
     mvn-version: 'mvn33-new'
     branch: master
-    build-node: ubuntu1604-builder-4c-4g
+    build-node: ubuntu1604-basebuild-4c-4g
     jobs:
       - gerrit-maven-sonar
