@@ -61,7 +61,7 @@
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
-          settings: 'vpp-settings'
+          settings: 'hicn-settings'
           settings-type: cfp
           global-settings: 'global-settings'
           global-settings-type: cfp
@@ -145,7 +145,7 @@
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
-          settings: 'vpp-settings'
+          settings: 'hicn-settings'
           settings-type: cfp
           global-settings: 'global-settings'
           global-settings-type: cfp
