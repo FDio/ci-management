@@ -1474,43 +1474,7 @@
     name: 'csit-vpp-perf-verify-{stream}-{topo}-{arch}'
 
     description: |
-      <ul>
-          <li>objective
-              <ul>
-                  <li>perf verify - per csit gerrit patch
-              </ul>
-          <li>job
-              <ul>
-                  <li>name: <b>csit-vpp-perf-verify-{stream}-{topo}-{arch}</b>
-                  <li>trigger: keyword in comment to csit patch:
-                      <b>csit-{topo}-{arch}-perftest tag_list</b>
-              </ul>
-          <li>perf test-cases selection
-              <ul>
-                  <li>test-cases selected using trigger keyword followed by tags
-                  <li>all test-cases are labelled with CSIT RF topic tags
-                      defined in <i>csit/docs/tag_documentation.rst</i>
-              </ul>
-          <li>proposed keywords
-              <ul>
-                  <li>focus on testing specified vpp packet processing path
-                  <li>format: csit-{topo}-{arch}-perftest tag_list
-              </ul>
-          <li>default tags for vpp startup config and perf test type
-              <ul>
-                  <li>IP4BASE, IP6BASE, L2BDBASE
-                  <li>64B/78B: 64B/78B packet size
-                  <li>1C: one core
-                  <li>X710: x710 Fortville NIC
-                  <li>MRR: MRR throughput
-              </ul>
-          <li>results
-              <ul>
-                  <li>jjb verify: PASS/FAIL
-                  <li>present: no
-                  <li>analyse: no
-              </ul>
-      </ul>
+      Test some numarical results to explain PLRsearch behavior.
 
     project-type: freestyle
     node: 'ubuntu1604-basebuild-8c-32g'
@@ -1561,20 +1525,7 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
-
-    publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
-      - robot:
-          output-path: archive
-          other-files:
-            - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          !include-raw-escape: jjb/csit/num.sh
 
 - job-template:
     name: 'csit-nsh_sfc-verify-perf-{stream}'
