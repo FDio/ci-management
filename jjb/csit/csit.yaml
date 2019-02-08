@@ -1513,7 +1513,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
