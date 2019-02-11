@@ -1,0 +1,264 @@
+---
+- project:
+    name: jvpp
+    jobs:
+      - 'jvpp-verify-{stream}-{os}'
+#      - 'jvpp-merge-{stream}-{os}'
+#      - 'jvpp-integration-{stream}-{os}'
+    project: 'jvpp'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
+          skip-site: 'false'
+          skip-jar-deploy: 'false'
+      - centos7:
+          repo-os-part: 'centos7'
+          skip-site: 'true'
+          skip-jar-deploy: 'true'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+
+- job-template:
+    name: 'jvpp-verify-{stream}-{os}'
+    project-type: maven
+    node: '{os}-basebuild-4c-4g'
+    concurrent: true
+    jdk: openjdk11-{os}
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          name: 'jvpp'
+          branch: '{branch}'
+
+#    maven:
+#      maven-name: 'mvn33-new'
+#      root-pom: 'pom.xml'
+#      # yamllint disable-line rule:line-length
+##      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
+#      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+#      settings: 'jvpp-settings'
+#      settings-type: cfp
+#      global-settings: 'global-settings'
+#      global-settings-type: cfp
+    builders:
+#      - shell:
+#          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_jvpp_dev_env.sh
+          - include-raw-vpp-build.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build-root/packages/*.rpm,
+            **/build-root/packages/*.deb
+
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
+      - email-notification:
+      email-prefix: '[jvpp]'
+
+#- job-template:
+#    name: 'jvpp-merge-{stream}-{os}'
+#    project-type: maven
+#    node: '{os}-basebuild-4c-4g'
+#    jdk: openjdk11-{os}
+#
+#    build-discarder:
+#      daysToKeep: '{build-days-to-keep}'
+#      numToKeep: '{build-num-to-keep}'
+#      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+#      artifactNumToKeep: '{build-artifact-num-to-keep}'
+#
+#    parameters:
+#      - project-parameter:
+#          project: '{project}'
+#      - os-parameter:
+#          os: '{os}'
+#      - maven-project-parameter:
+#          maven: 'mvn33-new'
+#      - maven-exec:
+#          maven-version: 'mvn33-new'
+#      - repo-name-parameter:
+#          repo-name: '{repo-stream-part}.{repo-os-part}'
+#
+#    scm:
+#      - gerrit-trigger-scm:
+#          credentials-id: 'jenkins-gerrit-credentials'
+#          refspec: ''
+#          choosing-strategy: 'default'
+#
+#    wrappers:
+#      - ssh-agent-credentials:
+#          users:
+#            - 'jenkins-gerrit-credentials'
+#      - fdio-infra-wrappers:
+#          build-timeout: '{build-timeout}'
+#
+#    triggers:
+#      - gerrit-trigger-patch-merged:
+#          name: 'jvpp'
+#          branch: '{branch}'
+#
+#    maven:
+#      maven-name: 'mvn33-new'
+#      root-pom: 'pom.xml'
+#      # yamllint disable-line rule:line-length
+##      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Ddocs.hc.folder=io/fd/jvpp -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
+#      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+#      settings: 'jvpp-settings'
+#      settings-type: cfp
+#      global-settings: 'global-settings'
+#      global-settings-type: cfp
+#
+#    reporters:
+#      - findbugs
+#
+#    publishers:
+#      - sonar:
+#          jdk: 'openjdk11-{os}'
+#          language: 'java'
+#          branch: '{stream}'
+#      - email-notification:
+#        email-prefix: '[jvpp]'
+#      - fdio-infra-shiplogs:
+#          maven-version: 'mvn33-new'
+#
+#- job-template:
+#    name: 'jvpp-integration-{stream}-{os}'
+#    project-type: maven
+#    node: '{os}-basebuild-4c-4g'
+#    jdk: openjdk11-{os}
+#
+#    build-discarder:
+#      daysToKeep: '{build-days-to-keep}'
+#      numToKeep: '{build-num-to-keep}'
+#      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+#      artifactNumToKeep: '{build-artifact-num-to-keep}'
+#
+#    parameters:
+#      - project-parameter:
+#          project: '{project}'
+#      - os-parameter:
+#          os: '{os}'
+#      - stream-parameter:
+#          stream: '{stream}'
+#      - maven-project-parameter:
+#          maven: 'mvn33-new'
+#      - maven-exec:
+#          maven-version: 'mvn33-new'
+#      - repo-name-parameter:
+#          repo-name: '{repo-stream-part}.{repo-os-part}'
+#      - string:
+#          name: SKIP_JAR_DEPLOY
+#          default: '{skip-jar-deploy}'
+#          # yamllint disable-line rule:line-length
+#          description: "Skips deployment of jvpp jars if variable is set to true"
+#
+#    scm:
+#      - git-scm:
+#          credentials-id: 'jenkins-gerrit-credentials'
+#          refspec: ''
+#          branch: '{branch}'
+#
+#    wrappers:
+#      - ssh-agent-credentials:
+#          users:
+#            - 'jenkins-gerrit-credentials'
+#      - fdio-infra-wrappers:
+#          build-timeout: '{build-timeout}'
+#
+#    triggers:
+#      - reverse:
+#          jobs: 'vpp-merge-{stream}-{os},jvpp-merge-{stream}-{os}'
+#          result: 'success'
+#
+#    prebuilders:
+#      - config-file-provider:
+#          files:
+#            - file-id: '.packagecloud'
+#              target: '/home/jenkins'
+#      - config-file-provider:
+#          files:
+#            - file-id: 'packagecloud_api'
+#              target: '/home/jenkins'
+#
+#      - shell:
+#          !include-raw-escape: include-raw-jvpp-integration-prebuild.sh
+#    maven:
+#      maven-name: 'mvn33-new'
+#      root-pom: 'pom.xml'
+#      # yamllint disable-line rule:line-length
+##      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
+#      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
+#      settings: 'jvpp-settings'
+#      settings-type: cfp
+#      global-settings: 'global-settings'
+#      global-settings-type: cfp
+#
+#    postbuilders:
+#      - maven-target:
+#          maven-version: 'mvn33-new'
+#          goals: '--version'
+#          settings: 'jvpp-settings'
+#          settings-type: cfp
+#          global-settings: 'global-settings'
+#          global-settings-type: cfp
+#      - provide-maven-settings:
+#          settings-file: 'jvpp-settings'
+#          global-settings-file: 'global-settings'
+#      - shell:
+#          !include-raw-escape:
+#          - ../scripts/maven_push_functions.sh
+#          - include-raw-jvpp-pkg-push.sh
+#      - shell:
+#          !include-raw-escape:
+#          - ../scripts/packagecloud_push.sh
+#    reporters:
+#      - findbugs
+#
+#    publishers:
+#      - email-notification:
+#          email-prefix: '[jvpp]'
+#      - maven-deploy:
+#          id: ''
+#          unique-version: true
+#          deploy-unstable: false
+#          release-env-var: SKIP_JAR_DEPLOY
+#      - fdio-infra-shiplogs:
+#          maven-version: 'mvn33-new'
