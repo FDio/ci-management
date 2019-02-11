@@ -20,9 +20,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1804':
-          branch: 'stable/1804'
-          repo-stream-part: 'stable.1804'
       - '1807':
           branch: 'stable/1807'
           repo-stream-part: 'stable.1807'
