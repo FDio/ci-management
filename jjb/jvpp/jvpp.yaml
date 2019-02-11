@@ -3,6 +3,7 @@
     name: jvpp
     jobs:
       - 'jvpp-verify-{stream}-{os}'
+      - 'jvpp-merge-{stream}-{os}'
     project: 'jvpp'
     os:
       - ubuntu1604:
@@ -84,9 +85,102 @@
           fingerprint: false
           only-if-success: true
           default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+          archive-artifacts: '/tmp/jvpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
           fixed-delay: 90
       - email-notification:
           email-prefix: '[jvpp]'
+
+- job-template:
+    name: 'jvpp-merge-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-us'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: '{stream}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'vpp-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_jvpp_dev_env.sh
+          - include-raw-jvpp-build.sh
+      - provide-maven-settings:
+          settings-file: 'jvpp-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ./include-raw-jvpp-packetcloud-push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-jvpp-maven-push.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build-root/packages/*.rpm,
+            **/build-root/packages/*.deb
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
