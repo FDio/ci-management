@@ -280,7 +280,7 @@
     name: 'hicn-sonar'
     project: hicn
     project-name: hicn
-    mvn-settings: hicn
+    mvn-settings: hicn-settings
     mvn-version: 'mvn33-new'
     branch: master
     build-node: ubuntu1604-basebuild-4c-4g
