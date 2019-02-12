@@ -142,8 +142,8 @@
     publishers:
       - archive:
           artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
+            **/build-root/build-package*.rpm,
+            **/build-root/build-package*.deb,
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
