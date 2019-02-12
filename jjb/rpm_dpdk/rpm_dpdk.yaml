@@ -25,7 +25,7 @@
     name: 'rpm_dpdk-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -72,7 +72,7 @@
     name: 'rpm_dpdk-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -132,7 +132,7 @@
     name: 'rpm_dpdk-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
