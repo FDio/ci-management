@@ -36,8 +36,7 @@ echo "Building using \"make build-root/build.sh\""
 [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
 [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep-extra
 [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-vpp
-[ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build-scvpp
-[ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build
+[ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build-package
 
 echo "*******************************************************************"
 echo "* SWEETCOMB BUILD SUCCESSFULLY COMPLETED"
