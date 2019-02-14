@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cedb7cf_86db4dca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-14T16:15:49Z",
+      "side": 1,
+      "message": "How does this fit with commit message of this [0] Change?\n\n\"This project can\u0027t use the global-jjb sonar configuration because it\u0027s not a maven based job.\"\n\n[0] https://gerrit.fd.io/r/17543",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "7277dd28b19691d4d0187e50a79a4135c9a36ff3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
