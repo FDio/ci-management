@@ -8,10 +8,14 @@
       - 'hc2vpp-verify-image-{stream}-{os}'
     project: 'hc2vpp'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
           skip-site: 'false'
           skip-jar-deploy: 'false'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
+          skip-site: 'true'
+          skip-jar-deploy: 'true'
       - centos7:
           repo-os-part: 'centos7'
           skip-site: 'true'
@@ -267,7 +271,7 @@
 
     triggers:
       - reverse:
-          jobs: 'vpp-merge-{stream}-{os},hc2vpp-merge-{stream}-{os}'
+          jobs: 'jvpp-merge-{stream}-{os},hc2vpp-merge-{stream}-{os}'
           result: 'success'
 
     prebuilders:
