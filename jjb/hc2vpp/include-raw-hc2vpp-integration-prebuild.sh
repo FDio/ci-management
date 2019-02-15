@@ -1,63 +1,64 @@
 #!/bin/bash
 
 set -ex
-
 # Download the latest VPP java API package
-URL="https://nexus.fd.io/service/local/artifact/maven/content"
 VERSION="RELEASE"
-GROUP="io.fd.vpp"
-ARTIFACTS="vpp-api-java"
-
 VERSION=`./vpp-version`
-if [ "${VERSION}" != 'RELEASE' ]; then
-    if [ "${OS}" == "centos7" ]; then
-        VERSION="${VERSION}.x86_64"
-    else
-        VERSION="${VERSION}_amd64"
+
+# Figure out what system we are running on
+if [[ -f /etc/lsb-release ]];then
+    . /etc/lsb-release
+elif [[ -f /etc/redhat-release ]];then
+    sudo yum install -y redhat-lsb
+    DISTRIB_ID=`lsb_release -si`
+    DISTRIB_RELEASE=`lsb_release -sr`
+    DISTRIB_CODENAME=`lsb_release -sc`
+    DISTRIB_DESCRIPTION=`lsb_release -sd`
+fi
+echo "----- OS INFO -----"
+echo DISTRIB_ID: ${DISTRIB_ID}
+echo DISTRIB_RELEASE: ${DISTRIB_RELEASE}
+echo DISTRIB_CODENAME: ${DISTRIB_CODENAME}
+echo DISTRIB_DESCRIPTION: ${DISTRIB_DESCRIPTION}
+
+echo "----- DOWNLOADING PACKAGES -----"
+if ! [[ -z ${REPO_NAME} ]]; then
+    REPO_URL="https://packagecloud.io/fdio/${STREAM}"
+    echo "REPO_URL: ${REPO_URL}"
+    if [[ "$DISTRIB_ID" == "Ubuntu" ]]; then
+        if [[ -f /etc/apt/sources.list.d/99fd.io.list ]];then
+            echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
+            sudo rm /etc/apt/sources.list.d/99fd.io.list
+        fi
+        curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
+        if [[ "${VERSION}" != 'RELEASE' ]]; then
+            # download specific version if set
+            echo VERSION: ${VERSION}
+            apt download vpp-api-java=${VERSION} || true
+        else
+            # download latest version for specified stream
+            apt download vpp-api-java || true
+        fi
+
+    elif [[ "$DISTRIB_ID" == "CentOS" ]]; then
+        if [[ -f /etc/yum.repos.d/fdio-master.repo ]]; then
+            echo "Deleting: /etc/yum.repos.d/fdio-master.repo"
+            sudo rm /etc/yum.repos.d/fdio-master.repo
+        fi
+        curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
+        if [[ "${VERSION}" != 'RELEASE' ]]; then
+            # download specific version if set
+            echo VERSION: ${VERSION}
+            yum -y install --downloadonly --downloaddir=./ vpp-api-java-${VERSION} || true
+        else
+            # download latest version for specified stream
+            yum -y install --downloadonly --downloaddir=./ vpp-api-java || true
+        fi
     fi
 fi
 
-if [ "${OS}" == "ubuntu1604" ]; then
-    OS_PART="ubuntu.xenial.main"
-    PACKAGE="deb deb.md5"
-    CLASS="deb"
-elif [ "${OS}" == "centos7" ]; then
-    OS_PART="centos7"
-    PACKAGE="rpm rpm.md5"
-    CLASS=""
-fi
-
-if [ "${STREAM}" == "master" ]; then
-    STREAM_PART="master"
-else
-    STREAM_PART="stable.${STREAM}"
-fi
-
-REPO="fd.io.${STREAM_PART}.${OS_PART}"
-
-for ART in ${ARTIFACTS}; do
-    for PAC in ${PACKAGE}; do
-        curl "${URL}?r=${REPO}&g=${GROUP}&a=${ART}&p=${PAC}&v=${VERSION}&c=${CLASS}" -O -J || exit
-    done
-done
-
-# verify downloaded package
-if [ "${OS}" == "centos7" ]; then
-    FILES=*.rpm
-else
-    FILES=*.deb
-fi
-
-for FILE in ${FILES}; do
-    echo " "${FILE} >> ${FILE}.md5
-done
-for MD5FILE in *.md5; do
-    md5sum -c ${MD5FILE} || exit
-    rm ${MD5FILE}
-done
-
 # install vpp-api-java, this extracts jvpp .jar files into usr/share/java
-if [ "${OS}" == "centos7" ]; then
+if [[ "${OS}" == "centos7" ]]; then
     sudo rpm --nodeps --install vpp-api-java*
 else
     sudo dpkg --ignore-depends=vpp --install vpp-api-java*

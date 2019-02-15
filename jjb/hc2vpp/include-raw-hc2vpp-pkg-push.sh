@@ -25,7 +25,7 @@ if [ "${STREAM}" == "master" ]; then
 
         # Write a file that will echo VPP dependencies
         echo -n 'echo' > vpp_dependencies
-        echo " \"vpp (= ${VERSION}), vpp-plugins (= ${VERSION})\"" >> vpp_dependencies
+        echo " \"vpp (= ${VERSION}), vpp-plugin-core (= ${VERSION})\"" >> vpp_dependencies
         chmod +x vpp_dependencies
 
         # Overwrite default dependencies file
@@ -53,6 +53,19 @@ elif [ "${OS}" == "ubuntu1604" ]; then
 
     # Build the debs
     ./packaging/deb/xenial/debuild.sh
+
+    # Find the files
+    DEBS=$(find . -type f -iname '*.deb')
+
+    # Publish hc2vpp packages
+    for i in $DEBS
+    do
+        push_deb "$i"
+    done
+elif [ "${OS}" == "ubuntu1804" ]; then
+
+    # Build the debs
+    ./packaging/deb/bionic/debuild.sh
 
     # Find the files
     DEBS=$(find . -type f -iname '*.deb')
