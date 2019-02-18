@@ -218,7 +218,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-unsafe-voting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'verify-tldk-func'

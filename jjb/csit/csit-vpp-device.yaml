@@ -1,3 +1,4 @@
+---
 # Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -10,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 
 - project:
     name: csit-vpp-device
@@ -199,7 +199,7 @@
     triggers:
       - timed: '0 4 * * 2,6'
 
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           comment-trigger-value: 'csit-verify-vpp'
           name: '{project}'
           branch: '{branch}'
@@ -279,7 +279,7 @@
     triggers:
       - timed: '0 4 * * 0'
 
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           comment-trigger-value: 'csit-vpp-ref-verify'
           name: '{project}'
           branch: '{branch}'

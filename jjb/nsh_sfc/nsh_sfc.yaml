@@ -550,7 +550,7 @@
           build-timeout: 30
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-unsafe-voting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'nsh_sfc_perf'
@@ -604,7 +604,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-unsafe-voting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'nsh_sfc_func'

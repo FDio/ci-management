@@ -308,7 +308,7 @@
             notbuilt: true
 
 - trigger:
-    name: gerrit-trigger-manually-triggered
+    name: gerrit-comment-unsafe-voting-trigger
     triggers:
       - gerrit:
           server-name: 'Primary'
@@ -321,6 +321,26 @@
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
+
+- trigger:
+    name: gerrit-comment-nonvoting-trigger
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: '{comment-trigger-value}'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
 
 - trigger:
     name: gerrit-trigger-patch-merged
