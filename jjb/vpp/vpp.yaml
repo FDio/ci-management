@@ -81,13 +81,29 @@
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-perf-{stream}-2n-skx'
+      - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
+    os: ubuntu1804
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-    os: ubuntu1604
+    node-arch:
+      - 2n-skx
+          nodeness: 2n
+          arch: skx
+          # TODO: Is there another way to support irregular defaults,
+          # or do we need to abolish the old simple "perftest" trigger
+          # in favor of perftest-2n-skx?
+          trigger_string: 'perftest'
+      - 3n-skx
+          nodeness: 3n
+          arch: skx
+          trigger_string: 'perftest-{nodeness}-{arch}'
+      - 3n-hsw:
+          nodeness: 3n
+          arch: hsw
+          trigger_string: 'perftest-{nodeness}-{arch}'
 
 - project:
     name: vpp-master-only
@@ -1000,7 +1016,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-perf-{stream}-2n-skx'
+    name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
 
     project-type: freestyle
     node: '{os}-basebuild-8c-32g'
@@ -1050,6 +1066,7 @@
       - gerrit-trigger-csit-perftest:
           name: '{project}'
           branch: '{branch}'
+          trigger_string: '{trigger_string}'
 
     builders:
       - shell:
