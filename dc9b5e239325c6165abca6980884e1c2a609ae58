@@ -22,6 +22,30 @@
       "revId": "dc9b5e239325c6165abca6980884e1c2a609ae58",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49b8a6b6_0fda3bb6",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-02-18T16:34:10Z",
+      "side": 1,
+      "message": "yes see my comment in csit related patch",
+      "parentUuid": "f8e2a930_8c26c566",
+      "range": {
+        "startLine": 990,
+        "startChar": 16,
+        "endLine": 990,
+        "endChar": 18
+      },
+      "revId": "dc9b5e239325c6165abca6980884e1c2a609ae58",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
