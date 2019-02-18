@@ -46,7 +46,9 @@
           server-name: 'Primary'
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'perftest'
+                # TODO: See job definition for troubles with trigger string.
+                #comment-contains-value: 'perftest-{nodeness}-{arch}'
+                comment-contains-value: '{trigger_string}'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{name}'
