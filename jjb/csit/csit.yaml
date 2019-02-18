@@ -1,3 +1,4 @@
+---
 # Copyright (c) 2018 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
----
 - project:
     name: csit
     description: 'CSIT Jenkins jobs.'
@@ -209,22 +209,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-dpdk-{topo}-{arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - gerrit-comment-nonvoting-trigger:
+          comment-trigger-value: 'csit-dpdk-{topo}-{arch}-perftest'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -317,22 +305,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-ligato-{topo}-{arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - gerrit-comment-nonvoting-trigger:
+          comment-trigger-value: 'csit-ligato-{topo}-{arch}-perftest'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -386,7 +362,7 @@
     triggers:
       - timed: '0 4 * * 0'
 
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           comment-trigger-value: 'csit-vpp-ref-verify'
           name: '{project}'
           branch: '{branch}'
@@ -438,7 +414,7 @@
     triggers:
       - timed: '0 4 * * 2,6'
 
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           comment-trigger-value: 'csit-verify-vpp'
           name: '{project}'
           branch: '{branch}'
@@ -497,7 +473,7 @@
     triggers:
       - timed: 'H H(3-4) * * *'
 
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           comment-trigger-value: 'vpp-verify-func-centos7'
           name: '{project}'
           branch: '{branch}'
@@ -690,22 +666,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'run-report'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
+      - gerrit-comment-nonvoting-trigger:
+          comment-trigger-value: 'run-report'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - maven-target:
@@ -1542,22 +1506,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-{topo}-{arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - gerrit-comment-nonvoting-trigger:
+          comment-trigger-value: 'csit-{topo}-{arch}-perftest'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -1610,7 +1562,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'csit_nsh_sfc_perf_{stream}'
@@ -1664,7 +1616,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'csit_nsh_sfc_func_{stream}'
@@ -1716,7 +1668,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'csit_verify_tldk_func'
@@ -1766,7 +1718,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-manually-triggered:
+      - gerrit-comment-nonvoting-trigger:
           name: '{project}'
           branch: '{branch}'
           comment-trigger-value: 'csit_verify_dmm_func'
