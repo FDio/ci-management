@@ -81,12 +81,18 @@
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-perf-{stream}-2n-skx'
+      - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+    node-arch:
+      - 2n-skx:
+      - 3n-skx:
+      - 3n-hsw:
+    trigger_string: 'perftest-{node-arch}'
+    # Everything would like 1804 more, but Sandbox does not have that VM.
     os: ubuntu1604
 
 - project:
@@ -1000,7 +1006,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-perf-{stream}-2n-skx'
+    name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
 
     project-type: freestyle
     node: '{os}-basebuild-8c-32g'
@@ -1050,6 +1056,7 @@
       - gerrit-trigger-csit-perftest:
           name: '{project}'
           branch: '{branch}'
+          trigger_string: '{trigger_string}'
 
     builders:
       - shell:
