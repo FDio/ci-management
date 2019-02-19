@@ -12,7 +12,10 @@ set -e -o pipefail
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 
 if ! [ -z ${DOCKER_TEST} ] ; then
-		sudo mount -o remount /dev/shm -o size=512M || true
+        # for 4 cores:
+        # framework.VppTestCase.MIN_REQ_SHM + (num_cores * framework.VppTestCase.SHM_PER_PROCESS)
+        # 1073741824 == 1024M (1073741824 >> 20)
+		sudo mount -o remount /dev/shm -o size=1024M || true
         echo "/dev/shm remounted"
 fi
 
