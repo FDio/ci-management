@@ -2,6 +2,9 @@
 # basic build script example
 set -xe -o pipefail
 
+##container server node detection
+grep search /etc/resolv.conf  || true
+
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 
