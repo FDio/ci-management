@@ -54,7 +54,6 @@
 - project:
     name: vpp-misc
     jobs:
-      - 'vpp-csit-verify-virl-{stream}'
       - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
     stream:
@@ -82,12 +81,13 @@
     name: vpp-perpatch
     jobs:
       - 'vpp-csit-verify-perf-{stream}-2n-skx'
+      - 'vpp-csit-verify-device-{stream}-1n-skx'
     project: 'vpp'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-    os: ubuntu1604
+    os: ubuntu1804
 
 - project:
     name: vpp-master-only
@@ -928,10 +928,10 @@
           fixed-delay: 90
 
 - job-template:
-    name: 'vpp-csit-verify-virl-{stream}'
+    name: 'vpp-csit-verify-device-{stream}-1n-skx'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'vpp-csit-device'
     concurrent: true
 
     build-discarder:
@@ -948,12 +948,11 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
-      - is-csit-vpp-job-parameter:
-          is-csit-vpp-job: 'True'
-      - string:
-          name: CSIT_REF
-          description: "Also testing CSIT_REF"
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-csit-refspec-parameter
       - stream-parameter:
           stream: '{stream}'
 
@@ -968,33 +967,26 @@
           build-timeout: '90'
 
     triggers:
-      - gerrit-trigger-csit-virltest:
+      - gerrit-trigger-csit-devicetest:
           name: '{project}'
           branch: '{branch}'
 
     builders:
-      - shell: 'echo "VPP_BRANCH={branch}" > $WORKSPACE/variables.prop'
-      - inject:
-          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
-      - shell:
-          !include-raw-escape:
-          - include-raw-vpp-csit-functional.sh
+          - include-raw-vpp-csit-device.sh
+
 
     publishers:
       - archive-artifacts:
           artifacts: >
-            **/csit/report.html,
-            **/csit/log.html,
-            **/csit/output.xml
+            **/csit_current/**/*.*
           latest-only: false
 
       - robot-report:
-          output-path: 'csit'
+          output-path: 'csit_current/'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
@@ -1003,7 +995,7 @@
     name: 'vpp-csit-verify-perf-{stream}-2n-skx'
 
     project-type: freestyle
-    node: '{os}-basebuild-8c-32g'
+    node: '{os}-us'
     concurrent: true
 
     build-discarder:
@@ -1053,18 +1045,20 @@
 
     builders:
       - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
           !include-raw-escape:
-          - clone-csit-run-main.sh
+          - include-raw-vpp-csit-perf.sh
 
     publishers:
       - archive-artifacts:
           artifacts: >
-            **/csit_new/**/*.*,
+            **/csit_current/**/*.*,
             **/csit_parent/**/*.*
           latest-only: false
 
       - robot-report:
-          output-path: 'csit_new/0/'
+          output-path: 'csit_current/0/'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
