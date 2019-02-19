@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "035a761a_53ff8755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-19T17:29:58Z",
+      "side": 1,
+      "message": "Is some part of the process expected to be different between the two ubuntu versions?\nIf yes, add a comment about it.\nIf no, remove the whole ubuntu1604 os item.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "57c536327886308dcb61d5dc0709593b135a8016",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
