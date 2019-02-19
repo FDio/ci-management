@@ -40,6 +40,19 @@ EOF
             sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
             sudo yum -y install vpp-dpdk-devel || true
             sudo yum -y install vpp-ext-deps || true
+        elif [ "$OS_ID" == "opensuse-leap" ]; then
+            REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
+            echo "REPO_URL: ${REPO_URL}"
+            sudo cat << EOF > fdio-master.repo
+[fdio-master]
+name=fd.io master branch latest merge
+baseurl=${REPO_URL}
+enabled=1
+gpgcheck=0
+EOF
+            sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
+            sudo yum -y install vpp-dpdk-devel || true
+            sudo yum -y install vpp-ext-deps || true
         fi
     fi
 }

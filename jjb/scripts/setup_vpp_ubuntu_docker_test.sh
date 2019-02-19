@@ -43,6 +43,9 @@ elif [ "${OS_ID}" == "centos" ]; then
 elif [ "${OS_ID}" == "opensuse" ]; then
     yum list installed || true
     pip list || true
+elif [ "${OS_ID}" == "opensuse-leap" ]; then
+    yum list installed || true
+    pip list || true
 fi
 
 ##This will remove any previously installed dpdk for old branch builds
@@ -57,6 +60,9 @@ if [ "${GERRIT_BRANCH}" != "master" ]; then
         sudo yum -y erase vpp-ext-deps || true
         sudo yum clean all || true
     elif [ "${OS_ID}" == "opensuse" ]; then
+        sudo yum -y erase vpp-dpdk-devel || true
+        sudo yum -y erase vpp-ext-deps || true
+    elif [ "${OS_ID}" == "opensuse-leap" ]; then
         sudo yum -y erase vpp-dpdk-devel || true
         sudo yum -y erase vpp-ext-deps || true
     fi
