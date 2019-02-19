@@ -29,8 +29,11 @@ if [ -f ~/.packagecloud ]; then
       openSUSE)
         # Use /etc/os-release on openSUSE to get $VERSION
         . /etc/os-release
-        RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
+        RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v 'vpp-ext-deps')
+        VPP_EXT_RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep 'vpp-ext-deps')
         package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${RPMS}
+        # This file may have already been uploaded. Don't error out if it exists.
+        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${VPP_EXT_RPMS} --skip-errors
       ;;
     esac
 fi
