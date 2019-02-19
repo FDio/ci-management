@@ -9,7 +9,7 @@
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
           skip-site: 'false'
-          skip-jar-deploy: 'false'
+          skip-jar-deploy: 'true'
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
           skip-site: 'false'
