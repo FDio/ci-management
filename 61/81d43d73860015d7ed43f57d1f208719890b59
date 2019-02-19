@@ -1,0 +1,10 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Hongjun Ni <hongjun.ni@intel.com>
+Code-Review+1: Junfeng Wang <drenfong.wang@intel.com>
+Code-Review+1: Vratko Polak <vrpolak@cisco.com>
+Code-Review+2: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Tue, 19 Feb 2019 15:29:03 +0000
+Reviewed-on: https://gerrit.fd.io/r/17615
+Project: ci-management
+Branch: refs/heads/master
