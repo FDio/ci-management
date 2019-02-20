@@ -227,6 +227,8 @@
 
     project: 'cicn'
     os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
 
