@@ -46,6 +46,30 @@
       "revId": "57c536327886308dcb61d5dc0709593b135a8016",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb2c348_97d0ced6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-20T14:06:19Z",
+      "side": 1,
+      "message": "Ah, so packages are different. Ok then.",
+      "parentUuid": "44c9a836_a53d4397",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "57c536327886308dcb61d5dc0709593b135a8016",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
