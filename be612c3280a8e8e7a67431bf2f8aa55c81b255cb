@@ -46,6 +46,30 @@
       "revId": "be612c3280a8e8e7a67431bf2f8aa55c81b255cb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fed4121a_a8d5281a",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-20T15:21:03Z",
+      "side": 1,
+      "message": "\u003e opensuse\n\nYeah sorry, I was looking at some other job. Probably this one [1]. See the stuff before:\n\n14:51:44  Installed:\n14:51:44    vpp-ext-deps.x86_64 0:19.04-2\n\n[1] https://logs.fd.io/production/vex-yul-rot-jenkins-1/vpp-merge-master-centos7/6194/console-timestamp.log.gz",
+      "parentUuid": "79ff3295_1f8fef16",
+      "range": {
+        "startLine": 36,
+        "startChar": 87,
+        "endLine": 36,
+        "endChar": 100
+      },
+      "revId": "be612c3280a8e8e7a67431bf2f8aa55c81b255cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
