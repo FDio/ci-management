@@ -30,7 +30,7 @@ function push_file ()
 
     # Disable checks for doublequote to prevent glob / splitting
     # shellcheck disable=SC2086
-    $MVN org.apache.maven.plugins:maven-deploy-plugin:deploy-file \
+    $MVN -B org.apache.maven.plugins:maven-deploy-plugin:deploy-file \
         -Dfile=$push_file -DrepositoryId=$repoId \
         -Durl=$url -DgroupId=$GROUP_ID \
         -Dversion=$version -DartifactId=$artifactId \
