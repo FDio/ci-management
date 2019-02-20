@@ -35,6 +35,18 @@
     os: ubuntu1604
 
 - project:
+    name: hicn-sysrepo
+    jobs:
+      - 'hicn-sysrepo-plugin-verify-{stream}'
+      - 'hicn-sysrepo-plugin-merge-{stream}'
+    project: 'hicn'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    os: ubuntu1804
+
+- project:
     name: hicn-view
     views:
       - project-view
@@ -286,3 +298,168 @@
     build-node: ubuntu1604-basebuild-4c-4g
     jobs:
       - gerrit-maven-sonar
+
+- job-template:
+    name: 'hicn-sysrepo-plugin-verify-{stream}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'verify_sysrepo'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - include-raw-hicn-sysrepo-build.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'hicn-sysrepo-plugin-merge-{stream}'
+
+    project-type: freestyle
+    node: '{os}-us'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
+      - stream-parameter:
+          stream: 'release'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'merge_sysrepo'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'hicn-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
+      - shell:
+          !include-raw-escape:
+          - include-raw-hicn-checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-hicn-sysrepo-build.sh
+      - provide-maven-settings:
+          settings-file: 'hicn-settings'
+          global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/maven_push_functions.sh
+          - include-raw-hicn-maven-push.sh
+
+    publishers:
+      - archive:
+          artifacts: >
+            **/build/*.rpm,
+            **/build/*.deb
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
