@@ -22,6 +22,30 @@
       "revId": "57c536327886308dcb61d5dc0709593b135a8016",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44c9a836_a53d4397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 331
+      },
+      "writtenOn": "2019-02-20T08:04:50Z",
+      "side": 1,
+      "message": "I cannot remove the whole 1604 version because it also verifies built on this system and builds debian package for it. Jars are only one part of the process which actually are the same for both, therefore I am skipping the jar upload and nothing else.",
+      "parentUuid": "035a761a_53ff8755",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "57c536327886308dcb61d5dc0709593b135a8016",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
