@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b6cedc0_3d4037bd",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-02-21T09:31:24Z",
+      "side": 1,
+      "message": "why is it not parameter here?",
+      "range": {
+        "startLine": 1011,
+        "startChar": 0,
+        "endLine": 1011,
+        "endChar": 15
+      },
+      "revId": "9e3dbd533ae356f16a32ec47083de4f789fcfff2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
