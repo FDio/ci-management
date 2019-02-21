@@ -4,10 +4,13 @@
     jobs:
       - 'honeycomb-verify-{stream}-{os}'
       - 'honeycomb-merge-{stream}-{os}'
-      - 'honeycomb-benchmark-master'
+      - 'honeycomb-benchmark-master-{os}'
     project: 'honeycomb'
-    os: 'ubuntu1604'
-    repo-os-part: 'ubuntu.xenial.main'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
 
     stream:
       - master:
@@ -165,10 +168,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'honeycomb-benchmark-master'
+    name: 'honeycomb-benchmark-master-{os}'
     project-type: maven
-    node: ubuntu1604-basebuild-4c-4g
-    jdk: openjdk8-ubuntu1604
+    node: '{os}-basebuild-4c-4g'
+    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -180,13 +183,13 @@
       - project-parameter:
           project: '{project}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: '{os}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
       - repo-name-parameter:
-          repo-name: 'master.ubuntu.xenial.main'
+          repo-name: 'master.{repo-os-part}'
 
     scm:
       - git-scm:
