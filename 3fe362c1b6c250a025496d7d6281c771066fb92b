@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f2d3f8_5e1f1d6b",
+        "filename": "jjb/hc2vpp/hc2vpp-csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-21T16:23:01Z",
+      "side": 1,
+      "message": "Many jobs already use \u0027{os}-us\u0027, and I know (at least on Sandbox) some of 1604 images do not have 1804 analogue.\nPerhaps ubuntu1804-4c-4g is availavble (and this is safe to merge), can someone confirm?",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "3fe362c1b6c250a025496d7d6281c771066fb92b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
