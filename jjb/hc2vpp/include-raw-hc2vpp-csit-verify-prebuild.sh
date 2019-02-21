@@ -23,13 +23,13 @@ done
 
 # If HC variable is set, clone and build Honeycomb infra from the specified commit
 # Otherwise skip this step, hc2vpp will use Honeycomb snapshots from Nexus
-if [ -n "${hc_commit_id}" ]; then
+if [[ -n "${hc_commit_id}" ]]; then
     git clone https://gerrit.fd.io/r/honeycomb
     cd honeycomb
     ref=`git ls-remote -q | grep ${hc_commit_id} | awk '{print $2}'`
     git fetch origin ${ref} && git checkout FETCH_HEAD
     mvn clean install -DskipTests -Dcheckstyle.skip -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}"
-    if [ $? != 0 ]; then
+    if [[ $? != 0 ]]; then
         echo "Honeycomb infra build failed."
         exit 1
     fi
@@ -41,7 +41,7 @@ fi
 # TODO: Add option to build custom VPP and NSH packages
 
 # Get CSIT branch from which to test from
-if [ -f csit-test-branch ]; then
+if [[ -f csit-test-branch ]]; then
     chmod +x csit-test-branch
     CSIT_BRANCH=`./csit-test-branch`
 else
@@ -52,7 +52,7 @@ fi
 git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}
 
 # If the git clone fails, complain clearly and exit
-if [ $? != 0 ]; then
+if [[ $? != 0 ]]; then
     echo "Failed to run: git clone https://gerrit.fd.io/r/csit --branch ${CSIT_BRANCH}"
     exit 1
 fi
@@ -60,7 +60,7 @@ fi
 cd csit
 
 # If CSIT commit ID is given, checkout the specified commit
-if [ -n "${csit_commit_id}" ]; then
+if [[ -n "${csit_commit_id}" ]]; then
     # Example:
     # ...
     # e8f326efebb58e28dacb9ebb653baf95aad1448c refs/changes/08/11808/1
@@ -70,10 +70,7 @@ if [ -n "${csit_commit_id}" ]; then
 fi
 
 # Download VPP packages
-if [ ${STREAM} == 'master' ]; then
-    ./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}
-else
-    ./resources/tools/scripts/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
-fi
+./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}l
+
 
 cd ${WORKSPACE}
