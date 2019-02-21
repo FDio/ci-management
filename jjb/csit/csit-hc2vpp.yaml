@@ -4,12 +4,15 @@
     description: 'jenkins jobs verify Hc2vpp functional and performance tests'
     jobs:
       - 'csit-hc2vpp-verify-func-{stream}-{os}'
-      - 'csit-hc2vpp-verify-perf-{stream}'
+      - 'csit-hc2vpp-verify-perf-{stream}-{os}'
     project: 'csit'
     branch: 'master'
     build-artifact-num-to-keep: 10
-    os: 'ubuntu1604'
-    repo-os-part: 'ubuntu.xenial.main'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
 
     stream:
       - master:
@@ -81,7 +84,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-hc2vpp-verify-perf-{stream}'
+    name: 'csit-hc2vpp-verify-perf-{stream}-{os}'
 
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
