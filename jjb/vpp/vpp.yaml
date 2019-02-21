@@ -80,14 +80,18 @@
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-perf-{stream}-2n-skx'
       - 'vpp-csit-verify-device-{stream}-1n-skx'
+      - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
     os: ubuntu1804
+    node-arch:
+      - 2n-skx
+      - 3n-skx
+      - 3n-hsw
 
 - project:
     name: vpp-master-only
@@ -992,7 +996,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'vpp-csit-verify-perf-{stream}-2n-skx'
+    name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
 
     project-type: freestyle
     node: '{os}-us'
@@ -1042,6 +1046,7 @@
       - gerrit-trigger-csit-perftest:
           name: '{project}'
           branch: '{branch}'
+          node-arch: '{node-arch}'
 
     builders:
       - shell:
