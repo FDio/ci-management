@@ -311,7 +311,7 @@
     name: 'cicn-longbow-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -396,7 +396,7 @@
     name: 'cicn-longbow-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -449,7 +449,7 @@
     name: 'cicn-longbow-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: '{os}-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -528,7 +528,7 @@
     name: 'cicn-longbow-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: '{os}-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -591,7 +591,7 @@
     name: 'cicn-libparc-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -682,7 +682,7 @@
     name: 'cicn-libparc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -735,7 +735,7 @@
     name: 'cicn-libparc-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: '{os}-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -814,7 +814,7 @@
     name: 'cicn-libparc-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-8c-32g
+    node: '{os}-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -878,7 +878,7 @@
     name: 'cicn-libccnx-common-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -966,7 +966,7 @@
     name: 'cicn-libccnx-common-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1019,7 +1019,7 @@
     name: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1107,7 +1107,7 @@
     name: 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1161,7 +1161,7 @@
     name: 'cicn-libccnx-portal-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1249,7 +1249,7 @@
     name: 'cicn-libccnx-portal-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1302,7 +1302,7 @@
     name: 'cicn-libicnet-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1390,7 +1390,7 @@
     name: 'cicn-libicnet-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1443,7 +1443,7 @@
     name: 'cicn-metis-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1531,7 +1531,7 @@
     name: 'cicn-metis-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1584,7 +1584,7 @@
     name: 'cicn-http-server-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1672,7 +1672,7 @@
     name: 'cicn-http-server-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1725,7 +1725,7 @@
     name: 'cicn-vpp-plugin-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1810,7 +1810,7 @@
     name: 'cicn-vpp-plugin-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -1863,7 +1863,7 @@
     name: 'cicn-viper-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1953,7 +1953,7 @@
     name: 'cicn-viper-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -2008,7 +2008,7 @@
     name: 'cicn-radio-emulators-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2096,7 +2096,7 @@
     name: 'cicn-radio-emulators-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -2153,7 +2153,7 @@
     name: 'cicn-android-sdk-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2213,7 +2213,7 @@
     name: 'cicn-android-sdk-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -2268,7 +2268,7 @@
     name: 'cicn-vicn-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2353,7 +2353,7 @@
     name: 'cicn-vicn-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
