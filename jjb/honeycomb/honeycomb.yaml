@@ -35,7 +35,7 @@
 - job-template:
     name: 'honeycomb-verify-{stream}-{os}'
     project-type: maven
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -88,7 +88,7 @@
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     jdk: openjdk8-{os}
 
     build-discarder:
@@ -170,7 +170,7 @@
 - job-template:
     name: 'honeycomb-benchmark-master-{os}'
     project-type: maven
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     jdk: openjdk8-{os}
 
     build-discarder:
