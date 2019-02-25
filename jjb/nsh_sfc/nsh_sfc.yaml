@@ -79,7 +79,7 @@
     name: 'nsh_sfc-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -149,7 +149,7 @@
     name: 'nsh_sfc-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -231,7 +231,7 @@
     name: 'nsh_sfc-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     jdk: openjdk8-{os}
 
     build-discarder:
@@ -300,7 +300,7 @@
     name: 'nsh_sfc-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     jdk: openjdk8-{os}
 
     build-discarder:
@@ -384,7 +384,7 @@
     name: 'nsh_sfc-verify-docs-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: ubuntu1604-builder-4c-4g
     concurrent: true
     jdk: openjdk8-ubuntu1604
 
@@ -441,7 +441,7 @@
     name: 'nsh_sfc-merge-docs-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-basebuild-4c-4g
+    node: ubuntu1604-builder-4c-4g
     concurrent: true
     jdk: openjdk8-{os}
 
@@ -520,7 +520,7 @@
     name: 'nsh_sfc-csit-verify-perf-{stream}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1604-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -574,7 +574,7 @@
     name: 'nsh_sfc-csit-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
