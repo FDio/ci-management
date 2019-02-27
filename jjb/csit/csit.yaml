@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Cisco and/or its affiliates.
+# Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -59,31 +59,33 @@
     branch: 'master'
     branch-id: 'oper'
     build-artifact-num-to-keep: 10
-    type:
-      - all
     stream_timed:
       - master:
           branch: 'master'
           branch-id: 'oper'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1801':
-          branch: 'rls1801'
-          branch-id: 'oper-rls1801'
-      - '1804':
-          branch: 'rls1804'
-          branch-id: 'oper-rls1804'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
       - '1807':
           branch: 'rls1807'
           branch-id: 'oper-rls1807'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
       - '1810':
           branch: 'rls1810'
           branch-id: 'oper-rls1810'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
       - '1901':
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
 
 - project:
     name: csit-view
@@ -181,7 +183,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -583,7 +585,7 @@
     name: 'csit-docs-merge-{stream_timed}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{docs-executor}'
     concurrent: true
 
     build-discarder:
@@ -823,7 +825,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -886,7 +888,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -949,7 +951,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1013,7 +1015,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1804-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1081,7 +1083,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1149,7 +1151,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1217,7 +1219,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1285,7 +1287,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1353,7 +1355,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1421,7 +1423,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1489,7 +1491,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1579,7 +1581,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1851,11 +1853,3 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
-- parameter:
-    name: test-type-parameter
-    parameters:
-      - string:
-          name: TYPE
-          default: '{type}'
-          description: "Test TYPE parameter if not given by trigger"
