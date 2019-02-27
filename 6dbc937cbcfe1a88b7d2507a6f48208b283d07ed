@@ -234,6 +234,30 @@
       "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13903719_b6ba6a48",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-02-27T12:36:22Z",
+      "side": 1,
+      "message": "Just to be clear, these are not created by CSIT team.",
+      "parentUuid": "adcb7608_c358bcb3",
+      "range": {
+        "startLine": 1597,
+        "startChar": 11,
+        "endLine": 1597,
+        "endChar": 44
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
