@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4143ee88_337d701e",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T11:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957a1355_04188220",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "669808ffcf2d3fad3e082871a3743cb1b87e1ef1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5192c5c9_06013b02",
         "filename": "jjb/csit/csit-tox.yaml",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-27T09:24:47Z",
       "side": 1,
       "message": "is this needed?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "669808ffcf2d3fad3e082871a3743cb1b87e1ef1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dc42251_d2bb8ef5",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T11:38:56Z",
+      "side": 1,
+      "message": "Links like https://jenkins.fd.io/sandbox/job/csit-verify-tox-master/1/violations/\nare still easier to examine than raw log.\n\nAdded a TODO explaining when to remove.",
+      "parentUuid": "5192c5c9_06013b02",
       "range": {
         "startLine": 59,
         "startChar": 0,
