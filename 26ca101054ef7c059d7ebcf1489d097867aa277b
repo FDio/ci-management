@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac01641e_27ab3e54",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T11:12:59Z",
+      "side": 1,
+      "message": "\u0027{perf-executor}\u0027\n\nBasically, every CSIT job should either use one of *-executor values, or contain a comment explaining why it is using something else (even if it is just a TODO to incorporate {os} value).",
+      "range": {
+        "startLine": 293,
+        "startChar": 10,
+        "endLine": 293,
+        "endChar": 38
+      },
+      "revId": "26ca101054ef7c059d7ebcf1489d097867aa277b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
