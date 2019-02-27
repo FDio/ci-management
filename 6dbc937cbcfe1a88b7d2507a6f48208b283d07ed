@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaea5d40_6ae11738",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T12:28:04Z",
+      "side": 1,
+      "message": "Add comments to jobs with {os} in them. Some could be runnable on containers.",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccb1b68a_d99cc5ed",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T12:28:04Z",
+      "side": 1,
+      "message": "Are virl jobs runnable on containers?",
+      "range": {
+        "startLine": 99,
+        "startChar": 11,
+        "endLine": 99,
+        "endChar": 49
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5456e25_31846763",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T12:28:04Z",
+      "side": 1,
+      "message": "Also a csit job.",
+      "range": {
+        "startLine": 611,
+        "startChar": 11,
+        "endLine": 611,
+        "endChar": 37
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b166e1d_c8833634",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T12:28:04Z",
+      "side": 1,
+      "message": "Also a csit job.",
+      "range": {
+        "startLine": 685,
+        "startChar": 11,
+        "endLine": 685,
+        "endChar": 37
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a997f0f0_faee1b39",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-02-27T12:28:04Z",
+      "side": 1,
+      "message": "Are these also csit jobs?",
+      "range": {
+        "startLine": 1597,
+        "startChar": 11,
+        "endLine": 1597,
+        "endChar": 44
+      },
+      "revId": "6dbc937cbcfe1a88b7d2507a6f48208b283d07ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
