@@ -84,6 +84,7 @@
     builders:
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell: cat /etc/os-release        
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
