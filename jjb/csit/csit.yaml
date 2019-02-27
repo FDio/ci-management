@@ -1,4 +1,4 @@
-# Copyright (c) 2018 Cisco and/or its affiliates.
+# Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -58,32 +58,36 @@
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
+    docs-executor: 'ubuntu1804-us'
+    perf-executor: 'ubuntu1804-us'
     build-artifact-num-to-keep: 10
-    type:
-      - all
     stream_timed:
       - master:
           branch: 'master'
           branch-id: 'oper'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1801':
-          branch: 'rls1801'
-          branch-id: 'oper-rls1801'
-      - '1804':
-          branch: 'rls1804'
-          branch-id: 'oper-rls1804'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
       - '1807':
           branch: 'rls1807'
           branch-id: 'oper-rls1807'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
       - '1810':
           branch: 'rls1810'
           branch-id: 'oper-rls1810'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
       - '1901':
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
+          docs-executor: 'ubuntu1604-basebuild-4c-4g'
+          perf-executor: 'ubuntu1604-basebuild-8c-32g'
 
 - project:
     name: csit-view
@@ -181,7 +185,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -286,6 +290,10 @@
       # yamllint enable rule:line-length
 
     project-type: freestyle
+    # As the nomad executors are running docker containers we cannot run
+    # ligato-perf job due to dependency on using docker inside.
+    # TODO: Find the mechanics how to offload job logic from compiling docker
+    #   image so we can move this executor to ubuntu1804-us
     node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
 
@@ -462,67 +470,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-verify-{stream_timed}-centos7-nightly'
-    # yamllint disable-line rule:line-length
-    description: 'Purpose of this job is to validate latest centos7 vpp build from corresponding branch stored in nexus against verified CSIT codebase of corresponding branch.'
-    # yamllint enable rule:line-length
-
-    project-type: freestyle
-    node: centos7-basebuild-4c-4g'
-    concurrent: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-
-    scm:
-      - git-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          branch: '{branch}'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: 'H H(3-4) * * *'
-
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: 'vpp-verify-func-centos7'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
-      - inject:
-          properties-file: variables.prop
-      - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-vpp-functional-virl.sh
-
-    publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
-      - robot-report:
-          output-path: 'csit/archive'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
     name: 'csit-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{docs-executor}'
     concurrent: true
 
     build-discarder:
@@ -583,7 +534,7 @@
     name: 'csit-docs-merge-{stream_timed}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{docs-executor}'
     concurrent: true
 
     build-discarder:
@@ -823,7 +774,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -886,7 +837,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -949,7 +900,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1013,7 +964,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1804-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1081,7 +1032,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1149,7 +1100,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1217,7 +1168,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1285,7 +1236,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1353,7 +1304,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1421,7 +1372,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1489,7 +1440,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: '{perf-executor}'
     concurrent: false
 
     build-discarder:
@@ -1579,7 +1530,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{perf-executor}'
     concurrent: true
 
     build-discarder:
@@ -1851,11 +1802,3 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-
-- parameter:
-    name: test-type-parameter
-    parameters:
-      - string:
-          name: TYPE
-          default: '{type}'
-          description: "Test TYPE parameter if not given by trigger"
