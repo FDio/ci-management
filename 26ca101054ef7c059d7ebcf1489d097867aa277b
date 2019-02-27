@@ -22,6 +22,29 @@
       "revId": "26ca101054ef7c059d7ebcf1489d097867aa277b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fbb1b9c_e8d92276",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-02-27T11:47:56Z",
+      "side": 1,
+      "message": "\u0027centos7-basebuild-4c-4g\u0027",
+      "range": {
+        "startLine": 475,
+        "startChar": 10,
+        "endLine": 475,
+        "endChar": 34
+      },
+      "revId": "26ca101054ef7c059d7ebcf1489d097867aa277b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
