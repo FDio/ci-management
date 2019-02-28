@@ -77,6 +77,32 @@
           build-timeout: 120
 
     triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-sweetcomb-build.sh
+    publishers:
+      - archive:
+          artifacts: >
+            **/build-root/build-package/*.rpm,
+            **/build-root/build-package/*.deb,
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
+
       - gerrit-trigger-patch-submitted:
           name: '{project}'
           branch: '{branch}'
@@ -133,6 +159,8 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
+      - shell:
+          !include-raw-escape: include-raw-vpp-checkstyle.sh
       - shell:
           !include-raw-escape:
           - include-raw-sweetcomb-build.sh
