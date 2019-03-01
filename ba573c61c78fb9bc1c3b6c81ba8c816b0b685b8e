@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcbd9661_84bf5dd5",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-03-01T12:52:04Z",
+      "side": 1,
+      "message": "Not enough green lines to warrant this line (compared to the white lines warranting the previous one).",
+      "range": {
+        "startLine": 3,
+        "startChar": 21,
+        "endLine": 3,
+        "endChar": 34
+      },
+      "revId": "ba573c61c78fb9bc1c3b6c81ba8c816b0b685b8e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
