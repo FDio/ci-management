@@ -1,3 +1,4 @@
+---
 # Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,20 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 - project:
     name: csit-vpp-device
     description: 'CSIT jenkins jobs.'
     os:
       - 'ubuntu1804'
-    topo:
-      - '1n'
-    arch:
-      - 'skx'
+    node-arch:
+      - '1n-skx'
     jobs:
-      - 'csit-vpp-device-{stream}-{os}-{topo}-{arch}'
-      - 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-semiweekly'
-      - 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-weekly'
+      - 'csit-vpp-device-{stream}-{os}-{node-arch}'
+      - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
+      - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
@@ -47,7 +45,7 @@
           branch-id: 'oper-rls1901'
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{topo}-{arch}'
+    name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
     description: |
       <ul>
           <li>objective
@@ -56,7 +54,7 @@
               </ul>
           <li>job
               <ul>
-                  <li>name: <b>csit-vpp-device-{stream}-{os}-{topo}-{arch}</b>
+                  <li>name: <b>csit-vpp-device-{stream}-{os}-{node-arch}</b>
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-devicetest tag_list</b>
               </ul>
@@ -147,7 +145,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-semiweekly'
+    name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
     description: |
       <ul>
           <li>objective
@@ -223,7 +221,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream_timed}-{os}-{topo}-{arch}-weekly'
+    name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
     description: |
       <ul>
           <li>objective
