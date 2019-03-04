@@ -10,14 +10,17 @@
           repo-os-part: 'ubuntu.xenial.main'
           skip-site: 'false'
           skip-jar-deploy: 'true'
+          vpp-job-prefix: ''
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
           skip-site: 'false'
           skip-jar-deploy: 'false'
+          vpp-job-prefix: 'beta-'
       - centos7:
           repo-os-part: 'centos7'
           skip-site: 'true'
           skip-jar-deploy: 'true'
+          vpp-job-prefix: ''
     stream:
       - master:
           branch: 'master'
@@ -138,7 +141,7 @@
           name: '{project}'
           branch: '{branch}'
       - reverse:
-          jobs: 'vpp-merge-{stream}-{os}'
+          jobs: 'vpp-{vpp-job-prefix}merge-{stream}-{os}'
           result: 'success'
 
     builders:
