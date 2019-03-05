@@ -1,13 +1,34 @@
 #!/bin/bash
 set -xeu -o pipefail
 
+# Figure out what system we are running on
+if [[ -f /etc/lsb-release ]];then
+    . /etc/lsb-release
+elif [[ -f /etc/redhat-release ]];then
+    sudo yum install -y redhat-lsb
+    DISTRIB_ID=`lsb_release -si`
+    DISTRIB_RELEASE=`lsb_release -sr`
+    DISTRIB_CODENAME=`lsb_release -sc`
+    DISTRIB_DESCRIPTION=`lsb_release -sd`
+fi
+echo "----- OS INFO -----"
+echo DISTRIB_ID: ${DISTRIB_ID}
+echo DISTRIB_RELEASE: ${DISTRIB_RELEASE}
+echo DISTRIB_CODENAME: ${DISTRIB_CODENAME}
+echo DISTRIB_DESCRIPTION: ${DISTRIB_DESCRIPTION}
+DISTRIB_ID="Ubuntu"
+if [[ "$DISTRIB_ID" != "Ubuntu" ]]; then
+    echo 'ERROR: Only Ubuntu is supported currently.'
+    exit 2
+fi
+
 # create HC .deb packages
-./packaging/deb/xenial/debuild.sh
-cp ./packaging/deb/xenial/*.deb ${WORKSPACE}/csit
+./packaging/deb/${DISTRIB_CODENAME}/debuild.sh
+cp ./packaging/deb/${DISTRIB_CODENAME}/*.deb ${WORKSPACE}/csit
 
 cd ${WORKSPACE}/csit
 # execute csit bootstrap script if it exists
-if [ ! -e bootstrap-hc2vpp-verify.sh ]
+if [[ ! -e bootstrap-hc2vpp-verify.sh ]]
 then
     echo 'ERROR: No bootstrap-hc2vpp-verify.sh found'
     exit 1
