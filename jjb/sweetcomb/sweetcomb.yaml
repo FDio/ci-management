@@ -80,6 +80,9 @@
       - gerrit-trigger-checkstyle:
           name: '{project}'
           branch: '{branch}'
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - config-file-provider:
@@ -110,10 +113,6 @@
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
-
-      - gerrit-trigger-patch-submitted:
-          name: '{project}'
-          branch: '{branch}'
 
     publishers:
       - fdio-infra-shiplogs:
