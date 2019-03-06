@@ -22,6 +22,30 @@
       "revId": "183a86be54d26a12cc949ed40d0ad85d0a7a28f3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e20155fc_c0b2881a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 331
+      },
+      "writtenOn": "2019-03-06T14:00:56Z",
+      "side": 1,
+      "message": "exactly this is the case for stable branches (1901) we actually use rls1901 branch of csit.\nI missed this the first time and the original script from rls1901 csit branch was called, but this one needs stream to be in form of \"stable.1901\". The new package cloud script needs only \"1901\". So I needed to fix the param for stable branches that we support.",
+      "parentUuid": "9bb9e897_cee9f03e",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "183a86be54d26a12cc949ed40d0ad85d0a7a28f3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
