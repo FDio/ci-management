@@ -7,6 +7,9 @@ for i in ${GERRIT_EVENT_COMMENT_TEXT}; do
         *honeycomb=*)
             hc_commit_id=`echo "${i}" | cut -d = -f2-`
         ;;
+        *jvpp=*)
+            jvpp_commit_id=`echo "${i}" | cut -d = -f2-`
+        ;;
         *vpp=*)
             vpp_commit_id=`echo "${i}" | cut -d = -f2-`
         ;;
@@ -73,10 +76,14 @@ fi
 if [[ "1807 1810 1901" =~ .*$STREAM.* ]]; then
     # add stable prefix for branches which have older version of package download script
     # This can be removed when support for 1901 branch ends.
+    if [[ -n "${jvpp_commit_id}" ]]; then
+        echo "Error: Specifying jvpp custom commit is not supported for 1807,1810,1901 stable branches"
+        exit 1
+    fi
     ./resources/tools/scripts/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
 else
     # master and 1904+ branches use new package-cloud download script
-    ./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}
+    ./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS} ${jvpp_commit_id}
 fi
 
 cd ${WORKSPACE}
