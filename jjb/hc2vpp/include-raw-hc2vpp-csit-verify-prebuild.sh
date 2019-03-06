@@ -70,7 +70,7 @@ if [[ -n "${csit_commit_id}" ]]; then
 fi
 
 # Download VPP packages
-./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}l
+./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}
 
 
 cd ${WORKSPACE}
