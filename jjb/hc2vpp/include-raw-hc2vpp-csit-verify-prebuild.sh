@@ -70,7 +70,13 @@ if [[ -n "${csit_commit_id}" ]]; then
 fi
 
 # Download VPP packages
-./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}l
-
+if [[ "1807 1810 1901" =~ .*$STREAM.* ]]; then
+    # add stable prefix for branches which have older version of package download script
+    # This can be removed when support for 1901 branch ends.
+    ./resources/tools/scripts/download_hc_build_pkgs.sh 'stable.'${STREAM} ${OS}
+else
+    # master and 1904+ branches use new package-cloud download script
+    ./resources/tools/scripts/download_hc_build_pkgs.sh ${STREAM} ${OS}
+fi
 
 cd ${WORKSPACE}
