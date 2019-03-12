@@ -29,7 +29,7 @@ echo "Current directory: $(pwd)"
 update_cmake_repo
 mkdir -p build
 pushd build
-cmake -DBUILD_HICNPLUGIN=OFF -DBUILD_HICNLIGHT=OFF -DBUILD_LIBTRANSPORT=OFF -DBUILD_UTILS=OFF ..
+cmake -DBUILD_HICNPLUGIN=OFF -DBUILD_HICNLIGHT=OFF -DBUILD_LIBTRANSPORT=OFF -DBUILD_UTILS=OFF -DBUILD_APPS=OFF ..
 make doc
 popd
 
