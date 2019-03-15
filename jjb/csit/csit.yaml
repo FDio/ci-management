@@ -724,7 +724,7 @@
               project-pattern: '{project}'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                  branch-pattern: '**/rls1901_1'
           skip-vote:
             successful: true
             failed: true
