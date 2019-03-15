@@ -49,10 +49,10 @@ if ! [[ -z ${REPO_NAME} ]]; then
         if [[ "${VERSION}" != 'RELEASE' ]]; then
             # download specific version if set
             echo VERSION: ${VERSION}
-            sudo yum -y install --downloadonly --downloaddir=./ vpp-api-java-${VERSION} || true
+            yumdownloader vpp-api-java-${VERSION} || true
         else
             # download latest version for specified stream
-            sudo yum -y install --downloadonly --downloaddir=./ vpp-api-java || true
+            yumdownloader vpp-api-java || true
         fi
     fi
 fi
