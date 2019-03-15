@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c17625b_2e8cdce6",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-03-15T15:10:13Z",
+      "side": 1,
+      "message": "This could be changed to \u0027recheck\u0027, but no need while this job is non-voting.",
+      "range": {
+        "startLine": 73,
+        "startChar": 40,
+        "endLine": 73,
+        "endChar": 52
+      },
+      "revId": "a9c2b91a8c69edd65c2405433c08217b41517406",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
