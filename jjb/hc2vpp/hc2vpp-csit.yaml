@@ -55,7 +55,7 @@
     name: 'hc2vpp-csit-integration-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-builder-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -107,7 +107,7 @@
     name: 'hc2vpp-csit-verify-{stream}-{os}'
 
     project-type: maven
-    node: '{os}-builder-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
     concurrent: true
 
@@ -200,7 +200,7 @@
     name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-builder-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -254,7 +254,7 @@
     name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
 
     project-type: maven
-    node: '{os}-builder-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     jdk: openjdk8-{os}
     concurrent: true
 
@@ -347,7 +347,7 @@
     name: 'hc2vpp-csit-perf-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-builder-4c-4g'
+    node: '{os}-basebuild-4c-4g'
     concurrent: false
 
     build-discarder:
