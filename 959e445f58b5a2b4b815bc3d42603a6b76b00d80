@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "144504f6_918935a9",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-03-20T18:55:08Z",
+      "side": 1,
+      "message": "Currently we have also [1], PAL has to be updated to support both that (for historic results) and -3n-hsw (for results after this Change).\n\n[1] https://jenkins.fd.io/view/csit/job/csit-vpp-perf-mrr-daily-master/",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "959e445f58b5a2b4b815bc3d42603a6b76b00d80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
