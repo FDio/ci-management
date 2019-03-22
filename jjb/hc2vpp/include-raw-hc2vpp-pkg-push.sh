@@ -15,7 +15,7 @@ if [[ "${STREAM}" == "master" ]]; then
 
         # Write a file that will echo VPP dependencies
         echo -n 'echo' > vpp_dependencies
-        echo " \"vpp = ${VERSION}, vpp-plugins = ${VERSION}\"" >> vpp_dependencies
+        echo " \"vpp = ${VERSION}, vpp-plugins = ${VERSION}, vpp-api-java = ${JVPP_VERSION}\"" >> vpp_dependencies
         chmod +x vpp_dependencies
 
         # Overwrite default dependencies file
@@ -27,7 +27,7 @@ if [[ "${STREAM}" == "master" ]]; then
 
         # Write a file that will echo VPP dependencies
         echo -n 'echo' > vpp_dependencies
-        echo " \"vpp (= ${VERSION}), vpp-plugin-core (= ${VERSION})\"" >> vpp_dependencies
+        echo " \"vpp (= ${VERSION}), vpp-plugin-core (= ${VERSION}), vpp-api-java (= ${JVPP_VERSION})\"" >> vpp_dependencies
         chmod +x vpp_dependencies
 
         # Overwrite default dependencies file
