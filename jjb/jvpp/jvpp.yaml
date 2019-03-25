@@ -73,6 +73,8 @@
           branch: '{branch}'
 
     builders:
+      - lf-update-java-alternatives:
+          java-version: openjdk11
       - shell:
           !include-raw-escape:
           - ../scripts/setup_jvpp_dev_env.sh
@@ -145,6 +147,8 @@
           result: 'success'
 
     builders:
+      - lf-update-java-alternatives:
+          java-version: openjdk11
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
