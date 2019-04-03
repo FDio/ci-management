@@ -814,13 +814,10 @@
           content-type: 'text'
           subject: 'FD.io CSIT Trending Alert: Build # $BUILD_NUMBER'
           # yamllint disable-line rule:line-length
-          attachments: '**/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/failed-tests*.tar.gz'
           body: |
-                FD.io CSIT Trending Alert - failed tests
+                See the list of failed tests below.
 
-                $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS
-
-                See attachment for the list of the failed tests.
+                ${FILE,path="**/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/compressed-trending-failed-tests.txt"}
 
           always: true
           failure: false
