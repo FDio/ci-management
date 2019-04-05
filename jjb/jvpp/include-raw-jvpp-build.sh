@@ -43,7 +43,8 @@ echo "Building using \"make package\""
 [[ "x${DRYRUN}" == "xTrue" ]] || cd Requirements && make UNATTENDED=yes install-dep && cd ..
 [[ "x${DRYRUN}" == "xTrue" ]] || pwd
 if [[ "${OS_ID}" == "centos" ]]; then
-    [[ "x${DRYRUN}" == "xTrue" ]] || cmake3 .
+    [[ "x${DRYRUN}" == "xTrue" ]] || /opt/rh/devtoolset-7/enable
+    [[ "x${DRYRUN}" == "xTrue" ]] || cmake3 . -DCMAKE_PROGRAM_PATH:PATH="/opt/rh/devtoolset-7/root/bin"
 else
     [[ "x${DRYRUN}" == "xTrue" ]] || cmake .
 fi
