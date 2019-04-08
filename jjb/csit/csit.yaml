@@ -809,7 +809,7 @@
     publishers:
       - email-ext:
           # yamllint disable-line rule:line-length
-          presend-script: "EMAIL_BODY = sh script: 'cat **/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-failed-tests.txt, returnStdout: true"
+          presend-script: "EMAIL_BODY = sh script: 'cat **/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-failed-tests.txt, returnStdout: true'"
           # yamllint disable-line rule:line-length
           recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
           reply-to: ''
