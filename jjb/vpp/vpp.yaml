@@ -22,6 +22,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
 
 - project:
     name: vpp-clang
@@ -57,6 +60,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
     os: ubuntu1604
 
 - project:
@@ -88,6 +94,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -105,6 +114,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
