@@ -817,7 +817,7 @@
           body: |
                 Following tests failed in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="**/build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-failed-tests.txt"}}
+                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
 
           always: true
           failure: false
