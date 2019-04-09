@@ -68,6 +68,11 @@
           branch-id: 'oper'
           docs-executor: 'ubuntu1804-us'
           perf-executor: 'ubuntu1804-us'
+      - '1904':
+          branch: 'rls1904'
+          branch-id: 'oper-rls1904'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
     stream:
       - master:
           branch: 'master'
@@ -89,6 +94,11 @@
           branch-id: 'oper-rls1901'
           docs-executor: 'ubuntu1604-basebuild-4c-4g'
           perf-executor: 'ubuntu1604-basebuild-8c-32g'
+      - '1904':
+          branch: 'rls1904'
+          branch-id: 'oper-rls1904'
+          docs-executor: 'ubuntu1804-us'
+          perf-executor: 'ubuntu1804-us'
 
 - project:
     name: csit-view

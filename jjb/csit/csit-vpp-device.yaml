@@ -32,9 +32,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1901':
-          branch: 'rls1901'
-          branch-id: 'oper-rls1901'
+      - '1904':
+          branch: 'rls1904'
+          branch-id: 'oper-rls1904'
     stream:
       - master:
           branch: 'master'
@@ -45,6 +45,9 @@
       - '1901':
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
+      - '1904':
+          branch: 'rls1904'
+          branch-id: 'oper-rls1904'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{topo}-{arch}'
