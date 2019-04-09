@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3e237f_760b56b7",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-04-09T12:37:03Z",
+      "side": 1,
+      "message": "I would guess either /w/csit-trending-daily-master/resources/\nor just resources/ (and I would prefer the latter).",
+      "range": {
+        "startLine": 820,
+        "startChar": 30,
+        "endLine": 820,
+        "endChar": 67
+      },
+      "revId": "fb4f49c15020010ae0fcb9a8263bd281c894fc91",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
