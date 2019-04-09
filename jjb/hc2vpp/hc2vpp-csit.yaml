@@ -29,7 +29,7 @@
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
 
-    odl: 'fluorine'
+    odl: 'neon'
 
 - project:
     name: csit-hc2vpp-perf
@@ -49,7 +49,7 @@
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
 
-    odl: 'fluorine'
+    odl: 'neon'
 
 - job-template:
     name: 'hc2vpp-csit-integration-{stream}-{os}'
