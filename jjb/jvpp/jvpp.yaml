@@ -89,7 +89,7 @@
           only-if-success: true
           default-excludes: false
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           archive-artifacts: '/tmp/jvpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
@@ -118,9 +118,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - stream-parameter:
           stream: '{stream}'
       - repo-name-parameter:
@@ -154,7 +154,7 @@
             - file-id: 'packagecloud_api'
               target: '/root'
       - maven-target:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           goals: '--version'
           settings: 'jvpp-settings'
           settings-type: cfp
@@ -185,7 +185,7 @@
           only-if-success: true
           default-excludes: false
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
