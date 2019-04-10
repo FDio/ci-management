@@ -101,7 +101,7 @@
           output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-csit-verify-{stream}-{os}'
@@ -125,9 +125,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - stream-parameter:
           stream: '{stream}'
       - odl-parameter:
@@ -169,7 +169,7 @@
           !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
@@ -194,7 +194,7 @@
           output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-csit-integration-odl-{odl}-{stream}-{os}'
@@ -248,7 +248,7 @@
           output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-csit-verify-odl-{odl}-{stream}-{os}'
@@ -272,9 +272,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - stream-parameter:
           stream: '{stream}'
       - odl-parameter:
@@ -316,7 +316,7 @@
           !include-raw-escape: include-raw-hc2vpp-csit-verify-prebuild.sh
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r -DskipTests -Dcheckstyle.skip=true'
@@ -341,7 +341,7 @@
           output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-csit-perf-{stream}-{os}'
@@ -410,7 +410,7 @@
           output-path: 'csit/archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - parameter:
     name: odl-parameter

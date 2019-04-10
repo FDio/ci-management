@@ -81,7 +81,7 @@
           output-path: 'archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'csit-hc2vpp-verify-perf-{stream}-{os}'
@@ -138,4 +138,4 @@
           output-path: 'archive'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
