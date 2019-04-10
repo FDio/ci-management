@@ -45,7 +45,6 @@
     project-type: maven
     node: '{os}-basebuild-4c-4g'
     concurrent: true
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -77,7 +76,7 @@
           branch: '{branch}'
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
@@ -91,14 +90,13 @@
       - email-notification:
           email-prefix: '[hc2vpp]'
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-verify-image-{stream}-{os}'
     project-type: maven
     node: '{os}-basebuild-4c-4g'
     concurrent: true
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -143,7 +141,7 @@
             notbuilt: true
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
@@ -157,13 +155,12 @@
       - email-notification:
           email-prefix: '[hc2vpp]'
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-merge-{stream}-{os}'
     project-type: maven
     node: '{os}-basebuild-4c-4g'
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -177,9 +174,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -202,7 +199,7 @@
           branch: '{branch}'
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar -Ddocs.hc.folder=io/fd/hc2vpp -Dmaven.site.skip={skip-site} site -Dmaven.site.deploy.skip={skip-site} site:deploy'
@@ -223,13 +220,12 @@
       - email-notification:
         email-prefix: '[hc2vpp]'
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'hc2vpp-integration-{stream}-{os}'
     project-type: maven
     node: '{os}-basebuild-4c-4g'
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -245,9 +241,9 @@
       - stream-parameter:
           stream: '{stream}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
@@ -287,7 +283,7 @@
       - shell:
           !include-raw-escape: include-raw-hc2vpp-integration-prebuild.sh
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
@@ -299,7 +295,7 @@
 
     postbuilders:
       - maven-target:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           goals: '--version'
           settings: 'hc2vpp-settings'
           settings-type: cfp
@@ -327,4 +323,4 @@
           deploy-unstable: false
           release-env-var: SKIP_JAR_DEPLOY
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'

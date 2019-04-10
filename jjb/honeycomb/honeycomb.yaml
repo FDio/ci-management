@@ -37,7 +37,6 @@
     project-type: maven
     node: '{os}-basebuild-4c-4g'
     concurrent: true
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -69,7 +68,7 @@
           branch: '{branch}'
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
@@ -83,13 +82,12 @@
       - email-notification:
           email-prefix: '[honeycomb]'
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
     project-type: maven
     node: '{os}-basebuild-4c-4g'
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -103,9 +101,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
 
@@ -128,7 +126,7 @@
           branch: '{branch}'
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Dsonar site site:deploy'
@@ -140,7 +138,7 @@
 
     postbuilders:
       - maven-target:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           goals: '--version'
           settings: 'honeycomb-settings'
           settings-type: cfp
@@ -165,13 +163,12 @@
           unique-version: true
           deploy-unstable: false
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'honeycomb-benchmark-master-{os}'
     project-type: maven
     node: '{os}-basebuild-4c-4g'
-    jdk: openjdk8-{os}
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -185,9 +182,9 @@
       - os-parameter:
           os: '{os}'
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: 'mvn36'
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - repo-name-parameter:
           repo-name: 'master.{repo-os-part}'
 
@@ -207,7 +204,7 @@
       - timed: '@daily'
 
     maven:
-      maven-name: 'mvn33-new'
+      maven-name: 'mvn36'
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge -Pbenchmark'
@@ -282,4 +279,4 @@
                 exclude: 'simple-container,list-in-container,complex-list-in-container'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
