@@ -11,9 +11,16 @@ function setup {
         echo "REPO_URL: ${REPO_URL}"
         # Setup by installing vpp-dev and vpp-lib
         if [ "$OS_ID" == "ubuntu" ]; then
-            if [ -f /etc/apt/sources.list.d/99fd.io.list ];then
-                echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
-                sudo rm /etc/apt/sources.list.d/99fd.io.list
+            apt_source_list_dir="/etc/apt/sources.list.d"
+            for source_list in $(ls -1 $apt_source_list_dir | grep fdio) ; do
+                if [ -f "$apt_source_list_dir/$source_list" ] ; then
+                    echo "Deleting: $apt_source_list_dir/$source_list"
+                    sudo rm $apt_source_list_dir/$source_list
+                fi
+            done
+            if [ -f "$apt_source_list_dir/99fd.io.list" ];then
+                echo "Deleting: $apt_source_list_dir/99fd.io.list"
+                sudo rm $apt_source_list_dir/99fd.io.list
             fi
             curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
