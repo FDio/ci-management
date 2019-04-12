@@ -11,11 +11,16 @@ function setup {
         echo "REPO_URL: ${REPO_URL}"
         # Setup by installing vpp-dev and vpp-lib
         if [ "$OS_ID" == "ubuntu" ]; then
+        	if ! [ "${STREAM}" == "master" ]; then
+        		echo "tree not master deleting packagecloud repo pointer"
+        		sudo rm  -f /etc/apt/sources.list.d/fdio_master.list
+        		curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
+        	fi
             if [ -f /etc/apt/sources.list.d/99fd.io.list ];then
                 echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
                 sudo rm /etc/apt/sources.list.d/99fd.io.list
             fi
-            curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
+
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
             sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
             sudo apt-get -y --force-yes install vpp-ext-deps || true
