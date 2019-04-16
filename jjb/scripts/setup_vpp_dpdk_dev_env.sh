@@ -20,7 +20,7 @@ function setup {
                 echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
                 sudo rm /etc/apt/sources.list.d/99fd.io.list
             fi
-
+            sudo apt-get update -qq || true
             sudo apt-get -y --force-yes install vpp-dpdk-dev || true
             sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
             sudo apt-get -y --force-yes install vpp-ext-deps || true
