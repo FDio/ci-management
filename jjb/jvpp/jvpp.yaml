@@ -25,6 +25,9 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
 
 - project:
     name: jvpp-view
