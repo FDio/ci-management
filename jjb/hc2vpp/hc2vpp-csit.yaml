@@ -22,6 +22,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
 
     os:
       - ubuntu1804:
