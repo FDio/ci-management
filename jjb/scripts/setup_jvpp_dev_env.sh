@@ -23,6 +23,10 @@ function setup {
         echo "REPO_URL: ${REPO_URL}"
         # Setup by installing vpp-dev and vpp-lib
         if [[ "$DISTRIB_ID" == "Ubuntu" ]]; then
+            if ! [[ "${STREAM}" == "master" ]]; then
+                echo "stable branch - clearing all fdio repos. new one will be installed."
+                sudo rm  -f /etc/apt/sources.list.d/fdio_*.list
+            fi
             if [[ -f /etc/apt/sources.list.d/99fd.io.list ]];then
                 echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
                 sudo rm /etc/apt/sources.list.d/99fd.io.list
