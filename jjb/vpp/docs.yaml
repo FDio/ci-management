@@ -16,12 +16,12 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1810':
-          branch: 'stable/1810'
-          repo-stream-part: 'stable.1810'
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - '1904':
+          branch: 'stable/1904'
+          repo-stream-part: 'stable.1904'
     type:
       - short
       - long
