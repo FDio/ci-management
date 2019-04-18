@@ -1011,11 +1011,11 @@
       - gerrit-csit-refspec-parameter
       - string:
           name: CSIT_PERF_TRIAL_DURATION
-          default: "1.0"
+          default: "10.0"
           description: "Duration of a trial measurement in BMRR tests."
       - string:
           name: CSIT_PERF_TRIAL_MULTIPLICITY
-          default: "8"
+          default: "5"
           description: "Number of subsamples for BMRR tests."
       - stream-parameter:
           stream: '{stream}'
