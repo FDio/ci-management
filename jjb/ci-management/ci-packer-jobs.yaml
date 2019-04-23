@@ -9,6 +9,7 @@
     project-name: ci-management
     build-node: centos7-builder-2c-2g
     openstack-cloud: vexci
+    packer-version: 1.4.0
 
     platforms:
       - centos-7
