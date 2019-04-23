@@ -69,6 +69,7 @@
                 exclude-drafts: 'true'
                 exclude-trivial-rebase: 'false'
                 exclude-no-code-change: 'true'
+            - draft-published-event
             - comment-added-contains-event:
                 comment-contains-value: 'devicetest'
           projects:
