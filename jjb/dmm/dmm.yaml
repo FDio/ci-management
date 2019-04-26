@@ -31,6 +31,8 @@
           branch: 'master'
       - non-dpdk:
           branch: 'none-dpdk'
+      - DMM-2:
+          branch: 'DMM-2'
 
 - project:
     name: dmm-view
@@ -170,6 +172,55 @@
 
 - job-template:
     name: 'dmm-csit-verify-func-master-{os}-virl'
+
+    project-type: freestyle
+    node: '{os}-builder-4c-4g'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: 'dmm'
+      - gerrit-parameter:
+          branch: '{branch}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          name: 'dmm'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: include-raw-dmm-csit-functional-virl.sh
+
+    publishers:
+      - archive-artifacts:
+          artifacts: 'csit/archive/*.*'
+          latest-only: false
+
+      - robot-report:
+          output-path: 'csit'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'dmm-csit-verify-func-DMM-2-{os}-virl'
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
