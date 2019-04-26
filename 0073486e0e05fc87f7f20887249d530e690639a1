@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3daf62e_84cfea10",
+        "filename": "jjb/dmm/dmm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-04-26T15:04:01Z",
+      "side": 1,
+      "message": "Would it make sense to create additional \u0027project\u0027 named dmm-csit, with streams without non-dpdk, and move the csit job there as template \u0027dmm-csit-verify-func-{stream}-{os}-virl\u0027?",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "0073486e0e05fc87f7f20887249d530e690639a1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa63ca6_f6592cc7",
+        "filename": "jjb/dmm/dmm.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-04-26T15:04:01Z",
+      "side": 1,
+      "message": "When you are adding a new template, I believe you need to also add a coresponding line after line 24.",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 14
+      },
+      "revId": "0073486e0e05fc87f7f20887249d530e690639a1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
