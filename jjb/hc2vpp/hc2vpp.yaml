@@ -5,7 +5,6 @@
       - 'hc2vpp-verify-{stream}-{os}'
       - 'hc2vpp-merge-{stream}-{os}'
       - 'hc2vpp-integration-{stream}-{os}'
-      - 'hc2vpp-verify-image-{stream}-{os}'
     project: 'hc2vpp'
     os:
       - ubuntu1804:
@@ -84,72 +83,6 @@
       root-pom: 'pom.xml'
       # yamllint disable-line rule:line-length
       goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge site'
-      maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
-      settings: 'hc2vpp-settings'
-      settings-type: cfp
-      global-settings: 'global-settings'
-      global-settings-type: cfp
-
-    publishers:
-      - email-notification:
-          email-prefix: '[hc2vpp]'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
-
-- job-template:
-    name: 'hc2vpp-verify-image-{stream}-{os}'
-    project-type: maven
-    node: '{os}-builder-4c-4g'
-    concurrent: true
-    jdk: openjdk8-{os}
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'verify-images'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
-
-    maven:
-      maven-name: 'mvn36'
-      root-pom: 'pom.xml'
-      # yamllint disable-line rule:line-length
-      goals: 'clean install -V -Dmaven.repo.local=/tmp/r -Dorg.ops4j.pax.url.mvn.localRepository=/tmp/r  -Dmerge'
       maven-opts: '-Xmx2048m -Dmaven.compile.fork=true'
       settings: 'hc2vpp-settings'
       settings-type: cfp
