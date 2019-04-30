@@ -421,7 +421,7 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/test-doc/build/html/*'
+          artifacts: 'test/doc/build/html/*'
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
@@ -507,7 +507,7 @@
 
     publishers:
       - archive:
-          artifacts: 'build-root/test-doc/build/html/*'
+          artifacts: 'test/doc/build/html/*'
           allow-empty: 'true'
           fingerprint: false
           only-if-success: true
