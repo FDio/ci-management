@@ -5,5 +5,8 @@
   "distro": "Ubuntu 18.04",
   "source_ami_filter_name": "*ubuntu*18.04*",
   "source_ami_filter_owner": "099720109477",
-  "ssh_user": "ubuntu"
+  "ssh_user": "ubuntu",
+  "flavor": "v2-standard-1",
+  "vm_use_block_storage": "true,
+  "vm_image_disk_format": "raw"
 }
