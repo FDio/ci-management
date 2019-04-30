@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3c5db3_488b3c4b",
+        "filename": "packer/vars/ubuntu-18.04-arm64.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2019-04-30T20:30:50Z",
+      "side": 1,
+      "message": "This value shouldn\u0027t be needed as we default to 10 in the new templates. What you need are:\n\n\"vm_use_block_storage\": \"true\",\n\"vm_image_disk_format\": \"raw\"",
+      "revId": "ed715ee3e3f805498bcf8cd4095d1c3032bb9921",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
