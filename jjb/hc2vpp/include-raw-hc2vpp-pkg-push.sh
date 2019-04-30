@@ -23,7 +23,10 @@ if [[ "${STREAM}" == "master" ]]; then
     else
         # Determine VPP Java API version used in maven build
         JVPP_VERSION=`apt list --installed | grep vpp-api-java | awk '{ printf $2; }'`
-        VERSION=`apt-cache showpkg vpp-api-java |grep "$JVPP_VERSION" |grep vpp | sed "s/.*(. //" | sed "s/).*//"`
+        # get vpp-api-java package dependencies
+        JVPP_DEPS=`apt-cache show vpp-api-java=${JVPP_VERSION} |grep Depends: | sed "s/Depends: //"`
+        # separate deps with newline, then find VPP dependency and filter out the version
+        VERSION=`echo ${JVPP_DEPS}| sed "s/, /\\n/" |grep "vpp " | sed "s/).*//" |sed "s/.* //"`
 
         # Write a file that will echo VPP dependencies
         echo -n 'echo' > vpp_dependencies
