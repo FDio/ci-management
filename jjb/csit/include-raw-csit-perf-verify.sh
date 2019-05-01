@@ -8,6 +8,10 @@ if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
 else
     TRIGGER=''
 fi
+
+# grep to see where minion is running
+grep search /etc/resolv.conf  || true
+
 # Export test tags as string.
 export TEST_TAG_STRING=${TRIGGER#$"perftest"}
 
