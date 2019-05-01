@@ -87,7 +87,6 @@
           - dblatex
           - source-highlight
           - lcov
-          - gcc-multilib
           - bison
           - ccache
           - dkms
