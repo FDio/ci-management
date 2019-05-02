@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d52961_fcf68f87",
+        "filename": "jjb/jvpp/jvpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-05-02T11:21:54Z",
+      "side": 1,
+      "message": "Not sure this will work if the job is triggered via line 149; but this is temporary anyway, so we can try and see what happens.",
+      "range": {
+        "startLine": 137,
+        "startChar": 19,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "3c32a969d1a48a94446c25a8f482b84b26c1b33a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
