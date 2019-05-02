@@ -46,6 +46,30 @@
       "revId": "d8fd76c7fe7f9b3d6206c41beadb7be9f36759c3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bce0b57_7b98f249",
+        "filename": "jjb/scripts/setup_jvpp_dev_env.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 331
+      },
+      "writtenOn": "2019-05-02T12:06:29Z",
+      "side": 1,
+      "message": "thanks, this is more readable.",
+      "parentUuid": "acbde946_a66afeea",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "d8fd76c7fe7f9b3d6206c41beadb7be9f36759c3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
