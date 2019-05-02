@@ -134,8 +134,8 @@
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
 
     wrappers:
       - fdio-infra-wrappers:
