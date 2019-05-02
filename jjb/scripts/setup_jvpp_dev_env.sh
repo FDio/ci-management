@@ -16,6 +16,17 @@ echo DISTRIB_RELEASE: $DISTRIB_RELEASE
 echo DISTRIB_CODENAME: $DISTRIB_CODENAME
 echo DISTRIB_DESCRIPTION: $DISTRIB_DESCRIPTION
 
+JVPP_VERSION=`./version`
+echo JVPP_VERSION: $JVPP_VERSION
+# Check release version
+if [[ .*$JVPP_VERSION.* =~ "release" ]]; then
+    # at the time when JVPP release packages are being build,
+    # vpp release packages are already promoted to release repository.
+    # Therefore we need to switch to release repository in order to download
+    # correct vpp package versions
+    STREAM="release"
+fi
+
 function setup {
     if ! [[ -z ${REPO_NAME} ]]; then
         echo "INSTALLING VPP-DPKG-DEV from apt/yum repo"
