@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93e57583_abae6fce",
+        "filename": "jjb/scripts/setup_jvpp_dev_env.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-05-02T10:46:58Z",
+      "side": 1,
+      "message": "Looking at https://unix.stackexchange.com/questions/340440/bash-test-what-does-do\nI believe the \".*\" parts should be to the right side, and probably quoted. Do you have an example $JVPP_VERSION value you are trying to match?",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "d8fd76c7fe7f9b3d6206c41beadb7be9f36759c3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
