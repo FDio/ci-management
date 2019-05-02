@@ -22,6 +22,30 @@
       "revId": "d8fd76c7fe7f9b3d6206c41beadb7be9f36759c3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acbde946_a66afeea",
+        "filename": "jjb/scripts/setup_jvpp_dev_env.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-05-02T11:42:45Z",
+      "side": 1,
+      "message": "Ok, so I was wrong. The pattern (right side) only needs to match a substring to pass. But currently I think the \".*\" parts are handled as strings (not globs nor patterns), so they have no influence. The condition can pass [0] just because \"release\" is a substring of \"$JVPP_VERSION\", for example of \"19.04-release\".\n\nBut checking for a substring [1] can be done in a more readable way, for example:\n  if [[ \"$JVPP_VERSION\" \u003d\u003d *\"-release\" ]]; then\n\n[0] https://jenkins.fd.io/sandbox/job/jvpp-merge-1904-centos7/5/console\n[1] https://stackoverflow.com/questions/229551/how-to-check-if-a-string-contains-a-substring-in-bash",
+      "parentUuid": "93e57583_abae6fce",
+      "range": {
+        "startLine": 22,
+        "startChar": 24,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "d8fd76c7fe7f9b3d6206c41beadb7be9f36759c3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
