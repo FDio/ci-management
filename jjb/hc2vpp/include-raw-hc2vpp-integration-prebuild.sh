@@ -21,6 +21,14 @@ echo DISTRIB_RELEASE: ${DISTRIB_RELEASE}
 echo DISTRIB_CODENAME: ${DISTRIB_CODENAME}
 echo DISTRIB_DESCRIPTION: ${DISTRIB_DESCRIPTION}
 
+if [[ "$VERSION" == *"-release" ]]; then
+    # at the time when HC2VPP release packages are being build,
+    # jvpp release packages are already promoted to release repository.
+    # Therefore we need to switch to release repository in order to download
+    # correct jvpp package versions
+    STREAM="release"
+fi
+
 echo "----- DOWNLOADING PACKAGES -----"
 if ! [[ -z ${REPO_NAME} ]]; then
     REPO_URL="https://packagecloud.io/fdio/${STREAM}"
@@ -29,6 +37,10 @@ if ! [[ -z ${REPO_NAME} ]]; then
         if [[ -f /etc/apt/sources.list.d/99fd.io.list ]];then
             echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
             sudo rm /etc/apt/sources.list.d/99fd.io.list
+        fi
+        if ! [[ "${STREAM}" == "master" ]]; then
+            echo "stable branch - clearing all fdio repos. new one will be installed."
+            sudo rm  -f /etc/apt/sources.list.d/fdio_*.list
         fi
         curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
         if [[ "${VERSION}" != 'RELEASE' ]]; then
