@@ -22,6 +22,30 @@
       "revId": "e6b4d7dc211c154582a2aa04d6610258d0c9b7e3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c51b817_6f5cf264",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 331
+      },
+      "writtenOn": "2019-05-07T10:15:20Z",
+      "side": 1,
+      "message": "implementation allows to add more parameters if desired, but it will pick parameter by matching \"honeycomb\u003d\" only.\nText part after \"\u003d\" is assigned to a variable. everything other is discarded. \nso for \"verify-hc2vpp-func foo bar\u003d19.04-release\" it will not pick release repository but for \"verify-hc2vpp-func foo bar\u003d19.04-release honeycomb\u003d19.04-release\" it will.",
+      "parentUuid": "ccbc090f_94303de4",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "e6b4d7dc211c154582a2aa04d6610258d0c9b7e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
