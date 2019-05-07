@@ -46,6 +46,30 @@
       "revId": "e6b4d7dc211c154582a2aa04d6610258d0c9b7e3",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04442d2e_91f0e746",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-05-07T10:32:21Z",
+      "side": 1,
+      "message": "Ah, right, I forgot about the case.\n  verify-hc2vpp-func foo honeycomb baz bar\u003d19.04-release",
+      "parentUuid": "1c51b817_6f5cf264",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "e6b4d7dc211c154582a2aa04d6610258d0c9b7e3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
