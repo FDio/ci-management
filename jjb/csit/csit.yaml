@@ -35,7 +35,7 @@
       - 'csit-docs-merge-{stream_timed}'
       - 'csit-docs-verify-{stream}'
       - 'csit-report-merge-{stream}'
-      - 'csit-report-merge-1901_1'
+      - 'csit-report-merge-1901_2'
       - 'csit-trending-daily-master'
       - 'csit-dpdk-perf-verify-{stream}-{topo}-{arch}'
       - 'csit-dpdk-perf-mrr-weekly-master'
@@ -693,7 +693,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-report-merge-1901_1'
+    name: 'csit-report-merge-1901_2'
 
     project-type: freestyle
     node: 'ubuntu1604-basebuild-8c-32g'
@@ -709,7 +709,7 @@
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
-          branch: 'rls1901_1'
+          branch: 'rls1901_2'
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -734,7 +734,7 @@
               project-pattern: '{project}'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: '**/rls1901_1'
+                  branch-pattern: '**/rls1901_2'
           skip-vote:
             successful: true
             failed: true
