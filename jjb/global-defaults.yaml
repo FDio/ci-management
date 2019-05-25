@@ -18,3 +18,5 @@
 
     # fd.io branch defaults
     branch: master
+
+    archive-artifacts: ''
