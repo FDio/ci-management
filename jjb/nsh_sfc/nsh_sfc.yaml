@@ -384,7 +384,7 @@
     name: 'nsh_sfc-verify-docs-{stream}'
 
     project-type: freestyle
-    node: '{os}-builder-4c-4g'
+    node: ubuntu1604-builder-4c-4g
     concurrent: true
     jdk: openjdk8-ubuntu1604
 
@@ -399,8 +399,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
 
