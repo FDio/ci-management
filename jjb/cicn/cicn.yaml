@@ -449,7 +449,7 @@
     name: 'cicn-longbow-docs-merge-{stream}'
 
     project-type: freestyle
-    node: '{os}-builder-8c-32g'
+    node: 'ubuntu1604-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -463,8 +463,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -528,7 +526,7 @@
     name: 'cicn-longbow-docs-verify-{stream}'
 
     project-type: freestyle
-    node: '{os}-builder-8c-32g'
+    node: 'ubuntu1604-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -542,8 +540,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -735,7 +731,7 @@
     name: 'cicn-libparc-docs-merge-{stream}'
 
     project-type: freestyle
-    node: '{os}-builder-8c-32g'
+    node: 'ubuntu1604-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -749,8 +745,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
 
@@ -814,7 +808,7 @@
     name: 'cicn-libparc-docs-verify-{stream}'
 
     project-type: freestyle
-    node: '{os}-builder-8c-32g'
+    node: 'ubuntu1604-builder-8c-32g'
     concurrent: true
 
     build-discarder:
@@ -828,8 +822,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
 
