@@ -21,6 +21,11 @@
           branch: 'cframework/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -46,6 +51,11 @@
       - master:
           branch: 'cframework/master'
           repo-stream-part: 'master'
+
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
 
     type:
       - short
@@ -95,6 +105,11 @@
           branch: 'ccnxlibs/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -118,6 +133,11 @@
       - master:
           branch: 'ccnxlibs/master'
           repo-stream-part: 'master'
+
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
 
     type:
       - short
@@ -143,6 +163,11 @@
           branch: 'libicnet/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -166,6 +191,11 @@
       - master:
           branch: 'sb-forwarder/master'
           repo-stream-part: 'master'
+
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
 
     type:
       - short
@@ -191,6 +221,11 @@
           branch: 'http-server/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -215,6 +250,11 @@
           branch: 'cicn-plugin/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -237,6 +277,11 @@
           branch: 'viper/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+
     type:
       - short
       - long
@@ -256,6 +301,11 @@
       - master:
           branch: 'vicn/master'
           repo-stream-part: 'master'
+
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
 
     type:
       - short
@@ -277,6 +327,12 @@
           branch: 'android-sdk/master'
           repo-stream-part: 'master'
 
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
+      **/*.apk
+
     type:
       - short
       - long
@@ -296,6 +352,11 @@
       - master:
           branch: 'vicn/master'
           repo-stream-part: 'master'
+
+    archive-artifacts: >
+      **/*.rpm
+      **/*.deb
+      **/*.tar
 
     type:
       - short
@@ -320,20 +381,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'release'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'release'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -351,6 +416,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -381,16 +447,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/longbow/build/*.rpm,
-            **/longbow/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-longbow-verify-{stream}-{os}'
@@ -406,11 +463,17 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: '{stream}'
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
       - os-parameter:
+          description: Operating system.
           os: '{os}'
 
     scm:
@@ -429,21 +492,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-longbow-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/longbow/build/*.rpm,
-            **/longbow/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-longbow-docs-merge-{stream}'
@@ -459,12 +514,17 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: '{stream}'
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -498,6 +558,7 @@
             notbuilt: true
 
     builders:
+      - lf-infra-pre-build
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -513,14 +574,7 @@
           - include-raw-cicn-longbow-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'longbow/build/documentation/*.tar'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-longbow-docs-verify-{stream}'
@@ -536,12 +590,17 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: '{stream}'
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -559,6 +618,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -574,14 +634,7 @@
           - include-raw-cicn-longbow-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'longbow/build/documentation/*.tar'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libparc-merge-{stream}-{os}'
@@ -596,20 +649,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'release'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'release'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -633,6 +690,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -663,16 +721,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libparc/build/*.rpm,
-            **/libparc/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libparc-verify-{stream}-{os}'
@@ -688,12 +737,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
+      - maven-exec:
+          maven-version: 'mvn33-new'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -711,21 +772,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-libparc-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libparc/build/*.rpm,
-            **/libparc/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libparc-docs-merge-{stream}'
@@ -741,12 +794,19 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
+      - maven-project-parameter:
+          maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -780,6 +840,7 @@
             notbuilt: true
 
     builders:
+      - lf-infra-pre-build
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -795,14 +856,7 @@
           - include-raw-cicn-libparc-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'libparc/build/documentation/*.tar'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libparc-docs-verify-{stream}'
@@ -818,12 +872,17 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -841,6 +900,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -856,14 +916,7 @@
           - include-raw-cicn-libparc-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'libparc/build/documentation/*.tar'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 
 - job-template:
@@ -879,20 +932,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -913,6 +970,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -943,16 +1001,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libccnx-common/build/*.rpm,
-            **/libccnx-common/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libccnx-common-verify-{stream}-{os}'
@@ -968,12 +1017,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -991,21 +1046,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-libccnx-common-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libccnx-common/build/*.rpm,
-            **/libccnx-common/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
@@ -1020,20 +1067,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1054,6 +1105,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1084,16 +1136,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libccnx-transport-rta/build/*.rpm,
-            **/libccnx-transport-rta/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
@@ -1109,12 +1152,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1132,22 +1181,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-libccnx-transport-rta-build.sh
 
     publishers:
-      - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: >
-            **/libccnx-transport-rta/build/*.rpm,
-            **/libccnx-transport-rta/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libccnx-portal-merge-{stream}-{os}'
@@ -1162,20 +1202,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1196,6 +1240,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1226,16 +1271,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libccnx-portal/build/*.rpm,
-            **/libccnx-portal/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libccnx-portal-verify-{stream}-{os}'
@@ -1251,12 +1287,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1274,21 +1316,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-libccnx-portal-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/libccnx-portal/build/*.rpm,
-            **/libccnx-portal/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libicnet-merge-{stream}-{os}'
@@ -1303,20 +1337,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1337,6 +1375,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1367,16 +1406,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-libicnet-verify-{stream}-{os}'
@@ -1392,12 +1422,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1415,21 +1451,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-libicnet-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-metis-merge-{stream}-{os}'
@@ -1444,20 +1472,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1478,6 +1510,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1508,16 +1541,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/metis/build/*.rpm,
-            **/metis/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-metis-verify-{stream}-{os}'
@@ -1533,12 +1557,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1556,21 +1586,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-metis-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/metis/build/*.rpm,
-            **/metis/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-http-server-merge-{stream}-{os}'
@@ -1585,20 +1607,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1619,6 +1645,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1649,16 +1676,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-http-server-verify-{stream}-{os}'
@@ -1674,12 +1692,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1697,21 +1721,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-http-server-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-vpp-plugin-merge-{stream}-{os}'
@@ -1726,20 +1742,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1757,6 +1777,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1787,16 +1808,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/cicn-plugin/build/*.rpm,
-            **/cicn-plugin/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-vpp-plugin-verify-{stream}-{os}'
@@ -1864,20 +1876,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'msater'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1898,6 +1914,7 @@
           result: 'failure'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -1928,18 +1945,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb,
-            **/libdash/build/*.rpm,
-            **/libdash/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-viper-verify-{stream}-{os}'
@@ -1955,12 +1961,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1978,23 +1990,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-viper-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb,
-            **/libdash/build/*.rpm,
-            **/libdash/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-radio-emulators-merge-{stream}-{os}'
@@ -2009,20 +2011,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2040,6 +2046,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -2070,19 +2077,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: >
-            **/emu-radio/build/*.rpm,
-            **/emu-radio/build/*.deb,
-            **/emu-radio/ns3-packages/*.rpm,
-            **/emu-radio/ns3-packages/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-radio-emulators-verify-{stream}-{os}'
@@ -2098,12 +2093,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2121,25 +2122,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-radio-emulators-build.sh
 
     publishers:
-      - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: >
-            **/emu-radio/build/*.rpm,
-            **/emu-radio/build/*.deb,
-            **/emu-radio/ns3-packages/*.rpm,
-            **/emu-radio/ns3-packages/*.deb
-
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-android-sdk-merge-{stream}-{os}'
@@ -2154,18 +2143,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2183,23 +2178,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-android-sdk-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/IGetAndroid/app/build/outputs/apk/release/*.apk,
-            **/MetisForwarderAndroid/app/build/outputs/apk/release/*.apk,
-            **/HttpServer/app/build/outputs/apk/release/*.apk,
-            **/build_armv7-a/viper/viper-armv7//build/outputs/apk/*.apk
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-android-sdk-verify-{stream}-{os}'
@@ -2215,12 +2200,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2238,23 +2229,13 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-android-sdk-build.sh
 
     publishers:
-      - archive:
-          # yamllint disable-line rule:line-length
-          artifacts: >
-            **/iGetAndroid/app/build/outputs/apk/*.apk,
-            **/MetisForwarder/app/build/outputs/apk/*.apk,
-            **/build/viper/viper-armv7//build/outputs/apk/*.apk
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-vicn-merge-{stream}-{os}'
@@ -2269,20 +2250,24 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: 'master'
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
+          lftools-version: '{lftools-version}'
       - maven-project-parameter:
           maven: 'mvn33-new'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - os-parameter:
+          description: Operating system.
+          os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'master'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2300,6 +2285,7 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
@@ -2330,16 +2316,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'cicn-vicn-verify-{stream}-{os}'
@@ -2355,12 +2332,18 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
-      - project-parameter:
+      - lf-infra-parameters:
           project: '{project}'
-      - gerrit-parameter:
+          stream: ''
           branch: '{branch}'
+          lftools-version: '{lftools-version}'
       - os-parameter:
+          description: Operating system.
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -2378,18 +2361,10 @@
           branch: '{branch}'
 
     builders:
+      - lf-infra-pre-build
       - shell:
           !include-raw-escape:
           - include-raw-cicn-vicn-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
