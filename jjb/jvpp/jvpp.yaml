@@ -41,6 +41,15 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/build-package/*.rpm
+      **/build-root/build-package/*.deb
+      **/tmp/jvpp-failed-unittests/*/* **/core
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -59,6 +68,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -84,18 +97,8 @@
           - include-raw-jvpp-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/packages/*.rpm,
-            **/build-root/packages/*.deb
-
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/jvpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -108,6 +111,14 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build-root/build-package/*.rpm
+      **/build-root/build-package/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -130,6 +141,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -183,14 +198,6 @@
           - include-raw-jvpp-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/packages/*.rpm,
-            **/build-root/packages/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
       - naginator:
