@@ -48,6 +48,15 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    archive-artifacts: >
+        **/build-root/build-package/*.rpm
+        **/build-root/build-package/*.deb
+
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -59,6 +68,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -84,17 +97,9 @@
           - include-raw-jvpp-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/packages/*.rpm,
-            **/build-root/packages/*.deb
-
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
+          # NEED TO MOVE TO LOGS SERVER
           archive-artifacts: '/tmp/jvpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
@@ -115,6 +120,14 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    archive-artifacts: >
+        **/build-root/build-package/*.rpm
+        **/build-root/build-package/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -130,6 +143,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -183,14 +200,6 @@
           - include-raw-jvpp-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/packages/*.rpm,
-            **/build-root/packages/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
       - naginator:
