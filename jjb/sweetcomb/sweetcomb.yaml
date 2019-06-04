@@ -60,6 +60,14 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/build-root/build-package/*.rpm
+          **/build-root/build-package/*.deb
+      allow-empty: 'true'
+      fingerprint: false
+      only-if-success: true
+      default-excludes: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -71,6 +79,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -105,24 +117,12 @@
           !include-raw-escape:
           - include-raw-sweetcomb-build.sh
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/build-package/*.rpm,
-            **/build-root/build-package/*.deb,
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'sweetcomb-merge-{stream}-{os}'
@@ -160,7 +160,6 @@
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
 
-
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
@@ -194,14 +193,6 @@
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/build-package/*.rpm,
-            **/build-root/build-package/*.deb,
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
@@ -221,6 +212,12 @@
       numToKeep: 100
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    archive-artifacts: >
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     parameters:
       - project-parameter:
@@ -263,18 +260,9 @@
           - include-raw-sweetcomb-build.sh
           - include-raw-sweetcomb-test.sh
     publishers:
-      - archive:
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
