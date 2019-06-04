@@ -138,7 +138,7 @@
 
     archive-artifacts: >
         **/build-root/build-package/*.rpm
-        **/build-root/build-package/*.deb,
+        **/build-root/build-package/*.deb
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
