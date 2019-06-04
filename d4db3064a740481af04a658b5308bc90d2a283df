@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eaf83ac_7b79e86b",
+        "filename": "jjb/sweetcomb/sweetcomb.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2019-06-04T21:26:09Z",
+      "side": 1,
+      "message": "No comma here, this will not work",
+      "range": {
+        "startLine": 138,
+        "startChar": 41,
+        "endLine": 138,
+        "endChar": 42
+      },
+      "revId": "d4db3064a740481af04a658b5308bc90d2a283df",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
