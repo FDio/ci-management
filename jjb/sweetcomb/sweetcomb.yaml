@@ -20,11 +20,14 @@
     jobs:
       - 'sweetcomb-verify-{stream}-{os}'
       - 'sweetcomb-merge-{stream}-{os}'
+      - 'sweetcomb-test-{stream}-{os}'
 
     project: 'sweetcomb'
     os:
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - centos7:
           repo-os-part: 'centos7'
     stream:
@@ -205,3 +208,73 @@
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
+
+- job-template:
+    name: 'sweetcomb-test-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - shell:
+          !include-raw-escape:
+          - include-raw-sweetcomb-build.sh
+          - include-raw-sweetcomb-test.sh
+    publishers:
+      - archive:
+          allow-empty: 'true'
+          fingerprint: false
+          only-if-success: true
+          default-excludes: false
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
