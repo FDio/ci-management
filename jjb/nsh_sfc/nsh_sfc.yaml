@@ -442,6 +442,11 @@
     node: '{os}-builder-4c-4g'
     concurrent: true
     jdk: openjdk8-{os}
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -458,6 +463,10 @@
           os: 'ubuntu1604'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -505,12 +514,6 @@
           !include-raw-escape: include-raw-nsh_sfc-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'build-root/docs/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -520,6 +523,9 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
+    archive-artifacts: '**/csit/archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -536,6 +542,10 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -558,10 +568,6 @@
           !include-raw-escape: include-raw-nsh_sfc-csit-perf-hw.sh
 
     pulishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'csit/archive'
 
@@ -574,6 +580,9 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
+    archive-artifacts: '**/csit/archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -590,6 +599,10 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -612,10 +625,6 @@
           !include-raw-escape: include-raw-nsh_sfc-csit-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'csit/archive'
 
