@@ -22,6 +22,7 @@
       - '1904':
           branch: 'stable/1904'
           repo-stream-part: 'stable.1904'
+
     type:
       - short
       - long
@@ -54,6 +55,12 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: true
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -72,6 +79,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -105,12 +116,6 @@
           !include-raw-escape: include-raw-vpp-docs.sh
 
     publishers:
-        - archive:
-            artifacts: 'docs/_build/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
@@ -124,6 +129,12 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: false
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -142,6 +153,9 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -191,12 +205,6 @@
           !include-raw-escape: include-raw-vpp-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'build-root/docs/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
@@ -210,6 +218,11 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: true
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -228,6 +241,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -273,12 +290,6 @@
           !include-raw-escape: include-raw-vpp-sphinx-docs.sh
 
     publishers:
-        - archive:
-            artifacts: 'docs/_build/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
@@ -292,6 +303,11 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: false
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -310,6 +326,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -350,12 +370,6 @@
           !include-raw-escape: include-raw-vpp-sphinx-docs.sh
 
     publishers:
-        - archive:
-            artifacts: 'docs/_build/html/*'
-            allow-empty: 'true'
-            fingerprint: false
-            only-if-success: true
-            default-excludes: false
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
         - naginator:
@@ -369,6 +383,11 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: true
+    archive-artifacts: '**/build-root/test/doc/build/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -387,6 +406,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -420,12 +443,6 @@
           !include-raw-escape: include-raw-vpp-make-test-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'test/doc/build/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
@@ -439,6 +456,12 @@
     project-type: freestyle
     node: ubuntu1604-us
     concurrent: false
+    archive-artifacts: '**/build-root/test/doc/build/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -457,6 +480,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -506,12 +533,6 @@
           !include-raw-escape: include-raw-vpp-make-test-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'test/doc/build/html/*'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
