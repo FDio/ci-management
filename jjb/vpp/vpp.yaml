@@ -148,6 +148,17 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+      **/tmp/vpp-failed-unittests/*/* **/core
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
     triggers:
       - gerrit-trigger-checkstyle:
           name: '{project}'
@@ -170,6 +181,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -190,19 +205,8 @@
           - include-raw-vpp-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
