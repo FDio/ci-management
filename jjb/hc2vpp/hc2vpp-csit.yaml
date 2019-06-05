@@ -64,6 +64,10 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/csit/archive/*.*
+      latest-only: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -71,6 +75,10 @@
           os: '{os}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - git-scm:
@@ -91,9 +99,6 @@
           !include-raw-escape: include-raw-hc2vpp-csit-integration.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
       - email-notification:
           email-prefix: '[hc2vpp]'
 
@@ -117,6 +122,10 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/csit/archive/*.*
+      latest-only: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -132,6 +141,10 @@
           stream: '{stream}'
       - odl-parameter:
           odl: '{odl}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -184,9 +197,6 @@
           !include-raw-escape: include-raw-hc2vpp-csit-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
       - email-notification:
           email-prefix: '[hc2vpp]'
 
@@ -209,6 +219,10 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/csit/archive/*.*
+      latest-only: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -218,6 +232,10 @@
           stream: '{stream}'
       - odl-parameter:
           odl: '{odl}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - git-scm:
@@ -238,9 +256,6 @@
           !include-raw-escape: include-raw-hc2vpp-csit-integration-odl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
       - email-notification:
           email-prefix: '[hc2vpp]'
 
@@ -264,6 +279,10 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/csit/archive/*.*
+      latest-only: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -279,6 +298,10 @@
           stream: '{stream}'
       - odl-parameter:
           odl: '{odl}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -331,9 +354,6 @@
           !include-raw-escape: include-raw-hc2vpp-csit-verify-odl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
       - email-notification:
           email-prefix: '[hc2vpp]'
 
@@ -356,6 +376,10 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+      archive-artifacts: >
+          **/csit/archive/*.*
+      latest-only: false
+
     parameters:
       - project-parameter:
           project: '{project}'
@@ -365,7 +389,10 @@
           stream: '{stream}'
       - odl-parameter:
           odl: '{odl}'
-
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
@@ -402,10 +429,6 @@
           !include-raw-escape: include-raw-hc2vpp-csit-perf.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'csit/archive'
 
