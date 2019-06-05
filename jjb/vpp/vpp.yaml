@@ -147,6 +147,17 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+      **/tmp/vpp-failed-unittests/*/* **/core
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
     triggers:
       - gerrit-trigger-checkstyle:
           name: '{project}'
@@ -169,6 +180,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -189,19 +204,8 @@
           - include-raw-vpp-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -212,6 +216,15 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -234,6 +247,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -284,16 +301,6 @@
           - include-raw-vpp-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -303,6 +310,15 @@
     project-type: freestyle
     node: '{os}arm-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -321,6 +337,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -346,16 +366,6 @@
           - include-raw-vpp-arm-build-no-test.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
@@ -366,6 +376,15 @@
     project-type: freestyle
     node: '{os}arm-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -384,6 +403,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -410,16 +433,6 @@
           - include-raw-vpp-arm-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
@@ -433,6 +446,15 @@
 
     project-type: freestyle
     node: '{os}arm-m'
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -455,6 +477,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -503,16 +529,6 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -521,6 +537,15 @@
 
     project-type: freestyle
     node: '{os}arm-us'
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -543,6 +568,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -595,16 +624,6 @@
           - include-raw-vpp-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -710,6 +729,15 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -728,6 +756,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -753,17 +785,6 @@
           - include-raw-vpp-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
@@ -834,6 +855,15 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build-root/*.rpm
+      **/build-root/*.deb
+      **/dpdk/*.rpm
+      **/dpdk/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -856,6 +886,10 @@
           stream: '{stream}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -908,16 +942,6 @@
           - include-raw-vpp-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build-root/*.rpm,
-            **/build-root/*.deb,
-            **/dpdk/*.rpm,
-            **/dpdk/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
@@ -931,6 +955,8 @@
     project-type: freestyle
     node: 'vpp-csit-device'
     concurrent: true
+    archive-artifacts: '**/csit_current/**/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -953,6 +979,10 @@
       - gerrit-csit-refspec-parameter
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -978,11 +1008,6 @@
 
 
     publishers:
-      - archive-artifacts:
-          artifacts: >
-            **/csit_current/**/*.*
-          latest-only: false
-
       - robot-report:
           output-path: 'csit_current/'
 
@@ -995,6 +1020,10 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/csit_current/**/*.*
+      **/csit_parent/**/*.*
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1025,6 +1054,10 @@
           description: "Number of subsamples for BMRR tests."
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1050,12 +1083,6 @@
           - include-raw-vpp-csit-perf.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: >
-            **/csit_current/**/*.*,
-            **/csit_parent/**/*.*
-          latest-only: false
-
       - robot-report:
           output-path: 'csit_current/0/'
 
