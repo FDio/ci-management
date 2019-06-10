@@ -20,7 +20,7 @@
     jobs:
       - 'sweetcomb-verify-{stream}-{os}'
       - 'sweetcomb-merge-{stream}-{os}'
-      - 'sweetcomb-test-{stream}-ubuntu1604'
+      #- 'sweetcomb-test-{stream}-ubuntu1604'
 
     project: 'sweetcomb'
     os:
