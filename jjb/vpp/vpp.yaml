@@ -755,7 +755,9 @@
       - shell:
           !include-raw-escape: include-raw-vpp-checkstyle.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+          !include-raw-escape: 
+            - include-raw-vpp-test-checkstyle.sh
+            - include-raw-vpp-commitmsg.sh
 
     publishers:
       - fdio-infra-shiplogs:
