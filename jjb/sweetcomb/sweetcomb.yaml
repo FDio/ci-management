@@ -38,6 +38,9 @@
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
+      - vom:
+          branch: 'vom'
+          repo-stream-part: 'vom'
 
 - project:
     name: sweetcomb-view
