@@ -21,6 +21,9 @@
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: true
+    archive-artifacts: '*.log'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -34,6 +37,10 @@
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -55,9 +62,6 @@
           ./resources/libraries/bash/entry/tox.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: '*.log'
-          latest-only: false
       # TODO: Remove this when a voting pylint difference checker
       # with nice enough output is implemented.
       - violations:

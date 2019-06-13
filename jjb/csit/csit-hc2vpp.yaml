@@ -33,6 +33,8 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -49,6 +51,10 @@
           stream: '{stream}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -71,10 +77,6 @@
           !include-raw-escape: include-raw-csit-hc2vpp-verify-func.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - email-notification:
           email-prefix: '[csit]'
 
@@ -90,6 +92,8 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: false
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -106,6 +110,10 @@
           stream: '{stream}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -128,10 +136,6 @@
           !include-raw-escape: include-raw-csit-hc2vpp-verify-perf.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - email-notification:
           email-prefix: '[csit]'
 
