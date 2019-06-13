@@ -112,6 +112,11 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: >
+      **/csit/report.html
+      **/csit/log.html
+      **/csit/output.xml
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -124,6 +129,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -145,13 +154,6 @@
           !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: >
-            **/csit/report.html,
-            **/csit/log.html,
-            **/csit/output.xml
-          latest-only: false
-
       - robot-report:
           output-path: ''
 
@@ -198,6 +200,9 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -210,6 +215,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -244,10 +253,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: archive
           other-files:
@@ -307,6 +312,9 @@
     #   image so we can move this executor to ubuntu1804-us
     node: 'ubuntu1804-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -322,6 +330,10 @@
       - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -356,10 +368,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: archive
           other-files:
@@ -378,6 +386,11 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: false
+    archive-artifacts: >
+      **/csit/report.html
+      **/csit/log.html
+      **/csit/output.xml
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -390,6 +403,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - git-scm:
@@ -413,13 +430,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-vpp-verify-weekly.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: >
-            **/csit/report.html,
-            **/csit/log.html,
-            **/csit/output.xml
-          latest-only: false
-
       - robot-report:
           output-path: ''
 
@@ -435,6 +445,8 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -447,6 +459,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -470,10 +486,6 @@
           # yamllint enable rule:line-length
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'csit/archive'
 
@@ -486,6 +498,11 @@
     project-type: freestyle
     node: '{docs-executor}'
     concurrent: true
+    archive-artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -500,6 +517,10 @@
           branch: '{branch}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -531,13 +552,6 @@
           !include-raw-escape: include-raw-csit-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -547,6 +561,11 @@
     project-type: freestyle
     node: '{docs-executor}'
     concurrent: true
+    archive-artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -561,6 +580,10 @@
           branch: '{branch}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -608,13 +631,6 @@
           !include-raw-escape: include-raw-csit-docs.sh
 
     publishers:
-      - archive:
-          artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -624,6 +640,11 @@
     project-type: freestyle
     node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: false
+    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -638,6 +659,10 @@
           branch: '{branch}'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -682,13 +707,6 @@
           !include-raw-escape: include-raw-csit-report.sh
 
     publishers:
-      - archive:
-          artifacts: 'resources/tools/presentation/csit.report.tar.gz'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -698,6 +716,11 @@
     project-type: freestyle
     node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: false
+    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -712,6 +735,10 @@
           branch: 'rls1901_2'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -756,13 +783,6 @@
           !include-raw-escape: include-raw-csit-report.sh
 
     publishers:
-      - archive:
-          artifacts: 'resources/tools/presentation/csit.report.tar.gz'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -772,6 +792,11 @@
     project-type: freestyle
     node: 'ubuntu1604-basebuild-8c-32g'
     concurrent: false
+    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -786,6 +811,10 @@
           branch: 'rls1904_1'
       - maven-exec:
           maven-version: 'mvn33-new'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -830,13 +859,6 @@
           !include-raw-escape: include-raw-csit-report.sh
 
     publishers:
-      - archive:
-          artifacts: 'resources/tools/presentation/csit.report.tar.gz'
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -932,6 +954,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -944,6 +968,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -960,10 +988,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -995,6 +1019,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1007,6 +1033,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1023,10 +1053,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1058,6 +1084,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1070,6 +1098,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1086,10 +1118,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1122,6 +1150,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1134,6 +1164,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1150,10 +1184,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1190,6 +1220,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1202,6 +1234,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1218,10 +1254,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1258,6 +1290,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1270,6 +1304,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1286,10 +1324,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1326,6 +1360,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1338,6 +1374,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1354,10 +1394,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1394,6 +1430,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1406,6 +1444,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1422,10 +1464,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1462,6 +1500,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1474,6 +1514,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1490,10 +1534,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1530,6 +1570,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1542,6 +1584,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -1558,10 +1604,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -1620,6 +1662,8 @@
     project-type: freestyle
     node: '{perf-executor}'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1635,6 +1679,10 @@
       - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1669,10 +1717,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot:
           output-path: archive
           other-files:
@@ -1687,6 +1731,9 @@
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1703,6 +1750,10 @@
           os: 'ubuntu1604'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1725,10 +1776,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-nsh_sfc-perf-hw.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'archive'
 
@@ -1741,6 +1788,9 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1757,6 +1807,10 @@
           os: '{os}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1779,10 +1833,6 @@
           !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'archive'
 
@@ -1795,6 +1845,8 @@
     project-type: freestyle
     node: '{os}-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1809,6 +1861,10 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1831,10 +1887,6 @@
           !include-raw-escape: include-raw-csit-tldk-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'archive'
 
@@ -1847,6 +1899,8 @@
     project-type: freestyle
     node: 'ubuntu1604-basebuild-4c-4g'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1859,6 +1913,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1881,10 +1939,6 @@
           !include-raw-escape: include-raw-csit-dmm-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: ''
 
