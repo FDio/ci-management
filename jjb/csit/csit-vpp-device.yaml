@@ -1,3 +1,4 @@
+---
 # Copyright (c) 2019 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -84,6 +85,8 @@
     project-type: freestyle
     node: 'vpp-csit-device'
     concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -101,6 +104,10 @@
       - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -139,9 +146,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
       - robot:
           output-path: archive
           other-files:
@@ -180,6 +184,8 @@
     project-type: freestyle
     node: 'vpp-csit-device'
     concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -194,6 +200,14 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -215,9 +229,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
       - robot:
           output-path: 'csit/archive'
           other-files:
@@ -255,6 +266,8 @@
     project-type: freestyle
     node: 'vpp-csit-device'
     concurrent: false
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -269,6 +282,10 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - git-scm:
@@ -292,9 +309,6 @@
           !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'archive/*.*'
-          latest-only: false
       - robot:
           output-path: archive
           other-files:
