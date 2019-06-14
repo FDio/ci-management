@@ -1,0 +1,6 @@
+---
+- project:
+    name: opflexvpp-project-view
+    project-name: opflexvpp
+    views:
+      - project-view
