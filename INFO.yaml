@@ -69,6 +69,11 @@ committers:
       email: 'zxiiro@gmail.com'
       id: 'zxiiro'
       timezone: ''
+    - name: 'Eric Ball'
+      company: 'linuxfoundation'
+      email: 'eball@linuxfoundation.org'
+      id: 'eball'
+      timezone: ''
 tsc:
     # yamllint disable rule:line-length
     approval: ''
