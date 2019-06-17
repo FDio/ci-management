@@ -872,9 +872,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - reverse:
-          jobs: 'csit-vpp-perf-mrr-daily-master'
-          result: 'failure'
+      - timed: '0 2,14 * * *'
 
     builders:
       - maven-target:
@@ -1159,10 +1157,6 @@
           other-files:
             - '*.*'
 
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -1226,10 +1220,6 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
@@ -1295,10 +1285,6 @@
           other-files:
             - '*.*'
 
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -1362,10 +1348,6 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
@@ -1431,10 +1413,6 @@
           other-files:
             - '*.*'
 
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -1499,10 +1477,6 @@
           other-files:
             - '*.*'
 
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
-
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -1566,10 +1540,6 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - trigger:
-          project: 'csit-trending-daily-master'
-          threshold: 'FAILURE'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
