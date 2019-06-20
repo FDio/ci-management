@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a37f9ab5_12333116",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-20T11:43:42Z",
+      "side": 1,
+      "message": "Already on line 203.",
+      "range": {
+        "startLine": 207,
+        "startChar": 8,
+        "endLine": 207,
+        "endChar": 15
+      },
+      "revId": "5ad1a1f3e016732a6b4ad6640fff8c27294314f2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7718239a_48946b58",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-20T11:43:42Z",
+      "side": 1,
+      "message": "Not sure whether this line does anything here, but it probably does not hurt either.",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "5ad1a1f3e016732a6b4ad6640fff8c27294314f2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
