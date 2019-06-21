@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7170fd_2c9cf8dd",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-21T15:18:51Z",
+      "side": 1,
+      "message": "This reminds me, should we (ci-management committers) vote for a PTL?\nIf yes, I think the first step is to ask people to self-nominate.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "3574137bb5b09e4407d72b3434bdeb8bc3ce8b9b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
