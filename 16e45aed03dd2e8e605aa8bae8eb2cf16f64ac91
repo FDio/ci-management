@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85b21db2_cd5ce467",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-06-25T20:26:48Z",
+      "side": 1,
+      "message": "The test docs on vpp/master are generated in .../vpp/test/doc/build/html so I think this should be\n\n\u0027**/test/doc/build/html/*\u0027",
+      "range": {
+        "startLine": 386,
+        "startChar": 23,
+        "endLine": 386,
+        "endChar": 60
+      },
+      "revId": "16e45aed03dd2e8e605aa8bae8eb2cf16f64ac91",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef4d1d53_081e0889",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-06-25T20:26:48Z",
+      "side": 1,
+      "message": "Same comment as line 386",
+      "range": {
+        "startLine": 459,
+        "startChar": 23,
+        "endLine": 459,
+        "endChar": 60
+      },
+      "revId": "16e45aed03dd2e8e605aa8bae8eb2cf16f64ac91",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1a344fd_6795e9ef",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-06-25T20:26:48Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the leading double asterisk here because it is an absolute path being at /tmp...",
+      "range": {
+        "startLine": 156,
+        "startChar": 6,
+        "endLine": 156,
+        "endChar": 8
+      },
+      "revId": "16e45aed03dd2e8e605aa8bae8eb2cf16f64ac91",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
