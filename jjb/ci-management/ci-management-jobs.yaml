@@ -15,3 +15,11 @@
     views:
       - project-view
     project-name: ci-management
+
+- project:
+    name: ci-management-info
+    project-name: ci-management
+    jobs:
+      - gerrit-info-yaml-verify
+    project: ci-management
+    branch: master
