@@ -22,6 +22,30 @@
       "revId": "3574137bb5b09e4407d72b3434bdeb8bc3ce8b9b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c696da_385d535f",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2019-06-26T13:40:50Z",
+      "side": 1,
+      "message": "Oh from a technical point of view probably. It would make it easier to remove folks from the committer list that way!",
+      "parentUuid": "6e7170fd_2c9cf8dd",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "3574137bb5b09e4407d72b3434bdeb8bc3ce8b9b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
