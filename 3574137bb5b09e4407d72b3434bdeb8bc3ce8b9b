@@ -46,6 +46,30 @@
       "revId": "3574137bb5b09e4407d72b3434bdeb8bc3ce8b9b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd6c051_4519a3fc",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-27T15:01:42Z",
+      "side": 1,
+      "message": "Ok, continuing on mailing list: https://lists.fd.io/g/ci-management-dev/message/157",
+      "parentUuid": "a6c696da_385d535f",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "3574137bb5b09e4407d72b3434bdeb8bc3ce8b9b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
