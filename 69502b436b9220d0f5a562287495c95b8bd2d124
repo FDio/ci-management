@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8fc8e66_426d3f60",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-27T15:40:27Z",
+      "side": 1,
+      "message": "Ugly, but I do not see a nicer solution either.\nHopefully we find time to rename old jobs to 3n-hsw and make enough tests (and testbeds) so we do not need to keep separate node-arch lists.",
+      "range": {
+        "startLine": 26,
+        "startChar": 41,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "69502b436b9220d0f5a562287495c95b8bd2d124",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
