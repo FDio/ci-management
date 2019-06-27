@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dbd6b53_a36eebd4",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-06-27T16:42:03Z",
+      "side": 1,
+      "message": "Looking at [0] (note it has recent fix we do not pull in yet), I believe the jobs has to have an exact name (either \u0027info-vote\u0027 or \u0027info-vote-verify\u0027), and it seems to apply to every project (not just ci-management) without exceptions, so probably the name in line 20 here should be \u0027all-projects-info\u0027.\n\n[0] https://github.com/lfit/releng-global-jjb/blob/d8dc21c3ef89f62b0f58a4ad16616f304b2643d5/jjb/lf-info-vote.yaml#L72-L73",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "7e646a943cc33a48a87cec34e8aeb3bdaf44d375",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
