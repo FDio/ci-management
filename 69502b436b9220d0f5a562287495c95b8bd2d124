@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2053173_7c6749e0",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-01T16:59:22Z",
+      "side": 0,
+      "message": "Commit message should mention (and explain why) we are removing this job.\nOtherwise looks good.",
+      "range": {
+        "startLine": 665,
+        "startChar": 10,
+        "endLine": 665,
+        "endChar": 45
+      },
+      "revId": "69502b436b9220d0f5a562287495c95b8bd2d124",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
