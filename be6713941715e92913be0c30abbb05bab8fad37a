@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d1c99bc_acbc2e44",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-07-02T07:44:50Z",
+      "side": 1,
+      "message": "is this correct syntax?",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed182d86_872ad292",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-07-02T07:44:50Z",
+      "side": 1,
+      "message": "why we have so many different output-paths?\n\n\u0027csit/archive\u0027\narchive\n\nsame for archive-artifacts",
+      "range": {
+        "startLine": 250,
+        "startChar": 10,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
