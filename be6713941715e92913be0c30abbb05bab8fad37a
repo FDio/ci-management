@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7dfff590_ff21d669",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2019-07-02T07:50:46Z",
+      "side": 1,
+      "message": "Good catch, jenkins-jobs doesn\u0027t complain locally or in the verify job, so maybe it is correct.\n\nIn any case, I\u0027ll remove the colon so it looks cleaner.",
+      "parentUuid": "7d1c99bc_acbc2e44",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed182d86_872ad292",
         "filename": "jjb/csit/csit-perf.yaml",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-02T07:44:50Z",
       "side": 1,
       "message": "why we have so many different output-paths?\n\n\u0027csit/archive\u0027\narchive\n\nsame for archive-artifacts",
+      "range": {
+        "startLine": 250,
+        "startChar": 10,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5779879b_5200756b",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2019-07-02T07:50:46Z",
+      "side": 1,
+      "message": "This was here before and I\u0027m sure what are all of the things we want to archive, so I\u0027ll leave this to someone more qualified.",
+      "parentUuid": "ed182d86_872ad292",
       "range": {
         "startLine": 250,
         "startChar": 10,
