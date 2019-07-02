@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a68db29_de31f278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-02T13:26:48Z",
+      "side": 1,
+      "message": "So the removal of nsh_sfc jobs was intended? Alright.",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d1c99bc_acbc2e44",
         "filename": "jjb/csit/csit-perf.yaml",
         "patchSetId": 3
@@ -84,6 +107,30 @@
       "side": 1,
       "message": "This was here before and I\u0027m sure what are all of the things we want to archive, so I\u0027ll leave this to someone more qualified.",
       "parentUuid": "ed182d86_872ad292",
+      "range": {
+        "startLine": 250,
+        "startChar": 10,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "be6713941715e92913be0c30abbb05bab8fad37a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9281607_e6bcca48",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-02T13:26:48Z",
+      "side": 1,
+      "message": "When I saw the amount of editing needed to unify output paths, I decided \"if it works, do not touch it\".\n\n~/fdio/csit$ fgrep -r archive | fgrep bootstrap | cut -d \u0027:\u0027 -f 1 | sort -u\nbootstrap-DMM.sh\nbootstrap-hc2vpp-integration-odl.sh\nbootstrap-hc2vpp-integration.sh\nbootstrap-hc2vpp-perf.sh\nbootstrap-hc2vpp-verify-odl.sh\nbootstrap-hc2vpp-verify.sh\nbootstrap-nsh_sfc-functional-virl.sh\nbootstrap-TLDK.sh\nbootstrap-vpp-verify-nightly.sh\nbootstrap-vpp-verify-semiweekly.sh\nresources/libraries/bash/entry/bootstrap_verify_perf.sh\nresources/libraries/bash/entry/bootstrap_vpp_device.sh",
+      "parentUuid": "5779879b_5200756b",
       "range": {
         "startLine": 250,
         "startChar": 10,
