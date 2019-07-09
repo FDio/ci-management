@@ -70,6 +70,30 @@
       "revId": "c720f85f23cdbe8d581e5d52ca72cce90ccd1bac",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d6827b4_bda69a1e",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-07-09T22:57:10Z",
+      "side": 1,
+      "message": "\u003e \u003e The path docs/_build/html/* doesn\u0027t exist. Per the job this is\n \u003e the\n \u003e \u003e correct path.\n \u003e \n \u003e Unfortunately, I was wrong with my previous comments about this. \n \u003e \u0027**/build-root/docs/html\u0027 is where the target of \u0027make doxygen\u0027 is\n \u003e built.\n \u003e \n \u003e The target of \u0027make docs\u0027 does indeed produce its output in\n \u003e \u0027docs/_build/html/*\u0027\n \u003e \n \u003e I\u0027ll submit a patch to fix this issue which is causing the\n \u003e vpp-docs-verify-master job to fail.\n\nActually, vpp-docs-verify-master runs \u0027make doxygen\u0027 so this issue is not the root cause of the upload failures of that job.  However, I did submit a patch to fix vpp-sphinx-docs-* which doesn\u0027t appear to be used in master.",
+      "parentUuid": "62d23eed_aa933cbd",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "c720f85f23cdbe8d581e5d52ca72cce90ccd1bac",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
