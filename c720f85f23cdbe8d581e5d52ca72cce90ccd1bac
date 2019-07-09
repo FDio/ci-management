@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2509efb_05f30751",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-07-09T16:25:49Z",
+      "side": 1,
+      "message": "Is this equivalent to \u0027docs/_build/html/*\u0027 ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "c720f85f23cdbe8d581e5d52ca72cce90ccd1bac",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
