@@ -45,11 +45,17 @@ if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
 then
     echo "Building using \"make verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
+    if [ "${OS}" == "ubuntu" ]; then
+      [ "x${DRYRUN}" == "xTrue" ] || make vom-pkg-deb
+    fi
 else
     echo "Building using \"make build-root/vagrant/build.sh\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
     [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
+    if [ "${OS}" == "ubuntu" ]; then
+      [ "x${DRYRUN}" == "xTrue" ] || make vom-pkg-deb
+    fi
 fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
