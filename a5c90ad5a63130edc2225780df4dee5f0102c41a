@@ -22,6 +22,30 @@
       "revId": "a5c90ad5a63130edc2225780df4dee5f0102c41a",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29a3823_390eaca6",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1709
+      },
+      "writtenOn": "2019-07-11T14:08:45Z",
+      "side": 1,
+      "message": "Ok thanks for the advice I\u0027ll reopen the VPP patch.",
+      "parentUuid": "6174fae1_9f69be11",
+      "range": {
+        "startLine": 47,
+        "startChar": 55,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "a5c90ad5a63130edc2225780df4dee5f0102c41a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
