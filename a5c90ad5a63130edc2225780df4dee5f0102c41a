@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6174fae1_9f69be11",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-11T13:29:34Z",
+      "side": 1,
+      "message": "The \"if\" at line 43 is there just because the jenkins minion for CSIT jobs is slightly different. Most VPP jobs rely on \"make verify\" to do its own complicated thing, and the amount of logic there [0] is larger than the amount of logic here. So I think https://gerrit.fd.io/r/20585 was a better approach, just use some \"ifeq ($(OS_ID)...\" construct to avoid affecting Centos. Unless VPP committers tell you they prefer \"make verify\" to continue building, but not packaging VOM for some reason.\n\n[0] https://github.com/FDio/vpp/blob/stable/1904/Makefile#L580-L594",
+      "range": {
+        "startLine": 47,
+        "startChar": 55,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "a5c90ad5a63130edc2225780df4dee5f0102c41a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
