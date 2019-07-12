@@ -495,3 +495,12 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: csit-info
+    project-name: csit
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: csit
+    branch: master
