@@ -206,3 +206,12 @@
           fixed-delay: 90
       - email-notification:
           email-prefix: '[jvpp]'
+
+- project:
+    name: jvpp-info
+    project-name: jvpp
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: jvpp
+    branch: master
