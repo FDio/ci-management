@@ -15,3 +15,12 @@
     views:
       - project-view
     project-name: ci-management
+
+- project:
+    name: ci-management-info
+    project-name: ci-management
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: ci-management
+    branch: master
