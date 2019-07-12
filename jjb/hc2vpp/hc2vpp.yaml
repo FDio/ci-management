@@ -261,3 +261,12 @@
           release-env-var: SKIP_JAR_DEPLOY
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
+
+- project:
+    name: hc2vpp-info
+    project-name: hc2vpp
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: hc2vpp
+    branch: master
