@@ -120,3 +120,12 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: puppet-fdio-info
+    project-name: puppet-fdio
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: puppet-fdio
+    branch: master
