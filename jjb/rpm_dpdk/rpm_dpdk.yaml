@@ -190,3 +190,12 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: rpm_dpdk-info
+    project-name: rpm_dpdk
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: rpm_dpdk
+    branch: master
