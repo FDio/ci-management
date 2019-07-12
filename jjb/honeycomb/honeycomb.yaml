@@ -283,3 +283,12 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
+
+- project:
+    name: honeycomb-info
+    project-name: honeycomb
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: honeycomb
+    branch: master
