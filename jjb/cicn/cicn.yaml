@@ -2478,3 +2478,12 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: cicn-info
+    project-name: cicn
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: cicn
+    branch: master
