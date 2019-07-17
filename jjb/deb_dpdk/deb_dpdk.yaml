@@ -215,3 +215,12 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: deb_dpdk-info
+    project-name: deb_dpdk
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: deb_dpdk
+    branch: master
