@@ -630,3 +630,12 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: nsh_sfc-info
+    project-name: nsh_sfc
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: nsh_sfc
+    branch: master
