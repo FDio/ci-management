@@ -240,3 +240,12 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: tldk-info
+    project-name: tldk
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: tldk
+    branch: master
