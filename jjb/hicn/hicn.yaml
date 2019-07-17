@@ -463,3 +463,12 @@
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
+
+- project:
+    name: hicn-info
+    project-name: hicn
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: hicn
+    branch: master
