@@ -231,3 +231,12 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
+
+- project:
+    name: dmm-info
+    project-name: dmm
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: dmm
+    branch: master
