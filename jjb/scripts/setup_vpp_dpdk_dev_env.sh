@@ -29,7 +29,11 @@ function setup {
                 echo "Deleting: /etc/yum.repos.d/fdio-master.repo"
                 sudo rm /etc/yum.repos.d/fdio-master.repo
             fi
-            curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
+            if ! [ "${STREAM}" == "master" ]; then
+                echo "tree not master deleting packagecloud repo pointer"
+                sudo rm  -f /etc/yum.repos.d/fdio_master.repo
+                curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
+            fi
             sudo yum -y install vpp-dpdk-devel || true
             sudo yum -y install vpp-ext-deps || true
         elif [ "$OS_ID" == "opensuse" ]; then
