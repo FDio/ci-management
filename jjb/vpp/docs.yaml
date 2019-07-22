@@ -42,9 +42,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1810':
-          branch: 'stable/1810'
-          repo-stream-part: 'stable.1810'
     type:
       - short
       - long
