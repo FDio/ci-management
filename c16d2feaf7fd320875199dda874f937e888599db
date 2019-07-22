@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53a18271_56c3f8dd",
+        "filename": "jjb/vpp/include-raw-vpp-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-22T11:29:45Z",
+      "side": 1,
+      "message": "Update.",
+      "range": {
+        "startLine": 42,
+        "startChar": 15,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "c16d2feaf7fd320875199dda874f937e888599db",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
