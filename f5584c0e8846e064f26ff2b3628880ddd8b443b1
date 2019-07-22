@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaec9e1b_17fda59a",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-07-22T20:08:07Z",
+      "side": 1,
+      "message": "vpp-csit-verify-api-crc-{stream}",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95ad9982_614d7707",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-07-22T20:08:07Z",
+      "side": 1,
+      "message": "Why is a centos build-node being specified here?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e797e72_90f2414e",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-07-22T20:08:07Z",
+      "side": 1,
+      "message": "vpp-csit-verify-api-crc-{stream}",
+      "range": {
+        "startLine": 1104,
+        "startChar": 11,
+        "endLine": 1104,
+        "endChar": 39
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
