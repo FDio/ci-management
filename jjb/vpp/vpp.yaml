@@ -1003,9 +1003,9 @@
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape:
-          - include-raw-vpp-csit-device.sh
-
+          !include-raw-escape: ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-csit-device.sh
 
     publishers:
       - robot-report:
@@ -1079,8 +1079,9 @@
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape:
-          - include-raw-vpp-csit-perf.sh
+          !include-raw-escape: ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape: include-raw-vpp-csit-perf.sh
 
     publishers:
       - robot-report:

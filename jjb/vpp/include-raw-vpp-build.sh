@@ -46,10 +46,8 @@ then
     echo "Building using \"make verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
-    echo "Building using \"make build-root/vagrant/build.sh\""
-    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
-    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes dpdk-install-dev
-    [ "x${DRYRUN}" == "xTrue" ] || build-root/vagrant/build.sh
+    echo "Building using \"make pkg-verify\""
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes pkg-verify
 fi
 
 if [ "x${VPP_REPO}" == "x1" ]; then
