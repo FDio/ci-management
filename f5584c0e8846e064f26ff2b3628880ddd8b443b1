@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c43f8ef_93f31e25",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-23T08:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaec9e1b_17fda59a",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95ad9982_614d7707",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "268ffabb_83caa5c8",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-23T08:22:42Z",
+      "side": 1,
+      "message": "Looking at [0], the job would work on any node (with bash and Python 3 and pip).\nMaybe we could use a smaller node, but I am just moving this \"project\" to fit into a segment with other projetcs.\n\n[0] https://github.com/lfit/releng-global-jjb/blob/master/shell/check-info-votes.sh",
+      "parentUuid": "95ad9982_614d7707",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e797e72_90f2414e",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-22T20:08:07Z",
       "side": 1,
       "message": "vpp-csit-verify-api-crc-{stream}",
+      "range": {
+        "startLine": 1104,
+        "startChar": 11,
+        "endLine": 1104,
+        "endChar": 39
+      },
+      "revId": "f5584c0e8846e064f26ff2b3628880ddd8b443b1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55ee0a0_daa98c58",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-23T08:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e797e72_90f2414e",
       "range": {
         "startLine": 1104,
         "startChar": 11,
