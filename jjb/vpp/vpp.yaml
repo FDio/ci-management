@@ -259,13 +259,6 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
@@ -278,10 +271,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-vpp-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -428,13 +417,6 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_arm_test.sh
       - shell:
@@ -742,13 +724,6 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
       - shell:
           !include-raw-escape: include-raw-vpp-checkstyle.sh
       - shell:
@@ -763,10 +738,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-vpp-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
