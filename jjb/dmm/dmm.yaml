@@ -189,6 +189,8 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -220,11 +222,6 @@
     builders:
       - shell:
           !include-raw-escape: include-raw-dmm-csit-functional-virl.sh
-
-    publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
 
       - robot-report:
           output-path: 'csit'
