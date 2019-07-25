@@ -189,6 +189,8 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -201,6 +203,10 @@
           project: 'dmm'
       - gerrit-parameter:
           branch: '{branch}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -222,10 +228,6 @@
           !include-raw-escape: include-raw-dmm-csit-functional-virl.sh
 
     publishers:
-      - archive-artifacts:
-          artifacts: 'csit/archive/*.*'
-          latest-only: false
-
       - robot-report:
           output-path: 'csit'
 
