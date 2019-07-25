@@ -20,7 +20,7 @@
     jobs:
       - 'sweetcomb-verify-{stream}-{os}'
       - 'sweetcomb-merge-{stream}-{os}'
-      #- 'sweetcomb-test-{stream}-ubuntu1604'
+      # - 'sweetcomb-test-{stream}-ubuntu1604'
 
     project: 'sweetcomb'
     os:
@@ -54,20 +54,19 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build-root/build-package/*.rpm
+      **/build-root/build-package/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
       numToKeep: 100
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-      archive-artifacts: >
-          **/build-root/build-package/*.rpm
-          **/build-root/build-package/*.deb
-      allow-empty: 'true'
-      fingerprint: false
-      only-if-success: true
-      default-excludes: false
 
     parameters:
       - project-parameter:
@@ -130,20 +129,19 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build-root/build-package/*.rpm
+      **/build-root/build-package/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
       numToKeep: 100
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    archive-artifacts: >
-        **/build-root/build-package/*.rpm
-        **/build-root/build-package/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     parameters:
       - project-parameter:
@@ -213,12 +211,6 @@
       numToKeep: 100
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    archive-artifacts: >
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     parameters:
       - project-parameter:
