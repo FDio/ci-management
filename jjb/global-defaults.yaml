@@ -20,3 +20,6 @@
 
     # fd.io branch defaults
     branch: master
+
+    # voting
+    skip-vote: false

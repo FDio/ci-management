@@ -62,9 +62,11 @@
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-device-{stream}-1n-skx'
+      - 'vpp-csit-verify-device-{stream}-{device-node-arch}'
       - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
+    executor: 'vpp-csit-device'
+    skip-vote: 'true'
     stream:
       - master:
           branch: 'master'
@@ -73,10 +75,18 @@
           branch: 'stable/1904'
           repo-stream-part: 'stable.1904'
     os: ubuntu1804
+    device-node-arch:
+      - 1n-skx
+      - 1n-tx2:
+          executor: 'vpp-csit-arm-ubuntu18'
     node-arch:
       - 2n-skx
       - 3n-skx
       - 3n-hsw
+    exclude:
+      - stream: '1904'
+        os: 'ubuntu1804'
+        device-node-arch: '1n-tx2'
 
 - project:
     name: vpp-master-only
@@ -748,10 +758,10 @@
           fixed-delay: 90
 
 - job-template:
-    name: 'vpp-csit-verify-device-{stream}-1n-skx'
+    name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
 
     project-type: freestyle
-    node: 'vpp-csit-device'
+    node: '{executor}'
     concurrent: true
     archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
@@ -796,6 +806,7 @@
       - gerrit-trigger-csit-devicetest:
           name: '{project}'
           branch: '{branch}'
+          skip-vote: '{skip-vote}'
 
     builders:
       - shell:
@@ -803,7 +814,9 @@
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-csit-device.sh
+          !include-raw-escape:
+            - include-raw-vpp-parallel-vars.sh
+            - include-raw-vpp-csit-device.sh
 
     publishers:
       - robot-report:

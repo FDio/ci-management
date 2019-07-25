@@ -19,11 +19,16 @@
       - 'ubuntu1804'
     node-arch:
       - '1n-skx'
+      - '1n-tx2':
+          executor: 'vpp-csit-arm-ubuntu18'
+          skip-vote: 'true'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
       - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
       - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
+
     project: 'csit'
+    executor: 'vpp-csit-device'
     branch: 'master'
     branch-id: 'oper'
     stream_timed:
@@ -46,6 +51,19 @@
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
+    exclude:
+      - stream: '1810'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream: '1901'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream: '1904'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream_timed: '1904'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
@@ -80,7 +98,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'vpp-csit-device'
+    node: '{executor}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -137,6 +155,11 @@
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
 
     builders:
       - shell:
@@ -179,7 +202,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'vpp-csit-device'
+    node: '{executor}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -257,7 +280,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'vpp-csit-device'
+    node: '{executor}'
     concurrent: false
     archive-artifacts: 'archive/*.*'
     latest-only: false
