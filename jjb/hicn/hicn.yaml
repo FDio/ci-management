@@ -58,6 +58,7 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: '**/tmp/hicn-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -74,6 +75,10 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -133,7 +138,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-          archive-artifacts: '/tmp/hicn-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -145,6 +149,13 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build/*.rpm,
+      **/build/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -163,6 +174,10 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -185,14 +200,6 @@
           - include-raw-hicn-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -201,6 +208,13 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build/*.rpm,
+      **/build/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -223,6 +237,10 @@
           stream: 'release'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -273,14 +291,6 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
@@ -305,6 +315,13 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/build/*.rpm,
+      **/build/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -323,6 +340,10 @@
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -353,14 +374,6 @@
           - include-raw-hicn-sysrepo-build.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
@@ -369,6 +382,13 @@
 
     project-type: freestyle
     node: '{os}-us'
+    archive-artifacts: >
+      **/build/*.rpm,
+      **/build/*.deb
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -391,6 +411,10 @@
           stream: 'release'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -449,14 +473,6 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - archive:
-          artifacts: >
-            **/build/*.rpm,
-            **/build/*.deb
-          allow-empty: 'true'
-          fingerprint: false
-          only-if-success: true
-          default-excludes: false
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
       - naginator:
