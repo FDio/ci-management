@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c044e520_21b40bb7",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-07-25T13:36:21Z",
+      "side": 1,
+      "message": "It is safer to split these into separate \"shell:\" items, otherwise possible failure in include-raw-vpp-parallel-vars.sh will be ignored.\nBut in this case I believe the probability of failure is quite low.",
+      "range": {
+        "startLine": 817,
+        "startChar": 29,
+        "endLine": 817,
+        "endChar": 30
+      },
+      "revId": "5b2b0a4babd61beab258396749ba9aab1e7980fb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
