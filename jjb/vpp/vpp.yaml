@@ -128,6 +128,30 @@
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
 
+# TODO: Merge with (e.g.) vpp-perpatch or similar,
+# when number of stable branches supported matches.
+- project:
+    name: vpp-api-crc
+    jobs:
+      - 'vpp-csit-verify-api-crc-{stream}'
+    project: 'vpp'
+    executor: 'vpp-csit-device'
+    skip-vote: 'false'
+    stream:
+      # TODO: Add stable/1908 when it is created.
+      - master:
+          branch: 'master'
+    os: ubuntu1804
+
+- project:
+    name: vpp-info
+    project-name: vpp
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: vpp
+    branch: master
+
 - project:
     name: vpp-view
     views:
@@ -901,11 +925,59 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
-- project:
-    name: vpp-info
-    project-name: vpp
-    jobs:
-      - gerrit-info-yaml-verify
-    build-node: centos7-builder-4c-4g
-    project: vpp
-    branch: master
+- job-template:
+    name: 'vpp-csit-verify-api-crc-{stream}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+    archive-artifacts: ''
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-csit-refspec-parameter
+      - stream-parameter:
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 300
+
+    triggers:
+      # TODO: Make other verify jobs trigger on success of this one,
+      # without breaking verification for VPP branches before stable/1908.
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: check_crc.sh
+      # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
