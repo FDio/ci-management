@@ -6,7 +6,7 @@
 
     project: ci-management
     project-name: ci-management
-    build-node: centos7-builder-4c-4g
+    build-node: ubuntu1804-us
     build-timeout: 30
     jjb-version: 2.6.0
 
@@ -21,6 +21,6 @@
     project-name: ci-management
     jobs:
       - gerrit-info-yaml-verify
-    build-node: centos7-builder-4c-4g
+    build-node: ubuntu1804-us
     project: ci-management
     branch: master
