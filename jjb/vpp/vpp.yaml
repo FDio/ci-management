@@ -967,7 +967,7 @@
     triggers:
       # TODO: Make other verify jobs trigger on success of this one,
       # without breaking verification for VPP branches before stable/1908.
-      - gerrit-trigger-checkstyle:
+      - gerrit-trigger-checkstyle-nonvoting:
           name: '{project}'
           branch: '{branch}'
 
