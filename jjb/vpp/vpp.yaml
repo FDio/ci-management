@@ -222,7 +222,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -308,7 +308,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
@@ -374,7 +374,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
@@ -463,7 +463,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-checkstyle-verify-{stream}'
@@ -554,7 +554,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: true
@@ -624,7 +624,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
@@ -681,7 +681,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
           archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
@@ -770,7 +770,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -842,7 +842,7 @@
           output-path: 'csit_current/'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
@@ -918,7 +918,7 @@
           output-path: 'csit_current/0/'
 
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-csit-verify-api-crc-{stream}'
@@ -975,4 +975,4 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
