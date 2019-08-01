@@ -310,11 +310,6 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
 
