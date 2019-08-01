@@ -28,6 +28,7 @@
             - -3n-dnv
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
+                mrr-daily-periodicity: '0 14 * * *'
       - 'csit-vpp-perf-mrr-weekly-master-2n-skx'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
@@ -47,6 +48,7 @@
     ligato-executor: 'ubuntu1804-basebuild-4c-4g'
     branch: 'master'
     branch-id: 'oper'
+    mrr-daily-periodicity: '0 2,14 * * *'
     stream:
       - master:
           branch: 'master'
@@ -236,7 +238,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 2,14 * * *'
+      - timed: '{mrr-daily-periodicity}'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
