@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c64f261_a30f6966",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-08-02T15:14:55Z",
+      "side": 1,
+      "message": "Do you want also this now? While CSIT does not have its 1908 branch, the job would use oper branch belonging to master.",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 29
+      },
+      "revId": "8519e5cc64d0a161ed99a1d68a4897b784c794a7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
