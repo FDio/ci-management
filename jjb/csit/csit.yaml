@@ -27,6 +27,7 @@
     project: 'csit'
     branch: 'master'
     executor: 'ubuntu1804-us'
+    executor-large: 'ubuntu1804-l'
     build-artifact-num-to-keep: 10
     stream_timed:
       - master:
@@ -39,9 +40,6 @@
       - master:
           branch: 'master'
           executor: 'ubuntu1804-us'
-      - '1807':
-          branch: 'rls1807'
-          executor: 'ubuntu1604-basebuild-4c-4g'
       - '1810':
           branch: 'rls1810'
           executor: 'ubuntu1604-basebuild-4c-4g'
@@ -128,7 +126,6 @@
     project-type: freestyle
     node: '{executor}'
     concurrent: true
-    archive-artifacts: 'resources/tools/doc_gen/csit.docs.tar.gz'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -433,7 +430,7 @@
     name: 'csit-trending-daily-master'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{executor-large}'
     concurrent: false
 
     build-discarder:
