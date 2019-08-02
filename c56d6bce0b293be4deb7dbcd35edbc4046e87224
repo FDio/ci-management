@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c85d1365_17aff217",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-08-02T12:12:15Z",
+      "side": 1,
+      "message": "remove, ARM will be supported by CSIT in 1908 release",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "c56d6bce0b293be4deb7dbcd35edbc4046e87224",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
