@@ -20,8 +20,8 @@
       - 'csit-docs-verify-{stream}'
       - 'csit-docs-merge-{stream_timed}'
       - 'csit-report-merge-{stream}'
-      - 'csit-report-merge-1901_2'
-      - 'csit-report-merge-1904_1'
+      - 'csit-report-merge-1901_3'
+      - 'csit-report-merge-1904_2'
       - 'csit-trending-daily-master'
 
     project: 'csit'
@@ -202,9 +202,8 @@
     name: 'csit-report-merge-{stream}'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{executor-large}'
     concurrent: false
-    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -275,12 +274,11 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-report-merge-1901_2'
+    name: 'csit-report-merge-1901_3'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{executor-large}'
     concurrent: false
-    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -296,7 +294,7 @@
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
-          branch: 'rls1901_2'
+          branch: 'rls1901_3'
       - maven-exec:
           maven-version: 'mvn33-new'
       - string:
@@ -325,7 +323,7 @@
               project-pattern: '{project}'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: '**/rls1901_2'
+                  branch-pattern: '**/rls1901_3'
           skip-vote:
             successful: true
             failed: true
@@ -351,12 +349,11 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-report-merge-1904_1'
+    name: 'csit-report-merge-1904_2'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-8c-32g'
+    node: '{executor-large}'
     concurrent: false
-    archive-artifacts: 'resources/tools/presentation/csit.report.tar.gz'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -372,7 +369,7 @@
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
-          branch: 'rls1904_1'
+          branch: 'rls1904_2'
       - maven-exec:
           maven-version: 'mvn33-new'
       - string:
@@ -401,7 +398,7 @@
               project-pattern: '{project}'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: '**/rls1904_1'
+                  branch-pattern: '**/rls1904_2'
           skip-vote:
             successful: true
             failed: true
