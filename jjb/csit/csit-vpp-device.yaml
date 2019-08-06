@@ -35,35 +35,35 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1904':
-          branch: 'rls1904'
-          branch-id: 'oper-rls1904'
+      - '1908':
+          branch: 'rls1908'
+          branch-id: 'oper-rls1908'
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1810':
-          branch: 'rls1810'
-          branch-id: 'oper-rls1810'
       - '1901':
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
+      - '1908':
+          branch: 'rls1908'
+          branch-id: 'oper-rls1908'
     exclude:
-      - stream: '1810'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
       - stream: '1901'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
+          os: 'ubuntu1804'
+          node-arch: '1n-tx2'
       - stream: '1904'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream_timed: '1904'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
+          os: 'ubuntu1804'
+          node-arch: '1n-tx2'
+      - stream: '1908'
+          os: 'ubuntu1804'
+          node-arch: '1n-tx2'
+      - stream_timed: '1908'
+          os: 'ubuntu1804'
+          node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'

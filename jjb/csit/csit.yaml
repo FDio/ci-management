@@ -33,21 +33,21 @@
       - master:
           branch: 'master'
           executor: 'ubuntu1804-us'
-      - '1904':
-          branch: 'rls1904'
+      - '1908':
+          branch: 'rls1908'
           executor: 'ubuntu1804-us'
     stream:
       - master:
           branch: 'master'
           executor: 'ubuntu1804-us'
-      - '1810':
-          branch: 'rls1810'
-          executor: 'ubuntu1604-basebuild-4c-4g'
       - '1901':
           branch: 'rls1901'
           executor: 'ubuntu1604-basebuild-4c-4g'
       - '1904':
           branch: 'rls1904'
+          executor: 'ubuntu1804-us'
+      - '1908':
+          branch: 'rls1908'
           executor: 'ubuntu1804-us'
 
 - project:
