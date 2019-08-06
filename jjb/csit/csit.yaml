@@ -461,6 +461,13 @@
       - timed: '0 2,14 * * *'
 
     builders:
+      - maven-target:
+          maven-version: 'mvn33-new'
+          goals: '--version'
+          settings: 'csit-settings'
+          settings-type: cfp
+          global-settings: 'global-settings'
+          global-settings-type: cfp
       - provide-maven-settings:
           settings-file: 'csit-settings'
           global-settings-file: 'global-settings'
