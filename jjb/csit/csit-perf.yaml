@@ -70,6 +70,10 @@
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
           executor: 'ubuntu1804-us'
+      - '1908':
+          branch: 'rls1908'
+          branch-id: 'oper-rls1908'
+          executor: 'ubuntu1804-us'
 
     build-artifact-num-to-keep: 10
     node-arch:
