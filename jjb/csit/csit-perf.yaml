@@ -54,14 +54,6 @@
           branch: 'master'
           branch-id: 'oper'
           executor: 'ubuntu1804-us'
-      - '1807':
-          branch: 'rls1807'
-          branch-id: 'oper-rls1807'
-          executor: 'ubuntu1604-basebuild-8c-32g'
-      - '1810':
-          branch: 'rls1810'
-          branch-id: 'oper-rls1810'
-          executor: 'ubuntu1604-basebuild-8c-32g'
       - '1901':
           branch: 'rls1901'
           branch-id: 'oper-rls1901'
@@ -69,6 +61,10 @@
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
+          executor: 'ubuntu1804-us'
+      - '1908':
+          branch: 'rls1908'
+          branch-id: 'oper-rls1908'
           executor: 'ubuntu1804-us'
 
     build-artifact-num-to-keep: 10
