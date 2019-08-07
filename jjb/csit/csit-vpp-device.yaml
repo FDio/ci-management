@@ -19,9 +19,10 @@
       - 'ubuntu1804'
     node-arch:
       - '1n-skx'
-      - '1n-tx2':
-          executor: 'vpp-csit-arm-ubuntu18'
-          skip-vote: 'true'
+# Is there a good way to allow manual triggers for tx2?
+#      - '1n-tx2':
+#          executor: 'vpp-csit-arm-ubuntu18'
+#          skip-vote: 'true'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
       - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
@@ -51,19 +52,19 @@
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
-    exclude:
-      - stream: '1810'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream: '1901'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream: '1904'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream_timed: '1904'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
+#    exclude:
+#      - stream: '1810'
+#        os: 'ubuntu1804'
+#        node-arch: '1n-tx2'
+#      - stream: '1901'
+#        os: 'ubuntu1804'
+#        node-arch: '1n-tx2'
+#      - stream: '1904'
+#        os: 'ubuntu1804'
+#        node-arch: '1n-tx2'
+#      - stream_timed: '1904'
+#        os: 'ubuntu1804'
+#        node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'

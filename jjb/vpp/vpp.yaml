@@ -86,16 +86,17 @@
     os: ubuntu1804
     device-node-arch:
       - 1n-skx
-      - 1n-tx2:
-          executor: 'vpp-csit-arm-ubuntu18'
+# Is there a good way to allow manual triggers for tx2?
+#      - 1n-tx2:
+#          executor: 'vpp-csit-arm-ubuntu18'
     node-arch:
       - 2n-skx
       - 3n-skx
       - 3n-hsw
-    exclude:
-      - stream: '1904'
-        os: 'ubuntu1804'
-        device-node-arch: '1n-tx2'
+#    exclude:
+#      - stream: '1904'
+#        os: 'ubuntu1804'
+#        device-node-arch: '1n-tx2'
 
 - project:
     name: vpp-master-only
