@@ -58,7 +58,7 @@
     # yamllint enable rule:line-length
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: false
     archive-artifacts: >
       **/csit/report.html
@@ -117,7 +117,7 @@
     # yamllint enable rule:line-length
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -170,7 +170,7 @@
     name: 'csit-vpp-functional-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     archive-artifacts: >
       **/csit/report.html
@@ -224,7 +224,7 @@
     name: 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -280,7 +280,7 @@
     name: 'csit-tldk-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -334,7 +334,7 @@
     name: 'csit-dmm-functional-{stream}-ubuntu1604-virl'
 
     project-type: freestyle
-    node: 'ubuntu1604-basebuild-4c-4g'
+    node: 'ubuntu1604-builder-4c-4g'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
