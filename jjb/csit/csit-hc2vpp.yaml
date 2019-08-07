@@ -31,7 +31,7 @@
     name: 'csit-hc2vpp-verify-func-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -90,7 +90,7 @@
     name: 'csit-hc2vpp-verify-perf-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: false
     archive-artifacts: 'archive/*.*'
     latest-only: false

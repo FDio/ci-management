@@ -51,7 +51,7 @@
 
     project: 'csit'
     executor: 'ubuntu1804-us'
-    ligato-executor: 'ubuntu1804-basebuild-4c-4g'
+    ligato-executor: 'ubuntu1804-builder-4c-4g'
     branch: 'master'
     branch-id: 'oper'
     vpp-mrr-daily-periodicity: '0 2,14 * * *'
