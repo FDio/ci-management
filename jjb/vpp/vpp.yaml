@@ -314,7 +314,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
+          - include-raw-vpp-testauto-build.sh
       - provide-maven-settings:
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
