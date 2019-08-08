@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e480ab04_ab32e1ca",
+        "filename": "jjb/csit/csit-func.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-08-08T08:02:43Z",
+      "side": 1,
+      "message": "I agree but I think that CSIT PTL should officially discuss it with TSC and related projects PTLs. We will keep them for now.",
+      "parentUuid": "8c297763_81d690df",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23c9ea97_da23cbb1",
         "filename": "jjb/csit/csit-hc2vpp.yaml",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-08-08T07:08:04Z",
       "side": 1,
       "message": "Generally i am ok but Honeycomb is dead. It is not working at all and there is no maintainer.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9daa8f_6862f876",
+        "filename": "jjb/csit/csit-hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-08-08T08:02:43Z",
+      "side": 1,
+      "message": "I agree but I think that CSIT PTL should officially discuss it with TSC and HC PTL. We will keep it for now even we know it\u0027s not working at the moment.",
+      "parentUuid": "23c9ea97_da23cbb1",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "95401778770447c29b959cfd255bf150dda8f066",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade34f44_9c5afc0a",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-08-08T08:02:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70093bc_33fd5f79",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
