@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c297763_81d690df",
+        "filename": "jjb/csit/csit-func.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-08-08T07:08:04Z",
+      "side": 1,
+      "message": "Generally these are dead. What to do with them?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c9ea97_da23cbb1",
+        "filename": "jjb/csit/csit-hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-08-08T07:08:04Z",
+      "side": 1,
+      "message": "Generally i am ok but Honeycomb is dead. It is not working at all and there is no maintainer.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70093bc_33fd5f79",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-08-08T07:08:04Z",
+      "side": 1,
+      "message": "Remove , not needed for report generation. Data are in nexus",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "95401778770447c29b959cfd255bf150dda8f066",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
