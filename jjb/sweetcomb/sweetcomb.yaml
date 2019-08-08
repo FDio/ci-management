@@ -32,6 +32,9 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
       - '1904':
           branch: 'stable/1904'
           repo-stream-part: 'stable.1904'
