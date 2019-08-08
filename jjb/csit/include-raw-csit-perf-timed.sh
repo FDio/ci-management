@@ -1,52 +1,19 @@
-#!/bin/bash
-set -xeu -o pipefail
+#!/usr/bin/env bash
 
-# check BRANCH_ID value
-if [ "$BRANCH_ID" == "" ]; then
-    echo "branch_id not provided => 'master' will be used"
-    BRANCH_ID="master"
-fi
+# Copyright (c) 2019 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-# make sure there is no csit directory
-if [ -d "./csit/" ]; then
-    rm -rf ./csit/
-fi
+set -exuo pipefail
 
-# clone csit
-git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit
-
-# if the git clone fails, complain clearly and exit
-if [ $? != 0 ]; then
-    echo "Failed to run: git clone --depth 1 --no-single-branch https://gerrit.fd.io/r/csit"
-    exit 1
-fi
-
-cd csit
-
-# get the latest verified version of the required branch
-BRANCH_NAME=$(echo $(git branch -r | grep -E "${BRANCH_ID}-[0-9]+" | tail -n 1))
-
-if [ "${BRANCH_NAME}" == "" ]; then
-    echo "No verified version found for requested branch - exiting"
-    exit 1
-fi
-
-# remove 'origin/' from the branch name
-BRANCH_NAME=$(echo ${BRANCH_NAME#origin/})
-
-# checkout to the required branch
-git checkout ${BRANCH_NAME}
-
-# execute csit bootstrap script if it exists
-if [ -e bootstrap-verify-perf.sh ]
-then
-    # make sure that bootstrap.sh is executable
-    chmod +x bootstrap-verify-perf.sh
-    # run the script
-    ./bootstrap-verify-perf.sh
-else
-    echo 'ERROR: No bootstrap-verify-perf.sh found'
-    exit 1
-fi
-
-# vim: ts=4 ts=4 sts=4 et :
+csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
+source "${csit_entry_dir}/with_oper_for_vpp.sh" "bootstrap_verify_perf.sh"
