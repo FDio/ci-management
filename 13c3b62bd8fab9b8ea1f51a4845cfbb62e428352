@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0810ecc_cad560ae",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-08-08T08:51:21Z",
+      "side": 1,
+      "message": "Do not change the indentation.\nSimilar rule than in Python: Intendation increases only if the previous line ends with colon.",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "13c3b62bd8fab9b8ea1f51a4845cfbb62e428352",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
