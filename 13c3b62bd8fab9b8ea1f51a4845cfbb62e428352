@@ -22,6 +22,30 @@
       "revId": "13c3b62bd8fab9b8ea1f51a4845cfbb62e428352",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22b51b9_196dde5e",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-08-08T09:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0810ecc_cad560ae",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "13c3b62bd8fab9b8ea1f51a4845cfbb62e428352",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
