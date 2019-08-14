@@ -73,6 +73,7 @@
     project: 'vpp'
     executor: 'vpp-csit-device'
     skip-vote: 'true'
+    trigger: 'gerrit-trigger-csit-devicetest-full'
     stream:
       - master:
           branch: 'master'
@@ -86,17 +87,17 @@
     os: ubuntu1804
     device-node-arch:
       - 1n-skx
-# Is there a good way to allow manual triggers for tx2?
-#      - 1n-tx2:
-#          executor: 'vpp-csit-arm-ubuntu18'
+      - 1n-tx2:
+          executor: 'vpp-csit-arm-ubuntu18'
+          trigger: 'gerrit-trigger-csit-devicetest-manual'
     node-arch:
       - 2n-skx
       - 3n-skx
       - 3n-hsw
-#    exclude:
-#      - stream: '1904'
-#        os: 'ubuntu1804'
-#        device-node-arch: '1n-tx2'
+    exclude:
+      - stream: '1904'
+        os: 'ubuntu1804'
+        device-node-arch: '1n-tx2'
 
 - project:
     name: vpp-master-only
@@ -838,7 +839,7 @@
           build-timeout: '90'
 
     triggers:
-      - gerrit-trigger-csit-devicetest:
+      - '{trigger}':
           name: '{project}'
           branch: '{branch}'
           skip-vote: '{skip-vote}'

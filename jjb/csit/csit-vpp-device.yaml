@@ -19,19 +19,22 @@
       - 'ubuntu1804'
     node-arch:
       - '1n-skx'
-# Is there a good way to allow manual triggers for tx2?
-#      - '1n-tx2':
-#          executor: 'vpp-csit-arm-ubuntu18'
-#          skip-vote: 'true'
+      - '1n-tx2':
+          executor: 'vpp-csit-arm-ubuntu18'
+          skip-vote: 'true'
+          trigger: 'gerrit-trigger-csit-vpp-devicetest-manual'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
       - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
       - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
+      - 'csit-vpp-device-master-ubuntu1804-1n-tx2-csit-verify-hourly'
+      - 'csit-vpp-device-master-ubuntu1804-1n-tx2-vpp-verify-hourly'
 
     project: 'csit'
     executor: 'vpp-csit-device'
     branch: 'master'
     branch-id: 'oper'
+    trigger: 'gerrit-trigger-csit-vpp-devicetest-full'
     stream_timed:
       - master:
           branch: 'master'
@@ -52,13 +55,19 @@
       - '1908':
           branch: 'rls1908'
           branch-id: 'oper-rls1908'
-#    exclude:
-#      - stream: '1901'
-#        os: 'ubuntu1804'
-#        node-arch: '1n-tx2'
-#      - stream: '1904'
-#        os: 'ubuntu1804'
-#        node-arch: '1n-tx2'
+    exclude:
+      - stream: '1901'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream: '1904'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream_timed: '1908'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
+      - stream_timed: 'master'
+        os: 'ubuntu1804'
+        node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
@@ -130,31 +139,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'false'
-            - draft-published-event
-            - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
+      - '{trigger}':
+          project: '{project}'
+          branch: '{branch}'
+          skip-vote: '{skip-vote}'
 
     builders:
       - shell:
@@ -322,6 +310,155 @@
     publishers:
       - robot:
           output-path: archive
+          other-files:
+            - '*.*'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-device-master-ubuntu1804-1n-tx2-csit-verify-hourly'
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>Validate CSIT code of corresponding branch against
+                      verified vpp build from corresponding branch.
+              </ul>
+          <li>test-cases selection
+              <ul>
+                  <li>pre-selected test-cases
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>default tags for vpp-device test type
+              <ul>
+                  <li>devicetest
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'vpp-csit-arm-ubuntu18'
+    concurrent: false
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1804'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - git-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          branch: '{branch}'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - timed: '0 * * * *'
+
+    builders:
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
+
+    publishers:
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-device-master-ubuntu1804-1n-tx2-vpp-verify-hourly'
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>Validate latest vpp build from corresponding branch stored
+                      in nexus against verified CSIT codebase of corresponding
+                      branch.
+              </ul>
+          <li>test-cases selection
+              <ul>
+                  <li>pre-selected test-cases
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>default tags for vpp-device test type
+              <ul>
+                  <li>devicetest
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'vpp-csit-arm-ubuntu18'
+    concurrent: false
+    archive-artifacts: 'csit/archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1804'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - timed: '30 * * * *'
+
+    builders:
+      - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
+      - inject:
+          properties-file: variables.prop
+      - shell:
+          !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
+
+    publishers:
+      - robot:
+          output-path: 'csit/archive'
           other-files:
             - '*.*'
       - fdio-infra-shiplogs:

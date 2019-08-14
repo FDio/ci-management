@@ -60,13 +60,33 @@
             notbuilt: true
 
 - trigger:
-    name: gerrit-trigger-csit-devicetest
+    name: gerrit-trigger-csit-devicetest-full
     triggers:
       - gerrit:
           server-name: 'Primary'
           trigger-on:
             - comment-added-contains-event:
                 comment-contains-value: 'checkstyle_success'
+            - comment-added-contains-event:
+                comment-contains-value: 'devicetest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
+
+- trigger:
+    name: gerrit-trigger-csit-devicetest-manual
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
             - comment-added-contains-event:
                 comment-contains-value: 'devicetest'
           projects:
