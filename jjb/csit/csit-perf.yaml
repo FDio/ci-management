@@ -28,7 +28,7 @@
             - -3n-dnv
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
-                vpp-mrr-daily-periodicity: '0 14 * * *'
+                vpp-mrr-daily-periodicity: '0 16 * * 6'
       - 'csit-vpp-perf-mrr-weekly-master-2n-skx'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
@@ -48,7 +48,7 @@
     ligato-executor: 'ubuntu1804-basebuild-4c-4g'
     branch: 'master'
     branch-id: 'oper'
-    vpp-mrr-daily-periodicity: '0 2,14 * * *'
+    vpp-mrr-daily-periodicity: '0 16 * * 1,3,5'
     stream:
       - master:
           branch: 'master'
