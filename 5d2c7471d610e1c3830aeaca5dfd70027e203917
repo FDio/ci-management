@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e93dee4_56b5c81f",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2019-08-14T15:03:18Z",
+      "side": 1,
+      "message": "Could you also reduce the 3n-tsh periodicity? Something like 0 16 * * 6",
+      "range": {
+        "startLine": 31,
+        "startChar": 44,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "5d2c7471d610e1c3830aeaca5dfd70027e203917",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
