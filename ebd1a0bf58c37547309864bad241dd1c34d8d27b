@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c8dfe37_3451d4a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-08-20T08:37:54Z",
+      "side": 1,
+      "message": "After looking into current code, I believe this is not true.\nThere are two timeout types (we have wrappers ready for). Absolute timeout, settable by fdio-infra-wrappers wrapper [0] (used by most jobs, but not by CSIT perf jobs) and no-activity timeout, settable by fdio-infra-wrappers-non-activity-timeout wrapper [1] (used by CSIT perf jobs).\nCurrently, both wrappers use the same default timeout value of 6 hours [2]. But as CSIT perf jobs tend to do at least some progress, no-activity timeout is rarely hit.\n\nI believe intent of this change is to create a wrapper that applies both timeouts, or if that is not possible switches daily and weekly perf jobs to absolute timeout (in both cases setting appropriate magnitude for the absolute timeout).\n\nInstead, this change as written merely increases the value for non-activity timeout.\n\n[0] https://github.com/FDio/ci-management/blob/9c94076561a5ff87ff093cc422437e05977ab167/jjb/global-macros.yaml#L202-L219\n[1] https://github.com/FDio/ci-management/blob/9c94076561a5ff87ff093cc422437e05977ab167/jjb/global-macros.yaml#L185-L200\n[2] https://github.com/FDio/ci-management/blob/5b2b0a4babd61beab258396749ba9aab1e7980fb/jjb/global-defaults.yaml#L12",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "ebd1a0bf58c37547309864bad241dd1c34d8d27b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
