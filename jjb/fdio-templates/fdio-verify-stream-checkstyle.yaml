@@ -1,0 +1,122 @@
+---
+# FD.io templates for checkstyle jobs
+# This template uses Global-JJB Macros which can be found at
+# ci-management/global-jjb/jjb/lf-macros.yaml
+# Global-JJB documentation can be found at
+# https://docs.releng.linuxfoundation.org/projects/global-jjb/en/latest/#
+# To update the global-jjb submodule run the following command in the
+# global-jjb directory: git submodule update --init --recursive
+
+- job-template:
+    name: '{project-name}-checkstyle-verify-{stream}'
+    id: fdio-checkstyle-verify
+
+    ######################
+    # Default parameters #
+    ######################
+
+    build-days-to-keep: 30
+    build-timeout: 60
+    java-version: openjdk8
+    mvn-global-settings: global-settings
+    mvn-version: mvn36
+    stream: master
+    submodule-recursive: true
+
+    #####################
+    # Job Configuration #
+    #####################
+
+    project-type: freestyle
+    node: '{build-node}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+          # Are these required
+          numToKeep: '{build-num-to-keep}'
+          artifactDaysToKeep: '{build-artifact-days-to-keep}'
+          artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - lf-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          stream: '{stream}'
+          lftools-version: '{lftools-version}'
+          # Update lf-infra-parameters
+          os: '{os}'
+          # Add {distro} and {version}
+          repo-name-parameter: '{stream}.{distro}.{version}.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - lf-infra-gerrit-scm:
+          jenkins-ssh-credential: '{jenkins-ssh-credential}'
+          git-url: '{git-url}/{project}.git'
+          refspec: '{refspec}'
+          branch: '{branch}'
+          submodule-recursive: '{submodule-recursive}'
+          submodule-timeout: '{submodule-timeout}'
+          submodule-disable: false
+          choosing-strategy: default
+
+    wrappers:
+      - lf-infra-wrappers:
+          build-timeout: '{build-timeout}'
+          jenkins-ssh-credential: '{jenkins-ssh-credential}'
+
+    # This syntax is not correct
+    gerrit_merge_triggers:
+      - gerrit-trigger-patch-submitted
+      - comment-added-contains-event:
+          comment-contains-value: 'checkstylecheck'
+      - comment-added-contains-event:
+          comment-contains-value: 'docsonly'
+      - comment-added-contains-event:
+          comment-contains-value: 'recheck'
+      - comment-added-contains-event:
+          comment-contains-value: 'reverify'
+      - gerrit-trigger-trivial-patch-submitted-skip-vote
+      - gerrit-trigger-manually-triggered
+      - gerrit-trigger-patch-merged
+      - gerrit-build-notbuilt-verified-value: 0
+      - gerrit-build-successful-verified-value: 1
+        # yamllint disable-line rule:line-length
+        notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+        # yamllint disable-line rule:line-length
+        failed-message: 'Checkstyle failed. No further verify jobs will be started.'
+        successful-message: 'checkstyle_success'
+        skip-vote:
+          successful: true
+          failed: false
+          unstable: false
+          notbuilt: false
+
+    gerrit_trigger_file_paths:
+      - compare-type: REG_EXP
+        pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
+        forbidden-file-paths:
+          - compare-type: REG_EXP
+            pattern: .*docs\/.*
+          - compare-type: REG_EXP
+            pattern: .*extras\/emacs\/.*
+        disable-strict-forbidden-file-verification: 'true'
+
+    builders:
+      - lf-infra-pre-build
+      - lf-maven-install:
+          mvn-version: '{mvn-version}'
+      - lf-update-java-alternatives:
+          java-version: '{java-version}'
+      - lf-provide-maven-settings:
+          global-settings-file: '{mvn-global-settings}'
+          settings-file: '{mvn-settings}'
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
