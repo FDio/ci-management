@@ -103,7 +103,6 @@
           - debian-xcontrol
           - pristine-tar
           - python-sphinx
-          - libstdc++5
           - python-scapy
           - inkscape
           - python-sphinx-rtd-theme
