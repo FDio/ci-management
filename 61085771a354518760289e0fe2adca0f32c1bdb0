@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9036057_c862991a",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what\u0027s going on here. Are you going to add these to lf-infra-parameters in global-jjb? Could they just be added to this template as new parameters?",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b35107b_6cc12a57",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "Some of these variables, such as {git-url}, {refspec}, and {submodule-timeout}, are not defined anywhere. git-url and submodule-timeout should probably be included in the job definition, while the refspec should probably be defined at runtime (it\u0027s usually a parameter).",
+      "range": {
+        "startLine": 60,
+        "startChar": 10,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96f1a96e_3e077136",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "This needs a \"name\" and \"branch\" defined.",
+      "range": {
+        "startLine": 75,
+        "startChar": 6,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8470a14_d9f6fef2",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "comment-contains-value can accept regexes, so these can be combined as \u0027checkstylecheck|docsonly\u0027.",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 79,
+        "endChar": 44
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505460a1_3ee0cea5",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "These are already defined in gerrit-trigger-patch-submitted.",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503f408a_ed91d309",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "This seems to be redundant and/or in conflict with gerrit-trigger-patch-submitted. If you want it to skip voting, include this one only (and again, add name and branch params). If not, remove it.",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 56
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d231a437_6c4fd342",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "This one would be exclusive. It is used if you _only_ want to trigger on a keyword. It should be removed from here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83459e4f_ae337d53",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "This also needs name and branch params passed.",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27f493b_70692ea3",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure what\u0027s happening here. These seem like defaults. If you\u0027re trying to overwrite the change to gerrit-build-notbuilt-verified-value in gerrit-trigger-patch-merged, it should be passed as a param to gerrit-trigger-patch-merged. But if this is a verify job, do you even want it running on merges? It actually seems like the last five lines could just be removed.",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 49
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0de45a3_cd83a616",
+        "filename": "jjb/fdio-templates/fdio-verify-stream-checkstyle.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-08-21T23:02:19Z",
+      "side": 1,
+      "message": "On one hand, I feel like this must have a purpose. On the other hand, it looks like complete nonsense to me, particularly since using an inverse match when you could just set forbidden file paths like below (including docs, which is part of this one) seems overly complicated.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 60
+      },
+      "revId": "61085771a354518760289e0fe2adca0f32c1bdb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
