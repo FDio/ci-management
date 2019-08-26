@@ -48,7 +48,7 @@
     ligato-executor: 'ubuntu1804-basebuild-4c-4g'
     branch: 'master'
     branch-id: 'oper'
-    vpp-mrr-daily-periodicity: '0 16 * * 1,3,5'
+    vpp-mrr-daily-periodicity: '16 * * 1,4'
     stream:
       - master:
           branch: 'master'
