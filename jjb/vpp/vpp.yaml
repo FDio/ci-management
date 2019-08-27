@@ -532,6 +532,11 @@
                 comment-contains-value: 'recheck'
             - comment-added-contains-event:
                 comment-contains-value: 'reverify'
+            # Following two are to cover missing functions of drafts going to review status
+            - comment-added-contains-event:
+                comment-contains-value: 'runtest'
+            - comment-added-contains-event:
+                comment-contains-value: 'This change is ready for review'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{project}'
