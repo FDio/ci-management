@@ -532,6 +532,8 @@
                 comment-contains-value: 'recheck'
             - comment-added-contains-event:
                 comment-contains-value: 'reverify'
+            - comment-added-contains-event:
+                comment-contains-value: 'runtest'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{project}'
