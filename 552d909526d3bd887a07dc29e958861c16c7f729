@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6f03231_a963b332",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-08-27T16:23:07Z",
+      "side": 1,
+      "message": "This doesn\u0027t parse in the crontab checker: https://crontab.guru\n\n\u00270 14 * * 1,4\u0027 is \"At 14:00 on Monday and Thursday.\" which is what I think is the desired change.",
+      "range": {
+        "startLine": 51,
+        "startChar": 32,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "552d909526d3bd887a07dc29e958861c16c7f729",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
