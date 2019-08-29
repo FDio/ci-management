@@ -1,0 +1,15 @@
+---
+- project:
+    name: udpi-project-view
+    project-name: udpi
+    views:
+      - project-view
+
+- project:
+    name: udpi-info
+    project-name: udpi
+    jobs:
+      - gerrit-info-yaml-verify
+    build-node: centos7-builder-4c-4g
+    project: udpi
+    branch: master
