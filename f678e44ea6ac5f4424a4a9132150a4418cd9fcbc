@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626e749b_8ae4947e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-02T15:19:04Z",
+      "side": 1,
+      "message": "Below, there is an example gerrit comment created by such event (albeit for CSIT repo)...\n\nPatch Set 2:\n\nThis change is ready for review.",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "f678e44ea6ac5f4424a4a9132150a4418cd9fcbc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398b2c76_5833f296",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-02T15:19:04Z",
+      "side": 1,
+      "message": "... and this trigger word is fine, but I do not see how it relates to \"WIP to publish events\"\n(which I assume is the state change that happens when you remove WIP status on the new Gerrit, the one no longer supporting Draft status).",
+      "range": {
+        "startLine": 536,
+        "startChar": 40,
+        "endLine": 536,
+        "endChar": 49
+      },
+      "revId": "f678e44ea6ac5f4424a4a9132150a4418cd9fcbc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
