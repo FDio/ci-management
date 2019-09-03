@@ -827,6 +827,9 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The API CRC job fails on mismatch, we hunt for real incompatibilities.
+      - csit-crc-mismatch-fails-parameter:
+          crc-mismatch-fails: 'False'
 
     scm:
       - gerrit-trigger-scm:
@@ -905,6 +908,9 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The API CRC job fails on mismatch, try compare API versions if possible.
+      - csit-crc-mismatch-fails-parameter:
+          crc-mismatch-fails: 'False'
 
     scm:
       - gerrit-trigger-scm:
