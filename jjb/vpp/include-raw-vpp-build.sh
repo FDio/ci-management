@@ -44,7 +44,7 @@ if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
     echo "Building using \"make verify\""
-    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes TEST_JOBS=auto verify
 else
     echo "Building using \"make pkg-verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes pkg-verify
