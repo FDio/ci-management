@@ -113,10 +113,6 @@
     publishers:
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
@@ -202,10 +198,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-sphinx-docs-verify-{stream}'
@@ -282,10 +274,6 @@
     publishers:
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-sphinx-docs-merge-{stream}'
@@ -362,10 +350,6 @@
     publishers:
         - fdio-infra-shiplogs:
             maven-version: 'mvn33-new'
-        - naginator:
-            rerun-unstable-builds: false
-            max-failed-builds: 1
-            fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}'
@@ -430,10 +414,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}'
@@ -520,7 +500,3 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
