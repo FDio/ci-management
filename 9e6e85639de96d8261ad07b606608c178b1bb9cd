@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "366e5f26_8ca247f9",
+        "filename": "jjb/udpi/udpi.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-04T16:32:51Z",
+      "side": 1,
+      "message": "I discourage the use of this plugin, but I assume you will be tweaking the definitions in future (e.g. adding non-trivial builders).",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "9e6e85639de96d8261ad07b606608c178b1bb9cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
