@@ -109,6 +109,14 @@
           description: "Architecture parameter"
 
 - parameter:
+    name: csit-fail-on-crc-mismatch-parameter
+    parameters:
+      - string:
+          name: FDIO_CSIT_FAIL_ON_CRC_MISMATCH
+          default: '{fail-on-crc-mismatch}'
+          description: "If false, CRC is not checked, so compatibility is tested."
+
+- parameter:
     name: gerrit-event-type-parameter
     parameters:
       - string:
