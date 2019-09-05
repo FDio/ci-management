@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e027e13_6787cd3a",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-09-05T13:45:10Z",
+      "side": 1,
+      "message": "Much clearer with an imperative tense: \u0027fail-on-crc-mismatch\u0027",
+      "range": {
+        "startLine": 112,
+        "startChar": 15,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "ecd1b8a42c4b58ac047e8da4b81975d07be19fb7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4981b3da_8f4c4f2e",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-09-05T13:45:10Z",
+      "side": 1,
+      "message": "Same here: \u0027fail-on-crc-mismatch\u0027",
+      "range": {
+        "startLine": 832,
+        "startChar": 10,
+        "endLine": 832,
+        "endChar": 28
+      },
+      "revId": "ecd1b8a42c4b58ac047e8da4b81975d07be19fb7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
