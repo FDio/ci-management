@@ -22,6 +22,30 @@
       "revId": "465e4f2d955e7d84baf69c9236fcec2fcd969c8c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50773c51_52294c6f",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-06T08:44:29Z",
+      "side": 1,
+      "message": "https://gerrit.fd.io/r/c/csit/+/21824 supports multiple prefixes, precisely so that we can rename the values in ci-management without affecting CSIT.\n\n\u003e FDIO_\n\nI am trying to future-proof CSIT, but perhaps 5 characters is too much for that right now? Not sure.",
+      "parentUuid": "a76d7f38_0b87e5b7",
+      "range": {
+        "startLine": 115,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "465e4f2d955e7d84baf69c9236fcec2fcd969c8c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
