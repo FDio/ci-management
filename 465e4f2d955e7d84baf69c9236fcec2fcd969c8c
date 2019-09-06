@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a76d7f38_0b87e5b7",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-09-06T05:53:05Z",
+      "side": 1,
+      "message": "I like the verbosity but i think FDIO_ can be removed. Hope that one day someone will find time to align all variables into such form",
+      "range": {
+        "startLine": 115,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "465e4f2d955e7d84baf69c9236fcec2fcd969c8c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
