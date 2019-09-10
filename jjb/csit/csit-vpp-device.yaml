@@ -207,6 +207,10 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The oper branch should have good CRCs, but sometimes accidents happen.
+      # Tolerate wrong CRCs as periodic jobs are not used for CSIT verification.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'False'
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -285,6 +289,10 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The oper branch should have good CRCs, but sometimes accidents happen.
+      # Tolerate wrong CRCs as periodic jobs are not used for CSIT verification.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'False'
 
     scm:
       - git-scm:
@@ -365,6 +373,10 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The oper branch should have good CRCs, but sometimes accidents happen.
+      # Tolerate wrong CRCs as periodic jobs are not used for CSIT verification.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'False'
 
     scm:
       - git-scm:
@@ -441,6 +453,10 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # The oper branch should have good CRCs, but sometimes accidents happen.
+      # Tolerate wrong CRCs as periodic jobs are not used for CSIT verification.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'False'
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
