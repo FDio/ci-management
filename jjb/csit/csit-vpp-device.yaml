@@ -127,6 +127,11 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      # This is an automatic verify job, part of API coverage.
+      # CRC checking is needed to ensure vpp crc job breaks only when intended.
+      # Unlikely to be removed, as this job is primary source of API coverage.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'True'
 
     scm:
       - gerrit-trigger-scm:

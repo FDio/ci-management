@@ -114,7 +114,7 @@
       - string:
           name: FDIO_CSIT_FAIL_ON_CRC_MISMATCH
           default: '{fail-on-crc-mismatch}'
-          description: "If false, CRC is not checked, so compatibility is tested."
+          description: "If true, CRC is checked, else compatibility is tested."
 
 - parameter:
     name: gerrit-event-type-parameter
