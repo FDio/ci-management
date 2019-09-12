@@ -22,6 +22,7 @@
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - ''
+            - -2n-clx
             - -2n-skx
             - -2n-dnv
             - -3n-skx
@@ -29,9 +30,13 @@
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
                 vpp-mrr-daily-periodicity: '0 16 * * 6'
-      - 'csit-vpp-perf-mrr-weekly-master-2n-skx'
+      - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
+            - 2n-clx
             - 2n-skx
             - 3n-skx
             - 3n-hsw
@@ -39,6 +44,7 @@
       - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
           node-arch:
             - ''
+            - -2n-clx
             - -2n-skx
             - -3n-skx
       - 'csit-ligato-perf-verify-{stream}-{node-arch}'
@@ -69,6 +75,7 @@
 
     build-artifact-num-to-keep: 10
     node-arch:
+      - 2n-clx
       - 2n-skx
       - 2n-dnv
       - 3n-skx
@@ -258,13 +265,13 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-mrr-weekly-master-2n-skx'
+    name: 'csit-vpp-perf-mrr-weekly-master-{node-arch}'
 
     description: |
       <ul>
           <li>objective
               <ul>
-                  <li>check vpp perf mrr weekly on 2n-skx
+                  <li>check vpp perf mrr weekly on {node-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
