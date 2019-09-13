@@ -15,7 +15,7 @@ set -xe -o pipefail
 # Create a text file with email body in case the build fails:
 cd "${WORKSPACE}"
 mkdir -p "${STATIC_VPP_DIR}"
-EMAIL_BODY = "ERROR: The build number ${BUILD_NUMBER} of the job ${JOB_NAME} failed. For more information see: ${BUILD_URL}"
+EMAIL_BODY="ERROR: The build number ${BUILD_NUMBER} of the job ${JOB_NAME} failed. For more information see: ${BUILD_URL}"
 echo "${EMAIL_BODY}" > "${STATIC_VPP_DIR}/trending-failed-tests.txt"
 
 cd "${DOC_DIR}"
