@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aab9fe1_33f8f975",
+        "filename": "jjb/csit/include-raw-csit-cpta.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-13T10:11:45Z",
+      "side": 1,
+      "message": "I would prefer if this script creates the initial file content. But I agree it is simpler to do it in lines 15-19, so the script does not need to parse the build related variables.",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "19c0afa8ef1c174595469ecaa16cc704c74b2d81",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
