@@ -9,8 +9,14 @@ set -xe -o pipefail
 [ "${SECONDARY_BUILD_DIR}" ] || SECONDARY_BUILD_DIR="${DOC_DIR}_new/_build"
 [ "${SITE_DIR}" ] || SITE_DIR="build-root/docs/deploy-site"
 [ "${RESOURCES_DIR}" ] || RESOURCES_DIR="${SITE_DIR}/src/site/resources/trending"
-[ "${SECONDARY_RESOURCES_DIR}" ] || SECONDARY_RESOURCES_DIR="${RESOURCES_DIR}/new"
+[ "${STATIC_VPP_DIR}" ] || STATIC_VPP_DIR="${STATIC_VPP_DIR}/_static/vpp"
 [ "${MVN}" ] || MVN="/opt/apache/maven/bin/mvn"
+
+# Create a text file with email body in case the build fails:
+cd "${WORKSPACE}"
+mkdir -p "${STATIC_VPP_DIR}"
+EMAIL_BODY = "ERROR: The build number ${BUILD_NUMBER} of the job ${JOB_NAME} failed. For more information see: ${BUILD_URL}"
+echo "${EMAIL_BODY}" > "${STATIC_VPP_DIR}/trending-failed-tests.txt"
 
 cd "${DOC_DIR}"
 chmod +x ./run_cpta.sh
