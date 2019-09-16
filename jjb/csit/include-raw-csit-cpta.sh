@@ -24,10 +24,11 @@ chmod +x ./run_cpta.sh
 STATUS=$(./run_cpta.sh | tail -1)
 
 cd "${WORKSPACE}"
-rm -rf "${SITE_DIR}/*"
+rm -rf "${SITE_DIR}/"*
 
 mkdir -p "${RESOURCES_DIR}"
-mv -f ${BUILD_DIR}/* "${RESOURCES_DIR}"
+ls "${RESOURCES_DIR}"
+mv -f "${BUILD_DIR}/"* "${RESOURCES_DIR}"
 
 cd "${SITE_DIR}"
 
