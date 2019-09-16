@@ -11,25 +11,24 @@ set -xe -o pipefail
 [ "${RESOURCES_DIR}" ] || RESOURCES_DIR="${SITE_DIR}/src/site/resources/trending"
 [ "${STATIC_VPP_DIR}" ] || STATIC_VPP_DIR="${RESOURCES_DIR}/_static/vpp"
 [ "${MVN}" ] || MVN="/opt/apache/maven/bin/mvn"
+[ "${FAILED_TESTS}" ] || FAILED_TESTS="${STATIC_VPP_DIR}/trending-failed-tests.txt"
 
 # Create a text file with email body in case the build fails:
 cd "${WORKSPACE}"
 mkdir -p "${STATIC_VPP_DIR}"
 EMAIL_BODY="ERROR: The build number ${BUILD_NUMBER} of the job ${JOB_NAME} failed. For more information see: ${BUILD_URL}"
-echo "${EMAIL_BODY}" > "${STATIC_VPP_DIR}/trending-failed-tests.txt"
+echo "${EMAIL_BODY}" > "${FAILED_TESTS}"
 
 cd "${DOC_DIR}"
 chmod +x ./run_cpta.sh
 STATUS=$(./run_cpta.sh | tail -1)
 
 cd "${WORKSPACE}"
+rm -f "${FAILED_TESTS}"
 
 mkdir -p "${RESOURCES_DIR}"
 mv -f ${BUILD_DIR}/* "${RESOURCES_DIR}"
-if [ -d "${SECONDARY_BUILD_DIR}" ]; then
-    mkdir -p "${SECONDARY_RESOURCES_DIR}"
-    mv -f "${SECONDARY_BUILD_DIR}"/* "${SECONDARY_RESOURCES_DIR}"
-fi
+
 cd "${SITE_DIR}"
 
 cat > pom.xml << EOF
