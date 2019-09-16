@@ -24,7 +24,7 @@ chmod +x ./run_cpta.sh
 STATUS=$(./run_cpta.sh | tail -1)
 
 cd "${WORKSPACE}"
-rm -f "${FAILED_TESTS}"
+rm -rf "${SITE_DIR}/*"
 
 mkdir -p "${RESOURCES_DIR}"
 mv -f ${BUILD_DIR}/* "${RESOURCES_DIR}"
