@@ -1,0 +1,206 @@
+---
+# FD.io template for docs jobs
+# This template uses global-jjb macros which can be found in
+# ci-management/global-jjb/jjb/lf-macros.yaml
+# global-jjb documentation
+# https://docs.releng.linuxfoundation.org/projects/global-jjb/en/latest/#
+# Steps to checkout the global-jjb submodule
+#  checkout ci-management
+#  cd global-jjb
+#  git submodule update --init --recursive
+
+- job-group:
+    name: "{project-name}-docs-jobs"
+
+    # This job group contains all recommended jobs that should be deployed
+    # for docs jobs
+
+    jobs:
+      - fdio-gerrit-docs-verify
+      - fdio-gerrit-docs-merge
+
+##########
+# Macros #
+##########
+
+# This is a temporary macro until we update global-jjb macros to allow for
+# number of days to keep builds
+
+- parameter:
+    name: fdio-infra-parameters
+    parameters:
+      - string:
+          name: OS
+          default: "{os}"
+          description: |
+            Parameter used to idendify the OS project to build.
+
+####################
+# COMMON FUNCTIONS #
+####################
+
+- fdio_docs_common: &fdio_docs_common
+    name: fdio-docs-common
+
+    ######################
+    # Default parameters #
+    ######################
+
+    branch: master
+    os: ubuntu1604
+    build-days-to-keep: 30
+    build-num-to-keep: 10
+    build-timeout: 360
+    disable-job: false
+    git-url: "$GIT_URL/$PROJECT"
+    mvn-version: mvn33-new
+    mvn-global-settings: global-settings
+    settings-file: '{project-settings}'
+    global-settings-type: cfp
+    project-pattern: "{project}"
+    stream: master
+    submodule-recursive: true
+    submodule-timeout: 10
+    submodule-disable: false
+    archive-artifacts: '**/build-root/docs/html/*'
+
+    #####################
+    # Job Configuration #
+    #####################
+
+    disabled: "{disable-job}"
+
+    project-type: freestyle
+    node: "{build-node}"
+
+    properties:
+      - fdio-infra-properties:
+          build-num-to-keep: "{build-num-to-keep}"
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - lf-infra-parameters:
+          branch: "{branch}"
+          project: "{project}"
+          stream: "{stream}"
+          lftools-version: '{lftools-version}'
+
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: "{archive-artifacts}"
+          description: Artifacts to archive to the logs server.
+      - fdio-infra-parameters:
+          os: '{os}'
+
+    wrappers:
+      - lf-infra-wrappers:
+          build-timeout: "{build-timeout}"
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+
+    builders:
+      - lf-infra-pre-build
+      - lf-maven-install:
+          mvn-version: "{mvn-version}"
+          goals: '--version'
+      - lf-provide-maven-settings:
+          global-settings-file: "{mvn-global-settings}"
+          settings-file: "{mvn-settings}"
+      - shell:
+          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape: ../vpp/include-raw-vpp-docs.sh
+
+    publishers:
+      - lf-infra-publish
+
+#################
+# Docs Verify   #
+#################
+
+- job-template:
+    name: "{project-name}-docs-verify-{stream}"
+    id: fdio-gerrit-docs-verify
+    <<: *fdio_docs_common
+
+    concurrent: true
+
+    scm:
+      - lf-infra-gerrit-scm:
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+          git-url: "{git-url}"
+          refspec: "$GERRIT_REFSPEC"
+          branch: "$GERRIT_BRANCH"
+          submodule-recursive: "{submodule-recursive}"
+          submodule-timeout: "{submodule-timeout}"
+          submodule-disable: "{submodule-disable}"
+          choosing-strategy: gerrit
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    gerrit_verify_triggers:
+      - patchset-created-event:
+          exclude-drafts: true
+          exclude-trivial-rebase: false
+          exclude-no-code-change: false
+      - draft-published-event
+      - comment-added-contains-event:
+          comment-contains-value: '^Patch Set\s+\d+:\s+(recheck|reverify)\s*$'
+
+#################
+# Docs Merge   #
+#################
+
+- job-template:
+    name: "{project-name}-docs-merge-{stream}"
+    id: fdio-gerrit-docs-merge
+    <<: *fdio_docs_common
+
+    concurrent: false
+    archive-artifacts: '**/build-root/docs/html/*'
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+    artifactDaysToKeep: -1
+    artifactNumToKeep: 5
+
+    scm:
+      - lf-infra-gerrit-scm:
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+          git-url: "{git-url}"
+          refspec: "$GERRIT_REFSPEC"
+          branch: "$GERRIT_BRANCH"
+          submodule-recursive: "{submodule-recursive}"
+          submodule-timeout: "{submodule-timeout}"
+          submodule-disable: "{submodule-disable}"
+          choosing-strategy: gerrit
+
+    triggers:
+      - reverse:
+          jobs: 'vpp-merge-{stream}-ubuntu1804'
+          result: 'success'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'run-docs'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
+
+    publishers:
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
