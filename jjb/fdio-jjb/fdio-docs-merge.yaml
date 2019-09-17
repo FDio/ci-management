@@ -1,0 +1,88 @@
+---
+# FD.io template for merge docs jobs
+# This template uses global-jjb macros which can be found in
+# ci-management/global-jjb/jjb/lf-macros.yaml
+# global-jjb documentation
+# https://docs.releng.linuxfoundation.org/projects/global-jjb/en/latest/#
+# Steps to checkout the global-jjb submodule
+#  checkout ci-management
+#  cd global-jjb
+#  git submodule update --init --recursive
+
+##########
+# Macros #
+##########
+
+####################
+# COMMON FUNCTIONS #
+####################
+
+- docs_merge_common: &docs_merge_common
+    name: fdio-docs-common
+
+    project-type: freestyle
+    node: "{build-node}"
+    concurrent: true
+
+    scm:
+      - lf-infra-gerrit-scm:
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+          git-url: "{git-url}"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: gerrit
+
+    gerrit_merge_triggers:
+      - change-merged-event
+      - comment-added-contains-event:
+          comment-contains-value: remerge$
+
+    builders:
+      name: lf-provide-maven-settings
+
+    ######################
+    # Default parameters #
+    ######################
+
+    branch: master
+    build-days-to-keep: 30
+    build-timeout: 360
+    git-url: "$GIT_URL/$PROJECT"
+    maven-version: 'mvn33-new'
+
+    #####################
+    # Job Configuration #
+    #####################
+
+    disabled: "{disable-job}"
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - lf-infra-parameters:
+          branch: "{branch}"
+          project: "{project}"
+          refspec: "refs/heads/{branch}"
+          stream: "{stream}"
+
+    wrappers:
+      - lf-infra-wrappers:
+          build-timeout: "{build-timeout}"
+          jenkins-ssh-credential: "{jenkins-ssh-credential}"
+
+    publishers:
+      - lf-infra-publish
+
+#################
+# Docs Merge    #
+#################
+
+- job-template:
+    name: "{project-name}-docs-merge-{stream}"
+    id: gerrit-docs-merge
+    # Job template for docs merge jobs
+
+    <<: *docs_merge_common
+    # yamllint disable-line rule:key-duplicates
+    <<: *docs_merge_common
