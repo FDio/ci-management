@@ -36,9 +36,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1908':
-          branch: 'rls1908'
-          branch-id: 'oper-rls1908'
     stream:
       - master:
           branch: 'master'
@@ -46,8 +43,8 @@
           branch: 'rls1901'
       - '1904':
           branch: 'rls1904'
-      - '1908':
-          branch: 'rls1908'
+      - '1908_1':
+          branch: 'rls1908_1'
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-{os}-weekly'

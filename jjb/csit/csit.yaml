@@ -19,8 +19,6 @@
     jobs:
       - 'csit-docs-merge-{stream_timed}'
       - 'csit-report-merge-{stream}'
-      - 'csit-report-merge-1901_3'
-      - 'csit-report-merge-1904_2'
       - 'csit-trending-daily-master'
 
     project: 'csit'
@@ -32,9 +30,6 @@
       - master:
           branch: 'master'
           executor: 'ubuntu1804-us'
-      - '1908':
-          branch: 'rls1908'
-          executor: 'ubuntu1804-us'
     stream:
       - master:
           branch: 'master'
@@ -45,8 +40,8 @@
       - '1904':
           branch: 'rls1904'
           executor: 'ubuntu1804-us'
-      - '1908':
-          branch: 'rls1908'
+      - '1908_1':
+          branch: 'rls1908_1'
           executor: 'ubuntu1804-us'
 
 - project:
@@ -184,156 +179,6 @@
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
-
-    builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape: include-raw-csit-report.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'csit-report-merge-1901_3'
-
-    project-type: freestyle
-    node: '{executor-large}'
-    concurrent: false
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: 'rls1901_3'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'run-report'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/rls1901_3'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
-
-    builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape: include-raw-csit-report.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'csit-report-merge-1904_2'
-
-    project-type: freestyle
-    node: '{executor-large}'
-    concurrent: false
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: 'rls1904_2'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'run-report'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/rls1904_2'
           skip-vote:
             successful: true
             failed: true

@@ -14,8 +14,8 @@
           branch: 'rls1901'
       - '1904':
           branch: 'rls1904'
-      - '1908':
-          branch: 'rls1908'
+      - '1908_1':
+          branch: 'rls1908_1'
 
 - job-template:
     name: 'csit-verify-tox-{stream}'
