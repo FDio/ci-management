@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdce8b20_2e09baf2",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-09-19T10:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca23ee46_fc9be527",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "af861dcd0a3d7442956acab9656e8aebada84785",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96b08e7b_6442181a",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-19T09:02:39Z",
       "side": 1,
       "message": "Do we still need it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "af861dcd0a3d7442956acab9656e8aebada84785",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5a9b46_c36af641",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2019-09-19T10:16:40Z",
+      "side": 1,
+      "message": "Well, I keep the csit rls1901 branch active as the stable/1901 branch is still kept alive under vpp project.",
+      "parentUuid": "96b08e7b_6442181a",
       "range": {
         "startLine": 39,
         "startChar": 0,
