@@ -29,7 +29,7 @@
             - -3n-dnv
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
-                vpp-mrr-daily-periodicity: '0 16 * * 6'
+                vpp-mrr-daily-periodicity: '0 14 * * *'
       - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-clx
@@ -54,7 +54,7 @@
     ligato-executor: 'ubuntu1804-basebuild-4c-4g'
     branch: 'master'
     branch-id: 'oper'
-    vpp-mrr-daily-periodicity: '0 14 * * 1,4'
+    vpp-mrr-daily-periodicity: '0 2,14 * * *'
     stream:
       - master:
           branch: 'master'
@@ -68,9 +68,9 @@
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
           executor: 'ubuntu1804-us'
-      - '1908':
-          branch: 'rls1908'
-          branch-id: 'oper-rls1908'
+      - '1908_1':
+          branch: 'rls1908_1'
+          branch-id: 'oper-rls1908_1'
           executor: 'ubuntu1804-us'
 
     build-artifact-num-to-keep: 10

@@ -39,9 +39,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1908':
-          branch: 'rls1908'
-          branch-id: 'oper-rls1908'
     stream:
       - master:
           branch: 'master'
@@ -53,8 +50,8 @@
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
       - '1908':
-          branch: 'rls1908'
-          branch-id: 'oper-rls1908'
+          branch: 'rls1908_1'
+          branch-id: 'oper-rls1908_1'
     exclude:
       - stream: '1901'
         os: 'ubuntu1804'
