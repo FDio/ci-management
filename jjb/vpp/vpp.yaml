@@ -1214,7 +1214,7 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
-    archive-artifacts: ''
+    archive-artifacts: '**/*.log'
     latest-only: false
 
     build-discarder:
