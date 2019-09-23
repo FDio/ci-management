@@ -112,6 +112,7 @@
           - libibverbs-dev
           - ruby-dev
           - zip
+          - shellcheck
         state: present
       # yamllint disable-line rule:line-length
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
