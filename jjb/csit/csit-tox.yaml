@@ -72,5 +72,10 @@
             max: 250
             unstable: 250
             pattern: 'pylint.log'
+          checkstyle:
+            min: 10
+            max: 250
+            unstable: 250
+            pattern: 'shellcheck.xml.log'
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
