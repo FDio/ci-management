@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab679f0_e47b627c",
+        "filename": "jjb/fdio-jjb/fdio-docs.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-09-23T17:17:33Z",
+      "side": 1,
+      "message": "You don\u0027t seem to be defining a merge job here. Should it be defined in this file, or should this be removed from the group (in which case, it would seem best to just remove the group entirely)?\nEDIT: Per slack, merge is in progress. Disregard this comment once it\u0027s added.",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "990b832de76b4ae20b4682000fd90991b15ecd43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9516be2e_d701a34b",
+        "filename": "jjb/fdio-jjb/fdio-docs.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-09-23T17:17:33Z",
+      "side": 1,
+      "message": "It looks like this is already defined in global-macros.yaml.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "990b832de76b4ae20b4682000fd90991b15ecd43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6adefbb7_d191ccd8",
+        "filename": "jjb/fdio-jjb/fdio-docs.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-09-23T17:17:33Z",
+      "side": 1,
+      "message": "It looks like you\u0027re including fdio_docs_common twice here, in which case the second line and the yamllint comment are unnecessary.",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 0
+      },
+      "revId": "990b832de76b4ae20b4682000fd90991b15ecd43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
