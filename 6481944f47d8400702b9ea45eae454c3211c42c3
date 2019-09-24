@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c627024a_2bf21ba3",
+        "filename": "jjb/fdio-jjb/fdio-docs.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2019-09-24T18:02:49Z",
+      "side": 1,
+      "message": "This seems like a fairly generic job template. Would any project implementing this want to have a reverse trigger to vpp-merge?",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "6481944f47d8400702b9ea45eae454c3211c42c3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
