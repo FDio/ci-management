@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a975594b_964fd502",
+        "filename": "jjb/fdio-jjb/fdio-docs.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-09-25T10:25:56Z",
+      "side": 1,
+      "message": "The script contains default values hardcoded for VPP project, but we can refactor than when another project want to use this template.",
+      "range": {
+        "startLine": 111,
+        "startChar": 34,
+        "endLine": 111,
+        "endChar": 61
+      },
+      "revId": "54ad4296b6223938a98c0f46705ca3b7bb6d8289",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
