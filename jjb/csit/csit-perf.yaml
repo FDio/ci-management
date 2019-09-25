@@ -29,7 +29,7 @@
             - -3n-dnv
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
-                vpp-mrr-daily-periodicity: '0 14 * * *'
+                vpp-mrr-daily-periodicity: '0 14 * * 0'
       - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-clx
