@@ -44,7 +44,6 @@ if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
     echo "Building using \"make verify\""
-    sed -i '33i\ \ DEPENDS api_headers' src/vat/CMakeLists.txt
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify SKIP_AARCH64=yes
 else
     echo "Building using \"make build-root/vagrant/build.sh\""
