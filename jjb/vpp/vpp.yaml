@@ -751,9 +751,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-vpp-coverity.sh
-# TODO: make unstable return actually work with include-raw-escape
-#       unstable-return: 42
+          command: !include-raw-escape: include-raw-vpp-coverity.sh
+          unstable-return: 42
 
     publishers:
       - email-ext:
