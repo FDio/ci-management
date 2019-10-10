@@ -112,6 +112,38 @@
           - libibverbs-dev
           - ruby-dev
           - zip
+          - libevent-dev
+          - longbow-dev
+          - libparc-dev
+          - libccnx-common-dev
+          - libccnx-transport-rta-dev
+          - libccnx-portal-dev
+          - libboost-system-dev
+          - libevent-devel
+          - openssl-devel
+          - longbow-devel
+          - libparc-devel
+          - libccnx-common-devel
+          - libccnx-transport-rta-devel
+          - libccnx-portal-devel
+          - boost-devel
+          - libcurl4-openssl-dev
+          - libboost-regex-dev
+          - libboost-filesystem-dev
+          - curl-devel
+          - git-core
+          - qt57svg
+          - qt57charts-no-lgpl
+          - qt57multimedia
+          - libqtav-dev
+          - libicnet-dev
+          - libavcodec-dev
+          - libavformat-dev
+          - libswscale-dev
+          - libavresample-dev
+          - libqml-module-qtav
+          - qt57quickcontrols
+          - qt57quickcontrols2
         state: present
       # yamllint disable-line rule:line-length
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
