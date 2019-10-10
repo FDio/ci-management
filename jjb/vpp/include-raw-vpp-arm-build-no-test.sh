@@ -39,9 +39,9 @@ echo "CC=${CC}"
 
 make UNATTENDED=yes install-dep
 make UNATTENDED=yes dpdk-install-dev
-make UNATTENDED=yes -C build-root TAG=vpp wipe-all install-packages
-make UNATTENDED=yes -C build-root TAG=vpp sample-plugin-install
-make UNATTENDED=yes -C build-root TAG=vpp libmemif-install
+make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp wipe-all install-packages
+make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp sample-plugin-install
+make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp libmemif-install
 make UNATTENDED=yes pkg-deb
 
 if [ "x${VPP_REPO}" == "x1" ]; then
