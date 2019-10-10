@@ -112,6 +112,21 @@
           - libibverbs-dev
           - ruby-dev
           - zip
+          - libevent-dev
+          - longbow-dev
+          - libparc-dev
+          - libccnx-common-dev
+          - libccnx-transport-rta-dev
+          - libccnx-portal-dev
+          - libboost-system-dev
+          - libevent-devel
+          - openssl-devel
+          - longbow-devel
+          - libparc-devel
+          - libccnx-common-devel
+          - libccnx-transport-rta-devel
+          - libccnx-portal-devel
+          - boost-devel
         state: present
       # yamllint disable-line rule:line-length
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
