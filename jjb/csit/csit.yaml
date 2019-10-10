@@ -268,6 +268,21 @@
           always: true
           failure: false
 
+      - email-ext:
+          # yamllint disable-line rule:line-length
+          recipients: 'tifrank@cisco.com, csit-report@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: 'Regressions as of  $BUILD_TIMESTAMP'
+          # yamllint disable-line rule:line-length
+          body: |
+                Following regressions occured in the last trending job runs, listed per testbed type.
+
+                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-regressions.txt"}}
+
+          always: true
+          failure: false
+
       - fdio-infra-shiplogs:
           maven-version: 'mvn33-new'
 
