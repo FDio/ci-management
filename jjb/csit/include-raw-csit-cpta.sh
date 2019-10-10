@@ -6,18 +6,21 @@ set -xe -o pipefail
 [ "${PROJECT_PATH}" ] || PROJECT_PATH="io/fd/csit"
 [ "${DOC_DIR}" ] || DOC_DIR="resources/tools/presentation"
 [ "${BUILD_DIR}" ] || BUILD_DIR="${DOC_DIR}/_build"
-[ "${SECONDARY_BUILD_DIR}" ] || SECONDARY_BUILD_DIR="${DOC_DIR}_new/_build"
 [ "${SITE_DIR}" ] || SITE_DIR="build-root/docs/deploy-site"
 [ "${RESOURCES_DIR}" ] || RESOURCES_DIR="${SITE_DIR}/src/site/resources/trending"
 [ "${STATIC_VPP_DIR}" ] || STATIC_VPP_DIR="${RESOURCES_DIR}/_static/vpp"
 [ "${MVN}" ] || MVN="/opt/apache/maven/bin/mvn"
 [ "${FAILED_TESTS}" ] || FAILED_TESTS="${STATIC_VPP_DIR}/trending-failed-tests.txt"
+[ "${REGRESSIONS}" ] || REGRESSIONS="${STATIC_VPP_DIR}/trending-regressions.txt"
+[ "${PROGRESSIONS}" ] || PROGRESSIONS="${STATIC_VPP_DIR}/trending-progressions.txt"
 
 # Create a text file with email body in case the build fails:
 cd "${WORKSPACE}"
 mkdir -p "${STATIC_VPP_DIR}"
 EMAIL_BODY="ERROR: The build number ${BUILD_NUMBER} of the job ${JOB_NAME} failed. For more information see: ${BUILD_URL}"
 echo "${EMAIL_BODY}" > "${FAILED_TESTS}"
+echo "${EMAIL_BODY}" > "${REGRESSIONS}"
+echo "${EMAIL_BODY}" > "${PROGRESSIONS}"
 
 cd "${DOC_DIR}"
 chmod +x ./run_cpta.sh
