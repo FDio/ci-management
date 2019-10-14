@@ -45,6 +45,29 @@
       "revId": "5af6c86c5914ce72d2b4acec010a1a0d0a8231b7",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c5444f_084ef0d5",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-10-14T16:06:35Z",
+      "side": 1,
+      "message": "should be hicn",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "5af6c86c5914ce72d2b4acec010a1a0d0a8231b7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
