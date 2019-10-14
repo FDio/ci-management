@@ -22,6 +22,20 @@
     type:
       - short
       - long
+      
+- project:
+    name: hicn-arm
+    jobs:
+        - 'hicn-arm-verify-{stream}-{os}'
+        - 'hicb-arm-merge-{stream}-{os}'
+    project: 'hicn'
+    stream:
+    - master:
+        branch: 'master'
+        repo-stream-part: 'master'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu-arm.bionic.main'
 
 - project:
     name: hicn-misc
