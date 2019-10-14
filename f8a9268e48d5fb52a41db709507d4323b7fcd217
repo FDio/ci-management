@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a62c613b_31da58c2",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-10-14T15:13:39Z",
+      "side": 1,
+      "message": "Please remove whitespace",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "f8a9268e48d5fb52a41db709507d4323b7fcd217",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
