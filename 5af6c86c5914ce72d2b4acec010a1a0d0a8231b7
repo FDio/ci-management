@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c830d82e_8c0e00f9",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-10-14T15:51:19Z",
+      "side": 1,
+      "message": "Remove white space",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "5af6c86c5914ce72d2b4acec010a1a0d0a8231b7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b77fa4a5_741b613a",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-10-14T15:51:19Z",
+      "side": 1,
+      "message": "indention should be two spaces",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "5af6c86c5914ce72d2b4acec010a1a0d0a8231b7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
