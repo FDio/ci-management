@@ -120,8 +120,7 @@
           !include-raw-escape:
           - include-raw-sweetcomb-build.sh
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -195,8 +194,7 @@
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -256,8 +254,7 @@
           - include-raw-sweetcomb-build.sh
           - include-raw-sweetcomb-test.sh
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
