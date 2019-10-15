@@ -155,8 +155,7 @@
           output-path: archive
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
@@ -234,8 +233,7 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
@@ -314,8 +312,7 @@
           output-path: archive
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-master-ubuntu1804-1n-tx2-csit-verify-hourly'
@@ -389,8 +386,7 @@
           output-path: archive
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-master-ubuntu1804-1n-tx2-vpp-verify-hourly'
@@ -463,5 +459,4 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish

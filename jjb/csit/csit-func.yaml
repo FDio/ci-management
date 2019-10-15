@@ -102,8 +102,7 @@
       - robot-report:
           output-path: ''
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-verify-{stream_timed}-{os}-semiweekly'
@@ -158,8 +157,7 @@
       - robot-report:
           output-path: 'csit/archive'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-functional-{stream}-{os}-virl'
@@ -218,8 +216,7 @@
       - robot-report:
           output-path: ''
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-nsh_sfc-verify-func-{stream}-{os}-virl'
@@ -274,8 +271,7 @@
       - robot-report:
           output-path: 'archive'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-tldk-verify-func-{stream}-{os}-virl'
@@ -328,8 +324,7 @@
       - robot-report:
           output-path: 'archive'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-dmm-functional-{stream}-ubuntu1604-virl'
@@ -380,5 +375,4 @@
       - robot-report:
           output-path: ''
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish

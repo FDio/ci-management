@@ -72,5 +72,4 @@
             max: 250
             unstable: 250
             pattern: 'pylint.log'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
