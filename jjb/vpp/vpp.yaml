@@ -339,6 +339,8 @@
       **/build-root/*.deb
       **/dpdk/*.rpm
       **/dpdk/*.deb
+      **/tmp/vpp-failed-unittests/*/*
+      **/core
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -393,7 +395,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -489,6 +490,9 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
+    archive-artifacts: >
+      **/tmp/vpp-failed-unittests/*/*
+      **/core
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -505,6 +509,10 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -578,7 +586,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -595,6 +602,8 @@
       **/build-root/*.deb
       **/dpdk/*.rpm
       **/dpdk/*.deb
+      **/tmp/vpp-failed-unittests/*/*
+      **/core
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -648,7 +657,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -660,6 +668,9 @@
     project-type: freestyle
     node: 'ubuntu1804-us'
     concurrent: true
+    archive-artifacts: >
+      **/tmp/vpp-failed-unittests/*/*
+      **/core
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -678,6 +689,10 @@
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -705,7 +720,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -717,6 +731,9 @@
     project-type: freestyle
     node: 'ubuntu1804-us'
     concurrent: true
+    archive-artifacts: >
+      **/tmp/vpp-failed-unittests/*/*
+      **/core
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -735,6 +752,11 @@
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
 
     scm:
       - gerrit-trigger-scm:
@@ -808,7 +830,6 @@
           fixed: true
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-          archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
 - job-template:
     name: 'vpp-merge-{stream}-{os}'
