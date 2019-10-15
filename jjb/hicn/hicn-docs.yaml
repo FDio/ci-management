@@ -82,8 +82,7 @@
           !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -169,8 +168,7 @@
           !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
