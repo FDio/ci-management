@@ -118,8 +118,7 @@
           ./scripts/ci-beaker.sh {os}
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - project:
     name: puppet-fdio-info
