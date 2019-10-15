@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd30d47d_6ad65ece",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2019-10-15T16:20:08Z",
+      "side": 1,
+      "message": "this might fail due to the fomatting:\n\n    archive-artifacts: \u003e\n       **/tmp/vpp-failed-unittests/*/*\n       **/core",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 11
+      },
+      "revId": "fc53a86a6482dcf9c910c08cbb98a512af0e9d5e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
