@@ -62,8 +62,7 @@
           !include-raw-escape: include-raw-trex-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'trex-merge-{stream}-{os}'
@@ -106,8 +105,7 @@
           !include-raw-escape: include-raw-trex-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - project:
     name: trex-info
