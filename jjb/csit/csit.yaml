@@ -126,8 +126,7 @@
           !include-raw-escape: include-raw-csit-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-report-merge-{stream}'
@@ -201,8 +200,7 @@
           !include-raw-escape: include-raw-csit-report.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-trending-daily-master'
@@ -298,8 +296,8 @@
           always: true
           failure: false
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
+
 
 - project:
     name: csit-info
