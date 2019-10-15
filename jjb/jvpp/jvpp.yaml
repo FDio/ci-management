@@ -97,8 +97,7 @@
           - include-raw-jvpp-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -198,8 +197,7 @@
           - include-raw-jvpp-maven-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
