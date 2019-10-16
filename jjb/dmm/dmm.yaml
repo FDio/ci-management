@@ -94,8 +94,7 @@
           !include-raw-escape: include-raw-dmm-test-checkstyle.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'dmm-verify-{stream}-{os}'
@@ -138,8 +137,7 @@
           !include-raw-escape: include-raw-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'dmm-merge-{stream}-{os}'
@@ -180,8 +178,7 @@
           !include-raw-escape: include-raw-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'dmm-csit-verify-func-{stream}-{os}-virl'
@@ -230,9 +227,7 @@
     publishers:
       - robot-report:
           output-path: 'csit'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - project:
     name: dmm-info
