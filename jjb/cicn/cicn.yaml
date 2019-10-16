@@ -331,13 +331,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/longbow/build/*.rpm
-      **/longbow/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -419,13 +412,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/longbow/build/*.rpm
-      **/longbow/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -615,13 +601,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/libparc/build/*.rpm
-      **/libparc/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -709,13 +688,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/libparc/build/*.rpm
-      **/libparc/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -905,13 +877,6 @@
 
     project-type: freestyle
     node: '{os}arm-us'
-    archive-artifacts: >
-      **/libparc/build/*.rpm
-      **/libparc/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -993,13 +958,6 @@
     project-type: freestyle
     node: '{os}arm-us'
     concurrent: true
-    archive-artifacts: >
-      **/libparc/build/*.rpm
-      **/libparc/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1047,13 +1005,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/libccnx-common/build/*.rpm
-      **/libccnx-common/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1138,13 +1089,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/libccnx-common/build/*.rpm
-      **/libccnx-common/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1192,13 +1136,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/libccnx-transport-rta/build/*.rpm
-      **/libccnx-transport-rta/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1283,13 +1220,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/libccnx-transport-rta/build/*.rpm
-      **/libccnx-transport-rta/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1337,13 +1267,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/libccnx-portal/build/*.rpm
-      **/libccnx-portal/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1428,13 +1351,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/libccnx-portal/build/*.rpm
-      **/libccnx-portal/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1482,13 +1398,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1573,13 +1482,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1627,13 +1529,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/metis/build/*.rpm
-      **/metis/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1718,13 +1613,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/metis/build/*.rpm
-      **/metis/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1772,13 +1660,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1863,13 +1744,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -1917,13 +1791,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/cicn-plugin/build/*.rpm
-      **/cicn-plugin/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2005,13 +1872,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/cicn-plugin/build/*.rpm
-      **/cicn-plugin/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2059,15 +1919,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-      **/libdash/build/*.rpm
-      **/libdash/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2152,15 +2003,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-      **/libdash/build/*.rpm
-      **/libdash/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2208,15 +2050,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/emu-radio/build/*.rpm
-      **/emu-radio/build/*.deb
-      **/emu-radio/ns3-packages/*.rpm
-      **/emu-radio/ns3-packages/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2298,15 +2131,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/emu-radio/build/*.rpm
-      **/emu-radio/build/*.deb
-      **/emu-radio/ns3-packages/*.rpm
-      **/emu-radio/ns3-packages/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2472,13 +2296,6 @@
 
     project-type: freestyle
     node: '{os}-builder-4c-4g'
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -2560,13 +2377,6 @@
     project-type: freestyle
     node: '{os}-builder-4c-4g'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
