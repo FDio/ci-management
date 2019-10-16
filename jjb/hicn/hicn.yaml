@@ -168,13 +168,6 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm,
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -227,12 +220,6 @@
     project-type: freestyle
     node: '{os}arm-us'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -285,13 +272,6 @@
 
     project-type: freestyle
     node: '{os}-us'
-    archive-artifacts: >
-      **/build/*.rpm,
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -379,12 +359,6 @@
 
     project-type: freestyle
     node: '{os}arm-us'
-    archive-artifacts: >
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -485,13 +459,6 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
-    archive-artifacts: >
-      **/build/*.rpm,
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -551,13 +518,6 @@
 
     project-type: freestyle
     node: '{os}-us'
-    archive-artifacts: >
-      **/build/*.rpm,
-      **/build/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
