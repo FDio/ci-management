@@ -86,8 +86,7 @@
           - include-raw-deb_dpdk-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'deb_dpdk-verify-image-{stream}-{os}'
@@ -146,8 +145,7 @@
           - include-raw-deb_dpdk-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'deb_dpdk-merge-{stream}-{os}'
@@ -213,8 +211,7 @@
           - include-raw-deb_dpdk-pkg-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - project:
     name: deb_dpdk-info
