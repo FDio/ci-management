@@ -32,7 +32,6 @@ if [[ ${JOB_NAME} == *merge* ]]; then
         <extension>
           <groupId>org.apache.maven.wagon</groupId>
            <artifactId>wagon-webdav-jackrabbit</artifactId>
-           <version>2.9</version>
         </extension>
       </extensions>
     </build>
