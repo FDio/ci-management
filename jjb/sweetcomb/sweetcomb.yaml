@@ -57,13 +57,6 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
-    archive-artifacts: >
-      **/build-root/build-package/*.rpm
-      **/build-root/build-package/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -132,13 +125,6 @@
 
     project-type: freestyle
     node: '{os}-us'
-    archive-artifacts: >
-      **/build-root/build-package/*.rpm
-      **/build-root/build-package/*.deb
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
