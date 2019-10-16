@@ -82,8 +82,7 @@
     publishers:
       - email-notification:
           email-prefix: '[honeycomb]'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'honeycomb-merge-{stream}-{os}'
@@ -164,8 +163,7 @@
           id: ''
           unique-version: true
           deploy-unstable: false
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'honeycomb-benchmark-master-{os}'
@@ -281,8 +279,7 @@
                 # yamllint disable-line rule:line-length
                 exclude: 'simple-container,list-in-container,complex-list-in-container'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - project:
     name: honeycomb-info
