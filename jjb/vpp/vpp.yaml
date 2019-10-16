@@ -64,7 +64,7 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
-    os: ubuntu1604
+    os: ubuntu1804
 
 - project:
     name: vpp-perpatch
@@ -469,7 +469,7 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
 
     scm:
       - gerrit-trigger-scm:
@@ -629,7 +629,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:

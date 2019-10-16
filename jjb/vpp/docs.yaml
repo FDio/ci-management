@@ -9,8 +9,8 @@
 
     project: 'vpp'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
 
     stream:
       - master:
@@ -38,8 +38,8 @@
 
     project: 'vpp'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
 
     stream:
       - master:
@@ -53,7 +53,7 @@
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -73,7 +73,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -121,7 +121,7 @@
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: false
     archive-artifacts: '**/build-root/docs/html/*'
     allow-empty: 'true'
@@ -142,7 +142,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -163,7 +163,7 @@
 
     triggers:
       - reverse:
-          jobs: 'vpp-merge-{stream}-ubuntu1604'
+          jobs: 'vpp-merge-{stream}-ubuntu1804'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
@@ -209,7 +209,7 @@
     name: 'vpp-sphinx-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -228,7 +228,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -288,7 +288,7 @@
     name: 'vpp-sphinx-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: false
     archive-artifacts: 'docs/_build/html/*'
     allow-empty: 'true'
@@ -308,7 +308,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -367,7 +367,7 @@
     name: 'vpp-make-test-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -386,7 +386,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -434,7 +434,7 @@
     name: 'vpp-make-test-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1604-us
+    node: ubuntu1804-us
     concurrent: false
     archive-artifacts: '**/test/doc/build/html/*'
     allow-empty: 'true'
@@ -455,7 +455,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1604'
+          os: 'ubuntu1804'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -477,7 +477,7 @@
 
     triggers:
       - reverse:
-          jobs: 'vpp-merge-{stream}-ubuntu1604'
+          jobs: 'vpp-merge-{stream}-ubuntu1804'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
