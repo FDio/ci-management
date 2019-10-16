@@ -156,8 +156,7 @@
           !include-raw-escape: include-raw-hicn-checkstyle.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -220,8 +219,7 @@
           - include-raw-hicn-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'hicn-arm-verify-{stream}-{os}'
@@ -370,8 +368,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -547,8 +544,7 @@
           - include-raw-hicn-sysrepo-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'hicn-sysrepo-plugin-merge-{stream}'
@@ -646,8 +642,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
