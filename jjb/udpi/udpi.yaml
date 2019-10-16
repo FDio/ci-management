@@ -103,8 +103,7 @@
               target: '/root'
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -170,8 +169,7 @@
               target: '/root'
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
