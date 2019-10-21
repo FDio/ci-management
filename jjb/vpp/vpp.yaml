@@ -95,6 +95,9 @@
       - 2n-skx
       - 3n-skx
       - 3n-hsw
+      - 2n-dnv
+      - 3n-dnv
+      - 3n-tsh
     exclude:
       - stream: '1904'
         os: 'ubuntu1804'
