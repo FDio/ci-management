@@ -7,7 +7,7 @@ set -xe -o pipefail
 [ "${DOC_DIR}" ] || DOC_DIR="resources/tools/presentation"
 [ "${BUILD_DIR}" ] || BUILD_DIR="${DOC_DIR}/_build"
 [ "${SITE_DIR}" ] || SITE_DIR="build-root/docs/deploy-site"
-[ "${RESOURCES_DIR}" ] || RESOURCES_DIR="${SITE_DIR}/src/site/resources/trending"
+[ "${RESOURCES_DIR}" ] || RESOURCES_DIR="${SITE_DIR}/src/site/resources/trending-archive"
 [ "${STATIC_VPP_DIR}" ] || STATIC_VPP_DIR="${RESOURCES_DIR}/_static/vpp"
 [ "${MVN}" ] || MVN="/opt/apache/maven/bin/mvn"
 [ "${FAILED_TESTS}" ] || FAILED_TESTS="${STATIC_VPP_DIR}/trending-failed-tests.txt"
