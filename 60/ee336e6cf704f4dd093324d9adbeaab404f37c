@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Mauro Sardara <msardara@cisco.com>
+Code-Review+2: Ed Kern <ejk@cisco.com>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Tue, 29 Oct 2019 15:51:51 +0000
+Reviewed-on: https://gerrit.fd.io/r/c/ci-management/+/23062
+Project: ci-management
+Branch: refs/heads/master
