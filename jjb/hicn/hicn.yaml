@@ -52,7 +52,7 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-    os: ubuntu1604
+    os: ubuntu1804
 
 - project:
     name: hicn-sysrepo
