@@ -404,7 +404,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-verify-{stream}-{os}'
@@ -452,7 +453,8 @@
           - include-raw-cicn-longbow-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-docs-merge-{stream}'
@@ -531,7 +533,8 @@
           - include-raw-cicn-longbow-docs.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-longbow-docs-verify-{stream}'
@@ -594,7 +597,8 @@
           - include-raw-cicn-longbow-docs.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-merge-{stream}-{os}'
@@ -680,7 +684,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-verify-{stream}-{os}'
@@ -728,7 +733,8 @@
           - include-raw-cicn-libparc-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-docs-merge-{stream}'
@@ -807,7 +813,8 @@
           - include-raw-cicn-libparc-docs.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libparc-docs-verify-{stream}'
@@ -870,7 +877,8 @@
           - include-raw-cicn-libparc-docs.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-arm64-libparc-merge-{stream}-{os}'
@@ -950,7 +958,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-arm64-libparc-verify-{stream}-{os}'
@@ -998,7 +1007,8 @@
           - include-raw-cicn-libparc-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-common-merge-{stream}-{os}'
@@ -1081,7 +1091,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-common-verify-{stream}-{os}'
@@ -1129,7 +1140,8 @@
           - include-raw-cicn-libccnx-common-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-merge-{stream}-{os}'
@@ -1212,7 +1224,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-transport-rta-verify-{stream}-{os}'
@@ -1260,7 +1273,8 @@
           - include-raw-cicn-libccnx-transport-rta-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-portal-merge-{stream}-{os}'
@@ -1343,7 +1357,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libccnx-portal-verify-{stream}-{os}'
@@ -1391,7 +1406,8 @@
           - include-raw-cicn-libccnx-portal-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libicnet-merge-{stream}-{os}'
@@ -1474,7 +1490,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-libicnet-verify-{stream}-{os}'
@@ -1522,7 +1539,8 @@
           - include-raw-cicn-libicnet-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-metis-merge-{stream}-{os}'
@@ -1605,7 +1623,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-metis-verify-{stream}-{os}'
@@ -1653,7 +1672,8 @@
           - include-raw-cicn-metis-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-http-server-merge-{stream}-{os}'
@@ -1736,7 +1756,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-http-server-verify-{stream}-{os}'
@@ -1784,7 +1805,8 @@
           - include-raw-cicn-http-server-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vpp-plugin-merge-{stream}-{os}'
@@ -1864,7 +1886,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vpp-plugin-verify-{stream}-{os}'
@@ -1912,7 +1935,8 @@
           - include-raw-cicn-vpp-plugin-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-viper-merge-{stream}-{os}'
@@ -1995,7 +2019,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-viper-verify-{stream}-{os}'
@@ -2043,7 +2068,8 @@
           - include-raw-cicn-viper-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-radio-emulators-merge-{stream}-{os}'
@@ -2123,7 +2149,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-radio-emulators-verify-{stream}-{os}'
@@ -2171,7 +2198,8 @@
           - include-raw-cicn-radio-emulators-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-android-sdk-merge-{stream}-{os}'
@@ -2233,7 +2261,8 @@
           - include-raw-cicn-android-sdk-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-android-sdk-verify-{stream}-{os}'
@@ -2289,7 +2318,8 @@
           - include-raw-cicn-android-sdk-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vicn-merge-{stream}-{os}'
@@ -2369,7 +2399,8 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - job-template:
     name: 'cicn-vicn-verify-{stream}-{os}'
@@ -2417,7 +2448,8 @@
           - include-raw-cicn-vicn-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
 
 - project:
     name: cicn-info
