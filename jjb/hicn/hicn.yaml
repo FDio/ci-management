@@ -328,11 +328,11 @@
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
-              target: '/root'
+              target: '/root/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
-              target: '/root'
+              target: '/root/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
