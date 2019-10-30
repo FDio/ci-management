@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a10b2f9c_76ae7f74",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2019-10-30T10:58:45Z",
+      "side": 1,
+      "message": "This script is creating problems in all hicn ubuntu 16 builds.\nhttps://jira.fd.io/browse/HICN-367\nhttps://jira.linuxfoundation.org/servicedesk/customer/portal/2/IT-18094",
+      "revId": "af589f5567639991e13647197e2ac028c621e2d3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1144c3e_7e69f0d9",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2019-10-30T10:58:45Z",
+      "side": 1,
+      "message": "This script is creating problems in all hicn ubuntu 16 builds.\nhttps://jira.fd.io/browse/HICN-367\nhttps://jira.linuxfoundation.org/servicedesk/customer/portal/2/IT-18094",
+      "revId": "af589f5567639991e13647197e2ac028c621e2d3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
