@@ -156,7 +156,8 @@
           !include-raw-escape: include-raw-hicn-checkstyle.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -212,7 +213,12 @@
           - include-raw-hicn-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
 
 - job-template:
     name: 'hicn-arm-verify-{stream}-{os}'
@@ -265,7 +271,11 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+          maven-version: 'mvn36'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 1
+          fixed-delay: 90
 
 - job-template:
     name: 'hicn-merge-{stream}-{os}'
@@ -348,7 +358,8 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -436,11 +447,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
+          maven-version: 'mvn36'
 
 - project:
     name: hicn-sonar
@@ -511,7 +518,12 @@
           - include-raw-hicn-sysrepo-build.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+      - naginator:
+          rerun-unstable-builds: false
+          max-failed-builds: 2
+          fixed-delay: 90
 
 - job-template:
     name: 'hicn-sysrepo-plugin-merge-{stream}'
@@ -602,7 +614,8 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
