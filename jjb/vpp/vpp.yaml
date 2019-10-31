@@ -92,6 +92,7 @@
           executor: 'vpp-csit-arm-ubuntu18'
           trigger: 'gerrit-trigger-csit-devicetest-manual'
     node-arch:
+      - 2n-clx
       - 2n-skx
       - 3n-skx
       - 3n-hsw
