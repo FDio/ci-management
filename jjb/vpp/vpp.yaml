@@ -7,8 +7,8 @@
 
     project: 'vpp'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - centos7:
           repo-os-part: 'centos7'
 
@@ -105,15 +105,12 @@
         device-node-arch: '1n-tx2'
 
 - project:
-    name: vpp-master-only
+    name: vpp-older-only
     jobs:
-      - 'vpp-beta-verify-{stream}-{os}'
-      - 'vpp-beta-merge-{stream}-{os}'
+      - 'vpp-historic-verify-{stream}-{os}'
+      - 'vpp-historic-merge-{stream}-{os}'
     project: 'vpp'
     stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
       - '1901':
           branch: 'stable/1901'
           repo-stream-part: 'stable.1901'
@@ -124,8 +121,8 @@
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+      - ubuntu1604:
+          repo-os-part: 'ubuntu.xenial.main'
 
 - project:
     name: vpp-arm
@@ -181,7 +178,7 @@
     project-name: vpp
 
 - job-template:
-    name: 'vpp-beta-verify-{stream}-{os}'
+    name: 'vpp-historic-verify-{stream}-{os}'
 
     project-type: freestyle
     node: '{os}-us'
@@ -242,7 +239,7 @@
           fixed-delay: 90
 
 - job-template:
-    name: 'vpp-beta-merge-{stream}-{os}'
+    name: 'vpp-historic-merge-{stream}-{os}'
 
     project-type: freestyle
     node: '{os}-us'
