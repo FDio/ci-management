@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5970f3ae_0917320e",
+        "filename": "jjb/include-raw-deploy-archives.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 780
+      },
+      "writtenOn": "2019-11-05T15:54:55Z",
+      "side": 1,
+      "message": "-O option expects an argument so you have to move --timeout option before -O",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "2f7f3c496b3cc33a5d79dcb61fedb395ab78b80d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
