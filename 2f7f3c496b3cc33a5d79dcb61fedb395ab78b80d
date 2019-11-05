@@ -22,6 +22,30 @@
       "revId": "2f7f3c496b3cc33a5d79dcb61fedb395ab78b80d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d74c2d9_1a22ff67",
+        "filename": "jjb/include-raw-deploy-archives.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-11-05T16:00:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5970f3ae_0917320e",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 10
+      },
+      "revId": "2f7f3c496b3cc33a5d79dcb61fedb395ab78b80d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
