@@ -95,6 +95,10 @@
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-{node-arch}-perftest tag_list</b>
               </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected using trigger keyword followed by tags
@@ -202,6 +206,10 @@
               <ul>
                   <li>check vpp perf mrr daily
               </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>all CSIT VPP MRR perf suites
@@ -268,6 +276,10 @@
               <ul>
                   <li>check vpp perf mrr weekly on {node-arch}
               </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>NF Density CSIT VPP MRR perf suites
@@ -333,6 +345,10 @@
           <li>objective
               <ul>
                   <li>check vpp perf ndrpdr weekly on {node-arch}
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -404,6 +420,10 @@
                   <li>name: <b>csit-dpdk-perf-verify-{stream}-{node-arch}</b>
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-dpdk-{node-arch}-perftest tag_list</b>
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -498,6 +518,10 @@
           <li>objective
               <ul>
                   <li>check dpdk perf mrr weekly
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
               </ul>
           <li>perf test-cases selection
               <ul>
