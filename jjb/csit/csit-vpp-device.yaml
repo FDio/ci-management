@@ -80,6 +80,10 @@
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-devicetest tag_list</b>
               </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
           <li>test-cases selection
               <ul>
                   <li>test-cases selected using trigger keyword followed by tags
@@ -168,6 +172,10 @@
                       in nexus against verified CSIT codebase of corresponding
                       branch.
               </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
           <li>test-cases selection
               <ul>
                   <li>pre-selected test-cases
@@ -245,6 +253,10 @@
               <ul>
                   <li>Validate CSIT code of corresponding branch against
                       verified vpp build from corresponding branch.
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
               </ul>
           <li>test-cases selection
               <ul>
@@ -326,6 +338,10 @@
                   <li>Validate CSIT code of corresponding branch against
                       verified vpp build from corresponding branch.
               </ul>
+          <li>executor
+              <ul>
+                  <li>vpp-csit-arm-ubuntu18
+              </ul>
           <li>test-cases selection
               <ul>
                   <li>pre-selected test-cases
@@ -401,6 +417,10 @@
                   <li>Validate latest vpp build from corresponding branch stored
                       in nexus against verified CSIT codebase of corresponding
                       branch.
+              </ul>
+          <li>executor
+              <ul>
+                  <li>vpp-csit-arm-ubuntu18
               </ul>
           <li>test-cases selection
               <ul>
