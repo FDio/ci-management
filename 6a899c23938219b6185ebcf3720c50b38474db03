@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea552850_f8598c64",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX/cloud.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2019-11-07T22:58:57Z",
+      "side": 1,
+      "message": "Is there a reason to still define the FDIOVEX cloud? Are you still using builders there instead of 100% in the CI cloud?",
+      "revId": "6a899c23938219b6185ebcf3720c50b38474db03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
