@@ -16,6 +16,24 @@
       "revId": "6a899c23938219b6185ebcf3720c50b38474db03",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ae323b_5999a319",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX/cloud.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2019-11-08T16:38:28Z",
+      "side": 1,
+      "message": "Yes there are a few projects using the FDIOVEX cloud builders until we resolve the image issues they are having with the CI cloud builders. Resolving the image issues became less of a priority due to the infra issues. We have tickets for each issue that needs to be resolved.",
+      "parentUuid": "ea552850_f8598c64",
+      "revId": "6a899c23938219b6185ebcf3720c50b38474db03",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
