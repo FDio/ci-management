@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c332d6a7_ee3eedc6",
+        "filename": "jjb/csit/csit-hc2vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-11-11T14:52:32Z",
+      "side": 1,
+      "message": "I think we are going to remove also this one, but it can be done separately.",
+      "range": {
+        "startLine": 6,
+        "startChar": 28,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "2a13a80682691b2cabaaa3728ddd4bdaa30d1574",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
