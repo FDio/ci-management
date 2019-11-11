@@ -1,7 +1,8 @@
 #!/bin/bash
 
-if [ -f build-root/scripts/checkstyle.sh ];then
-    build-root/scripts/checkstyle.sh
+if [ "$(grep 'checkstyle:' Makefile | grep -v '-')" = "checkstyle:" ]
+then
+	make checkstyle
 else
-    echo "Cannot find cat build-root/scripts/checkstyle.sh - skipping checkstyle"
+        echo "Can't find checkstyle target in Makefile - skipping checkstyle"
 fi
