@@ -34,9 +34,6 @@
       - master:
           branch: 'master'
           executor: 'ubuntu1804-us'
-      - '1901':
-          branch: 'rls1901'
-          executor: 'ubuntu1604-basebuild-4c-4g'
       - '1904':
           branch: 'rls1904'
           executor: 'ubuntu1804-us'
