@@ -43,9 +43,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1901':
-          branch: 'rls1901'
-          branch-id: 'oper-rls1901'
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
@@ -53,9 +50,6 @@
           branch: 'rls1908_1'
           branch-id: 'oper-rls1908_1'
     exclude:
-      - stream: '1901'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
       - stream: '1904'
         os: 'ubuntu1804'
         node-arch: '1n-tx2'
