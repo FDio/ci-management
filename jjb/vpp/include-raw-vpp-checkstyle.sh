@@ -1,9 +1,7 @@
 #!/bin/bash
-# jjb/vpp/include-raw-vpp-checkstyle.sh
 
-if [ "$(grep -E '^checkstyle:' Makefile)" = "checkstyle:" ]
-then
-	make checkstyle
+if [ -f build-root/scripts/checkstyle.sh ];then
+    build-root/scripts/checkstyle.sh
 else
-        echo "Can't find checkstyle target in Makefile - skipping checkstyle"
+    echo "Cannot find cat build-root/scripts/checkstyle.sh - skipping checkstyle"
 fi

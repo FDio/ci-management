@@ -1,9 +1,8 @@
 #!/bin/bash
-# jjb/vpp/include-raw-vpp-test-checkstyle.sh
 
-if [ "$(grep -E '^test-checkstyle:' Makefile)" = "test-checkstyle:" ]
+if grep '.PHONY: checkstyle' test/Makefile > /dev/null
 then
 	make test-checkstyle
 else
-	echo "Can't find test-checkstyle target in Makefile - skipping test checkstyle"
+	echo "Can't find checkstyle target in test/Makefile - skipping test checkstyle"
 fi
