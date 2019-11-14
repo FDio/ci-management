@@ -98,7 +98,8 @@
       - 3n-hsw
       - 2n-dnv
       - 3n-dnv
-      - 3n-tsh
+      - 3n-tsh:
+          executor: 'vpp-csit-arm-ubuntu18'
     exclude:
       - stream: '1904'
         os: 'ubuntu1804'
