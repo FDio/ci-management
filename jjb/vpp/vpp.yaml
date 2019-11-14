@@ -72,7 +72,9 @@
       - 'vpp-csit-verify-device-{stream}-{device-node-arch}'
       - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
-    executor: 'vpp-csit-device'
+    os: ubuntu1804
+    device-executor: 'vpp-csit-device'
+    executor: '{os}-us'
     skip-vote: 'true'
     trigger: 'gerrit-trigger-csit-devicetest-full'
     stream:
@@ -85,11 +87,10 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
-    os: ubuntu1804
     device-node-arch:
       - 1n-skx
       - 1n-tx2:
-          executor: 'vpp-csit-arm-ubuntu18'
+          device-executor: 'vpp-csit-arm-ubuntu18'
           trigger: 'gerrit-trigger-csit-devicetest-manual'
     node-arch:
       - 2n-clx
@@ -98,7 +99,8 @@
       - 3n-hsw
       - 2n-dnv
       - 3n-dnv
-      - 3n-tsh
+      - 3n-tsh:
+          executor: 'ubuntu1804arm-us'
     exclude:
       - stream: '1904'
         os: 'ubuntu1804'
@@ -849,7 +851,7 @@
     name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
 
     project-type: freestyle
-    node: '{executor}'
+    node: '{device-executor}'
     concurrent: true
     archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
@@ -917,7 +919,7 @@
     name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: '{executor}'
     concurrent: true
     archive-artifacts: >
       **/csit_current/**/*.*
