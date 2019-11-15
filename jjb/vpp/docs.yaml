@@ -436,7 +436,7 @@
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: false
-    archive-artifacts: '**/test/doc/build/html/*'
+    archive-artifacts: '**/build-root/build-test/doc/html/*'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
