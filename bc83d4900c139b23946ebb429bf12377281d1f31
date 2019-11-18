@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a503921_4db2b78c",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-11-18T17:49:38Z",
+      "side": 1,
+      "message": "Remove this block if the branch is no longer supported.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "bc83d4900c139b23946ebb429bf12377281d1f31",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
