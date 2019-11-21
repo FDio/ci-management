@@ -100,7 +100,7 @@
       - 2n-dnv
       - 3n-dnv
       - 3n-tsh:
-          executor: 'ubuntu1804arm-us'
+          executor: 'ubuntu1804arm-s'
     exclude:
       - stream: '1904'
         os: 'ubuntu1804'
