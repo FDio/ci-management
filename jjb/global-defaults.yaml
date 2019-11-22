@@ -23,3 +23,7 @@
 
     # voting
     skip-vote: false
+
+    # CSIT
+    csit-perf-trial-duration: 1.0
+    csit-perf-trial-multiplicity: 1

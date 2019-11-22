@@ -142,6 +142,22 @@
           # yamllint disable-line rule:line-length
           description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
 
+- parameter:
+    name: csit-perf-trial-duration-parameter
+    parameters:
+      - string:
+          name: CSIT_PERF_TRIAL_DURATION
+          default: "{csit-perf-trial-duration}"
+          description: "Duration of a trial measurement in BMRR tests."
+
+- parameter:
+    name: csit-perf-trial-multiplicity-parameter
+    parameters:
+      - string:
+          name: CSIT_PERF_TRIAL_MULTIPLICITY
+          default: "{csit-perf-trial-multiplicity}"
+          description: "Number of subsamples for BMRR tests."
+
 ##### SCMS
 - scm:
     name: git-scm

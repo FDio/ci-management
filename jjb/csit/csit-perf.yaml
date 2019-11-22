@@ -54,6 +54,8 @@
     branch: 'master'
     branch-id: 'oper'
     vpp-mrr-daily-periodicity: '0 2,14 * * *'
+    csit-perf-trial-duration: "1.0"
+    csit-perf-trial-multiplicity: "10"
     stream:
       - master:
           branch: 'master'
@@ -146,6 +148,10 @@
       - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
@@ -239,6 +245,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
@@ -309,6 +319,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
@@ -464,6 +478,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
@@ -552,6 +570,10 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
