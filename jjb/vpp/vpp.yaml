@@ -959,14 +959,10 @@
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - gerrit-csit-refspec-parameter
-      - string:
-          name: CSIT_PERF_TRIAL_DURATION
-          default: "10.0"
-          description: "Duration of a trial measurement in BMRR tests."
-      - string:
-          name: CSIT_PERF_TRIAL_MULTIPLICITY
-          default: "5"
-          description: "Number of subsamples for BMRR tests."
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "10.0"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "5"
       - stream-parameter:
           stream: '{stream}'
       - string:
