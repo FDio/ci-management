@@ -26,6 +26,8 @@
     stream:
       - master:
           branch: 'master'
+      - dev-next-socket:
+          branch: 'dev-next-socket'
 
 - project:
     name: tldk-view
