@@ -1,0 +1,7 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+2: Eric Ball <eball@linuxfoundation.org>
+Submitted-by: Vanessa Rene Valderrama <vvalderrama@linuxfoundation.org>
+Submitted-at: Wed, 04 Dec 2019 16:16:53 +0000
+Reviewed-on: https://gerrit.fd.io/r/c/ci-management/+/23769
+Project: ci-management
+Branch: refs/heads/master
