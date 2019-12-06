@@ -3,5 +3,5 @@
 set -euxo pipefail
 
 pushd scripts
-bash ./build-sysrepo.sh
+bash ./build-extras.sh
 popd
