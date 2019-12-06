@@ -22,6 +22,30 @@
       "revId": "bc83d4900c139b23946ebb429bf12377281d1f31",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706fc734_58e2f736",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2019-12-06T22:50:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a503921_4db2b78c",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "bc83d4900c139b23946ebb429bf12377281d1f31",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
