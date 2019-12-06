@@ -154,14 +154,6 @@
       when: ansible_os_family == 'RedHat'
       become: true
 
-    - name: 'Install ruby gems'
-      command: 'gem install "rubygems-update:<3.0.0" --no-document'
-      become: 'true'
-
-    - name: 'Install rake gem'
-      command: 'gem install rake'
-      become: true
-
     - name: 'Install PackageCloud'
       command: 'gem install package_cloud'
       become: true
