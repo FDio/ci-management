@@ -517,7 +517,7 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
       - string:
@@ -674,7 +674,7 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
       - string:
