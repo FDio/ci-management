@@ -235,10 +235,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-historic-merge-{stream}-{os}'
@@ -370,10 +366,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-arm-merge-{stream}-{os}'
@@ -546,10 +538,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: true
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-{os}'
@@ -607,10 +595,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 2
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-verify-{stream}-clang'
@@ -664,10 +648,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-coverity-{stream}'
@@ -842,10 +822,6 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
