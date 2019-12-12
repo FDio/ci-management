@@ -46,6 +46,30 @@
       "revId": "b8591e64a3da7c9de4eb12d35032229652bdcb71",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b61b78c_1d89eab9",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-12T12:22:22Z",
+      "side": 1,
+      "message": "If that is true, you may want to tweak (in [0]) which tests are run, add higher level description (to [1]), and ... ask Tibor to update PAL accordingly.\n\n[0] https://github.com/FDio/csit/blob/master/resources/libraries/bash/function/mrr-daily-tsh.txt\n[1] https://github.com/FDio/csit/tree/master/docs/job_specs",
+      "parentUuid": "c8de55e9_9eaac7ee",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 48
+      },
+      "revId": "b8591e64a3da7c9de4eb12d35032229652bdcb71",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
