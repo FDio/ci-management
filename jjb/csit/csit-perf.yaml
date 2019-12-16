@@ -258,9 +258,6 @@
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: '{build-timeout}'
 
-    triggers:
-      - timed: '{vpp-mrr-daily-periodicity}'
-
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
@@ -332,9 +329,6 @@
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: '{build-timeout}'
 
-    triggers:
-      - timed: '0 0 * * 6'
-
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
@@ -400,9 +394,6 @@
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: '0 0 * * 6'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -582,9 +573,6 @@
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: '0 0 * * 6'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
