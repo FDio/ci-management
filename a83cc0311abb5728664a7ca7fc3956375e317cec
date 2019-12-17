@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23c13e90_55f18bb6",
+        "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-12-17T07:32:00Z",
+      "side": 1,
+      "message": "Naming convention is include-raw-vpp-...",
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7995f24_deeceba0",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-12-17T07:32:00Z",
+      "side": 1,
+      "message": "so \n\ngerrit-trigger-csit-perftest\ngerrit-trigger-csit-devicetest-full\ngerrit-trigger-csit-devicetest-manual \u003c--why do we have this???\ngerrit-trigger-csit-bisectperftest\ngerrit-trigger-csit-bisectdevicetest\n\nsimilarly trigger? What if we want to bisect via devicetest?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
