@@ -245,6 +245,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      # gerrit-csit-refspec-parameter could pollute trending. For testing
+      # on Sandbox, use https://gerrit.fd.io/r/c/ci-management/+/24014
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -319,6 +321,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      # gerrit-csit-refspec-parameter could pollute trending. For testing
+      # on Sandbox, use https://gerrit.fd.io/r/c/ci-management/+/24014
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -392,6 +396,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      # gerrit-csit-refspec-parameter could pollute trending. For testing
+      # on Sandbox, use https://gerrit.fd.io/r/c/ci-management/+/24014
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
@@ -478,6 +484,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      # gerrit-csit-refspec-parameter could pollute trending. For testing
+      # on Sandbox, use https://gerrit.fd.io/r/c/ci-management/+/24014
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -570,6 +578,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      # gerrit-csit-refspec-parameter could pollute trending. For testing
+      # on Sandbox, use https://gerrit.fd.io/r/c/ci-management/+/24014
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
