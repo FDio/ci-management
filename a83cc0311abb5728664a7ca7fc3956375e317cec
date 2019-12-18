@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "093034b4_d7d5330c",
+        "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-18T17:21:05Z",
+      "side": 1,
+      "message": "I mean [1], as that is a convention for jjb/vpp (as opposed to jjb/csit), which I already violated in past by adding check_crc.sh file.\n\n[1] https://gerrit.fd.io/r/c/ci-management/+/24059",
+      "parentUuid": "c673fe0b_a7e4f01d",
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7995f24_deeceba0",
         "filename": "jjb/vpp/vpp-macros.yaml",
         "patchSetId": 7
