@@ -75,6 +75,30 @@
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beda75f6_117f57fe",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-18T18:00:59Z",
+      "side": 1,
+      "message": "\u003e What if we want to bisect via devicetest?\n\nNot supported at all. Similar situation to gerrit-trigger-csit-perftest which only works for mrr, as in BMRR tuple of values. No latency, no ndrpdr/soak bounds, no reconf time. No functional passrate.\n\nI think it is not worth keeping macro names long just for future features. For line 85 it is derived from the job name, but I can shorten to gerrit-trigger-csit-bisect or even gerrit-trigger-bisect (with or without shortening the job name).\nAny preferences?",
+      "parentUuid": "b7995f24_deeceba0",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
