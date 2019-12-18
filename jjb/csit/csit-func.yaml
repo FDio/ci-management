@@ -87,7 +87,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-csit-vpp-functional-virl.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/vpp-functional-virl.sh
 
     publishers:
       - robot-report:
@@ -143,7 +144,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-csit-nsh_sfc-functional-virl.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/nsh_sfc-functional-virl.sh
 
     publishers:
       - robot-report:
@@ -197,7 +199,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-csit-tldk-functional-virl.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/tldk-functional-virl.sh
 
     publishers:
       - robot-report:
@@ -249,7 +252,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-csit-dmm-functional-virl.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/dmm-functional-virl.sh
 
     publishers:
       - robot-report:

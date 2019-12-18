@@ -192,7 +192,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-verify.sh
 
     publishers:
       - robot:
@@ -266,7 +267,8 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-timed.sh
 
     publishers:
       - robot:
@@ -340,7 +342,8 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-timed.sh
 
     publishers:
       - robot:
@@ -409,7 +412,8 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-timed.sh
 
     publishers:
       - robot:
@@ -517,7 +521,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-verify.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-verify.sh
 
     publishers:
       - robot:
@@ -591,7 +596,8 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-perf-timed.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/perf-timed.sh
 
     publishers:
       - robot:

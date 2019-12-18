@@ -68,7 +68,8 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-csit-hc2vpp-verify-func.sh
+          !include-raw-escape:
+          - jjb/scripts/csit/hc2vpp-verify-func.sh
 
     publishers:
       - email-notification:

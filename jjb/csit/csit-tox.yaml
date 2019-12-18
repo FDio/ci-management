@@ -59,7 +59,7 @@
 
     builders:
       - shell:
-          ./resources/libraries/bash/entry/tox.sh
+          jjb/scripts/csit/resources/libraries/bash/entry/tox.sh
 
     publishers:
       # TODO: Remove this when a voting pylint difference checker
