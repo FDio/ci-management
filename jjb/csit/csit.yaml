@@ -120,7 +120,7 @@
           settings-file: 'csit-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: include-raw-csit-docs.sh
+          !include-raw-escape: docs.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -195,7 +195,7 @@
           settings-file: 'csit-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: include-raw-csit-report.sh
+          !include-raw-escape: report.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -247,7 +247,7 @@
           settings-file: 'csit-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: include-raw-csit-cpta.sh
+          !include-raw-escape: cpta.sh
 
     publishers:
       - email-ext:
