@@ -227,7 +227,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
+          - ./build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -298,7 +298,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
+          - ./build.sh
       - provide-maven-settings:
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
@@ -361,8 +361,8 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-parallel-vars.sh
-          - include-raw-vpp-arm-build.sh
+          - ./parallel-vars.sh
+          - ./arm-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -433,8 +433,8 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-parallel-vars.sh
-          - include-raw-vpp-arm-build-no-test.sh
+          - ./parallel-vars.sh
+          - ./arm-build-no-test.sh
 
       - provide-maven-settings:
           settings-file: 'vpp-settings'
@@ -534,11 +534,11 @@
 
     builders:
       - shell:
-          !include-raw-escape: include-raw-vpp-checkstyle.sh
+          !include-raw-escape: ./checkstyle.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-test-checkstyle.sh
+          !include-raw-escape: ./test-checkstyle.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-commitmsg.sh
+          !include-raw-escape: ./commitmsg.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -599,7 +599,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
+          - ./build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -656,7 +656,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-clang-build.sh
+          - ./clang-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -707,7 +707,7 @@
 
     builders:
       - shell:
-          command: !include-raw-escape: include-raw-vpp-coverity.sh
+          command: !include-raw-escape: ./coverity.sh
           unstable-return: 42
 
     publishers:
@@ -822,13 +822,13 @@
             - file-id: 'packagecloud_api'
               target: '/root'
       - shell:
-          !include-raw-escape: include-raw-vpp-checkstyle.sh
+          !include-raw-escape: ./checkstyle.sh
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-          - include-raw-vpp-build.sh
+          - ./build.sh
       - provide-maven-settings:
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
@@ -909,8 +909,8 @@
           !include-raw-escape: ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-            - include-raw-vpp-parallel-vars.sh
-            - include-raw-vpp-csit-device.sh
+            - ./parallel-vars.sh
+            - ./csit-device.sh
 
     publishers:
       - robot-report:
@@ -989,7 +989,7 @@
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-csit-perf.sh
+          !include-raw-escape: ./csit-perf.sh
 
     publishers:
       - robot-report:
@@ -1052,7 +1052,7 @@
       - shell:
           !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: check_crc.sh
+          !include-raw-escape: ./check_crc.sh
       # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
     publishers:
