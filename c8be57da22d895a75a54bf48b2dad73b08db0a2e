@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a22e545_93657442",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-18T17:50:14Z",
+      "side": 1,
+      "message": "Turns out JJB still searches the same directories (as with file name only), but I still like the include lines with \"./\".",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "c8be57da22d895a75a54bf48b2dad73b08db0a2e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
