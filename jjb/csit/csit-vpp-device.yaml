@@ -146,7 +146,7 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
+          !include-raw-escape: device-verify.sh
 
     publishers:
       - robot:
@@ -229,7 +229,7 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
+          !include-raw-escape: device-semiweekly.sh
 
     publishers:
       - robot:
@@ -313,7 +313,7 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
+          !include-raw-escape: device-verify.sh
 
     publishers:
       - robot:
@@ -392,7 +392,7 @@
 
     builders:
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-device-verify.sh
+          !include-raw-escape: device-verify.sh
 
     publishers:
       - robot:
@@ -470,7 +470,7 @@
       - inject:
           properties-file: variables.prop
       - shell:
-          !include-raw-escape: jjb/csit/include-raw-csit-device-semiweekly.sh
+          !include-raw-escape: device-semiweekly.sh
 
     publishers:
       - robot:
