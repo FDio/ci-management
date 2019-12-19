@@ -22,6 +22,30 @@
       "revId": "36d22d3c437c7adc2881761290e02d0bbc6b3797",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6974873_ee156f7a",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-19T09:29:54Z",
+      "side": 1,
+      "message": "The \"anybody\" will most frequently be me, and for me the change url is faster than manual editing (saves the time needed to find the exact line to edit).\nAlso the change url also takes care of timed triggers, which is another time saver.\nAs a compromise, I could put comments with both change url and instructions for manual edits, but I just do not expect anybody wanting to do manual edits if a convenient url is right there.",
+      "parentUuid": "572ae811_fe089419",
+      "range": {
+        "startLine": 249,
+        "startChar": 20,
+        "endLine": 249,
+        "endChar": 70
+      },
+      "revId": "36d22d3c437c7adc2881761290e02d0bbc6b3797",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
