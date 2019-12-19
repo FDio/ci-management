@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "604a56b4_b2e3f88f",
+        "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-19T19:10:08Z",
+      "side": 1,
+      "message": "That is fine. Currently [1] is parent of this. If I decide to change the order, I will rename the file to match the prevailing scheme.",
+      "parentUuid": "e3ce4552_c855e0fa",
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7995f24_deeceba0",
         "filename": "jjb/vpp/vpp-macros.yaml",
         "patchSetId": 7
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "So trigger can be local or global. I think I saw mail asking for moving all macros on global level so they can be reused cross project. that way we should keep names with project prefix so they can be tuned later for particular job.\n\nAlso we should follow naming scheme so when:\ngerrit-trigger-csit-perftest\n\nwe need to do: gerrit-trigger-csit-perftest-bisect or rename gerrit-trigger-csit-perftest to gerrit-trigger-csit-perf\n\nthe problem of short names is that there is huge collision effect. if the trigger is substring of job name you will cause endless loop (when jjb is back commenting result and the result string is trigger - we had this many times in past).",
       "parentUuid": "beda75f6_117f57fe",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3b7f25_c7a6b381",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2019-12-19T19:10:08Z",
+      "side": 1,
+      "message": "\u003e I think I saw mail asking for moving all macros on global level so they can be reused cross project.\n\nI have my doubts about the reuse potential...\n\n\u003e the problem of short names is that there is huge collision effect.\n\n... but having all macros in one file (and sorted alphabetically) should be enough to make sure there are no collisions.\nLet me see how much work moving the macros is.",
+      "parentUuid": "2f722c16_7e95dbb1",
       "range": {
         "startLine": 85,
         "startChar": 0,
