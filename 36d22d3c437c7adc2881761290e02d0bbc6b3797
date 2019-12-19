@@ -46,6 +46,30 @@
       "revId": "36d22d3c437c7adc2881761290e02d0bbc6b3797",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356eae62_64abf2b0",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2019-12-19T10:48:00Z",
+      "side": 1,
+      "message": "And who will be maintaining _some_ patch url for rabasing? \nSo again if you want to keep is up to date give people ability to have it up to date as the only thing here is to uncomment variable.\n\nMerging \"something for only you\" does not seem to be right, together with, the patch referred does belongs to only you.",
+      "parentUuid": "c6974873_ee156f7a",
+      "range": {
+        "startLine": 249,
+        "startChar": 20,
+        "endLine": 249,
+        "endChar": 70
+      },
+      "revId": "36d22d3c437c7adc2881761290e02d0bbc6b3797",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
