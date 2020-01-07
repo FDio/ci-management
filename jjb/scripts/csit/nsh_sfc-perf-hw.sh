@@ -1,5 +1,6 @@
 #!/bin/bash
-# Copyright (c) 2018 Huawei Technologies Co.,Ltd.
+
+# Copyright (c) 2020 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -12,27 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -xeu -o pipefail
-
-# Clone dmm and start tests
-git clone https://gerrit.fd.io/r/dmm
-
-# If the git clone fails, complain clearly and exit
-if [ $? != 0 ]; then
-    echo "Failed to run: git clone https://gerrit.fd.io/r/dmm"
+# execute  nsh_sfc bootstrap script if it exists
+if [ ! -e bootstrap-verify-perf-nsh_sfc.sh ]
+then
+    echo 'ERROR: No bootstrap-verify-perf-nsh_sfc.sh found'
     exit 1
 fi
 
-# execute DMM bootstrap script if it exists
-if [ -e bootstrap-DMM.sh ]
-then
-    # make sure that bootstrap-DMM.sh is executable
-    chmod +x bootstrap-DMM.sh
-    # run the script
-    ./bootstrap-DMM.sh
+# make sure that bootstrap-verify-perf.sh is executable
+chmod +x bootstrap-verify-perf-nsh_sfc.sh
+# run the script
+if [ ${STREAM} == 'master' ]; then
+    ./bootstrap-verify-perf-nsh_sfc.sh ${STREAM} ${OS}
 else
-    echo 'ERROR: No bootstrap-DMM.sh found'
-    exit 1
+    ./bootstrap-verify-perf-nsh_sfc.sh 'stable.'${STREAM} ${OS}
 fi
 
 # vim: ts=4 ts=4 sts=4 et :

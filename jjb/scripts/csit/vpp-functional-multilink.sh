@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Copyright (c) 2018 Cisco and/or its affiliates.
+# Copyright (c) 2020 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -13,7 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -exuo pipefail
+# execute csit bootstrap script if it exists
+if [ -e bootstrap-multilink.sh ]
+then
+    # make sure that bootstrap.sh is executable
+    chmod +x bootstrap-multilink.sh
+    # run the script
+    ./bootstrap-multilink.sh
+else
+    echo 'ERROR: No bootstrap-multilink.sh found'
+    exit 1
+fi
 
-csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
-source "${csit_entry_dir}/bootstrap_vpp_device.sh"
+# vim: ts=4 ts=4 sts=4 et :
