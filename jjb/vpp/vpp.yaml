@@ -1011,7 +1011,7 @@
           build-timeout: 300
 
     triggers:
-      - gerrit-trigger-csit-perftest:
+      - gerrit-trigger-vpp-csit-perftest:
           name: '{project}'
           branch: '{branch}'
           node-arch: '{node-arch}'
