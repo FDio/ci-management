@@ -1,7 +1,7 @@
 #!/bin/bash
 # jjb/vpp/include-raw-vpp-checkstyle.sh
 
-if [ "$(grep -E '^checkstyle:' Makefile)" = "checkstyle:" ]
+if [ -n "$(grep -E '^checkstyle:' Makefile)" ]
 then
 	make checkstyle
 else
