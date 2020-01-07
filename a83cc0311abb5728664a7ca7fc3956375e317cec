@@ -183,6 +183,30 @@
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17dbec4_3ff32e60",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-07T15:25:14Z",
+      "side": 1,
+      "message": "\u003e moving the macros\n\nSee [1] and [2].\n\n[1] https://gerrit.fd.io/r/c/ci-management/+/24222\n[2] https://gerrit.fd.io/r/c/ci-management/+/24223",
+      "parentUuid": "8b3b7f25_c7a6b381",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
