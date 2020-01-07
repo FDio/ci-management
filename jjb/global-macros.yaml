@@ -1,15 +1,73 @@
 ---
-# Global macros
+# Global macros.
 
 #### PARAMETERS
+# Keep ordered alphabetically, please.
 - parameter:
-    name: project-parameter
+    name: arch-parameter
     parameters:
       - string:
-          name: PROJECT
-          default: '{project}'
+          name: ARCH
+          default: '{arch}'
+          description: "Architecture parameter"
+
+- parameter:
+    name: compiler-parameter
+    parameters:
+      - string:
+          name: CC
+          default: '{cc}'
+          description: "CC parameter, can be gnu or clang"
+
+- parameter:
+    name: csit-fail-on-crc-mismatch-parameter
+    parameters:
+      - string:
+          name: FDIO_CSIT_FAIL_ON_CRC_MISMATCH
+          default: '{fail-on-crc-mismatch}'
+          description: "If true, CRC is checked, else compatibility is tested."
+
+- parameter:
+    name: csit-perf-trial-duration-parameter
+    parameters:
+      - string:
+          name: CSIT_PERF_TRIAL_DURATION
+          default: "{csit-perf-trial-duration}"
+          description: "Duration of a trial measurement in BMRR tests."
+
+- parameter:
+    name: csit-perf-trial-multiplicity-parameter
+    parameters:
+      - string:
+          name: CSIT_PERF_TRIAL_MULTIPLICITY
+          default: "{csit-perf-trial-multiplicity}"
+          description: "Number of subsamples for BMRR tests."
+
+- parameter:
+    name: gerrit-csit-refspec-parameter
+    parameters:
+      - string:
+          name: CSIT_REF
+          default: ''
           # yamllint disable-line rule:line-length
-          description: "JJB configured PROJECT parameter to identify a Gerrit project"
+          description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
+
+- parameter:
+    name: gerrit-event-comment-text-parameter
+    parameters:
+      - string:
+          name: GERRIT_EVENT_COMMENT_TEXT
+          default: ''
+          # yamllint disable-line rule:line-length
+          description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
+
+- parameter:
+    name: gerrit-event-type-parameter
+    parameters:
+      - string:
+          name: GERRIT_EVENT_TYPE
+          default: ''
+          description: "GERRIT_EVENT_TYPE parameter not given by trigger"
 
 - parameter:
     name: gerrit-parameter
@@ -28,14 +86,6 @@
           description: "GERRIT_PROJECT parameter if not given by trigger"
 
 - parameter:
-    name: os-parameter
-    parameters:
-      - string:
-          name: OS
-          default: '{os}'
-          description: "OS parameter"
-
-- parameter:
     name: gerrit-refspec-parameter
     parameters:
       - string:
@@ -44,12 +94,12 @@
           description: "GERRIT_REFSPEC parameter not given by trigger"
 
 - parameter:
-    name: maven-project-parameter
+    name: is-csit-vpp-job-parameter
     parameters:
       - string:
-          name: MAVEN_SELECTOR
-          default: '{maven}'
-          description: 'Maven selector to be used by shell scripts'
+          name: IS_CSIT_VPP_JOB
+          default: '{is-csit-vpp-job}'
+          description: "Parameter is True if this is a CSIT vpp job."
 
 - parameter:
     name: maven-exec
@@ -61,28 +111,37 @@
           description: 'Maven selector to be used by shell scripts'
 
 - parameter:
+    name: maven-project-parameter
+    parameters:
+      - string:
+          name: MAVEN_SELECTOR
+          default: '{maven}'
+          description: 'Maven selector to be used by shell scripts'
+
+- parameter:
+    name: os-parameter
+    parameters:
+      - string:
+          name: OS
+          default: '{os}'
+          description: "OS parameter"
+
+- parameter:
+    name: project-parameter
+    parameters:
+      - string:
+          name: PROJECT
+          default: '{project}'
+          # yamllint disable-line rule:line-length
+          description: "JJB configured PROJECT parameter to identify a Gerrit project"
+
+- parameter:
     name: repo-name-parameter
     parameters:
       - string:
           name: REPO_NAME
           default: '{repo-name}'
           description: 'Name of repo to which to publish packaging'
-
-- parameter:
-    name: compiler-parameter
-    parameters:
-      - string:
-          name: CC
-          default: '{cc}'
-          description: "CC parameter, can be gnu or clang"
-
-- parameter:
-    name: is-csit-vpp-job-parameter
-    parameters:
-      - string:
-          name: IS_CSIT_VPP_JOB
-          default: '{is-csit-vpp-job}'
-          description: "Parameter is True if this is a CSIT vpp job."
 
 - parameter:
     name: stream-parameter
@@ -99,78 +158,10 @@
           name: TOPO
           default: '{topo}'
           description: "Topology parameter"
-
-- parameter:
-    name: arch-parameter
-    parameters:
-      - string:
-          name: ARCH
-          default: '{arch}'
-          description: "Architecture parameter"
-
-- parameter:
-    name: csit-fail-on-crc-mismatch-parameter
-    parameters:
-      - string:
-          name: FDIO_CSIT_FAIL_ON_CRC_MISMATCH
-          default: '{fail-on-crc-mismatch}'
-          description: "If true, CRC is checked, else compatibility is tested."
-
-- parameter:
-    name: gerrit-event-type-parameter
-    parameters:
-      - string:
-          name: GERRIT_EVENT_TYPE
-          default: ''
-          description: "GERRIT_EVENT_TYPE parameter not given by trigger"
-
-- parameter:
-    name: gerrit-event-comment-text-parameter
-    parameters:
-      - string:
-          name: GERRIT_EVENT_COMMENT_TEXT
-          default: ''
-          # yamllint disable-line rule:line-length
-          description: "GERRIT_EVENT_COMMENT_TEXT parameter not given by trigger"
-
-- parameter:
-    name: gerrit-csit-refspec-parameter
-    parameters:
-      - string:
-          name: CSIT_REF
-          default: ''
-          # yamllint disable-line rule:line-length
-          description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
-
-- parameter:
-    name: csit-perf-trial-duration-parameter
-    parameters:
-      - string:
-          name: CSIT_PERF_TRIAL_DURATION
-          default: "{csit-perf-trial-duration}"
-          description: "Duration of a trial measurement in BMRR tests."
-
-- parameter:
-    name: csit-perf-trial-multiplicity-parameter
-    parameters:
-      - string:
-          name: CSIT_PERF_TRIAL_MULTIPLICITY
-          default: "{csit-perf-trial-multiplicity}"
-          description: "Number of subsamples for BMRR tests."
+# Keep ordered alphabetically, please.
 
 ##### SCMS
-- scm:
-    name: git-scm
-    scm:
-      - git:
-          credentials-id: '{credentials-id}'
-          url: '$GIT_BASE'
-          refspec: ''
-          branches:
-            - 'origin/{branch}'
-          skip-tag: true
-          wipe-workspace: true
-
+# Keep ordered alphabetically, please.
 - scm:
     name: gerrit-trigger-scm
     scm:
@@ -197,7 +188,21 @@
           submodule:
             recursive: '{submodule-recursive}'
 
+- scm:
+    name: git-scm
+    scm:
+      - git:
+          credentials-id: '{credentials-id}'
+          url: '$GIT_BASE'
+          refspec: ''
+          branches:
+            - 'origin/{branch}'
+          skip-tag: true
+          wipe-workspace: true
+# Keep ordered alphabetically, please.
+
 ###### WRAPPERS
+# Keep ordered alphabetically, please.
 - wrapper:
     name: build-timeout
     wrappers:
@@ -205,23 +210,6 @@
           type: absolute
           timeout: 360
           fail: true
-
-- wrapper:
-    # This wrapper is used for all jobs that require no-activity timeouts
-    name: fdio-infra-wrappers-non-activity-timeout
-    wrappers:
-      - timeout:
-          type: no-activity
-          timeout: '{build-timeout}'
-          fail: true
-      - timestamps
-      - ssh-agent-credentials:
-          users:
-            - 'jenkins-gerrit-credentials'
-      - jclouds:
-          single-use: true
-      - openstack:
-          single-use: true
 
 - wrapper:
     # This wrapper is required for all jobs as it configures the wrappers
@@ -242,9 +230,74 @@
       - openstack:
           single-use: true
 
+- wrapper:
+    # This wrapper is used for all jobs that require no-activity timeouts
+    name: fdio-infra-wrappers-non-activity-timeout
+    wrappers:
+      - timeout:
+          type: no-activity
+          timeout: '{build-timeout}'
+          fail: true
+      - timestamps
+      - ssh-agent-credentials:
+          users:
+            - 'jenkins-gerrit-credentials'
+      - jclouds:
+          single-use: true
+      - openstack:
+          single-use: true
+# Keep ordered alphabetically, please.
+
 ###### TRIGGERS
+# Keep ordered alphabetically, please.
 - trigger:
-    name: gerrit-trigger-patch-submitted
+    name: gerrit-trigger-checkstyle
+    # Comes from VPP, some verify jobs wait for checkstyle to pass.
+    # This macro is to be used for such verify jobs which are voting.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+- trigger:
+    name: gerrit-trigger-checkstyle-nonvoting
+    # Comes from VPP, some verify jobs wait for checkstyle to pass.
+    # This macro is to be used for such verify jobs which are non-voting.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
+          override-votes: true
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
+
+- trigger:
+    name: gerrit-trigger-csit-vpp-devicetest-full
+    # Comes from CSIT, for automatic jobs running "device" tests with VPP builds.
+    # The job acts as an automatic verify job for CSIT contributions.
     triggers:
       - gerrit:
           server-name: 'Primary'
@@ -258,78 +311,42 @@
                 comment-contains-value: 'recheck'
             - comment-added-contains-event:
                 comment-contains-value: 'reverify'
+            - comment-added-contains-event:
+                comment-contains-value: 'csit-devicetest'
           projects:
             - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-
-- trigger:
-    name: gerrit-trigger-trivial-patch-submitted
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'true'
-            - draft-published-event
-            - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-
-- trigger:
-    name: gerrit-trigger-os-trivial-patch-submitted
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'os-check'
-            - comment-added-contains-event:
-                comment-contains-value: 'os-verify'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-
-- trigger:
-    name: gerrit-trigger-trivial-patch-submitted-skip-vote
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'true'
-            - draft-published-event
-            - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
+              project-pattern: '{project}'
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
           skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
+
+- trigger:
+    name: gerrit-trigger-csit-vpp-devicetest-manual
+    # Comes from CSIT, for manual jobs running "device" tests with VPP builds.
+    # The job acts as a manual verify job for CSIT contributions.
+    # Some jobs (platforms) are not reliable enough to be run automatically.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'csit-devicetest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
 
 - trigger:
     name: gerrit-trigger-manually-triggered
@@ -376,6 +393,28 @@
           gerrit-build-notbuilt-codereview-value: 0
 
 - trigger:
+    name: gerrit-trigger-patch-submitted
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'false'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+- trigger:
     name: gerrit-trigger-os-patch-merged
     triggers:
       - gerrit:
@@ -404,15 +443,15 @@
           gerrit-build-notbuilt-codereview-value: 0
 
 - trigger:
-    # Comes from VPP, some verify jobs wait for checkstyle to pass.
-    # This macro is to be used for such verify jobs which are voting.
-    name: gerrit-trigger-checkstyle
+    name: gerrit-trigger-os-trivial-patch-submitted
     triggers:
       - gerrit:
           server-name: 'Primary'
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'checkstyle_success'
+                comment-contains-value: 'os-check'
+            - comment-added-contains-event:
+                comment-contains-value: 'os-verify'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{name}'
@@ -421,15 +460,42 @@
                   branch-pattern: '**/{branch}'
 
 - trigger:
-    # Comes from VPP, some verify jobs wait for checkstyle to pass.
-    # This macro is to be used for such verify jobs which are non-voting.
-    name: gerrit-trigger-checkstyle-nonvoting
+    name: gerrit-trigger-trivial-patch-submitted
     triggers:
       - gerrit:
           server-name: 'Primary'
           trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'true'
+            - draft-published-event
             - comment-added-contains-event:
-                comment-contains-value: 'checkstyle_success'
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+- trigger:
+    name: gerrit-trigger-trivial-patch-submitted-skip-vote
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'true'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{name}'
@@ -441,15 +507,57 @@
             failed: true
             unstable: true
             notbuilt: true
-          override-votes: true
-          gerrit-build-successful-verified-value: 1
-          gerrit-build-failed-verified-value: 1
-          gerrit-build-unstable-verified-value: 1
-          gerrit-build-notbuilt-verified-value: 1
 
 - trigger:
+    name: gerrit-trigger-vpp-csit-devicetest-full
+    # Comes from VPP, for automated jobs running "device" tests with CSIT code.
+    # The job acts as an automatic verify job for VPP contributions.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+            - comment-added-contains-event:
+                comment-contains-value: 'devicetest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
+
+- trigger:
+    name: gerrit-trigger-vpp-csit-devicetest-manual
+    # Comes from VPP, for manual jobs running "device" tests with CSIT code.
+    # The job acts as an automatic verify job for VPP contributions.
+    # Some jobs (platforms) are not reliable enough to be run automatically.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'devicetest'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
+
+- trigger:
+    name: gerrit-trigger-vpp-csit-perftest
     # Comes from VPP, for jobs that do performance testing using CSIT code.
-    name: gerrit-trigger-csit-perftest
     triggers:
       - gerrit:
           server-name: 'Primary'
@@ -467,109 +575,10 @@
             failed: true
             unstable: true
             notbuilt: true
-
-- trigger:
-    # Comes from VPP, for automated jobs running "device" tests with CSIT code.
-    # The job acts as an automatic verify job for VPP contributions.
-    name: gerrit-trigger-vpp-csit-devicetest-full
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'checkstyle_success'
-            - comment-added-contains-event:
-                comment-contains-value: 'devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
-    # Comes from VPP, for manual jobs running "device" tests with CSIT code.
-    # The job acts as an automatic verify job for VPP contributions.
-    # Some jobs (platforms) are not reliable enough to be run automatically.
-    name: gerrit-trigger-vpp-csit-devicetest-manual
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
-    # Comes from CSIT, for automatic jobs running "device" tests with VPP builds.
-    # The job acts as an automatic verify job for CSIT contributions.
-    name: gerrit-trigger-csit-vpp-devicetest-full
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'false'
-            - draft-published-event
-            - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
-    # Comes from CSIT, for manual jobs running "device" tests with VPP builds.
-    # The job acts as a manual verify job for CSIT contributions.
-    # Some jobs (platforms) are not reliable enough to be run automatically.
-    name: gerrit-trigger-csit-vpp-devicetest-manual
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
+# Keep ordered alphabetically, please.
 
 # Publishers
+# Keep ordered alphabetically, please.
 - publisher:
     name: archive-artifacts
     publishers:
@@ -597,31 +606,6 @@
           send-to:
             - developers
             - recipients
-
-- publisher:
-    name: jacoco-report
-    publishers:
-      - jacoco:
-          exec-pattern: '**/**.exec'
-          class-pattern: '**/classes'
-          source-pattern: '**/src/main/java'
-          # yamllint disable-line rule:line-length
-          exclusion-pattern: '**/gen**,**/generated-sources/**,**/yang-gen**,**/pax/**'
-          status-update: true
-          targets:
-            - branch:
-              healthy: 10
-              unhealthy: 20
-            - method:
-              healthy: 50
-              unhealthy: 40
-
-- publisher:
-    name: robot-report
-    publishers:
-      - robot:
-          output-path: '{output-path}'
-          other-files: ''
 
 - publisher:
     name: fdio-infra-shiplogs
@@ -661,27 +645,44 @@
           fail-build: false
 
 - publisher:
+    name: jacoco-report
+    publishers:
+      - jacoco:
+          exec-pattern: '**/**.exec'
+          class-pattern: '**/classes'
+          source-pattern: '**/src/main/java'
+          # yamllint disable-line rule:line-length
+          exclusion-pattern: '**/gen**,**/generated-sources/**,**/yang-gen**,**/pax/**'
+          status-update: true
+          targets:
+            - branch:
+              healthy: 10
+              unhealthy: 20
+            - method:
+              healthy: 50
+              unhealthy: 40
+
+- publisher:
     name: retry-build-on-builder-error
     publishers:
       - naginator:
           max-failed-builds: 1
 
+- publisher:
+    name: robot-report
+    publishers:
+      - robot:
+          output-path: '{output-path}'
+          other-files: ''
+# Keep ordered alphabetically, please.
+
 ###### BUILDERS
+# Keep ordered alphabetically, please.
 - builder:
     name: ci-management-check-unicode
     builders:
       - shell: |
           $WORKSPACE/scripts/check-unicode.sh jjb/
-
-- builder:
-    name: provide-maven-settings
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '{global-settings-file}'
-              variable: 'GLOBAL_SETTINGS_FILE'
-            - file-id: '{settings-file}'
-              variable: 'SETTINGS_FILE'
 
 - property:
     name: fdio-infra-properties
@@ -689,7 +690,6 @@
       - build-discarder:
           days-to-keep: '{build-days-to-keep}'
           num-to-keep: '{build-num-to-keep}'
-
 
 - builder:
     name: packer-validate
@@ -740,3 +740,14 @@
                       packer.io build -var-file=$CLOUDENV \
                       -var-file=../packer/vars/{platform}.json \
                       ../packer/templates/{template}.json
+
+- builder:
+    name: provide-maven-settings
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '{global-settings-file}'
+              variable: 'GLOBAL_SETTINGS_FILE'
+            - file-id: '{settings-file}'
+              variable: 'SETTINGS_FILE'
+# Keep ordered alphabetically, please.
