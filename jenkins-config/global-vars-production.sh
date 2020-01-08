@@ -1,0 +1,11 @@
+DOCKER_REGISTRY=https://jenkins.fd.io/sandbox/
+GERRIT_URL=git://10.30.48.3/mirror/$PROJECT
+GIT_URL=git://10.30.48.3/mirror
+JENKINS_HOSTNAME=vex-yul-rot-jenkins-1
+LOGS_SERVER=https://logs.fd.io
+NEXUS_URL=https://nexus.fd.io
+NEXUSPROXY=https://nexus.fd.io
+PACKAGECLOUDPROXY=https://packagecloud.io/fdio
+PCIO_CO=fdio
+SIGUL_KEY=fdio-release-2018
+SILO=production
