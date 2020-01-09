@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "564b6459_5355b8b5",
+        "filename": "jenkins-config/global-vars-production.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T11:08:06Z",
+      "side": 1,
+      "message": "I did not expect this part in -production file. Is it just to make sure the same registry is used?",
+      "range": {
+        "startLine": 1,
+        "startChar": 38,
+        "endLine": 1,
+        "endChar": 46
+      },
+      "revId": "a38c49cdeb14ca194411e1216a12446e707d6c6a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
