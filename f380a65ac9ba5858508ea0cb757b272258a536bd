@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10c20f85_acda097e",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-09T13:18:31Z",
+      "side": 1,
+      "message": "i still think this should be voting (as automatic job is voting too) but for now I assume commit it fine.",
+      "range": {
+        "startLine": 578,
+        "startChar": 26,
+        "endLine": 578,
+        "endChar": 30
+      },
+      "revId": "f380a65ac9ba5858508ea0cb757b272258a536bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
