@@ -45,6 +45,30 @@
       "revId": "682571df35630e0f05f437a3ac59505f61957009",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba6d986_e876e4b9",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T12:52:52Z",
+      "side": 1,
+      "message": "Voting is configurable by skip-vote parameter.\n1n-skx is voting, 1n-tx2 is not voting.",
+      "parentUuid": "60c7be83_d7143d7d",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 76
+      },
+      "revId": "682571df35630e0f05f437a3ac59505f61957009",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
