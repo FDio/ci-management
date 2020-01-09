@@ -69,6 +69,30 @@
       "revId": "44c53ae9db4ab1d211b2b3f2a5f2585378b56c23",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc326e0_8e993e8c",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T09:41:04Z",
+      "side": 1,
+      "message": "Perf uses -timed just because it reuses the same script for both daily and weekly. All other scripts have names tracking their job names.\nWe can rename scripts (when we agree on new naming scheme) in a later Change.",
+      "parentUuid": "815f44ae_6a36f18d",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 2
+      },
+      "revId": "44c53ae9db4ab1d211b2b3f2a5f2585378b56c23",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
