@@ -173,22 +173,10 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-{node-arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-{node-arch}-perftest'
 
     builders:
       - shell:
