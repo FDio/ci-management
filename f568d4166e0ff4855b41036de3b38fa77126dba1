@@ -22,6 +22,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc40756_33c84902",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T15:27:27Z",
+      "side": 1,
+      "message": "Currently csit-vpp and vpp-csit use different comment trigger words: csit-{node-arch}-perftest and perftest-{node-arch} respectively.\nDo we want to unify the trigger words, or do we want to use one macro with configurable trigger word?",
+      "parentUuid": "3acf5ee9_b7ec0d69",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
