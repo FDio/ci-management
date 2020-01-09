@@ -70,6 +70,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965c5f4a_b07c808f",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T15:50:01Z",
+      "side": 1,
+      "message": "\u003e it will start two jobs\n\nNo. Comment on VPP change will start vpp-csit job only, comment on CSIT change will start csit-vpp job only.\n\n\u003e two trigger, can be one macro with parameter.\n\nWill do in this change, will add TODO for possible further unifications.",
+      "parentUuid": "ded1eb3f_0a3e7bff",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
