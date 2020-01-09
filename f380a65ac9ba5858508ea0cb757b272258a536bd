@@ -46,6 +46,30 @@
       "revId": "f380a65ac9ba5858508ea0cb757b272258a536bd",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcd2ab3_14144668",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-01-09T22:52:17Z",
+      "side": 1,
+      "message": "\u003e Yeah. Currently I think the ideal voting behavior for manual jobs is failed:true and others false. That way, -1 (or 0) from other verify jobs is not wrongly changed to +1.\n\u003e But that sounds like a work for a separate change.\n\nI agree.",
+      "parentUuid": "b4368523_4ce6b531",
+      "range": {
+        "startLine": 578,
+        "startChar": 26,
+        "endLine": 578,
+        "endChar": 30
+      },
+      "revId": "f380a65ac9ba5858508ea0cb757b272258a536bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
