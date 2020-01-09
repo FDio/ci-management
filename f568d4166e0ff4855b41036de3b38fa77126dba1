@@ -94,6 +94,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065f85b3_8fb81eeb",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-09T16:12:46Z",
+      "side": 1,
+      "message": "As macro sorting is already hard enough to review, I have extracted the trigger improvements to https://gerrit.fd.io/r/c/ci-management/+/24271",
+      "parentUuid": "965c5f4a_b07c808f",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
