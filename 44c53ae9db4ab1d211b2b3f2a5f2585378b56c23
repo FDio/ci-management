@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82fad176_fbfbb502",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-09T09:23:38Z",
+      "side": 1,
+      "message": "i would wrap this to \n          !include-raw-escape:\nsimilarly to others for consistency. Even if the raw will be only calling tox.sh",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "44c53ae9db4ab1d211b2b3f2a5f2585378b56c23",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815f44ae_6a36f18d",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-09T09:23:38Z",
+      "side": 1,
+      "message": "rename to timed (it has same logic as perf).",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 2
+      },
+      "revId": "44c53ae9db4ab1d211b2b3f2a5f2585378b56c23",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
