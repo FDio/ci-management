@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acf5ee9_b7ec0d69",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-09T13:24:22Z",
+      "side": 1,
+      "message": "the reason for this was that e.g \"perftest\" would trigger both csit-vpp and vpp-csit jobs. Make sure this is working so trigger will trigger only project job. Also preffered trigger is vpp-csit trigger",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
