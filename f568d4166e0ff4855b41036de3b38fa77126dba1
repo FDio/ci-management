@@ -142,6 +142,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9579420_d8b86d2c",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-10T07:19:53Z",
+      "side": 1,
+      "message": "I still think that each job should have separate trigger due to ability to control jobs independently. e.g I want to disable only vpp-csit-device job voting.",
+      "parentUuid": "87e87b71_85f54af6",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
