@@ -166,6 +166,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f7acce_bc81d0e4",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-10T09:51:44Z",
+      "side": 1,
+      "message": "Good catch, the skip-vote was different. Updated 24271 and going to retest again.",
+      "parentUuid": "d9579420_d8b86d2c",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
