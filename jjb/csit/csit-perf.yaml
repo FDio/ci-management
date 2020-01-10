@@ -60,15 +60,15 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-          executor: 'ubuntu1804-us'
       - '1904':
           branch: 'rls1904'
           branch-id: 'oper-rls1904'
-          executor: 'ubuntu1804-us'
       - '1908_1':
           branch: 'rls1908_1'
           branch-id: 'oper-rls1908_1'
-          executor: 'ubuntu1804-us'
+      - '2001':
+          branch: 'rls2001'
+          branch-id: 'oper-rls2001'
 
     build-artifact-num-to-keep: 10
     node-arch:
