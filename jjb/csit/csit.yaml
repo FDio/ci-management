@@ -29,18 +29,19 @@
     stream_timed:
       - master:
           branch: 'master'
-          executor: 'ubuntu1804-us'
+      - '2001':
+          branch: 'rls2001'
     stream:
       - master:
           branch: 'master'
-          executor: 'ubuntu1804-us'
       - '1904':
           branch: 'rls1904'
-          executor: 'ubuntu1804-us'
       - '1908':
           branch: 'rls1908'
       - '1908_1':
           branch: 'rls1908_1'
+      - '2001':
+          branch: 'rls2001'
 
 - project:
     name: csit-view
