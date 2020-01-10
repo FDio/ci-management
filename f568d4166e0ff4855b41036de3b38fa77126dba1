@@ -118,6 +118,30 @@
       "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e87b71_85f54af6",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-01-10T06:25:42Z",
+      "side": 1,
+      "message": "\u003e No. Comment on VPP change will start vpp-csit job only, comment on CSIT change will start csit-vpp job only.\n\nIf you are 100% sure then leave one trigger but make sure you tested it.",
+      "parentUuid": "065f85b3_8fb81eeb",
+      "range": {
+        "startLine": 1014,
+        "startChar": 0,
+        "endLine": 1014,
+        "endChar": 2
+      },
+      "revId": "f568d4166e0ff4855b41036de3b38fa77126dba1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
