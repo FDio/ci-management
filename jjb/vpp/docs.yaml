@@ -109,9 +109,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/docs.sh
 
     publishers:
       - lf-infra-publish
@@ -197,9 +199,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/docs.sh
 
     publishers:
       - lf-infra-publish
@@ -276,9 +280,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/sphinx-docs.sh
 
     publishers:
       - lf-infra-publish
@@ -355,9 +361,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-sphinx-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/sphinx-docs.sh
 
     publishers:
       - lf-infra-publish
@@ -422,9 +430,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-make-test-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/make-test-docs.sh
 
     publishers:
       - lf-infra-publish
@@ -511,9 +521,11 @@
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
       - shell:
-          !include-raw-escape: ../scripts/setup_vpp_ubuntu_docker_test.sh
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
-          !include-raw-escape: include-raw-vpp-make-test-docs.sh
+          !include-raw-escape:
+          - ../scripts/vpp/make-test-docs.sh
 
     publishers:
       - lf-infra-publish
