@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Copyright (c) 2019 Cisco and/or its affiliates.
+# Copyright (c) 2020 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -13,16 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -exuo pipefail
-
-if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
-    TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-        | grep -oE '(perftest$|perftest[[:space:]].+$)'`
-else
-    TRIGGER=''
+# execute  nsh_sfc bootstrap script if it exists
+if [ ! -e bootstrap-verify-perf-nsh_sfc.sh ]
+then
+    echo 'ERROR: No bootstrap-verify-perf-nsh_sfc.sh found'
+    exit 1
 fi
-# Export test tags as string.
-export TEST_TAG_STRING=${TRIGGER#$"perftest"}
 
-csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
-source "${csit_entry_dir}/bootstrap_verify_perf.sh"
+# make sure that bootstrap-verify-perf.sh is executable
+chmod +x bootstrap-verify-perf-nsh_sfc.sh
+# run the script
+if [ ${STREAM} == 'master' ]; then
+    ./bootstrap-verify-perf-nsh_sfc.sh ${STREAM} ${OS}
+else
+    ./bootstrap-verify-perf-nsh_sfc.sh 'stable.'${STREAM} ${OS}
+fi
+
+# vim: ts=4 ts=4 sts=4 et :

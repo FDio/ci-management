@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2018 Cisco and/or its affiliates.
+# Copyright (c) 2020 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -13,7 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Currently this is just a direct call to CSIT checked-out script.
+# We do not use source command, to make sure
+# the called script choses the interpreter it needs.
+
 set -exuo pipefail
 
-csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
-source "${csit_entry_dir}/bootstrap_vpp_device.sh"
+${WORKSPACE}/resources/libraries/bash/entry/tox.sh
