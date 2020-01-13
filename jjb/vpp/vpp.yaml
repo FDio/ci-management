@@ -22,6 +22,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
 
 - project:
     name: vpp-clang
@@ -61,6 +64,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
     os: ubuntu1804
 
 - project:
@@ -84,6 +90,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
     device-node-arch:
       - 1n-skx
       - 1n-tx2:
@@ -119,6 +128,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
     os:
       - ubuntu1604:
           repo-os-part: 'ubuntu.xenial.main'
@@ -142,6 +154,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
