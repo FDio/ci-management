@@ -22,6 +22,30 @@
       "revId": "00e56f006f3bc28cebcef0745cf37292c5057b18",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f0282c_a1e1dc6d",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-01-14T15:20:11Z",
+      "side": 1,
+      "message": "We do until official 20.01 release builds are available as there will be vpp commits to vpp stable/2001 branch.",
+      "parentUuid": "9ac72f1a_0ea463ab",
+      "range": {
+        "startLine": 42,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 14
+      },
+      "revId": "00e56f006f3bc28cebcef0745cf37292c5057b18",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }

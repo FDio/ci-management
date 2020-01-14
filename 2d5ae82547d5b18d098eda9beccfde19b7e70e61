@@ -16,6 +16,24 @@
       "revId": "2d5ae82547d5b18d098eda9beccfde19b7e70e61",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c3ad02_e24feeb2",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-01-14T15:20:11Z",
+      "side": 0,
+      "message": "Parameter stream_timed is used for csit-docs-merge-{stream_timed} job definition, not for daily trending job.\nAnyway, correction of reverse job trigger needed - going to do it.",
+      "parentUuid": "ddd8d044_8cdf810d",
+      "revId": "2d5ae82547d5b18d098eda9beccfde19b7e70e61",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
