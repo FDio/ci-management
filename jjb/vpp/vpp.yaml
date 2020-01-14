@@ -386,8 +386,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/parallel-vars.sh
-      - shell:
-          !include-raw-escape:
           - ../scripts/vpp/arm-build.sh
 
     publishers:
@@ -463,8 +461,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/parallel-vars.sh
-      - shell:
-          !include-raw-escape:
           - ../scripts/vpp/arm-build-no-test.sh
 
       - provide-maven-settings:
