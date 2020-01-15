@@ -960,6 +960,10 @@
               <ul>
                   <li>{executor}
               </ul>
+          <li>Objective
+          Contrary to csit-vpp job, this also measures the parent performance,
+          and fails if performance regression is detected.
+          See https://github.com/FDio/csit/blob/master/docs/cpta/methodology/perpatch_performance_tests.rst
       </ul>
 
     project-type: freestyle
@@ -1012,9 +1016,10 @@
 
     triggers:
       - gerrit-trigger-csit-perftest:
-          name: '{project}'
+          project: '{project}'
           branch: '{branch}'
-          node-arch: '{node-arch}'
+          trigger-word: 'perftest-{node-arch}'
+          skip-vote: true
 
     builders:
       - shell:
