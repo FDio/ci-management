@@ -22,6 +22,30 @@
       "revId": "10bb972eb35f76910e15374217154ddd12e1e147",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258af907_285b7864",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-15T13:17:53Z",
+      "side": 0,
+      "message": "If the values were missed, [0] would not get as far.\n\n[0] https://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-master-1n-skx/1/",
+      "parentUuid": "faf6f9bc_96e4d63f",
+      "range": {
+        "startLine": 954,
+        "startChar": 27,
+        "endLine": 954,
+        "endChar": 40
+      },
+      "revId": "10bb972eb35f76910e15374217154ddd12e1e147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
