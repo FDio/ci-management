@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# This script wants environment variables
+# set by parallel-vars.sh script.
+# Otherwise "make test" is not parallelized,
+# possibly leading to jobs overstepping their time limit.
+
 # basic build script example
 set -xe -o pipefail
 

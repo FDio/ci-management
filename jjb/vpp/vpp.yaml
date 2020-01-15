@@ -386,6 +386,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/parallel-vars.sh
+          # Do not split, the line below wants env vars from the line above.
           - ../scripts/vpp/arm-build.sh
 
     publishers:
@@ -461,6 +462,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/parallel-vars.sh
+          # Do not split, the line below wants env vars from line above.
           - ../scripts/vpp/arm-build-no-test.sh
 
       - provide-maven-settings:
@@ -949,9 +951,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/parallel-vars.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/csit-device.sh
