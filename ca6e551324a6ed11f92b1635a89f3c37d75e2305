@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "10434e0d_1af7de39",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-01-15T18:23:32Z",
+      "side": 1,
+      "message": "Ok, thanks for the education.  I agree that [4] is ugly and that this is a better solution.",
+      "parentUuid": "c2a9a268_64a50b2f",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 0
+      },
+      "revId": "ca6e551324a6ed11f92b1635a89f3c37d75e2305",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d59ab9b_c025a697",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 3
