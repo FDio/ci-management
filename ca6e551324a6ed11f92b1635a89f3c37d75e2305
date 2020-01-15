@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d74fb58_c1b997c3",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-01-15T14:48:15Z",
+      "side": 1,
+      "message": "I would recommend that arm-build.sh source parallel-vars.sh and remove the external dependency altogether.",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 0
+      },
+      "revId": "ca6e551324a6ed11f92b1635a89f3c37d75e2305",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d59ab9b_c025a697",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-01-15T14:48:15Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "ca6e551324a6ed11f92b1635a89f3c37d75e2305",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
