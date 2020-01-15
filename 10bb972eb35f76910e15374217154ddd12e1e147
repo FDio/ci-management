@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faf6f9bc_96e4d63f",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-15T12:59:55Z",
+      "side": 0,
+      "message": "I need to verify the values are really not used in some indirect way (even if not present in CSIT repo).",
+      "range": {
+        "startLine": 954,
+        "startChar": 27,
+        "endLine": 954,
+        "endChar": 40
+      },
+      "revId": "10bb972eb35f76910e15374217154ddd12e1e147",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
