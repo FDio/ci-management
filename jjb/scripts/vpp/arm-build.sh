@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# This script needs environment variables
+# set by parallel-vars.sh script.
+
 # basic build script example
 set -xe -o pipefail
 
