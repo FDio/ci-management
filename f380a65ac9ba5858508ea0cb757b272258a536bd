@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30c0326b_0130cb4f",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-15T13:47:07Z",
+      "side": 1,
+      "message": "I had gerrit-trigger-vpp-csit-perftest in a previous patch, but then I decided to not rename here, as in [1] this becomes a macro common for both vpp-csit and csit-vpp (and mainly because there is an alphabet-sorting change in between).\n\n[1] https://gerrit.fd.io/r/c/ci-management/+/24271/2/jjb/global-macros.yaml",
+      "parentUuid": "47d3937e_873cff88",
+      "range": {
+        "startLine": 464,
+        "startChar": 4,
+        "endLine": 464,
+        "endChar": 75
+      },
+      "revId": "f380a65ac9ba5858508ea0cb757b272258a536bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bb2200e_572b502d",
         "filename": "jjb/global-macros.yaml",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-15T06:43:12Z",
       "side": 1,
       "message": "isn\u0027t this same as previous one? why is this one different?",
+      "range": {
+        "startLine": 564,
+        "startChar": 10,
+        "endLine": 564,
+        "endChar": 51
+      },
+      "revId": "f380a65ac9ba5858508ea0cb757b272258a536bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0a2e24_21a5bd71",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-15T13:47:07Z",
+      "side": 1,
+      "message": "It should be the same.\nThis change does not edit the macros, just moves the definition to another file.\n24271 is the Change that edits macros.",
+      "parentUuid": "3bb2200e_572b502d",
       "range": {
         "startLine": 564,
         "startChar": 10,
