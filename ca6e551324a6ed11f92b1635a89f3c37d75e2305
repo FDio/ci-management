@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2a9a268_64a50b2f",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-15T17:05:09Z",
+      "side": 1,
+      "message": "Ah, I forgot to mention that in commit message.\nThe include-raw-escape applies when jjb is creating XMC configs to push to Jenkins. Jjb has access to all the scripts within the filesystem, and it copies the content into the XML. When a VPP job runs on Jenkins, it only has access to the content in XML (and to cloned VPP git repository), so it does not have access to files in ci-management. So unless we want to clone ci-management repository in VPP jobs, parallel-vars.sh file is not available for sourcing.\n\nIf we wanted to check return codes of both scripts, we can pass env vars using inject (example: [4]), but that looks ugly to me.\n\n[4] https://github.com/FDio/ci-management/blob/3e1021d2050f6fb6c07c7ba12a8ebab21acf0ff3/jjb/csit/csit-perf.yaml#L595-L600",
+      "parentUuid": "4d74fb58_c1b997c3",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 0
+      },
+      "revId": "ca6e551324a6ed11f92b1635a89f3c37d75e2305",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d59ab9b_c025a697",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 3
