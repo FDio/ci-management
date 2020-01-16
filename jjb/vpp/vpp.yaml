@@ -107,7 +107,7 @@
     name: vpp-bisect
     # Join with other vpp-csit jobs when branches become the same.
     jobs:
-      - 'vpp-csit-bisect-{stream}-{node-arch}'
+      - 'vpp-csit-bisect-{stream}-{node-arch}-lf'
     project: 'vpp'
     os: ubuntu1804
     executor: '{os}-us'
@@ -1062,7 +1062,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-csit-bisect-{stream}-{node-arch}'
+    name: 'vpp-csit-bisect-{stream}-{node-arch}-lf'
     description: |
       <ul>
           <li>executor
@@ -1137,8 +1137,7 @@
           - jjb/scripts/vpp/csit-bisect.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-ship-logs
 
 - job-template:
     name: 'vpp-csit-verify-api-crc-{stream}'
