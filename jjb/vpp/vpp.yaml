@@ -79,7 +79,7 @@
     device-executor: 'vpp-csit-device'
     executor: '{os}-us'
     skip-vote: 'true'
-    trigger: 'gerrit-trigger-csit-devicetest-full'
+    trigger: 'gerrit-trigger-vpp-csit-devicetest-full'
     stream:
       - master:
           branch: 'master'
@@ -97,7 +97,7 @@
       - 1n-skx
       - 1n-tx2:
           device-executor: 'vpp-csit-arm-ubuntu18'
-          trigger: 'gerrit-trigger-csit-devicetest-manual'
+          trigger: 'gerrit-trigger-vpp-csit-devicetest-manual'
     node-arch:
       - 2n-clx
       - 2n-skx
