@@ -31,6 +31,9 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
 
 - project:
     name: udpi-view
@@ -94,7 +97,11 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
-
+      - shell:
+          !include-raw-escape: include-raw-udpi-checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-udpi-build.sh
     publishers:
       - lf-infra-publish
       - naginator:
@@ -153,6 +160,15 @@
           files:
             - file-id: 'packagecloud_api'
               target: '/root'
+      - shell:
+          !include-raw-escape: include-raw-udpi-checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - include-raw-udpi-build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+
 
     publishers:
       - lf-infra-publish
