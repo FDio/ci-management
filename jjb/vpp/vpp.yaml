@@ -958,9 +958,7 @@
     publishers:
       - robot-report:
           output-path: 'csit_current/'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
@@ -1040,9 +1038,7 @@
     publishers:
       - robot-report:
           output-path: 'csit_current/0/'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'vpp-csit-verify-api-crc-{stream}'
@@ -1104,5 +1100,4 @@
       # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish

@@ -200,9 +200,7 @@
           output-path: archive
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master{node-arch}'
@@ -275,9 +273,7 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-mrr-weekly-master-{node-arch}'
@@ -350,9 +346,7 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}'
@@ -420,9 +414,7 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-verify-{stream}-{node-arch}'
@@ -529,9 +521,7 @@
           output-path: archive
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master{node-arch}'
@@ -604,6 +594,4 @@
           output-path: 'csit/archive'
           other-files:
             - '*.*'
-
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
