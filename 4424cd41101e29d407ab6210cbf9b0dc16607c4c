@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d87b70_55b09ae0",
+        "filename": "jjb/udpi/include-raw-udpi-checkstyle.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-20T12:28:26Z",
+      "side": 1,
+      "message": "Nothing refers to this file. Why do you need it?",
+      "revId": "4424cd41101e29d407ab6210cbf9b0dc16607c4c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
