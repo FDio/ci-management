@@ -58,7 +58,7 @@ committers:
       company: 'linuxfoundation'
       email: 'vvalderrama@linuxfoundation.org'
       id: 'valderrv'
-      timezone: ''
+      timezone: 'America/Chicago'
     - name: 'Vratko Polak'
       company: 'cisco'
       email: 'vrpolak@cisco.com'
