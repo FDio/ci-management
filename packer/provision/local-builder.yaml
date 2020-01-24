@@ -63,6 +63,15 @@
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
       become: true
 
+    - name: 'Enable hugepages'
+      sysctl:
+        name: name=vm.nr_hugepages
+        value: '128'
+        reload: no
+      # yamllint disable-line rule:line-length
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+      become: true
+
     - name: 'Install FD.io Required 18.04 Packages'
       apt:
         name:
