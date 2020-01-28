@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd37afee_be6659f0",
+        "filename": "INFO.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-28T13:06:32Z",
+      "side": 1,
+      "message": "This is news to me. I thought [0] we currently do not have a PTL.\n\n[0] https://lists.fd.io/g/ci-management-dev/topic/32288297",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "f39759f3ede26d09bd76d474e48b321d6a2fdb6f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c778082_4ce91c78",
+        "filename": "INFO.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-01-28T13:06:32Z",
+      "side": 1,
+      "message": "Because of this, whoever is listed as PTL should be removed from the list of committers.",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "f39759f3ede26d09bd76d474e48b321d6a2fdb6f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
