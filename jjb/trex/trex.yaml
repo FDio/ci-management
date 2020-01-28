@@ -1,111 +1,15 @@
+
 ---
-- project:
-    name: trex
-    jobs:
-      - 'trex-verify-{stream}-{os}'
-      - 'trex-merge-{stream}-{os}'
+# TRex project has moved to github long time ago.
+# https://github.com/cisco-system-traffic-generator/trex-core/blob/master/CONTRIBUTING.md
 
-    project: 'trex'
-    os:
-      - ubuntu1404
-      - ubuntu1604
-      - centos7
-
-    stream:
-      - master:
-          branch: 'master'
+# TODO: Do we even need the INFO.yaml job if fd.io git is outdated?
 
 - project:
     name: trex-view
     views:
       - project-view
     project-name: trex
-
-- job-template:
-    name: 'trex-verify-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-builder-4c-4g'
-    concurrent: true
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-patch-submitted:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape: include-raw-trex-build.sh
-
-    publishers:
-      - lf-infra-publish
-
-- job-template:
-    name: 'trex-merge-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-builder-4c-4g'
-    concurrent: true
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape: include-raw-trex-build.sh
-
-    publishers:
-      - lf-infra-publish
 
 - project:
     name: trex-info
