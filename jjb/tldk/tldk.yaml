@@ -39,7 +39,7 @@
     name: '{project}-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -87,7 +87,7 @@
     name: '{project}-verify-image-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
 
     build-discarder:
@@ -148,7 +148,7 @@
     name: '{project}-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
       numToKeep: '{build-num-to-keep}'
@@ -194,7 +194,7 @@
     name: 'tldk-csit-verify-func-{stream}-{os}-virl'
 
     project-type: freestyle
-    node: '{os}-basebuild-4c-4g'
+    node: '{os}-builder-4c-4g'
     concurrent: true
     archive-artifacts: >
       **/csit/report.html
