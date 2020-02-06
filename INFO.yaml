@@ -44,6 +44,11 @@ committers:
       email: 'cjac+cjcollier@colliertech.org'
       id: 'cjcollier'
       timezone: 'Unknown/Unknown'
+    - name: 'Dave Wallace'
+      company: 'cisco'
+      email: 'dwallacelf@gmail.com'
+      id: 'dwallacelf'
+      timezone: 'America/New_York'
     - name: 'Ed Kern'
       company: 'cisco'
       email: 'ejk@cisco.com'
@@ -75,8 +80,9 @@ committers:
       id: 'eball'
       timezone: 'America/Los_Angeles'
 tsc:
-    approval: 'https://wiki.fd.io/view/TSC/Meeting_Minutes'
+    # yamllint disable rule:line-length
+    approval: 'missing'
     changes:
-        - type: ''
-          name: ''
-          link: ''
+        - type: 'approval'
+          name: 'Dave Wallace'
+          link: 'http://ircbot.wl.linuxfoundation.org/meetings/fdio-meeting/2020/fdio-meeting.2020-02-06-16.01.log.html'
