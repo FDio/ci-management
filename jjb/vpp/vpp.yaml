@@ -638,11 +638,11 @@
           build-timeout: 120
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'betacheck'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'betacheck'
+          name: '{project}'
+          branch: '{branch}'
+
     builders:
       - shell:
           !include-raw-escape:
@@ -1007,11 +1007,11 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'betamerge'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'betamerge'
+          name: '{project}'
+          branch: '{branch}'
+
     builders:
       - config-file-provider:
           files:
