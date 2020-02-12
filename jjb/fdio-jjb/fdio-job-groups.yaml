@@ -1,0 +1,6 @@
+---
+- job-group:
+    name: "{project-name}-freestyle-jobs"
+    jobs:
+      - fdio-gerrit-verify
+      - fdio-gerrit-merge
