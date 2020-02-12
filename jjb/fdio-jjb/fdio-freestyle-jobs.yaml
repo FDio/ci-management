@@ -1,0 +1,219 @@
+---
+# FD.io template for freestyle verify and merge jobs
+# This template uses global-jjb macros which can be found in
+# ci-management/global-jjb/jjb/lf-macros.yaml
+# global-jjb documentation
+# https://docs.releng.linuxfoundation.org/projects/global-jjb/en/latest/#
+# Steps to checkout the global-jjb submodule
+#  checkout ci-management
+#  cd global-jjb
+#  git submodule update --init --recursive
+
+##########
+# Macros #
+##########
+
+- parameter:
+    name: fdio-infra-parameters
+    parameters:
+      - string:
+          name: OS
+          default: '{os}'
+          description: |
+            Used to set the operating system
+      - string:
+          name: REPO_NAME
+          default: '{repo-name}'
+          description: |
+            Used to set the name of the repo for package deployment
+
+####################
+# COMMON FUNCTIONS #
+####################
+
+- fdio_freestyle_common: &fdio_freestyle_common
+    name: fdio_freestyle_common
+
+    ######################
+    # Default parameters #
+    ######################
+
+    branch: master
+    build-days-to-keep: 30
+    build-timeout: 60
+    disable-job: false
+    git-url: "$GIT_URL/$PROJECT"
+    java-version: openjdk8
+    mvn-version: mvn36
+    mvn-global-settings: global-settings
+    stream: master
+    submodule-recursive: true
+    submodule-timeout: 10
+    submodule-disable: false
+    build_script: ''
+    post_build_script: ''
+
+    #####################
+    # Job Configuration #
+    #####################
+
+    project-type: freestyle
+    node: '{build-node}'
+    disabled: '{disable-job}'
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: '{build-days-to-keep}'
+
+    scm:
+      - lf-infra-gerrit-scm:
+          jenkins-ssh-credential: '{jenkins-ssh-credential}'
+          git-url: '{git-url}'
+          refspec: "$GERRIT_REFSPEC"
+          branch: "$GERRIT_BRANCH"
+          submodule-recursive: '{submodule-recursive}'
+          submodule-timeout: '{submodule-timeout}'
+          submodule-disable: '{submodule-disable}'
+          choosing-strategy: gerrit
+
+    parameters:
+      - lf-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server
+      - fdio-infra-parameters:
+          os: '{os}'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    wrappers:
+      - lf-infra-wrappers:
+          build-timeout: '{build-timeout}'
+          jenkins-ssh-credential: '{jenkins-ssh-credential}'
+          jenkins-ssh-release-credential: '{jenkins-ssh-release-credential}'
+
+    builders:
+      - lf-infra-pre-build
+      - lf-maven-install:
+          mvn-version: '{mvn-version}'
+      - lf-update-java-alternatives:
+          java-version: '{java-version}'
+      - lf-provide-maven-settings:
+          global-settings-file: '{mvn-global-settings}'
+          settings-file: '{mvn-settings}'
+
+    publishers:
+      - lf-infra-publish
+
+#####################
+# Job Configuration #
+#####################
+
+####################
+# Freestyle Verify #
+####################
+
+- job-template:
+    name: '{project-name}-verify-{stream}-{os}'
+    id: "fdio-freestyle-verify"
+    <<: *fdio_freestyle_common
+    concurrent: true
+
+    ######################
+    # Default parameters #
+    ######################
+
+    gerrit_verify_triggers:
+      - patchset-created-event:
+          exclude-drafts: true
+          exclude-trivial-rebase: false
+          exclude-no-code-change: false
+      - draft-published-event
+      - comment-added-contains-event:
+          comment-contains-value: '^Patch Set\s+\d+:\s+(recheck|reverify)\s*$'
+
+    gerrit_checkstyle_triggers:
+      - comment-added-contains-event:
+          comment-contains-value: 'checkstyle_success'
+
+    parameters:
+      - lf-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server
+      - fdio-infra-parameters:
+          os: '{os}'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+    triggers:
+      - gerrit:
+          server-name: '{gerrit-server-name}'
+          trigger-on: '{obj:gerrit_verify_triggers}'
+          projects:
+            - project-compare-type: ANT
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: ANT
+                  branch-pattern: "**/{branch}"
+
+    builders:
+      - shell: '{build_script}'
+
+####################
+# Freestyle Merge  #
+####################
+
+    ######################
+    # Default parameters #
+    ######################
+
+    gerrit_merge_triggers:
+      - change-merged-event
+      - comment-added-contains-event:
+          comment-contains-value: remerge$
+
+    #####################
+    # Job Configuration #
+    #####################
+
+- job-template:
+    name: '{project-name}-merge-{stream}-{os}'
+    id: "fdio-freestyle-merge"
+    <<: *fdio_freestyle_common
+    concurrent: false
+
+    parameters:
+      - lf-infra-parameters:
+          project: '{project}'
+          branch: '{branch}'
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server
+      - fdio-infra-parameters:
+          os: '{os}'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+
+
+    triggers:
+      - gerrit:
+          server-name: '{gerrit-server-name}'
+          trigger-on: '{obj:gerrit_verify_triggers}'
+          projects:
+            - project-compare-type: ANT
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: ANT
+                  branch-pattern: "**/{branch}"
+
+    builders:
+      - shell: '{build_script}'
+      - shell: '{post_build_script}'
