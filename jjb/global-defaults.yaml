@@ -15,6 +15,7 @@
     # global-jjb
     gerrit-server-name: Primary
     jenkins-ssh-credential: jenkins-gerrit-credentials
+    jenkins-ssh-release-credential: 'fdio-release'
     lftools-version: <1.0.0
     archive-artifacts: ''
 
