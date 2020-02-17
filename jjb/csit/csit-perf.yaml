@@ -50,7 +50,6 @@
 
     project: 'csit'
     executor: 'ubuntu1804-us'
-    ligato-executor: 'ubuntu1804-basebuild-4c-4g'
     branch: 'master'
     branch-id: 'oper'
     vpp-mrr-daily-periodicity: '0 14 * * 1,4'
@@ -80,7 +79,6 @@
       - 3n-dnv
       - 3n-tsh:
           executor: 'ubuntu1804arm-us'
-          ligato-executor: 'ubuntu1804arm-us'
 
 - job-template:
     name: 'csit-vpp-perf-verify-{stream}-{node-arch}'
