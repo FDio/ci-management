@@ -45,7 +45,7 @@ setup
 
 echo "Building using \"make build-root/build.sh\""
 [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
-[ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build-package-hyperscan
+[ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build-install-package-hyperscan
 [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes build-package
 
 echo "*******************************************************************"
