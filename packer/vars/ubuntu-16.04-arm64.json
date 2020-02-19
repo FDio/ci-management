@@ -1,6 +1,6 @@
 {
   "arch": "arm64",
-  "base_image": "LF - Ubuntu 16.04 LTS (arm64) [2019-12-11]",
+  "base_image": "Ubuntu 16.04 LTS (arm64) [2019-06-21]",
   "cloud_user_data": "common-packer/provision/ubuntu-user_data.sh",
   "distro": "Ubuntu 16.04",
   "flavor": "v2-standard-1",
