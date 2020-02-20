@@ -137,6 +137,12 @@
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
       become: true
 
+    - name: 'Install PackageCloud'
+      command: 'gem install package_cloud'
+      # yamllint disable-line rule:line-length
+      when: ansible_distribution == 'Ubuntu'
+      become: true
+
     - name: 'Install FD.io Required CentOS 7 Packages'
       yum:
         name:
