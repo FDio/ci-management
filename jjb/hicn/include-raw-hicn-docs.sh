@@ -1,24 +1,10 @@
 #!/bin/bash
 set -xe -o pipefail
 
-update_cmake_repo() {
-    cat /etc/resolv.conf
-    echo "nameserver 8.8.8.8" | sudo tee -a /etc/resolv.conf
-    cat /etc/resolv.conf
-
-    CMAKE_INSTALL_SCRIPT_URL="https://cmake.org/files/v3.8/cmake-3.8.0-Linux-x86_64.sh"
-    CMAKE_INSTALL_SCRIPT="/tmp/install_cmake.sh"
-    curl ${CMAKE_INSTALL_SCRIPT_URL} > ${CMAKE_INSTALL_SCRIPT}
-
-    sudo mkdir -p /opt/cmake
-    sudo bash ${CMAKE_INSTALL_SCRIPT} --skip-license --prefix=/opt/cmake
-    export PATH=/opt/cmake/bin:$PATH
-}
-
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH="io/fd/hicn"
 [ "$DOC_FILE" ] || DOC_FILE="hicn.docs.zip"
-[ "$DOC_DIR" ] || DOC_DIR="build/lib/doc/html"
+[ "$DOC_DIR" ] || DOC_DIR="build-doxygen/lib/doc/html"
 [ "$SITE_DIR" ] || SITE_DIR="build/doc/deploy-site/"
 [ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
 [ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
@@ -26,12 +12,8 @@ update_cmake_repo() {
 
 echo "Current directory: $(pwd)"
 
-update_cmake_repo
-mkdir -p build
-pushd build
-cmake -DBUILD_HICNPLUGIN=OFF -DBUILD_HICNLIGHT=OFF -DBUILD_LIBTRANSPORT=OFF -DBUILD_UTILS=OFF -DBUILD_APPS=OFF -DBUILD_CTRL=OFF ..
-make doc
-popd
+bash build-packages.sh sphinx
+bash build-packages.sh doxygen
 
 if [[ ${JOB_NAME} == *merge* ]]; then
   mkdir -p $(dirname ${RESOURCES_DIR})
