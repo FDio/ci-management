@@ -55,7 +55,7 @@ if [[ ${JOB_NAME} == *merge* ]]; then
         <extension>
           <groupId>org.apache.maven.wagon</groupId>
            <artifactId>wagon-webdav-jackrabbit</artifactId>
-           <version>3.3.3</version>
+           <version>2.10</version>
         </extension>
       </extensions>
     </build>
@@ -67,6 +67,6 @@ if [[ ${JOB_NAME} == *merge* ]]; then
     </distributionManagement>
   </project>
 EOF
-  ${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}" -T 4C
+  ${MVN} -B site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}" -T 4C
   cd -
 fi
