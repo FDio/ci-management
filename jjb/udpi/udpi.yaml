@@ -102,12 +102,15 @@
       - shell:
           !include-raw-escape:
           - include-raw-udpi-build.sh
+
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+            maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
+
 - job-template:
     name: 'udpi-merge-{stream}-{os}'
 
@@ -169,13 +172,14 @@
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
-
     publishers:
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+            maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
+
 - project:
     name: udpi-info
     project-name: udpi
