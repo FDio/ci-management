@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e -o pipefail
 echo $WORKSPACE
-git clone https://github.com/google/googletest.git $WORKSPACE/googletest
+git clone -v https://github.com/google/googletest.git --branch release-1.10.0 \
+$WORKSPACE/googletest
 cmake $WORKSPACE/googletest/CMakeLists.txt
 make -C $WORKSPACE/googletest
 echo GTEST_DIR=$WORKSPACE/googletest/googletest > gtest-env.prop
