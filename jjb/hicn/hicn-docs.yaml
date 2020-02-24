@@ -24,7 +24,7 @@
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: true
-    archive-artifacts: '**/build/lib/doc/html/*'
+    archive-artifacts: '**/build-doxygen/lib/doc/html/*'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -95,7 +95,9 @@
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: false
-    archive-artifacts: '**/build/lib/doc/html/*'
+    archive-artifacts:
+      - '**/build-doxygen/lib/doc/html/*'
+      - '**/docs/build/html'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
