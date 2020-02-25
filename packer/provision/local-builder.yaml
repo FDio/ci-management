@@ -138,6 +138,10 @@
       become: true
 
     - name: 'Install PackageCloud'
+      yum:
+        name:
+          - rake
+        state: present
       command: 'gem install package_cloud'
       # yamllint disable-line rule:line-length
       when: ansible_distribution == 'Ubuntu'
