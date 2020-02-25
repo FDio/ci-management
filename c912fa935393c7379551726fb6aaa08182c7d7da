@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2144b8_b3c54eeb",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2020-02-25T16:48:05Z",
+      "side": 1,
+      "message": "This should be \u0027{os}-m\u0027",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "c912fa935393c7379551726fb6aaa08182c7d7da",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
