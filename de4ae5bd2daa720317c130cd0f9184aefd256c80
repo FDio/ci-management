@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3b732f_ad765bdc",
+        "filename": "jjb/cicn/cicn.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2020-02-25T17:01:50Z",
+      "side": 1,
+      "message": "missing \u0027 at the end",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "de4ae5bd2daa720317c130cd0f9184aefd256c80",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
