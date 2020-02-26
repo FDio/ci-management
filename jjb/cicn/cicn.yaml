@@ -501,7 +501,7 @@
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
-          stream: 'master'
+          stream: 'release'
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
