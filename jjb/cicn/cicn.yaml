@@ -122,11 +122,11 @@
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
-              target: '/home/jenkins/.packagecloud'
+              target: '/root/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
-              target: '/home/jenkins/packagecloud_api'
+              target: '/root/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
@@ -529,11 +529,11 @@
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
-              target: '/home/jenkins/.packagecloud'
+              target: '/root/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
-              target: '/home/jenkins/packagecloud_api'
+              target: '/root/packagecloud_api'
       - maven-target:
           maven-version: 'mvn33-new'
           goals: '--version'
