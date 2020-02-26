@@ -188,7 +188,10 @@
     executor: 'vpp-csit-device'
     skip-vote: 'false'
     stream:
-      # TODO: Add stable/1908 when it is created.
+      # Only master and LTS branches.
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
       - master:
           branch: 'master'
     os: ubuntu1804
