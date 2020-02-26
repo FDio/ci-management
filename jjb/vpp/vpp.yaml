@@ -189,6 +189,12 @@
     skip-vote: 'false'
     stream:
       # TODO: Add stable/1908 when it is created.
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
       - master:
           branch: 'master'
     os: ubuntu1804
