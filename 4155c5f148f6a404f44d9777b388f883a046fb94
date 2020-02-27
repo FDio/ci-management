@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "271222f8_040822ae",
+        "filename": "jjb/hicn/hicn-docs.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-02-27T06:19:55Z",
+      "side": 1,
+      "message": "I would expect some /* here, but merging this as is should not hurt.",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "4155c5f148f6a404f44d9777b388f883a046fb94",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
