@@ -18,7 +18,32 @@
     description: 'CSIT Jenkins jobs.'
 
     jobs:
-      - 'csit-vpp-perf-verify-{stream}-{node-arch}'
+      - 'csit-dpdk-perf-verify-{stream}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+               executor: 'ubuntu1804arm-us'
+      - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
+          node-arch:
+            - ''
+            - -2n-clx
+            - -2n-skx
+            - -3n-skx
+      - 'csit-vpp-perf-verify-{stream}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+               executor: 'ubuntu1804arm-us'
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - ''
@@ -30,55 +55,42 @@
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
                 vpp-mrr-daily-periodicity: '0 14 * * 6'
-      - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
+      - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-clx
             - 2n-skx
+            - 3n-skx
+          stream:
+            - '1908_1':
+                branch: 'rls1908_1'
+                branch-id: 'oper-rls1908_1'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 2n-clx
             - 2n-skx
             - 3n-skx
             - 3n-hsw
-      - 'csit-dpdk-perf-verify-{stream}-{node-arch}'
-      - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
-          node-arch:
-            - ''
-            - -2n-clx
-            - -2n-skx
-            - -3n-skx
 
     project: 'csit'
     executor: 'ubuntu1804-us'
     branch: 'master'
     branch-id: 'oper'
     vpp-mrr-daily-periodicity: '0 14 * * 1,4'
+    vpp-mrr-weekly-periodicity: '0 0 * * 6'
     csit-perf-trial-duration: "1.0"
     csit-perf-trial-multiplicity: "10"
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1904':
-          branch: 'rls1904'
-          branch-id: 'oper-rls1904'
       - '1908_1':
           branch: 'rls1908_1'
           branch-id: 'oper-rls1908_1'
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'
-
     build-artifact-num-to-keep: 10
-    node-arch:
-      - 2n-clx
-      - 2n-skx
-      - 2n-dnv
-      - 3n-skx
-      - 3n-hsw
-      - 3n-dnv
-      - 3n-tsh:
-          executor: 'ubuntu1804arm-us'
+
 
 - job-template:
     name: 'csit-vpp-perf-verify-{stream}-{node-arch}'
@@ -278,7 +290,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-mrr-weekly-master-{node-arch}'
+    name: 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}'
 
     description: |
       <ul>
@@ -333,7 +345,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '{vpp-mrr-weekly-periodicity}'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -403,7 +415,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '{vpp-mrr-weekly-periodicity}'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
@@ -587,7 +599,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 0 * * 6'
+      - timed: '{vpp-mrr-weekly-periodicity}'
 
     builders:
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
