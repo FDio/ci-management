@@ -17,7 +17,12 @@
     description: 'CSIT Jenkins jobs.'
 
     jobs:
-      - 'csit-docs-merge-{stream_timed}'
+      - 'csit-docs-merge-{stream}':
+          stream:
+            - master:
+                branch: 'master'
+            - '2001':
+                branch: 'rls2001'
       - 'csit-report-merge-{stream}'
       - 'csit-trending-daily-master'
 
@@ -26,16 +31,9 @@
     executor: 'ubuntu1804-us'
     executor-large: 'ubuntu1804-l'
     build-artifact-num-to-keep: 10
-    stream_timed:
-      - master:
-          branch: 'master'
-      - '2001':
-          branch: 'rls2001'
     stream:
       - master:
           branch: 'master'
-      - '1904':
-          branch: 'rls1904'
       - '1908':
           branch: 'rls1908'
       - '1908_1':
@@ -50,7 +48,7 @@
     project-name: csit
 
 - job-template:
-    name: 'csit-docs-merge-{stream_timed}'
+    name: 'csit-docs-merge-{stream}'
 
     project-type: freestyle
     node: '{executor}'
@@ -90,7 +88,7 @@
 
     triggers:
       - reverse:
-          jobs: 'csit-vpp-device-{stream_timed}-ubuntu1804-1n-skx-weekly'
+          jobs: 'csit-vpp-device-{stream}-ubuntu1804-1n-skx-weekly'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
