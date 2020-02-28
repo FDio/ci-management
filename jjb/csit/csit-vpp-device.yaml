@@ -25,46 +25,46 @@
           trigger: 'gerrit-trigger-csit-vpp-devicetest-manual'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
-      - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
-      - 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
-      - 'csit-vpp-device-master-ubuntu1804-1n-tx2-csit-verify-hourly'
-      - 'csit-vpp-device-master-ubuntu1804-1n-tx2-vpp-verify-hourly'
+      - 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly':
+           stream:
+             - master:
+                branch: 'master'
+                branch-id: 'oper'
+             - '1908':
+                branch: 'rls1908_1'
+                branch-id: 'oper-rls1908_1'
+             - '2001':
+                branch: 'rls2001'
+                branch-id: 'oper-rls2001'
+      - 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly':
+           stream:
+             - master:
+                branch: 'master'
+                branch-id: 'oper'
+             - '1908':
+                branch: 'rls1908_1'
+                branch-id: 'oper-rls1908_1'
+             - '2001':
+                branch: 'rls2001'
+                branch-id: 'oper-rls2001'
+      - 'csit-vpp-device-master-{os}-1n-tx2-csit-verify-hourly'
+      - 'csit-vpp-device-master-{os}-1n-tx2-vpp-verify-hourly'
 
     project: 'csit'
     executor: 'vpp-csit-device'
     branch: 'master'
     branch-id: 'oper'
     trigger: 'gerrit-trigger-csit-vpp-devicetest-full'
-    stream_timed:
-      - master:
-          branch: 'master'
-          branch-id: 'oper'
-      - '2001':
-          branch: 'rls2001'
-          branch-id: 'oper-rls2001'
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1904':
-          branch: 'rls1904'
-          branch-id: 'oper-rls1904'
       - '1908':
           branch: 'rls1908_1'
           branch-id: 'oper-rls1908_1'
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'
-    exclude:
-      - stream: '1904'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream_timed: '1908'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
-      - stream_timed: 'master'
-        os: 'ubuntu1804'
-        node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
@@ -164,7 +164,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-semiweekly'
+    name: 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly'
     description: |
       <ul>
           <li>objective
@@ -248,7 +248,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream_timed}-{os}-{node-arch}-weekly'
+    name: 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly'
     description: |
       <ul>
           <li>objective
