@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40e8d484_81a1d397",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-03T15:33:15Z",
+      "side": 1,
+      "message": "Also master.",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a124916_d364ccd4",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-03T15:33:15Z",
+      "side": 1,
+      "message": "Do we have enough testbeds also for rls1908_1?",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 43
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
