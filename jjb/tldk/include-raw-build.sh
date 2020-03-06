@@ -41,3 +41,14 @@ sudo $WORKSPACE/x86_64-native-linuxapp-gcc/app/gtest-rfc --lcores=0 -n 2
 echo "*******************************************************************"
 echo "* TLDK UNIT TESTS SUCCESSFUL"
 echo "*******************************************************************"
+
+export ETH_DEV="tap"
+export L4FWD_PATH=$WORKSPACE/x86_64-native-linuxapp-gcc/app/l4fwd
+export L4FWD_FECORE=0
+export L4FWD_BECORE=1
+
+sudo -E /bin/bash $WORKSPACE/examples/l4fwd/test/run_test.sh -46a
+
+echo "*******************************************************************"
+echo "* TLDK OFO/LOST SEGMENT TESTS SUCCESSFUL"
+echo "*******************************************************************"
