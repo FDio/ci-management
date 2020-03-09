@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6b42585_0a8f51d1",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-09T17:18:20Z",
+      "side": 1,
+      "message": "This part does not seem to exist on dev-next-socket, so merging this will cause that branch to give -1 on every patch (except the patch that cherry-picks all the missing stuff from master).\nAre you okay with that?",
+      "range": {
+        "startLine": 50,
+        "startChar": 44,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "fadcdbae75960a1df1c1a7b6b2307c0ab1ae1fab",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
