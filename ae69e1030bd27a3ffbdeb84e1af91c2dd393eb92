@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666682ac_33f6e818",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-09T15:01:13Z",
+      "side": 1,
+      "message": "Without the _1 please. The existing oper branches do not have the _1 and we would need create them (or update the searching code).\n\nThe previous distinction of _1 was only needed during time we could be generating both .0 and .1 reports.",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "ae69e1030bd27a3ffbdeb84e1af91c2dd393eb92",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
