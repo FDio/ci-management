@@ -45,6 +45,29 @@
       "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0379a3b7_37f7ae1c",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-09T08:14:41Z",
+      "side": 1,
+      "message": "Please, revert back the original cadence of daily jobs. But use this limited daily job cadence for 2n-skx and 3n-skx jobs as we still need to run report jobs there.",
+      "range": {
+        "startLine": 78,
+        "startChar": 31,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
