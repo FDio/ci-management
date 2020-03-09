@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1899294c_77bf92e6",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-03-09T09:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40e8d484_81a1d397",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a124916_d364ccd4",
         "filename": "jjb/csit/csit-perf.yaml",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-03T15:33:15Z",
       "side": 1,
       "message": "Do we have enough testbeds also for rls1908_1?",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 43
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87f104b_a892c265",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-03-09T09:52:34Z",
+      "side": 1,
+      "message": "rls1908 weekly will be LTS testing. We will just change the test case lists.\ncapacity i think we do not have. To me there is too many pointless NF_density tests just taking resources.",
+      "parentUuid": "0a124916_d364ccd4",
       "range": {
         "startLine": 67,
         "startChar": 37,
@@ -68,6 +116,30 @@
       "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4edd5f_068a2725",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-03-09T09:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0379a3b7_37f7ae1c",
+      "range": {
+        "startLine": 78,
+        "startChar": 31,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "6797dd6c37f8f34dccc3502ac7c2598604094d51",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
