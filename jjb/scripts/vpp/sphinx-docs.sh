@@ -10,7 +10,7 @@ set -xe -o pipefail
 [ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
 
 make docs-venv
-UNATTENDED=y make docs
+CONFIRM=-y FORCE=--force-yes make docs
 
 if [[ ${JOB_NAME} == *merge* ]]; then
   mkdir -p $(dirname ${RESOURCES_DIR})
