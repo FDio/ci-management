@@ -16,6 +16,24 @@
       "revId": "33f14623538443fc1072be755ac6e947ed45fb8f",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3c7066_ec7cca21",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-12T13:48:54Z",
+      "side": 1,
+      "message": "\u003e eg.\n\nGood idea, done.",
+      "parentUuid": "d857bea2_5c1be8a2",
+      "revId": "33f14623538443fc1072be755ac6e947ed45fb8f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
