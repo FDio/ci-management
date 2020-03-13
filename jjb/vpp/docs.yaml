@@ -212,6 +212,7 @@
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: true
+    archive-artifacts: 'docs/_build/html/*'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
@@ -234,6 +235,10 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
