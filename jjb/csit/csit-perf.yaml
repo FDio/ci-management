@@ -61,7 +61,7 @@
                 periodicity: '0 14 * * *'
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
-                periodicity: '0 14 * * 6'
+                periodicity: '0 14 * * *'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-clx
