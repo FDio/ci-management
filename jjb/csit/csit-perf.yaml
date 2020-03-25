@@ -71,9 +71,9 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '1908':
-                branch: 'rls1908'
-                branch-id: 'oper-rls1908'
+            - '1908_2':
+                branch: 'rls1908_2'
+                branch-id: 'oper-rls1908_2'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
@@ -93,9 +93,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1908_1':
-          branch: 'rls1908_1'
-          branch-id: 'oper-rls1908_1'
+      - '1908_2':
+          branch: 'rls1908_2'
+          branch-id: 'oper-rls1908_2'
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'
