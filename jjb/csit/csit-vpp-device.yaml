@@ -26,27 +26,21 @@
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
       - 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly':
-           stream:
-             - master:
+          stream:
+            - master:
                 branch: 'master'
                 branch-id: 'oper'
-             - '1908':
-                branch: 'rls1908_1'
-                branch-id: 'oper-rls1908_1'
-             - '2001':
-                branch: 'rls2001'
-                branch-id: 'oper-rls2001'
+            - '1908_2':
+                branch: 'rls1908_2'
+                branch-id: 'oper-rls1908_2'
       - 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly':
-           stream:
-             - master:
+          stream:
+            - master:
                 branch: 'master'
                 branch-id: 'oper'
-             - '1908':
-                branch: 'rls1908_1'
-                branch-id: 'oper-rls1908_1'
-             - '2001':
-                branch: 'rls2001'
-                branch-id: 'oper-rls2001'
+            - '1908_2':
+                branch: 'rls1908_2'
+                branch-id: 'oper-rls1908_2'
       - 'csit-vpp-device-master-{os}-1n-tx2-csit-verify-hourly'
       - 'csit-vpp-device-master-{os}-1n-tx2-vpp-verify-hourly'
 
@@ -59,9 +53,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '1908':
-          branch: 'rls1908_1'
-          branch-id: 'oper-rls1908_1'
+      - '1908_2':
+          branch: 'rls1908_2'
+          branch-id: 'oper-rls1908_2'
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'

@@ -17,12 +17,7 @@
     description: 'CSIT Jenkins jobs.'
 
     jobs:
-      - 'csit-docs-merge-{stream}':
-          stream:
-            - master:
-                branch: 'master'
-            - '2001':
-                branch: 'rls2001'
+      - 'csit-docs-merge-{stream}'
       - 'csit-report-merge-{stream}'
       - 'csit-trending-daily-master'
 
@@ -34,10 +29,8 @@
     stream:
       - master:
           branch: 'master'
-      - '1908':
-          branch: 'rls1908'
-      - '1908_1':
-          branch: 'rls1908_1'
+      - '1908_2':
+          branch: 'rls1908_2'
       - '2001':
           branch: 'rls2001'
 
