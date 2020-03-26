@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "08b51e29_db8f4e2b",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T18:13:37Z",
+      "side": 1,
+      "message": "\u003e alphabetical order (as it is now)\n\nIt is not. \u00271\u0027 \u003c \u00272\u0027 \u003c \u0027m\u0027.\n\n\u003e which branch was released earlier (2001, 1908_2, 2005, 2001_1, ...)\n\nWhich is why I mentioned _first_ release. It does not matter 1908.2 is released after 2001, the code is still closer to 1908(.0).",
+      "parentUuid": "a2bb4bc7_fba61bbf",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684e9a9b_b09e3817",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1e492348_d9be2d38",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T18:13:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87405ddd_2b627092",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78574ee8_94e52756",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 1
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "We should update docs for all actively supported csit branches.\n\nI\u0027ve just realize that docs jobs are failing because of calling Python2.7 in the run_doc.sh script. I will fix it.",
       "parentUuid": "78574ee8_94e52756",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528be4b6_e65c062b",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T18:13:37Z",
+      "side": 1,
+      "message": "I do not think rls1908 is actively supported anymore (you can not run tests for that, as the packagecloud artifacts for it are hidden). The rls1908_1 branch is actively supported only until this gets merged. We want to keep some jobs (e.g. if we need to re-generate the report pages for some reason), but I do not think we expect any docs changes on those older branches.\n\nAnd only now I realized the docs jobs have their override in line 21. Anyway, I do not think we want to have the trending job (line 27) running on rls1908 nor rls1908_1.",
+      "parentUuid": "d44a97d7_034a437d",
       "range": {
         "startLine": 37,
         "startChar": 8,
