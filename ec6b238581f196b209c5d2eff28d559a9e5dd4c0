@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2bb4bc7_fba61bbf",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-26T17:39:38Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea to keep order based on release time. I prefer master + other branches in alphabetical order (as it is now). It is easier for human to quickly check streams based on branch name here and it\u0027s not needed to remember which branch was released earlier (2001, 1908_2, 2005, 2001_1, ...).",
+      "parentUuid": "4017d365_655515ea",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684e9a9b_b09e3817",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "87405ddd_2b627092",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-26T17:39:38Z",
+      "side": 1,
+      "message": "I agree we can remove overrides if they are identical to base list. But at the moment we don\u0027t need timed device jobs for 2001 so I removed it from overrides.",
+      "parentUuid": "684e9a9b_b09e3817",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78574ee8_94e52756",
         "filename": "jjb/csit/csit.yaml",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-26T15:42:57Z",
       "side": 1,
       "message": "Do we need docs jobs for those branches?",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44a97d7_034a437d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-26T17:39:38Z",
+      "side": 1,
+      "message": "We should update docs for all actively supported csit branches.\n\nI\u0027ve just realize that docs jobs are failing because of calling Python2.7 in the run_doc.sh script. I will fix it.",
+      "parentUuid": "78574ee8_94e52756",
       "range": {
         "startLine": 37,
         "startChar": 8,
