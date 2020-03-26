@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4017d365_655515ea",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T15:42:57Z",
+      "side": 1,
+      "message": "We should keep order based on time of the first release, so either 1908_2,2001,master, or master,2001,1908_2.",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684e9a9b_b09e3817",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T15:42:57Z",
+      "side": 1,
+      "message": "Do we need these overrides? The list at line 58 seem to be identical.",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78574ee8_94e52756",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-03-26T15:42:57Z",
+      "side": 1,
+      "message": "Do we need docs jobs for those branches?",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
