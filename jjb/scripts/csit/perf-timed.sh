@@ -19,6 +19,8 @@ set -exuo pipefail
 #
 # Variables read:
 # - WORKSPACE - Jenkins workspace to create csit subdirectory in.
+# - GERRIT_BRANCH - Jenkins configured GERRIT_BRANCH parameter equal to required
+#   CSIT branch.
 # - CSIT_REF - Override ref of CSIT git repository to checkout.
 # Directories updated:
 # - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
@@ -31,7 +33,7 @@ if [[ -n "${CSIT_REF-}" ]]; then
     git fetch --depth=1 https://gerrit.fd.io/r/csit "${CSIT_REF}"
     git checkout FETCH_HEAD
 else
-    git checkout HEAD
+    git checkout "${GERRIT_BRANCH}"
 fi
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
