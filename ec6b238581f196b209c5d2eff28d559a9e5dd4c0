@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8937f06e_87f9383a",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-27T10:21:29Z",
+      "side": 1,
+      "message": "by \"master + other branches in alphabetical order\" I meant master always on the top of list (the main interest) and all other branches in alphabetical (or main release time) order:\n\nmaster\n1908\n1908_1\n1908_2\n2001\n2001_1\n2005\n...",
+      "parentUuid": "08b51e29_db8f4e2b",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 16
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "684e9a9b_b09e3817",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 1
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "I do not think rls1908 is actively supported anymore (you can not run tests for that, as the packagecloud artifacts for it are hidden). The rls1908_1 branch is actively supported only until this gets merged. We want to keep some jobs (e.g. if we need to re-generate the report pages for some reason), but I do not think we expect any docs changes on those older branches.\n\nAnd only now I realized the docs jobs have their override in line 21. Anyway, I do not think we want to have the trending job (line 27) running on rls1908 nor rls1908_1.",
       "parentUuid": "d44a97d7_034a437d",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "ec6b238581f196b209c5d2eff28d559a9e5dd4c0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2981e95_cc0cad6d",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-03-27T10:21:29Z",
+      "side": 1,
+      "message": "I agree. Actively supported branches are those with defined csit-verify-tox-{stream}, csit-vpp-device-{stream}-{os}-{node-arch} and csit-vpp-perf-verify-{stream}-{node-arch} jobs. Going to update it.",
+      "parentUuid": "528be4b6_e65c062b",
       "range": {
         "startLine": 37,
         "startChar": 8,
