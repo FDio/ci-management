@@ -2,10 +2,14 @@
 - project:
     name: hicn
     jobs:
-      - 'hicn-verify-{stream}-{os}'
-      - 'hicn-merge-{stream}-{os}'
+      - 'hicn-{jtype}-{stream}-{os}'
 
     project: 'hicn'
+
+    jtype:
+      - verify
+      - merge
+
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -18,6 +22,13 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - hicn-light-ng:
+          branch: 'hicn-light-ng'
+          repo-stream-part: 'hicn-light-ng'
+
+    exclude:
+      - jtype: merge
+        stream: hicn-light-ng
 
     type:
       - short
@@ -26,10 +37,14 @@
 - project:
     name: hicn-arm
     jobs:
-      - 'hicn-arm-verify-{stream}-{os}'
-      - 'hicn-arm-merge-{stream}-{os}'
+      - 'hicn-arm-{jtype}-{stream}-{os}'
 
     project: 'hicn'
+
+    jtype:
+      - verify
+      - merge
+
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
@@ -38,6 +53,13 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - hicn-light-ng:
+          branch: 'hicn-light-ng'
+          repo-stream-part: 'hicn-light-ng'
+
+    exclude:
+      - jtype: merge
+        stream: hicn-light-ng
 
     type:
       - short
@@ -52,6 +74,9 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - hicn-light-ng:
+          branch: 'hicn-light-ng'
+          repo-stream-part: 'hicn-light-ng'
     os: ubuntu1804
 
 - project:
