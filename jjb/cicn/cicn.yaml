@@ -616,3 +616,17 @@
     build-node: centos7-builder-4c-4g
     project: cicn
     branch: master
+
+- project:
+    name: cicn-sonar
+    project: cicn
+    project-name: cicn
+    mvn-settings: cicn-settings
+    sonarcloud: true
+    sonarcloud-project-organization: '{sonarcloud_project_organization}'
+    sonarcloud-api-token: '{sonarcloud_api_token}'
+    sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
+    branch: master
+    build-node: centos7-builder-4c-4g
+    jobs:
+      - gerrit-maven-sonar
