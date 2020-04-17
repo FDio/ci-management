@@ -188,3 +188,17 @@
     build-node: centos7-builder-4c-4g
     project: udpi
     branch: master
+
+- project:
+    name: udpi-sonar
+    project: udpi
+    project-name: udpi
+    mvn-settings: udpi-settings
+    sonarcloud: true
+    sonarcloud-project-organization: '{sonarcloud_project_organization}'
+    sonarcloud-api-token: '{sonarcloud_api_token}'
+    sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
+    branch: master
+    build-node: centos7-docker-4c-4g
+    jobs:
+      - gerrit-maven-sonar
