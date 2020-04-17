@@ -270,3 +270,17 @@
     build-node: centos7-builder-4c-4g
     project: hc2vpp
     branch: master
+
+- project:
+    name: hc2vpp-sonar
+    project: hc2vpp
+    project-name: hc2vpp
+    mvn-settings: hc2vpp-settings
+    sonarcloud: true
+    sonarcloud-project-organization: '{sonarcloud_project_organization}'
+    sonarcloud-api-token: '{sonarcloud_api_token}'
+    sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
+    branch: master
+    build-node: centos7-docker-4c-4g
+    jobs:
+      - gerrit-maven-sonar
