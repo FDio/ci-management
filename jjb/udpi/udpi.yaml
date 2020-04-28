@@ -105,7 +105,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -174,7 +174,7 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -185,7 +185,7 @@
     project-name: udpi
     jobs:
       - gerrit-info-yaml-verify
-    build-node: centos7-builder-4c-4g
+    build-node: centos7-builder-2c-2g
     project: udpi
     branch: master
 
@@ -199,6 +199,6 @@
     sonarcloud-api-token: '{sonarcloud_api_token}'
     sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
     branch: master
-    build-node: centos7-docker-4c-4g
+    build-node: centos7-docker-2c-2g
     jobs:
       - gerrit-maven-sonar
