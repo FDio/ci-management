@@ -298,7 +298,7 @@
     project-name: csit
     jobs:
       - gerrit-info-yaml-verify
-    build-node: centos7-builder-4c-4g
+    build-node: centos7-builder-2c-2g
     project: csit
     branch: master
 
@@ -312,6 +312,6 @@
     sonarcloud-api-token: '{sonarcloud_api_token}'
     sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
     branch: master
-    build-node: centos7-builder-4c-4g
+    build-node: centos7-builder-2c-2g
     jobs:
       - gerrit-maven-sonar
