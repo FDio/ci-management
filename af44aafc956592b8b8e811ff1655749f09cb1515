@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a6916d7_68c96dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-04T16:53:55Z",
+      "side": 1,
+      "message": "Currently it shows the same mibehaviors as on Sandbox. Archives are uploaded, but run description is not set and even good runs are marked as unstable.\nI think for this job the ability to have archiving on Sandbox is worth it, but we will wait before converting more jobs.",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "af44aafc956592b8b8e811ff1655749f09cb1515",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
