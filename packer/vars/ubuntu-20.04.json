@@ -1,0 +1,8 @@
+{
+  "source_ami_filter_name": "*ubuntu*20.04*",
+  "source_ami_filter_owner": "099720109477",
+  "base_image": "LF - Ubuntu 20.04 LTS (2020-05-05)",
+  "distro": "Ubuntu 20.04",
+  "ssh_user": "ubuntu",
+  "cloud_user_data": "common-packer/provision/ubuntu-user_data.sh"
+}
