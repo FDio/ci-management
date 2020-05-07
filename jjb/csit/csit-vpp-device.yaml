@@ -59,6 +59,9 @@
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'
+      - '2005':
+          branch: 'rls2005'
+          branch-id: 'oper-rls2005'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
