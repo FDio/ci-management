@@ -33,6 +33,9 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
+            - '2005':
+                branch: 'rls2005'
+                branch-id: 'oper-rls2005'
       - 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly':
           stream:
             - master:
@@ -41,6 +44,9 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
+            - '2005':
+                branch: 'rls2005'
+                branch-id: 'oper-rls2005'
       - 'csit-vpp-device-master-{os}-1n-tx2-csit-verify-hourly'
       - 'csit-vpp-device-master-{os}-1n-tx2-vpp-verify-hourly'
 
