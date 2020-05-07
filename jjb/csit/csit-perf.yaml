@@ -98,6 +98,20 @@
             - 3n-skx
             - 3n-hsw
           periodicity: '0 0 * * 6'
+      - 'csit-vpp-perf-report-iterative-{stream}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+                executor: 'ubuntu1804arm-us'
+          stream:
+            - '2005':
+                branch: 'rls2005'
+                branch-id: 'oper-rls2005'
 
     project: 'csit'
     executor: 'ubuntu1804-us'
@@ -530,22 +544,11 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-dpdk-{node-arch}-perftest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: false
-            failed: false
-            unstable: false
-            notbuilt: false
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-dpdk-{node-arch}-perftest'
+          skip-vote: false
 
     builders:
       - shell:
@@ -630,6 +633,97 @@
     publishers:
       - robot:
           output-path: 'csit/archive'
+          other-files:
+            - '*.*'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-perf-report-iterative-{stream}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get vpp performance iterative data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-vpp-perf-report-iterative-{stream}-{node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-report-iter-{node-arch}-perftest</b>
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report-iter-{node-arch}.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: vpp performance
+                  <li>analyse: vpp performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{executor}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-report-iter-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - robot:
+          output-path: archive
           other-files:
             - '*.*'
 
