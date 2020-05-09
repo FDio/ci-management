@@ -98,7 +98,7 @@
             - 3n-skx
             - 3n-hsw
           periodicity: '0 0 * * 6'
-      - 'csit-vpp-perf-report-iterative-{stream}-{node-arch}':
+      - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx
             - 2n-skx
@@ -108,10 +108,36 @@
             - 3n-dnv
             - 3n-tsh:
                 executor: 'ubuntu1804arm-us'
-          stream:
-            - '2005':
-                branch: 'rls2005'
-                branch-id: 'oper-rls2005'
+      - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+                executor: 'ubuntu1804arm-us'
+      - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+                executor: 'ubuntu1804arm-us'
+      - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-clx
+            - 2n-skx
+            - 2n-dnv
+            - 3n-skx
+            - 3n-hsw
+            - 3n-dnv
+            - 3n-tsh:
+                executor: 'ubuntu1804arm-us'
 
     project: 'csit'
     executor: 'ubuntu1804-us'
@@ -129,6 +155,10 @@
       - '2001':
           branch: 'rls2001'
           branch-id: 'oper-rls2001'
+      - '2005':
+          branch: 'rls2005'
+          branch-id: 'oper-rls2005'
+    stream_report:
       - '2005':
           branch: 'rls2005'
           branch-id: 'oper-rls2005'
@@ -640,7 +670,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-perf-report-iterative-{stream}-{node-arch}'
+    name: 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}'
 
     description: |
       <ul>
@@ -651,9 +681,10 @@
           <li>job
               <ul>
                   <li>name:
-                      <b>csit-vpp-perf-report-iterative-{stream}-{node-arch}</b>
+                      <b>csit-vpp-perf-report-iterative-{stream_report}-
+                      {node-arch}</b>
                   <li>trigger: keyword in comment to csit patch:
-                      <b>csit-report-iter-{node-arch}-perftest</b>
+                      <b>csit-vpp-report-iter-{node-arch}-perftest</b>
               </ul>
           <li>executor
               <ul>
@@ -662,7 +693,8 @@
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
-                      <i>csit/docs/job_specs/report-iter-{node-arch}.md</i>
+                      <i>csit/docs/job_specs/report_iterative/
+                      vpp-{node-arch}.md</i>
               </ul>
 
           <li>results
@@ -670,6 +702,291 @@
                   <li>jjb verify: PASS/FAIL
                   <li>present: vpp performance
                   <li>analyse: vpp performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{executor}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-report-iter-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get dpdk performance iterative data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-dpdk-perf-report-iterative-{stream_report}-
+                      {node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-dpdk-report-iter-{node-arch}-perftest</b>
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report_iterative/
+                      dpdk-{node-arch}.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: dpdk performance
+                  <li>analyse: dpdk performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{executor}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-report-iter-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get vpp performance coverage data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-vpp-perf-report-coverage-{stream_report}-
+                      {node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-vpp-report-cov-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-vpp-report-cov-{node-arch}-perftest ip4-00
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report_coverage/{node-arch}/
+                      test_set_id.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: vpp performance
+                  <li>analyse: vpp performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{executor}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-report-iter-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - robot:
+          output-path: archive
+          other-files:
+            - '*.*'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get dpdk performance coverage data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-dpdk-perf-report-coverage-{stream_report}-
+                      {node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-dpdk-report-cov-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-dpdk-report-cov-{node-arch}-perftest dpdk-00
+              </ul>
+          <li>executor
+              <ul>
+                  <li>{executor}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report_coverage/{node-arch}/
+                      test_set_id.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: dpdk performance
+                  <li>analyse: dpdk performance
               </ul>
       </ul>
 
