@@ -28,6 +28,9 @@
       - '2001':
           branch: 'stable/2001'
           repo-stream-part: 'stable.2001'
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
 
     type:
       - short
