@@ -8,5 +8,6 @@ NEXUS_URL=https://nexus.fd.io
 NEXUSPROXY=https://nexus.fd.io
 PACKAGECLOUDPROXY=https://packagecloud.io/fdio
 PCIO_CO=fdio
+S3_BUCKET=
 SIGUL_KEY=fdio-release-2018
 SILO=production
