@@ -16,10 +16,158 @@
 #########################################################################
 
 - project:
+    name: vsap
+    jobs:
+      - 'vsap-verify-{stream}-{os}-{mode}'
+      - 'vsap-merge-{stream}-{os}-{mode}'
+
+    project: 'vsap'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
+    stream:
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
+    mode:
+      - vcl:
+          repo-mode-part: 'vcl'
+      - ldp:
+          repo-mode-part: 'ldp'
+
+- project:
     name: vsap-view
     views:
       - project-view
     project-name: vsap
+
+- job-template:
+    name: 'vsap-verify-{stream}-{os}-{mode}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
+      - stream-parameter:
+          stream: '{stream}'
+      - mode-parameter:
+          mode: '{mode}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm-recursive:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+          submodule-recursive: true
+          submodule:
+            recursive: true
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-patch-submitted:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - include-raw-vsap-build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+
+- job-template:
+    name: 'vsap-merge-{stream}-{os}-{mode}'
+
+    project-type: freestyle
+    node: '{os}-us'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - mode-parameter:
+          mode: '{mode}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm-recursive:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+          submodule-recursive: true
+          submodule:
+            recursive: true
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root'
+      - shell:
+          !include-raw-escape:
+          - include-raw-vsap-build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
 
 - project:
     name: vsap-info
