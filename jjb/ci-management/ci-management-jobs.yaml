@@ -3,6 +3,7 @@
     name: ci-management-ci-jobs
     jobs:
       - gerrit-jenkins-cfg-verify
+      - gerrit-jenkins-cfg-merge
       - gerrit-jenkins-sandbox-cleanup
       - gerrit-jjb-deploy-job
       - gerrit-jjb-merge
