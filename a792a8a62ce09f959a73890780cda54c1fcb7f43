@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a594e719_9da90f60",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:46:12Z",
+      "side": 1,
+      "message": "This block only sets up apt/yum to use packagecloud as the remote repository. I do not see any command performing the actual installation of VPP packages (as promised by lines 16 and 19).",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa7e561_bbc7ecf1",
         "filename": "jjb/vsap/include-raw-vsap-build.sh",
         "patchSetId": 3
