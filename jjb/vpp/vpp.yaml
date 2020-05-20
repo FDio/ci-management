@@ -208,6 +208,25 @@
           branch: 'master'
     os: ubuntu1804
 
+# VPP API compatibility checks, using crcchecker.py
+# Run only on 20.05 and master - because
+# crcchecker.py did not exist in earlier versions.
+- project:
+    name: vpp-api-compat-check
+    jobs:
+      - 'vpp-api-compat-check-{stream}'
+    project: 'vpp'
+    executor: '{os}-us'
+    stream:
+      # Only master and 2005 branches onwards.
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    os: ubuntu1804
+
 - project:
     name: vpp-info
     project-name: vpp
@@ -1259,3 +1278,58 @@
     publishers:
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
+
+- job-template:
+    name: 'vpp-api-compat-check-{stream}'
+
+    project-type: freestyle
+    node: 'ubuntu1804-us'
+    concurrent: true
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: 'ubuntu1804'
+      - gerrit-refspec-parameter
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-checkstyle-nonvoting:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/vpp-api-compat-check.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+
