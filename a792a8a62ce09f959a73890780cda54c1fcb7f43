@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1fed41_17a3e937",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:42:54Z",
+      "side": 1,
+      "message": "Move this block to line 134.\n\nSee line 182 (or 18).",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa7e561_bbc7ecf1",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:42:54Z",
+      "side": 1,
+      "message": "This prevents you from building other commits than HEAD of master.\nAs this script is also used by your verify job, it will cause false positives.\nBoth verify and merge job have already checked out the correct commit of VSAP repo, so lines 48-49 are not needed at all.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4264021e_8bd89340",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:42:54Z",
+      "side": 1,
+      "message": "I recommend you to remove this block, unless you know you need it due to occasional failures.",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d611acd2_9314b7b5",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:42:54Z",
+      "side": 1,
+      "message": "I am not sure these two blocks are needed, as the verify job does not upload to packagecloud.",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2593f774_94b4e85b",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-20T08:42:54Z",
+      "side": 1,
+      "message": "One again, not recommended.",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
