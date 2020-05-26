@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97bef8f1_202c8da0",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-26T12:32:26Z",
+      "side": 1,
+      "message": "You probably do not need this.",
+      "range": {
+        "startLine": 1288,
+        "startChar": 29,
+        "endLine": 1288,
+        "endChar": 49
+      },
+      "revId": "eec41df05f6fed243a949546efb321cec6b85b47",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
