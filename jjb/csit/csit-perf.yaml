@@ -64,20 +64,20 @@
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - '':
-                periodicity: '0 14 * * *'
+                periodicity: '0 14 * * 1,4'
             - -2n-clx:
-                periodicity: '0 14 * * *'
+                periodicity: '0 14 * * 1,4'
             - -2n-skx:
                 periodicity: '0 14 * * 1,4'
             - -2n-dnv:
-                periodicity: '0 14 * * *'
+                periodicity: '0 14 * * 1,4'
             - -3n-skx:
                 periodicity: '0 14 * * 1,4'
             - -3n-dnv:
-                periodicity: '0 14 * * *'
+                periodicity: '0 14 * * 1,4'
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
-                periodicity: '0 14 * * *'
+                periodicity: '0 14 * * 4'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-clx
