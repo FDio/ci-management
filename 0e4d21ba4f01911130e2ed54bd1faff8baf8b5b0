@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f775ec29_ae275273",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-27T14:46:45Z",
+      "side": 1,
+      "message": "This is UTC, right? 14 will hit Europe. Do we have some Jenkins usage data so we can pick a time where less csit verify jobs are triggering?\nOr at least we can try \u0027H\u0027 in some fields, so runs are distributed randomly over the day.",
+      "range": {
+        "startLine": 232,
+        "startChar": 18,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "0e4d21ba4f01911130e2ed54bd1faff8baf8b5b0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
