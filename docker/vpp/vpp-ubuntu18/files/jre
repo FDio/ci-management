@@ -1,0 +1,10 @@
+Package: default-jdk-headless
+Pin: release a=now
+Priority: 1001
+Pin-Priority: 1001
+
+Package: default-jre-headless
+Pin: release a=now
+Priority: 1001
+Pin-Priority: 1001
+
