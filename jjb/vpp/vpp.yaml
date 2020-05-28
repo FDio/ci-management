@@ -3,6 +3,7 @@
     name: vpp
     jobs:
       - 'vpp-verify-{stream}-{os}'
+      - 'ayourtch-vpp-verify-{stream}-{os}'
       - 'vpp-merge-{stream}-{os}'
 
     project: 'vpp'
@@ -716,6 +717,62 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+
+- job-template:
+    name: 'ayourtch-vpp-verify-{stream}-{os}'
+
+    project-type: freestyle
+    node: '{os}-us'
+    concurrent: true
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - gerrit-refspec-parameter
+      - stream-parameter:
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/build-with-gdb.sh
 
     publishers:
       - fdio-infra-shiplogs:
