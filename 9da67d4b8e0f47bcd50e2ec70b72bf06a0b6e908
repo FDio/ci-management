@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ebfb737_9384db12",
+        "filename": "docker/LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-05-29T13:22:17Z",
+      "side": 1,
+      "message": "Created https://gerrit.fd.io/r/c/ci-management/+/27341 as a simpler attempt.",
+      "parentUuid": "0f4aaea3_9ca8a615",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "9da67d4b8e0f47bcd50e2ec70b72bf06a0b6e908",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be938aad_8249a54b",
         "filename": "docker/LICENSE",
         "patchSetId": 1
