@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4c802625_809afa7f",
+        "filename": "docker/LICENSE",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-05-29T20:32:46Z",
+      "side": 1,
+      "message": "\u003e Created https://gerrit.fd.io/r/c/ci-management/+/27341 as a simpler attempt.\n\nThank you.\n\nThe odd thing is that there is no LICENSE file for the ci-management repo,\nwhich makes importing Ed\u0027s licensed work a bit awkward and why my previous\npatch did not include licensing at all.  But upon second thought, it \nbecame clear that the LICENSE files on github needed to be addressed.",
+      "parentUuid": "3ebfb737_9384db12",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "9da67d4b8e0f47bcd50e2ec70b72bf06a0b6e908",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be938aad_8249a54b",
         "filename": "docker/LICENSE",
         "patchSetId": 1
