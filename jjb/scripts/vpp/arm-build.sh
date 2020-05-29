@@ -46,11 +46,17 @@ echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 # If and only if we are doing verify *after* make verify was made to work
 # and we are not a CSIT job just building packages, then use make verify,
 # else use the old build-root/vagrant/build.sh
+if [ "x${MAKE_PARALLEL_JOBS}" != "x" ]
+then
+  echo "Building with MAKE_PARALLEL_JOBS=${MAKE_PARALLEL_JOBS}"
+  TEST_JOBS="TEST_JOBS=${MAKE_PARALLEL_JOBS}"
+fi
+
 if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
     echo "Building using \"make verify\""
-    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify SKIP_AARCH64=yes
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes SKIP_AARCH64=yes ${TEST_JOBS} verify
 else
     echo "Building using \"make build-root/vagrant/build.sh\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes install-dep
