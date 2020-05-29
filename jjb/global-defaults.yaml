@@ -24,6 +24,9 @@
     # voting
     skip-vote: false
 
+    # build
+    make-parallel-jobs: 4
+
     # CSIT
     csit-perf-trial-duration: 1.0
     csit-perf-trial-multiplicity: 1
