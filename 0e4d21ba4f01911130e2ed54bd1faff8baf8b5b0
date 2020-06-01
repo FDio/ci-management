@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e68cb3ba_fb0ddaf6",
+        "filename": "jjb/scripts/vpp/arm-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-01T14:25:40Z",
+      "side": 0,
+      "message": "I think we still need this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 55,
+        "endLine": 53,
+        "endChar": 61
+      },
+      "revId": "0e4d21ba4f01911130e2ed54bd1faff8baf8b5b0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
