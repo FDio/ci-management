@@ -22,6 +22,30 @@
       "revId": "9f2d4cec9b9db1ebbcf1c5bbbf7fa54170006208",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b23596_0bd5310b",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-01T14:38:42Z",
+      "side": 1,
+      "message": "No need, I prefer all jobs to be Sandbox-testable by default.",
+      "parentUuid": "20486389_26130923",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "9f2d4cec9b9db1ebbcf1c5bbbf7fa54170006208",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
