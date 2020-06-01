@@ -46,6 +46,30 @@
       "revId": "0e4d21ba4f01911130e2ed54bd1faff8baf8b5b0",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1eca2f_112a0d07",
+        "filename": "jjb/scripts/vpp/arm-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-01T14:37:38Z",
+      "side": 0,
+      "message": "Ah yes, sorry, line wrapping in Gerrit confused me.",
+      "parentUuid": "c92da26a_be63717b",
+      "range": {
+        "startLine": 53,
+        "startChar": 55,
+        "endLine": 53,
+        "endChar": 61
+      },
+      "revId": "0e4d21ba4f01911130e2ed54bd1faff8baf8b5b0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
