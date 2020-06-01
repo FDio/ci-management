@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20486389_26130923",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-06-01T14:37:32Z",
+      "side": 1,
+      "message": "This is here for sandbox testing, I\u0027ll remove it in the next PS",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "9f2d4cec9b9db1ebbcf1c5bbbf7fa54170006208",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
