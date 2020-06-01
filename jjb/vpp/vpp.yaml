@@ -95,7 +95,8 @@
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-device-{stream}-{device-node-arch}'
+      - 'vpp-csit-verify-device-{stream}-{device-node-arch}':
+          make-parallel-jobs: '32'
       - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
     os: ubuntu1804
@@ -133,6 +134,7 @@
       - 3n-dnv
       - 3n-tsh:
           executor: 'ubuntu1804arm-s'
+          make-parallel-jobs: '16'
     exclude:
       - stream: '1904'
         os: 'ubuntu1804'
@@ -189,6 +191,7 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
+    make-parallel-jobs: '16'
 
 # TODO: Merge with (e.g.) vpp-perpatch or similar,
 # when number of stable branches supported matches.
@@ -257,6 +260,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -314,6 +319,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -388,6 +395,9 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -413,8 +423,6 @@
           - ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/parallel-vars.sh
-          # Do not split, the line below wants env vars from the line above.
           - ../scripts/vpp/arm-build.sh
 
     publishers:
@@ -452,6 +460,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -485,8 +495,6 @@
           - ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/parallel-vars.sh
-          # Do not split, the line below wants env vars from the line above.
           - ../scripts/vpp/arm-build-no-test.sh
 
       - provide-maven-settings:
@@ -629,6 +637,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -690,6 +700,9 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -746,6 +759,8 @@
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -907,6 +922,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -986,6 +1003,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -1076,6 +1095,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
@@ -1162,6 +1183,8 @@
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
           description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
 
     scm:
       - gerrit-trigger-scm:
