@@ -1,0 +1,9 @@
+libhicnctrl-devel
+libhicnctrl-memif-devel
+libhicntransport-memif-devel
+libhicn-devel
+libhicntransport-devel
+hicn-plugin-devel
+libparc-devel
+libmemif-devel
+longbow-devel
