@@ -1,0 +1,13 @@
+libhicnctrl-dev
+libhicn-ctrl-dev
+libhicnctrl-memif-dev
+libhicntransport-memif-dev
+libhicn-dev
+libhicntransport-dev
+hicn-plugin-dev
+libdash
+libdash-dev
+libdash-doc
+libparc-dev
+libmemif-dev
+longbow-dev
