@@ -8,8 +8,6 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
       - centos7:
           repo-os-part: 'centos7'
 
@@ -34,8 +32,6 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
       - centos7:
           repo-os-part: 'centos7'
 
@@ -112,8 +108,6 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
       - centos7:
           repo-os-part: 'centos7'
 
@@ -175,7 +169,7 @@
       - os-parameter:
           os: '{os}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.xenial.main'
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - string:
           name: ARCHIVE_ARTIFACTS
           default: '{archive-artifacts}'
