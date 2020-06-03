@@ -531,6 +531,7 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -541,6 +542,11 @@
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
+      - credentials-binding:
+          - text:
+              credential-id: VppApiCompatNotify
+              variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
+
 
     triggers:
       - gerrit:
