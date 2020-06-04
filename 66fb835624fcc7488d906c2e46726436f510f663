@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b05134ad_02370679",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T15:46:38Z",
+      "side": 1,
+      "message": "No. Maybe that searches only among the rooms I have joined already?\nBut when I typed just VPP it found (among unrelated things) VppApiCompatibilityNotify, so no idea how it works.",
+      "parentUuid": "830c069d_e0693a8b",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0761b0_036557b5",
         "filename": "jjb/scripts/vpp/checkstyle.sh",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "is it still needed if I put the api-checkstyle portion into a separate file ? (Given the policy \"one thing per file\", it should continue to work ok ?",
       "parentUuid": "4d0761b0_036557b5",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0986e3d0_d2fb1384",
+        "filename": "jjb/scripts/vpp/checkstyle.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T15:46:38Z",
+      "side": 1,
+      "message": "\u003e is it still needed\n\nNot needed in this change.\nA separate change can do a refactor on all scripts, to make them less susceptible.",
+      "parentUuid": "b061f685_63c08a35",
       "range": {
         "startLine": 17,
         "startChar": 1,
