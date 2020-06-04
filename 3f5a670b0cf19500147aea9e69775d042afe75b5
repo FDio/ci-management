@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffc52f35_581bf133",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-04T10:36:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c488146_f92e535d",
+      "range": {
+        "startLine": 594,
+        "startChar": 19,
+        "endLine": 594,
+        "endChar": 36
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93bb2913_68c19c7b",
         "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
         "patchSetId": 9
@@ -59,6 +83,30 @@
       "writtenOn": "2020-06-04T10:23:13Z",
       "side": 1,
       "message": "... and the checked out repository is hicn, while these files are contributed to ci-management repository.",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7161fe3_e7fbf51d",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-04T10:36:25Z",
+      "side": 1,
+      "message": "I actually wanted to keep these files on ci-management, since I don\u0027t want to give to anyone the possibility to modify this list of packages. It is true there is the gerrit review before, but you know, errare humanum est:)",
+      "parentUuid": "d969223e_927351ef",
       "range": {
         "startLine": 12,
         "startChar": 41,
