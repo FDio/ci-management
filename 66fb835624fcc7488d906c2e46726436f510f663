@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51df7fca_68a23d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2020-06-04T14:26:09Z",
+      "side": 1,
+      "message": "Aaah, good catch, thanks! :-) fixed in patch#3 (wonder if spell checker on the commit message might be a good idea)",
+      "parentUuid": "313c0780_ef1c4b70",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7b8b040_c205c25d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "830c069d_e0693a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2020-06-04T14:26:09Z",
+      "side": 1,
+      "message": "Can you find it if you just search by name in \"Spaces\" and try to join ?",
+      "parentUuid": "d7b8b040_c205c25d",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0761b0_036557b5",
         "filename": "jjb/scripts/vpp/checkstyle.sh",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-04T08:37:54Z",
       "side": 1,
       "message": "I expected some \"if\" around this, to exit early if the return code is nonzero.\nThe Base code only happens to work correctly because this was the last command to execute.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b061f685_63c08a35",
+        "filename": "jjb/scripts/vpp/checkstyle.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2020-06-04T14:26:09Z",
+      "side": 1,
+      "message": "is it still needed if I put the api-checkstyle portion into a separate file ? (Given the policy \"one thing per file\", it should continue to work ok ?",
+      "parentUuid": "4d0761b0_036557b5",
       "range": {
         "startLine": 17,
         "startChar": 1,
