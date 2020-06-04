@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "313c0780_ef1c4b70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T08:37:54Z",
+      "side": 1,
+      "message": "specify",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 16,
+        "endChar": 48
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b8b040_c205c25d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T08:37:54Z",
+      "side": 1,
+      "message": "As a WebEx newbie, how can I join the room?",
+      "range": {
+        "startLine": 21,
+        "startChar": 36,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0761b0_036557b5",
+        "filename": "jjb/scripts/vpp/checkstyle.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T08:37:54Z",
+      "side": 1,
+      "message": "I expected some \"if\" around this, to exit early if the return code is nonzero.\nThe Base code only happens to work correctly because this was the last command to execute.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "66fb835624fcc7488d906c2e46726436f510f663",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
