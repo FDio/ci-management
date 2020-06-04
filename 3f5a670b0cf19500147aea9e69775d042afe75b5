@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c488146_f92e535d",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T10:23:13Z",
+      "side": 1,
+      "message": "Timed jobs usually keep this empty, resulting in checkout of HEAD of the branch.",
+      "range": {
+        "startLine": 594,
+        "startChar": 19,
+        "endLine": 594,
+        "endChar": 36
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93bb2913_68c19c7b",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T10:23:13Z",
+      "side": 1,
+      "message": "This resolves to \"/tmp\" as that is where jenkins creates scripts for include-raw. Note that git plugin checks out a repository to directory name such as \"/w/hicn-repo-cleanup-ubuntu1804\"...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d969223e_927351ef",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-04T10:23:13Z",
+      "side": 1,
+      "message": "... and the checked out repository is hicn, while these files are contributed to ci-management repository.",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
