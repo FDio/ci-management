@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6203f31f_f60114b0",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-08T16:41:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b84085a_19be8245",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e93631a5_1158f3a2",
         "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730dc450_91de8e40",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-08T16:41:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e93631a5_1158f3a2",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f2c3094c_4a230541",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-08T16:41:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a350b0a_9188f3b0",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "687bf899_17593acb",
         "filename": "jjb/ci-management/include-raw-hicn-cleanup-repo.sh",
         "patchSetId": 12
@@ -91,6 +163,30 @@
       "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9138df_c143a540",
+        "filename": "jjb/ci-management/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-08T16:41:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "687bf899_17593acb",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
