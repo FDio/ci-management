@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b84085a_19be8245",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "Naming could be unified. I prefer \"release-repo-cleanup\" or \"packagecloud-cleanup\" or similar, without mentioning hicn (nor ci-management).\nKeep identical (or almost identical) names also for:\n- this file name\n- line 2\n- line 77.",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93631a5_1158f3a2",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "Still needs to be empty (or the variable created by gerrit-refspec-parameter).",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 36
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a350b0a_9188f3b0",
+        "filename": "jjb/ci-management/ci-release-repo-cleanup.yaml",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "I still do not like this.\nIf a run fails, we should investigate, instead of re-triggering blindly.",
+      "range": {
+        "startLine": 82,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687bf899_17593acb",
+        "filename": "jjb/ci-management/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "Seems unused, remove.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "ea9a284eaf37828635cd624ea8f80b3322e66781",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}

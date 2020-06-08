@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "06e2d01e_aefe2ac3",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "Looking at the job configuration on Sandbox, this line has to be (also) at the start of the other script, otherwise another shell is used instead of bash.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93bb2913_68c19c7b",
         "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
         "patchSetId": 9
@@ -160,6 +183,53 @@
         "startChar": 41,
         "endLine": 12,
         "endChar": 64
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f50438c_e9922af3",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "\u003e I am still waiting\n\nSo I created the jobs again, only to realize you have already done so. Sorry. If some configuration changed between the runs, that is why.",
+      "parentUuid": "a91a4ce2_e5e6c3a7",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3e2542_d6927852",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-08T12:56:41Z",
+      "side": 1,
+      "message": "This keeps last 5 versions regardless of major version, for example not keeping:\n  libhicn-19.08_289_release-1.x86_64.rpm\n\nhttps://jenkins.fd.io/sandbox/job/hicn-repo-cleanup-centos7/1/consoleText",
+      "range": {
+        "startLine": 41,
+        "startChar": 75,
+        "endLine": 41,
+        "endChar": 89
       },
       "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
