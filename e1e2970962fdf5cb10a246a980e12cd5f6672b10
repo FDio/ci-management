@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95994017_11b0a8b8",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-09T14:18:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29db766d_2654f37c",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c15232a_fce1807a",
         "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9195af91_331982a6",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-09T14:18:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c15232a_fce1807a",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "55f7fee4_b750ed03",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-09T14:18:55Z",
+      "side": 1,
+      "message": "No, this keeps N_PACKAGES.\n\nFor instance, the output of apt-cache policy is:\n\napt-cache policy libhicn\nlibhicn:\n  Installed: (none)\n  Candidate: 20.05-11-release\n  Version table:\n     20.05-11-release 500\n\nAnd the first version candidate is printed twice. So you need to exclude the \"Candidate: 20.05-11-release\" (+1).\nAlso `tail -n +M` starts to print from the Mth line, being 1 the first line. So to exclude the Mth line an additional +1 is needed.",
+      "parentUuid": "d7c0911a_72d9ac52",
+      "range": {
+        "startLine": 54,
+        "startChar": 78,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0889d073_636f2462",
         "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
         "patchSetId": 17
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-09T13:26:33Z",
       "side": 1,
       "message": "It would be nice to echo (to stderr) which packages are kept.\nFor example (which should belong to line 54, but that already has an unrelated comment), I see packages like [1], which are currently not considered for removal (probably because they are targeted for aarch64, but this Change does not have a job for arm).\n\n[1] https://packagecloud.io/fdio/release/packages/ubuntu/bionic/libmemif_19.08-202-release-1_arm64.deb",
+      "range": {
+        "startLine": 80,
+        "startChar": 75,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0d71b4_12300d99",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-09T14:18:55Z",
+      "side": 1,
+      "message": "Ack this job does not include ARM. If it will be merged ARM jobs will be integrated.",
+      "parentUuid": "0889d073_636f2462",
       "range": {
         "startLine": 80,
         "startChar": 75,
