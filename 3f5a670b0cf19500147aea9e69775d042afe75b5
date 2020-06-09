@@ -330,6 +330,30 @@
       "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "774bcc11_95a91916",
+        "filename": "jjb/hicn/include-raw-hicn-cleanup-repo.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 789
+      },
+      "writtenOn": "2020-06-09T13:57:09Z",
+      "side": 1,
+      "message": "I think there has been a misunderstanding about what we agreed with Andrew.\nI clarified with Mauro. This job manages the current version (tag) only.\nPrevious tags are assumed to be ok. Previous releases\u0027 issues are managed by the \nLF IT that manages manual removal of previous packages that can be deleted\nby a written request by the PLT of that project. Me in this case for hicn.",
+      "parentUuid": "2e3e2542_d6927852",
+      "range": {
+        "startLine": 41,
+        "startChar": 75,
+        "endLine": 41,
+        "endChar": 89
+      },
+      "revId": "3f5a670b0cf19500147aea9e69775d042afe75b5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
