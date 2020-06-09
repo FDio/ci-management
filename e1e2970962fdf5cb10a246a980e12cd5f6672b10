@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29db766d_2654f37c",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-09T13:26:33Z",
+      "side": 1,
+      "message": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html\nhttps://stackoverflow.com/questions/33129781/why-do-some-people-exit-1-rather-than-exit-1-on-error",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c15232a_fce1807a",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-09T13:26:33Z",
+      "side": 1,
+      "message": "Which rule for variable name capitalization are you following?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c0911a_72d9ac52",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-09T13:26:33Z",
+      "side": 1,
+      "message": "Why do we want to keep more Ubuntu builds?\nMaybe define N_PACKAGES_UBUNTU.",
+      "range": {
+        "startLine": 54,
+        "startChar": 78,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0889d073_636f2462",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-09T13:26:33Z",
+      "side": 1,
+      "message": "It would be nice to echo (to stderr) which packages are kept.\nFor example (which should belong to line 54, but that already has an unrelated comment), I see packages like [1], which are currently not considered for removal (probably because they are targeted for aarch64, but this Change does not have a job for arm).\n\n[1] https://packagecloud.io/fdio/release/packages/ubuntu/bionic/libmemif_19.08-202-release-1_arm64.deb",
+      "range": {
+        "startLine": 80,
+        "startChar": 75,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc643761_fc5b7b42",
+        "filename": "jjb/ci-management/release-repo-cleanup.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-09T13:26:33Z",
+      "side": 1,
+      "message": "I forgot to mention (when talking about file names) also the following.\nI dislike the \"include-raw-\" prefix.\nhttps://gerrit.fd.io/r/c/ci-management/+/24057",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
