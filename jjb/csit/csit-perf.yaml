@@ -684,7 +684,10 @@
                       <b>csit-vpp-perf-report-iterative-{stream_report}-
                       {node-arch}</b>
                   <li>trigger: keyword in comment to csit patch:
-                      <b>csit-vpp-report-iter-{node-arch}-perftest</b>
+                      <b>csit-vpp-report-iter-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-vpp-report-iter-{node-arch}-perftest vpp-00
               </ul>
           <li>executor
               <ul>
@@ -693,8 +696,8 @@
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
-                      <i>csit/docs/job_specs/report_iterative/
-                      vpp-{node-arch}.md</i>
+                      <i>csit/docs/job_specs/report_iterative/{node-arch}/
+                      test_set_id.md</i>
               </ul>
 
           <li>results
@@ -777,7 +780,10 @@
                       <b>csit-dpdk-perf-report-iterative-{stream_report}-
                       {node-arch}</b>
                   <li>trigger: keyword in comment to csit patch:
-                      <b>csit-dpdk-report-iter-{node-arch}-perftest</b>
+                      <b>csit-dpdk-report-iter-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-dpdk-report-iter-{node-arch}-perftest dpdk-00
               </ul>
           <li>executor
               <ul>
@@ -786,8 +792,8 @@
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
-                      <i>csit/docs/job_specs/report_iterative/
-                      dpdk-{node-arch}.md</i>
+                      <i>csit/docs/job_specs/report_iterative/{node-arch}/
+                      test_set_id.md</i>
               </ul>
 
           <li>results
