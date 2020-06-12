@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d8d51733_7291e4e3",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-12T13:56:04Z",
+      "side": 1,
+      "message": "Ah, ok.\nI will probably double-check on the next Sandbox run.\n\n\u003e And the first version candidate is printed twice. \n\u003e So to exclude the Mth line an additional +1 is needed.\n\nCan you add a short comment into the code?\nI have seen tricky code like this frequently getting \"fixed\" by an unaware contributor.",
+      "parentUuid": "55f7fee4_b750ed03",
+      "range": {
+        "startLine": 54,
+        "startChar": 78,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0889d073_636f2462",
         "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
         "patchSetId": 17
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Ack this job does not include ARM. If it will be merged ARM jobs will be integrated.",
       "parentUuid": "0889d073_636f2462",
+      "range": {
+        "startLine": 80,
+        "startChar": 75,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304b0202_b4b8617c",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-06-12T13:56:04Z",
+      "side": 1,
+      "message": "While we are waiting for the repository discussion to conclude, you can prepare also ARM cleanup in this Change.",
+      "parentUuid": "3f0d71b4_12300d99",
       "range": {
         "startLine": 80,
         "startChar": 75,
