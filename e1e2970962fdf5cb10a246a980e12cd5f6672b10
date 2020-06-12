@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "2d813799_54f68a15",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-12T15:26:56Z",
+      "side": 1,
+      "message": "https://jenkins.fd.io/sandbox/job/release-repo-cleanup-ubuntu1804arm/1/console",
+      "parentUuid": "304b0202_b4b8617c",
+      "range": {
+        "startLine": 80,
+        "startChar": 75,
+        "endLine": 80,
+        "endChar": 89
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc643761_fc5b7b42",
         "filename": "jjb/ci-management/release-repo-cleanup.yaml",
         "patchSetId": 17
