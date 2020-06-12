@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "b0cb04a7_5a91ecc2",
+        "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-06-12T17:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8d51733_7291e4e3",
+      "range": {
+        "startLine": 54,
+        "startChar": 78,
+        "endLine": 54,
+        "endChar": 93
+      },
+      "revId": "e1e2970962fdf5cb10a246a980e12cd5f6672b10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0889d073_636f2462",
         "filename": "jjb/ci-management/include-raw-release-repo-cleanup.sh",
         "patchSetId": 17
