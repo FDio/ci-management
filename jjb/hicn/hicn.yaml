@@ -376,7 +376,7 @@
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
-          stream: 'release'
+          stream: 'hicn'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
@@ -464,7 +464,7 @@
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
-          stream: 'release'
+          stream: 'hicn'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
@@ -631,7 +631,7 @@
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
-          stream: 'release'
+          stream: 'hicn'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
@@ -788,7 +788,7 @@
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
-          stream: 'release'
+          stream: 'hicn'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
