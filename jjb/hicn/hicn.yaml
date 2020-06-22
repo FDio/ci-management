@@ -2,22 +2,22 @@
 - project:
     name: hicn-verify
     jobs:
-      - 'hicn-verify-{stream}-{os}'
+      - "hicn-verify-{stream}-{os}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+          repo-os-part: "ubuntu.bionic.main"
       - centos7:
-          repo-os-part: 'centos7'
+          repo-os-part: "centos7"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
       - lightng:
-          branch: 'hicn-light-ng'
-          repo-stream-part: 'hicn-light-ng'
+          branch: "hicn-light-ng"
+          repo-stream-part: "hicn-light-ng"
 
     type:
       - short
@@ -26,19 +26,19 @@
 - project:
     name: hicn-merge
     jobs:
-      - 'hicn-merge-{stream}-{os}'
+      - "hicn-merge-{stream}-{os}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+          repo-os-part: "ubuntu.bionic.main"
       - centos7:
-          repo-os-part: 'centos7'
+          repo-os-part: "centos7"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
 
     type:
       - short
@@ -47,20 +47,20 @@
 - project:
     name: hicn-arm-verify
     jobs:
-      - 'hicn-arm-verify-{stream}-{os}'
+      - "hicn-arm-verify-{stream}-{os}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
+          repo-os-part: "ubuntu-arm.bionic.main"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
       - lightng:
-          branch: 'hicn-light-ng'
-          repo-stream-part: 'hicn-light-ng'
+          branch: "hicn-light-ng"
+          repo-stream-part: "hicn-light-ng"
 
     type:
       - short
@@ -69,17 +69,17 @@
 - project:
     name: hicn-arm-merge
     jobs:
-      - 'hicn-arm-merge-{stream}-{os}'
+      - "hicn-arm-merge-{stream}-{os}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
+          repo-os-part: "ubuntu-arm.bionic.main"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
 
     type:
       - short
@@ -88,33 +88,33 @@
 - project:
     name: hicn-misc
     jobs:
-      - 'hicn-checkstyle-verify-{stream}'
-    project: 'hicn'
+      - "hicn-checkstyle-verify-{stream}"
+    project: "hicn"
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
       - lightng:
-          branch: 'hicn-light-ng'
-          repo-stream-part: 'hicn-light-ng'
+          branch: "hicn-light-ng"
+          repo-stream-part: "hicn-light-ng"
     os: ubuntu1804
 
 - project:
     name: hicn-extras
     jobs:
-      - 'hicn-extras-verify-{stream}-{os}'
-      - 'hicn-extras-build-{stream}-{os}'
-    project: 'hicn'
+      - "hicn-extras-verify-{stream}-{os}"
+      - "hicn-extras-build-{stream}-{os}"
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+          repo-os-part: "ubuntu.bionic.main"
       - centos7:
-          repo-os-part: 'centos7'
+          repo-os-part: "centos7"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
 
     type:
       - short
@@ -123,23 +123,22 @@
 - project:
     name: hicn-extras-arm
     jobs:
-      - 'hicn-extras-arm-verify-{stream}-{os}'
-      - 'hicn-extras-arm-build-{stream}-{os}'
+      - "hicn-extras-arm-verify-{stream}-{os}"
+      - "hicn-extras-arm-build-{stream}-{os}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
+          repo-os-part: "ubuntu-arm.bionic.main"
 
     stream:
       - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+          branch: "master"
+          repo-stream-part: "master"
 
     type:
       - short
       - long
-
 
 - project:
     name: hicn-view
@@ -148,78 +147,78 @@
     project-name: hicn
 
 - job-template:
-    name: 'hicn-checkstyle-verify-{stream}'
+    name: "hicn-checkstyle-verify-{stream}"
 
     project-type: freestyle
-    node: '{os}-us'
+    node: "{os}-us"
     concurrent: true
-    archive-artifacts: '**/tmp/hicn-failed-unittests/*/* **/core'
+    archive-artifacts: "**/tmp/hicn-failed-unittests/*/* **/core"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
+      numToKeep: "{build-num-to-keep}"
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+          repo-name: "{repo-stream-part}.ubuntu.bionic.main"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'true'
+                exclude-drafts: "true"
+                exclude-trivial-rebase: "false"
+                exclude-no-code-change: "true"
             - draft-published-event
             - comment-added-contains-event:
-                comment-contains-value: 'checkstylecheck'
+                comment-contains-value: "checkstylecheck"
             - comment-added-contains-event:
-                comment-contains-value: 'docsonly'
+                comment-contains-value: "docsonly"
             - comment-added-contains-event:
-                comment-contains-value: 'recheck'
+                comment-contains-value: "recheck"
             - comment-added-contains-event:
-                comment-contains-value: 'reverify'
+                comment-contains-value: "reverify"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
               file-paths:
                 - compare-type: REG_EXP
                   pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
-              disable-strict-forbidden-file-verification: 'true'
+              disable-strict-forbidden-file-verification: "true"
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
           gerrit-build-successful-verified-value: 1
           # yamllint disable-line rule:line-length
-          notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+          notbuilt-message: "Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes."
           # yamllint disable-line rule:line-length
-          failed-message: 'Checkstyle failed. No further verify jobs will be started.'
-          successful-message: 'checkstyle_success'
+          failed-message: "Checkstyle failed. No further verify jobs will be started."
+          successful-message: "checkstyle_success"
           skip-vote:
             successful: true
             failed: false
@@ -227,51 +226,50 @@
             notbuilt: false
 
     builders:
-      - shell:
-          !include-raw-escape: include-raw-hicn-checkstyle.sh
+      - shell: !include-raw-escape: include-raw-hicn-checkstyle.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-verify-{stream}-{os}'
+    name: "hicn-verify-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}-us'
+    node: "{os}-us"
     concurrent: true
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
 
     wrappers:
       - fdio-infra-wrappers:
@@ -279,56 +277,55 @@
 
     triggers:
       - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-arm-verify-{stream}-{os}'
+    name: "hicn-arm-verify-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: "{os}arm-us"
     concurrent: true
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
 
     wrappers:
       - fdio-infra-wrappers:
@@ -336,193 +333,184 @@
 
     triggers:
       - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-merge-{stream}-{os}'
+    name: "hicn-merge-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}-us'
+    node: "{os}-us"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: "mvn33-new"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: 'release'
+          stream: "hicn"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
-              target: '/root/.packagecloud'
+            - file-id: ".packagecloud"
+              target: "/root/.packagecloud"
       - config-file-provider:
           files:
-            - file-id: 'packagecloud_api'
-              target: '/root/packagecloud_api'
+            - file-id: "packagecloud_api"
+              target: "/root/packagecloud_api"
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-checkstyle.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-build.sh
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-arm-merge-{stream}-{os}'
+    name: "hicn-arm-merge-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: "{os}arm-us"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: "mvn33-new"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: 'release'
+          stream: "hicn"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
-              target: '/root'
+            - file-id: ".packagecloud"
+              target: "/root"
       - config-file-provider:
           files:
-            - file-id: 'packagecloud_api'
-              target: '/root'
+            - file-id: "packagecloud_api"
+              target: "/root"
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-checkstyle.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-build.sh
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -534,48 +522,48 @@
     project-name: hicn
     mvn-settings: hicn-settings
     sonarcloud: true
-    sonarcloud-project-organization: '{sonarcloud_project_organization}'
-    sonarcloud-api-token: '{sonarcloud_api_token}'
-    sonarcloud-project-key: '{sonarcloud_project_organization}_{project-name}'
+    sonarcloud-project-organization: "{sonarcloud_project_organization}"
+    sonarcloud-api-token: "{sonarcloud_api_token}"
+    sonarcloud-project-key: "{sonarcloud_project_organization}_{project-name}"
     branch: master
     build-node: centos7-docker-2c-2g
     jobs:
       - gerrit-maven-sonar
 
 - job-template:
-    name: 'hicn-extras-verify-{stream}-{os}'
+    name: "hicn-extras-verify-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}-us'
+    node: "{os}-us"
     concurrent: true
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
 
     wrappers:
       - fdio-infra-wrappers:
@@ -583,275 +571,267 @@
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'verify-extras'
+                comment-contains-value: "verify-extras"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
 
     builders:
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-extras-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-extras-build-{stream}-{os}'
+    name: "hicn-extras-build-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}-us'
+    node: "{os}-us"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: "mvn33-new"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: 'release'
+          stream: "hicn"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'build-extras'
+                comment-contains-value: "build-extras"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
 
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
-              target: '/root/.packagecloud'
+            - file-id: ".packagecloud"
+              target: "/root/.packagecloud"
       - config-file-provider:
           files:
-            - file-id: 'packagecloud_api'
-              target: '/root/packagecloud_api'
+            - file-id: "packagecloud_api"
+              target: "/root/packagecloud_api"
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-extras-build.sh
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-extras-arm-verify-{stream}-{os}'
+    name: "hicn-extras-arm-verify-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: "{os}arm-us"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'verify-extras'
+                comment-contains-value: "verify-extras"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
 
           builders:
-            - shell:
-                !include-raw-escape:
+            - shell: !include-raw-escape:
                 - include-raw-hicn-extras-build.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-extras-arm-build-{stream}-{os}'
+    name: "hicn-extras-arm-build-{stream}-{os}"
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: "{os}arm-us"
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
       numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: '{os}'
+          os: "{os}"
       - maven-project-parameter:
-          maven: 'mvn33-new'
+          maven: "mvn33-new"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: 'release'
+          stream: "hicn"
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
+          repo-name: "{repo-stream-part}.{repo-os-part}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'build-extras'
+                comment-contains-value: "build-extras"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
 
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
-              target: '/root/.packagecloud'
+            - file-id: ".packagecloud"
+              target: "/root/.packagecloud"
       - config-file-provider:
           files:
-            - file-id: 'packagecloud_api'
-              target: '/root/packagecloud_api'
+            - file-id: "packagecloud_api"
+              target: "/root/packagecloud_api"
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - include-raw-hicn-extras-build.sh
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell:
-          !include-raw-escape:
+      - shell: !include-raw-escape:
           - ../scripts/maven_push_functions.sh
           - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
