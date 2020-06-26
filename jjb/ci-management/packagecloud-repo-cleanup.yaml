@@ -14,6 +14,12 @@
       - centos7:
           repo-os-part: 'centos7'
 
+- project:
+    name: packagecloud-view
+    views:
+      - project-view
+    project-name: packageclout
+
 - job-template:
     name: 'packagecloud-repo-cleanup-release-{os}'
 
