@@ -3,6 +3,7 @@
     name: vpp
     jobs:
       - 'vpp-verify-{stream}-{os}'
+      - 'vpp-verify-{stream}-debug'
       - 'vpp-merge-{stream}-{os}'
 
     project: 'vpp'
@@ -49,7 +50,6 @@
 - project:
     name: vpp-clang
     jobs:
-      - 'vpp-verify-{stream}-clang'
       - 'vpp-coverity-{stream}'
 
     project: 'vpp'
@@ -744,7 +744,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-verify-{stream}-clang'
+    name: 'vpp-verify-{stream}-debug'
 
     project-type: freestyle
     node: 'ubuntu1804-us'
@@ -770,6 +770,7 @@
           stream: '{stream}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -795,7 +796,7 @@
           - ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/clang-build.sh
+          - ../scripts/vpp/debug-build.sh
 
     publishers:
       - fdio-infra-shiplogs:

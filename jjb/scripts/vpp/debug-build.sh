@@ -28,13 +28,22 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
+
+# run with ASAN on
+# export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
+
+# clang is not working with ASAN right now - see change 27268
+# apparently gcc neither...
+# export CC=gcc
+
+
+
 make UNATTENDED=yes install-dep
 make UNATTENDED=yes install-ext-deps
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang install-packages
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang sample-plugin-install
-make UNATTENDED=yes -C build-root PLATFORM=vpp TAG=vpp_clang CC=clang CXX=clang libmemif-install
+make UNATTENDED=yes build
+make UNATTENDED=yes TEST_JOBS=auto test-debug
 
 
 echo "*******************************************************************"
-echo "* VPP CLANG BUILD SUCCESSFULLY COMPLETED"
+echo "* VPP debug/asan test BUILD SUCCESSFULLY COMPLETED"
 echo "*******************************************************************"
