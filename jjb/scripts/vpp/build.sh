@@ -43,13 +43,23 @@ echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 if [ "x${MAKE_PARALLEL_JOBS}" != "x" ]
 then
   echo "Building with MAKE_PARALLEL_JOBS=${MAKE_PARALLEL_JOBS}"
+  export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
+else
+  export TEST_JOBS="auto"
 fi
+
+if [ "x${MAKE_PARALLEL_FLAGS}" != "x" ]
+then
+  echo "Building with MAKE_PARALLEL_FLAGS=${MAKE_PARALLEL_FLAGS}"
+fi
+
+echo "Building with TEST_JOBS=${TEST_JOBS}"
 
 if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
 then
     echo "Building using \"make verify\""
-    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes TEST_JOBS=auto verify
+    [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes verify
 else
     echo "Building using \"make pkg-verify\""
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes pkg-verify
@@ -64,6 +74,8 @@ if [ "x${VPP_REPO}" == "x1" ]; then
     fi
 fi
 
+local_arch=$(uname -m)
+
 echo "*******************************************************************"
-echo "* VPP BUILD SUCCESSFULLY COMPLETED"
+echo "* VPP ${local_arch^^} BUILD SUCCESSFULLY COMPLETED"
 echo "*******************************************************************"
