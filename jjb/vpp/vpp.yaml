@@ -417,13 +417,13 @@
     builders:
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_arm_test.sh
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/arm-build.sh
+          - ../scripts/vpp/build.sh
 
     publishers:
       - fdio-infra-shiplogs:
@@ -433,7 +433,7 @@
     name: 'vpp-arm-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}arm-m'
+    node: '{os}arm-us'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -462,6 +462,7 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -489,13 +490,16 @@
               target: '/root'
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_arm_test.sh
+          - ../scripts/vpp/checkstyle.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_dpdk_dev_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/arm-build-no-test.sh
+          - ../scripts/vpp/build.sh
 
       - provide-maven-settings:
           settings-file: 'vpp-settings'
@@ -934,6 +938,7 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:

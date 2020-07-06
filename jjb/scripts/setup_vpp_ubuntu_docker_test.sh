@@ -16,7 +16,7 @@ if ! [ -z ${DOCKER_TEST} ] ; then
         # framework.VppTestCase.MIN_REQ_SHM + (num_cores * framework.VppTestCase.SHM_PER_PROCESS)
         # 1073741824 == 1024M (1073741824 >> 20)
         MEM=1024M
-        if [[ $(uname -m) == 'aarch64' ]]
+        if [[ ${MAKE_PARALLEL_JOBS} == '16' ]]
         then
             # arm build are running with 16 cores, empirical evidence shows
             # that 2048M is enough
