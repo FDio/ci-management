@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "afd1ad65_9ad15a01",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "6a1fed41_17a3e937",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a594e719_9da90f60",
         "filename": "jjb/vsap/include-raw-vsap-build.sh",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-20T08:46:12Z",
       "side": 1,
       "message": "This block only sets up apt/yum to use packagecloud as the remote repository. I do not see any command performing the actual installation of VPP packages (as promised by lines 16 and 19).",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c908d6a5_fd59608a",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "I remove it.",
+      "parentUuid": "a594e719_9da90f60",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c1b8b85f_aaa727ce",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "I remove it.",
+      "parentUuid": "7aa7e561_bbc7ecf1",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4264021e_8bd89340",
         "filename": "jjb/vsap/vsap.yaml",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-20T08:42:54Z",
       "side": 1,
       "message": "I recommend you to remove this block, unless you know you need it due to occasional failures.",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551984c1_c3ab8122",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "OK,I remove it.",
+      "parentUuid": "4264021e_8bd89340",
       "range": {
         "startLine": 109,
         "startChar": 8,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b3e07035_36e2735b",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "I remove it from verify job.",
+      "parentUuid": "d611acd2_9314b7b5",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2593f774_94b4e85b",
         "filename": "jjb/vsap/vsap.yaml",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2020-05-20T08:42:54Z",
       "side": 1,
       "message": "One again, not recommended.",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "a792a8a62ce09f959a73890780cda54c1fcb7f43",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f34444b_f746d32c",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "Remove it.",
+      "parentUuid": "2593f774_94b4e85b",
       "range": {
         "startLine": 178,
         "startChar": 8,

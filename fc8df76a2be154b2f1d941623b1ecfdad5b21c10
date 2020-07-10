@@ -16,6 +16,24 @@
       "revId": "fc8df76a2be154b2f1d941623b1ecfdad5b21c10",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31b1888_2bc8a7dc",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-10T11:18:48Z",
+      "side": 1,
+      "message": "no, i will remove it.",
+      "parentUuid": "677de07b_d87421ce",
+      "revId": "fc8df76a2be154b2f1d941623b1ecfdad5b21c10",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
