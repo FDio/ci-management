@@ -132,6 +132,14 @@
           description: 'Maven selector to be used by shell scripts'
 
 - parameter:
+    name: mode-parameter
+    parameters:
+      - string:
+          name: MODE
+          default: '{mode}'
+          description: "mode parameter to be used in shell scripts."
+
+- parameter:
     name: os-parameter
     parameters:
       - string:
