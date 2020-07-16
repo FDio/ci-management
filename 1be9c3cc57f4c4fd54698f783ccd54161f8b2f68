@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf1a199_32d541a5",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-16T14:18:27Z",
+      "side": 1,
+      "message": "vsap build script",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdcdeaa4_4a7fc073",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-16T14:18:27Z",
+      "side": 1,
+      "message": "\"# \"",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 2
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f58ed881_13deef69",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-16T14:18:27Z",
+      "side": 1,
+      "message": "Under what circumstances will this grep produce any output and what does the output contain?\n\nHow is it used to detect the container server node?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
