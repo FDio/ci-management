@@ -229,7 +229,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '0 14 * * 2,5'
+      - timed: '0 2,14 * * *'
 
     builders:
       - maven-target:
