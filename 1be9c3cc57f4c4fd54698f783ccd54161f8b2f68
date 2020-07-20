@@ -140,6 +140,30 @@
       "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0ae539a_1f263802",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-20T15:09:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5341cbed_7c378291",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
