@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0b126cb_c234ab03",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-20T03:28:28Z",
+      "side": 1,
+      "message": "ok.",
+      "parentUuid": "dcf1a199_32d541a5",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdcdeaa4_4a7fc073",
         "filename": "jjb/vsap/include-raw-vsap-build.sh",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e9d129cd_dbf6587d",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-20T03:28:28Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "fdcdeaa4_4a7fc073",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 2
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58ed881_13deef69",
         "filename": "jjb/vsap/include-raw-vsap-build.sh",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5341cbed_7c378291",
+        "filename": "jjb/vsap/include-raw-vsap-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 2028
+      },
+      "writtenOn": "2020-07-20T03:28:28Z",
+      "side": 1,
+      "message": "It has no specific function, it is only auxiliary. It will display the search domains list. \nIts output information will be displayed on the console.\nWhen there is a problem with the network, it can provide a little information to help.\nThe VPP job also contains such operations, so I also recommend keeping it.",
+      "parentUuid": "f58ed881_13deef69",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 37
+      },
+      "revId": "1be9c3cc57f4c4fd54698f783ccd54161f8b2f68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
