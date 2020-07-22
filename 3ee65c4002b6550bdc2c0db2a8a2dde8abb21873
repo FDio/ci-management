@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4963ae9f_ef2f429c",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "I\u0027d like to see a general description of the scripts workflow and we should definitely mention the generation of dockerfiles in that description. I\u0027ve read the readme first and I was surprised that the dockerfiles are generated when I saw it in the code - it\u0027s an important part and it\u0027s only mentioned here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3b6c8e_65d9ba42",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "If the only difference here is architecture, we could just use u1804-$(uname -m).log and not have to differentiate.",
+      "range": {
+        "startLine": 51,
+        "startChar": 153,
+        "endLine": 51,
+        "endChar": 159
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b51068_80b00118",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15fadf7c_5b70148b",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "Should we switch the order so that it\u0027s the same as for yum (pip, then packages)?",
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7086324a_c386d1a2",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed94322_7cec9229",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "Have you thought about sourcing /etc/os-release and then using the vars from it or is there a conflict with variables? It might make the code more readable.",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f2e59c_6deed2b9",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "I think it\u0027s better to use uname -m in the scripts:\n1. -p is processor, -m is machine and machine is closer to what we want I think. That said, I didn\u0027t see a difference between the two, except for VMs (-p outputs unknown, -m outputs x86_84).\n2. I think other scripts (such as CSIT scripts) use uname -m, so it\u0027ll be unified.",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478ee75d_27d1221f",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "Can we put these in a lib dir to make it more organized?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1b4def_93338e00",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff8baaa_12852878",
+        "filename": "docker/scripts/csit_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "You use uname here and OS_ARCH below, let\u0027s unify it.",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac86848_33acaa9c",
+        "filename": "docker/scripts/vpp_pip_cache.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 23,
+        "startChar": 37,
+        "endLine": 23,
+        "endChar": 39
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313109de_ed2bed22",
+        "filename": "docker/scripts/vpp_pip_cache.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "Why do we build and test VPP during the docker image build? Is that a smoke test? If so, is this actually the right place to do it? I\u0027d imaging we\u0027d want to do these tests in sandbox in an automated fashion, ideally.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a584b0_67640bfd",
+        "filename": "docker/scripts/yum_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 25,
+        "startChar": 75,
+        "endLine": 25,
+        "endChar": 76
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3800577f_ce6f2f8d",
+        "filename": "docker/scripts/yum_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 26,
+        "startChar": 20,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7474952_aa1a7ee9",
+        "filename": "docker/scripts/yum_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-22T07:11:17Z",
+      "side": 1,
+      "message": "trailing space",
+      "range": {
+        "startLine": 45,
+        "startChar": 45,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
