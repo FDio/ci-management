@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6449847e_eb5bb483",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Agreed.  I\u0027ll add a workflow section.\n\nThe REAME.md file is not complete, but I wanted to post the code sooner rather than later.\n\nThanks for the review comments :)",
+      "parentUuid": "4963ae9f_ef2f429c",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a3b6c8e_65d9ba42",
         "filename": "docker/scripts/README.md",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d111e7ed_f6633ce9",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3b6c8e_65d9ba42",
+      "range": {
+        "startLine": 51,
+        "startChar": 153,
+        "endLine": 51,
+        "endChar": 159
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1fa3670f_fefde924",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b51068_80b00118",
+      "range": {
+        "startLine": 46,
+        "startChar": 45,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15fadf7c_5b70148b",
         "filename": "docker/scripts/apt_lib.sh",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2020-07-22T07:11:17Z",
       "side": 1,
       "message": "Should we switch the order so that it\u0027s the same as for yum (pip, then packages)?",
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5499ff0_30cdc56c",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "\u003e Should we switch the order so that it\u0027s the same as for yum (pip, then packages)?\n\nOriginally I had both yum and apt use the order here (which makes more sense to me), but it didn\u0027t work on yum.  I don\u0027t really see the value in keeping them the same.",
+      "parentUuid": "15fadf7c_5b70148b",
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "7c37b184_cd65153a",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7086324a_c386d1a2",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ed94322_7cec9229",
         "filename": "docker/scripts/common_lib.sh",
         "patchSetId": 1
@@ -131,6 +245,30 @@
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "102a8134_9af65638",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "\u003e Have you thought about sourcing /etc/os-release and then using the vars from it or is there a conflict with variables? It might make the code more readable.\n\ncopy-pasta from other ci-management scripts.\nAdded TODO comment to investigate / clean up later.",
+      "parentUuid": "8ed94322_7cec9229",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "fd45c07d_d6680ed8",
+        "filename": "docker/scripts/common_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f2e59c_6deed2b9",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "478ee75d_27d1221f",
         "filename": "docker/scripts/create_docker_builder_image.sh",
         "patchSetId": 1
@@ -177,6 +339,30 @@
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fff9564_1aad9bb0",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "\u003e Can we put these in a lib dir to make it more organized?\n\nI\u0027d prefer not to -- for me, it already is organized (via nomenclature)  😊\n\nMoving the *_lib.sh files to a lib dir require extra logic and more variables to maintain to get the paths correct.  I think the KISS principle overrides the value of separating lib files \u0026 script files in this case.",
+      "parentUuid": "478ee75d_27d1221f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "e840e9b7_04609186",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f1b4def_93338e00",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ff8baaa_12852878",
         "filename": "docker/scripts/csit_lib.sh",
         "patchSetId": 1
@@ -223,6 +433,30 @@
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75572046_7baaa33d",
+        "filename": "docker/scripts/csit_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-22T18:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ff8baaa_12852878",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
