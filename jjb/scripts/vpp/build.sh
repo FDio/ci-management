@@ -40,20 +40,29 @@ echo "IS_CSIT_VPP_JOB=${IS_CSIT_VPP_JOB}"
 # If and only if we are doing verify *after* make verify was made to work
 # and we are not a CSIT job just building packages, then use make verify,
 # else use make pkg-verify.
-if [ "x${MAKE_PARALLEL_JOBS}" != "x" ]
-then
-  echo "Building with MAKE_PARALLEL_JOBS=${MAKE_PARALLEL_JOBS}"
-  export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
-else
-  export TEST_JOBS="auto"
-fi
 
+export TEST_JOBS="auto"
 if [ "x${MAKE_PARALLEL_FLAGS}" != "x" ]
 then
-  echo "Building with MAKE_PARALLEL_FLAGS=${MAKE_PARALLEL_FLAGS}"
+  echo "Building VPP. Number of cores for build set with" \
+       "MAKE_PARALLEL_FLAGS='${MAKE_PARALLEL_FLAGS}'."
 fi
 
-echo "Building with TEST_JOBS=${TEST_JOBS}"
+if [ "x${MAKE_PARALLEL_JOBS}" != "x" ]
+then
+  export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
+  if [ "x${MAKE_PARALLEL_FLAGS}" == "x" ]
+  then
+    echo "Building VPP. Number of cores for build set with" \
+         "MAKE_PARALLEL_JOBS='${MAKE_PARALLEL_JOBS}'."
+  fi
+elif [ "x${MAKE_PARALLEL_FLAGS}" == "x" ]
+then
+  echo "Building VPP. Number of cores not set, " \
+       "using build default ($(grep -c ^processor /proc/cpuinfo))."
+fi
+
+echo "Testing VPP with ${TEST_JOBS} cores."
 
 if (git log --oneline | grep 37682e1 > /dev/null 2>&1) && \
         [ "x${IS_CSIT_VPP_JOB}" != "xTrue" ]
