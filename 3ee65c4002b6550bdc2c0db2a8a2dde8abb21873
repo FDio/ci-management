@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "99eb4ef7_94e82310",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-23T14:48:36Z",
+      "side": 1,
+      "message": "apt !\u003d yum\n\nIf it were possible to maintain consistency with apt \u0026 yum, then there would be no need for separate libraries.  They are different entities with different requirements and behaviors.  Attempting to keep the code \u0027logical\u0027 (i.e. structured the same) is going to require additional complexity with a very poor ROI (return on investment).",
+      "parentUuid": "859f5e73_e449d18c",
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7086324a_c386d1a2",
         "filename": "docker/scripts/common_lib.sh",
         "patchSetId": 1
@@ -405,6 +423,30 @@
       "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0899d7f_9c0bbb0f",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-07-23T14:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f751ac7_3755c829",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
