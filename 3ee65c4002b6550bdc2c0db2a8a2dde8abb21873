@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "859f5e73_e449d18c",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-23T05:20:09Z",
+      "side": 1,
+      "message": "The value is so that it\u0027s internally consistent (i.e. logical) and in people not having to wonder why the difference is there, as I was when I read the code. Right now the difference is there because of an unidentified reason from my point of view.",
+      "parentUuid": "e5499ff0_30cdc56c",
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7086324a_c386d1a2",
         "filename": "docker/scripts/common_lib.sh",
         "patchSetId": 1
@@ -366,6 +384,30 @@
     },
     {
       "key": {
+        "uuid": "6f751ac7_3755c829",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-23T05:20:09Z",
+      "side": 1,
+      "message": "It may be organized to you, but I see lib files interspersed with executable scripts and it\u0027s a mess to me. Now that I think about it, can we rename the lib files to lib_*.sh? That would keep things organized without and extra dir.",
+      "parentUuid": "3fff9564_1aad9bb0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f1b4def_93338e00",
         "filename": "docker/scripts/create_docker_builder_image.sh",
         "patchSetId": 1
@@ -542,6 +584,30 @@
       "side": 1,
       "message": "\u003e Why do we build and test VPP during the docker image build? Is that a smoke test? If so, is this actually the right place to do it? I\u0027d imaging we\u0027d want to do these tests in sandbox in an automated fashion, ideally.\n\nIt does not build/test VPP.  The make_vpp_test() function invokes the \u0027test-dep\u0027 target in the .../vpp/test directory.  Thus it only installs the test dependencies.\n\nTesting of the generated images will be executed in the Jenkins Sandbox in the future.",
       "parentUuid": "313109de_ed2bed22",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56f3f7a7_0cb07864",
+        "filename": "docker/scripts/vpp_pip_cache.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-23T05:20:09Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t read carefully enough, the make target is the second argument of both make_vpp and make_vpp_test. Ok, makes sense now.",
+      "parentUuid": "c074a46f_c937bc10",
       "range": {
         "startLine": 31,
         "startChar": 2,
