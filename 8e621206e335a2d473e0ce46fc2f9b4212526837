@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6627038_b71c6e87",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-07-23T13:07:49Z",
+      "side": 1,
+      "message": "If the value is \"auto\", the text looks weird. By the way, do we know how many cores are used in that case?",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "8e621206e335a2d473e0ce46fc2f9b4212526837",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
