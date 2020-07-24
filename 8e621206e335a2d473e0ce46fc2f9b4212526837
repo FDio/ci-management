@@ -22,6 +22,30 @@
       "revId": "8e621206e335a2d473e0ce46fc2f9b4212526837",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317f1ca8_089d56cd",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-24T08:06:16Z",
+      "side": 1,
+      "message": "Yea, it\u0027s not the best. Something different would be better - splitting it into two blocks would help with this, so I\u0027m going to do that.\n\nAuto means the number is calculated based on available hugepage memory:\nshm_max_processes \u003d 1\nextra_shm \u003d shm_free - min_req_shm\nshm_max_processes +\u003d extra_shm // shm_per_process\n\nwhere\nmin_req_shm \u003d 536870912  # min 512MB shm required\nshm_per_process \u003d 134217728 # 128MB per extra process",
+      "parentUuid": "f6627038_b71c6e87",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "8e621206e335a2d473e0ce46fc2f9b4212526837",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
