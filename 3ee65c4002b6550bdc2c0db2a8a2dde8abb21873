@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "c99cb4be_bf7fa403",
+        "filename": "docker/scripts/apt_lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-07-24T06:30:42Z",
+      "side": 1,
+      "message": "What are the different requirements and behaviors?\n\nWhy can\u0027t we switch the order with apt?\n\nWe should put some documentation here that would answer these two questions.",
+      "parentUuid": "99eb4ef7_94e82310",
+      "revId": "3ee65c4002b6550bdc2c0db2a8a2dde8abb21873",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7086324a_c386d1a2",
         "filename": "docker/scripts/common_lib.sh",
         "patchSetId": 1
