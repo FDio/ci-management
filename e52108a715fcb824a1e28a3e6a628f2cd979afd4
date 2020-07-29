@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0de64d81_412ce255",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1964
+      },
+      "writtenOn": "2020-07-29T09:04:10Z",
+      "side": 1,
+      "message": "A typo",
+      "range": {
+        "startLine": 34,
+        "startChar": 92,
+        "endLine": 34,
+        "endChar": 100
+      },
+      "revId": "e52108a715fcb824a1e28a3e6a628f2cd979afd4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf480e37_a32e468b",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1964
+      },
+      "writtenOn": "2020-07-29T09:04:10Z",
+      "side": 1,
+      "message": "centos7-$(uname -m).log ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 143,
+        "endLine": 51,
+        "endChar": 162
+      },
+      "revId": "e52108a715fcb824a1e28a3e6a628f2cd979afd4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cc1d42_d5136863",
+        "filename": "docker/scripts/vpp_pip_cache.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1964
+      },
+      "writtenOn": "2020-07-29T09:04:10Z",
+      "side": 1,
+      "message": "This workaround won\u0027t work on Arm platform because \u0027make_vpp $branch \"install-deps\"\u0027 will still install centos-release-scl-rh package whose debuginfo source info is not changed by the above command.\nI have a patch (https://gerrit.fd.io/r/c/vpp/+/28044) under review to resolve this issue once for all. Pls take a look if you have time. If the patch is accepted, we probably do not need this workaround any more.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "e52108a715fcb824a1e28a3e6a628f2cd979afd4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
