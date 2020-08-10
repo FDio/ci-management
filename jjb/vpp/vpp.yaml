@@ -538,10 +538,13 @@
       - gerrit-refspec-parameter
 
     scm:
-      - gerrit-trigger-scm:
+      - git:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          url: 'http://nomad1.myvpp.net/r/$PROJECT'
+          refspec: ''
+          branches:
+            - 'origin/{branch}'
+          choosing-strategy: 'default'
 
     wrappers:
       - fdio-infra-wrappers:
