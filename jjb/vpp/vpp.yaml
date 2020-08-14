@@ -17,9 +17,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
@@ -29,6 +26,7 @@
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+
 - project:
     name: vpp-beta
     jobs:
@@ -75,12 +73,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1901':
-          branch: 'stable/1901'
-          repo-stream-part: 'stable.1901'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
@@ -108,9 +100,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
@@ -135,33 +124,6 @@
       - 3n-tsh:
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
-    exclude:
-      - stream: '1904'
-        os: 'ubuntu1804'
-        device-node-arch: '1n-tx2'
-
-- project:
-    name: vpp-older-only
-    jobs:
-      - 'vpp-historic-verify-{stream}-{os}'
-      - 'vpp-historic-merge-{stream}-{os}'
-    project: 'vpp'
-    stream:
-      - '1901':
-          branch: 'stable/1901'
-          repo-stream-part: 'stable.1901'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
-    os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
 
 - project:
     name: vpp-arm
@@ -173,12 +135,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1901':
-          branch: 'stable/1901'
-          repo-stream-part: 'stable.1901'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
@@ -225,146 +181,6 @@
     views:
       - project-view
     project-name: vpp
-
-- job-template:
-    name: 'vpp-historic-verify-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-us'
-    concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '75'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
-
-- job-template:
-    name: 'vpp-historic-merge-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-us'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - maven-project-parameter:
-          maven: 'mvn33-new'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - stream-parameter:
-          stream: '{stream}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '.packagecloud'
-              target: '/root'
-      - config-file-provider:
-          files:
-            - file-id: 'packagecloud_api'
-              target: '/root'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/packagecloud_push.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-arm-verify-{stream}-{os}'
@@ -550,7 +366,6 @@
           - text:
               credential-id: VppApiCompatNotify
               variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
-
 
     triggers:
       - gerrit:
@@ -853,7 +668,7 @@
     publishers:
       - email-ext:
           # yamllint disable-line rule:line-length
-          recipients: 'ejk@cisco.com'
+          recipients: 'dwallacelf@gmail.com'
           reply-to: ''
           content-type: 'text'
           subject: 'Coverity run passing as of $BUILD_TIMESTAMP'
@@ -866,7 +681,7 @@
           success: true
       - email-ext:
           # yamllint disable-line rule:line-length
-          recipients: 'ejk@cisco.com'
+          recipients: 'dwalllacelf@gmail.com'
           reply-to: ''
           content-type: 'text'
           subject: 'Coverity run UNSTABLE as of $BUILD_TIMESTAMP'
@@ -879,7 +694,7 @@
           unstable: true
       - email-ext:
           # yamllint disable-line rule:line-length
-          recipients: 'vpp-dev@lists.fd.io, ejk@cisco.com'
+          recipients: 'vpp-dev@lists.fd.io'
           reply-to: ''
           content-type: 'text'
           subject: 'Coverity run FAILED as of $BUILD_TIMESTAMP'
@@ -891,7 +706,7 @@
           failure: true
       - email-ext:
           # yamllint disable-line rule:line-length
-          recipients: 'vpp-dev@lists.fd.io, ejk@cisco.com'
+          recipients: 'vpp-dev@lists.fd.io'
           reply-to: ''
           content-type: 'text'
           subject: 'Coverity run as of $BUILD_TIMESTAMP'

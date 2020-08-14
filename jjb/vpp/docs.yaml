@@ -16,12 +16,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1901':
-          branch: 'stable/1901'
-          repo-stream-part: 'stable.1901'
-      - '1904':
-          branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
@@ -265,6 +259,7 @@
             failed: true
             unstable: true
             notbuilt: true
+
     builders:
       - maven-target:
           maven-version: 'mvn33-new'
@@ -442,7 +437,6 @@
     fingerprint: false
     only-if-success: true
     default-excludes: false
-
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
