@@ -94,7 +94,7 @@
     os: ubuntu1804
     device-executor: 'vpp-csit-device'
     executor: '{os}-us'
-    skip-vote: 'true'
+    skip-vote: 'false'
     trigger: 'gerrit-trigger-vpp-csit-devicetest-full'
     stream:
       - master:
