@@ -29,8 +29,8 @@
     stream:
       - master:
           branch: 'master'
-      - '1908_2':
-          branch: 'rls1908_2'
+      - '1908_lts':
+          branch: 'rls1908_lts'
       - '2001':
           branch: 'rls2001'
       - '2005':
