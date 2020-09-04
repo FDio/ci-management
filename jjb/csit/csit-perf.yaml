@@ -55,12 +55,12 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
-            - '2001':
-                branch: 'rls2001'
-                branch-id: 'oper-rls2001'
             - '2005':
                 branch: 'rls2005'
                 branch-id: 'oper-rls2005'
+            - '2009':
+                branch: 'rls2009'
+                branch-id: 'oper-rls2009'
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - '':
@@ -152,16 +152,17 @@
       - '1908_2':
           branch: 'rls1908_2'
           branch-id: 'oper-rls1908_2'
-      - '2001':
-          branch: 'rls2001'
-          branch-id: 'oper-rls2001'
       - '2005':
           branch: 'rls2005'
           branch-id: 'oper-rls2005'
+      - '2009':
+          branch: 'rls2009'
+          branch-id: 'oper-rls2009'
     stream_report:
-      - '2005':
-          branch: 'rls2005'
-          branch-id: 'oper-rls2005'
+      - '2009':
+          branch: 'rls2009'
+          branch-id: 'oper-rls2009'
+
     build-artifact-num-to-keep: 10
 
 
