@@ -26,6 +26,9 @@
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
 
 - project:
     name: vpp-beta
@@ -82,6 +85,9 @@
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
     os: ubuntu1804
 
 - project:
@@ -109,6 +115,9 @@
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
     device-node-arch:
       - 1n-skx
       - 1n-tx2:
@@ -144,6 +153,9 @@
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
