@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "122c0a2f_74674def",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-09T10:51:40Z",
+      "side": 1,
+      "message": "With respect to https://gerrit.fd.io/r/c/ci-management/+/28694\nwill this be 2009_0 or 2009_lts?",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c3e8fd9bf3ed1d06977492b9554326819e69eb8b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
