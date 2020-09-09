@@ -22,6 +22,30 @@
       "revId": "c3e8fd9bf3ed1d06977492b9554326819e69eb8b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee378b3_8df1449f",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-09-09T14:04:29Z",
+      "side": 1,
+      "message": "It will be branch for csit rls2009 report 2009_0 and rls2009_lts branch will be pulled out from it when report 2009_0 is done.",
+      "parentUuid": "122c0a2f_74674def",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c3e8fd9bf3ed1d06977492b9554326819e69eb8b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
