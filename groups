@@ -1,5 +1,5 @@
 # UUID                                                                        	Group Name
 #
 1b0d08159b442fd162f25583dd2ec2868f8a6531                                      	GitHub Replication
-global:Anonymous-Users                                                        	Anonymous Users
+e2982590810e45e723992745b62bd27b83e0cd61                                      	saml/fdio-gerrit-ci-management-committers
 ldap:cn=fdio-gerrit-ci-management-committers,ou=Groups,dc=freestandards,dc=org	ldap/fdio-gerrit-ci-management-committers
