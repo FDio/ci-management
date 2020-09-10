@@ -34,6 +34,8 @@
             - -2n-clx
             - -2n-skx
             - -3n-skx
+            - -3n-tsh:
+                executor: 'ubuntu1804arm-us'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
