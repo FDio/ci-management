@@ -8,30 +8,20 @@
       - 'vpp-make-test-docs-verify-{stream}'
 
     project: 'vpp'
-    os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+    node-arch: 'x86_64'
+    os: 'ubuntu1804'
 
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
       - '1908':
           branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
       - '2001':
           branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
       - '2005':
           branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
-
-    type:
-      - short
-      - long
 
 - project:
     name: sphinx
@@ -40,29 +30,23 @@
       - 'vpp-sphinx-docs-verify-{stream}'
 
     project: 'vpp'
-    os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+    node-arch: 'x86_64'
+    os: 'ubuntu1804'
 
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
-    type:
-      - short
-      - long
 
 - job-template:
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
     default-excludes: false
-
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -76,11 +60,12 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -117,20 +102,19 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: false
     archive-artifacts: '**/build-root/docs/html/*'
     allow-empty: 'true'
     fingerprint: false
     only-if-success: true
     default-excludes: false
-
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -144,7 +128,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -204,13 +188,13 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-sphinx-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -229,11 +213,12 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -283,13 +268,13 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-sphinx-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: false
     archive-artifacts: 'docs/_build/html/*'
     allow-empty: 'true'
@@ -309,7 +294,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -361,13 +346,13 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -386,11 +371,12 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -427,13 +413,13 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: false
     archive-artifacts: '**/build-root/build-test/doc/html/*'
     allow-empty: 'true'
@@ -453,7 +439,7 @@
       - gerrit-parameter:
           branch: '{branch}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - maven-exec:
           maven-version: 'mvn33-new'
       - stream-parameter:
@@ -514,4 +500,4 @@
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: 'mvn36'
