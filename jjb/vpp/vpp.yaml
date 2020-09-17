@@ -7,6 +7,7 @@
       - 'vpp-merge-{stream}-{os}'
 
     project: 'vpp'
+    node-arch: 'x86_64'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -37,6 +38,7 @@
       - 'vpp-beta-merge-{stream}-{os}'
 
     project: 'vpp'
+    node-arch: 'x86_64'
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
@@ -47,12 +49,16 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
 
 - project:
     name: vpp-misc
     jobs:
       - 'vpp-checkstyle-verify-{stream}'
     project: 'vpp'
+    node-arch: 'x86_64'
     stream:
       - master:
           branch: 'master'
@@ -69,14 +75,14 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
-    os: ubuntu1804
+    os: 'ubuntu1804'
 
 - project:
     name: vpp-perpatch
     jobs:
-      - 'vpp-csit-verify-device-{stream}-{device-node-arch}':
+      - 'vpp-csit-verify-device-{stream}-{csit-testbed-devicetest-arch}':
           make-parallel-jobs: '32'
-      - 'vpp-csit-verify-perf-{stream}-{node-arch}'
+      - 'vpp-csit-verify-perf-{stream}-{csit-testbed-arch}'
     project: 'vpp'
     os: ubuntu1804
     device-executor: 'vpp-csit-device'
@@ -99,12 +105,12 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
-    device-node-arch:
+    csit-testbed-devicetest-arch:
       - 1n-skx
       - 1n-tx2:
           device-executor: 'vpp-csit-arm-ubuntu18'
           trigger: 'gerrit-trigger-vpp-csit-devicetest-manual'
-    node-arch:
+    csit-testbed-arch:
       - 2n-clx
       - 2n-skx
       - 3n-skx
@@ -121,6 +127,7 @@
       - 'vpp-arm-verify-{stream}-{os}'
       - 'vpp-arm-merge-{stream}-{os}'
     project: 'vpp'
+    node-arch: 'aarch64'
     stream:
       - master:
           branch: 'master'
@@ -325,7 +332,7 @@
     name: 'vpp-checkstyle-verify-{stream}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
@@ -433,7 +440,7 @@
     name: 'vpp-beta-verify-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
@@ -460,6 +467,7 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -559,7 +567,7 @@
     name: 'vpp-verify-{stream}-debug'
 
     project-type: freestyle
-    node: 'ubuntu1804-us'
+    node: 'builder-{os}-prod-{node-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
@@ -700,7 +708,7 @@
     name: 'vpp-beta-merge-{stream}-{os}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{node-arch}'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -779,7 +787,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
+    name: 'vpp-csit-verify-device-{stream}-{csit-testbed-devicetest-arch}'
     description: |
       <ul>
           <li>executor
@@ -857,7 +865,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
+    name: 'vpp-csit-verify-perf-{stream}-{csit-testbed-arch}'
     description: |
       <ul>
           <li>executor
@@ -924,7 +932,7 @@
       - gerrit-trigger-csit-perftest:
           project: '{project}'
           branch: '{branch}'
-          trigger-word: 'perftest-{node-arch}'
+          trigger-word: 'perftest-{csit-testbed-arch}'
           skip-vote: true
 
     builders:
