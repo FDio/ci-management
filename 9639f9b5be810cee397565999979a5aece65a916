@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eefc6d57_0316ea79",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 28
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "Don\u0027t forget about this.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 4
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2376885_18b61fb7",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 28
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the example and the order below.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ad4a1b_52eada8c",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd98491_af5e1322",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c0c368_5323f57f",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0687d6f8_dbb53ad9",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c3acdce_7a1c56f8",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f9ee0d_0e204261",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "Do you want to address in this change?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebbdbac_d5afb34b",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-09-17T12:17:19Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
