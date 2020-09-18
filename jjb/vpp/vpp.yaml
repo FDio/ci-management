@@ -8,6 +8,7 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
+    executor-os: 'ubuntu1804'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -567,7 +568,7 @@
     name: 'vpp-verify-{stream}-debug'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'builder-{executor-os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
