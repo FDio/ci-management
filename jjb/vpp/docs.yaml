@@ -8,7 +8,7 @@
       - 'vpp-make-test-docs-verify-{stream}'
 
     project: 'vpp'
-    node-arch: 'x86_64'
+    executor-arch: 'x86_64'
     os: 'ubuntu1804'
 
     stream:
@@ -30,7 +30,7 @@
       - 'vpp-sphinx-docs-verify-{stream}'
 
     project: 'vpp'
-    node-arch: 'x86_64'
+    executor-arch: 'x86_64'
     os: 'ubuntu1804'
 
     stream:
@@ -41,7 +41,7 @@
     name: 'vpp-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -108,7 +108,7 @@
     name: 'vpp-docs-merge-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: '**/build-root/docs/html/*'
     allow-empty: 'true'
@@ -194,7 +194,7 @@
     name: 'vpp-sphinx-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -274,7 +274,7 @@
     name: 'vpp-sphinx-docs-merge-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'docs/_build/html/*'
     allow-empty: 'true'
@@ -352,7 +352,7 @@
     name: 'vpp-make-test-docs-verify-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -419,7 +419,7 @@
     name: 'vpp-make-test-docs-merge-{stream}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{node-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: '**/build-root/build-test/doc/html/*'
     allow-empty: 'true'
