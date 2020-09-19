@@ -1,85 +1,252 @@
 ---
-- project:
-    name: vpp
-    jobs:
-      - 'vpp-verify-{stream}-{os}'
-      - 'vpp-verify-{stream}-debug'
-      - 'vpp-merge-{stream}-{os}'
+# Please keep projects grouped in this order:
+#     vpp-x86_64, vpp-aarch64, vpp-csit
+#
+# NOTES:
+#   - The 'branch-head-refspec' attribute is used for sandbox testing.
+#       Use the get_gerrit_refspec() bash function in
+#       .../ci-management/docker/scripts/lib_common.sh
+#       to query gerrit for the refspec of HEAD in a branch.
+#
+#   - Use the following to import get_gerrit_refspec into a bash shell 
+#       from the ci-management directory:
+#
+#       eval "$(grep -A12 get_gerrit ./docker/scripts/lib_common.sh)"
+#
 
+# VPP-X86_64 PROJECTS
+- project:
+    name: vpp-x86_64-checkstyle
+    jobs:
+      - 'vpp-checkstyle-verify-{stream}-{executor-arch}'
     project: 'vpp'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+          branch-head-refspec: ''
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
+          branch-head-refspec: ''
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
+          branch-head-refspec: ''
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
+          branch-head-refspec: ''
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
+    os: 'ubuntu1804'
     executor-arch: 'x86_64'
-    executor-os: 'ubuntu1804'
+
+- project:
+    name: vpp-x86_64
+    jobs:
+      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-verify-debug-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-parallel-jobs: '4'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+          os-trigger: gerrit-checkstype-trigger
+          branch-head-refspec: ''
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
+          branch-head-refspec: ''
+      - '2001':
+          branch: 'stable/2001'
+          repo-stream-part: 'stable.2001'
+          branch-head-refspec: ''
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
+          branch-head-refspec: ''
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
       - centos7:
           repo-os-part: 'centos7'
+    executor-arch: 'x86_64'
 
+- project:
+    # This project is used to separate streams which are only
+    # supported on the OS in the release in which it was added
+    # or later releases.
+    #
+    # For each 'os-in-XXXX', the stream for the release is
+    # added here in addition to the 'vpp-x86_64' project.
+    # Each subsequent release is also added to both.
+    #
+    # When all of the streams older than the 'os-in-XXXX" have
+    # been removed from the 'vpp-x86_64' project, then the OSes
+    # in this project get moved to the 'vpp-x86_64' project and
+    # this project gets deleted or commented out if it is only
+    # 'os-in-XXXX' project.
+    name: vpp-x86_64-os-in-2009
+    jobs:
+      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-parallel-jobs: '4'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
+          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
-
-- project:
-    name: vpp-beta
-    jobs:
-      - 'vpp-beta-verify-{stream}-{os}'
-      - 'vpp-beta-merge-{stream}-{os}'
-
-    project: 'vpp'
-    executor-arch: 'x86_64'
+          branch-head-refspec: ''
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
-      - centos8:
-          repo-os-part: 'centos8'
-
-    stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
+    executor-arch: 'x86_64'
 
 - project:
-    name: vpp-misc
+    # Beta jobs are experimental jobs for testing new OS versions on master.
+    #
+    # They are only manually triggered.  Either using the Jenkins WebUI
+    # 'Build with Parameters' to run a single job or adding 'beta-verify'
+    # or 'beta-merge' as a comment to run all beta verify or merge jobs.
+    #
+    # Once testing  is complete, the os is moved to the current
+    # 'vpp-x86_64-os-in-XXXX' project. If no OSes are being
+    # tested then this project should be commented out.
+    name: vpp-x86_64-beta
     jobs:
-      - 'vpp-checkstyle-verify-{stream}'
+      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
+          comment-trigger-value: 'beta-verify'
+      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
+          comment-trigger-value: 'beta-merge'
     project: 'vpp'
-    executor-arch: 'x86_64'
+    make-parallel-jobs: '4'
     stream:
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+          branch-head-refspec: ''
+    os:
+      - centos8:
+          repo-os-part: 'centos8'
+      - debian9:
+          repo-os-part: 'stretch'
+      - debian10:
+          repo-os-part: 'buster'
+    executor-arch: x86_64
+
+# VPP-AARCH64 PROJECTS
+- project:
+    name: vpp-aarch64
+    jobs:
+      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-parallel-jobs: '16'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+          branch-head-refspec: ''
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+          branch-head-refspec: ''
       - '2001':
           branch: 'stable/2001'
           repo-stream-part: 'stable.2001'
+          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
+          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
-    os: 'ubuntu1804'
+          branch-head-refspec: ''
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu-arm.bionic.main'
+    executor-arch: 'aarch64'
 
 - project:
-    name: vpp-perpatch
+    # This project is used to separate streams which are only
+    # supported on the OS in the release in which it was added
+    # or later releases.
+    #
+    # For each 'os-in-XXXX', the stream for the release is
+    # added here in addition to the 'vpp-aarch64' project.
+    # Each subsequent release is also added to both.
+    #
+    # When all of the streams older than the 'os-in-XXXX" have
+    # been removed from the 'vpp-aarch64' project, then the OSes
+    # in this project get moved to the 'vpp-aarch64' project and
+    # this project gets deleted or commented out if it is only
+    # 'os-in-XXXX' project.
+    name: vpp-aarch64-os-in-2009
+    jobs:
+      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+
+    project: 'vpp'
+    make-parallel-jobs: '16'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+          branch-head-refspec: ''
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
+    os:
+      - ubuntu2004:
+          repo-os-part: 'ubuntu.focal.main'
+    executor-arch: 'aarch64'
+
+- project:
+    # Beta jobs are experimental jobs for testing new OS versions on master.
+    #
+    # They are only manually triggered.  Either using the Jenkins WebUI
+    # 'Build with Parameters' to run a single job or adding 'beta-verify'
+    # or 'beta-merge' as a comment to run all beta verify or merge jobs.
+    #
+    # Once testing  is complete, the os is moved to the current
+    # 'vpp-aarch64-os-in-XXXX' project. If no OSes are being
+    # tested then this project should be commented out.
+    name: vpp-aarch64-beta
+    jobs:
+      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
+          comment-trigger-value: 'beta-verify'
+      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
+          comment-trigger-value: 'beta-merge'
+    project: 'vpp'
+    make-parallel-jobs: '16'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+          branch-head-refspec: ''
+    os:
+      - centos8:
+          repo-os-part: 'centos8'
+    executor-arch: aarch64
+
+# VPP-CSIT PROJECTS
+- project:
+    name: vpp-csit-perpatch
     jobs:
       - 'vpp-csit-verify-device-{stream}-{device-node-arch}':
           make-parallel-jobs: '32'
@@ -123,37 +290,7 @@
           make-parallel-jobs: '16'
 
 - project:
-    name: vpp-arm
-    jobs:
-      - 'vpp-arm-verify-{stream}-{os}'
-      - 'vpp-arm-merge-{stream}-{os}'
-    project: 'vpp'
-    executor-arch: 'aarch64'
-    stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
-      - '2009':
-          branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
-    os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
-    make-parallel-jobs: '16'
-
-# TODO: Merge with (e.g.) vpp-perpatch or similar,
-# when number of stable branches supported matches.
-- project:
-    name: vpp-api-crc
+    name: vpp-csit-api-crc
     jobs:
       - 'vpp-csit-verify-api-crc-{stream}'
     project: 'vpp'
@@ -164,6 +301,9 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
       - master:
           branch: 'master'
     os: ubuntu1804
@@ -183,154 +323,11 @@
       - project-view
     project-name: vpp
 
-- job-template:
-    name: 'vpp-arm-verify-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}arm-us'
-    concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+# Please keep job templates in the same order as they are referenced
+# in the project definitions above.
 
 - job-template:
-    name: 'vpp-arm-merge-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}arm-us'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - maven-project-parameter:
-          maven: 'mvn33-new'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - stream-parameter:
-          stream: '{stream}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '.packagecloud'
-              target: '/root'
-      - config-file-provider:
-          files:
-            - file-id: 'packagecloud_api'
-              target: '/root'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/checkstyle.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/packagecloud_push.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
-
-- job-template:
-    name: 'vpp-checkstyle-verify-{stream}'
+    name: 'vpp-checkstyle-verify-{stream}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -352,7 +349,8 @@
           os: '{os}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: 'DAW'
 
     scm:
       - gerrit-trigger-scm:
@@ -385,7 +383,8 @@
                 comment-contains-value: 'recheck'
             - comment-added-contains-event:
                 comment-contains-value: 'reverify'
-            # Following two are to cover missing functions of drafts going to review status
+            # Following two are to cover missing functions of drafts
+            # going to review status
             - comment-added-contains-event:
                 comment-contains-value: 'runtest'
             - comment-added-contains-event:
@@ -438,7 +437,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-beta-verify-{stream}-{os}'
+    name: 'vpp-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -468,71 +467,8 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: 'betacheck'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
-
-- job-template:
-    name: 'vpp-verify-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-us'
-    concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -565,10 +501,10 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-verify-{stream}-debug'
+    name: 'vpp-verify-debug-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{executor-os}-prod-{executor-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
@@ -591,7 +527,8 @@
           stream: '{stream}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -624,10 +561,10 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-merge-{stream}-{os}'
+    name: 'vpp-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{executor-arch}'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -656,7 +593,8 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -666,7 +604,7 @@
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: 120
 
     triggers:
       - gerrit-trigger-patch-merged:
@@ -694,6 +632,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
+
       - provide-maven-settings:
           settings-file: 'vpp-settings'
           global-settings-file: 'global-settings'
@@ -706,7 +645,70 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-beta-merge-{stream}-{os}'
+    name: 'vpp-beta-verify-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/build.sh
+
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+
+- job-template:
+    name: 'vpp-beta-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -751,7 +753,7 @@
 
     triggers:
       - gerrit-trigger-manually-triggered:
-          comment-trigger-value: 'betamerge'
+          comment-trigger-value: '{comment-trigger-value}'
           name: '{project}'
           branch: '{branch}'
 
