@@ -65,6 +65,9 @@
             - '2009':
                 branch: 'rls2009'
                 branch-id: 'oper-rls2009'
+            - '2009_lts':
+                branch: 'rls2009_lts'
+                branch-id: 'oper-rls2009_lts'
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - '':
@@ -94,6 +97,9 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
+            - '2009_lts':
+                branch: 'rls2009_lts'
+                branch-id: 'oper-rls2009_lts'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
@@ -166,6 +172,9 @@
       - '2009':
           branch: 'rls2009'
           branch-id: 'oper-rls2009'
+      - '2009_lts':
+          branch: 'rls2009_lts'
+          branch-id: 'oper-rls2009_lts'
     stream_report:
       - '2009':
           branch: 'rls2009'

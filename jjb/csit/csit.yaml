@@ -35,6 +35,8 @@
           branch: 'rls2005'
       - '2009':
           branch: 'rls2009'
+      - '2009_lts':
+          branch: 'rls2009_lts'
 
 - project:
     name: csit-view

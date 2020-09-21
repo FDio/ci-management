@@ -29,9 +29,9 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
-            - '2009':
-                branch: 'rls2009'
-                branch-id: 'oper-rls2009'
+            - '2009_lts':
+                branch: 'rls2009_lts'
+                branch-id: 'oper-rls2009_lts'
       - 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly':
           stream:
             - master:
@@ -40,9 +40,9 @@
             - '1908_2':
                 branch: 'rls1908_2'
                 branch-id: 'oper-rls1908_2'
-            - '2009':
-                branch: 'rls2009'
-                branch-id: 'oper-rls2009'
+            - '2009_lts':
+                branch: 'rls2009_lts'
+                branch-id: 'oper-rls2009_lts'
 
     project: 'csit'
     executor: 'vpp-csit-device'
@@ -62,6 +62,9 @@
       - '2009':
           branch: 'rls2009'
           branch-id: 'oper-rls2009'
+      - '2009_lts':
+          branch: 'rls2009_lts'
+          branch-id: 'oper-rls2009_lts'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
