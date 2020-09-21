@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6505f88_43d55113",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-09-21T15:44:13Z",
+      "side": 1,
+      "message": "Initially this is intended for ease of use in the WebUI, but you make a good point.  It would be better if it were a valid refspec that did not require editing.\n\nI\u0027ll add a TODO to investigate.",
+      "parentUuid": "3f385248_580c1de1",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "77934e8b6ccbcdcf3f36d8e370448a4cedf15930",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16b1ee03_56c6d58b",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-21T13:52:30Z",
       "side": 1,
       "message": "What does this do?",
+      "range": {
+        "startLine": 428,
+        "startChar": 19,
+        "endLine": 428,
+        "endChar": 24
+      },
+      "revId": "77934e8b6ccbcdcf3f36d8e370448a4cedf15930",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec0cc4f2_bd0e16c4",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-09-21T15:44:13Z",
+      "side": 1,
+      "message": "Whoops, debug cruft.  Should be \u0027{branch-head-refspec}\u0027",
+      "parentUuid": "16b1ee03_56c6d58b",
       "range": {
         "startLine": 428,
         "startChar": 19,
