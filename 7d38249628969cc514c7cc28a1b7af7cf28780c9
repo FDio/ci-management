@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4182c233_6dc3cd12",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-21T13:12:48Z",
+      "side": 1,
+      "message": "\"debug-os\"?\n\nAlready \"os\" acts as \"executor-os\". This filed is there just for the -debug job which does not have {os} in its name.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "7d38249628969cc514c7cc28a1b7af7cf28780c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4658b685_db695ab5",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-21T13:12:48Z",
+      "side": 1,
+      "message": "It is probable better to hardcode the OS here (instead of line 11), we save one (possibly confusing) field name.",
+      "range": {
+        "startLine": 571,
+        "startChar": 19,
+        "endLine": 571,
+        "endChar": 32
+      },
+      "revId": "7d38249628969cc514c7cc28a1b7af7cf28780c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
