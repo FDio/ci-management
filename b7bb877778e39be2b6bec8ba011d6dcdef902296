@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "159d85b4_7e2cc2a1",
+        "filename": "jjb/vsap/vsap.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-21T11:25:01Z",
+      "side": 1,
+      "message": "I realized VSAP wants to upload to 2005 packagecloud directory, but the active VSAP branch for the source code is master (not stable/2005). While I heard stable/2005 is the intended branch for VPP code (before patching), the VSAP code in master branch sets _VPP_VER value to \"master\" by default.\n\nEither create a VSAP branch stable/2005 (with code not accessing master VPP), or change the highlighted value to \u0027master\u0027 (after editing master VSAP code to refer to only VPP 2005 code).",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "b7bb877778e39be2b6bec8ba011d6dcdef902296",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
