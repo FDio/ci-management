@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f385248_580c1de1",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-21T13:52:30Z",
+      "side": 1,
+      "message": "Do we want this to be a valid refspec? I know the value is not used in automated triggers (only appearing in WebUI for Build With Parameters), but still we can use something valid here. Well, I did not check, maybe empty refspec already does the correct thing.\n\n\u0027refs/heads/{branch}\u0027",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 33
+      },
+      "revId": "77934e8b6ccbcdcf3f36d8e370448a4cedf15930",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b1ee03_56c6d58b",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-09-21T13:52:30Z",
+      "side": 1,
+      "message": "What does this do?",
+      "range": {
+        "startLine": 428,
+        "startChar": 19,
+        "endLine": 428,
+        "endChar": 24
+      },
+      "revId": "77934e8b6ccbcdcf3f36d8e370448a4cedf15930",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
