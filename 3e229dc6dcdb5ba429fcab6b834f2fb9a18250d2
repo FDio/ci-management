@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "883efefe_63c222b7",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2020-09-22T08:35:02Z",
+      "side": 1,
+      "message": "14 is better",
+      "range": {
+        "startLine": 232,
+        "startChar": 18,
+        "endLine": 232,
+        "endChar": 19
+      },
+      "revId": "3e229dc6dcdb5ba429fcab6b834f2fb9a18250d2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
