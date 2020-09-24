@@ -886,7 +886,7 @@
     name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-sandbox-{executor-arch}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
