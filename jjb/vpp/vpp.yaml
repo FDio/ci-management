@@ -709,9 +709,6 @@
               target: '/root'
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/checkstyle.sh
-      - shell:
-          !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
