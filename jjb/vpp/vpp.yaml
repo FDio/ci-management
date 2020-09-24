@@ -256,27 +256,27 @@
 # this project gets deleted or commented out if it is only
 # 'os-in-XXXX' project.
 #
-- project:
-    name: vpp-os-in-2009-aarch64
-    jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-
-    project: 'vpp'
-    make-parallel-jobs: '16'
-    stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
-          branch-head-refspec: ''
-      - '2009':
-          branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
-          branch-head-refspec: ''
-    os:
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
-    executor-arch: 'aarch64'
+#- project:
+#    name: vpp-os-in-2009-aarch64
+#    jobs:
+#      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+#      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+#
+#    project: 'vpp'
+#    make-parallel-jobs: '16'
+#    stream:
+#      - master:
+#          branch: 'master'
+#          repo-stream-part: 'master'
+#          branch-head-refspec: ''
+#      - '2009':
+#          branch: 'stable/2009'
+#          repo-stream-part: 'stable.2009'
+#          branch-head-refspec: ''
+#    os:
+#      - ubuntu2004:
+#          repo-os-part: 'ubuntu.focal.main'
+#    executor-arch: 'aarch64'
 # [end] VPP-OS-IN-2009-AARCH64 PROJECT
 
 # VPP-BETA-AARCH64 PROJECT
@@ -308,6 +308,8 @@
     os:
       - centos8:
           repo-os-part: 'centos8'
+      - ubuntu2004:
+          repo-os-part: 'ubuntu.focal.main'
     executor-arch: aarch64
 # [end] VPP-BETA-AARCH64 PROJECT
 
