@@ -137,6 +137,23 @@
       "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80acd60f_eeb12376",
+        "filename": "docker/scripts/u1804-x86_64.log",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2020-09-25T13:32:26Z",
+      "side": 1,
+      "message": "Put into .giignore",
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
