@@ -17,6 +17,8 @@
 # We do not use source command, to make sure
 # the called script choses the interpreter it needs.
 
+echo "---> jjb/scripts/csit/tox.sh"
+
 set -exuo pipefail
 
 ${WORKSPACE}/resources/libraries/bash/entry/tox.sh
