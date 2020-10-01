@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "---> sphinx-docs.sh"
+
 set -xe -o pipefail
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp

@@ -1,17 +1,21 @@
 #!/bin/bash
 # PCIO_CO is a Jenkins Global Environment variable
+echo "---> packagecloud_push.sh"
 
 set -x
+
+if [ "$SILO" = "sandbox" ] ; then
+    echo "SANDBOX: Pretending to push to PackageCloud..."
+    sleep 1
+    echo "SANDBOX: Simulated PackageCloud push complete!"
+    exit 0
+fi
 
 echo "STARTING PACKAGECLOUD PUSH"
 
 sleep 10
 
-if [ -f /usr/bin/zypper ]; then
-    FACTER_OS="openSUSE"
-else
-    FACTER_OS=$(/usr/bin/facter operatingsystem)
-fi
+FACTER_OS=$(/usr/bin/facter operatingsystem)
 
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
@@ -25,15 +29,6 @@ if [ -f ~/.packagecloud ]; then
         FACTER_ARCH=$(/usr/bin/facter architecture)
         RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
         package_cloud push "${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/" ${RPMS}
-      ;;
-      openSUSE)
-        # Use /etc/os-release on openSUSE to get $VERSION
-        . /etc/os-release
-        RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v 'vpp-ext-deps')
-        VPP_EXT_RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep 'vpp-ext-deps')
-        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${RPMS}
-        # This file may have already been uploaded. Don't error out if it exists.
-        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${VPP_EXT_RPMS} --skip-errors
       ;;
     esac
 fi

@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "---> include-raw-deploy-archives.sh"
 
 set +e  # Do not affect the build result if some part of archiving fails.
 

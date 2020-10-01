@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "---> maven_push_functions.sh"
+
 set -xe -o pipefail
 echo "*******************************************************************"
 echo "* STARTING PUSH OF PACKAGES TO REPOS"
