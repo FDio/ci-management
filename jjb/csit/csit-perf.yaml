@@ -270,6 +270,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
 
     publishers:
@@ -343,6 +346,9 @@
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
           properties-file: variables.prop
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-timed.sh
@@ -420,6 +426,9 @@
           properties-file: variables.prop
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/perf-timed.sh
 
     publishers:
@@ -488,6 +497,9 @@
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
           properties-file: variables.prop
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-timed.sh
@@ -588,6 +600,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
 
     publishers:
@@ -661,6 +676,9 @@
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
           properties-file: variables.prop
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-timed.sh
@@ -759,6 +777,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
 
     publishers:
@@ -853,6 +874,9 @@
           skip-vote: false
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
@@ -951,6 +975,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
 
     publishers:
@@ -1045,6 +1072,9 @@
           skip-vote: false
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-verify.sh
