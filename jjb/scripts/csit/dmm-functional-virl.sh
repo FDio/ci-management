@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "---> jjb/scripts/csit/dmm-functional-virl.sh"
 
 # Copyright (c) 2018 Huawei Technologies Co.,Ltd.
 # Copyright (c) 2020 Cisco and/or its affiliates.
