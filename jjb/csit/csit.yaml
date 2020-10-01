@@ -115,6 +115,9 @@
           global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/docs.sh
 
     publishers:
@@ -191,6 +194,9 @@
           global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/report.sh
 
     publishers:
@@ -242,6 +248,9 @@
       - provide-maven-settings:
           settings-file: 'csit-settings'
           global-settings-file: 'global-settings'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/cpta.sh
