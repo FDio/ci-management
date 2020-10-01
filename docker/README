@@ -6,13 +6,5 @@ for the Nomad container proof of concept build infrastructure for FD.io
 projects. The original source files and commit history can be found in the
 respective repositories at
 
-  https://github.com/snergfdio/csit-shim
-  https://github.com/snergfdio/csit-sut
-  https://github.com/snergfdio/vpp-arm-centos8
-  https://github.com/snergfdio/vpp-arm-ubuntu16
-  https://github.com/snergfdio/vpp-arm-ubuntu18
-  https://github.com/snergfdio/vpp-centos8
-  https://github.com/snergfdio/vpp-centos
-  https://github.com/snergfdio/vpp-ubuntu16
-  https://github.com/snergfdio/vpp-ubuntu18
-  https://github.com/snergfdio/vpp-ubuntu20
+  csit/csit-shim:  https://github.com/snergfdio/csit-shim
+  csit/csit-sut:   https://github.com/snergfdio/csit-sut

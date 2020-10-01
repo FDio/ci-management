@@ -150,6 +150,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/device-verify.sh
 
     publishers:
@@ -232,6 +235,9 @@
       - shell: 'echo "BRANCH_ID={branch-id}" > $WORKSPACE/variables.prop'
       - inject:
           properties-file: variables.prop
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/device-semiweekly.sh
@@ -317,6 +323,9 @@
           branch: '{branch}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/csit/device-verify.sh
