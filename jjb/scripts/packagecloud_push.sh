@@ -1,17 +1,36 @@
 #!/bin/bash
-# PCIO_CO is a Jenkins Global Environment variable
+echo "---> jjb/scripts/packagecloud_push.sh"
+
+# Copyright (c) 2020 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# PCIO_CO and SILO are Jenkins Global Environment variables defined in
+# .../ci-management/jenkins-config/global-vars-*.sh
 
 set -x
+
+if [ "$SILO" = "sandbox" ] ; then
+    echo "SANDBOX: Pretending to push to PackageCloud..."
+    sleep 1
+    echo "SANDBOX: Simulated PackageCloud push complete!"
+    exit 0
+fi
 
 echo "STARTING PACKAGECLOUD PUSH"
 
 sleep 10
 
-if [ -f /usr/bin/zypper ]; then
-    FACTER_OS="openSUSE"
-else
-    FACTER_OS=$(/usr/bin/facter operatingsystem)
-fi
+FACTER_OS=$(/usr/bin/facter operatingsystem)
 
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
@@ -25,15 +44,6 @@ if [ -f ~/.packagecloud ]; then
         FACTER_ARCH=$(/usr/bin/facter architecture)
         RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
         package_cloud push "${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/" ${RPMS}
-      ;;
-      openSUSE)
-        # Use /etc/os-release on openSUSE to get $VERSION
-        . /etc/os-release
-        RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v 'vpp-ext-deps')
-        VPP_EXT_RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep 'vpp-ext-deps')
-        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${RPMS}
-        # This file may have already been uploaded. Don't error out if it exists.
-        package_cloud push "${PCIO_CO}/${STREAM}/opensuse/${VERSION}/" ${VPP_EXT_RPMS} --skip-errors
       ;;
     esac
 fi
