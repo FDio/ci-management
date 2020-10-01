@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "---> jjb/scripts/csit/device-verify.sh"
+
 set -exuo pipefail
 
 csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
