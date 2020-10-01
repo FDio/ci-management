@@ -75,6 +75,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/csit/tox.sh
 
     publishers:

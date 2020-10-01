@@ -21,7 +21,7 @@
 - project:
     name: vpp-checkstyle-x86_64
     jobs:
-      - 'vpp-checkstyle-verify-{stream}-{executor-arch}'
+      - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     stream:
       - master:
@@ -200,9 +200,11 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
+          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -408,7 +410,7 @@
 
 # VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-checkstyle-verify-{stream}-{executor-arch}'
+    name: 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -502,6 +504,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/vpp/checkstyle.sh
       - shell:
           !include-raw-escape:
@@ -571,6 +576,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
@@ -633,6 +641,9 @@
           branch: '{branch}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -709,6 +720,9 @@
               target: '/root'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
@@ -781,6 +795,9 @@
           branch: '{branch}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -858,6 +875,9 @@
               target: '/root'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/vpp/checkstyle.sh
       - shell:
           !include-raw-escape:
@@ -912,7 +932,8 @@
           description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -930,6 +951,9 @@
           branch: '{branch}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -1007,6 +1031,9 @@
           skip-vote: '{skip-vote}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
@@ -1100,6 +1127,9 @@
     builders:
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
@@ -1167,6 +1197,9 @@
           branch: '{branch}'
 
     builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
