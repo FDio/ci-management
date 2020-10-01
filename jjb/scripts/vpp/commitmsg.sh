@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "---> commitmsg.sh"
 
 if [ -f extras/scripts/check_commit_msg.sh ];then
 	echo "Running extras/scripts/check_commit_msg.sh"

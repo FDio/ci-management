@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "---> setup_jvpp_dev_env.sh"
+
 set -e -o pipefail
 
 # Figure out what system we are running on

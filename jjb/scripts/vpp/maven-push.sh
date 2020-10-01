@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "---> maven-push.sh"
+
 set -xe -o pipefail
 echo "*******************************************************************"
 echo "* STARTING PUSH OF PACKAGES TO REPOS"
@@ -42,13 +44,6 @@ elif [ "${OS}" == "centos7" ]; then
     SRPMS=$(find . -type f -iname '*.srpm')
     SRCRPMS=$(find . -type f -name '*.src.rpm')
     for i in $RPMS $SRPMS $SRCRPMS
-    do
-        push_rpm "$i"
-    done
-elif [ "${OS}" == "opensuse" ]; then
-    # Find the files
-    RPMS=$(find . -type f -iname '*.rpm')
-    for i in $RPMS
     do
         push_rpm "$i"
     done

@@ -1,5 +1,5 @@
 #!/bin/bash
-# jjb/vpp/include-raw-vpp-test-checkstyle.sh
+echo "---> test-checkstyle.sh"
 
 if [ -n "$(grep -E '^test-checkstyle:' Makefile)" ]
 then

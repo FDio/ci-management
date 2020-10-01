@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "---> api-checkstyle.sh"
 
 VPP_CRC_CHECKER="extras/scripts/crcchecker.py"
 VPP_CRC_CHECKER_CMD="$VPP_CRC_CHECKER --check-patchset"
