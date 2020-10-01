@@ -22,6 +22,30 @@
       "revId": "f04a8a0a7ce178264be54d6b5b0cf7dbdd2a327b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8bfb94_b91bc1a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-01T15:47:50Z",
+      "side": 1,
+      "message": "TBH, I\u0027m not sure checkstyle adds enough value to the merge job to waste the cycles running it.\n\nUnfortunately, failing merge jobs generally go undetected due to them being run after the merge.  Very few committers check to see if the merge jobs completed successfully.  Maybe it would be better to send an email when merge jobs fail.  The hazard there is when the failures are infra related, then it wastes committers time doing the RCA.\n\nThe more I think about this scenario, the more I think that the best case is to detect them in the verify jobs (as is the case today).  While it does temporarily \u0027knock the wheels off the bus\u0027, the committers are responsive enough to fix in a timely fashion.  At best, notification of merge job failures would reduce the duration of the CI outage, but these events are rare enough that I\u0027m not sure it is worth the extra cost (time \u0026 cycles).",
+      "parentUuid": "d2730ebd_f6a195ab",
+      "range": {
+        "startLine": 12,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "f04a8a0a7ce178264be54d6b5b0cf7dbdd2a327b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
