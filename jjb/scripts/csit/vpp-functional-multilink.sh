@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "---> jjb/scripts/csit/vpp-functional-multilink.sh"
 
 # Copyright (c) 2020 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");

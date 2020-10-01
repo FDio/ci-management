@@ -2,10 +2,10 @@
 - project:
     name: docs
     jobs:
-      - 'vpp-docs-merge-{stream}'
-      - 'vpp-docs-verify-{stream}'
-      - 'vpp-make-test-docs-merge-{stream}'
-      - 'vpp-make-test-docs-verify-{stream}'
+      - 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
+      - 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-make-test-docs-merge-{stream}-{os}-{executor-arch}'
+      - 'vpp-make-test-docs-verify-{stream}-{os}-{executor-arch}'
 
     project: 'vpp'
     executor-arch: 'x86_64'
@@ -26,8 +26,8 @@
 - project:
     name: sphinx
     jobs:
-      - 'vpp-sphinx-docs-merge-{stream}'
-      - 'vpp-sphinx-docs-verify-{stream}'
+      - 'vpp-sphinx-docs-merge-{stream}-{os}-{executor-arch}'
+      - 'vpp-sphinx-docs-verify-{stream}-{os}-{executor-arch}'
 
     project: 'vpp'
     executor-arch: 'x86_64'
@@ -38,7 +38,7 @@
           branch: 'master'
 
 - job-template:
-    name: 'vpp-docs-verify-{stream}'
+    name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -105,7 +105,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-docs-merge-{stream}'
+    name: 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -149,7 +149,7 @@
 
     triggers:
       - reverse:
-          jobs: 'vpp-merge-{stream}-ubuntu1804'
+          jobs: 'vpp-merge-{stream}-{os}-{executor-arch}'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
@@ -191,7 +191,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-sphinx-docs-verify-{stream}'
+    name: 'vpp-sphinx-docs-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -271,7 +271,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-sphinx-docs-merge-{stream}'
+    name: 'vpp-sphinx-docs-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -349,7 +349,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-make-test-docs-verify-{stream}'
+    name: 'vpp-make-test-docs-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -416,7 +416,7 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'vpp-make-test-docs-merge-{stream}'
+    name: 'vpp-make-test-docs-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -461,7 +461,7 @@
 
     triggers:
       - reverse:
-          jobs: 'vpp-merge-{stream}-ubuntu1804'
+          jobs: 'vpp-merge-{stream}-{os}-{executor-arch}'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
