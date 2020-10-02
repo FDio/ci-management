@@ -46,6 +46,30 @@
       "revId": "f04a8a0a7ce178264be54d6b5b0cf7dbdd2a327b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10cc0aee_ac911a76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-02T12:03:04Z",
+      "side": 1,
+      "message": "For active projects, the alerting part of merge job failures is not that important. Soon, a contributor rebases on HEAD, gets verified -1, and starts investigating.\n\nFor me, the main purpose of merge run failure is to prevent broken package from being published (as that confuses testers and other downstream consumers).\n\nAs for time \u0026 cycles, we had a debate (I guess in Slack?) about it, and rough consensus is to reduce the number of merge job runs (skipping some commits if they are not the current HEAD).",
+      "parentUuid": "cc8bfb94_b91bc1a7",
+      "range": {
+        "startLine": 12,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "f04a8a0a7ce178264be54d6b5b0cf7dbdd2a327b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
