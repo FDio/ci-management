@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c92d368_266b7af4",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "\u003e any real example of recursive calling?\n\nOnly for lib_common.sh, but I included it in all lib_*.sh for consistency and in case any lib_*.sh was ever inadvertently included recursively.\n\n\u003e + i think export VAR would be better?\n\n\u0027export VAR\u0027 doesn\u0027t work with \u0027set -u\u0027 --\u003e unbound variable\nalias works with all set options used in the scripts",
+      "parentUuid": "469027ea_48e8fed5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 27
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64b3a360_75ff7532",
         "filename": "docker/scripts/lib_apt.sh",
         "patchSetId": 38
@@ -45,6 +69,30 @@
       "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756cda01_01ae4f56",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b3a360_75ff7532",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0bfc786f_057eb394",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca262d4e_124a4821",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 24
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "537b4c3c_b84e5d30",
         "filename": "docker/scripts/lib_apt.sh",
         "patchSetId": 38
@@ -91,6 +163,30 @@
       "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ee6872_eba59e0e",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "used in jjb/scripts/packagecloud_push.sh",
+      "parentUuid": "537b4c3c_b84e5d30",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 34
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3ed03595_c642dda2",
+        "filename": "docker/scripts/lib_common.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Agreed.  I removed the rsync in a different patch set.  This is just a function definition and variable definitions and guard against recursive inclusion.\n\nI believe the latest patch set does not execute functional code in any library files.",
+      "parentUuid": "27a79d44_125c8b53",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a43019_a8f34d63",
         "filename": "docker/scripts/lib_common.sh",
         "patchSetId": 38
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f2174c84_d0ddb408",
+        "filename": "docker/scripts/lib_common.sh",
+        "patchSetId": 38
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a43019_a8f34d63",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80acd60f_eeb12376",
         "filename": "docker/scripts/u1804-x86_64.log",
         "patchSetId": 38
@@ -154,6 +298,24 @@
       "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551b3cbf_621c60bf",
+        "filename": "docker/scripts/u1804-x86_64.log",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Whoops.  Removed from change set.",
+      "parentUuid": "80acd60f_eeb12376",
+      "revId": "4b080da7036b977a6be3e5dd1de307cc8396b4cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }

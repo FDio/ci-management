@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9b98a5a4_8b894e83",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ad4a1b_52eada8c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd98491_af5e1322",
         "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
         "patchSetId": 28
@@ -91,6 +115,30 @@
       "revId": "9639f9b5be810cee397565999979a5aece65a916",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39559e5_f2fd69c4",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd98491_af5e1322",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "0a725bce_6694d50b",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c0c368_5323f57f",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0687d6f8_dbb53ad9",
         "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
         "patchSetId": 28
@@ -137,6 +209,30 @@
       "revId": "9639f9b5be810cee397565999979a5aece65a916",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5a8d14_50221aae",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0687d6f8_dbb53ad9",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "32fd465d_d0fde418",
+        "filename": "docker/scripts/csit_get_packages_from_ansible_config.py",
+        "patchSetId": 28
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3acdce_7a1c56f8",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7f9ee0d_0e204261",
         "filename": "docker/scripts/lib_apt.sh",
         "patchSetId": 28
@@ -186,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "132ef569_9c0c099b",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "No, because these require coordinated changes in project specific build infra.  Will fix projects first, then remove from here once those patches have been pushed \u0026 cherry-picked to all of the requisite branches.",
+      "parentUuid": "b7f9ee0d_0e204261",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 7
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ebbdbac_d5afb34b",
         "filename": "docker/scripts/lib_csit.sh",
         "patchSetId": 28
@@ -206,6 +350,30 @@
       "revId": "9639f9b5be810cee397565999979a5aece65a916",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98a4c58a_ec400f06",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ebbdbac_d5afb34b",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "9639f9b5be810cee397565999979a5aece65a916",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }

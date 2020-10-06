@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ee2c41a_3ec1eed0",
+        "filename": "docker/scripts/builder_common_init.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "429a9e58_0996d5fb",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "557d8ce0_1a239744",
         "filename": "docker/scripts/create_docker_builder_image.sh",
         "patchSetId": 47
@@ -45,6 +69,30 @@
       "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7df082f_836bf200",
+        "filename": "docker/scripts/create_docker_builder_image.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557d8ce0_1a239744",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d285536d_473836bd",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6861a8d3_7b6dcd01",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e5828c4_59ab5aa4",
         "filename": "docker/scripts/lib_common.sh",
         "patchSetId": 47
@@ -91,6 +163,30 @@
       "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b4d2a2e_6799385e",
+        "filename": "docker/scripts/lib_common.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5828c4_59ab5aa4",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 19
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a080c961_d3ed85c7",
+        "filename": "docker/scripts/update_dockerhub_prod_tags.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7c1231_473393df",
+      "range": {
+        "startLine": 179,
+        "startChar": 17,
+        "endLine": 179,
+        "endChar": 21
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2fdbe7d_16db1d6f",
         "filename": "docker/scripts/update_dockerhub_prod_tags.sh",
         "patchSetId": 47
@@ -137,6 +257,30 @@
       "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0767d2ab_27f84393",
+        "filename": "docker/scripts/update_dockerhub_prod_tags.sh",
+        "patchSetId": 47
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": ":)  I modified this to ${1} for clarity.",
+      "parentUuid": "a2fdbe7d_16db1d6f",
+      "range": {
+        "startLine": 249,
+        "startChar": 15,
+        "endLine": 249,
+        "endChar": 18
+      },
+      "revId": "bcd969d199069e39f9a1ae12a15f84a7b28200d1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }

@@ -140,6 +140,30 @@
       "revId": "e52108a715fcb824a1e28a3e6a628f2cd979afd4",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a73224_d988eedd",
+        "filename": "docker/scripts/vpp_pip_cache.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-06T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f371c811_fc2ac296",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "e52108a715fcb824a1e28a3e6a628f2cd979afd4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
