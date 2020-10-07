@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dccadcec_47696937",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-07T18:05:09Z",
+      "side": 1,
+      "message": "{stream}-{os}-{executor-arch}\n\nSorry, this was an oversight on my part on the vpp checkstyle job.  See [0] for cleanup of docs/vpp jobs to include all three for all vpp jobs.\n\n[0] https://gerrit.fd.io/r/c/ci-management/+/29209",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "6540ea867da07c2062727297a5655ba7c0e44112",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01bb4e5e_8b6f9d07",
         "filename": "jjb/hicn/hicn.yaml",
         "patchSetId": 1
