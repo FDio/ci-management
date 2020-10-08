@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b617477_6203c1d0",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-10-08T13:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccadcec_47696937",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 56
+      },
+      "revId": "6540ea867da07c2062727297a5655ba7c0e44112",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01bb4e5e_8b6f9d07",
         "filename": "jjb/hicn/hicn.yaml",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6540ea867da07c2062727297a5655ba7c0e44112",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2898597f_9f2ff127",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2020-10-08T13:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01bb4e5e_8b6f9d07",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 58
+      },
+      "revId": "6540ea867da07c2062727297a5655ba7c0e44112",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
