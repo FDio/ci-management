@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2ac5892d_2c84c3b1",
+        "filename": "jjb/scripts/setup_executor_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-09T17:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3f0344f_4ea3be5a",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "bb98397d8029015233f701285fadaca396a64aca",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "009adbe8_2ac4b8c0",
         "filename": "jjb/scripts/setup_executor_env.sh",
         "patchSetId": 6
@@ -116,6 +140,30 @@
       "revId": "bb98397d8029015233f701285fadaca396a64aca",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22ca691_b766e586",
+        "filename": "jjb/scripts/setup_executor_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-09T17:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b1d370a_43707a2d",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "bb98397d8029015233f701285fadaca396a64aca",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
