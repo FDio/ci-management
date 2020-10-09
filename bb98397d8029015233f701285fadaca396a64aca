@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "25e9baac_c5e6e89e",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-09T14:35:01Z",
+      "side": 1,
+      "message": "Can your Sanbox conditional branch also print this argument?",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 80
+      },
+      "revId": "bb98397d8029015233f701285fadaca396a64aca",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d92e2f5_2814b6e3",
         "filename": "jjb/scripts/setup_executor_env.sh",
         "patchSetId": 6
