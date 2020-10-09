@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d92e2f5_2814b6e3",
+        "filename": "jjb/scripts/setup_executor_env.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-09T13:53:36Z",
+      "side": 1,
+      "message": "I like \"pip freeze\" more.\n\nAlso, should we be using Python3 (so python3 -m pip ...).\nBut we usually install our dependencies into some virtualenv, without activating any this probably lists system-installed packages? Anyway, an explanation comment in the code is welcome.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "bb98397d8029015233f701285fadaca396a64aca",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
