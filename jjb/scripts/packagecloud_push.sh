@@ -15,6 +15,11 @@ fi
 
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
+      Debian)
+        FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
+        DEBS=$(find . -type f -iname '*.deb')
+        package_cloud push "${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/" ${DEBS}
+      ;;
       Ubuntu)
         FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
         DEBS=$(find . -type f -iname '*.deb')

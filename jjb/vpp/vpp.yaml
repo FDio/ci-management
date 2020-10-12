@@ -120,6 +120,8 @@
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
+      - debian9:
+          repo-os-part: 'stretch'
     executor-arch: 'x86_64'
 # [end] VPP-OS-IN-2009-X86_64 PROJECT
 
@@ -179,8 +181,6 @@
     os:
       - centos8:
           repo-os-part: 'centos8'
-      - debian9:
-          repo-os-part: 'stretch'
       - debian10:
           repo-os-part: 'buster'
     executor-arch: x86_64
