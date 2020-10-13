@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c06ecdbf_1bc3d2a7",
+        "filename": "jjb/scripts/setup_executor_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-13T13:36:41Z",
+      "side": 1,
+      "message": "Great suggestion!  Done.\n\nTest run:\nhttps://jenkins.fd.io/sandbox/job/daw-vpp-checkstyle-verify-master-ubuntu1804-x86_64/2/",
+      "parentUuid": "c2323d15_bfc377f0",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26b3077c_59e89319",
         "filename": "jjb/scripts/setup_vpp_dpdk_dev_env.sh",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f9523594_ae377175",
+        "filename": "jjb/scripts/setup_vpp_dpdk_dev_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-13T13:36:41Z",
+      "side": 1,
+      "message": "Yep. Will rebase \u0026 merge appropriately.",
+      "parentUuid": "26b3077c_59e89319",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8727a0_7e214d35",
         "filename": "jjb/scripts/vpp/debug-build.sh",
         "patchSetId": 8
@@ -62,6 +110,24 @@
       "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38050c95_dde9a2a9",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-10-13T13:36:41Z",
+      "side": 1,
+      "message": "The debug build is unstable (i.e. fails intermittently). It was added as a separate job to allow it to be run without voting.\n\nThe gcc job exists to support gcov and the test runs there are a preliminary smoke test, not complete test coverage to ensure that VPP runs when built with gcc.\n\nIt would be nice to have \u0027make test\u0027 support a \u0027smoke test\u0027 selector so it is not encoded in the ci-management debug-build.sh script, but that is still TBD.",
+      "parentUuid": "2d8727a0_7e214d35",
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
