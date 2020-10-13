@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2323d15_bfc377f0",
+        "filename": "jjb/scripts/setup_executor_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-13T08:40:14Z",
+      "side": 1,
+      "message": "| column -t \n\nhttps://stackoverflow.com/a/6602777",
+      "range": {
+        "startLine": 46,
+        "startChar": 54,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b3077c_59e89319",
+        "filename": "jjb/scripts/setup_vpp_dpdk_dev_env.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-13T08:40:14Z",
+      "side": 1,
+      "message": "Add a branch for debian?\nhttps://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/daw-vpp-beta-verify-master-debian9-x86_64/1/console.log.gz",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8727a0_7e214d35",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-13T08:40:14Z",
+      "side": 1,
+      "message": "I wonder why this a separate job, when gcc job runs both \"test\" and \"test-debug\", but I guess there are historic reasons.",
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
