@@ -128,6 +128,24 @@
       "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cc31135_4bd10519",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-13T16:12:52Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "38050c95_dde9a2a9",
+      "revId": "928d0f859776b4585c5cb78ce930b3729e7fdd3c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
