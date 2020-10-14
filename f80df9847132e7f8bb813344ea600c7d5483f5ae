@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb3a90b_c04204db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-14T12:19:43Z",
+      "side": 1,
+      "message": "Background:\nCome job pages take long to finish loading (though the become usable far faster than that). I blame Robot plugin, it takes long to draw the graphs with many runs.\nThat is bad, because Jenkins backend is needlessly chewing over old irrelevant data, probably slowing down other Jenkins tasks.\n\nIn my quest to figure out how to limit the graf (to show only few resent runs) I got an impression the plugin does not have a knob for that. So I thought to rely on build discarder feature (plugin?) of Jenkins to remove the old data.\n\nThat is when I realized the old pieces of JJB YAML, which look to be configuring build discarder, are no longer doing that. Some comparisons to OpenDaylight jobs later I found the difference, this is testing it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "f80df9847132e7f8bb813344ea600c7d5483f5ae",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089fab33_4d34fbad",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-10-14T12:19:43Z",
+      "side": 1,
+      "message": "This is defined in jjb/global-macros.yaml:714.\nNot sure, maybe the Robot plugin data would need the \"artifact\" related parameters.\nhttps://docs.openstack.org/infra/jenkins-job-builder/properties.html#properties.build-discarder",
+      "range": {
+        "startLine": 1011,
+        "startChar": 8,
+        "endLine": 1011,
+        "endChar": 29
+      },
+      "revId": "f80df9847132e7f8bb813344ea600c7d5483f5ae",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
