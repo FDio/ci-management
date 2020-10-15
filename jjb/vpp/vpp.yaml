@@ -32,10 +32,6 @@
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
           branch-head-refspec: ''
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -64,10 +60,6 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
-          branch-head-refspec: ''
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
           branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
@@ -224,10 +216,6 @@
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
           branch-head-refspec: ''
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -335,9 +323,6 @@
       - '1908':
           branch: 'stable/1908'
           repo-stream-part: 'stable.1908'
-      - '2001':
-          branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
