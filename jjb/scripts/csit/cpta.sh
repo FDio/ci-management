@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "---> jjb/scripts/csit/cpta.sh"
+
 set -xe -o pipefail
 
 [ "${DOCS_REPO_URL}" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"

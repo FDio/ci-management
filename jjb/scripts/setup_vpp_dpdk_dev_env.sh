@@ -1,68 +1,62 @@
 #!/bin/bash
+
+# Copyright (c) 2020 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+echo "---> jjb/scripts/setup_vpp_dpdk_dev_env.sh"
+
 set -e -o pipefail
 
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 
 function setup {
-    if ! [ -z ${REPO_NAME} ]; then
-        echo "INSTALLING VPP-DPKG-DEV from apt/yum repo"
+    if [ -n "$REPO_NAME" ] ; then
+        echo "Installing vpp-ext-deps..."
         REPO_URL="https://packagecloud.io/fdio/${STREAM}"
-        echo "REPO_URL: ${REPO_URL}"
+        echo "REPO_URL: $REPO_URL"
+        INSTALL_URL="https://packagecloud.io/install/repositories/fdio/${STREAM}"
+        echo "INSTALL_URL: $INSTALL_URL"
         # Setup by installing vpp-dev and vpp-lib
-        if [ "$OS_ID" == "ubuntu" ]; then
-        	if ! [ "${STREAM}" == "master" ]; then
-        		echo "tree not master deleting packagecloud repo pointer"
-        		sudo rm  -f /etc/apt/sources.list.d/fdio_master.list
-        		curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh | sudo bash
-        	fi
-            if [ -f /etc/apt/sources.list.d/99fd.io.list ];then
-                echo "Deleting: /etc/apt/sources.list.d/99fd.io.list"
-                sudo rm /etc/apt/sources.list.d/99fd.io.list
+        if [ "${OS_ID,,}" == "ubuntu" ] || [ "${OS_ID,,}" == "debian" ] ; then
+            if [ "${STREAM}" != "master" ]; then
+                echo "stream '${STREAM}' is not master: replacing packagecloud apt sources list with stream specific list"
+                sudo rm  -f /etc/apt/sources.list.d/fdio_master.list
+                curl -s $INSTALL_URL/script.deb.sh | sudo bash
             fi
             sudo apt-get update -qq || true
-            sudo apt-get -y --force-yes install vpp-dpdk-dev || true
-            sudo apt-get -y --force-yes install vpp-dpdk-dkms || true
-            sudo apt-get -y --force-yes install vpp-ext-deps || true
-        elif [ "$OS_ID" == "centos" ]; then
-            if [ -f /etc/yum.repos.d/fdio-master.repo ]; then
-                echo "Deleting: /etc/yum.repos.d/fdio-master.repo"
-                sudo rm /etc/yum.repos.d/fdio-master.repo
+            curr_vpp_ext_deps="/root/Downloads/$(basename $(apt-cache show vpp-ext-deps | grep Filename | head -1 | cut -d' ' -f2))"
+            if [ -f "$curr_vpp_ext_deps" ] ; then
+                echo "Installing cached vpp-ext-deps pkg: $curr_vpp_ext_deps"
+                sudo dpkg -i $curr_vpp_ext_deps
+            else
+                echo "Installing vpp-ext-deps from packagecloud.io"
+                local force_opts="--allow-downgrades --allow-remove-essential"
+                force_opts="$force_opts --allow-change-held-packages"
+                sudo apt-get -y $force_opts install vpp-ext-deps || true
             fi
-            if ! [ "${STREAM}" == "master" ]; then
-                echo "tree not master deleting packagecloud repo pointer"
-                sudo rm  -f /etc/yum.repos.d/fdio_master.repo
-                curl -s https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh | sudo bash
+        elif [ "${OS_ID,,}" == "centos" ] ; then
+            if [ "${STREAM}" != "master" ] ; then
+                echo "stream '${STREAM}' is not master: replacing packagecloud repo list with stream specific list"
+                sudo rm -f /etc/yum.repos.d/fdio_master.repo
+                curl -s $INSTALL_URL/script.rpm.sh | sudo bash
             fi
-            sudo yum -y install vpp-dpdk-devel || true
             sudo yum -y install vpp-ext-deps || true
-        elif [ "$OS_ID" == "opensuse" ]; then
-            REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
-            echo "REPO_URL: ${REPO_URL}"
-            sudo cat << EOF > fdio-master.repo
-[fdio-master]
-name=fd.io master branch latest merge
-baseurl=${REPO_URL}
-enabled=1
-gpgcheck=0
-EOF
-            sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
-            sudo yum -y install vpp-dpdk-devel || true
-            sudo yum -y install vpp-ext-deps || true
-        elif [ "$OS_ID" == "opensuse-leap" ]; then
-            REPO_URL="${NEXUSPROXY}/content/repositories/fd.io.${REPO_NAME}"
-            echo "REPO_URL: ${REPO_URL}"
-            sudo cat << EOF > fdio-master.repo
-[fdio-master]
-name=fd.io master branch latest merge
-baseurl=${REPO_URL}
-enabled=1
-gpgcheck=0
-EOF
-            sudo mv fdio-master.repo /etc/yum/repos.d/fdio-master.repo
-            sudo yum -y install vpp-dpdk-devel || true
-            sudo yum -y install vpp-ext-deps || true
+        else
+            echo "ERROR: Unsupported OS '$OS_ID'!"
         fi
+    else
+        echo "ERROR: REPO_NAME not found!"
     fi
 }
 

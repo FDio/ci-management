@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "---> jjb/scripts/csit/vpp-functional-virl.sh"
+
 # execute csit bootstrap script if it exists
 if [ -e bootstrap.sh ]
 then

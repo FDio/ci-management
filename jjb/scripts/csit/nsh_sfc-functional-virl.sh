@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "---> jjb/scripts/csit/nsh_sfc-functional-virl.sh"
+
 set -xeu -o pipefail
 
 # execute nsh_sfc bootstrap script if it exists

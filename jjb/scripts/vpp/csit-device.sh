@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+echo "---> jjb/scripts/vpp/csit-device.sh"
+
 set -exuo pipefail
 
 # Clone CSIT git repository and proceed with entry script located there.
