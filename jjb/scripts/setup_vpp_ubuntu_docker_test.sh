@@ -14,6 +14,7 @@ echo "---> jjb/scripts/setup_vpp_ubuntu_docker_test.sh"
 set -e -o pipefail
 
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
+OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 
 if [ -n ${DOCKER_TEST} ] ; then
         # for 4 cores:
@@ -33,9 +34,9 @@ fi
 # This will remove any previously installed external packages
 # for old branch builds
 if [ "${GERRIT_BRANCH}" != "master" ]; then
+    echo "Removing $OS_ID-$OS_VERSION_ID package 'vpp-ext-deps'"
     if [ "${OS_ID,,}" == "ubuntu" ] || [ "${OS_ID,,}" == "debian" ] ; then
-        [ -n "$(dpkg -l | grep vpp-ext-deps)" ] \
-            && sudo apt-get -y remove vpp-ext-deps
+        sudo apt-get -y remove vpp-ext-deps || true
     elif [ "${OS_ID,,}" == "centos" ]; then
         sudo yum -y erase vpp-ext-deps || true
         sudo yum clean all || true
