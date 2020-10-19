@@ -12,7 +12,7 @@
 #         TODO: see if there is a refspec that works without requiring
 #               use of get_gerrit_refspec and hand entering the result
 #               in the WebUI 'Build With Parameters' gerrit refspec field.
-#   - Use the following to import get_gerrit_refspec into a bash shell 
+#   - Use the following to import get_gerrit_refspec into a bash shell
 #         from the ci-management directory:
 #         $ eval "$(grep -A12 get_gerrit ./docker/scripts/lib_common.sh)"
 # [end] NOTES
@@ -342,7 +342,6 @@
     device-executor: 'vpp-csit-device'
     executor: '{os}-us'
     skip-vote: 'false'
-    trigger: 'gerrit-trigger-vpp-csit-devicetest-full'
     stream:
       - master:
           branch: 'master'
@@ -360,7 +359,7 @@
       - 1n-skx
       - 1n-tx2:
           device-executor: 'vpp-csit-arm-ubuntu18'
-          trigger: 'gerrit-trigger-vpp-csit-devicetest-manual'
+          skip-vote: 'true'
     node-arch:
       - 2n-clx
       - 2n-skx
@@ -372,6 +371,14 @@
       - 3n-tsh:
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
+    exclude:
+      - stream: '1908'
+        device-node-arch: '1n-tx2'
+      - stream: '2001'
+        device-node-arch: '1n-tx2'
+      - stream: '2005'
+        device-node-arch: '1n-tx2'
+
 # [end] VPP-CSIT-PERPATCH PROJECT
 
 # VPP-CSIT-API-CRC PROJECT
@@ -1037,7 +1044,7 @@
           build-timeout: '90'
 
     triggers:
-      - '{trigger}':
+      - 'gerrit-trigger-vpp-csit-devicetest-full':
           name: '{project}'
           branch: '{branch}'
           skip-vote: '{skip-vote}'

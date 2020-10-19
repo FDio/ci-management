@@ -19,6 +19,9 @@
       - 'ubuntu1804'
     node-arch:
       - '1n-skx'
+      - '1n-tx2':
+          executor: 'vpp-csit-arm-ubuntu18'
+          skip-vote: 'true'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{node-arch}'
       - 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly':
@@ -48,7 +51,6 @@
     executor: 'vpp-csit-device'
     branch: 'master'
     branch-id: 'oper'
-    trigger: 'gerrit-trigger-csit-vpp-devicetest-full'
     stream:
       - master:
           branch: 'master'
@@ -65,6 +67,11 @@
       - '2009_lts':
           branch: 'rls2009_lts'
           branch-id: 'oper-rls2009_lts'
+    exclude:
+      - stream: '1908_2'
+        node-arch: '1n-tx2'
+      - stream: '2005'
+        node-arch: '1n-tx2'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
@@ -145,7 +152,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - '{trigger}':
+      - 'gerrit-trigger-csit-vpp-devicetest-full':
           project: '{project}'
           branch: '{branch}'
           skip-vote: '{skip-vote}'
