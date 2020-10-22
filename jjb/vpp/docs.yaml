@@ -16,8 +16,6 @@
           branch: 'master'
       - '1908':
           branch: 'stable/1908'
-      - '2001':
-          branch: 'stable/2001'
       - '2005':
           branch: 'stable/2005'
       - '2009':
