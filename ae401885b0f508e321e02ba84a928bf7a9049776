@@ -22,6 +22,30 @@
       "revId": "ae401885b0f508e321e02ba84a928bf7a9049776",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2511c8_5ea21f80",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 207
+      },
+      "writtenOn": "2020-10-23T08:07:56Z",
+      "side": 1,
+      "message": "No, it will not add trending job for rls2009_lts branch as job \"csit-trending-daily-master\" doesn\u0027t use parameter stream. We will need to add trending job for rls2009_lts - I guess separate one as it will be based on mrr weekly jobs while master trending is based on mrr daily jobs.\n\nRegarding csit-report-merge-rls2009_lts job - it will be needed for preparation 2009 maintenance release(s) as rls2009_lts is main development branch for 2009 LTS - we can see it as master alternative for 2009 LTS.",
+      "parentUuid": "dfb19bd7_5e371f18",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "ae401885b0f508e321e02ba84a928bf7a9049776",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
