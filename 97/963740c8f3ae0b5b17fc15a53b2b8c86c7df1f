@@ -1,0 +1,8 @@
+Code-Review+1: Dave Wallace <dwallacelf@gmail.com>
+Code-Review+2: Vratko Polak <vrpolak@cisco.com>
+Verified+1: Vratko Polak <vrpolak@cisco.com>
+Submitted-by: Vratko Polak <vrpolak@cisco.com>
+Submitted-at: Thu, 29 Oct 2020 13:08:54 +0000
+Reviewed-on: https://gerrit.fd.io/r/c/ci-management/+/28022
+Project: ci-management
+Branch: refs/heads/master
