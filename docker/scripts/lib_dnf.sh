@@ -133,6 +133,7 @@ RUN dnf update -y \\
         python3-pip \\
         puppet \\
         rake \\
+        rsync \\
         ruby-devel \\
         sudo \\
         tree \\
