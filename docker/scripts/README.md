@@ -121,6 +121,13 @@ The following commands are useful to build the initial builder images:
 
 `sudo ./docker/scripts/build_executor_docker_image.sh -apr sandbox 2>&1 | tee all-sandbox-$(uname -m).log | grep -ve '^+'`
 
+Note: The initial population of a Docker Hub repository is performed manually by
+tagging and pushing the verified sandbox image as 'prod-<arch>' and
+'prod-prev-<arch>' as the update_dockerhub_prod_tags.sh script assumes that
+both labels exist in the repo. After the intial images have been pushed to the
+Docker Hub respository, the update script is used to prevent inadvertently
+applying the wrong tags to images in the repository.
+
 ### Building in a Builder Image
 
 By running the docker image with docker socket mounted in the container,
@@ -410,6 +417,24 @@ Jenkins-Nomad Label.
 - ${attr.cpu.arch}: arm64
 - ${node.class}: builder
 
+#### Node 'builder-debian10-prod-x86_64'
+- Labels: builder-debian10-prod-x86_64
+- Job Prefix: builder-debian10-prod-x86_64
+- Image: fdiotools/builder-debian10:prod-x86_64
+- CPU: 14000
+- Memory: 14000
+- ${attr.cpu.arch}: amd64
+- ${node.class}: builder
+
+#### Node 'builder-debian10-prod-aarch64'
+- Labels: builder-debian10-prod-aarch64
+- Job Prefix: builder-debian10-prod-aarch64
+- Image: fdiotools/builder-debian10:prod-aarch64
+- CPU: 6000
+- Memory: 10000
+- ${attr.cpu.arch}: arm64
+- ${node.class}: builder
+
 #### Node 'csit_dut-ubuntu1804-prod-x86_64'
 - Labels: csit_dut-ubuntu1804-prod-x86_64
 - Job Prefix: csit_dut-ubuntu1804-prod-x86_64
@@ -538,6 +563,24 @@ Jenkins-Nomad Label.
 - ${attr.cpu.arch}: arm64
 - ${node.class}: builder
 
+#### Node 'builder-debian10-sandbox-x86_64'
+- Labels: builder-debian10-sandbox-x86_64
+- Job Prefix: builder-debian10-sandbox-x86_64
+- Image: fdiotools/builder-debian10:sandbox-x86_64
+- CPU: 14000
+- Memory: 14000
+- ${attr.cpu.arch}: amd64
+- ${node.class}: builder
+
+#### Node 'builder-debian10-sandbox-aarch64'
+- Labels: builder-debian10-sandbox-aarch64
+- Job Prefix: builder-debian10-sandbox-aarch64
+- Image: fdiotools/builder-debian10:sandbox-aarch64
+- CPU: 6000
+- Memory: 10000
+- ${attr.cpu.arch}: arm64
+- ${node.class}: builder
+
 #### Node 'csit_dut-ubuntu1804-sandbox-x86_64'
 - Labels: csit_dut-ubuntu1804-sandbox-x86_64
 - Job Prefix: csit_dut-ubuntu1804-sandbox-x86_64
@@ -661,6 +704,24 @@ Jenkins-Nomad Label.
 - Labels: builder-debian9-test-aarch64
 - Job Prefix: builder-debian9-test-aarch64
 - Image: fdiotools/builder-debian9:test-aarch64
+- CPU: 6000
+- Memory: 10000
+- ${attr.cpu.arch}: arm64
+- ${node.class}: builder
+
+#### Node 'builder-debian10-test-x86_64'
+- Labels: builder-debian10-test-x86_64
+- Job Prefix: builder-debian10-test-x86_64
+- Image: fdiotools/builder-debian10:test-x86_64
+- CPU: 14000
+- Memory: 14000
+- ${attr.cpu.arch}: amd64
+- ${node.class}: builder
+
+#### Node 'builder-debian10-test-aarch64'
+- Labels: builder-debian10-test-aarch64
+- Job Prefix: builder-debian10-test-aarch64
+- Image: fdiotools/builder-debian10:test-aarch64
 - CPU: 6000
 - Memory: 10000
 - ${attr.cpu.arch}: arm64
