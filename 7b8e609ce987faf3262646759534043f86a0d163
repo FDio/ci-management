@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c32375e3_73f80c77",
+        "filename": "docker/scripts/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2020-11-03T00:17:13Z",
+      "side": 1,
+      "message": "Should these lines all be \"debian10\" rather than \"debian9\"?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 49
+      },
+      "revId": "7b8e609ce987faf3262646759534043f86a0d163",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
