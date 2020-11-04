@@ -31,14 +31,17 @@ function setup {
         if [ "${OS_ID,,}" == "ubuntu" ] || [ "${OS_ID,,}" == "debian" ] ; then
             if [ "${STREAM}" != "master" ]; then
                 echo "stream '${STREAM}' is not master: replacing packagecloud apt sources list with stream specific list"
-                sudo rm  -f /etc/apt/sources.list.d/fdio_master.list
+                sudo apt-get -y remove vpp-ext-deps || true
+                sudo rm -f /etc/apt/sources.list.d/fdio_master.list
                 curl -s $INSTALL_URL/script.deb.sh | sudo bash
             fi
             sudo apt-get update -qq || true
-            curr_vpp_ext_deps="/root/Downloads/$(basename $(apt-cache show vpp-ext-deps | grep Filename | head -1 | cut -d' ' -f2))"
-            if [ -f "$curr_vpp_ext_deps" ] ; then
-                echo "Installing cached vpp-ext-deps pkg: $curr_vpp_ext_deps"
-                sudo dpkg -i $curr_vpp_ext_deps
+            local vpp_ext_deps_version="$(apt-cache show vpp-ext-deps | mawk '/Version/ {print $2}' | head -1)"
+            local vpp_ext_deps_arch="$(apt-cache show vpp-ext-deps | mawk '/Architecture/ {print $2}' | head -1)"
+            local vpp_ext_deps_pkg="/root/Downloads/vpp-ext-deps_${vpp_ext_deps_version}_${vpp_ext_deps_arch}.deb"
+            if [ -f "$vpp_ext_deps_pkg" ] ; then
+                echo "Installing cached vpp-ext-deps pkg: $vpp_ext_deps_pkg"
+                sudo dpkg -i $vpp_ext_deps_pkg
             else
                 echo "Installing vpp-ext-deps from packagecloud.io"
                 local force_opts="--allow-downgrades --allow-remove-essential"
