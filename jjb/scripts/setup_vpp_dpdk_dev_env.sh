@@ -51,10 +51,20 @@ function setup {
         elif [ "${OS_ID,,}" == "centos" ] ; then
             if [ "${STREAM}" != "master" ] ; then
                 echo "stream '${STREAM}' is not master: replacing packagecloud repo list with stream specific list"
+                sudo yum -y erase vpp-ext-deps || true
+                sudo yum clean all || true
                 sudo rm -f /etc/yum.repos.d/fdio_master.repo
                 curl -s $INSTALL_URL/script.rpm.sh | sudo bash
             fi
-            sudo yum -y install vpp-ext-deps || true
+            local vpp_ext_deps_version="$(yum -q list vpp-ext-deps 2> /dev/null | mawk '/vpp-ext-deps/{print $2}')"
+            local vpp_ext_deps_pkg="$(yum -q list vpp-ext-deps 2> /dev/null | mawk '/vpp-ext-deps/{print $1}')"
+            vpp_ext_deps_pkg="/root/Downloads/${vpp_ext_deps_pkg/./-${vpp_ext_deps_version}.}.rpm"
+            if [ -f "$vpp_ext_deps_pkg" ] ; then
+                echo "Installing cached vpp-ext-deps pkg: $vpp_ext_deps_pkg"
+                sudo yum -y localinstall $vpp_ext_deps_pkg || true
+            else
+                sudo yum -y install vpp-ext-deps || true
+            fi
         else
             echo "ERROR: Unsupported OS '$OS_ID'!"
         fi
