@@ -1,21 +1,21 @@
 ---
 
 - project:
-    name: cicn-libparc
+    name: cicn-libparc-x86_64
     jobs:
-      - 'cicn-libparc-verify-{stream}-{os}'
-      - 'cicn-libparc-merge-{stream}-{os}'
-      - 'cicn-libparc-docs-verify-{stream}'
-      - 'cicn-libparc-docs-merge-{stream}'
+      - 'cicn-libparc-verify-{stream}-{os}-{executor-arch}'
+      - 'cicn-libparc-merge-{stream}-{os}-{executor-arch}'
 
     project: 'cicn'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
+      - ubuntu2004:
+          repo-os-part: 'ubuntu.focal.main'
       - centos7:
           repo-os-part: 'centos7'
+    
+    executor-arch: "x86_64"
 
     stream:
       - master:
@@ -27,19 +27,22 @@
       - long
 
 - project:
-    name: cicn-libparc-arm64
+    name: cicn-libparc-aarch64
     jobs:
-      - 'cicn-arm64-libparc-verify-{stream}-{os}'
-      - 'cicn-arm64-libparc-merge-{stream}-{os}'
+      - 'cicn-libparc-verify-{stream}-{os}-{executor-arch}'
+      - 'cicn-libparc-merge-{stream}-{os}-{executor-arch}'
 
     project: 'cicn'
+    os:
+      - ubuntu1804:
+          repo-os-part: "ubuntu-arm.bionic.main"
+    
+    executor-arch: "aarch64"
+
     stream:
       - master:
           branch: 'cframework/master'
           repo-stream-part: 'master'
-    os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
 
     type:
       - short
@@ -48,13 +51,15 @@
 - project:
     name: cicn-viper
     jobs:
-      - 'cicn-viper-verify-{stream}-{os}'
-      - 'cicn-viper-merge-{stream}-{os}'
+      - 'cicn-viper-verify-{stream}-{os}-{executor-arch}'
+      - 'cicn-viper-merge-{stream}-{os}-{executor-arch}'
 
     project: 'cicn'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
+    
+    executor-arch: "x86_64"
 
     stream:
       - master:
@@ -66,290 +71,10 @@
       - long
 
 - job-template:
-    name: 'cicn-libparc-merge-{stream}-{os}'
+    name: 'cicn-libparc-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: '{os}-m'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - maven-project-parameter:
-          maven: 'mvn33-new'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: 'hicn'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - reverse:
-          jobs: 'cicn-longbow-merge-{stream}-ubuntu1604'
-          result: 'success'
-      - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
-      - reverse:
-          jobs: 'cicn-longbow-merge-{stream}-{os}'
-          result: 'failure'
-
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '.packagecloud'
-              target: '/root/.packagecloud'
-      - config-file-provider:
-          files:
-            - file-id: 'packagecloud_api'
-              target: '/root/packagecloud_api'
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'cicn-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - shell:
-          !include-raw-escape:
-          - include-raw-cicn-libparc-build.sh
-      - provide-maven-settings:
-          settings-file: 'cicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-cicn-maven-push.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/packagecloud_push.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'cicn-libparc-verify-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}-m'
-    concurrent: true
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-patch-submitted:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - include-raw-cicn-libparc-build.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'cicn-libparc-docs-merge-{stream}'
-
-    project-type: freestyle
-    node: 'ubuntu1604-builder-8c-32g'
-    concurrent: true
-    archive-artifacts: 'libparc/build/documentation/*.tar'
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - reverse:
-          jobs: 'cicn-libparc-merge-{stream}-ubuntu1604'
-          result: 'success'
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'run-docs'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
-
-    builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'cicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
-          - include-raw-cicn-libparc-docs.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'cicn-libparc-docs-verify-{stream}'
-
-    project-type: freestyle
-    node: 'ubuntu1604-builder-8c-32g'
-    concurrent: true
-    archive-artifacts: 'libparc/build/documentation/*.tar'
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-patch-submitted:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'cicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape:
-          - include-raw-cicn-libparc-docs.sh
-
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
-
-- job-template:
-    name: 'cicn-arm64-libparc-merge-{stream}-{os}'
-
-    project-type: freestyle
-    node: '{os}arm-us'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -427,10 +152,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'cicn-arm64-libparc-verify-{stream}-{os}'
+    name: 'cicn-libparc-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{os}arm-us'
+    node: '{os}-m'
     concurrent: true
 
     build-discarder:
@@ -476,7 +201,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'cicn-viper-merge-{stream}-{os}'
+    name: 'cicn-viper-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: '{os}-m'
@@ -560,7 +285,7 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'cicn-viper-verify-{stream}-{os}'
+    name: 'cicn-viper-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: '{os}-m'
