@@ -114,6 +114,8 @@
           repo-os-part: 'centos8'
       - debian9:
           repo-os-part: 'stretch'
+      - debian10:
+          repo-os-part: 'buster'
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
     executor-arch: 'x86_64'
@@ -158,24 +160,24 @@
 # 'vpp-os-in-XXXX-x86_64' project. If no OSes are being
 # tested then this project should be commented out.
 #
-- project:
-    name: vpp-beta-x86_64
-    jobs:
-      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
-          comment-trigger-value: 'vpp-beta-verify'
-      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
-          comment-trigger-value: 'vpp-beta-merge'
-    project: 'vpp'
-    make-parallel-jobs: '4'
-    stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
-          branch-head-refspec: ''
-    os:
-      - debian10:
-          repo-os-part: 'buster'
-    executor-arch: x86_64
+#- project:
+#    name: vpp-beta-x86_64
+#    jobs:
+#      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
+#          comment-trigger-value: 'vpp-beta-verify'
+#      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
+#          comment-trigger-value: 'vpp-beta-merge'
+#    project: 'vpp'
+#    make-parallel-jobs: '4'
+#    stream:
+#      - master:
+#          branch: 'master'
+#          repo-stream-part: 'master'
+#          branch-head-refspec: ''
+#    os:
+#      - debian10:
+#          repo-os-part: 'buster'
+#    executor-arch: x86_64
 # [end] VPP-BETA-X86_64 PROJECT
 
 # VPP-GCC-X86_64 PROJECT
