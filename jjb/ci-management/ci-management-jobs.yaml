@@ -6,7 +6,8 @@
       - gerrit-jenkins-cfg-merge
       - gerrit-jenkins-sandbox-cleanup
       - gerrit-jjb-deploy-job
-      - gerrit-jjb-merge
+      - gerrit-jjb-merge:
+          build-node: centos7-builder-8c-8g
       - gerrit-jjb-verify
 
     project: ci-management
