@@ -23,6 +23,7 @@ sleep 10
 
 FACTER_OS=$(/usr/bin/facter operatingsystem)
 push_cmd=""
+push_ext_deps_cmd=""
 
 # PCIO_CO and SILO are Jenkins Global Environment variables defined in
 # .../ci-management/jenkins-config/global-vars-*.sh
@@ -30,19 +31,31 @@ if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
         Debian)
             FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
-            DEBS=$(find . -type f -iname '*.deb')
+            DEBS=$(find . -type f -iname '*.deb' | grep -v vpp-ext-deps)
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${DEBS}"
+            EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
+            if [ -n "$EXT_DEPS_DEB" ] ; then
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB} || true"
+            fi
             ;;
         Ubuntu)
             FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
-            DEBS=$(find . -type f -iname '*.deb')
+            DEBS=$(find . -type f -iname '*.deb' | grep -v vpp-ext-deps)
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${DEBS}"
+            EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
+            if [ -n "$EXT_DEPS_DEB" ] ; then
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB} || true"
+            fi
             ;;
         CentOS)
             FACTER_OSMAJREL=$(/usr/bin/facter operatingsystemmajrelease)
             FACTER_ARCH=$(/usr/bin/facter architecture)
-            RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm')
+            RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v vpp-ext-deps)
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${RPMS}"
+            EXT_DEPS_RPM=$(find . -type f -iname 'vpp-ext-deps*.rpm')
+            if [ -n "$EXT_DEPS_RPM" ] ; then
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${EXT_DEPS_RPM} || true"
+            fi
             ;;
         *)
             echo "ERROR: Unsupported OS '$FACTER_OS'"
@@ -52,8 +65,14 @@ if [ -f ~/.packagecloud ]; then
     esac
     if [ "${SILO,,}" = "sandbox" ] ; then
         echo "SANDBOX: skipping '$push_cmd'"
+        if [ -n "$push_ext_deps_cmd" ] ; then
+            echo "SANDBOX: skipping '$push_ext_deps_cmd'"
+        fi
     else
         $push_cmd
+        if [ -n "$push_ext_deps_cmd" ] ; then
+            $push_ext_deps_cmd
+        fi
     fi
 else
     echo "ERROR: Missing '~/.packagecloud' for user '$(id)'"
