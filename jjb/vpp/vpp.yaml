@@ -72,10 +72,35 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
+    executor-arch: 'x86_64'
+# [end] VPP-X86_64 PROJECT
+
+# VPP-OS-EOL-X86_64 PROJECT
+- project:
+    name: vpp-os-eol-x86_64
+    jobs:
+      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-parallel-jobs: '4'
+    stream:
+      - '1908':
+          branch: 'stable/1908'
+          repo-stream-part: 'stable.1908'
+          branch-head-refspec: ''
+      - '2005':
+          branch: 'stable/2005'
+          repo-stream-part: 'stable.2005'
+          branch-head-refspec: ''
+      - '2009':
+          branch: 'stable/2009'
+          repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
+    os:
       - centos7:
           repo-os-part: 'centos7'
     executor-arch: 'x86_64'
-# [end] VPP-X86_64 PROJECT
+# [end] VPP-OS-EOL-X86_64 PROJECT
 
 # VPP-OS-IN-2009-X86_64 PROJECT
 #
