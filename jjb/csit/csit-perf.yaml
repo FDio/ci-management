@@ -34,6 +34,7 @@
             - ''
             - -2n-clx
             - -2n-skx
+            - -2n-zn2
             - -3n-skx
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
@@ -77,6 +78,8 @@
             - -2n-skx:
                 periodicity: '0 2,14 * * *'
             - -2n-dnv:
+                periodicity: '0 2,14 * * *'
+            - -2n-zn2:
                 periodicity: '0 2,14 * * *'
             - -3n-skx:
                 periodicity: '0 2,14 * * *'
