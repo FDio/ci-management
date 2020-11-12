@@ -35,7 +35,7 @@ if [ -f ~/.packagecloud ]; then
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${DEBS}"
             EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
             if [ -n "$EXT_DEPS_DEB" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB} || true"
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB}"
             fi
             ;;
         Ubuntu)
@@ -44,7 +44,7 @@ if [ -f ~/.packagecloud ]; then
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${DEBS}"
             EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
             if [ -n "$EXT_DEPS_DEB" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB} || true"
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB}"
             fi
             ;;
         CentOS)
@@ -54,7 +54,7 @@ if [ -f ~/.packagecloud ]; then
             push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${RPMS}"
             EXT_DEPS_RPM=$(find . -type f -iname 'vpp-ext-deps*.rpm')
             if [ -n "$EXT_DEPS_RPM" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${EXT_DEPS_RPM} || true"
+                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${EXT_DEPS_RPM}"
             fi
             ;;
         *)
@@ -71,7 +71,10 @@ if [ -f ~/.packagecloud ]; then
     else
         $push_cmd
         if [ -n "$push_ext_deps_cmd" ] ; then
+            # Don't fail script if vpp-ext-deps push fails.
+            set +e
             $push_ext_deps_cmd
+            set -e
         fi
     fi
 else
