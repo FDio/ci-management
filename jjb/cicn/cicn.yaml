@@ -73,7 +73,7 @@
     name: "cicn-libparc-merge-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "{os}-m"
+    node: "builder-{os}-prod-{executor-arch}"
 
     build-discarder:
       daysToKeep: "{build-days-to-keep}"
@@ -151,7 +151,7 @@
     name: "cicn-libparc-verify-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "{os}-m"
+    node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
 
     build-discarder:
@@ -199,7 +199,7 @@
     name: "cicn-viper-merge-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "{os}-m"
+    node: "builder-{os}-prod-{executor-arch}"
 
     build-discarder:
       daysToKeep: "{build-days-to-keep}"
@@ -280,7 +280,7 @@
     name: "cicn-viper-verify-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "{os}-m"
+    node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
 
     build-discarder:
