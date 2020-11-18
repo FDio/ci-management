@@ -56,7 +56,7 @@ cat > deploy-archives.xml <<EOF
               <goal>upload-file</goal>
             </goals>
             <configuration>
-              <serverId>fdioproject-log-archives</serverId>
+              <serverId>logs</serverId>
               <repositoryUrl>$LOGS_REPO_URL/content-compressed</repositoryUrl>
               <file>archives.zip</file>
               <repositoryPath>$SILO</repositoryPath>
