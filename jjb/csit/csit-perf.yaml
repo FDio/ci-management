@@ -297,8 +297,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - lf-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master{node-arch}'
