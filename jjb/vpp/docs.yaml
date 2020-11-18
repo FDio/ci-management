@@ -101,9 +101,9 @@
           !include-raw-escape:
           - ../scripts/vpp/docs.sh
 
-#    publishers:
-#      - fdio-infra-shiplogs:
-#          maven-version: 'mvn36'
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
@@ -424,9 +424,9 @@
           !include-raw-escape:
           - ../scripts/vpp/make-test-docs.sh
 
-#    publishers:
-#      - fdio-infra-shiplogs:
-#          maven-version: 'mvn36'
+    publishers:
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}-{os}-{executor-arch}'
