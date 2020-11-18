@@ -537,9 +537,6 @@
           !include-raw-escape:
           - ../scripts/vpp/commitmsg.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
 
 # VPP-VERIFY JOB TEMPLATE
@@ -606,9 +603,6 @@
           !include-raw-escape:
           - ../scripts/vpp/build.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-VERIFY JOB TEMPLATE
 
 # VPP-DEBUG-VERIFY JOB TEMPLATE
@@ -673,9 +667,6 @@
           !include-raw-escape:
           - ../scripts/vpp/debug-build.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-DEBUG-VERIFY JOB TEMPLATE
 
 # VPP-MERGE JOB TEMPLATE
@@ -757,9 +748,6 @@
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-MERGE JOB TEMPLATE
 
 # VPP-BETA-VERIFY JOB TEMPLATE
@@ -827,9 +815,6 @@
           !include-raw-escape:
           - ../scripts/vpp/build.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-BETA-VERIFY JOB TEMPLATE
 
 # VPP-BETA-MERGE JOB TEMPLATE
@@ -914,9 +899,6 @@
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-BETA-MERGE JOB TEMPLATE
 
 # VPP-GCC-VERIFY JOB TEMPLATE
@@ -983,9 +965,6 @@
           !include-raw-escape:
           - ../scripts/vpp/gcc-build.sh
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-GCC-VERIFY JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
@@ -1067,8 +1046,6 @@
       - robot-report:
           output-path: 'csit_current/'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
@@ -1227,8 +1204,5 @@
           - ../scripts/vpp/check_crc.sh
       # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
-    publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
 # [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 # [end] JOB TEMPLATE DEFINITIONS
