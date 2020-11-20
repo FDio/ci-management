@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3878c8_dd0304d0",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-verify-2005-2n-skx/9/archives/\n\nAlso, here is a direct Sandbox evidence (for this week): https://jenkins.fd.io/sandbox/job/csit-vpp-perf-verify-master-2n-skx/1/",
+      "range": {
+        "startLine": 296,
+        "startChar": 23,
+        "endLine": 296,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f953a6a0_3a734bbc",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-mrr-daily-master-2n-skx/1086/archives/",
+      "range": {
+        "startLine": 374,
+        "startChar": 23,
+        "endLine": 374,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fff5818_84391299",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-mrr-weekly-1908_2-2n-skx/33/archives/",
+      "range": {
+        "startLine": 452,
+        "startChar": 23,
+        "endLine": 452,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7446ca2d_7e88cc73",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-ndrpdr-weekly-master-2n-skx/117/archives/",
+      "range": {
+        "startLine": 525,
+        "startChar": 23,
+        "endLine": 525,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6443435_cd276ea0",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-dpdk-perf-verify-2005-3n-hsw/2/archives/",
+      "range": {
+        "startLine": 626,
+        "startChar": 23,
+        "endLine": 626,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1129750_b7ccaf6b",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-dpdk-perf-mrr-weekly-master/153/archives/",
+      "range": {
+        "startLine": 704,
+        "startChar": 23,
+        "endLine": 704,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d04489ef_e9bee987",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-report-iterative-2009-2n-skx/121/archives/",
+      "range": {
+        "startLine": 803,
+        "startChar": 23,
+        "endLine": 803,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef189543_4a44f03d",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-dpdk-perf-report-iterative-2009-2n-skx/13/archives/",
+      "range": {
+        "startLine": 902,
+        "startChar": 23,
+        "endLine": 902,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb5a18f2_6850868f",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "Robot files are there, example: https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-perf-report-coverage-2009-2n-skx/33/archives/",
+      "range": {
+        "startLine": 1001,
+        "startChar": 23,
+        "endLine": 1001,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a277a97_f167001b",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "Turns out these jobs have never run, the few DPDK tests are fully covered by iterative job.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 23,
+        "endLine": 1100,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a107d5bd_6e7941ad",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-device-master-ubuntu1804-1n-tx2/47/archives/",
+      "range": {
+        "startLine": 170,
+        "startChar": 23,
+        "endLine": 170,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ba3633d_4cd7f044",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-device-master-ubuntu1804-1n-tx2-semiweekly/1/archives/",
+      "range": {
+        "startLine": 257,
+        "startChar": 23,
+        "endLine": 257,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d6e6c59_810931ef",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:00:33Z",
+      "side": 1,
+      "message": "https://logs.fd.io/production/vex-yul-rot-jenkins-1/csit-vpp-device-master-ubuntu1804-1n-skx-weekly/129/archives/",
+      "range": {
+        "startLine": 345,
+        "startChar": 23,
+        "endLine": 345,
+        "endChar": 33
+      },
+      "revId": "6519f67a6fc161c4d9ef66c35f134c85e8833a68",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
