@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7e60b398_87e4f4b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-11-20T15:04:13Z",
+      "side": 1,
+      "message": "I have not found any examples of such breakage, at least for jobs that have run last 6 months (older runs are deleted from logs.fd.io).",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "cd2f3e08d1d8dd65a705c734c771fde32b99e9e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5baecadd_ecc8efca",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 3
