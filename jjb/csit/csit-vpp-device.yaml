@@ -167,7 +167,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
       - fdio-infra-shiplogs:
@@ -254,7 +254,7 @@
 
     publishers:
       - robot:
-          output-path: 'csit/archive'
+          output-path: 'archives'
           other-files:
             - '*.*'
       - fdio-infra-shiplogs:
@@ -342,7 +342,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
       - fdio-infra-shiplogs:
