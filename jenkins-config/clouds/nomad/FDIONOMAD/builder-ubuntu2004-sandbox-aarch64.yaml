@@ -1,0 +1,14 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 6000
+    image: "fdiotools/builder-ubuntu2004:sandbox-aarch64"
+    labels: "builder-ubuntu2004-sandbox-aarch64"
+    memory: 10000
+    prefix: "builder-ubuntu2004-sandbox-aarch64"
