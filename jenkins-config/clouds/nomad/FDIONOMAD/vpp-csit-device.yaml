@@ -1,0 +1,26 @@
+templates:
+  - constraints:
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csit"
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "amd64"
+    cpu: 10000
+    datacenters: "yul1"
+    disk: 3000
+    forcePull: false
+    idleTerminationInMinutes: 10
+    image: "snergster/vpp-ubuntu18"
+    labels: "vpp-csit-device vpp-csit-ubuntu18"
+    memory: 18000
+    network: "bridge"
+    numExecutors: 1
+    prefix: "prod-csit"
+    priority: 50
+    privileged: true
+    region: "global"
+    remoteFs: "/w"
+    reusable: false
+    useRawExec: false
+    password: hidden

@@ -1,0 +1,26 @@
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "amd64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 20000
+    datacenters: "yul1"
+    disk: 3000
+    forcePull: false
+    idleTerminationInMinutes: 10
+    image: "snergster/vpp-ubuntu18"
+    labels: "ubuntu1804-l"
+    memory: 32000
+    network: "bridge"
+    numExecutors: 1
+    prefix: "prod-amd"
+    priority: 50
+    privileged: true
+    region: "global"
+    remoteFs: "/w"
+    reusable: false
+    useRawExec: false
+    password: hidden

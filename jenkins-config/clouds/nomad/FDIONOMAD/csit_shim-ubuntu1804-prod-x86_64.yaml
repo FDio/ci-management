@@ -1,0 +1,27 @@
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "amd64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csit"
+    cpu: 10000
+    datacenters: "yul1"
+    disk: 3000
+    forcePull: true
+    idleTerminationInMinutes: 10
+    image: "fdiotools/csit_shim-ubuntu1804:prod-x86_64"
+    labels: "csit_shim-ubuntu1804-prod-x86_64"
+    memory: 18000
+    network: "bridge"
+    numExecutors: 1
+    password: hidden
+    prefix: "csit_shim-ubuntu1804-prod-x86_64"
+    priority: 50
+    privileged: true
+    region: "global"
+    remoteFs: "/w"
+    reusable: false
+    useRawExec: false
+    username: "fdionomad"

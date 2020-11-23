@@ -1,0 +1,27 @@
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csitarm"
+    cpu: 6000
+    datacenters: "yul1"
+    disk: 3000
+    forcePull: true
+    idleTerminationInMinutes: 10
+    image: "fdiotools/csit_dut-ubuntu1804:prod-aarch64"
+    labels: "csit_dut-ubuntu1804-prod-aarch64"
+    memory: 10000
+    network: "bridge"
+    numExecutors: 1
+    password: hidden
+    prefix: "csit_dut-ubuntu1804-prod-aarch64"
+    priority: 50
+    privileged: true
+    region: "global"
+    remoteFs: "/w"
+    reusable: false
+    useRawExec: false
+    username: "fdionomad"
