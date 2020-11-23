@@ -1,0 +1,7 @@
+---
+templates:
+  - cpu: 6000
+    image: "fdiotools/builder-ubuntu2004:test-aarch64"
+    labels: "builder-ubuntu2004-test-aarch64"
+    memory: 10000
+    prefix: "builder-ubuntu2004-test-aarch64"

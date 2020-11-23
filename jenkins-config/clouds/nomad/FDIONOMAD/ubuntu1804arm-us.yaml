@@ -1,0 +1,6 @@
+templates:
+  - cpu: 6000
+    image: "snergster/vpp-arm-ubuntu18"
+    labels: "ubuntu1804arm-us"
+    memory: 10000
+    prefix: "prod-arm"
