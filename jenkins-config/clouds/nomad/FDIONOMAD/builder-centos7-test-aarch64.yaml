@@ -1,0 +1,14 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 6000
+    image: "fdiotools/builder-centos7:test-aarch64"
+    labels: "builder-centos7-test-aarch64"
+    memory: 10000
+    prefix: "builder-centos7-test-aarch64"

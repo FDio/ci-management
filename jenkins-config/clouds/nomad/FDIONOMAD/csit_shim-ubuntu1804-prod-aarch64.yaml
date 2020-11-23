@@ -1,0 +1,14 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csitarm"
+    cpu: 6000
+    image: "fdiotools/csit_shim-ubuntu1804:prod-aarch64"
+    labels: "csit_shim-ubuntu1804-prod-aarch64"
+    memory: 10000
+    prefix: "csit_shim-ubuntu1804-prod-aarch64"
