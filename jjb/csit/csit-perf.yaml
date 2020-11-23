@@ -293,7 +293,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -371,7 +371,7 @@
 
     publishers:
       - robot:
-          output-path: 'csit/archive'
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -449,7 +449,7 @@
 
     publishers:
       - robot:
-          output-path: 'csit/archive'
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -522,7 +522,7 @@
 
     publishers:
       - robot:
-          output-path: 'csit/archive'
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -623,7 +623,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -701,7 +701,7 @@
 
     publishers:
       - robot:
-          output-path: 'csit/archive'
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -800,7 +800,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -899,7 +899,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -998,7 +998,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 
@@ -1097,7 +1097,7 @@
 
     publishers:
       - robot:
-          output-path: archive
+          output-path: 'archives'
           other-files:
             - '*.*'
 

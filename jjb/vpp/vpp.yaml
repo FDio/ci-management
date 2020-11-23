@@ -1065,7 +1065,7 @@
 
     publishers:
       - robot-report:
-          output-path: 'csit_current/'
+          output-path: 'archives'
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
