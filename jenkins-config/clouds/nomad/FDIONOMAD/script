@@ -1,0 +1,20 @@
+#!/bin/bash
+#testing only will be removed
+path="."
+
+
+files=()
+while read -d $'\n'; do
+     if [[ $REPLY =~ cloud.yaml ]];then
+       cloudfile=$REPLY
+     else
+       files+=("$REPLY")
+     fi
+done < <(find "$path" -name "*.yaml" )
+
+yq3 merge --arrays append "${files[@]}" > umerged.yaml
+yq3 p -- umerged.yaml  "jenkins.clouds[+] nomad" > nmerged.yaml
+yq3 m --arrays update cloud.yaml nmerged.yaml > final.yaml
+yq3 w -d'*' final.yaml 'jenkins.clouds[0].nomad.templates[*].password' somepassword
+
+rm -f umerged.yaml nmerged.yaml final.yaml

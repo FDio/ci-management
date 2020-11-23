@@ -1,0 +1,15 @@
+templates:
+  - constraints:
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csitarm"
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+    cpu: 6000
+    disk: 3000
+    forcePull: false
+    image: "snergster/vpp-arm-ubuntu18"
+    labels: "vpp-csit-arm-ubuntu18"
+    memory: 10000
+    prefix: "prod-csit-arm"
