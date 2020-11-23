@@ -1,0 +1,5 @@
+templates:
+  - image: "snergster/vpp-arm-ubuntu18"
+    labels: "ubuntu1804arm-s"
+    memory: 16000
+    prefix: "prod-arm"
