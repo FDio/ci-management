@@ -1,0 +1,5 @@
+---
+templates:
+  - image: "fdiotools/builder-debian9:prod-aarch64"
+    labels: "builder-debian9-prod-aarch64"
+    prefix: "builder-debian9-prod-aarch64"

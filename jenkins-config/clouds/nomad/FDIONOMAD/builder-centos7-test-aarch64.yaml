@@ -1,0 +1,5 @@
+---
+templates:
+  - image: "fdiotools/builder-centos7:test-aarch64"
+    labels: "builder-centos7-test-aarch64"
+    prefix: "builder-centos7-test-aarch64"

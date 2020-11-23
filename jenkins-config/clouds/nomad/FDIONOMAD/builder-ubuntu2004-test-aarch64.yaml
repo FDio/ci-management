@@ -1,0 +1,5 @@
+---
+templates:
+  - image: "fdiotools/builder-ubuntu2004:test-aarch64"
+    labels: "builder-ubuntu2004-test-aarch64"
+    prefix: "builder-ubuntu2004-test-aarch64"

@@ -1,0 +1,25 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    datacenters: "yul1"
+    cpu: 6000
+    memory: 10000
+    disk: 3000
+    priority: 50
+    idleTerminationInMinutes: 10
+    numExecutors: 1
+    forcePull: true
+    privileged: true
+    reusable: false
+    useRawExec: false
+    network: "bridge"
+    region: "global"
+    remoteFs: "/w"
+    username: "fdionomad"
+    password: "hidden"

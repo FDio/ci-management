@@ -1,0 +1,5 @@
+---
+templates:
+  - image: "fdiotools/builder-debian10:sandbox-aarch64"
+    labels: "builder-debian10-sandbox-aarch64"
+    prefix: "builder-debian10-sandbox-aarch64"
