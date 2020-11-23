@@ -43,9 +43,9 @@ dnf_install_docker() {
     # Browse the base URL to see what is available & update accordingly.
 
     if [ "$OS_NAME" = "centos-8" ] ; then
-        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/containerd.io-1.3.7-3.1.el8.x86_64.rpm
-        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/docker-ce-cli-19.03.13-3.el8.x86_64.rpm
-        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/docker-ce-19.03.13-3.el8.x86_64.rpm
+        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/containerd.io-1.3.7-3.1.el8.$OS_ARCH.rpm
+        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/docker-ce-cli-19.03.13-3.el8.$OS_ARCH.rpm
+        dnf install -y https://download.docker.com/linux/$OS_ID/$OS_VERSION_ID/$OS_ARCH/stable/Packages/docker-ce-19.03.13-3.el8.$OS_ARCH.rpm
     else
         echo_log "WARNING: Docker Image unknown for $OS_NAME!"
     fi
