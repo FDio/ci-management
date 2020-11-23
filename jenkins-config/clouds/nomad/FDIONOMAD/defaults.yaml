@@ -1,0 +1,23 @@
+---
+templates:
+  - constraints:
+      - ltarget: null
+        operand: "="
+        rtarget: "default1"
+      - ltarget: null
+        operand: "="
+        rtarget: "default2"
+    datacenters: "yul1"
+    image: "default"
+    forcePull: true
+    idleTerminationInMinutes: 10
+    network: "bridge"
+    numExecutors: 1
+    priority: 50
+    privileged: true
+    region: "global"
+    remoteFs: "/w"
+    reusable: false
+    useRawExec: false
+    username: "fdionomad"
+    password: "hidden"

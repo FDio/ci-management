@@ -1,0 +1,15 @@
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 6000
+    disk: 3000
+    forcePull: true
+    image: "fdiotools/builder-ubuntu1804:prod-aarch64"
+    labels: "builder-ubuntu1804-prod-aarch64"
+    memory: 10000
+    prefix: "builder-ubuntu1804-prod-aarch64"
