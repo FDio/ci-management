@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f203c11e_d4aabbec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2020-11-25T17:22:45Z",
+      "side": 1,
+      "message": "Preliminary",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "80a6ac031f66be5299b9d7e8a0c43b4fffc08d19",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35d72da_074effe8",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/script",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2020-11-25T17:22:45Z",
+      "side": 1,
+      "message": "This file shouldn\u0027t be in here",
+      "revId": "80a6ac031f66be5299b9d7e8a0c43b4fffc08d19",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
