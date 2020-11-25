@@ -39,6 +39,24 @@
       "revId": "80a6ac031f66be5299b9d7e8a0c43b4fffc08d19",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5842c5b_c355cc06",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/script",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16
+      },
+      "writtenOn": "2020-11-25T19:25:56Z",
+      "side": 1,
+      "message": "yeah I\u0027ll remove it, just didn\u0027t want to lose it, and also allow Vanessa to try it out.",
+      "parentUuid": "b35d72da_074effe8",
+      "revId": "80a6ac031f66be5299b9d7e8a0c43b4fffc08d19",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
