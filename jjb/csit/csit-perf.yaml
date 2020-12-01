@@ -764,6 +764,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -863,6 +866,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -962,6 +968,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
@@ -1061,6 +1070,9 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
