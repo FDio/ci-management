@@ -17,9 +17,10 @@ echo "---> jjb/scripts/csit/perf-verify.sh"
 
 set -exuo pipefail
 
+# TODO: Figure out how old CSIT branches need the processing here.
 if [[ ${GERRIT_EVENT_TYPE} == 'comment-added' ]]; then
     TRIGGER=`echo ${GERRIT_EVENT_COMMENT_TEXT} \
-        | grep -oE '(perftest$|perftest[[:space:]].+$)'`
+        | grep -oE '(perftest$|perftest[[:space:]].+$)' || true`
 else
     TRIGGER=''
 fi
