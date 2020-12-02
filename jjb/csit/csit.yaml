@@ -324,7 +324,7 @@
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: 'rls2009_lts'
       - maven-exec:
           maven-version: 'mvn33-new'
 
