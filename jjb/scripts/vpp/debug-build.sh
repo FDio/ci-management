@@ -25,11 +25,11 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 # run with ASAN on
-# export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
+export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
 
 # clang is not working with ASAN right now - see change 27268
-# apparently gcc neither...
-# export CC=gcc
+# also, it does not work with gcc-7, we need gcc-8 at least
+# on ubuntu 20.04 executor the gcc is gcc9
 
 make UNATTENDED=yes install-dep
 make UNATTENDED=yes install-ext-deps

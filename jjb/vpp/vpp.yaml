@@ -168,8 +168,8 @@
           repo-stream-part: 'stable.2009'
           branch-head-refspec: ''
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+      - ubuntu2004:
+          repo-os-part: 'ubuntu.focal.main'
     executor-arch: 'x86_64'
 # [end] VPP-DEBUG-X86_64 PROJECT
 
