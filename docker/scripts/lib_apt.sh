@@ -112,6 +112,8 @@ ENV PATH=$PATH:$DOCKER_CIMAN_ROOT/docker/scripts
 #       facter
 #       python3-pip
 #       python3-venv
+#   for lftools:
+#       xmlstarlet
 #   from global-jjb/packer/provision/baseline.sh:
 #       unzip
 #       xz-utils
@@ -173,6 +175,7 @@ RUN apt-get update -q \\
         tree \\
         vim \\
         wget \\
+        xmlstarlet \\
         xz-utils \\
     && rm -r /var/lib/apt/lists/*
 

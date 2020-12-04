@@ -67,4 +67,4 @@ if [ "$OS_NAME" = "debian-9" } ; then
     # build so pin the version of lftools which does not pin osc-lib==2.2.0
     pinned_version="==0.34.1"
 fi
-python3 -m pip install --no-deps lftools[openstack]$pinned_version
+python3 -m pip install lftools$pinned_version

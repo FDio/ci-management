@@ -25,6 +25,14 @@
           description: "Architecture parameter"
 
 - parameter:
+    name: archive-artifacts-parameter
+    parameters:
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{artifacts}'
+          description: "Artifacts to archive on the log server."
+
+- parameter:
     name: compiler-parameter
     parameters:
       - string:
@@ -187,6 +195,14 @@
           name: TOPO
           default: '{topo}'
           description: "Topology parameter"
+
+- parameter:
+    name: workspace-archive-artifacts-parameter
+    parameters:
+      - string:
+          name: WS_ARCHIVE_ARTIFACTS
+          default: '{artifacts}'
+          description: "Artifacts to archive in $WORKSPACE/archives."
 # [end] Keep 'parameter' entries ordered alphabetically, please.
 
 #### SCMS
@@ -635,6 +651,34 @@
             - recipients
 
 - publisher:
+    name: fdio-infra-publish
+    # macro to finish up a build.
+    #
+    # Handles the following:
+    #   - Shipping logs to Nexus or S3 logs repository
+    #   - Cleanup workspace
+    publishers:
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - shell: !include-raw: scripts/post_build_deploy_archives.sh
+                - fdio-infra-ship-logs
+          mark-unstable-if-failed: true
+      - workspace-cleanup:
+          exclude:
+            # Do not clean up *.jenkins-trigger files for jobs that use a
+            # properties file as input for triggering another build.
+            - "**/*.jenkins-trigger"
+          fail-build: false
+
+- publisher:
     name: fdio-infra-shiplogs
     # To archive things, the job will need to create an "archives" directory in
     # the workspace and this macro will handle copying the contents of the
@@ -717,6 +761,34 @@
       - build-discarder:
           days-to-keep: '{build-days-to-keep}'
           num-to-keep: '{build-num-to-keep}'
+
+- builder:
+    name: fdio-infra-ship-logs
+    builders:
+      # Ensure no pre-existing .netrc files are overriding logs config
+      - lf-provide-maven-settings-cleanup
+      - config-file-provider:
+          files:
+            - file-id: "jenkins-log-archives-settings"
+              variable: "SETTINGS_FILE"
+      - conditional-step:
+          condition-kind: regex-match
+          regex: "^.*logs-s3.*"
+          label: $S3_BUCKET
+          on-evaluation-failure: dont-run
+          steps:
+            - config-file-provider:
+                files:
+                  - file-id: "jenkins-s3-log-ship"
+                    target: $HOME/.aws/credentials
+      - lf-infra-create-netrc:
+          server-id: logs
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-deploy.sh
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-clear-credentials.sh
+      - description-setter:
+          regexp: "(^(Nexus|S3) build logs: .*)"
 
 - builder:
     name: packer-validate
