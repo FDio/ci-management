@@ -81,7 +81,7 @@ docker_build_setup_vpp() {
 # Branches must be listed in chronological order -- oldest stable branch
 # first and master last.
 declare -A VPP_BRANCHES
-VPP_BRANCHES["centos-7"]="stable/1908 stable/2001 stable/2005 stable/2009 master"
+VPP_BRANCHES["centos-7"]="stable/1908 stable/2001 stable/2005 stable/2009"
 VPP_BRANCHES["centos-8"]="stable/2009 master"
 VPP_BRANCHES["debian-9"]="stable/2009 master"
 VPP_BRANCHES["debian-10"]="stable/2009 master"
