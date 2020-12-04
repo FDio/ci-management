@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d36465fc_dd8a6c51",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-12-04T19:43:45Z",
+      "side": 1,
+      "message": "Please remove whitespace only change.",
+      "revId": "1abd2a27fd7b2c2230e946e8865bbcfa3ccf8f40",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa9354e_f96dcecc",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-12-04T19:43:45Z",
+      "side": 1,
+      "message": "I\u0027d recommend removing these commented out lines and simply let the comments on line 32-33 document the requirement.\n\nAlternatively check if the gcc version is less than 8 and then do the install and force the compiler to be gcc-8.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "1abd2a27fd7b2c2230e946e8865bbcfa3ccf8f40",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
