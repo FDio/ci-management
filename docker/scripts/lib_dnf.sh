@@ -77,6 +77,9 @@ COPY . .
 # Install baseline packages (minimum build & utils).
 #
 # ci-management global-jjb requirements:
+#   for lftools:
+#       libxml2-devel
+#       xmlstarlet
 #   for lf-env.sh:
 #       facter
 #   from global-jjb/packer/provision/baseline.sh:
@@ -105,7 +108,7 @@ RUN dnf update -y \\
     && dnf install -y \\
         dnf-plugins-core \\
         epel-release \\
-    && dnf config-manager --set-enabled PowerTools --set-enabled epel \\
+    && dnf config-manager --set-enabled powertools --set-enabled epel \\
     && dnf clean all
 RUN dnf update -y \\
     && dnf install -y \\
@@ -124,6 +127,7 @@ RUN dnf update -y \\
         lapack-devel \\
         libffi-devel \\
         libpcap-devel \\
+        libxml2-devel \\
         make \\
         mawk \\
         mock \\
@@ -140,6 +144,7 @@ RUN dnf update -y \\
         unzip \\
         vim \\
         wget \\
+        xmlstarlet \\
         xz \\
     && dnf clean all
 
