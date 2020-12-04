@@ -70,6 +70,9 @@ COPY . .
 # Install baseline packages (minimum build & utils).
 #
 # ci-management global-jjb requirements:
+#   for lftools:
+#       libxml2-devel
+#       xmlstarlet
 #   for lf-env.sh:
 #       facter
 #   from global-jjb/packer/provision/baseline.sh:
@@ -117,6 +120,7 @@ RUN yum update -y \\
         liblapack-devel \\
         libopenblas-devel \\
         libpcap-devel \\
+        libxml2-devel \\
         make \\
         mawk \\
         mock \\
@@ -131,6 +135,7 @@ RUN yum update -y \\
         unzip \\
         vim \\
         wget \\
+        xmlstarlet \\
         xz \\
     && yum clean all
 
