@@ -49,6 +49,10 @@ elif [ "$OS_ID" == "centos" ] ; then
 fi
 
 echo "$long_line"
+echo "Python3 package list:"
+pip3 list 2>/dev/null | column -t || true
+
+echo "$long_line"
 echo "Executor Downloads cache '$downloads_cache':"
 ls -lh "$downloads_cache" || true
 echo "$long_line"
