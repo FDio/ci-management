@@ -77,6 +77,9 @@ COPY . .
 # Install baseline packages (minimum build & utils).
 #
 # ci-management global-jjb requirements:
+#   for lftools:
+#       libxml2-devel
+#       xmlstarlet
 #   for lf-env.sh:
 #       facter
 #   from global-jjb/packer/provision/baseline.sh:
@@ -101,13 +104,16 @@ COPY . .
 #   lapack-devel    for python numpy/scipy (CSIT/aarch64)
 #   openblas-devel  for python numpy/scipy (CSIT/aarch64)
 #
-RUN dnf update -y \\
+RUN export LC_ALL=C.UTF8 \\
+    && dnf update -y \\
     && dnf install -y \\
         dnf-plugins-core \\
         epel-release \\
-    && dnf config-manager --set-enabled PowerTools --set-enabled epel \\
+    && dnf config-manager --set-enabled \$(dnf repolist all 2> /dev/null | grep -i powertools | cut -d' ' -f1) --set-enabled epel \\
+    && dnf repolist all \\
     && dnf clean all
-RUN dnf update -y \\
+RUN export LC_ALL=C.UTF8 \\
+    && dnf update -y \\
     && dnf install -y \\
         dnf-utils \\
         doxygen \\
@@ -124,6 +130,7 @@ RUN dnf update -y \\
         lapack-devel \\
         libffi-devel \\
         libpcap-devel \\
+        libxml2-devel \\
         make \\
         mawk \\
         mock \\
@@ -140,6 +147,7 @@ RUN dnf update -y \\
         unzip \\
         vim \\
         wget \\
+        xmlstarlet \\
         xz \\
     && dnf clean all
 

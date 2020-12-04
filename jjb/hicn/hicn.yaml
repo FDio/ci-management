@@ -1,3 +1,16 @@
+# Copyright (c) 2020 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 ---
 - project:
     name: hicn-x86_64
@@ -197,10 +210,8 @@
           os: "{os}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.ubuntu.bionic.main"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -258,8 +269,7 @@
             include-raw-hicn-checkstyle.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -289,10 +299,8 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -314,8 +322,7 @@
           - include-raw-hicn-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -348,10 +355,8 @@
           stream: "{repository-name}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -398,8 +403,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -443,10 +447,8 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -476,8 +478,7 @@
           - include-raw-hicn-extras-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -510,10 +511,8 @@
           stream: "hicn"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -566,8 +565,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
