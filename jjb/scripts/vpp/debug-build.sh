@@ -24,12 +24,14 @@ OS_ARCH=$(uname -m)
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
+
 # run with ASAN on
-# export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
+export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
 
 # clang is not working with ASAN right now - see change 27268
-# apparently gcc neither...
-# export CC=gcc
+# also, it does not work with gcc-7, we need gcc-8
+sudo apt-get install -y gcc-8 g++-8
+export CC=gcc-8
 
 make UNATTENDED=yes install-dep
 make UNATTENDED=yes install-ext-deps
