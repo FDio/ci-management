@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "---> jjb/ci-management/packagecloud-repo-cleanup.sh"
+
 set -euo pipefail
 
 # Number of packages to keep.

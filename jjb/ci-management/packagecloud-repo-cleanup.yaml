@@ -1,18 +1,28 @@
 - project:
-    name: packagecloud-repo-cleanup
+    name: packagecloud-repo-cleanup-x86_64
     jobs:
-      - 'packagecloud-repo-cleanup-release-{os}'
-      - 'packagecloud-repo-cleanup-hicn-{os}'
+      - 'packagecloud-repo-cleanup-release-{os}-{executor-arch}'
+      - 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
     project: 'ci-management'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu1804arm:
-          repo-os-part: 'ubuntu-arm.bionic.main'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
       - centos7:
           repo-os-part: 'centos7'
+
+    executor-arch: "x86_64"
+
+- project:
+    name: packagecloud-repo-cleanup-aarch64
+    jobs:
+      - 'packagecloud-repo-cleanup-release-{os}-{executor-arch}'
+      - 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
+    project: 'ci-management'
+    os:
+      - ubuntu1804:
+          repo-os-part: 'ubuntu-arm.bionic.main'
+
+    executor-arch: "aarch64"
 
 - project:
     name: packagecloud-view
@@ -21,10 +31,10 @@
     project-name: packagecloud
 
 - job-template:
-    name: 'packagecloud-repo-cleanup-release-{os}'
+    name: 'packagecloud-repo-cleanup-release-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
     build-discarder:
@@ -83,10 +93,10 @@
           maven-version: 'mvn36'
 
 - job-template:
-    name: 'packagecloud-repo-cleanup-hicn-{os}'
+    name: 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
     build-discarder:
