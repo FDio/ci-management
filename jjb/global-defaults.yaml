@@ -12,6 +12,9 @@
     build-timeout: 360
     build-perf-timeout: 5760
 
+    failure-notification: "releng+fdio@linuxfoundation.org"
+    failure-notification-prefix: "[releng]"
+
     # global-jjb
     gerrit-server-name: Primary
     jenkins-ssh-credential: jenkins-gerrit-credentials
