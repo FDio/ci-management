@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f97c152_4df6bcb6",
+        "filename": "docker/scripts/dbld_lfit_requirements.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-12-11T11:59:01Z",
+      "side": 1,
+      "message": "]",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "fe87e351be4b9a26db6937930e2b7e3637bdbf0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
