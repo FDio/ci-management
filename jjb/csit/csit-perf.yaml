@@ -63,6 +63,9 @@
             - '2009_lts':
                 branch: 'rls2009_lts'
                 branch-id: 'oper-rls2009_lts'
+            - '2101':
+                branch: 'rls2101'
+                branch-id: 'oper-rls2101'
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - '':
@@ -166,6 +169,9 @@
       - '2009_lts':
           branch: 'rls2009_lts'
           branch-id: 'oper-rls2009_lts'
+      - '2101':
+          branch: 'rls2101'
+          branch-id: 'oper-rls2101'
     stream_report:
       - '2009':
           branch: 'rls2009'
