@@ -40,6 +40,10 @@
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
           branch-head-refspec: ''
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
+          branch-head-refspec: ''
     os: 'ubuntu1804'
     executor-arch: 'x86_64'
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
@@ -68,6 +72,10 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
           branch-head-refspec: ''
     os:
       - ubuntu1804:
@@ -134,6 +142,11 @@
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
           branch-head-refspec: ''
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
+          branch-head-refspec: ''
+    os:
     os:
       - centos8:
           repo-os-part: 'centos8'
@@ -224,6 +237,10 @@
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
           branch-head-refspec: ''
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
+          branch-head-refspec: ''
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -250,6 +267,10 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
+          branch-head-refspec: ''
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
           branch-head-refspec: ''
     os:
       - ubuntu1804:
@@ -355,6 +376,9 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
     device-node-arch:
       - 1n-skx
       - 1n-tx2:
@@ -399,6 +423,9 @@
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
+      - '2101':
+          branch: 'stable/2101'
+          repo-stream-part: 'stable.2101'
       - master:
           branch: 'master'
     os: ubuntu1804
