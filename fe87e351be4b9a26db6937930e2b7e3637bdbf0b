@@ -22,6 +22,29 @@
       "revId": "fe87e351be4b9a26db6937930e2b7e3637bdbf0b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0421960_7378225c",
+        "filename": "docker/scripts/dbld_lfit_requirements.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-12-14T09:12:27Z",
+      "side": 1,
+      "message": "lftools is being built on Arm and it requires development packages of libxml2 and libxslt.\n\nThus, for CentOS, we need:\ndnf install -y libxml2-devel libxslt-devel\n\nAnd for Debian, we need:\napt install -y libxml2-dev libxslt-dev",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "fe87e351be4b9a26db6937930e2b7e3637bdbf0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
