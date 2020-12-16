@@ -48,6 +48,9 @@ function setup {
                 force_opts="$force_opts --allow-change-held-packages"
                 sudo apt-get -y $force_opts install vpp-ext-deps || true
             fi
+            echo "Removing packagecloud.io repository references and running apt-get update"
+            sudo rm -f /etc/apt/sources.list.d/fdio_*.list
+            sudo apt-get update -qq || true
         elif [ "${OS_ID,,}" == "centos" ] ; then
             if [ "${STREAM}" != "master" ] ; then
                 echo "stream '${STREAM}' is not master: replacing packagecloud repo list with stream specific list"
