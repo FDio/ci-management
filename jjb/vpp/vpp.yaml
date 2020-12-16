@@ -1,3 +1,16 @@
+# Copyright (c) 2020 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 ---
 # PROJECT DEFINITIONS
 #
@@ -56,6 +69,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - master:
           branch: 'master'
@@ -91,6 +105,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - '1908':
           branch: 'stable/1908'
@@ -133,6 +148,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - master:
           branch: 'master'
@@ -171,6 +187,7 @@
       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - master:
           branch: 'master'
@@ -207,6 +224,7 @@
 #          comment-trigger-value: 'vpp-beta-merge'
 #    project: 'vpp'
 #    make-parallel-jobs: '4'
+#    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 #    stream:
 #      - master:
 #          branch: 'master'
@@ -251,6 +269,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '16'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - master:
           branch: 'master'
@@ -302,6 +321,7 @@
 #
 #    project: 'vpp'
 #    make-parallel-jobs: '16'
+#    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 #    stream:
 #      - master:
 #          branch: 'master'
@@ -338,6 +358,7 @@
           comment-trigger-value: 'beta-merge'
     project: 'vpp'
     make-parallel-jobs: '16'
+    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
       - master:
           branch: 'master'
@@ -461,7 +482,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -469,17 +489,20 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - gerrit-refspec-parameter:
           refspec: '{branch-head-refspec}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -565,8 +588,8 @@
           - ../scripts/vpp/commitmsg.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
+
 # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
 
 # VPP-VERIFY JOB TEMPLATE
@@ -576,7 +599,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -584,25 +606,24 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
+      - project-parameter:
+          project: '{project}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -634,8 +655,7 @@
           - ../scripts/vpp/build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-VERIFY JOB TEMPLATE
 
 # VPP-DEBUG-VERIFY JOB TEMPLATE
@@ -645,7 +665,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -653,21 +672,24 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: 'ubuntu1804'
+      - project-parameter:
+          project: '{project}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -701,8 +723,7 @@
           - ../scripts/vpp/debug-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-DEBUG-VERIFY JOB TEMPLATE
 
 # VPP-MERGE JOB TEMPLATE
@@ -718,27 +739,22 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - maven-project-parameter:
-          maven: 'mvn33-new'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - stream-parameter:
-          stream: '{stream}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -785,8 +801,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
 
 # VPP-BETA-VERIFY JOB TEMPLATE
@@ -796,7 +811,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -804,25 +818,24 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
+      - project-parameter:
+          project: '{project}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -855,8 +868,7 @@
           - ../scripts/vpp/build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-BETA-VERIFY JOB TEMPLATE
 
 # VPP-BETA-MERGE JOB TEMPLATE
@@ -872,27 +884,22 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - maven-project-parameter:
-          maven: 'mvn33-new'
-      - maven-exec:
-          maven-version: 'mvn33-new'
-      - stream-parameter:
-          stream: '{stream}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -934,16 +941,12 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-BETA-MERGE JOB TEMPLATE
 
 # VPP-GCC-VERIFY JOB TEMPLATE
@@ -953,7 +956,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -961,25 +963,24 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-head-refspec}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
+      - project-parameter:
+          project: '{project}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
+      - workspace-archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -1011,8 +1012,7 @@
           - ../scripts/vpp/gcc-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-GCC-VERIFY JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
@@ -1038,27 +1038,26 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
       - gerrit-parameter:
           branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - gerrit-refspec-parameter
-      - gerrit-event-type-parameter
-      - gerrit-event-comment-text-parameter
-      - gerrit-csit-refspec-parameter
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
       - gerrit-trigger-scm:
@@ -1127,31 +1126,30 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
-      - gerrit-refspec-parameter
-      - gerrit-event-type-parameter
-      - gerrit-event-comment-text-parameter
-      - gerrit-csit-refspec-parameter
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "10.0"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "5"
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
+      - gerrit-refspec-parameter
+      - gerrit-parameter:
+          branch: '{branch}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
       - gerrit-trigger-scm:
@@ -1188,7 +1186,8 @@
       - robot-report:
           output-path: 'csit_current/0/'
 
-      - lf-infra-publish
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
@@ -1198,7 +1197,6 @@
     project-type: freestyle
     node: '{os}-us'
     concurrent: true
-    archive-artifacts: ''
     latest-only: false
 
     build-discarder:
@@ -1207,23 +1205,22 @@
       artifactDaysToKeep: '{build-artifact-days-to-keep}'
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
+    # Please keep parameters in alphabetical order
     parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter
-      - gerrit-csit-refspec-parameter
-      - stream-parameter:
-          stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       # Not sure whether not failing has any useful usage,
       # but it does not hurt to have some flexibility for future.
       - csit-fail-on-crc-mismatch-parameter:
           fail-on-crc-mismatch: 'True'
+      - gerrit-csit-refspec-parameter
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
 
     scm:
       - gerrit-trigger-scm:
