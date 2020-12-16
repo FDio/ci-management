@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f926a41_ccbdddda",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-12-16T15:14:50Z",
+      "side": 1,
+      "message": "Is this the uncompressed file that can have hundreds of GB (at least on older branches)? And appear for each failed test?\nI see we are already archiving it (at least for some jobs) in which case this is fine (but can be reconsidered later).",
+      "range": {
+        "startLine": 68,
+        "startChar": 54,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "2be6e2e770f6f9836d12ff10ab5b3bd32e7d6892",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
