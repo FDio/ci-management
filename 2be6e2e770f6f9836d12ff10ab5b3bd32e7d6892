@@ -22,6 +22,30 @@
       "revId": "2be6e2e770f6f9836d12ff10ab5b3bd32e7d6892",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9d83e6_33ab449c",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2020-12-16T15:26:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure exactly why core files in the vpp workspace are of interest.  Previously there was a bug where this would archive directories named core (e.g. under API generation), but I fixed that issue [0].\n\nIMO, it would be fine to remove it.\n\n[0] https://gerrit.fd.io/r/c/ci-management/+/30287/14/jjb/scripts/post_build_deploy_archives.sh#38",
+      "parentUuid": "9f926a41_ccbdddda",
+      "range": {
+        "startLine": 68,
+        "startChar": 54,
+        "endLine": 68,
+        "endChar": 61
+      },
+      "revId": "2be6e2e770f6f9836d12ff10ab5b3bd32e7d6892",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
