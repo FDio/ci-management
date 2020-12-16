@@ -93,6 +93,30 @@
       "revId": "fe87e351be4b9a26db6937930e2b7e3637bdbf0b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d7e2e38_988f7659",
+        "filename": "docker/scripts/dbld_lfit_requirements.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-12-16T16:19:06Z",
+      "side": 1,
+      "message": "We\u0027re still missing libxslt-dev(el). I can\u0027t build aarch64 centos-8 without it, with it, it works fine.",
+      "parentUuid": "2874377c_2680ae24",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "fe87e351be4b9a26db6937930e2b7e3637bdbf0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
