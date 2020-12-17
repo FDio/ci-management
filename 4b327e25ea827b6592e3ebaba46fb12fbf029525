@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a87bdeea_0ff49730",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-12-17T09:39:26Z",
+      "side": 1,
+      "message": "This comment was just outside of what Gerrit diff shows. Do we want to update the comment, or remove 2101?",
+      "range": {
+        "startLine": 410,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 45
+      },
+      "revId": "4b327e25ea827b6592e3ebaba46fb12fbf029525",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
