@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd4f6d3_4005f37e",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-12-17T10:57:17Z",
+      "side": 1,
+      "message": "I duplicated the dependencies so that we know we need them for multiple tools so that we won\u0027t accidentally remove them. Do we want to do it this way?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "24ff39fbdb07f4f18bea96dde3ab047773d8b50d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd954b9f_b6479af8",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2020-12-17T10:57:17Z",
+      "side": 1,
+      "message": "I noticed that this summary is a bit different from the apt summary. Is that deliberate or an oversight?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "24ff39fbdb07f4f18bea96dde3ab047773d8b50d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
