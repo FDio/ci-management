@@ -79,14 +79,14 @@ COPY . .
 # ci-management global-jjb requirements:
 #   for lftools:
 #       libxml2-devel
+#       libxslt-devel
 #       xmlstarlet
 #   for lf-env.sh:
 #       facter
-#   from global-jjb/packer/provision/baseline.sh:
+#   from packer/provision/baseline.sh:
 #       deltarpm
 #       unzip
 #       xz
-#       puppet
 #       python3-pip
 #       git
 #       git-review
@@ -131,6 +131,7 @@ RUN export LC_ALL=C.UTF8 \\
         libffi-devel \\
         libpcap-devel \\
         libxml2-devel \\
+        libxslt-devel \\
         make \\
         mawk \\
         mock \\
@@ -138,7 +139,6 @@ RUN export LC_ALL=C.UTF8 \\
         perl \\
         perl-XML-XPath \\
         python3-pip \\
-        puppet \\
         rake \\
         rsync \\
         ruby-devel \\

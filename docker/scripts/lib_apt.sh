@@ -114,10 +114,11 @@ ENV PATH=$PATH:$DOCKER_CIMAN_ROOT/docker/scripts
 #       python3-venv
 #   for lftools:
 #       xmlstarlet
-#   from global-jjb/packer/provision/baseline.sh:
+#       libxml2-dev
+#       libxslt-dev
+#   from packer/provision/baseline.sh:
 #       unzip
 #       xz-utils
-#       puppet
 #       git
 #       git-review
 #       libxml2-dev

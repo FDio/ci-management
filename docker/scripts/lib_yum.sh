@@ -72,14 +72,14 @@ COPY . .
 # ci-management global-jjb requirements:
 #   for lftools:
 #       libxml2-devel
+#       libxslt-devel
 #       xmlstarlet
 #   for lf-env.sh:
 #       facter
-#   from global-jjb/packer/provision/baseline.sh:
+#   from packer/provision/baseline.sh:
 #       deltarpm
 #       unzip
 #       xz
-#       puppet
 #       python3-pip
 #       git
 #       git-review
@@ -121,13 +121,13 @@ RUN yum update -y \\
         libopenblas-devel \\
         libpcap-devel \\
         libxml2-devel \\
+        libxslt-devel \\
         make \\
         mawk \\
         mock \\
         perl \\
         perl-XML-XPath \\
         python3-pip \\
-        puppet \\
         rake \\
         ruby-devel \\
         sudo \\
