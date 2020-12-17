@@ -79,6 +79,7 @@ COPY . .
 # ci-management global-jjb requirements:
 #   for lftools:
 #       libxml2-devel
+#       libxslt-devel
 #       xmlstarlet
 #   for lf-env.sh:
 #       facter
@@ -131,6 +132,7 @@ RUN export LC_ALL=C.UTF8 \\
         libffi-devel \\
         libpcap-devel \\
         libxml2-devel \\
+        libxslt-devel \\
         make \\
         mawk \\
         mock \\

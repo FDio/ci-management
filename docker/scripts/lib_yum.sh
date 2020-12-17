@@ -72,6 +72,7 @@ COPY . .
 # ci-management global-jjb requirements:
 #   for lftools:
 #       libxml2-devel
+#       libxslt-devel
 #       xmlstarlet
 #   for lf-env.sh:
 #       facter
@@ -121,6 +122,7 @@ RUN yum update -y \\
         libopenblas-devel \\
         libpcap-devel \\
         libxml2-devel \\
+        libxslt-devel \\
         make \\
         mawk \\
         mock \\
