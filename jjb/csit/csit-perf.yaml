@@ -24,17 +24,21 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv
             - 3n-tsh:
-               executor: 'ubuntu1804arm-us'
+                executor: 'ubuntu1804arm-us'
       - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
           node-arch:
             - ''
             - -2n-clx
             - -2n-skx
             - -2n-zn2
+            - -2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - -3n-skx
             - -3n-tsh:
                 executor: 'ubuntu1804arm-us'
@@ -45,11 +49,13 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv
             - 3n-tsh:
-               executor: 'ubuntu1804arm-us'
+                executor: 'ubuntu1804arm-us'
           stream:
             - master:
                 branch: 'master'
@@ -78,6 +84,9 @@
                 periodicity: '0 2,14 * * *'
             - -2n-zn2:
                 periodicity: '0 2,14 * * *'
+            - -2n-tx2:
+                executor: 'ubuntu1804arm-us'
+                periodicity: '0 14 * * *'
             - -3n-skx:
                 periodicity: '0 2,14 * * *'
             - -3n-dnv:
@@ -111,6 +120,8 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv
@@ -122,6 +133,8 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv
@@ -133,6 +146,8 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv
@@ -144,6 +159,8 @@
             - 2n-skx
             - 2n-dnv
             - 2n-zn2
+            - 2n-tx2:
+                executor: 'ubuntu1804arm-us'
             - 3n-skx
             - 3n-hsw
             - 3n-dnv

@@ -416,6 +416,9 @@
       - 3n-tsh:
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
+      - 2n-tx2:
+          executor: 'ubuntu1804arm-s'
+          make-parallel-jobs: '16'
     exclude:
       - stream: '1908'
         device-node-arch: '1n-tx2'
