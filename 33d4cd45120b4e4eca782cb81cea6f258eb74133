@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d91500fb_fa1a0387",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2020-12-21T09:45:39Z",
+      "side": 1,
+      "message": "Which indentation is correct? (Comparing to lines 41 and 88).\nI think I prefer 2 spaces here, so the offset is 4 spaces compared to the dash in the previous line (similar to line 22).",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "33d4cd45120b4e4eca782cb81cea6f258eb74133",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
