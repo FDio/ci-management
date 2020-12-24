@@ -119,3 +119,17 @@ find $ARCHIVES_DIR -type f -print0 \
 
 zip -r archives.zip $JENKINS_HOSTNAME/
 du -sh archives.zip
+
+echo "=================================================== START TEST LOGS ===="
+# talk to consul-aware resolver rather than external ones
+echo "nameserver 172.17.0.1" >/etc/resolv.conf
+mkdir /w/workspace/test-logs
+pushd /w/workspace/test-logs
+git clone https://git.fd.io/csit
+# pypi3 install boto3
+python3 -m pip install boto3
+popd
+ls -alR $ARCHIVES_DIR
+echo "Running artifacts.py:"
+python3 /w/workspace/test-logs/csit/terraform-ci-infra/1n_nmd/tools/artifacts.py -d $ARCHIVES_DIR -b logs || echo "Failed to upload logs"
+echo "==================================================== END TEST LOGS ===="
