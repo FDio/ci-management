@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2287afb_10a9ed5b",
+        "filename": "jjb/include-raw-deploy-archives.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-01-04T16:03:16Z",
+      "side": 1,
+      "message": "each nomad job controlled by me (e.g. csit-shim, nginx, ...) has this resolver built into nomad template. \non one side i am surprised this must be explicit here. on the other we might want to update our jenkins-nomad template to this.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 46
+      },
+      "revId": "1e7ffafbc52870af53ed3fb805eef4fc87ed79b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e74b7d_5948db81",
+        "filename": "jjb/include-raw-deploy-archives.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-01-04T16:03:16Z",
+      "side": 1,
+      "message": "i think this will make some troubles in future. should we consider move the script here? (i mean i put it into csit just for backup purpose.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "1e7ffafbc52870af53ed3fb805eef4fc87ed79b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
