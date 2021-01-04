@@ -147,14 +147,8 @@ csit_pip_cache() {
 
         # Virtualenv version is pinned in common.sh in newer csit branches.
         # (note: xargs removes leading/trailing spaces)
-        #
-        # TODO: pip3 install virtualenv==20.0.20 installs a version of virtualenv
-        #       which hardcodes python3 in the shebang line.  This breaks branches
-        #       containing python2 code (eg. oper1908-*).
-        #       Restore when 19.08 is no longer supported or is updated to override
-        #       the shebang in virtualenv (e.g. 'python2.7 virtualenv env')
-        # install_virtualenv="$(grep 'virtualenv' $csit_bash_function_dir/common.sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
-        # $install_virtualenv
+        install_virtualenv="$(grep 'virtualenv' $csit_bash_function_dir/common.sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
+        $install_virtualenv
 
         git checkout -q -- .
         echo_log "    Completed $description!"
