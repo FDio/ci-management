@@ -41,10 +41,6 @@
           branch: 'master'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -75,10 +71,6 @@
           branch: 'master'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -107,10 +99,6 @@
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -275,10 +263,6 @@
           branch: 'master'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
-          branch-head-refspec: ''
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -388,9 +372,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
       - '2005':
           branch: 'stable/2005'
           repo-stream-part: 'stable.2005'
@@ -420,8 +401,6 @@
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
     exclude:
-      - stream: '1908'
-        device-node-arch: '1n-tx2'
       - stream: '2001'
         device-node-arch: '1n-tx2'
       - stream: '2005'
@@ -441,9 +420,6 @@
     executor: 'vpp-csit-device'
     skip-vote: 'false'
     stream:
-      - '1908':
-          branch: 'stable/1908'
-          repo-stream-part: 'stable.1908'
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
@@ -1236,8 +1212,6 @@
           build-timeout: 300
 
     triggers:
-      # TODO: Make other verify jobs trigger on success of this one,
-      # without breaking verification for VPP branches before stable/1908.
       - gerrit-trigger-checkstyle:
           name: '{project}'
           branch: '{branch}'
