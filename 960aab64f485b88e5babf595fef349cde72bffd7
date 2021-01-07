@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86043781_5caf0fcb",
+        "filename": "jjb/scripts/backup_upload_archives.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-01-07T15:21:33Z",
+      "side": 1,
+      "message": "Please remove extra blank line.",
+      "revId": "960aab64f485b88e5babf595fef349cde72bffd7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
