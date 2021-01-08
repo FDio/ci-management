@@ -14,8 +14,6 @@
     stream:
       - master:
           branch: 'master'
-      - '1908':
-          branch: 'stable/1908'
       - '2005':
           branch: 'stable/2005'
       - '2009':
