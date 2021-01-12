@@ -11,10 +11,6 @@
           repo-os-part: 'ubuntu.bionic.main'
           skip-site: 'false'
           skip-jar-deploy: 'false'
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
-          skip-site: 'true'
-          skip-jar-deploy: 'true'
       - centos7:
           repo-os-part: 'centos7'
           skip-site: 'true'
