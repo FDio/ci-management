@@ -1,0 +1,12 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csitarm"
+    image: "fdiotools/csit_dut-ubuntu1804:prod-aarch64"
+    labels: "csit_dut-ubuntu1804-prod-aarch64"
+    prefix: "csit_dut-ubuntu1804-prod-aarch64"
