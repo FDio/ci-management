@@ -57,6 +57,14 @@
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
 # VPP-X86_64 PROJECT
+#
+# NOTE: The list of supported branches for each OS are maintained
+#       in .../ci-management/docker/scripts/lib_vpp.sh
+#       The job configuration must be derived from that list, thus
+#       modifications to both should be made at the same time.
+#       Since x86_64 is the primary development architecture, this
+#       project definition should be identical to the docker image
+#       build scripts.  Other architectures may be a subset.
 - project:
     name: vpp-x86_64
     jobs:
@@ -79,79 +87,41 @@
           repo-stream-part: 'stable.2101'
           branch-head-refspec: ''
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
-    executor-arch: 'x86_64'
-# [end] VPP-X86_64 PROJECT
-
-# VPP-OS-EOL-X86_64 PROJECT
-- project:
-    name: vpp-os-eol-x86_64
-    jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    make-parallel-jobs: '4'
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-    stream:
-      - '2009':
-          branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
-          branch-head-refspec: ''
-    os:
       - centos7:
           repo-os-part: 'centos7'
-      - debian9:
-          repo-os-part: 'stretch'
-    executor-arch: 'x86_64'
-# [end] VPP-OS-EOL-X86_64 PROJECT
-
-# VPP-OS-IN-2009-X86_64 PROJECT
-#
-# This project is used to separate streams which are only
-# supported on the OS in the release in which it was added
-# or later releases.
-#
-# For each 'os-in-XXXX', the stream for the release is
-# added here in addition to the 'vpp-x86_64' project.
-# Each subsequent release is also added to both.
-#
-# When all of the streams older than the 'os-in-XXXX" have
-# been removed from the 'vpp-x86_64' project, then the OSes
-# in this project get moved to the 'vpp-x86_64' project and
-# this project gets deleted or commented out if it is only
-# 'os-in-XXXX' project.
-#
-- project:
-    name: vpp-os-in-2009-x86_64
-    jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    make-parallel-jobs: '4'
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-    stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
-          branch-head-refspec: ''
-      - '2009':
-          branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
-          branch-head-refspec: ''
-      - '2101':
-          branch: 'stable/2101'
-          repo-stream-part: 'stable.2101'
-          branch-head-refspec: ''
-    os:
       - centos8:
           repo-os-part: 'centos8'
+      - debian9:
+          repo-os-part: 'stretch'
       - debian10:
-          repo-os-part: 'buster'
+          repo-os-part: 'stretch'
+      - ubuntu1804:
+          repo-os-part: 'ubuntu.bionic.main'
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
     executor-arch: 'x86_64'
-# [end] VPP-OS-IN-2009-X86_64 PROJECT
+    exclude:
+      # OS deprecated in master
+      - stream: 'master'
+        os: 'centos7'
+      - stream: 'master'
+        os: 'debian9'
+      # OS introduced after 2005
+      - stream: '2005'
+        os: 'centos8'
+      - stream: '2005'
+        os: 'debian9'
+      - stream: '2005'
+        os: 'debian10'
+      - stream: '2005'
+        os: 'ubuntu2004'
+      # 2009 LTS supports all OS variants
+      # OS deprecated in 2101
+      - stream: '2101'
+        os: 'centos7'
+      - stream: '2101'
+        os: 'debian9'
+# [end] VPP-X86_64 PROJECT
 
 # VPP-DEBUG-X86_64 PROJECT
 #
@@ -189,9 +159,11 @@
 # 'Build with Parameters' to run a single job or adding 'vpp-beta-verify'
 # or 'vpp-beta-merge' as a comment to run all beta verify or merge jobs.
 #
-# Once testing  is complete, the os is moved to the current
-# 'vpp-os-in-XXXX-x86_64' project. If no OSes are being
-# tested then this project should be commented out.
+# Once testing  is complete, the OS is moved to the current
+# 'vpp-x86_64' project.  Please ensure that prior streams have exclude
+# definitions when introducing a new OS to production.
+#
+# If no OSes are being tested then this project should be commented out.
 #
 #- project:
 #    name: vpp-beta-x86_64
@@ -240,6 +212,14 @@
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
+#
+# NOTE: The list of supported branches for each OS are maintained
+#       in .../ci-management/docker/scripts/lib_vpp.sh
+#       The job configuration must be derived from that list, thus
+#       modifications to both should be made at the same time.
+#       The AARCH64 architecture is in the process of catching up
+#       with X86_64 in terms of OS coverage.  Thus the jobs are
+#       a subset of those defined in the docker image build script.
 - project:
     name: vpp-aarch64
     jobs:
@@ -264,48 +244,21 @@
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
+      - ubuntu2004:
+          repo-os-part: 'ubuntu.focal.main'
     executor-arch: 'aarch64'
+    exclude:
+      # master supports all OS variants
+      # OS introduced after 2005
+      - stream: '2005'
+        os: 'ubuntu2004'
+      # OS introduced after 2009
+      - stream: '2009'
+        os: 'ubuntu2004'
+      # OS introduced after 2101
+      - stream: '2101'
+        os: 'ubuntu2004'
 # [end] VPP-AARCH64 PROJECT
-
-# VPP-OS-IN-2009-AARCH64 PROJECT
-#
-# This project is used to separate streams which are only
-# supported on the OS in the release in which it was added
-# or later releases.
-#
-# For each 'os-in-XXXX', the stream for the release is
-# added here in addition to the 'vpp-aarch64' project.
-# Each subsequent release is also added to both.
-#
-# When all of the streams older than the 'os-in-XXXX" have
-# been removed from the 'vpp-aarch64' project, then the OSes
-# in this project get moved to the 'vpp-aarch64' project and
-# this project gets deleted or commented out if it is only
-# 'os-in-XXXX' project.
-#
-#- project:
-#    name: vpp-os-in-2009-aarch64
-#    jobs:
-#      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-#      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-#
-#    project: 'vpp'
-#    make-parallel-jobs: '16'
-#    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
-#    stream:
-#      - master:
-#          branch: 'master'
-#          repo-stream-part: 'master'
-#          branch-head-refspec: ''
-#      - '2009':
-#          branch: 'stable/2009'
-#          repo-stream-part: 'stable.2009'
-#          branch-head-refspec: ''
-#    os:
-#      - ubuntu2004:
-#          repo-os-part: 'ubuntu.focal.main'
-#    executor-arch: 'aarch64'
-# [end] VPP-OS-IN-2009-AARCH64 PROJECT
 
 # VPP-BETA-AARCH64 PROJECT
 #
@@ -316,8 +269,10 @@
 # or 'vpp-beta-merge' as a comment to run all beta verify or merge jobs.
 #
 # Once testing  is complete, the os is moved to the current
-# 'vpp-os-in-XXXX-aarch64' project. If no OSes are being
-# tested then this project should be commented out.
+# 'vpp-aarch64' project.  Please ensure that prior streams have exclude
+# definitions when introducing a new OS to production.
+#
+# If no OSes are being tested then this project should be commented out.
 #
 - project:
     name: vpp-beta-aarch64
@@ -337,8 +292,6 @@
     os:
       - centos8:
           repo-os-part: 'centos8'
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
     executor-arch: aarch64
 # [end] VPP-BETA-AARCH64 PROJECT
 
