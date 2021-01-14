@@ -80,11 +80,18 @@ docker_build_setup_vpp() {
 
 # Branches must be listed in chronological order -- oldest stable branch
 # first and master last.
+#
+# Note: CI Jobs for each architecture are maintained in
+#       .../ci-management/jjb/vpp/vpp.yaml
+#       All OS's and branches are included in the 'os' and 'stream'
+#       definitions respectively, then the exclude list maintained
+#       to create an enumerated set of jobs jobs that match the
+#       definitions here.
 declare -A VPP_BRANCHES
-VPP_BRANCHES["centos-7"]="stable/2001 stable/2005 stable/2009"
-VPP_BRANCHES["centos-8"]="stable/2009 master"
-VPP_BRANCHES["debian-9"]="stable/2009 master"
-VPP_BRANCHES["debian-10"]="stable/2009 master"
-VPP_BRANCHES["ubuntu-18.04"]="stable/2001 stable/2005 stable/2009 master"
-VPP_BRANCHES["ubuntu-20.04"]="stable/2009 master"
+VPP_BRANCHES["centos-7"]="stable/2005 stable/2009"
+VPP_BRANCHES["centos-8"]="stable/2009 stable/2101 master"
+VPP_BRANCHES["debian-9"]="stable/2009"
+VPP_BRANCHES["debian-10"]="stable/2009 stable/2101 master"
+VPP_BRANCHES["ubuntu-18.04"]="stable/2005 stable/2009 stable/2101 master"
+VPP_BRANCHES["ubuntu-20.04"]="stable/2009 stable/2101 master"
 export VPP_BRANCHES
