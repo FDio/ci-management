@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -39,8 +39,13 @@ class CsitAnsibleYamlStruct:
 def packages_in_csit_ansible_yaml_file(yamlfile: str, distro, arch) -> list:
     with open(yamlfile) as yf:
         csit_ansible_yaml = yaml.safe_load(yf)
+        if csit_ansible_yaml is None:
+            return ""
         cays = CsitAnsibleYamlStruct(**csit_ansible_yaml)
-        packages = [pkg for pkg in cays.packages_base if type(pkg) is str]
+        try:
+            packages = [pkg for pkg in cays.packages_base if type(pkg) is str]
+        except AttributeError:
+            return ""
         if arch in [*cays.packages_by_arch]:
             packages += [pkg for pkg in cays.packages_by_arch[arch]
                          if type(pkg) is str]
