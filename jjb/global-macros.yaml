@@ -361,6 +361,50 @@
             notbuilt: '{skip-vote}'
 
 - trigger:
+    name: gerrit-trigger-csit-tox
+    # Comes from CSIT, some verify jobs wait for tox checks to pass.
+    # This macro is to be used for such verify jobs which are voting.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'tox_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+- trigger:
+    name: gerrit-trigger-csit-tox-nonvoting
+    # Comes from CSIT, some verify jobs wait for tox checks to pass.
+    # This macro is to be used for such verify jobs which are non-voting.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'tox_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: true
+            failed: true
+            unstable: true
+            notbuilt: true
+          override-votes: true
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
+
+- trigger:
     name: gerrit-trigger-csit-vpp-devicetest-full
     # Comes from CSIT, for automatic jobs running "device" tests with VPP builds.
     # The job acts as an automatic verify job for CSIT contributions.
@@ -368,17 +412,8 @@
       - gerrit:
           server-name: 'Primary'
           trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'false'
-            - draft-published-event
             - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
+                comment-contains-value: 'tox_success'
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{project}'

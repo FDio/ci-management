@@ -150,7 +150,7 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - 'gerrit-trigger-csit-vpp-devicetest-full':
+      - gerrit-trigger-csit-vpp-devicetest-full:
           project: '{project}'
           branch: '{branch}'
           skip-vote: '{skip-vote}'
