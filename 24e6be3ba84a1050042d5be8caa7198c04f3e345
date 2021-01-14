@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "679a899d_98a719a2",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-01-14T17:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d687115c_5d605623",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "24e6be3ba84a1050042d5be8caa7198c04f3e345",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de6fd247_3fe36f79",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "24e6be3ba84a1050042d5be8caa7198c04f3e345",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5303dd89_9b69a0d4",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-01-14T17:16:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de6fd247_3fe36f79",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "24e6be3ba84a1050042d5be8caa7198c04f3e345",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
