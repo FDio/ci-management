@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "464fe306_52bcc9fb",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-01-15T14:33:59Z",
+      "side": 1,
+      "message": "so i cannot do csit-device... ip4ANDip6 anymore?\njust remove patchset created and leave :\n            - comment-added-contains-event:\n                comment-contains-value: \u0027recheck\u0027\n            - comment-added-contains-event:\n                comment-contains-value: \u0027reverify\u0027\n            - comment-added-contains-event:\n                comment-contains-value: \u0027csit-devicetest\u0027",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 6
+      },
+      "revId": "d415ebc3d34706cd90cd06f1c61b27150adb74ff",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
