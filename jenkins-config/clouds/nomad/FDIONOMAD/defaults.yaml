@@ -14,7 +14,9 @@ templates:
     priority: 50
     idleTerminationInMinutes: 10
     numExecutors: 1
+    prefixCmd: ""
     forcePull: true
+    hostVolumes: ""
     privileged: true
     reusable: false
     useRawExec: false
@@ -23,3 +25,8 @@ templates:
     remoteFs: "/w"
     username: "fdionomad"
     password: "hidden"
+    capAdd: ""
+    capDrop: ""
+    securityOpt: ""
+    extraHosts: ""
+    secret: ""
