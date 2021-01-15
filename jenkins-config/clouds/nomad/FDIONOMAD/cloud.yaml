@@ -5,9 +5,9 @@ jenkins:
         jenkinsUrl: "https://jenkins.fd.io/"
         name: "FDIONOMAD"
         nomadUrl: "http://10.30.51.32:4646"
-        jenkinsTunnel: false
+        jenkinsTunnel: ""
         prune: false
-        nomadACLCredentialsId: false
+        nomadACLCredentialsId: ""
         workerTimeout: 5
         workerUrl: "https://jenkins.fd.io/jnlpJars/slave.jar"
         templates:

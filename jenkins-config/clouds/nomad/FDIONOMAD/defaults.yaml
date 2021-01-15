@@ -29,4 +29,3 @@ templates:
     capDrop: ""
     securityOpt: ""
     extraHosts: ""
-    secret: ""
