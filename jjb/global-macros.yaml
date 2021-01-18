@@ -362,23 +362,20 @@
 
 - trigger:
     name: gerrit-trigger-csit-vpp-devicetest-full
-    # Comes from CSIT, for automatic jobs running "device" tests with VPP builds.
+    # Comes from CSIT, for automatic jobs running device tests with VPP builds.
     # The job acts as an automatic verify job for CSIT contributions.
     triggers:
       - gerrit:
           server-name: 'Primary'
           trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'false'
-            - draft-published-event
+            # The main way the job is triggered automatically on patch upload.
+            # Gated by tox job, so we do not spend resources on WiP changes.
             - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
+                comment-contains-value: 'tox_success'
+            # Manual trigger to allow testing WiP changes with selected tags.
             - comment-added-contains-event:
                 comment-contains-value: 'csit-devicetest'
+            # A comment with "recheck" restarts tox job, so no condition here.
           projects:
             - project-compare-type: 'ANT'
               project-pattern: '{project}'

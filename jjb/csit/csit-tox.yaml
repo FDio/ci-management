@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -70,9 +70,37 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-patch-submitted:
-          name: '{project}'
-          branch: '{branch}'
+      # Tox trigger is special.
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'false'
+            # Not enabling on draft published event.
+            # Frequently, people publish for public access, not fr verify.
+            # Use recheck comment to trigger verify.
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck'
+            - comment-added-contains-event:
+                comment-contains-value: 'reverify'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          override-votes: true
+          gerrit-build-notbuilt-verified-value: 0
+          gerrit-build-successful-verified-value: 1
+          failed-message: 'Tox failed. No further verify jobs will be started.'
+          successful-message: 'tox_success'
+          skip-vote:
+            successful: true
+            failed: false
+            unstable: false
+            notbuilt: false
 
     builders:
       - shell:
