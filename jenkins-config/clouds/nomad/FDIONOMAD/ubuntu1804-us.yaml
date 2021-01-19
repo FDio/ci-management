@@ -1,0 +1,13 @@
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "amd64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 14000
+    image: "snergster/vpp-ubuntu18"
+    labels: "ubuntu1804-us"
+    memory: 14000
+    prefix: "prod-amd"
