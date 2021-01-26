@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64b418c7_baa11edf",
+        "filename": "jjb/scripts/packagecloud_push.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-01-26T19:32:28Z",
+      "side": 1,
+      "message": "Good idea!  Thanks :)",
+      "parentUuid": "5ad1bc96_443db363",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "341852f2ebb01c31473456218bb8c90eed975c0a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5f7399f_3c2d1cc3",
         "filename": "jjb/scripts/vpp/build.sh",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2021-01-26T09:37:11Z",
       "side": 1,
       "message": "Do we want also -u? Applies also to other files.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "341852f2ebb01c31473456218bb8c90eed975c0a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c2733e_1a49dd0d",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-01-26T19:32:28Z",
+      "side": 1,
+      "message": "Not sure why it wasn\u0027t applied to all script files.\nI\u0027ll clean up the ones in this Gerrit change.",
+      "parentUuid": "c5f7399f_3c2d1cc3",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "14d5a9ee_6752b8d9",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-01-26T19:32:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2ad0f62_a89b409b",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 4
+      },
+      "revId": "341852f2ebb01c31473456218bb8c90eed975c0a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a42a21f_39d2a62b",
         "filename": "jjb/scripts/vpp/docs.sh",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "341852f2ebb01c31473456218bb8c90eed975c0a",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0253fbfc_a0fe18a0",
+        "filename": "jjb/scripts/vpp/docs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-01-26T19:32:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a42a21f_39d2a62b",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "341852f2ebb01c31473456218bb8c90eed975c0a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
