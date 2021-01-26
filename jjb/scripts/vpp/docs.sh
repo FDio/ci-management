@@ -16,6 +16,16 @@
 echo "---> jjb/scripts/vpp/docs.sh"
 
 set -xe -o pipefail
+
+line="*************************************************************************"
+# Don't build anything if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision id.
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "$GERRIT_NEWREV" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping doxygen docs build. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
+    
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
@@ -27,7 +37,7 @@ set -xe -o pipefail
 
 make doxygen
 
-if [[ ${JOB_NAME} == *merge* ]]; then
+if [[ ${JOB_NAME} == *merge* ]] ; then
   mkdir -p $(dirname ${RESOURCES_DIR})
   mv -f ${DOC_DIR} ${RESOURCES_DIR}
   cd ${SITE_DIR}
