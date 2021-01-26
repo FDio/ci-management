@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -16,6 +16,22 @@
 echo "---> jjb/scripts/packagecloud_push.sh"
 
 set -euxo pipefail
+
+line="*************************************************************************"
+
+DRYRUN="${DRYRUN:-}"
+if [ "${DRYRUN,,}" = "true" ] ; then
+    echo -e "\n$line\nSkipping package push because DRYRUN is '${DRYRUN,,}'.\n$line\n"
+    exit 0
+fi
+
+# Nothing was built if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision ID
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "${GERRIT_NEWREV:-}" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping package push. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
 
 echo "STARTING PACKAGECLOUD PUSH"
 
@@ -58,8 +74,7 @@ if [ -f ~/.packagecloud ]; then
             fi
             ;;
         *)
-            echo "ERROR: Unsupported OS '$FACTER_OS'"
-            echo "PACKAGECLOUD PUSH FAILED!"
+            echo -e "\n$line\n* ERROR: Unsupported OS '$FACTER_OS'\n* PACKAGECLOUD PUSH FAILED!\n$line\n"
             exit 1
             ;;
     esac
@@ -83,4 +98,4 @@ else
     exit 1
 fi
 
-echo "PACKAGECLOUD PUSH COMPLETE"
+echo -e "\n$line\n* PACKAGECLOUD PUSH COMPLETE\n$line\n"
