@@ -18,6 +18,15 @@ echo "---> jjb/scripts/vpp/build.sh"
 
 set -xe -o pipefail
 
+line="*************************************************************************"
+# Don't build anything if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision id.
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "$GERRIT_NEWREV" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping build. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
+    
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_ARCH=$(uname -m)
@@ -71,6 +80,4 @@ else
     [ "x${DRYRUN}" == "xTrue" ] || make UNATTENDED=yes pkg-verify
 fi
 
-echo "*******************************************************************"
-echo "* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD SUCCESSFULLY COMPLETED"
-echo "*******************************************************************"
+echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD SUCCESSFULLY COMPLETED\n$line\n"

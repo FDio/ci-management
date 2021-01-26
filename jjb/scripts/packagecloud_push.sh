@@ -15,7 +15,20 @@
 
 echo "---> jjb/scripts/packagecloud_push.sh"
 
-set -euxo pipefail
+set -exo pipefail
+
+line="*************************************************************************"
+
+# Nothing was built if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision ID
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "$GERRIT_NEWREV" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping package push. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
+
+# Note: GERRIT_NEWREV above is not always defined.
+set -u
 
 echo "STARTING PACKAGECLOUD PUSH"
 
@@ -58,8 +71,7 @@ if [ -f ~/.packagecloud ]; then
             fi
             ;;
         *)
-            echo "ERROR: Unsupported OS '$FACTER_OS'"
-            echo "PACKAGECLOUD PUSH FAILED!"
+            echo -e "\n$line\n* ERROR: Unsupported OS '$FACTER_OS'\n* PACKAGECLOUD PUSH FAILED!\n$line\n"
             exit 1
             ;;
     esac
@@ -83,4 +95,4 @@ else
     exit 1
 fi
 
-echo "PACKAGECLOUD PUSH COMPLETE"
+echo -e "\n$line\n* PACKAGECLOUD PUSH COMPLETE\n$line\n"
