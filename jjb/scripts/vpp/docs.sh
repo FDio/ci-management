@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -15,19 +15,29 @@
 
 echo "---> jjb/scripts/vpp/docs.sh"
 
-set -xe -o pipefail
-[ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
-[ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
-[ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
-[ "$DOC_DIR" ] || DOC_DIR=build-root/docs/html
-[ "$SITE_DIR" ] || SITE_DIR=build-root/docs/deploy-site/
-[ "$RESOURCES_DIR" ] || RESOURCES_DIR=${SITE_DIR}/src/site/resources
-[ "$MVN" ] || MVN="/opt/apache/maven/bin/mvn"
-[ "$VERSION" ] || VERSION=$(./build-root/scripts/version rpm-version)
+set -euxo pipefail
+
+line="*************************************************************************"
+# Don't build anything if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision id.
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "${GERRIT_NEWREV:-}" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping doxygen docs build. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
+    
+DOCS_REPO_URL=${DOCS_REPO_URL:-"https://nexus.fd.io/content/sites/site"}
+PROJECT_PATH=${PROJECT_PATH:-"io/fd/vpp"}
+DOC_FILE=${DOC_FILE:-"vpp.docs.zip"}
+DOC_DIR=${DOC_DIR:-"build-root/docs/html"}
+SITE_DIR=${SITE_DIR:-"build-root/docs/deploy-site"}
+RESOURCES_DIR=${RESOURCES_DIR:-"${SITE_DIR}/src/site/resources"}
+MVN=${MVN:-"/opt/apache/maven/bin/mvn"}
+VERSION=${VERSION:-"$(./build-root/scripts/version rpm-version)"}
 
 make doxygen
 
-if [[ ${JOB_NAME} == *merge* ]]; then
+if [[ ${JOB_NAME} == *merge* ]] ; then
   mkdir -p $(dirname ${RESOURCES_DIR})
   mv -f ${DOC_DIR} ${RESOURCES_DIR}
   cd ${SITE_DIR}
