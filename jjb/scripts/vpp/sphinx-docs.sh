@@ -16,6 +16,16 @@
 echo "---> jjb/scripts/vpp/sphinx-docs.sh"
 
 set -xe -o pipefail
+
+line="*************************************************************************"
+# Don't build anything if this is a merge job being run when
+# the git HEAD id is not the same as the Gerrit New Revision id.
+if [[ ${JOB_NAME} == *merge* ]] && [ -n "$GERRIT_NEWREV" ] &&
+       [ "$GERRIT_NEWREV" != "$GIT_COMMIT" ] ; then
+    echo -e "\n$line\nSkipping sphinx docs build. A newer patch has been merged.\n$line\n"
+    exit 0
+fi
+    
 [ "$DOCS_REPO_URL" ] || DOCS_REPO_URL="https://nexus.fd.io/content/sites/site"
 [ "$PROJECT_PATH" ] || PROJECT_PATH=io/fd/vpp
 [ "$DOC_FILE" ] || DOC_FILE=vpp.docs.zip
