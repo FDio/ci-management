@@ -124,23 +124,6 @@ remove_pyc_files_and_pycache_dirs() {
          -print -exec rm -rf {} \; 2>/dev/null || true
 }
 
-# Get the refspec for the specified project branch at HEAD
-#
-# Arguments:
-#   $1 - branch
-#   $2 - project (Optional: defaults to 'vpp')
-get_gerrit_refspec() {
-    local branch=${1:-"master"}
-    local project=${2:-"vpp"}
-    local query="$(ssh -p 29418 gerrit.fd.io gerrit query status:merged project:$project branch:$branch limit:1 --format=JSON --current-patch-set | tr ',' '\n' | grep refs | cut -d'"' -f4)"
-
-    if [ -z "$query" ] ; then
-        echo "ERROR: Invalid project ($1) or branch ($2)"
-    else
-        echo "$query"
-    fi
-}
-
 # Well-known filename variables
 export APT_DEBIAN_DOCKER_GPGFILE="docker.linux.debian.gpg"
 export APT_UBUNTU_DOCKER_GPGFILE="docker.linux.ubuntu.gpg"
