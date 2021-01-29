@@ -617,6 +617,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/decode-core-and-clean.sh
 
     publishers:
       - fdio-infra-publish
@@ -685,6 +688,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/debug-build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/decode-core-and-clean.sh
 
     publishers:
       - fdio-infra-publish
@@ -830,6 +836,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/decode-core-and-clean.sh
 
     publishers:
       - fdio-infra-publish
@@ -974,6 +983,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/gcc-build.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/decode-core-and-clean.sh
 
     publishers:
       - fdio-infra-publish
