@@ -60,6 +60,7 @@ perl -i -p -e "s/$jenkins_uid\:/0\:/g" /etc/passwd
 cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh /root
 chmod 644 /root/lf-env.sh
 
-# Install lftools for log / artifact upload.
+# Install lftools & boto3 for log / artifact upload.
 source /root/lf-env.sh
 lf-activate-venv lftools
+python3 -m pip install boto3
