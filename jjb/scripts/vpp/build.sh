@@ -15,7 +15,7 @@
 
 echo "---> jjb/scripts/vpp/build.sh"
 
-set -euxo pipefail
+set -uxo pipefail
 
 line="*************************************************************************"
 # Don't build anything if this is a merge job being run when
@@ -33,6 +33,9 @@ DRYRUN="${DRYRUN:-}"
 IS_CSIT_VPP_JOB="${IS_CSIT_VPP_JOB:-}"
 MAKE_PARALLEL_FLAGS="${MAKE_PARALLEL_FLAGS:-}"
 MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
+BUILD_RESULT="SUCCESSFULLY COMPLETED"
+BUILD_ERROR=""
+RETVAL="0"
 
 echo "sha1sum of this script: ${0}"
 sha1sum $0
@@ -75,9 +78,19 @@ then
     fi
     echo "Building using \"make verify\""
     [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes verify
+    if [ "$?" -ne "0" ] ; then
+        BUILD_ERROR="FAILED 'make verify'"
+    fi
 else
     echo "Building using \"make pkg-verify\""
     [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes pkg-verify
+    if [ "$?" -ne "0" ] ; then
+        BUILD_ERROR="FAILED 'make pkg-verify'"
+    fi
 fi
-
-echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD SUCCESSFULLY COMPLETED\n$line\n"
+if [ -n "$BUILD_ERROR" ] ; then
+    BUILD_RESULT="$BUILD_ERROR"
+    RETVAL="1"
+fi
+echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD $BUILD_RESULT\n$line\n"
+exit $RETVAL
