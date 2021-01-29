@@ -77,11 +77,13 @@ def upload(storage, bucket, src_fpath, dst_fpath):
     :type src_fpath: str
     :type dst_fpath: str
     """
-    mime = MimeTypes().guess_type(src_fpath)[0]
+    mime_guess = MimeTypes().guess_type(src_fpath)
+    mime = mime_guess[0]
+    encoding = mime_guess[1]
     if not mime:
         mime = "application/octet-stream"
 
-    if mime in COMPRESS_MIME and bucket in "logs":
+    if mime in COMPRESS_MIME and bucket in "logs" and encoding != "gzip":
         compress(src_fpath)
         src_fpath = src_fpath + ".gz"
         dst_fpath = dst_fpath + ".gz"
