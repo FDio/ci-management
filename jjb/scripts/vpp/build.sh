@@ -33,6 +33,9 @@ DRYRUN="${DRYRUN:-}"
 IS_CSIT_VPP_JOB="${IS_CSIT_VPP_JOB:-}"
 MAKE_PARALLEL_FLAGS="${MAKE_PARALLEL_FLAGS:-}"
 MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
+BUILD_RESULT="SUCCESSFULLY COMPLETED"
+BUILD_ERROR=""
+RETVAL="0"
 
 echo "sha1sum of this script: ${0}"
 sha1sum $0
@@ -74,10 +77,22 @@ then
              "See test logs for the exact number."
     fi
     echo "Building using \"make verify\""
-    [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes verify
+    if [[ "${DRYRUN,,}" != "true" ]] ; then
+        if ! make UNATTENDED=yes verify ; then
+            BUILD_ERROR="FAILED 'make verify'"
+        fi
+    fi
 else
     echo "Building using \"make pkg-verify\""
-    [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes pkg-verify
+    if [[ "${DRYRUN,,}" != "true" ]] ; then
+        if ! make UNATTENDED=yes pkg-verify ; then
+            BUILD_ERROR="FAILED 'make pkg-verify'"
+        fi
+    fi
 fi
-
-echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD SUCCESSFULLY COMPLETED\n$line\n"
+if [ -n "$BUILD_ERROR" ] ; then
+    BUILD_RESULT="$BUILD_ERROR"
+    RETVAL="1"
+fi
+echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD $BUILD_RESULT\n$line\n"
+exit $RETVAL
