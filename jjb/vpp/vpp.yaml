@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -262,9 +262,18 @@
           repo-stream-part: 'stable.2101'
           branch-head-refspec: ''
     os:
+      - centos8:
+          repo-os-part: 'centos8'
       - ubuntu1804:
           repo-os-part: 'ubuntu-arm.bionic.main'
     executor-arch: 'aarch64'
+    exclude:
+      # OS introduced after 2009
+      - stream: '2009'
+        os: 'centos8'
+      # OS introduced after 2101
+      - stream: '2101'
+        os: 'centos8'
 # [end] VPP-AARCH64 PROJECT
 
 # VPP-OS-IN-2009-AARCH64 PROJECT
@@ -335,8 +344,6 @@
           repo-stream-part: 'master'
           branch-head-refspec: ''
     os:
-      - centos8:
-          repo-os-part: 'centos8'
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
     executor-arch: aarch64
@@ -383,9 +390,6 @@
       - 2n-tx2:
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
-    exclude:
-      - stream: '2001'
-        device-node-arch: '1n-tx2'
 
 # [end] VPP-CSIT-PERPATCH PROJECT
 

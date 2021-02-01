@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -61,4 +61,5 @@ cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh /root
 chmod 644 /root/lf-env.sh
 
 # Install lftools for log / artifact upload.
-python3 -m pip install lftools
+source /root/lf-env.sh
+lf-activate-venv lftools
