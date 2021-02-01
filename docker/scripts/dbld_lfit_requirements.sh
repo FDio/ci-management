@@ -61,4 +61,5 @@ cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh /root
 chmod 644 /root/lf-env.sh
 
 # Install lftools for log / artifact upload.
-python3 -m pip install lftools
+source /root/lf-env.sh
+lf-activate-venv lftools
