@@ -42,11 +42,6 @@
           os: 'ubuntu2004'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '2005':
-          branch: 'stable/2005'
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2005'
-          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           os: 'ubuntu1804'
@@ -75,10 +70,6 @@
           branch: 'master'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
-          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
@@ -103,10 +94,6 @@
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
     stream:
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
-          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
@@ -117,9 +104,6 @@
       - debian9:
           repo-os-part: 'stretch'
     executor-arch: 'x86_64'
-    exclude:
-      - stream: '2005'
-        os: 'debian9'
 # [end] VPP-OS-EOL-X86_64 PROJECT
 
 # VPP-OS-IN-2009-X86_64 PROJECT
@@ -269,10 +253,6 @@
           branch: 'master'
           repo-stream-part: 'master'
           branch-head-refspec: ''
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
-          branch-head-refspec: ''
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
@@ -378,9 +358,6 @@
       - master:
           branch: 'master'
           repo-stream-part: 'master'
-      - '2005':
-          branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
       - '2009':
           branch: 'stable/2009'
           repo-stream-part: 'stable.2009'
@@ -408,8 +385,6 @@
           make-parallel-jobs: '16'
     exclude:
       - stream: '2001'
-        device-node-arch: '1n-tx2'
-      - stream: '2005'
         device-node-arch: '1n-tx2'
 
 # [end] VPP-CSIT-PERPATCH PROJECT
