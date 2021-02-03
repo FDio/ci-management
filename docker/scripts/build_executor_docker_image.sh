@@ -143,3 +143,5 @@ for executor_os_name in $os_names ; do
         fi
     fi
 done
+
+echo -e "\n$(basename $BASH_SOURCE) COMPLETE!\nHave a great day! :D"

@@ -101,8 +101,9 @@ COPY . .
 #   enchant            for 'make docs' (VPP)
 #   libffi-devel       for python cffi install (Ubuntu20.04/VPP/aarch64)
 #   libpcap-devel      for python pypcap install (CSIT)
-#   lapack-devel    for python numpy/scipy (CSIT/aarch64)
-#   openblas-devel  for python numpy/scipy (CSIT/aarch64)
+#   lapack-devel       for python numpy/scipy (CSIT/aarch64)
+#   openblas-devel     for python numpy/scipy (CSIT/aarch64)
+#   sshpass            for CSIT
 #
 RUN export LC_ALL=C.UTF8 \\
     && dnf update -y \\
@@ -120,6 +121,7 @@ RUN export LC_ALL=C.UTF8 \\
         enchant \\
         emacs \\
         facter \\
+        gdb \\
         git \\
         git-review \\
         graphviz \\
@@ -142,6 +144,7 @@ RUN export LC_ALL=C.UTF8 \\
         rake \\
         rsync \\
         ruby-devel \\
+        sshpass \\
         sudo \\
         tree \\
         unzip \\

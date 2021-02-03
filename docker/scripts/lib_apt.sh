@@ -140,6 +140,7 @@ ENV PATH=$PATH:$DOCKER_CIMAN_ROOT/docker/scripts
 #   liblapack-dev    for python numpy/scipy (CSIT/aarch64)
 #   libopenblas-dev  for python numpy/scipy (CSIT/aarch64)
 #   libpcap-dev      for python pypcap install (CSIT)
+#   sshpass          for CSIT jobs
 #
 RUN apt-get update -q \\
     && apt-get install -y -qq \\
@@ -151,6 +152,7 @@ RUN apt-get update -q \\
         emacs \\
         facter \\
         gawk \\
+        gdb \\
         gfortran \\
         git \\
         git-review \\
@@ -172,6 +174,7 @@ RUN apt-get update -q \\
         python3-venv \\
         rsync \\
         ruby-dev \\
+        sshpass \\
         sudo \\
         traceroute \\
         tree \\
