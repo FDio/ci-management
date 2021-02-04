@@ -22,6 +22,30 @@
       "revId": "6fef3f6c021dec373f7b43ffb084a17f5a385311",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ae9a63_55e6e864",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-04T20:38:51Z",
+      "side": 1,
+      "message": "\u003e Can you do the trigger change without editing the job name? I prefer to keep history unless I am sure nobody looks at it.\n\nThis was easy for the vpp-debug-* job, but it took a bit of education to figure out how to do it for vpp-csit-verify-device-master-1n-tx2 job.  Turned out to be quite elegant to use the \u0027Item Id\u0027 feature [0] to map the job definition to a separate job template.\n\n\u003e Ideally we would also include a manual trigger, for people trying to fix the failures by editing VPP code.\n\nDone.  Is there any way to test manual gerrit triggers prior to merging the patch?\n\n[0] https://docs.openstack.org/infra/jenkins-job-builder/definition.html#item-id-s",
+      "parentUuid": "ef033d05_75552daf",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "6fef3f6c021dec373f7b43ffb084a17f5a385311",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
