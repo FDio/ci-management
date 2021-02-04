@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef033d05_75552daf",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-04T09:18:18Z",
+      "side": 1,
+      "message": "Can you do the trigger change without editing the job name? I prefer to keep history unless I am sure nobody looks at it.\nIdeally we would also include a manual trigger, for people trying to fix the failures by editing VPP code.",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "6fef3f6c021dec373f7b43ffb084a17f5a385311",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
