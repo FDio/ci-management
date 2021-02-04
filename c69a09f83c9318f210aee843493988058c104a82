@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ed2d23e_a2f6e00a",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-04T09:10:33Z",
+      "side": 1,
+      "message": "Not supported anymore: https://gerrit.fd.io/r/c/ci-management/+/31093",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 32
+      },
+      "revId": "c69a09f83c9318f210aee843493988058c104a82",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
