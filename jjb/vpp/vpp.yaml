@@ -155,7 +155,7 @@
 
 # VPP-DEBUG-X86_64 PROJECT
 #
-# Currently a Non-Voting job due to intermittent failures.
+# Currently a periodic job due to intermittent failures.
 # Limiting branches to master and 2009, since other branches
 # may not get fixes for the intermittent failures.
 #
@@ -166,6 +166,8 @@
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+    periodicity: 'H * * * *'
+    comment-trigger-value: 'debug-verify'
     stream:
       - master:
           branch: 'master'
@@ -186,8 +188,8 @@
 # Beta jobs are experimental jobs for testing new OS versions on master.
 #
 # They are only manually triggered.  Either using the Jenkins WebUI
-# 'Build with Parameters' to run a single job or adding 'vpp-beta-verify'
-# or 'vpp-beta-merge' as a comment to run all beta verify or merge jobs.
+# 'Build with Parameters' to run a single job or adding 'beta-verify'
+# or 'beta-merge' as a comment to run all beta verify or merge jobs.
 #
 # Once testing  is complete, the os is moved to the current
 # 'vpp-os-in-XXXX-x86_64' project. If no OSes are being
@@ -197,9 +199,9 @@
 #    name: vpp-beta-x86_64
 #    jobs:
 #      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
-#          comment-trigger-value: 'vpp-beta-verify'
+#          comment-trigger-value: 'beta-verify'
 #      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
-#          comment-trigger-value: 'vpp-beta-merge'
+#          comment-trigger-value: 'beta-merge'
 #    project: 'vpp'
 #    make-parallel-jobs: '4'
 #    archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
@@ -321,8 +323,8 @@
 # Beta jobs are experimental jobs for testing new OS versions on master.
 #
 # They are only manually triggered.  Either using the Jenkins WebUI
-# 'Build with Parameters' to run a single job or adding 'vpp-beta-verify'
-# or 'vpp-beta-merge' as a comment to run all beta verify or merge jobs.
+# 'Build with Parameters' to run a single job or adding 'beta-verify'
+# or 'beta-merge' as a comment to run all beta verify or merge jobs.
 #
 # Once testing  is complete, the os is moved to the current
 # 'vpp-os-in-XXXX-aarch64' project. If no OSes are being
@@ -349,12 +351,23 @@
     executor-arch: aarch64
 # [end] VPP-BETA-AARCH64 PROJECT
 
-# VPP-CSIT-PERPATCH PROJECT
+# VPP-CSIT-VERIFY PROJECT
 - project:
-    name: vpp-csit-perpatch
+    name: vpp-csit-verify
     jobs:
-      - 'vpp-csit-verify-device-{stream}-{device-node-arch}':
+      - 'vpp-csit-verify-device-perpatch':
           make-parallel-jobs: '32'
+          exclude:
+            - device-node-arch: '1n-tx2'
+      - 'vpp-csit-verify-device-periodic':
+          make-parallel-jobs: '32'
+          periodicity: 'H * * * *'
+          skip-vote: 'true'
+          comment-trigger-value: 'devicetest-periodic'
+          exclude:
+            - stream: '2009'
+            - stream: '2101'
+            - device-node-arch: '1n-skx'
       - 'vpp-csit-verify-perf-{stream}-{node-arch}'
     project: 'vpp'
     os: ubuntu1804
@@ -375,7 +388,6 @@
       - 1n-skx
       - 1n-tx2:
           device-executor: 'vpp-csit-arm-ubuntu18'
-          skip-vote: 'true'
     node-arch:
       - 2n-clx
       - 2n-skx
@@ -391,7 +403,7 @@
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
 
-# [end] VPP-CSIT-PERPATCH PROJECT
+# [end] VPP-CSIT-VERIFY PROJECT
 
 # VPP-CSIT-API-CRC PROJECT
 #
@@ -640,8 +652,6 @@
     parameters:
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
@@ -658,17 +668,17 @@
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
 
     triggers:
-      # TODO: Ensure all supported jobs pass reliably before
-      #       enabling voting.
-      - gerrit-trigger-checkstyle-nonvoting:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
           name: '{project}'
           branch: '{branch}'
 
@@ -688,7 +698,7 @@
 
     publishers:
       - fdio-infra-publish
-# [end] VPP-DEBUG-VERIFY JOB TEMPLATE
+# [end] VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
 
 # VPP-MERGE JOB TEMPLATE
 - job-template:
@@ -979,9 +989,93 @@
       - fdio-infra-publish
 # [end] VPP-GCC-VERIFY JOB TEMPLATE
 
-# VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
+# VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 - job-template:
     name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
+    id: vpp-csit-verify-device-periodic
+    description: |
+      <ul>
+          <li>executor
+              <ul>
+                  <li>{device-executor}
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{device-executor}'
+    concurrent: true
+    archive-artifacts: '**/csit_current/**/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '90'
+
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/csit-device.sh
+
+    publishers:
+      - robot-report:
+          output-path: 'archives'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+# [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
+
+# VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
+- job-template:
+    name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
+    id: vpp-csit-verify-device-perpatch
     description: |
       <ul>
           <li>executor
@@ -1059,7 +1153,7 @@
 
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
-# [end] VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
+# [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 - job-template:
