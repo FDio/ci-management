@@ -96,6 +96,7 @@ COPY . .
 #   libpcap-devel      for python pypcap install (CSIT)
 #   liblapack-devel    for python numpy/scipy (CSIT/aarch64)
 #   libopenblas-devel  for python numpy/scipy (CSIT/aarch64)
+#   sshpass            for CSIT
 #
 RUN yum update -y \\
     && yum install -y \\
@@ -109,6 +110,7 @@ RUN yum update -y \\
         enchant \\
         emacs \\
         facter \\
+        gdb \\
         git \\
         git-review \\
         graphviz \\
@@ -130,6 +132,7 @@ RUN yum update -y \\
         python3-pip \\
         rake \\
         ruby-devel \\
+        sshpass \\
         sudo \\
         tree \\
         unzip \\
