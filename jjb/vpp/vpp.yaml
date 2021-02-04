@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -155,17 +155,18 @@
 
 # VPP-DEBUG-X86_64 PROJECT
 #
-# Currently a Non-Voting job due to intermittent failures.
+# Currently a periodic job due to intermittent failures.
 # Limiting branches to master and 2009, since other branches
 # may not get fixes for the intermittent failures.
 #
 - project:
     name: vpp-debug-x86_64
     jobs:
-      - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-debug-verify-periodic-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/* **/core'
+    periodicity: 'H * * * *'
     stream:
       - master:
           branch: 'master'
@@ -342,6 +343,26 @@
     executor-arch: aarch64
 # [end] VPP-BETA-AARCH64 PROJECT
 
+# VPP-CSIT-PERIODIC PROJECT
+- project:
+    name: vpp-csit-periodic
+    jobs:
+      - 'vpp-csit-verify-device-periodic-{stream}-{device-node-arch}':
+          make-parallel-jobs: '32'
+    project: 'vpp'
+    os: ubuntu1804
+    device-executor: 'vpp-csit-device'
+    executor: '{os}-us'
+    periodicity: 'H * * * *'
+    stream:
+      - master:
+          branch: 'master'
+          repo-stream-part: 'master'
+    device-node-arch:
+      - 1n-tx2:
+          device-executor: 'vpp-csit-arm-ubuntu18'
+# [end] VPP-CSIT-PERIODIC PROJECT
+
 # VPP-CSIT-PERPATCH PROJECT
 - project:
     name: vpp-csit-perpatch
@@ -366,9 +387,6 @@
           repo-stream-part: 'stable.2101'
     device-node-arch:
       - 1n-skx
-      - 1n-tx2:
-          device-executor: 'vpp-csit-arm-ubuntu18'
-          skip-vote: 'true'
     node-arch:
       - 2n-clx
       - 2n-skx
@@ -383,10 +401,6 @@
       - 2n-tx2:
           executor: 'ubuntu1804arm-s'
           make-parallel-jobs: '16'
-    exclude:
-      - stream: '2001'
-        device-node-arch: '1n-tx2'
-
 # [end] VPP-CSIT-PERPATCH PROJECT
 
 # VPP-CSIT-API-CRC PROJECT
@@ -618,9 +632,9 @@
       - fdio-infra-publish
 # [end] VPP-VERIFY JOB TEMPLATE
 
-# VPP-DEBUG-VERIFY JOB TEMPLATE
+# VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
 - job-template:
-    name: 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+    name: 'vpp-debug-verify-periodic-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -636,8 +650,6 @@
     parameters:
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-head-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
@@ -654,19 +666,15 @@
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
 
     triggers:
-      # TODO: Ensure all supported jobs pass reliably before
-      #       enabling voting.
-      - gerrit-trigger-checkstyle-nonvoting:
-          name: '{project}'
-          branch: '{branch}'
+      - timed: '{periodicity}'
 
     builders:
       - shell:
@@ -684,7 +692,7 @@
 
     publishers:
       - fdio-infra-publish
-# [end] VPP-DEBUG-VERIFY JOB TEMPLATE
+# [end] VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
 
 # VPP-MERGE JOB TEMPLATE
 - job-template:
@@ -1056,6 +1064,84 @@
       - fdio-infra-shiplogs:
           maven-version: 'mvn36'
 # [end] VPP-CSIT-VERIFY-DEVICE JOB TEMPLATE
+
+# VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
+- job-template:
+    name: 'vpp-csit-verify-device-periodic-{stream}-{device-node-arch}'
+    description: |
+      <ul>
+          <li>executor
+              <ul>
+                  <li>{device-executor}
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: '{device-executor}'
+    concurrent: true
+    archive-artifacts: '**/csit_current/**/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '90'
+
+    triggers:
+      - timed: '{periodicity}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/csit-device.sh
+
+    publishers:
+      - robot-report:
+          output-path: 'archives'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn36'
+# [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 - job-template:
