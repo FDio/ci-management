@@ -46,6 +46,30 @@
       "revId": "28f7b8f20ae3a2f8df607361d79bf1cf350bee21",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fdecafd_c26c6f3b",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-05T22:12:56Z",
+      "side": 1,
+      "message": "Relevant output from [0]:\n\n10:12:59 Fetching upstream changes from git://10.30.48.3/mirror/vpp\n10:12:59 using GIT_SSH to set credentials Rotterdam JJB\n10:12:59  \u003e git fetch --tags --force --progress -- git://10.30.48.3/mirror/vpp refs/changes/95/30895/5 # timeout\u003d10\n10:12:59  \u003e git rev-parse refs/remotes/origin/master^{commit} # timeout\u003d10\n10:12:59 Checking out Revision 18327be5d458f9f73c12d76e677ee5a068ec6b10 (refs/remotes/origin/master)\n10:12:59  \u003e git config core.sparsecheckout # timeout\u003d10\n10:12:59  \u003e git checkout -f 18327be5d458f9f73c12d76e677ee5a068ec6b10 # timeout\u003d10\n10:13:03 Commit message: \"nat: 1:1 policy NAT\"",
+      "parentUuid": "74bcee1c_89203765",
+      "range": {
+        "startLine": 1039,
+        "startChar": 19,
+        "endLine": 1039,
+        "endChar": 21
+      },
+      "revId": "28f7b8f20ae3a2f8df607361d79bf1cf350bee21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
