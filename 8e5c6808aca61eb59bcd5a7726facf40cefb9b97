@@ -22,6 +22,30 @@
       "revId": "8e5c6808aca61eb59bcd5a7726facf40cefb9b97",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0986f22_1f3916d1",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-05T15:37:36Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "b2aa6062_02e71bed",
+      "range": {
+        "startLine": 643,
+        "startChar": 8,
+        "endLine": 643,
+        "endChar": 32
+      },
+      "revId": "8e5c6808aca61eb59bcd5a7726facf40cefb9b97",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }

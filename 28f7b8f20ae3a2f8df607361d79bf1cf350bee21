@@ -22,6 +22,30 @@
       "revId": "28f7b8f20ae3a2f8df607361d79bf1cf350bee21",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74bcee1c_89203765",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-05T15:37:36Z",
+      "side": 1,
+      "message": "Specifying GERRIT_REFSPEC parameter in sandbox does not cause the specified patch to be fetched [0] when the choosing strategy is \u0027default\u0027 (as required for periodic jobs).\nI also do not see a way to modify the choosing strategy in the Jenkins Sandbox WebUI.\nAm I missing something?\n\n[0] https://jenkins.fd.io/sandbox/job/vpp-debug-verify-master-ubuntu2004-x86_64/1/\nGERRIT_REFSPEC \u003d\u003d refs/changes/95/30895/5  \"ipsec: add support for AES CTR\"\n      GIT HEAD \u003d\u003d refs/changes/18/30718/23 \"nat: 1:1 policy NAT\"",
+      "parentUuid": "ec279e3d_0dde2a58",
+      "range": {
+        "startLine": 1039,
+        "startChar": 19,
+        "endLine": 1039,
+        "endChar": 21
+      },
+      "revId": "28f7b8f20ae3a2f8df607361d79bf1cf350bee21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
