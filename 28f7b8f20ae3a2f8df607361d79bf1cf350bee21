@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec279e3d_0dde2a58",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-05T09:23:20Z",
+      "side": 1,
+      "message": "Once again, keep this configurable for Sandbox testing.",
+      "range": {
+        "startLine": 1039,
+        "startChar": 19,
+        "endLine": 1039,
+        "endChar": 21
+      },
+      "revId": "28f7b8f20ae3a2f8df607361d79bf1cf350bee21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
