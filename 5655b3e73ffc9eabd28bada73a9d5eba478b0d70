@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b694e9c_2e353691",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2021-02-08T17:57:31Z",
+      "side": 1,
+      "message": "thanks, good catch!",
+      "parentUuid": "f4886b98_abe7ec12",
+      "range": {
+        "startLine": 63,
+        "startChar": 65,
+        "endLine": 63,
+        "endChar": 71
+      },
+      "revId": "5655b3e73ffc9eabd28bada73a9d5eba478b0d70",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e00bf28_e542e3c0",
         "filename": "jjb/scripts/vpp/build.sh",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2021-02-08T15:51:55Z",
       "side": 1,
       "message": "Is this an implicit step? I see only \"test\" run explicitly in this code block.",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "5655b3e73ffc9eabd28bada73a9d5eba478b0d70",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d9284a0_3ac70024",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2021-02-08T17:57:31Z",
+      "side": 1,
+      "message": "Make test does depend on pkg-verify in the Makefile... I discovered it and then didn\u0027t update the comment... What\u0027s better - change the comment or re-add the explicit \"make pkg-verify\" ?",
+      "parentUuid": "6e00bf28_e542e3c0",
       "range": {
         "startLine": 77,
         "startChar": 32,
