@@ -64,6 +64,7 @@ fi
 # else use make pkg-verify.
 if [ "${IS_CSIT_VPP_JOB,,}" != "true" ]
 then
+    echo "Build vars: OS_ID=${OS_ID} OS_VERSION_ID=${OS_VERSION_ID}"
     if [ -n "${MAKE_PARALLEL_JOBS}" ]
     then
         export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
@@ -73,8 +74,19 @@ then
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
-    echo "Building using \"make verify\""
-    [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes verify
+    echo "Building using \"make pkg-verify\" then running \"make test\""
+    if [ "${DRYRUN,,}" != "true" ]
+    then
+	if [ "${OS_ID}-${OS_VERSION_ID}" = "ubuntu-18.04" ]
+	then
+	    echo " ====> Testing vppapigen"
+	    src/tools/vppapigen/test_vppapigen.py
+	    echo " ====> Running tests"
+	    make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test
+	else
+	    echo "Skip tests on ${OS_ID}-${OS_VERSION_ID}."
+	fi
+    fi
 else
     echo "Building using \"make pkg-verify\""
     [ "${DRYRUN,,}" = "true" ] || make UNATTENDED=yes pkg-verify
