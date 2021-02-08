@@ -33,6 +33,8 @@ DRYRUN="${DRYRUN:-}"
 IS_CSIT_VPP_JOB="${IS_CSIT_VPP_JOB:-}"
 MAKE_PARALLEL_FLAGS="${MAKE_PARALLEL_FLAGS:-}"
 MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
+MAKE_TEST_OS="${MAKE_TEST_OS:-ubuntu-18.04}"
+VPPAPIGEN_TEST_OS="${VPPAPIGEN_TEST_OS:-${MAKE_TEST_OS}}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
 RETVAL="0"
@@ -63,12 +65,24 @@ else
        "using build default ($(grep -c ^processor /proc/cpuinfo))."
 fi
 
-# If we are not a CSIT job just building packages, then use make verify,
-# else use make pkg-verify.
-if [ "${IS_CSIT_VPP_JOB,,}" != "true" ]
-then
-    if [ -n "${MAKE_PARALLEL_JOBS}" ]
-    then
+make_build_test() {
+    if ! make UNATTENDED=yes install-dep ; then
+        BUILD_ERROR="FAILED 'make install-dep'"
+        return
+    fi
+    if ! make UNATTENDED=yes install-ext-deps ; then
+        BUILD_ERROR="FAILED 'make install-ext-deps'"
+        return
+    fi
+    if ! make UNATTENDED=yes pkg-verify ; then
+        BUILD_ERROR="FAILED 'make pkg-verify'"
+	return
+    fi
+    if [ "${IS_CSIT_VPP_JOB,,}" == "true" ]; then
+	# CSIT jobs don't need to run make test
+	return
+    fi
+    if [ -n "${MAKE_PARALLEL_JOBS}" ]; then
         export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
         echo "Testing VPP with ${TEST_JOBS} cores."
     else
@@ -76,19 +90,24 @@ then
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
-    echo "Building using \"make verify\""
-    if [[ "${DRYRUN,,}" != "true" ]] ; then
-        if ! make UNATTENDED=yes verify ; then
-            BUILD_ERROR="FAILED 'make verify'"
-        fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${VPPAPIGEN_TEST_OS}" ]; then
+	if ! src/tools/vppapigen/test_vppapigen.py; then
+	    BUILD_ERROR="FAILED src/tools/vppapigen/test_vppapigen.py"
+	    return
+	fi
     fi
-else
-    echo "Building using \"make pkg-verify\""
-    if [[ "${DRYRUN,,}" != "true" ]] ; then
-        if ! make UNATTENDED=yes pkg-verify ; then
-            BUILD_ERROR="FAILED 'make pkg-verify'"
-        fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ]; then
+	if ! make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test; then
+	    BUILD_ERROR="FAILED 'make test'"
+	    return
+	fi
+    else
+	echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
     fi
+}
+
+if [ "${DRYRUN,,}" != "true" ] ; then
+    make_build_test
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
