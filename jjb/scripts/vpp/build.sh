@@ -63,10 +63,17 @@ else
        "using build default ($(grep -c ^processor /proc/cpuinfo))."
 fi
 
-# If we are not a CSIT job just building packages, then use make verify,
-# else use make pkg-verify.
+echo "Building using \"make pkg-verify\""
+if [[ "${DRYRUN,,}" != "true" ]] ; then
+  if ! make UNATTENDED=yes pkg-verify ; then
+        BUILD_ERROR="FAILED 'make pkg-verify'"
+  fi
+fi
+
+# If we are a CSIT job just building packages, then skip the make test
 if [ "${IS_CSIT_VPP_JOB,,}" != "true" ]
 then
+    echo "Build vars: OS_ID=${OS_ID} OS_VERSION_ID=${OS_VERSION_ID}"
     if [ -n "${MAKE_PARALLEL_JOBS}" ]
     then
         export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
@@ -76,19 +83,21 @@ then
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
-    echo "Building using \"make verify\""
-    if [[ "${DRYRUN,,}" != "true" ]] ; then
-        if ! make UNATTENDED=yes verify ; then
-            BUILD_ERROR="FAILED 'make verify'"
-        fi
+    echo "Testing the vppapigen and running \"make test\""
+    if [ "${DRYRUN,,}" != "true" ]
+    then
+	if [ "${OS_ID}-${OS_VERSION_ID}" = "ubuntu-18.04" ]
+	then
+	    echo " ====> Testing vppapigen"
+	    src/tools/vppapigen/test_vppapigen.py
+	    echo " ====> Running tests"
+	    make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test
+	else
+	    echo "Skip tests on ${OS_ID}-${OS_VERSION_ID}."
+	fi
     fi
 else
-    echo "Building using \"make pkg-verify\""
-    if [[ "${DRYRUN,,}" != "true" ]] ; then
-        if ! make UNATTENDED=yes pkg-verify ; then
-            BUILD_ERROR="FAILED 'make pkg-verify'"
-        fi
-    fi
+    echo "Not running \"make test\" in a CSIT job"
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
