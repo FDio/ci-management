@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e9bed3_96c25cc7",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-09T15:27:23Z",
+      "side": 0,
+      "message": "I prefer keeping -e.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "cd25f2a7e7112e25f2b6381a2e0d7edfc5d66573",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}

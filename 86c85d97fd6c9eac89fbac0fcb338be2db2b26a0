@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbe0c0d5_1eb7cfa0",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-09T15:27:23Z",
+      "side": 1,
+      "message": "Set -e compatible code:\n\n    if [[ \"${DRYRUN,,}\" !\u003d \"true\" ]] ; then\n        if ! make UNATTENDED\u003dyes verify ; then\n            BUILD_ERROR\u003d\"FAILED \u0027make verify\u0027\"\n        fi\n    fi",
+      "revId": "86c85d97fd6c9eac89fbac0fcb338be2db2b26a0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e7afae_f8023c3f",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-09T15:27:23Z",
+      "side": 1,
+      "message": "Once again, I prefer to include -e.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "86c85d97fd6c9eac89fbac0fcb338be2db2b26a0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb1b574_ec51cf82",
+        "filename": "jjb/scripts/vpp/debug-build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-09T15:27:23Z",
+      "side": 1,
+      "message": "In a block with many possible errors, it is better to create a function and use early returns on failure.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "86c85d97fd6c9eac89fbac0fcb338be2db2b26a0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
