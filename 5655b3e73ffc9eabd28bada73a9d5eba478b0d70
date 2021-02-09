@@ -117,6 +117,30 @@
       "revId": "5655b3e73ffc9eabd28bada73a9d5eba478b0d70",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf496d55_9bc55e0f",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-09T02:24:49Z",
+      "side": 1,
+      "message": "\u003e I think it is better to add the explicit step, as then you can divide the code to compile part (so can be moved before the 65 line) and test part.\n\n+1\n\nI have refactored the build scripts [0] to make the error messages explicit for all of the separate steps so I can add Failure Notification rules to catch the specific errors.\n\nI would prefer to rebase this patch on [0] which is ready for final review/merge.\n\n[0] https://gerrit.fd.io/r/c/ci-management/+/31019",
+      "parentUuid": "d6395ccc_6f1916cb",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "5655b3e73ffc9eabd28bada73a9d5eba478b0d70",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
