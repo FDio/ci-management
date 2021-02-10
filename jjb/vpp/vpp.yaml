@@ -170,7 +170,7 @@
           # Once per hour
           periodicity: 'H * * * *'
           repo-stream-part: 'master'
-          branch-refspec: 'refs/changes/01/31201/2'
+          branch-refspec: ''
       - '2009':
           branch: 'stable/2009'
           # Once per day
@@ -677,19 +677,12 @@
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
 
-# TODO: Uncomment and merge as part 2 of process to convert non-voting
-# jobs to periodic.
-#    triggers:
-#      - timed: '{periodicity}'
-#          skip-vote:
-#            successful: true
-#            failed: true
-#            unstable: true
-#            notbuilt: true
-#      - gerrit-trigger-manually-triggered:
-#          comment-trigger-value: '{comment-trigger-value}'
-#          name: '{project}'
-#          branch: '{branch}'
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -1053,19 +1046,12 @@
       - fdio-infra-wrappers:
           build-timeout: '90'
 
-# TODO: Uncomment and merge as part 2 of process to convert non-voting
-# jobs to periodic.
-#    triggers:
-#      - timed: '{periodicity}'
-#          skip-vote:
-#            successful: true
-#            failed: true
-#            unstable: true
-#            notbuilt: true
-#      - gerrit-trigger-manually-triggered:
-#          comment-trigger-value: '{comment-trigger-value}'
-#          name: '{project}'
-#          branch: '{branch}'
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
