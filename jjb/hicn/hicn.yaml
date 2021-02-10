@@ -13,6 +13,29 @@
 
 ---
 - project:
+    name: hicn-os-eol-x86_64
+    jobs:
+      - "hicn-verify-{stream}-{os}-{executor-arch}"
+      - "hicn-merge-{stream}-{os}-{executor-arch}"
+
+    project: "hicn"
+    os:
+      - centos7:
+          repo-os-part: "centos7"
+
+    executor-arch: "x86_64"
+
+    stream:
+      - "2009":
+          branch: "stable/2009"
+          repo-stream-part: "stable.2009"
+          repository-name: "hicn"
+      - "2005":
+          branch: "stable/2005"
+          repo-stream-part: "stable.2005"
+          repository-name: "hicn"
+
+- project:
     name: hicn-x86_64
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
@@ -22,26 +45,47 @@
     os:
       - ubuntu1804:
           repo-os-part: "ubuntu.bionic.main"
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-      - centos7:
-          repo-os-part: "centos7"
 
     executor-arch: "x86_64"
 
     stream:
-      - master:
+      - "master":
           branch: "master"
           repo-stream-part: "master"
+          repository-name: "hicn"
+      - "2009":
+          branch: "stable/2009"
+          repo-stream-part: "stable.2009"
           repository-name: "hicn"
       - "2005":
           branch: "stable/2005"
           repo-stream-part: "stable.2005"
           repository-name: "hicn"
 
-    type:
-      - short
-      - long
+- project:
+    name: hicn-os-in-2009-x86_64
+    jobs:
+      - "hicn-verify-{stream}-{os}-{executor-arch}"
+      - "hicn-merge-{stream}-{os}-{executor-arch}"
+
+    project: "hicn"
+    os:
+      - ubuntu2004:
+          repo-os-part: "ubuntu.focal.main"
+      - centos8:
+          repo-os-part: "centos8"
+
+    executor-arch: "x86_64"
+
+    stream:
+      - "master":
+          branch: "master"
+          repo-stream-part: "master"
+          repository-name: "hicn"
+      - "2009":
+          branch: "stable/2009"
+          repo-stream-part: "stable.2009"
+          repository-name: "hicn"
 
 - project:
     name: hicn-aarch64
@@ -67,10 +111,6 @@
           repo-stream-part: "stable.2005"
           repository-name: "hicn"
 
-    type:
-      - short
-      - long
-
 - project:
     name: hicn-beta-x86_64
     jobs:
@@ -82,8 +122,8 @@
           repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-      - centos7:
-          repo-os-part: "centos7"
+      - centos8:
+          repo-os-part: "centos8"
 
     executor-arch: "x86_64"
 
@@ -91,10 +131,6 @@
       - lightng:
           branch: "hicn-light-ng"
           repo-stream-part: "hicn-light-ng"
-
-    type:
-      - short
-      - long
 
 - project:
     name: hicn-beta-aarch64
@@ -112,10 +148,6 @@
       - lightng:
           branch: "hicn-light-ng"
           repo-stream-part: "hicn-light-ng"
-
-    type:
-      - short
-      - long
 
 - project:
     name: hicn-misc
@@ -145,8 +177,8 @@
           repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-      - centos7:
-          repo-os-part: "centos7"
+      - centos8:
+          repo-os-part: "centos8"
 
     executor-arch: "x86_64"
 
@@ -154,10 +186,6 @@
       - master:
           branch: "master"
           repo-stream-part: "master"
-
-    type:
-      - short
-      - long
 
 - project:
     name: hicn-extras-aarch64
@@ -176,10 +204,6 @@
       - master:
           branch: "master"
           repo-stream-part: "master"
-
-    type:
-      - short
-      - long
 
 - project:
     name: hicn-view
