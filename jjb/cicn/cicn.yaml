@@ -25,7 +25,7 @@
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
       - centos7:
-          repo-os-part: "centos7"
+          repo-os-part: "centos8"
 
     executor-arch: "x86_64"
 
