@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "132bea27_7407941f",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-10T16:45:28Z",
+      "side": 1,
+      "message": "The code block (line 66 - 101) should be turned into a function with early return as in make_build_test_debug() [0]\n\n[0] https://github.com/FDio/ci-management/blob/master/jjb/scripts/vpp/debug-build.sh#L35",
+      "revId": "5a5b714f61b97ba7bba35bf9995ffaf599bd6a21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71692bc9_3953e3dd",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-10T16:45:28Z",
+      "side": 1,
+      "message": "This is not necessary since set -x is enabled @ line 18 and is also reported in the completion output @ line 106",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 68
+      },
+      "revId": "5a5b714f61b97ba7bba35bf9995ffaf599bd6a21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5653f110_f5acbe58",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-10T16:45:28Z",
+      "side": 1,
+      "message": "Handle error condition with BUILD_ERROR as in lines 68-70, so set -e does not exit silently.  This is needed to allow Jenkins Failure Management rules to identify specific error signature.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "5a5b714f61b97ba7bba35bf9995ffaf599bd6a21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d306025_04662fdc",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-10T16:45:28Z",
+      "side": 1,
+      "message": "Handle error condition with BUILD_ERROR as in lines 68-70, so set -e does not exit silently.  This is needed to allow Jenkins Failure Management rules to identify specific error signature.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "5a5b714f61b97ba7bba35bf9995ffaf599bd6a21",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
