@@ -23,6 +23,15 @@ alias lib_vpp_imported=true
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . $CIMAN_DOCKER_SCRIPTS/lib_common.sh
 
+
+VPP_SUPPORTED_EXECUTOR_CLASSES="builder"
+vpp_supported_executor_class() {
+    if ! grep -q "${1:-}" <<< $VPP_SUPPORTED_EXECUTOR_CLASSES ; then
+        return 1
+    fi
+    return 0
+}
+
 make_vpp() {
     local target=$1
     local branch=${2:-"master"}
@@ -71,11 +80,13 @@ make_vpp_test() {
 }
 
 docker_build_setup_vpp() {
-    if [ ! -d "$DOCKER_VPP_DIR" ] ; then
-        echo_log "Cloning VPP into $DOCKER_VPP_DIR..."
-        git clone -q https://gerrit.fd.io/r/vpp $DOCKER_VPP_DIR
+    if vpp_supported_executor_class "$EXECUTOR_CLASS" ; then
+        if [ ! -d "$DOCKER_VPP_DIR" ] ; then
+            echo_log "Cloning VPP into $DOCKER_VPP_DIR..."
+            git clone -q https://gerrit.fd.io/r/vpp $DOCKER_VPP_DIR
+        fi
+        clean_git_repo $DOCKER_VPP_DIR
     fi
-    clean_git_repo $DOCKER_VPP_DIR
 }
 
 # Branches must be listed in chronological order -- oldest stable branch

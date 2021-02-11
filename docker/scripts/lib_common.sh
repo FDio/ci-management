@@ -1,7 +1,7 @@
 # lib_common.sh - Docker build script common library.
 #                 For import only.
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -18,25 +18,25 @@
 if [ -n "$(alias lib_common_imported 2> /dev/null)" ] ; then
     return 0
 fi
-alias lib_common_imported=true
+alias lib_common_imported="true"
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 export CIMAN_ROOT="$(dirname $(dirname $CIMAN_DOCKER_SCRIPTS))"
 
-must_be_run_as_root() {
-    set_opts=$-
-    grep -q e <<< $set_opts && set +e # disable exit on errors
+must_be_run_as_root_or_docker_group() {
+    set_opts="$-"
+    set +e # disable exit on errors
 
-    # test if the user is root
-    if [ "${EUID:-$(id -u)}" -eq "0" ] ; then
-        grep -q e <<< $set_opts && set -e # re-enable exit on errors
+    # test if the user is root or id is in the 'docker' group
+    if [ "${EUID:-$(id -u)}" -eq "0" ] || grep -q "docker" <<< "$(id)" ; then
+        grep -q e <<< "$set_opts" && set -e # re-enable exit on errors
     else
         set +x
-        echo -e "\nERROR: Must be run as root!"
+        echo -e "\nERROR: Must be run as root or '$USER' must be in the group 'docker'!"
         if [ -n "$(declare -f usage)" ] ; then
             usage
         fi
-        grep -q e <<< $set_opts && set -e # re-enable exit on errors
+        grep -q e <<< "$set_opts" && set -e # re-enable exit on errors
         exit 1
     fi
 }
@@ -54,7 +54,7 @@ echo_log() {
         if [ -z "$(alias running_in_docker_build 2> /dev/null)" ] ; then
             echo
         else
-            echo | tee -a $FDIOTOOLS_IMAGE_BUILD_LOG 1>&2
+            echo | tee -a "$FDIOTOOLS_IMAGE_BUILD_LOG" 1>&2
         fi
         return 0
     fi
@@ -69,14 +69,14 @@ echo_log() {
     if [ -z "$(alias running_in_docker_build 2> /dev/null)" ] ; then
         echo ${echo_opts}"####> $@"
     else
-        echo ${echo_opts}"####> $(date): $@" | tee -a $FDIOTOOLS_IMAGE_BUILD_LOG 1>&2
+        echo ${echo_opts}"####> $(date -u): $@" | tee -a $FDIOTOOLS_IMAGE_BUILD_LOG 1>&2
     fi
 }
 
 dump_echo_log() {
     [ -z "$(alias running_in_docker_build 2> /dev/null)" ] && return 0
-    echo -e "\n\n####> $(date) Build log ($FDIOTOOLS_IMAGE_BUILD_LOG):"
-    cat $FDIOTOOLS_IMAGE_BUILD_LOG
+    echo -e "\n\n####> $(date -u) Build log ($FDIOTOOLS_IMAGE_BUILD_LOG):"
+    cat "$FDIOTOOLS_IMAGE_BUILD_LOG"
 }
 
 do_git_config() {
@@ -84,7 +84,7 @@ do_git_config() {
         echo_log "ERROR: do_git_config(): Invalid number of arguments ($#)!"
         return 1
     fi
-    cd $DOCKER_BUILD_DIR/$1
+    cd "$DOCKER_BUILD_DIR/$1"
 
     # Add user to git config so git commands don't fail
     local git_config_list="$(git config -l)"
@@ -101,21 +101,20 @@ do_git_branch() {
 
     echo_log "  Checking out '$branch' in $(pwd)"
     if [ -n "$(git branch | grep $branch)" ] ; then
-        git checkout $branch
+        git checkout "$branch"
     else
-        git checkout -b $branch --track origin/$branch
+        git checkout -b "$branch" --track "origin/$branch"
     fi
     git pull -q
     echo_log -e "  'git log --oneline | head':\n----- %< -----\n$(git log --oneline | head)\n----- %< -----"
 }
 
 clean_git_repo() {
-    local curr_dir=$(pwd)
-    cd $1
+    pushd "$1" >& /dev/null
     git clean -qfdx
     git checkout -q master
     git pull -q
-    cd $curr_dir
+    popd >& /dev/null
 }
 
 remove_pyc_files_and_pycache_dirs() {
@@ -123,11 +122,6 @@ remove_pyc_files_and_pycache_dirs() {
     find . -type d -name __pycache__ -exec echo -n "Removing " \; \
          -print -exec rm -rf {} \; 2>/dev/null || true
 }
-
-# Well-known filename variables
-export APT_DEBIAN_DOCKER_GPGFILE="docker.linux.debian.gpg"
-export APT_UBUNTU_DOCKER_GPGFILE="docker.linux.ubuntu.gpg"
-export YUM_CENTOS_DOCKER_GPGFILE="docker.linux.centos.gpg"
 
 # OS type variables
 # TODO: Investigate if sourcing /etc/os-release and using env vars from it
@@ -157,26 +151,24 @@ esac
 #       an untested docker image into production.
 export EXECUTOR_ROLES="sandbox test"
 export EXECUTOR_DEFAULT_CLASS="builder"
-export EXECUTOR_CLASS="$EXECUTOR_DEFAULT_CLASS"
+export EXECUTOR_CLASS=${EXECUTOR_CLASS:-"$EXECUTOR_DEFAULT_CLASS"}
 export EXECUTOR_CLASS_ARCH="$EXECUTOR_DEFAULT_CLASS-$OS_ARCH"
-export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit csit_dut csit_shim"
+export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit_dut csit_shim"
 export EXECUTOR_ARCHS="aarch64 x86_64"
 declare -A EXECUTOR_CLASS_ARCH_OS_NAMES
 EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="centos-8 ubuntu-18.04 ubuntu-20.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="centos-7 centos-8 debian-9 debian-10 ubuntu-18.04 ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit-x86_64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-18.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-18.04 ubuntu-20.04"
 export EXECUTOR_CLASS_ARCH_OS_NAMES
 
 executor_list_roles() {
-    local set_opts=$-
-    grep -q u <<< $set_opts && set +u # disable undefined variable check
+    local set_opts="$-"
+    set +u # disable undefined variable check
     local indent=${1:-"     "}
-    grep -q u <<< $set_opts && set -u # re-enable undefined variable check
+    grep -q u <<< "$set_opts" && set -u # re-enable undefined variable check
 
     for role in $EXECUTOR_ROLES ; do
         echo -e "${indent}$role"
@@ -193,10 +185,10 @@ executor_verify_role() {
 }
 
 executor_list_classes() {
-    local set_opts=$-
-    grep -q u <<< $set_opts && set +u # disable undefined variable check
+    local set_opts="$-"
+    set +u # disable undefined variable check
     local indent=${1:-"     "}
-    grep -q u <<< $set_opts && set -u # re-enable undefined variable check
+    grep -q u <<< "$set_opts" && set -u # re-enable undefined variable check
 
     for class in $EXECUTOR_CLASSES ; do
         echo -e "${indent}$class"
@@ -213,10 +205,10 @@ executor_verify_class() {
 }
 
 executor_list_os_names() {
-    local set_opts=$-
-    grep -q u <<< $set_opts && set +u # disable undefined variable check
+    local set_opts="$-"
+    set +u # disable undefined variable check
     local indent=${1:-"     "}
-    grep -q u <<< $set_opts && set -u # re-enable undefined variable check
+    grep -q u <<< "$set_opts" && set -u # re-enable undefined variable check
 
     echo
     echo "Valid executor OS names for class '$EXECUTOR_CLASS':"
@@ -235,40 +227,43 @@ executor_verify_os_name() {
 }
 
 # Docker variables
+export DOCKER_DATE=${DOCKER_DATE:-"$(date -u +%Y_%m_%d_%H%M%S_UTC)"}
 export DOCKER_BUILD_DIR="/scratch/docker-build"
 export DOCKER_CIMAN_ROOT="$DOCKER_BUILD_DIR/ci-management"
 export DOCKERFILE="$DOCKER_BUILD_DIR/Dockerfile"
 export DOCKERIGNOREFILE="$DOCKER_BUILD_DIR/.dockerignore"
 export DOCKERFILE_FROM=${DOCKERFILE_FROM:="${OS_ID}:${OS_VERSION_ID}"}
-export DOCKER_TAG="$(date +%Y_%m_%d_%H%M%S)-$OS_ARCH"
+export DOCKER_TAG="$DOCKER_DATE-$OS_ARCH"
 export DOCKER_VPP_DIR="$DOCKER_BUILD_DIR/vpp"
 export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR/csit"
-export DOCKER_GPG_KEY_DIR="$DOCKER_BUILD_DIR/gpg-key"
-export DOCKER_APT_UBUNTU_DOCKER_GPGFILE="$DOCKER_GPG_KEY_DIR/$APT_UBUNTU_DOCKER_GPGFILE"
-export DOCKER_APT_DEBIAN_DOCKER_GPGFILE="$DOCKER_GPG_KEY_DIR/$APT_DEBIAN_DOCKER_GPGFILE"
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
+export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR/files"
 
 docker_build_setup_ciman() {
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
         echo_log "Updating $CIMAN_ROOT git submodules..."
-        pushd $CIMAN_ROOT
+        pushd "$CIMAN_ROOT"
         git submodule update --init --recursive
         popd
         if [ -d "$DOCKER_BUILD_DIR" ] ; then
             echo_log "Removing existing DOCKER_BUILD_DIR: $DOCKER_BUILD_DIR..."
-            rm -rf $DOCKER_BUILD_DIR
+            local sudo_cmd=""
+            if [ "$(whoami)" != "$(stat -c %U $DOCKER_BUILD_DIR)" ] ; then
+                sudo_cmd="sudo"
+            fi
+            ${sudo_cmd} rm -rf "$DOCKER_BUILD_DIR"
         fi
         echo_log "Syncing $CIMAN_ROOT into $DOCKER_CIMAN_ROOT..."
-        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
-        rsync -a $CIMAN_ROOT/. $DOCKER_CIMAN_ROOT
+        mkdir -p "$DOCKER_BUILD_DIR"
+        rsync -a "$CIMAN_ROOT/." "$DOCKER_CIMAN_ROOT"
     else
-        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
+        mkdir -p "$DOCKER_BUILD_DIR"
     fi
 }
 
 # Variables used in docker build environment
-set_opts=$-
-grep -q u <<< $set_opts && set +u # disable undefined variable check
+set_opts="$-"
+set +u # disable undefined variable check
 if [ -n "$FDIOTOOLS_IMAGE" ] ; then
     alias running_in_docker_build=true
     export DOCKER_BUILD_LOG_DIR="$DOCKER_BUILD_DIR/logs"
@@ -276,4 +271,4 @@ if [ -n "$FDIOTOOLS_IMAGE" ] ; then
     export FDIOTOOLS_IMAGE_BUILD_LOG="$DOCKER_BUILD_LOG_DIR/$FDIOTOOLS_IMAGENAME.log"
     mkdir -p $DOCKER_BUILD_LOG_DIR
 fi
-grep -q u <<< $set_opts && set -u # re-enable undefined variable check
+grep -q u <<< "$set_opts" && set -u # re-enable undefined variable check
