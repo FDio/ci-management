@@ -1,7 +1,7 @@
 # lib_common.sh - Docker build script common library.
 #                 For import only.
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -124,11 +124,6 @@ remove_pyc_files_and_pycache_dirs() {
          -print -exec rm -rf {} \; 2>/dev/null || true
 }
 
-# Well-known filename variables
-export APT_DEBIAN_DOCKER_GPGFILE="docker.linux.debian.gpg"
-export APT_UBUNTU_DOCKER_GPGFILE="docker.linux.ubuntu.gpg"
-export YUM_CENTOS_DOCKER_GPGFILE="docker.linux.centos.gpg"
-
 # OS type variables
 # TODO: Investigate if sourcing /etc/os-release and using env vars from it
 #       works across all OS variants.  If so, clean up copy-pasta...
@@ -157,19 +152,17 @@ esac
 #       an untested docker image into production.
 export EXECUTOR_ROLES="sandbox test"
 export EXECUTOR_DEFAULT_CLASS="builder"
-export EXECUTOR_CLASS="$EXECUTOR_DEFAULT_CLASS"
+export EXECUTOR_CLASS=${EXECUTOR_CLASS:-"$EXECUTOR_DEFAULT_CLASS"}
 export EXECUTOR_CLASS_ARCH="$EXECUTOR_DEFAULT_CLASS-$OS_ARCH"
-export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit csit_dut csit_shim"
+export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit_dut csit_shim"
 export EXECUTOR_ARCHS="aarch64 x86_64"
 declare -A EXECUTOR_CLASS_ARCH_OS_NAMES
 EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="centos-8 ubuntu-18.04 ubuntu-20.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="centos-7 centos-8 debian-9 debian-10 ubuntu-18.04 ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit-x86_64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-18.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-18.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-18.04 ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-18.04 ubuntu-20.04"
 export EXECUTOR_CLASS_ARCH_OS_NAMES
 
 executor_list_roles() {
@@ -243,10 +236,8 @@ export DOCKERFILE_FROM=${DOCKERFILE_FROM:="${OS_ID}:${OS_VERSION_ID}"}
 export DOCKER_TAG="$(date +%Y_%m_%d_%H%M%S)-$OS_ARCH"
 export DOCKER_VPP_DIR="$DOCKER_BUILD_DIR/vpp"
 export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR/csit"
-export DOCKER_GPG_KEY_DIR="$DOCKER_BUILD_DIR/gpg-key"
-export DOCKER_APT_UBUNTU_DOCKER_GPGFILE="$DOCKER_GPG_KEY_DIR/$APT_UBUNTU_DOCKER_GPGFILE"
-export DOCKER_APT_DEBIAN_DOCKER_GPGFILE="$DOCKER_GPG_KEY_DIR/$APT_DEBIAN_DOCKER_GPGFILE"
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
+export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR/files"
 
 docker_build_setup_ciman() {
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
@@ -259,10 +250,10 @@ docker_build_setup_ciman() {
             rm -rf $DOCKER_BUILD_DIR
         fi
         echo_log "Syncing $CIMAN_ROOT into $DOCKER_CIMAN_ROOT..."
-        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
+        mkdir -p $DOCKER_BUILD_DIR
         rsync -a $CIMAN_ROOT/. $DOCKER_CIMAN_ROOT
     else
-        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
+        mkdir -p $DOCKER_BUILD_DIR
     fi
 }
 
