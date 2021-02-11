@@ -36,20 +36,20 @@
     stream:
       - master:
           branch: 'master'
+          branch-refspec: ''
           os: 'ubuntu2004'
           repo-stream-part: 'master'
-          branch-refspec: ''
       - '2009':
           branch: 'stable/2009'
+          branch-refspec: ''
           os: 'ubuntu1804'
           repo-stream-part: 'stable.2009'
-          branch-refspec: ''
           os: 'ubuntu1804'
       - '2101':
           branch: 'stable/2101'
+          branch-refspec: ''
           os: 'ubuntu1804'
           repo-stream-part: 'stable.2101'
-          branch-refspec: ''
     executor-arch: 'x86_64'
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
@@ -65,16 +65,16 @@
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
           branch-refspec: ''
+          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
           branch-refspec: ''
+          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
-          repo-stream-part: 'stable.2101'
           branch-refspec: ''
+          repo-stream-part: 'stable.2101'
     os:
       - ubuntu1804:
           repo-os-part: 'ubuntu.bionic.main'
@@ -93,8 +93,8 @@
     stream:
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
           branch-refspec: ''
+          repo-stream-part: 'stable.2009'
     os:
       - centos7:
           repo-os-part: 'centos7'
@@ -130,16 +130,16 @@
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
           branch-refspec: ''
+          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
           branch-refspec: ''
+          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
-          repo-stream-part: 'stable.2101'
           branch-refspec: ''
+          repo-stream-part: 'stable.2101'
     os:
       - centos8:
           repo-os-part: 'centos8'
@@ -167,16 +167,16 @@
     stream:
       - master:
           branch: 'master'
+          branch-refspec: ''
           # Once per hour
           periodicity: 'H * * * *'
           repo-stream-part: 'master'
-          branch-refspec: 'refs/changes/01/31201/2'
       - '2009':
           branch: 'stable/2009'
+          branch-refspec: ''
           # Once per day
           periodicity: 'H H * * *'
           repo-stream-part: 'stable.2009'
-          branch-refspec: ''
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
@@ -208,8 +208,8 @@
 #    stream:
 #      - master:
 #          branch: 'master'
-#          repo-stream-part: 'master'
 #          branch-refspec: ''
+#          repo-stream-part: 'master'
 #    os:
 #      - debian10:
 #          repo-os-part: 'buster'
@@ -229,16 +229,16 @@
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
           branch-refspec: ''
+          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
           branch-refspec: ''
+          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
-          repo-stream-part: 'stable.2101'
           branch-refspec: ''
+          repo-stream-part: 'stable.2101'
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -253,16 +253,16 @@
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
           branch-refspec: ''
+          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
-          repo-stream-part: 'stable.2009'
           branch-refspec: ''
+          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
-          repo-stream-part: 'stable.2101'
           branch-refspec: ''
+          repo-stream-part: 'stable.2101'
     os:
       - centos8:
           repo-os-part: 'centos8'
@@ -306,12 +306,12 @@
 #    stream:
 #      - master:
 #          branch: 'master'
-#          repo-stream-part: 'master'
 #          branch-refspec: ''
+#          repo-stream-part: 'master'
 #      - '2009':
 #          branch: 'stable/2009'
-#          repo-stream-part: 'stable.2009'
 #          branch-refspec: ''
+#          repo-stream-part: 'stable.2009'
 #    os:
 #      - ubuntu2004:
 #          repo-os-part: 'ubuntu.focal.main'
@@ -343,8 +343,8 @@
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
           branch-refspec: ''
+          repo-stream-part: 'master'
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
@@ -377,12 +377,15 @@
     stream:
       - master:
           branch: 'master'
+          branch-refspec: ''
           repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
+          branch-refspec: ''
           repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
+          branch-refspec: ''
           repo-stream-part: 'stable.2101'
     device-node-arch:
       - 1n-skx
@@ -417,14 +420,17 @@
     executor: 'vpp-csit-device'
     skip-vote: 'false'
     stream:
+      - master:
+          branch: 'master'
+          branch-refspec: ''
       - '2009':
           branch: 'stable/2009'
+          branch-refspec: ''
           repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
+          branch-refspec: ''
           repo-stream-part: 'stable.2101'
-      - master:
-          branch: 'master'
     os: ubuntu1804
 # [end] VPP-CSIT-API-CRC PROJECT
 
@@ -677,19 +683,12 @@
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
 
-# TODO: Uncomment and merge as part 2 of process to convert non-voting
-# jobs to periodic.
-#    triggers:
-#      - timed: '{periodicity}'
-#          skip-vote:
-#            successful: true
-#            failed: true
-#            unstable: true
-#            notbuilt: true
-#      - gerrit-trigger-manually-triggered:
-#          comment-trigger-value: '{comment-trigger-value}'
-#          name: '{project}'
-#          branch: '{branch}'
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -1031,7 +1030,8 @@
       - gerrit-event-type-parameter
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
@@ -1053,19 +1053,12 @@
       - fdio-infra-wrappers:
           build-timeout: '90'
 
-# TODO: Uncomment and merge as part 2 of process to convert non-voting
-# jobs to periodic.
-#    triggers:
-#      - timed: '{periodicity}'
-#          skip-vote:
-#            successful: true
-#            failed: true
-#            unstable: true
-#            notbuilt: true
-#      - gerrit-trigger-manually-triggered:
-#          comment-trigger-value: '{comment-trigger-value}'
-#          name: '{project}'
-#          branch: '{branch}'
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
 
     builders:
       - shell:
@@ -1122,7 +1115,8 @@
       - gerrit-event-type-parameter
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
@@ -1212,7 +1206,8 @@
       - gerrit-csit-refspec-parameter
       - gerrit-event-comment-text-parameter
       - gerrit-event-type-parameter
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
       - gerrit-parameter:
           branch: '{branch}'
       - make-parallel-jobs-parameter:
@@ -1291,7 +1286,8 @@
       - gerrit-csit-refspec-parameter
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
       - project-parameter:
           project: '{project}'
       - stream-parameter:
