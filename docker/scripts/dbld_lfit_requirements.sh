@@ -16,13 +16,12 @@
 set -euxo pipefail
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
-. $CIMAN_DOCKER_SCRIPTS/lib_common.sh
+. "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 
-must_be_run_as_root
 must_be_run_in_docker_build
 
 # Add packagecloud files
-cat <<EOF > /root/.packagecloud
+cat <<EOF >/root/.packagecloud
 {"url":"https://packagecloud.io","token":"\$token"}
 EOF
 cat <<EOF >/root/packagecloud_api
@@ -33,7 +32,7 @@ EOF
 
 # Copy lf-env.sh for LF Releng scripts
 lf_env_sh="/root/lf-env.sh"
-cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh $lf_env_sh
+cp "$DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh" "$lf_env_sh"
 chmod 644 "$lf_env_sh"
 cat <<EOF >>"$lf_env_sh"
 
@@ -43,16 +42,16 @@ cat <<EOF >>"$lf_env_sh"
 unset -f lf-activate-venv
 lf-activate-venv() {
     echo "\${FUNCNAME[0]}(): INFO: Adding $LF_VENV/bin to PATH"
-    PATH="$LF_VENV/bin:$PATH"
+    PATH="\$LF_VENV/bin:\$PATH"
     return 0
 }
 EOF
 
 # Install lftools & boto3 for log / artifact upload.
 python3 -m pip install boto3
-mkdir -p $LF_VENV
+mkdir -p "$LF_VENV"
 OLD_PATH="$PATH"
-python3 -m venv $LF_VENV
+python3 -m venv "$LF_VENV"
 PATH="$LF_VENV/bin:$PATH"
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade --upgrade-strategy eager lftools
