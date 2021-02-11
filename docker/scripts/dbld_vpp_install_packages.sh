@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -25,7 +25,12 @@ must_be_run_as_root
 must_be_run_in_docker_build
 
 echo_log
-echo_log "Starting  $(basename $0)"
+if ! vpp_supported_executor_class "$FDIOTOOLS_EXECUTOR_CLASS" ; then
+    echo_log "VPP is not supported on executor class '$FDIOTOOLS_EXECUTOR_CLASS'. Skipping $(basename $0)..."
+    exit 0
+else
+    echo_log "Starting  $(basename $0)"
+fi
 
 do_git_config vpp
 for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
