@@ -262,7 +262,6 @@ script will be written to automate the process.
 - fdiotools/builder-debian10
 - fdiotools/builder-ubuntu1804
 - fdiotools/builder-ubuntu2004
-- fdiotools/csit-ubuntu1804
 - fdiotools/csit_dut-ubuntu1804
 - fdiotools/csit_shim-ubuntu1804
 
@@ -291,7 +290,6 @@ Jenkins-Nomad Label.
 
 - class
 -- builder
--- csit
 -- csit_dut
 -- csit_shim
 
