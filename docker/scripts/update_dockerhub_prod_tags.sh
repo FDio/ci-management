@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -22,7 +22,7 @@ echo -e "\n*** Logging output to $logname ***\n"
 exec > >(tee -a $logname) 2>&1
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
-. $CIMAN_DOCKER_SCRIPTS/lib_common.sh
+. "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 
 # Global variables
 long_bar="################################################################"
@@ -79,7 +79,7 @@ push_to_dockerhub() {
     for image in "$@" ; do
         set +e
         echo "Pushing '$image' to docker hub..."
-        if ! docker push $image ; then
+        if ! docker push "$image" ; then
             echo "ERROR: 'docker push $image' failed!"
             exit 1
         fi
@@ -213,7 +213,7 @@ verify_image_name() {
 docker_tag_image() {
     echo ">>> docker tag $1 $2"
     set +e
-    docker tag $1 $2
+    docker tag "$1" "$2"
     local retval="$?"
     set -e
     if [ "$retval" -ne "0" ] ; then
@@ -224,7 +224,7 @@ docker_tag_image() {
 docker_rmi_tag() {
     set +e
     echo ">>> docker rmi $1"
-    docker rmi $1
+    docker rmi "$1"
     local retval="$?"
     set -e
     if [ "$retval" -ne "0" ] ; then
@@ -260,8 +260,8 @@ inspect_images() {
 
 revert_prod_image() {
     inspect_images "EXISTING "
-    docker_tag_image $docker_id_prod $image_name_prev
-    docker_tag_image $docker_id_prev $image_name_prod
+    docker_tag_image "$docker_id_prod" "$image_name_prev"
+    docker_tag_image "$docker_id_prev" "$image_name_prod"
     get_image_id_tags
     inspect_images "REVERTED "
 
@@ -290,25 +290,25 @@ revert_prod_image() {
 
 promote_new_image() {
     inspect_images "EXISTING "
-    docker_tag_image $docker_id_prod $image_name_prev
-    docker_tag_image $docker_id_new $image_name_prod
+    docker_tag_image "$docker_id_prod" "$image_name_prev"
+    docker_tag_image "$docker_id_new" "$image_name_prod"
     get_image_id_tags
     inspect_images "PROMOTED "
 
     local yn=""
     while true; do
         read -p "Push promoted tags to '$image_user/$image_repo' (yes/no)? " yn
-        case ${yn:0:1} in
+        case "${yn:0:1}" in
             y|Y )
                 break ;;
             n|N )
                 echo -e "\nABORTING PROMOTION!\n"
-                docker_tag_image $docker_id_prev $image_name_prod
+                docker_tag_image "$docker_id_prev" "$image_name_prod"
                 local restore_both="$(echo $restore_cmd | mawk '{print $5}')"
                 if [[ -n "$restore_both" ]] ; then
-                    docker_tag_image $image_realname_prev $image_name_prev
+                    docker_tag_image "$image_realname_prev" "$image_name_prev"
                 else
-                    docker_rmi_tag $image_name_prev
+                    docker_rmi_tag "$image_name_prev"
                     image_name_prev=""
                     docker_id_prev=""
                 fi
@@ -320,12 +320,12 @@ promote_new_image() {
         esac
     done
     echo
-    push_to_dockerhub $image_name_new $image_name_prev $image_name_prod
+    push_to_dockerhub "$image_name_new" "$image_name_prev" "$image_name_prod"
     inspect_images ""
     echo_restore_cmd
 }
 
-must_be_run_as_root
+must_be_run_as_root_or_docker_group
 
 # Validate arguments
 num_args="$#"
