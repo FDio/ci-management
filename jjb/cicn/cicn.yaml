@@ -24,7 +24,7 @@
           repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-      - centos7:
+      - centos8:
           repo-os-part: "centos8"
 
     executor-arch: "x86_64"
