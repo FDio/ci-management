@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -32,6 +32,7 @@ ci_tag=""
 ci_image=""
 os_names=""
 push_to_docker_hub=""
+dump_dockerfile=""
 
 usage() {
     set +x
@@ -40,6 +41,7 @@ usage() {
     echo "  -a            Run all OS's supported on class $EXECUTOR_CLASS & arch $OS_ARCH"
     echo "  -c <class>    Default is '$EXECUTOR_DEFAULT_CLASS'"
     executor_list_classes
+    echo "  -d            Generate Dockerfile, dump it to stdout, and exit"
     echo "  -p            Push docker images to Docker Hub"
     echo "  -r <role>     Add a role based tag (e.g. sandbox-x86_64):"
     executor_list_roles
@@ -48,7 +50,7 @@ usage() {
 }
 
 must_be_run_as_root
-while getopts ":ahpc:r:" opt; do
+while getopts ":ahpdc:r:" opt; do
     case "$opt" in
         a)  all_os_names=1 ;;
         c) if executor_verify_class "$OPTARG" ; then
@@ -58,6 +60,7 @@ while getopts ":ahpc:r:" opt; do
                echo "ERROR: Invalid executor class '$OPTARG'!"
                usage
            fi ;;
+        d) dump_dockerfile=1; set +x ;;
         h) usage ;;
         p) push_to_docker_hub=1 ;;
         r) if executor_verify_role "$OPTARG" ; then
@@ -87,6 +90,16 @@ if [ -z "$os_names" ] ; then
     echo "ERROR: Missing executor OS name(s) for class '$EXECUTOR_CLASS'!"
     usage
 fi
+for executor_os_name in $os_names ; do
+    if ! executor_verify_os_name "$executor_os_name" ; then
+        set_opts=$-
+        grep -q x <<< $set_opts && set +x # disable trace output
+        echo "ERROR: Invalid executor OS name for class '$EXECUTOR_CLASS': $executor_os_name!"
+        executor_list_os_names
+        echo
+        exit 1
+    fi
+done
 
 # Build the specified docker images
 docker_build_setup_ciman
@@ -99,49 +112,47 @@ for executor_os_name in $os_names ; do
     repository="fdiotools/${EXECUTOR_CLASS}-${os_name//.}"
     executor_docker_image="$repository:$DOCKER_TAG"
 
-    if ! executor_verify_os_name "$executor_os_name" ; then
-        set_opts=$-
-        grep -q x <<< $set_opts && set +x # disable undefined variable check
-        echo "WARNING: Invalid executor OS name for class '$EXECUTOR_CLASS': $executor_os_name!"
-        executor_list_os_names
-        echo
-        grep -q x <<< $set_opts && set -x # re-enable undefined variable check
-        continue
-    fi
     case "$executor_os_name" in
         ubuntu*)
-            generate_apt_dockerfile $executor_os_name $docker_from_image \
-                                    $executor_docker_image ;;
+            generate_apt_dockerfile $EXECUTOR_CLASS $executor_os_name \
+                                    $docker_from_image $executor_docker_image ;;
         debian*)
-            generate_apt_dockerfile $executor_os_name $docker_from_image \
-                                    $executor_docker_image ;;
+            generate_apt_dockerfile $EXECUTOR_CLASS $executor_os_name \
+                                    $docker_from_image $executor_docker_image ;;
         centos-7)
-            generate_yum_dockerfile $executor_os_name $docker_from_image \
-                                    $executor_docker_image ;;
+            generate_yum_dockerfile $EXECUTOR_CLASS $executor_os_name \
+                                    $docker_from_image $executor_docker_image ;;
         centos-8)
-            generate_dnf_dockerfile $executor_os_name $docker_from_image \
-                                    $executor_docker_image ;;
+            generate_dnf_dockerfile $EXECUTOR_CLASS $executor_os_name \
+                                    $docker_from_image $executor_docker_image ;;
         *)
-            echo "ERROR: Don't know how to generate dockerfile for $executor_os_name!"
+            echo "ERROR: Don't know how to generate dockerfile for OS $executor_os_name!"
             usage ;;
     esac
 
-    docker build -t $executor_docker_image $DOCKER_BUILD_DIR
-    rm -f $DOCKERFILE
-    if [ -n "$ci_tag" ] ; then
-        ci_image="$repository:$ci_tag"
-        echo -e "\nAdding docker tag $ci_image to $executor_docker_image"
-        docker tag $executor_docker_image $ci_image
-    fi
-    if [ -n "$push_to_docker_hub" ] ; then
-        echo -e "\nPushing $executor_docker_image to Docker Hub..."
-        docker login
-        docker push $executor_docker_image
-        if [ -n "$ci_image" ] ; then
-            echo -e "\nPushing $ci_image to Docker Hub..."
-            docker push $ci_image
+    if [ -n "$dump_dockerfile" ] ; then
+        line="==========================================================================="
+        echo -e "\nDockerfile for '$EXECUTOR_CLASS' executor docker image on OS '$executor_os_name':\n$line"
+        cat $DOCKERFILE
+        echo -e "$line\n"
+    else
+        docker build -t $executor_docker_image $DOCKER_BUILD_DIR
+        rm -f $DOCKERFILE
+        if [ -n "$ci_tag" ] ; then
+            ci_image="$repository:$ci_tag"
+            echo -e "\nAdding docker tag $ci_image to $executor_docker_image"
+            docker tag $executor_docker_image $ci_image
+        fi
+        if [ -n "$push_to_docker_hub" ] ; then
+            echo -e "\nPushing $executor_docker_image to Docker Hub..."
+            docker login
+            docker push $executor_docker_image
+            if [ -n "$ci_image" ] ; then
+                echo -e "\nPushing $ci_image to Docker Hub..."
+                docker push $ci_image
+            fi
         fi
     fi
 done
 
-echo -e "\n$(basename $BASH_SOURCE) COMPLETE!\nHave a great day! :D"
+echo -e "\n$(basename $BASH_SOURCE) COMPLETE\nHave a great day! :D"
