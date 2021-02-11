@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -17,12 +17,12 @@ set -euo pipefail
 shopt -s extglob
 
 # Log all output to stdout & stderr to a log file
-logname="/tmp/$(basename $0).$(date +%Y_%m_%d_%H%M%S).log"
+logname="/tmp/$(basename $0).$(date -u +%Y_%m_%d_%H%M%S).log"
 echo -e "\n*** Logging output to $logname ***\n"
 exec > >(tee -a $logname) 2>&1
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
-. $CIMAN_DOCKER_SCRIPTS/lib_common.sh
+. "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 
 # Global variables
 long_bar="################################################################"
@@ -79,7 +79,7 @@ push_to_dockerhub() {
     for image in "$@" ; do
         set +e
         echo "Pushing '$image' to docker hub..."
-        if ! docker push $image ; then
+        if ! docker push "$image" ; then
             echo "ERROR: 'docker push $image' failed!"
             exit 1
         fi
@@ -182,6 +182,17 @@ get_all_tags_from_dockerhub() {
     echo "$long_bar"
 }
 
+verify_image_version_date_format() {
+    version="$1"
+    # TODO: Remove regex1 when legacy nomenclature is no longer on docker hub.
+    local regex1="^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]$"
+    local regex2="^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]_UTC$"
+    if [[ "$version" =~ $regex1 ]] || [[ "$version" =~ $regex2 ]]; then
+        return 0
+    fi
+    return 1
+}
+
 verify_image_name() {
     image_not_found=""
     # Invalid user
@@ -192,9 +203,7 @@ verify_image_name() {
     # Invalid version
     if [ -z "$image_not_found" ] \
            && [ "$image_version" != "prod" ] \
-           && ! [[ "$image_version" =~ \
-           ^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]$ ]]
-    then
+           && ! verify_image_version_date_format "$image_version"  ]] ; then
         image_not_found="true"
         echo "ERROR: invalid version '$image_version' in '$image_name_new'!"
     fi
@@ -213,7 +222,7 @@ verify_image_name() {
 docker_tag_image() {
     echo ">>> docker tag $1 $2"
     set +e
-    docker tag $1 $2
+    docker tag "$1" "$2"
     local retval="$?"
     set -e
     if [ "$retval" -ne "0" ] ; then
@@ -224,7 +233,7 @@ docker_tag_image() {
 docker_rmi_tag() {
     set +e
     echo ">>> docker rmi $1"
-    docker rmi $1
+    docker rmi "$1"
     local retval="$?"
     set -e
     if [ "$retval" -ne "0" ] ; then
@@ -260,8 +269,8 @@ inspect_images() {
 
 revert_prod_image() {
     inspect_images "EXISTING "
-    docker_tag_image $docker_id_prod $image_name_prev
-    docker_tag_image $docker_id_prev $image_name_prod
+    docker_tag_image "$docker_id_prod" "$image_name_prev"
+    docker_tag_image "$docker_id_prev" "$image_name_prod"
     get_image_id_tags
     inspect_images "REVERTED "
 
@@ -290,25 +299,25 @@ revert_prod_image() {
 
 promote_new_image() {
     inspect_images "EXISTING "
-    docker_tag_image $docker_id_prod $image_name_prev
-    docker_tag_image $docker_id_new $image_name_prod
+    docker_tag_image "$docker_id_prod" "$image_name_prev"
+    docker_tag_image "$docker_id_new" "$image_name_prod"
     get_image_id_tags
     inspect_images "PROMOTED "
 
     local yn=""
     while true; do
         read -p "Push promoted tags to '$image_user/$image_repo' (yes/no)? " yn
-        case ${yn:0:1} in
+        case "${yn:0:1}" in
             y|Y )
                 break ;;
             n|N )
                 echo -e "\nABORTING PROMOTION!\n"
-                docker_tag_image $docker_id_prev $image_name_prod
+                docker_tag_image "$docker_id_prev" "$image_name_prod"
                 local restore_both="$(echo $restore_cmd | mawk '{print $5}')"
                 if [[ -n "$restore_both" ]] ; then
-                    docker_tag_image $image_realname_prev $image_name_prev
+                    docker_tag_image "$image_realname_prev" "$image_name_prev"
                 else
-                    docker_rmi_tag $image_name_prev
+                    docker_rmi_tag "$image_name_prev"
                     image_name_prev=""
                     docker_id_prev=""
                 fi
@@ -320,12 +329,12 @@ promote_new_image() {
         esac
     done
     echo
-    push_to_dockerhub $image_name_new $image_name_prev $image_name_prod
+    push_to_dockerhub "$image_name_new" "$image_name_prev" "$image_name_prod"
     inspect_images ""
     echo_restore_cmd
 }
 
-must_be_run_as_root
+must_be_run_as_root_or_docker_group
 
 # Validate arguments
 num_args="$#"
