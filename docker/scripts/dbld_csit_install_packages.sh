@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -22,19 +22,17 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 must_be_run_as_root
 must_be_run_in_docker_build
 
-case "$OS_NAME" in
-    ubuntu-18.04)
-        supported_os="true" ;;
-    *)
-        supported_os="" ;;
-esac
-if [ -z "$supported_os" ] ; then
-    echo "CSIT is not supported on $OS_NAME. Skipping CSIT package install..."
-    exit 0
-fi
-
 echo_log
-echo_log "Starting  $(basename $0)"
+
+if ! csit_supported_executor_class "$FDIOTOOLS_EXECUTOR_CLASS" ; then
+    echo_log "CSIT is not supported on executor class '$FDIOTOOLS_EXECUTOR_CLASS'. Skipping $(basename $0)..."
+    exit 0
+elif ! csit_supported_os "$OS_NAME" ; then
+    echo_log "CSIT is not supported on OS '$OS_NAME'. Skipping $(basename $0)..."
+    exit 0
+else
+    echo_log "Starting  $(basename $0)"
+fi
 
 do_git_config csit
 for vpp_branch in ${VPP_BRANCHES[$OS_NAME]} ; do

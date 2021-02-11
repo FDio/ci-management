@@ -23,6 +23,15 @@ alias lib_vpp_imported=true
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . $CIMAN_DOCKER_SCRIPTS/lib_common.sh
 
+
+VPP_SUPPORTED_EXECUTOR_CLASSES="builder csit csit_dut"
+vpp_supported_executor_class() {
+    if ! grep -q "${1:-}" <<< $VPP_SUPPORTED_EXECUTOR_CLASSES ; then
+        return 1
+    fi
+    return 0
+}
+
 make_vpp() {
     local target=$1
     local branch=${2:-"master"}
