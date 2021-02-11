@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -17,14 +17,13 @@ set -euxo pipefail
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 export CIMAN_ROOT=${CIMAN_ROOT:-"$(dirname $(dirname $CIMAN_DOCKER_SCRIPTS))"}
-. $CIMAN_DOCKER_SCRIPTS/lib_common.sh
+. "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 
-must_be_run_as_root
 must_be_run_in_docker_build
 
 dump_build_logs() {
-    local set_opts=$-
-    grep -q e <<< $set_opts && set +e # disable exit on errors
+    local set_opts="$-"
+    set +e # disable exit on errors
 
     # Find errors
     local found="$(grep -nisH error $DOCKER_BUILD_LOG_DIR/*-bld.log)"
@@ -42,13 +41,13 @@ dump_build_logs() {
         echo -e "\nNo warnings found in build logs\n"
     fi
 
-    grep -q e <<< $set_opts && set -e # re-enable exit on errors
+    grep -q e <<< "$set_opts" && set -e # re-enable exit on errors
 }
 
 dump_cache_files() {
     local cache_files_log="$DOCKER_BUILD_LOG_DIR/cached_files.json"
     tree -a --timefmt "+%Y-%m-%d %H:%M:%S" --prune /root
-    tree -afJ --timefmt "+%Y-%m-%d %H:%M:%S" --prune -o $cache_files_log /root
+    tree -afJ --timefmt "+%Y-%m-%d %H:%M:%S" --prune -o "$cache_files_log" /root
 }
 
 dump_cache_files
