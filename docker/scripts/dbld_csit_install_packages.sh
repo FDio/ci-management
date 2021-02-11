@@ -25,6 +25,8 @@ must_be_run_in_docker_build
 case "$OS_NAME" in
     ubuntu-18.04)
         supported_os="true" ;;
+    ubuntu-20.04)
+        supported_os="true" ;;
     *)
         supported_os="" ;;
 esac
