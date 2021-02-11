@@ -31,7 +31,7 @@
 - project:
     name: vpp-checkstyle-x86_64
     jobs:
-      - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     stream:
       - master:
@@ -57,8 +57,8 @@
 - project:
     name: vpp-x86_64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
@@ -85,8 +85,8 @@
 - project:
     name: vpp-os-eol-x86_64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
@@ -122,8 +122,8 @@
 - project:
     name: vpp-os-in-2009-x86_64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
@@ -159,7 +159,7 @@
 - project:
     name: vpp-debug-x86_64
     jobs:
-      - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
@@ -220,7 +220,7 @@
 - project:
     name: vpp-gcc-x86_64
     jobs:
-      - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-gcc-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     executor-arch: 'x86_64'
     os:
@@ -245,8 +245,8 @@
 - project:
     name: vpp-aarch64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw_u2004-vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '16'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
@@ -333,9 +333,9 @@
 - project:
     name: vpp-beta-aarch64
     jobs:
-      - 'vpp-beta-verify-{stream}-{os}-{executor-arch}':
+      - 'daw_u2004-vpp-beta-verify-{stream}-{os}-{executor-arch}':
           comment-trigger-value: 'beta-verify'
-      - 'vpp-beta-merge-{stream}-{os}-{executor-arch}':
+      - 'daw_u2004-vpp-beta-merge-{stream}-{os}-{executor-arch}':
           comment-trigger-value: 'beta-merge'
     project: 'vpp'
     make-parallel-jobs: '16'
@@ -351,15 +351,15 @@
     executor-arch: aarch64
 # [end] VPP-BETA-AARCH64 PROJECT
 
-# VPP-CSIT-VERIFY PROJECT
+# VPP-CSIT-VERIFY-DEVICE PROJECT
 - project:
-    name: vpp-csit-verify
+    name: vpp-csit-verify-device
     jobs:
-      - 'vpp-csit-verify-device-perpatch':
+      - 'daw_u2004-vpp-csit-verify-device-perpatch':
           make-parallel-jobs: '32'
           exclude:
-            - device-node-arch: '1n-tx2'
-      - 'vpp-csit-verify-device-periodic':
+            - testbed-arch: '1n-tx2'
+      - 'daw_u2004-vpp-csit-verify-device-periodic':
           make-parallel-jobs: '32'
           periodicity: 'H * * * *'
           skip-vote: 'true'
@@ -367,12 +367,10 @@
           exclude:
             - stream: '2009'
             - stream: '2101'
-            - device-node-arch: '1n-skx'
-      - 'vpp-csit-verify-perf-{stream}-{node-arch}'
+            - testbed-arch: '1n-skx'
     project: 'vpp'
-    os: ubuntu1804
-    device-executor: 'vpp-csit-device'
-    executor: '{os}-us'
+    os: 'ubuntu2004'
+    executor-arch: 'aarch64'
     skip-vote: 'false'
     stream:
       - master:
@@ -387,11 +385,34 @@
           branch: 'stable/2101'
           branch-refspec: ''
           repo-stream-part: 'stable.2101'
-    device-node-arch:
+    testbed-arch:
       - 1n-skx
-      - 1n-tx2:
-          device-executor: 'vpp-csit-arm-ubuntu18'
-    node-arch:
+      - 1n-tx2
+# [end] VPP-CSIT-VERIFY-DEVICE PROJECT
+
+# VPP-CSIT-VERIFY-PERF PROJECT
+- project:
+    name: vpp-csit-verify-perf
+    jobs:
+      - 'daw_u2004-vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
+    project: 'vpp'
+    os: 'ubuntu2004'
+    executor-arch: 'x86_64'
+    skip-vote: 'false'
+    stream:
+      - master:
+          branch: 'master'
+          branch-refspec: ''
+          repo-stream-part: 'master'
+      - '2009':
+          branch: 'stable/2009'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2009'
+      - '2101':
+          branch: 'stable/2101'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2101'
+    testbed-arch:
       - 2n-clx
       - 2n-skx
       - 2n-zn2
@@ -400,10 +421,10 @@
       - 2n-dnv
       - 3n-dnv
       - 3n-tsh:
-          executor: 'ubuntu1804arm-s'
+          executor-arch: 'aarch64'
           make-parallel-jobs: '16'
       - 2n-tx2:
-          executor: 'ubuntu1804arm-s'
+          executor: 'aarch64'
           make-parallel-jobs: '16'
 
 # [end] VPP-CSIT-VERIFY PROJECT
@@ -415,14 +436,14 @@
 - project:
     name: vpp-csit-api-crc
     jobs:
-      - 'vpp-csit-verify-api-crc-{stream}'
+      - 'daw_u2004-vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    executor: 'vpp-csit-device'
+    executor-arch: 'x86_64'
     skip-vote: 'false'
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/30/31230/3'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
@@ -431,7 +452,7 @@
           branch: 'stable/2101'
           branch-refspec: ''
           repo-stream-part: 'stable.2101'
-    os: ubuntu1804
+    os: ubuntu2004
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS
@@ -459,7 +480,7 @@
 
 # VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -576,7 +597,7 @@
 
 # VPP-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -642,7 +663,7 @@
 
 # VPP-DEBUG-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-debug-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -710,7 +731,7 @@
 
 # VPP-MERGE JOB TEMPLATE
 - job-template:
-    name: 'vpp-merge-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -788,7 +809,7 @@
 
 # VPP-BETA-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-beta-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-beta-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -855,7 +876,7 @@
 
 # VPP-BETA-MERGE JOB TEMPLATE
 - job-template:
-    name: 'vpp-beta-merge-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-beta-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -933,7 +954,7 @@
 
 # VPP-GCC-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw_u2004-vpp-gcc-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -999,18 +1020,22 @@
 
 # VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 - job-template:
-    name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
-    id: 'vpp-csit-verify-device-periodic'
+    name: 'daw_u2004-vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}'
+    id: 'daw_u2004-vpp-csit-verify-device-periodic'
     description: |
       <ul>
           <li>executor
               <ul>
-                  <li>{device-executor}
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>testbed architecture
+              <ul>
+                  <li>{testbed-arch}
               </ul>
       </ul>
 
     project-type: freestyle
-    node: '{device-executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
@@ -1084,18 +1109,22 @@
 
 # VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 - job-template:
-    name: 'vpp-csit-verify-device-{stream}-{device-node-arch}'
-    id: 'vpp-csit-verify-device-perpatch'
+    name: 'daw_u2004-vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}'
+    id: 'daw_u2004-vpp-csit-verify-device-perpatch'
     description: |
       <ul>
           <li>executor
               <ul>
-                  <li>{device-executor}
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>testbed architecture
+              <ul>
+                  <li>{testbed-arch}
               </ul>
       </ul>
 
     project-type: freestyle
-    node: '{device-executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
@@ -1168,12 +1197,16 @@
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 - job-template:
-    name: 'vpp-csit-verify-perf-{stream}-{node-arch}'
+    name: 'daw_u2004-vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
     description: |
       <ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>testbed architecture
+              <ul>
+                  <li>{testbed-arch}
               </ul>
           <li>Objective
           Contrary to csit-vpp job, this also measures the parent performance,
@@ -1182,7 +1215,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: >
       **/csit_current/**/*.*
@@ -1235,7 +1268,7 @@
       - gerrit-trigger-csit-perftest:
           project: '{project}'
           branch: '{branch}'
-          trigger-word: 'perftest-{node-arch}'
+          trigger-word: 'perftest-{testbed-arch}'
           skip-vote: true
 
     builders:
@@ -1262,10 +1295,10 @@
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 - job-template:
-    name: 'vpp-csit-verify-api-crc-{stream}'
+    name: 'daw_u2004-vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 

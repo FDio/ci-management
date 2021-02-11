@@ -63,6 +63,7 @@ csit_install_packages() {
 
     # NOTE: the CSIT baseline os is implicitly pinned to ubuntu 18.04
     #       so only gather packages from ansible for that OS.
+    # TODO: Remove ubuntu-18.04 once all CSIT jobs are running on ubuntu-20.04
     if [ "$OS_NAME" = "ubuntu-18.04" ] ; then
         # Not in double quotes to let bash remove newline characters
         local exclude_roles="-e calibration -e kernel -e mellanox -e nomad"
