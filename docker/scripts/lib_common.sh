@@ -249,14 +249,16 @@ export DOCKER_APT_DEBIAN_DOCKER_GPGFILE="$DOCKER_GPG_KEY_DIR/$APT_DEBIAN_DOCKER_
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
 
 docker_build_setup_ciman() {
-    mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
-
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
         echo_log "Syncing $CIMAN_ROOT into $DOCKER_CIMAN_ROOT..."
         pushd $CIMAN_ROOT
         git submodule update --init --recursive
         popd
+        rm -rf $DOCKER_BUILD_DIR
+        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
         rsync -a $CIMAN_ROOT/. $DOCKER_CIMAN_ROOT
+    else
+        mkdir -p $DOCKER_BUILD_DIR $DOCKER_GPG_KEY_DIR
     fi
 }
 
