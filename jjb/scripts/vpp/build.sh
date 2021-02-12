@@ -101,6 +101,11 @@ make_build_test() {
 	    BUILD_ERROR="FAILED 'make test'"
 	    return
 	fi
+    elif [ "${OS_ID}-${OS_VERSION_ID}" == "debian-10" ]; then
+	if ! make  VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test; then
+	    BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
+	    return
+	fi
     else
 	echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
     fi
