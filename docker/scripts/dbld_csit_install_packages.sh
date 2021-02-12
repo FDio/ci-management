@@ -22,6 +22,7 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 must_be_run_as_root
 must_be_run_in_docker_build
 
+# TODO: Remove ubuntu-18.04 when transition to ubuntu-20.04 is complete
 case "$OS_NAME" in
     ubuntu-18.04)
         supported_os="true" ;;
