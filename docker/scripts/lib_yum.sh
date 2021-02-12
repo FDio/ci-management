@@ -61,6 +61,7 @@ ENV FDIOTOOLS_IMAGE=$executor_image
 ENV LC_ALL=en_US.UTF-8
 ENV CIMAN_ROOT="$DOCKER_CIMAN_ROOT"
 ENV PATH=$PATH:$DOCKER_CIMAN_ROOT/docker/scripts
+ENV LF_VENV="/root/lf-venv"
 
 # Copy-in build tree containing
 # ci-management, vpp, & csit git repos
