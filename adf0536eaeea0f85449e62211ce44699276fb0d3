@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af25371d_475360f9",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-02-12T15:47:27Z",
+      "side": 1,
+      "message": "Instead of hard coding the OS here, let\u0027s make this an environment variable (e.g. MAKE_TEST_MULTIWORKER_OS) so this can be verified on the sandbox without changing the script.\n\nAlso, this should be a separate \u0027if then else\u0027 clause in case someone wants to verify multi-worker make test on \u0027$MAKE_TEST_OS\u0027.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "adf0536eaeea0f85449e62211ce44699276fb0d3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
