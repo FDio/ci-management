@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "899ec66a_d3cc5d31",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-12T17:07:32Z",
+      "side": 1,
+      "message": "One space is enough.",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "d3e977de6b7f91d2704f106358a32bec68aacb41",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2acaef_6e1d1c2c",
+        "filename": "jjb/scripts/vpp/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-02-12T17:07:32Z",
+      "side": 1,
+      "message": "One space is enough.",
+      "range": {
+        "startLine": 114,
+        "startChar": 31,
+        "endLine": 114,
+        "endChar": 33
+      },
+      "revId": "d3e977de6b7f91d2704f106358a32bec68aacb41",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
