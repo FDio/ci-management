@@ -21,12 +21,6 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 must_be_run_as_root
 must_be_run_in_docker_build
 
-# Add jenkins user and make it equivalent to root
-groupadd jenkins || true
-useradd -m -s /bin/bash -g jenkins jenkins || true
-rm -rf /home/jenkins
-ln -s /root /home/jenkins
-
 # Add packagecloud files
 cat <<EOF > /root/.packagecloud
 {"url":"https://packagecloud.io","token":"\$token"}
@@ -37,30 +31,15 @@ login \$pclogin
 password
 EOF
 
-# Check if docker group exists
-if grep -q docker /etc/group
-then
-    # Add jenkins user to docker group
-    usermod -a -G docker jenkins
-fi
-
-# Check if mock group exists
-if grep -q mock /etc/group
-then
-    # Add jenkins user to mock group so it can build RPMs
-    # using mock if available
-    usermod -a -G mock jenkins
-fi
-
-# Give jenkins account root privileges
-jenkins_uid=$(id -u jenkins)
-perl -i -p -e "s/$jenkins_uid\:/0\:/g" /etc/passwd
-
 # Copy lf-env.sh for LF Releng scripts
-cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh /root
-chmod 644 /root/lf-env.sh
+lf_env_sh="/root/lf-env.sh"
+cp $CIMAN_DOCKER_SCRIPTS/fdio-lf-env.sh $lf_env_sh
 
 # Install lftools & boto3 for log / artifact upload.
-source /root/lf-env.sh
-lf-activate-venv lftools
 python3 -m pip install boto3
+mkdir -p $LF_VENV
+source $lf_env_sh
+lf-activate-venv lftools
+if ! [ -z "$(declare -f deactivate)" ] ; then
+    deactivate
+fi
