@@ -34,6 +34,7 @@ IS_CSIT_VPP_JOB="${IS_CSIT_VPP_JOB:-}"
 MAKE_PARALLEL_FLAGS="${MAKE_PARALLEL_FLAGS:-}"
 MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
 MAKE_TEST_OS="${MAKE_TEST_OS:-ubuntu-18.04}"
+MAKE_TEST_MULTIWORKER_OS="${MAKE_TEST_MULTIWORKER_OS:-debian-10}"
 VPPAPIGEN_TEST_OS="${VPPAPIGEN_TEST_OS:-${MAKE_TEST_OS}}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
@@ -103,6 +104,14 @@ make_build_test() {
 	fi
     else
 	echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
+    fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" && git grep VPP_WORKER_CONFIG ]; then
+	if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test; then
+	    BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
+	    return
+	fi
+    else
+	echo "Skip running 'make test' with VPP_WORKER_CONFIG='workers 2' on ${OS_ID}-${OS_VERSION_ID}"
     fi
 }
 
