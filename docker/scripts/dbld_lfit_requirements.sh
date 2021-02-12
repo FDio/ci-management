@@ -57,10 +57,11 @@ jenkins_uid=$(id -u jenkins)
 perl -i -p -e "s/$jenkins_uid\:/0\:/g" /etc/passwd
 
 # Copy lf-env.sh for LF Releng scripts
-cp $DOCKER_CIMAN_ROOT/global-jjb/jenkins-init-scripts/lf-env.sh /root
-chmod 644 /root/lf-env.sh
+lf_env_sh="/root/lf-env.sh"
+cp $CIMAN_DOCKER_SCRIPTS/fdio-lf-env.sh $lf_env_sh
 
 # Install lftools & boto3 for log / artifact upload.
-source /root/lf-env.sh
-lf-activate-venv lftools
 python3 -m pip install boto3
+source $lf_env_sh
+lf-activate-venv lftools
+deactivate
