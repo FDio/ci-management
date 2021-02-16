@@ -49,6 +49,14 @@
           description: "The number of cores to use for builds."
 
 - parameter:
+    name: make-test-os-parameter
+    parameters:
+      - string:
+          name: MAKE_TEST_OS
+          default: '{make-test-os}'
+          description: "The OS on which 'make test' is run."
+
+- parameter:
     name: csit-fail-on-crc-mismatch-parameter
     parameters:
       - string:
