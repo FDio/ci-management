@@ -69,6 +69,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    make-test-os: 'ubuntu-20.04'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     stream:
       - master:
@@ -78,10 +79,12 @@
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
+          make-test-os: 'ubuntu-18.04'
           repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
+          make-test-os: 'ubuntu-18.04'
           repo-stream-part: 'stable.2101'
     os:
       - centos7:
@@ -123,6 +126,7 @@
       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
+    make-test-os: 'ubuntu-20.04'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     comment-trigger-value: 'debug-verify'
     stream:
@@ -135,6 +139,7 @@
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
+          make-test-os: 'ubuntu-18.04'
           # Once per day
           periodicity: 'H H * * *'
           repo-stream-part: 'stable.2009'
@@ -185,6 +190,7 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '16'
+    make-test-os: 'ubuntu-20.04'
     archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     stream:
       - master:
@@ -194,10 +200,12 @@
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
+          make-test-os: 'ubuntu-18.04'
           repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
+          make-test-os: 'ubuntu-18.04'
           repo-stream-part: 'stable.2101'
     os:
       - centos8:
@@ -465,6 +473,8 @@
           refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - make-test-os-parameter:
+          make-test-os: '{make-test-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:
@@ -531,6 +541,8 @@
           refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - make-test-os-parameter:
+          make-test-os: '{make-test-os}'
       - os-parameter:
           os: 'ubuntu1804'
       - project-parameter:
@@ -596,6 +608,8 @@
           branch: '{branch}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - make-test-os-parameter:
+          make-test-os: '{make-test-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:
@@ -654,151 +668,6 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
-
-# VPP-BETA-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-beta-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-BETA-VERIFY JOB TEMPLATE
-
-# VPP-BETA-MERGE JOB TEMPLATE
-- job-template:
-    name: 'vpp-beta-merge-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - stream-parameter:
-          stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '.packagecloud'
-              target: '/root'
-      - config-file-provider:
-          files:
-            - file-id: 'packagecloud_api'
-              target: '/root'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/checkstyle.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/packagecloud_push.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-BETA-MERGE JOB TEMPLATE
 
 # VPP-GCC-VERIFY JOB TEMPLATE
 - job-template:
