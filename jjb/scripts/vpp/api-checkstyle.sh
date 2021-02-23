@@ -26,6 +26,9 @@ send_notify() {
 }
 
 if [ -f $VPP_CRC_CHECKER ]; then
+    # API checker complains if the git repo is not clean.
+    # Help diagnosing those issues easier
+    git --no-pager diff
     echo "Running $VPP_CRC_CHECKER_CMD"
     if $VPP_CRC_CHECKER_CMD; then
 	    echo "API check successful"
