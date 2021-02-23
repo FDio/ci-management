@@ -9,15 +9,20 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
-    os: 'ubuntu1804'
 
     stream:
       - master:
           branch: 'master'
+          branch-refspec: ''
+          os: 'ubuntu2004'
       - '2009':
           branch: 'stable/2009'
+          branch-refspec: ''
+          os: 'ubuntu1804'
       - '2101':
           branch: 'stable/2101'
+          branch-refspec: ''
+          os: 'ubuntu1804'
 
 - project:
     name: sphinx
@@ -27,11 +32,12 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
-    os: 'ubuntu1804'
+    os: 'ubuntu2004'
 
     stream:
       - master:
           branch: 'master'
+          branch-refspec: ''
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
@@ -61,7 +67,8 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -220,7 +227,8 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
 
     scm:
       - gerrit-trigger-scm:
@@ -384,7 +392,8 @@
           maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
-      - gerrit-refspec-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
 
     scm:
       - gerrit-trigger-scm:
