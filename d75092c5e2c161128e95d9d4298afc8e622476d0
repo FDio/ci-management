@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ef8cad_92d6b11e",
+        "filename": "docker/scripts/build_executor_docker_image.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "is there a reason to this? what if i have \"sudo useradd -a -G docker \u003cuser\u003e\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d11f246_763360f5",
+        "filename": "docker/scripts/build_executor_docker_image.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "would be nice to follow order as below.",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b63643_d41fa2f3",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade0005a_c6d309df",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "- 2 spaces see below",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 3
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc505836_b506082a",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "Where can i find it?",
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a39586_e2fa37c2",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "Where can i find them",
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9bf1b2_dcd8abfe",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-24T15:32:19Z",
+      "side": 1,
+      "message": "Do we still need pubkeys in setup?",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 46
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
