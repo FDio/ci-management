@@ -304,6 +304,53 @@
       "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa351f3_5506f946",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-25T08:55:58Z",
+      "side": 1,
+      "message": "I would comment it out and test if all is working without it as a part of ubuntu 2004 move",
+      "parentUuid": "efb78936_59bc9dbd",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 46
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6c98f3_c7c24dda",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-02-25T08:55:58Z",
+      "side": 1,
+      "message": "lets say we do not need this.",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 70
+      },
+      "revId": "d75092c5e2c161128e95d9d4298afc8e622476d0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
