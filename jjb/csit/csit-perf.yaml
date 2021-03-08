@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Copyright (c) 2019 PANTHEON.tech s.r.o. and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,42 +20,86 @@
     jobs:
       - 'csit-dpdk-perf-verify-{stream}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
       - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
           node-arch:
-            - ''
-            - -2n-clx
-            - -2n-skx
-            - -2n-zn2
+            - '':
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - -2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - -2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - -2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - -2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - -3n-skx
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - -3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - -3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
           stream:
             - master:
                 branch: 'master'
@@ -75,30 +119,52 @@
       - 'csit-vpp-perf-mrr-daily-master{node-arch}':
           node-arch:
             - '':
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-tx2:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
                 periodicity: '0 14 * * *'
             - -3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
                 periodicity: '0 14 * * *'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 3n-skx
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
           stream:
             - master:
                 branch: 'master'
@@ -109,66 +175,137 @@
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 3n-skx
-            - 3n-hsw
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
-            - 2n-clx
-            - 2n-skx
-            - 2n-dnv
-            - 2n-zn2
+            - 2n-clx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 2n-tx2:
-                executor: 'ubuntu1804arm-us'
-            - 3n-skx
-            - 3n-hsw
-            - 3n-dnv
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
+            - 3n-skx:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
+            - 3n-hsw:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-dnv:
+                os: 'ubuntu1804'
+                executor-arch: 'x86_64'
             - 3n-tsh:
-                executor: 'ubuntu1804arm-us'
+                os: 'ubuntu1804'
+                executor-arch: 'aarch64'
 
     project: 'csit'
-    executor: 'ubuntu1804-us'
     branch: 'master'
     branch-id: 'oper'
     csit-perf-trial-duration: "1.0"
@@ -217,7 +354,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -247,7 +384,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -325,7 +462,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -340,7 +477,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -403,7 +540,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -418,7 +555,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -481,7 +618,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -495,7 +632,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -560,7 +697,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -585,7 +722,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -655,7 +792,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -670,7 +807,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -744,7 +881,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -762,7 +899,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -846,7 +983,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -864,7 +1001,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -948,7 +1085,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -966,7 +1103,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -1050,7 +1187,7 @@
               </ul>
           <li>executor
               <ul>
-                  <li>{executor}
+                  <li>builder-{os}-prod-{executor-arch}
               </ul>
           <li>perf test-cases selection
               <ul>
@@ -1068,7 +1205,7 @@
       </ul>
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
