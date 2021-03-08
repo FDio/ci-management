@@ -56,3 +56,6 @@ echo "$long_line"
 echo "Executor Downloads cache '$downloads_cache':"
 ls -lh "$downloads_cache" || true
 echo "$long_line"
+echo "DNS nameserver config in '/etc/resolv.conf':"
+cat /etc/resolv.conf || true
+echo "$long_line"
