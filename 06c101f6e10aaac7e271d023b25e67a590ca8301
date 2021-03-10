@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3140d2a9_2cac0a14",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-10T19:08:57Z",
+      "side": 1,
+      "message": "this is aligning with vpp jobs. you still can run on multiple os/arch. technically tox should run per arch, but...",
+      "parentUuid": "083dc259_2b75d5e7",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71cf1fd6_f3a7d63d",
         "filename": "jjb/csit/csit-tox.yaml",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2021-03-10T18:28:27Z",
       "side": 1,
       "message": "Do this to document os and arch (instead of expanding the job name):\n\n    description: |\n      \u003cul\u003e\n          FIXME!\n          \u003cli\u003eexecutor\n              \u003cul\u003e\n                  \u003cli\u003ebuilder-{os}-prod-{executor-arch}\n              \u003c/ul\u003e\n      \u003c/ul\u003e",
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d84f99_57a43a0c",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-10T19:08:57Z",
+      "side": 1,
+      "message": "Take this with Dave. VPP jobs does not have it as well. Point is to make this equal",
+      "parentUuid": "71cf1fd6_f3a7d63d",
       "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
