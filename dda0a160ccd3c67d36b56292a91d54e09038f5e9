@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1fe7281_313220cd",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-03-10T18:22:36Z",
+      "side": 0,
+      "message": "I think you can define the default os value (ubuntu2004) here, and only put the overridden value (ubuntu1804) where needed. Granted, there will currently be many overriding lines (everywhere except 3n-hsw), but you will keep removing them as you migrate other node-archs.\nSimilarly for executor-arch. Put the default value (x86_64) here and override the value (to aarch64) only for node-archs that need it.",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 12
+      },
+      "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
