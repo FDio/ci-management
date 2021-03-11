@@ -18,16 +18,15 @@
 
     jobs:
       - 'csit-docs-merge-{stream}-{os}-{executor-arch}'
-      - 'csit-report-merge-{stream}'
-      - 'csit-trending-daily-master'
-      - 'csit-trending-weekly-2009-lts'
+      - 'csit-report-merge-{stream}-{os}-{executor-arch}'
+      - 'csit-trending-daily-master-{os}-{executor-arch}'
+      - 'csit-trending-weekly-2009-lts-{os}-{executor-arch}'
 
     project: 'csit'
     branch: 'master'
     os:
       - 'ubuntu2004'
     executor-arch: 'x86_64'
-    executor-large: 'ubuntu1804-l'
     build-artifact-num-to-keep: 10
     stream:
       - master:
@@ -130,10 +129,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-report-merge-{stream}'
+    name: 'csit-report-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{executor-large}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
     allow-empty: 'true'
     fingerprint: false
@@ -209,10 +208,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-trending-daily-master'
+    name: 'csit-trending-daily-master-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{executor-large}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
 
     build-discarder:
@@ -310,10 +309,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-trending-weekly-2009-lts'
+    name: 'csit-trending-weekly-2009-lts-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: '{executor-large}'
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
 
     build-discarder:
