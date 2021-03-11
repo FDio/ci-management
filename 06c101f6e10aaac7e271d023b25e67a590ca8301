@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7994d579_3b6e2376",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-03-11T18:54:39Z",
+      "side": 1,
+      "message": "I agree with Peter that aligning with vpp jobs is better",
+      "parentUuid": "3140d2a9_2cac0a14",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71cf1fd6_f3a7d63d",
         "filename": "jjb/csit/csit-tox.yaml",
         "patchSetId": 2
@@ -102,6 +126,24 @@
       "side": 1,
       "message": "Take this with Dave. VPP jobs does not have it as well. Point is to make this equal",
       "parentUuid": "71cf1fd6_f3a7d63d",
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268b18b4_0fedc117",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-03-11T18:54:39Z",
+      "side": 1,
+      "message": "Including {os}-{executor-arch} is necessary to automate the testing of docker images.  \n\nOtherwise the association between docker image and jobs will need additional metadata in the automation scripts that would be required to be maintained by hand or the jjb XML output would need to be parsed.\n\nThus I prefer the name change.",
+      "parentUuid": "e3d84f99_57a43a0c",
       "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
