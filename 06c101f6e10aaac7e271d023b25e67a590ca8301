@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e1415f94_039b04fe",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-11T18:30:35Z",
+      "side": 1,
+      "message": "This is Nomad job running in virtual infrastructure, not physical. Thus naming job like this is clearly denoting its os and arch and makes the system unified and clearly visible in logs. This is parsable by any external tool watching jobs like prometheus alerting. //End of message",
+      "parentUuid": "3140d2a9_2cac0a14",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71cf1fd6_f3a7d63d",
         "filename": "jjb/csit/csit-tox.yaml",
         "patchSetId": 2
