@@ -16,10 +16,12 @@
     name: csit-validate
 
     jobs:
-      - 'csit-verify-tox-{stream}'
+      - 'csit-verify-tox-{stream}-{os}-{executor-arch}'
 
     project: 'csit'
     branch: 'master'
+    os: 'ubuntu2004'
+    executor-arch: 'x86_64'
     stream:
       - master:
           branch: 'master'
@@ -33,14 +35,13 @@
           branch: 'rls2101'
 
 - job-template:
-    name: 'csit-verify-tox-{stream}'
+    name: 'csit-verify-tox-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: '*.log'
     latest-only: false
-
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
