@@ -98,7 +98,9 @@
           node-arch:
             - 2n-clx
             - 2n-skx
+            - 2n-tx2
             - 3n-skx
+            - 3n-tsh
           stream:
             - master:
                 branch: 'master'
@@ -111,8 +113,10 @@
           node-arch:
             - 2n-clx
             - 2n-skx
+            - 2n-tx2
             - 3n-skx
             - 3n-hsw
+            - 3n-tsh
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
