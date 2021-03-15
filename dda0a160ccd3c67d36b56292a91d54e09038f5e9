@@ -22,6 +22,30 @@
       "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91146ee2_56a898ed",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-15T06:17:01Z",
+      "side": 0,
+      "message": "no, the purpose is get rid of generalization as the transition to new OS is very difficult then",
+      "parentUuid": "a1fe7281_313220cd",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 12
+      },
+      "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
