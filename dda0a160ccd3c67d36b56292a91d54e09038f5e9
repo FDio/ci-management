@@ -70,6 +70,30 @@
       "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6189e0ef_4cdcab17",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-15T19:46:47Z",
+      "side": 0,
+      "message": "The problem is how to achieve is one pool of tbs is of another os//another cron time//another executor//another trigger.... I am happy to see some better organization of yaml. it is just out of my imagination how to achieve that in short time.",
+      "parentUuid": "fe9aa294_3b3c0b0a",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 12
+      },
+      "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
