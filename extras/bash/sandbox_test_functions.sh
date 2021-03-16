@@ -24,6 +24,9 @@
 #         $WS_ROOT/jenkins.ini
 #   2. Clone ci-management workspace from gerrit.fd.io
 #   3. export WS_ROOT=<local ci-management workspace>
+#   4. cd $WS_ROOT
+#   5. git submodule update --init --recursive
+
 jjb-sandbox-env()
 {
     local jjb_version=${JJB_VERSION:-"3.5.0"}
@@ -78,25 +81,42 @@ jjb-sandbox-env()
             echo "jenkins-jobs not found!  Run jjb-sandbox-env to activate."
             return
         fi
+        local grep_job_names=""
+        if [ "$1" = "-n" ] ; then
+            grep_job_names="true"
+            shift
+        fi
         if [ -z "$1" ] ; then
             echo "Usage: $FUNCNAME <jenkins-job-name>"
             return
         fi
-        which jenkins-jobs \
-            && jenkins-jobs --conf $JENKINS_INI test $WS_ROOT/jjb $@
+        if [ -z "$grep_job_names" ]; then
+            jenkins-jobs --conf $JENKINS_INI test $WS_ROOT/jjb $@
+        else
+            jenkins-jobs --conf $JENKINS_INI test $WS_ROOT/jjb $@ 2>&1 | grep -e'Number of jobs' -e'Job name' | sed -e 's/INFO:jenkins_jobs.builder://g'
+        fi
     }
     function jjsb-update() {
         if [ -z "$(which jenkins-jobs 2>&1)" ] ; then
             echo "jenkins-jobs not found!  Run jjb-sandbox-env to activate."
             return
         fi
+        local grep_num_jobs=""
+        if [ "$1" = "-n" ] ; then
+            grep_num_jobs="true"
+            shift
+        fi
         if [ -z "$1" ] ; then
             echo "Usage: $FUNCNAME <jenkins-job-name>"
             return
         fi
-        which jenkins-jobs \
-            && jenkins-jobs --conf $JENKINS_INI update $WS_ROOT/jjb $@
+        if [ -z "grep_num_jobs" ] ; then
+            jenkins-jobs --conf $JENKINS_INI update $WS_ROOT/jjb $@
+        else
+            jenkins-jobs --conf $JENKINS_INI update $WS_ROOT/jjb $@ 2>&1 | grep -e'Number of jobs'
+        fi
     }
+
     jenkins-jobs --version
 }
 
