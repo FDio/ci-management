@@ -22,6 +22,30 @@
       "revId": "9f2340bbb21cf59140cbd0a8197a26acd8422813",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b0da3c_123d6ff8",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-18T12:04:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5406cf8_9d5ae3cf",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "9f2340bbb21cf59140cbd0a8197a26acd8422813",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
