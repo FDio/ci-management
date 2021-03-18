@@ -15,16 +15,18 @@
 - project:
     name: csit-vpp-device
     description: 'CSIT jenkins jobs.'
-    os:
-      - 'ubuntu1804'
     node-arch:
       - '1n-skx'
+          os: 'ubuntu2004'
+          executor-arch: 'x86_64'
+          skip-vote: 'false'
       - '1n-tx2':
-          executor: 'vpp-csit-arm-ubuntu18'
+          os: 'ubuntu2004'
+          executor-arch: 'aarch'
           skip-vote: 'true'
     jobs:
-      - 'csit-vpp-device-{stream}-{os}-{node-arch}'
-      - 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly':
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly':
           stream:
             - master:
                 branch: 'master'
@@ -35,7 +37,7 @@
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
-      - 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly':
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly':
           stream:
             - master:
                 branch: 'master'
@@ -48,16 +50,12 @@
                 branch-id: 'oper-rls2101'
 
     project: 'csit'
-    executor: 'vpp-csit-device'
     branch: 'master'
     branch-id: 'oper'
     stream:
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2005':
-          branch: 'rls2005'
-          branch-id: 'oper-rls2005'
       - '2009':
           branch: 'rls2009'
           branch-id: 'oper-rls2009'
@@ -67,48 +65,12 @@
       - '2101':
           branch: 'rls2101'
           branch-id: 'oper-rls2101'
-    exclude:
-      - stream: '2005'
-        node-arch: '1n-tx2'
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{node-arch}'
-    description: |
-      <ul>
-          <li>objective
-              <ul>
-                  <li>vpp-device verify - per csit gerrit patch
-              </ul>
-          <li>job
-              <ul>
-                  <li>name: <b>csit-vpp-device-{stream}-{os}-{node-arch}</b>
-                  <li>trigger: keyword in comment to csit patch:
-                      <b>csit-devicetest tag_list</b>
-              </ul>
-          <li>executor
-              <ul>
-                  <li>{executor}
-              </ul>
-          <li>test-cases selection
-              <ul>
-                  <li>test-cases selected using trigger keyword followed by tags
-                  <li>all test-cases are labelled with CSIT RF topic tags
-                      defined in <i>csit/docs/tag_documentation.rst</i>
-              </ul>
-          <li>default tags for vpp-device test type
-              <ul>
-                  <li>devicetest
-              </ul>
-          <li>results
-              <ul>
-                  <li>jjb verify: PASS/FAIL
-                  <li>present: no
-                  <li>analyse: no
-              </ul>
-      </ul>
+    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
     archive-artifacts: 'archive/*.*'
     latest-only: false
@@ -172,39 +134,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{node-arch}-semiweekly'
-    description: |
-      <ul>
-          <li>objective
-              <ul>
-                  <li>Validate latest vpp build from corresponding branch stored
-                      in nexus against verified CSIT codebase of corresponding
-                      branch.
-              </ul>
-          <li>executor
-              <ul>
-                  <li>{executor}
-              </ul>
-          <li>test-cases selection
-              <ul>
-                  <li>pre-selected test-cases
-                  <li>all test-cases are labelled with CSIT RF topic tags
-                      defined in <i>csit/docs/tag_documentation.rst</i>
-              </ul>
-          <li>default tags for vpp-device test type
-              <ul>
-                  <li>devicetest
-              </ul>
-          <li>results
-              <ul>
-                  <li>jjb verify: PASS/FAIL
-                  <li>present: no
-                  <li>analyse: no
-              </ul>
-      </ul>
+    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly'
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
@@ -259,38 +192,10 @@
           maven-version: 'mvn33-new'
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{node-arch}-weekly'
-    description: |
-      <ul>
-          <li>objective
-              <ul>
-                  <li>Validate CSIT code of corresponding branch against
-                      verified vpp build from corresponding branch.
-              </ul>
-          <li>executor
-              <ul>
-                  <li>{executor}
-              </ul>
-          <li>test-cases selection
-              <ul>
-                  <li>pre-selected test-cases
-                  <li>all test-cases are labelled with CSIT RF topic tags
-                      defined in <i>csit/docs/tag_documentation.rst</i>
-              </ul>
-          <li>default tags for vpp-device test type
-              <ul>
-                  <li>devicetest
-              </ul>
-          <li>results
-              <ul>
-                  <li>jjb verify: PASS/FAIL
-                  <li>present: no
-                  <li>analyse: no
-              </ul>
-      </ul>
+    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly'
 
     project-type: freestyle
-    node: '{executor}'
+    node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: false
     archive-artifacts: 'archive/*.*'
     latest-only: false
