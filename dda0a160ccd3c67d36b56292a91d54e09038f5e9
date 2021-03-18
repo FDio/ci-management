@@ -94,6 +94,30 @@
       "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3500d51c_8476544f",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-03-18T16:19:00Z",
+      "side": 0,
+      "message": "In other patches you put {os} into job (template) name.\nOs is not configurable on per-run basis, so in principle we could have different .yaml topology files. Example:\n  lf_2n_clx_ubuntu1804_testbed27.yaml\n  lf_2n_clx_ubuntu2004_testbed28.yaml\n\nOf course, those definitions should be in a central place (e.g. not having rls2009_lts CSIT branch with old data). Ci-management is not central enough, at least not for me (who likes to test with unmerged ci-management patches). Ideally we would have a lab service, similar to the one for storing logs. We could still have copies in CSIT, as a fallback for users running outside LFN (or other lab with topology service) and a verify job to check the data there matches the current state.\n\nAnother approach is to list just addresses (and usernames/paswords/whatever else SSH needs), and let the reservation script decide whether a particular address fits its needs based on topology file stored on the target machine.",
+      "parentUuid": "6189e0ef_4cdcab17",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 12
+      },
+      "revId": "dda0a160ccd3c67d36b56292a91d54e09038f5e9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
