@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5406cf8_9d5ae3cf",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-03-18T12:02:38Z",
+      "side": 1,
+      "message": "Let\u0027s make the prefix csit-builder-{os}-prod-{executor-arch} for all of these templates so it is easy to see which jobs are csit in nomad.",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "9f2340bbb21cf59140cbd0a8197a26acd8422813",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
