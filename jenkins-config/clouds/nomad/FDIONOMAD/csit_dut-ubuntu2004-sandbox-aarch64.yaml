@@ -7,6 +7,7 @@ templates:
       - ltarget: "^${node.class}"
         operand: "="
         rtarget: "csitarm"
-    image: "fdiotools/csit_dut-ubuntu1804:sandbox-aarch64"
-    labels: "csit_dut-ubuntu1804-sandbox-aarch64"
-    prefix: "csit_dut-ubuntu1804-sandbox-aarch64"
+    image: "fdiotools/builder-ubuntu2004:sandbox-aarch64"
+    labels: "builder-ubuntu2004-sandbox-aarch64"
+    memory: 18000
+    prefix: "builder-ubuntu2004-sandbox-aarch64"
