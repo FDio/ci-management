@@ -165,6 +165,24 @@
       "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70594439_f1edab8f",
+        "filename": "jjb/csit/csit-tox.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-03-18T03:03:26Z",
+      "side": 1,
+      "message": "\u003e \u003e Including {os}-{executor-arch} is necessary to automate the testing of docker images.\n\u003e \n\u003e Ah, makes sense. Does that mean also perf jobs are going to get that into their name?\n\nYes, eventually. If I understand correctly, that requires cleanup in report generation so Peter asked to defer changing the perf jobs.",
+      "parentUuid": "ae778b53_da064a71",
+      "revId": "06c101f6e10aaac7e271d023b25e67a590ca8301",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
