@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03e964e5_19562051",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 24
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-19T06:47:07Z",
+      "side": 1,
+      "message": "this should be per job (if that is arm/x86)",
+      "revId": "08b52206d001dc34ac3c2b12262d190a71a523c6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee319067_48b15702",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 24
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-19T06:47:07Z",
+      "side": 1,
+      "message": "similarly to csit-vpp-* job, i prefer to have better granularity which executor is running on which pool of testbed-arch so moving that to each of L292 items will allow us in future to have per pool granularity like if someone wants to tests other operating system or executor on specific machine-arch.",
+      "revId": "08b52206d001dc34ac3c2b12262d190a71a523c6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c66bdd7_39990b9c",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 24
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-03-19T06:47:07Z",
+      "side": 1,
+      "message": "remove before merge",
+      "range": {
+        "startLine": 323,
+        "startChar": 28,
+        "endLine": 323,
+        "endChar": 50
+      },
+      "revId": "08b52206d001dc34ac3c2b12262d190a71a523c6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
