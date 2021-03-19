@@ -27,13 +27,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -42,10 +42,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
       - 'csit-dpdk-perf-mrr-weekly-master{node-arch}':
           node-arch:
@@ -62,13 +62,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - -2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - -3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - -3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
@@ -80,13 +80,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -95,10 +95,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
           stream:
             - master:
@@ -128,7 +128,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-zn2:
@@ -136,7 +136,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
                 periodicity: '0 14 * * *'
             - -3n-skx:
@@ -144,11 +144,11 @@
                 executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
                 periodicity: '0 2,14 * * *'
             - -3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
                 periodicity: '0 14 * * *'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
@@ -194,13 +194,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -209,10 +209,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
@@ -223,13 +223,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -238,10 +238,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -252,13 +252,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -267,10 +267,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -281,13 +281,13 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
                 os: 'ubuntu2004'
@@ -296,10 +296,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
-                os: 'ubuntu1804'
+                os: 'ubuntu2004'
                 executor-arch: 'aarch64'
 
     project: 'csit'
