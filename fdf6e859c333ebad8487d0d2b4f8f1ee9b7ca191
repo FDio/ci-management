@@ -46,6 +46,30 @@
       "revId": "fdf6e859c333ebad8487d0d2b4f8f1ee9b7ca191",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c436d08_8a8ca29d",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-03-20T23:08:54Z",
+      "side": 1,
+      "message": "This is also required in order to automate testing of generated docker images (i.e. providing a direct relationship between the image docker hub labels and the jobs which use them).",
+      "parentUuid": "0fd65cd4_fb047c3d",
+      "range": {
+        "startLine": 266,
+        "startChar": 43,
+        "endLine": 266,
+        "endChar": 59
+      },
+      "revId": "fdf6e859c333ebad8487d0d2b4f8f1ee9b7ca191",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
