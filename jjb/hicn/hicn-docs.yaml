@@ -2,156 +2,158 @@
 - project:
     name: hicn-docs
     jobs:
-      - 'hicn-docs-merge-{stream}'
-      - 'hicn-docs-verify-{stream}'
+      - "hicn-docs-verify-{stream}-{os}-{executor-arch}"
+      - "hicn-docs-merge-{stream}-{os}-{executor-arch}"
 
-    project: 'hicn'
+    project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+      - ubuntu2004:
+          repo-os-part: "ubuntu.focal.main"
+    
+    executor-arch: "x86_64"
 
     stream:
-      - master:
-          branch: 'master'
-          repo-stream-part: 'master'
+      - "master":
+          branch: "master"
+          repo-stream-part: "master"
+          repository-name: "hicn"
     type:
       - short
       - long
 
 - job-template:
-    name: 'hicn-docs-verify-{stream}'
+    name: "hicn-docs-verify-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: true
     archive-artifacts:
-      - '**/build-doxygen/lib/doc/html/*'
-      - '**/docs/build/html'
-    allow-empty: 'true'
+      - "**/build-doxygen/lib/doc/html/*"
+      - "**/docs/build/html"
+    allow-empty: "true"
     fingerprint: false
     only-if-success: true
     default-excludes: false
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
+      numToKeep: "{build-num-to-keep}"
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: 'ubuntu1804'
+          os: "ubuntu1804"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape: include-raw-hicn-docs.sh
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
           fixed-delay: 90
 
 - job-template:
-    name: 'hicn-docs-merge-{stream}'
+    name: "hicn-docs-merge-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
     node: ubuntu1804-us
     concurrent: false
     archive-artifacts:
-      - '**/build-doxygen/lib/doc/html/*'
-      - '**/docs/build/html'
-    allow-empty: 'true'
+      - "**/build-doxygen/lib/doc/html/*"
+      - "**/docs/build/html"
+    allow-empty: "true"
     fingerprint: false
     only-if-success: true
     default-excludes: false
 
     build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+      daysToKeep: "{build-days-to-keep}"
+      numToKeep: "{build-num-to-keep}"
+      artifactDaysToKeep: "{build-artifact-days-to-keep}"
+      artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
       - project-parameter:
-          project: '{project}'
+          project: "{project}"
       - gerrit-parameter:
-          branch: '{branch}'
+          branch: "{branch}"
       - os-parameter:
-          os: 'ubuntu1804'
+          os: "ubuntu1804"
       - maven-exec:
-          maven-version: 'mvn33-new'
+          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: '{stream}'
+          stream: "{stream}"
       - string:
           name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
+          default: "{archive-artifacts}"
           description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
+          build-timeout: "{build-timeout}"
 
     triggers:
       - reverse:
-          jobs: 'hicn-merge-{stream}-ubuntu1804'
-          result: 'success'
+          jobs: "hicn-merge-{stream}-ubuntu1804"
+          result: "success"
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'run-docs'
+                comment-contains-value: "run-docs"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}"
           skip-vote:
             successful: true
             failed: true
@@ -160,21 +162,20 @@
 
     builders:
       - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'hicn-settings'
+          maven-version: "mvn33-new"
+          goals: "--version"
+          settings: "hicn-settings"
           settings-type: cfp
-          global-settings: 'global-settings'
+          global-settings: "global-settings"
           global-settings-type: cfp
       - provide-maven-settings:
-          settings-file: 'hicn-settings'
-          global-settings-file: 'global-settings'
-      - shell:
-          !include-raw-escape: include-raw-hicn-docs.sh
+          settings-file: "hicn-settings"
+          global-settings-file: "global-settings"
+      - shell: !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
       - fdio-infra-shiplogs:
-            maven-version: 'mvn36'
+          maven-version: "mvn36"
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
