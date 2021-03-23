@@ -65,7 +65,7 @@
 - project:
     name: vpp-x86_64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw-vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
@@ -74,7 +74,7 @@
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/01/31701/1'
           repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
@@ -186,7 +186,7 @@
 - project:
     name: vpp-aarch64
     jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
+      - 'daw-vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '16'
@@ -195,7 +195,7 @@
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/01/31701/1'
           repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
@@ -491,7 +491,7 @@
 
 # VPP-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-verify-{stream}-{os}-{executor-arch}'
+    name: 'daw-vpp-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'

@@ -3,3 +3,4 @@ templates:
   - image: "fdiotools/builder-ubuntu1804:sandbox-aarch64"
     labels: "builder-ubuntu1804-sandbox-aarch64"
     prefix: "builder-ubuntu1804-sandbox-aarch64"
+    hostVolumes: "/tmp/ccache:/scratch/ccache"

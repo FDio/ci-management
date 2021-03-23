@@ -55,7 +55,26 @@ pip3 list 2>/dev/null | column -t || true
 echo "$long_line"
 echo "Executor Downloads cache '$downloads_cache':"
 ls -lh "$downloads_cache" || true
+
+# TEMPORARY: talk to consul-aware resolver rather than external ones
+echo "nameserver 172.17.0.1" >/etc/resolv.conf
 echo "$long_line"
 echo "DNS nameserver config in '/etc/resolv.conf':"
 cat /etc/resolv.conf || true
+
+if [ -n "${CCACHE_DIR:-}" ] ; then
+    echo "$long_line"
+    if [ -d "$CCACHE_DIR" ] ; then
+        num_ccache_files="$(find $CCACHE_DIR -type f | wc -l)"
+        echo "CCACHE_DIR='$CCACHE_DIR' ($num_ccache_files ccache files):"
+        du -sh /tmp/ccache
+        df -h /tmp/ccache
+        ls -l $CCACHE_DIR
+        unset -v CCACHE_DISABLE
+    else
+        echo "CCACHE_DIR='$CCACHE_DIR' is missing, disabling CCACHE..."
+        unset -v CCACHE_DIR
+        export CCACHE_DISABLE="1"
+    fi
+fi
 echo "$long_line"
