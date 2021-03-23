@@ -169,8 +169,7 @@ RUN gem install package_cloud \\
 # CI Runtime Environment
 WORKDIR /
 ENV VPP_ZOMBIE_NOCHECK="1"
-# TODO: Mount ccache volume into docker container, then remove this.
-ENV CCACHE_DISABLE="1"
+ENV CCACHE_DIR="/scratch/ccache"
 EOF
     generate_yum_dockerfile_clean
 }
