@@ -249,8 +249,7 @@ COPY files/sshconfig /root/.ssh/config
 WORKDIR /
 $vpp_install_skip_sysctl_envvar
 ENV VPP_ZOMBIE_NOCHECK="1"
-# TODO: Mount ccache volume into docker container, then remove this.
-ENV CCACHE_DISABLE="1"
+ENV CCACHE_DIR="/scratch/ccache"
 EOF
     generate_apt_dockerfile_clean
 }

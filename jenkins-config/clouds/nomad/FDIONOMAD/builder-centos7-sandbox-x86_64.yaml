@@ -12,3 +12,4 @@ templates:
     labels: "builder-centos7-sandbox-x86_64"
     memory: 14000
     prefix: "builder-centos7-sandbox-x86_64"
+    hostVolumes: "/tmp/ccache:/scratch/ccache"
