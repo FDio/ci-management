@@ -12,3 +12,4 @@ templates:
     labels: "builder-debian9-prod-x86_64"
     memory: 14000
     prefix: "builder-debian9-prod-x86_64"
+    hostVolumes: "/tmp/ccache:/scratch/ccache"
