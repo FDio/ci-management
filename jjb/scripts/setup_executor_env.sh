@@ -59,4 +59,26 @@ ls -lh "$downloads_cache" || true
 echo "$long_line"
 echo "DNS nameserver config in '/etc/resolv.conf':"
 cat /etc/resolv.conf || true
+
+if [ -n "${CCACHE_DIR:-}" ] ; then
+    echo "$long_line"
+    if [ -d "$CCACHE_DIR" ] ; then
+        num_ccache_files="$(find $CCACHE_DIR -type f | wc -l)"
+        ccache_conf="$CCACHE_DIR/ccache.conf"
+        echo "CCACHE_DIR='$CCACHE_DIR' ($num_ccache_files ccache files):"
+        du -sh /tmp/ccache
+        df -h /tmp/ccache
+        ls -l $CCACHE_DIR
+        unset -v CCACHE_DISABLE
+        if [ -f "$ccache_conf" ] ; then
+            echo "Contents of $ccache_conf:"
+            cat $ccache_conf
+        fi
+    else
+        echo "CCACHE_DIR='$CCACHE_DIR' is missing, disabling CCACHE..."
+        unset -v CCACHE_DIR
+        export CCACHE_DISABLE="1"
+        echo "CCACHE_DISABLE='${CCACHE_DISABLE:-}'"
+    fi
+fi
 echo "$long_line"
