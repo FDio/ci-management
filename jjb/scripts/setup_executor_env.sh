@@ -56,6 +56,9 @@ echo "$long_line"
 echo "Executor Downloads cache '$downloads_cache':"
 ls -lh "$downloads_cache" || true
 echo "$long_line"
+
+# TEMPORARY: talk to consul-aware resolver rather than external ones
+echo "nameserver 172.17.0.1" >/etc/resolv.conf
 echo "DNS nameserver config in '/etc/resolv.conf':"
 cat /etc/resolv.conf || true
 echo "$long_line"
