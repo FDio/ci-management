@@ -23,9 +23,6 @@ if [ -f "$PYTHON_SCRIPT" ]; then
 	exit 0
 fi
 
-# TEMPORARY: talk to consul-aware resolver rather than external ones
-echo "nameserver 172.17.0.1" >/etc/resolv.conf
-
 # the Python code below needs boto3 installed
 python3 -m pip install boto3
 mkdir -p $(dirname "$PYTHON_SCRIPT")

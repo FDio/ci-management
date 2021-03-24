@@ -29,7 +29,7 @@ echo "$long_line"
 echo "Executor OS: $OS_ID-$OS_VERSION_ID"
 echo "Executor Arch: $OS_ARCH"
 # TODO: fix this to print nomad server hostname
-echo "Executor hostname: $(hostname)"
+echo "Executor hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
 
 echo "$long_line"
 if [ -f "$dockerfile" ] ; then
@@ -55,10 +55,8 @@ pip3 list 2>/dev/null | column -t || true
 echo "$long_line"
 echo "Executor Downloads cache '$downloads_cache':"
 ls -lh "$downloads_cache" || true
-echo "$long_line"
 
-# TEMPORARY: talk to consul-aware resolver rather than external ones
-echo "nameserver 172.17.0.1" >/etc/resolv.conf
+echo "$long_line"
 echo "DNS nameserver config in '/etc/resolv.conf':"
 cat /etc/resolv.conf || true
 echo "$long_line"
