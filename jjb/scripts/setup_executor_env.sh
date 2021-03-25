@@ -26,10 +26,11 @@ long_line="*********************************************************************
 downloads_cache="/root/Downloads"
 
 echo "$long_line"
-echo "Executor OS: $OS_ID-$OS_VERSION_ID"
-echo "Executor Arch: $OS_ARCH"
-# TODO: fix this to print nomad server hostname
-echo "Executor hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
+echo "Executor Runtime Attributes:"
+echo "OS: $OS_ID-$OS_VERSION_ID"
+echo "Arch: $OS_ARCH"
+echo "Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
+echo "Container ID: $(hostname)"
 
 echo "$long_line"
 if [ -f "$dockerfile" ] ; then
