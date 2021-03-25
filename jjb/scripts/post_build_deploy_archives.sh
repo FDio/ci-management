@@ -19,6 +19,20 @@ set +e  # Do not affect the build result if some part of archiving fails.
 WS_ARCHIVES_DIR="$WORKSPACE/archives"
 BUILD_ENV_LOG="$WS_ARCHIVES_DIR/_build-enviroment-variables.log"
 
+# Output executor runtime attributes [again] in case the job fails prior to
+# running setup_executor_env.sh
+long_line="************************************************************************"
+OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
+OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
+OS_ARCH=$(uname -m)
+echo "$long_line"
+echo "Executor Runtime Attributes:"
+echo "OS: $OS_ID-$OS_VERSION_ID"
+echo "Arch: $OS_ARCH"
+echo "Nomad Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
+echo "Container ID: $(hostname)"
+echo "$long_line"
+
 # Generate gdb-command script to output vpp stack traceback from core files.
 gdb_cmdfile="/tmp/gdb-commands"
 cat >$gdb_cmdfile <<'__END__'
