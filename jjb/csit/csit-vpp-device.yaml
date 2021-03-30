@@ -50,6 +50,16 @@
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-2n-clx':
+          stream:
+            - master:
+                branch: 'master'
+                branch-id: 'oper'
+          os: 'ubuntu2004'
+          node-arch: '2n-clx'
+          executor-arch: 'x86_64'
+          make-parallel-jobs: '32'
+          skip-vote: 'true'
 
     project: 'csit'
     branch: 'master'
@@ -248,6 +258,71 @@
       - shell:
           !include-raw-escape:
           - ../scripts/csit/device-verify.sh
+
+    publishers:
+      - robot:
+          output-path: 'archives'
+          other-files:
+            - '*.*'
+      - fdio-infra-publish
+
+- job-template:
+    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-2n-clx'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'True'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-vpp-devicetest-full:
+          project: '{project}'
+          branch: '{branch}'
+          skip-vote: '{skip-vote}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/flow-verify.sh
 
     publishers:
       - robot:
