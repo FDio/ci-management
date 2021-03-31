@@ -301,6 +301,36 @@
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+      - 'csit-nginx-vpp-perf-verify-{stream}-{node-arch}':
+          node-arch:
+            - 2n-clx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 2n-dnv:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 2n-zn2:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 2n-tx2:
+                os: 'ubuntu2004'
+                executor-arch: 'aarch64'
+          stream:
+            - master:
+                branch: 'master'
+                branch-id: 'oper'
+            - '2009':
+                branch: 'rls2009'
+                branch-id: 'oper-rls2009'
+            - '2009_lts':
+                branch: 'rls2009_lts'
+                branch-id: 'oper-rls2009_lts'
+            - '2101':
+                branch: 'rls2101'
+                branch-id: 'oper-rls2101'
 
     project: 'csit'
     branch: 'master'
@@ -1242,6 +1272,120 @@
           project: '{project}'
           branch: '{branch}'
           trigger-word: 'csit-dpdk-report-cov-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - robot:
+          output-path: 'archives'
+          other-files:
+            - '*.*'
+
+      - fdio-infra-shiplogs:
+          maven-version: 'mvn33-new'
+
+- job-template:
+    name: 'csit-nginx-vpp-perf-verify-{stream}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>perf verify - per csit gerrit patch
+              </ul>
+          <li>job
+              <ul>
+                  <li>name: <b>csit-nginx-vpp-perf-verify-{stream}-{node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-{node-arch}-nginx-perftest tag_list</b>
+              </ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected using trigger keyword followed by tags
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>proposed keywords
+              <ul>
+                  <li>focus on testing specified vpp packet processing path
+                  <li>format: csit-{node-arch}-nginx-perftest tag_list
+              </ul>
+          <li>default tags for vpp startup config and perf test type
+              <ul>
+                  <li>IP4BASE, IP6BASE, L2BDBASE
+                  <li>64B/78B: 64B/78B packet size
+                  <li>1C: one core
+                  <li>X710: x710 Fortville NIC
+                  <li>MRR: MRR throughput
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    archive-artifacts: 'archive/*.*'
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      - string:
+          name: ARCHIVE_ARTIFACTS
+          default: '{archive-artifacts}'
+          description: Artifacts to archive to the logs server.
+      # This is a manually-triggered verify job, part of API coverage.
+      # CRC checking is needed to ensure vpp crc job breaks only when intended.
+      # Can be removed when this job is no longer needed for full API coverage.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'True'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-{node-arch}-perftest'
           skip-vote: false
 
     builders:
