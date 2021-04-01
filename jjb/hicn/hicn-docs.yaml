@@ -9,12 +9,13 @@
     os:
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-    
+
     executor-arch: "x86_64"
 
     stream:
       - "master":
           branch: "master"
+          branch-refspec: ""
           repo-stream-part: "master"
           repository-name: "hicn"
     type:
@@ -25,7 +26,7 @@
     name: "hicn-docs-verify-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
     archive-artifacts:
       - "**/build-doxygen/lib/doc/html/*"
@@ -46,8 +47,10 @@
           project: "{project}"
       - gerrit-parameter:
           branch: "{branch}"
+      - gerrit-refspec-parameter:
+          refspec: "{branch-refspec}"
       - os-parameter:
-          os: "ubuntu1804"
+          os: "{os}"
       - maven-exec:
           maven-version: "mvn33-new"
       - stream-parameter:
@@ -97,7 +100,7 @@
     name: "hicn-docs-merge-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: ubuntu1804-us
+    node: "builder-{os}-prod-{executor-arch}"
     concurrent: false
     archive-artifacts:
       - "**/build-doxygen/lib/doc/html/*"
@@ -118,8 +121,10 @@
           project: "{project}"
       - gerrit-parameter:
           branch: "{branch}"
+      - gerrit-refspec-parameter:
+          refspec: "{branch-refspec}"
       - os-parameter:
-          os: "ubuntu1804"
+          os: "{os}"
       - maven-exec:
           maven-version: "mvn33-new"
       - stream-parameter:
