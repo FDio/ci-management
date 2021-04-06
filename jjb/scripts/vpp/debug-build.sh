@@ -30,7 +30,9 @@ echo "sha1sum of this script: ${0}"
 sha1sum $0
 
 # run with ASAN on
-export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
+# disable ASAN for now in the debug build - it's broken with PAPI
+# in make test transitioning to unix sockets
+# export VPP_EXTRA_CMAKE_ARGS='-DVPP_ENABLE_SANITIZE_ADDR=ON'
 
 make_build_test_debug() {
     if ! make UNATTENDED=yes install-dep ; then
