@@ -130,8 +130,7 @@
           output-path: 'archives'
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly'
@@ -188,8 +187,7 @@
           output-path: 'archives'
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly'
@@ -248,5 +246,4 @@
           output-path: 'archives'
           other-files:
             - '*.*'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish

@@ -85,12 +85,14 @@
               target: '/root/packagecloud_api'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - package-list.sh
           - packagecloud-repo-cleanup.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
@@ -148,9 +150,11 @@
               target: '/root/packagecloud_api'
       - shell:
           !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
           - package-list.sh
           - packagecloud-repo-cleanup.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish

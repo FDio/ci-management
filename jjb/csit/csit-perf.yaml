@@ -442,8 +442,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master{node-arch}'
@@ -520,8 +519,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}'
@@ -598,8 +596,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}'
@@ -671,8 +668,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-verify-{stream}-{node-arch}'
@@ -772,8 +768,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master{node-arch}'
@@ -850,8 +845,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}'
@@ -952,8 +946,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}'
@@ -1054,8 +1047,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}'
@@ -1156,8 +1148,7 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}'
@@ -1258,5 +1249,4 @@
           other-files:
             - '*.*'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish

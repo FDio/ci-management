@@ -86,11 +86,11 @@
       - provide-maven-settings:
           settings-file: "hicn-settings"
           global-settings-file: "global-settings"
+      - shell: !include-raw-escape: ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -176,11 +176,11 @@
       - provide-maven-settings:
           settings-file: "hicn-settings"
           global-settings-file: "global-settings"
+      - shell: !include-raw-escape: ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape: include-raw-hicn-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: "mvn36"
+      - fdio-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1

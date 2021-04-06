@@ -19,20 +19,6 @@ set +e  # Do not affect the build result if some part of archiving fails.
 WS_ARCHIVES_DIR="$WORKSPACE/archives"
 BUILD_ENV_LOG="$WS_ARCHIVES_DIR/_build-enviroment-variables.log"
 
-# Output executor runtime attributes [again] in case the job fails prior to
-# running setup_executor_env.sh
-long_line="************************************************************************"
-OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
-OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
-OS_ARCH=$(uname -m)
-echo "$long_line"
-echo "Executor Runtime Attributes:"
-echo "OS: $OS_ID-$OS_VERSION_ID"
-echo "Arch: $OS_ARCH"
-echo "Nomad Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
-echo "Container ID: $(hostname)"
-echo "$long_line"
-
 # Generate gdb-command script to output vpp stack traceback from core files.
 gdb_cmdfile="/tmp/gdb-commands"
 cat >$gdb_cmdfile <<'__END__'
@@ -83,21 +69,17 @@ generate_vpp_stacktrace_and_delete_core() {
     fi
 }
 
-# Delete existing archives dir to ensure current artifact upload
-rm -rf "$WS_ARCHIVES_DIR"
 mkdir -p "$WS_ARCHIVES_DIR"
 
 # Log the build environment variables
 echo "Logging build environment variables in '$BUILD_ENV_LOG'..."
 env > $BUILD_ENV_LOG
 
-echo "WS_ARCHIVE_ARTIFACTS = '$WS_ARCHIVE_ARTIFACTS'"
-if [ -n "${WS_ARCHIVE_ARTIFACTS}" ]; then
+echo "ARCHIVE_ARTIFACTS = '$ARCHIVE_ARTIFACTS'"
+if [ -n "${ARCHIVE_ARTIFACTS:-}" ] ; then
     pushd $WORKSPACE
     shopt -s globstar  # Enable globstar to copy archives
-    archive_artifacts=$(echo ${WS_ARCHIVE_ARTIFACTS})
-    shopt -u globstar  # Disable globstar
-    for file in $archive_artifacts; do
+    for file in $ARCHIVE_ARTIFACTS ; do
         if [ -f "$file" ] ; then
             fname="$(basename $file)"
             # Decompress core.gz file
@@ -121,11 +103,15 @@ if [ -n "${WS_ARCHIVE_ARTIFACTS}" ]; then
             echo "Archiving '$file' to '$destfile'"
             destdir="$(dirname $destfile)"
             mkdir -p $destdir
-            mv $file $destfile
+            mv -f $file $destfile
         else
             echo "Not archiving '$file'"
+            if ! grep -qe '*' <<<"$file" ; then
+                echo "WARNING: No artifacts detected in ARCHIVE_ARTIFACTS '$ARCHIVE_ARTIFACTS'!"
+            fi
         fi
     done
+    shopt -u globstar  # Disable globstar
     popd
 fi
 
