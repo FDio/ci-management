@@ -673,6 +673,7 @@
                 - SUCCESS
                 - UNSTABLE
               build-steps:
+                - shell: !include-raw: scripts/post_build_executor_info.sh
                 - shell: !include-raw: scripts/post_build_deploy_archives.sh
                 - shell: !include-raw: scripts/backup_upload_archives.sh
                 - fdio-infra-ship-logs
@@ -707,7 +708,6 @@
                 - UNSTABLE
               build-steps:
                 - shell: !include-raw: include-raw-deploy-archives.sh
-                - shell: !include-raw: scripts/backup_upload_archives.sh
                 - maven-target:
                     maven-version: '{maven-version}'
                     pom: '.archives/deploy-archives.xml'

@@ -858,8 +858,7 @@
       - robot-report:
           output-path: 'archives'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
@@ -946,8 +945,7 @@
       - robot-report:
           output-path: 'archives'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
@@ -1044,8 +1042,7 @@
       - robot-report:
           output-path: 'csit_current/0/'
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
@@ -1109,7 +1106,6 @@
       # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 # [end] JOB TEMPLATE DEFINITIONS

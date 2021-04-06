@@ -107,8 +107,7 @@
           - ../scripts/vpp/docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
@@ -196,8 +195,7 @@
           - ../scripts/vpp/docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vpp-sphinx-docs-verify-{stream}-{os}-{executor-arch}'
@@ -280,8 +278,7 @@
           - ../scripts/vpp/sphinx-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vpp-sphinx-docs-merge-{stream}-{os}-{executor-arch}'
@@ -361,8 +358,7 @@
           - ../scripts/vpp/sphinx-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vpp-make-test-docs-verify-{stream}-{os}-{executor-arch}'
@@ -432,8 +428,7 @@
           - ../scripts/vpp/make-test-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vpp-make-test-docs-merge-{stream}-{os}-{executor-arch}'
@@ -522,5 +517,4 @@
           - ../scripts/vpp/make-test-docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
