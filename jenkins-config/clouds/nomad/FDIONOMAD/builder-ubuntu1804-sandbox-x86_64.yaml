@@ -12,4 +12,4 @@ templates:
     labels: "builder-ubuntu1804-sandbox-x86_64"
     memory: 14000
     prefix: "builder-ubuntu1804-sandbox-x86_64"
-    hostVolumes: "/tmp/ccache:/scratch/ccache"
+    hostVolumes: "/tmp/ccache.ubuntu1804:/scratch/ccache"
