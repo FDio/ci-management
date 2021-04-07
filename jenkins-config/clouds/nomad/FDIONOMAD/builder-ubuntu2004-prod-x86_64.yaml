@@ -12,4 +12,4 @@ templates:
     labels: "builder-ubuntu2004-prod-x86_64"
     memory: 20000
     prefix: "builder-ubuntu2004-prod-x86_64"
-    hostVolumes: "/tmp/ccache:/scratch/ccache"
+    hostVolumes: "/tmp/ccache.ubuntu2004:/scratch/ccache"
