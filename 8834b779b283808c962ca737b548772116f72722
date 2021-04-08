@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79276beb_188c87c7",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-04-08T17:01:01Z",
+      "side": 1,
+      "message": "Looking at vpp-csit device jobs, x86 value is \u002732\u0027, ARM value is \u002716\u0027.",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "8834b779b283808c962ca737b548772116f72722",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57b87a78_c1f033ec",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-04-08T17:01:01Z",
+      "side": 1,
+      "message": "I think you need to add the following:\n      - make-parallel-jobs-parameter:\n          make-parallel-jobs: \u0027{make-parallel-jobs}\u0027",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "8834b779b283808c962ca737b548772116f72722",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
