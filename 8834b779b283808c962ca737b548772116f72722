@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f394c999_f541ae09",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2021-04-09T05:28:36Z",
+      "side": 1,
+      "message": "I double checked this in\nhttps://jenkins.fd.io/view/vpp/job/vpp-csit-verify-device-master-ubuntu2004-aarch64-1n-tx2/419/parameters/\nhttps://jenkins.fd.io/view/vpp/job/vpp-csit-verify-device-master-ubuntu2004-x86_64-1n-skx/401/parameters/\n\nAnd it\u0027s 32 in both. You may have been looking at build jobs, which are set to 16.",
+      "parentUuid": "79276beb_188c87c7",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "8834b779b283808c962ca737b548772116f72722",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57b87a78_c1f033ec",
         "filename": "jjb/csit/csit-vpp-device.yaml",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8834b779b283808c962ca737b548772116f72722",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e36bab_184ace5d",
+        "filename": "jjb/csit/csit-vpp-device.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 576
+      },
+      "writtenOn": "2021-04-09T05:28:36Z",
+      "side": 1,
+      "message": "Right, I\u0027ll add this.",
+      "parentUuid": "57b87a78_c1f033ec",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "8834b779b283808c962ca737b548772116f72722",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
