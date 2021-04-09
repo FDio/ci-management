@@ -54,7 +54,8 @@ apt_override_cmake_install_with_pip3_version() {
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
-
+        debian_docker_inst_sed="| sed -e 's/has_rootless_extras="1"//g' | sh
+"
     cat <<EOF >>"$DOCKERFILE"
 
 # Create download dir to cache external tarballs
@@ -194,7 +195,16 @@ RUN apt-get update -qq \\
              zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
-  && curl -fsSL https://get.docker.com | sh \\
+EOF
+    # Hack to prevent failure on debian-9 build
+    head $DOCKERFILE
+    if grep -qe 'debian:9' "$DOCKERFILE" ; then
+        echo "  && curl -fsSL https://get.docker.com | sed -e 's/has_rootless_extras=\"1\"//g' | sh \ " >>"$DOCKERFILE"
+    else
+        echo "  && curl -fsSL https://get.docker.com | sh \ " >>"$DOCKERFILE"
+    fi
+
+    cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
 
 # Install packages for all project branches
