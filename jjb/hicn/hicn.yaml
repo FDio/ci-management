@@ -286,7 +286,9 @@
 
     builders:
       - shell: !include-raw-escape:
-            include-raw-hicn-checkstyle.sh
+          - ../scripts/setup_executor_env.sh
+      - shell: !include-raw-escape:
+          - include-raw-hicn-checkstyle.sh
 
     publishers:
       - fdio-infra-publish
@@ -338,6 +340,8 @@
           branch: "{branch}"
 
     builders:
+      - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
           - include-raw-hicn-build.sh
 
@@ -409,6 +413,8 @@
           settings-type: cfp
           global-settings: "global-settings"
           global-settings-type: cfp
+      - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
           - include-raw-hicn-checkstyle.sh
       - shell: !include-raw-escape:
@@ -495,6 +501,8 @@
 
     builders:
       - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell: !include-raw-escape:
           - include-raw-hicn-extras-build.sh
 
     publishers:
@@ -573,6 +581,8 @@
           settings-type: cfp
           global-settings: "global-settings"
           global-settings-type: cfp
+      - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
           - include-raw-hicn-extras-build.sh
       - provide-maven-settings:

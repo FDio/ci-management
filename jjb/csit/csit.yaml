@@ -125,8 +125,7 @@
           - ../scripts/csit/docs.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-report-merge-{stream}-{os}-{executor-arch}'
@@ -204,8 +203,7 @@
           - ../scripts/csit/report.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-trending-daily-master-{os}-{executor-arch}'
@@ -305,8 +303,7 @@
           always: true
           failure: false
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-trending-weekly-2009-lts-{os}-{executor-arch}'
@@ -406,8 +403,7 @@
           always: true
           failure: false
 
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn33-new'
+      - fdio-infra-publish
 
 - project:
     name: csit-info
