@@ -66,6 +66,9 @@ csit_install_packages() {
     local bld_log="$DOCKER_BUILD_LOG_DIR/$FDIOTOOLS_IMAGENAME"
     bld_log="${bld_log}-$branchname-csit_install_packages-bld.log"
 
+    if [ ! -d "$csit_ansible_dir" ] ; then
+        csit_ansible_dir="$csit_dir/resources/tools/testbed-setup/ansible"
+    fi
     git clean -qfdx
 
     # Install PyYAML required by dbld_csit_find_ansible_packages.py
