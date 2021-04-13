@@ -63,6 +63,9 @@ csit_install_packages() {
     local branchname="$(echo $branch | sed -e 's,/,_,')"
     local csit_dir="$DOCKER_CSIT_DIR"
     local csit_ansible_dir="$csit_dir/fdio.infra.ansible"
+    if [ ! -d "$csit_ansible_dir" ] ; then
+        csit_ansible_dir="$csit_dir/resources/tools/testbed-setup/ansible"
+    fi
     local bld_log="$DOCKER_BUILD_LOG_DIR/$FDIOTOOLS_IMAGENAME"
     bld_log="${bld_log}-$branchname-csit_install_packages-bld.log"
 
