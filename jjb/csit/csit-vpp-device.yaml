@@ -19,10 +19,12 @@
       - '1n-skx':
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
+          make-parallel-jobs: '32'
           skip-vote: 'false'
       - '1n-tx2':
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
+          make-parallel-jobs: '32'
           skip-vote: 'true'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
@@ -86,6 +88,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
       - gerrit-refspec-parameter
@@ -152,6 +156,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
       - string:
@@ -209,6 +215,8 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
       - string:
