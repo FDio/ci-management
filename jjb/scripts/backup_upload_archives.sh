@@ -159,30 +159,20 @@ if __name__ == u"__main__":
 END_OF_PYTHON_SCRIPT
 
 WS_ARCHIVES_DIR="$WORKSPACE/archives"
-ARCHIVES_DIR="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER"
+JENKINS_BUILD_ARCHIVE_DIR="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER"
 ARCHIVES_ZIP_FILE="$WORKSPACE/.archives/archives.zip"
 
 TMP_ARCHIVES_DIR="/tmp/archives"
 mkdir -p $TMP_ARCHIVES_DIR
 pushd $TMP_ARCHIVES_DIR
 
-if [ -f "$ARCHIVES_ZIP_FILE" ]; then
-	# FIXME: this branch to be removed upon full transition to lftools:
-	# we are include_raw from fdio-infra-shiplogs publisher, and
-	# it already packed everything into archives.zip and removed
-	# the original archives directory. So just unpack and use that.
-	echo "Detected existing archives.zip, uploading the contents of it"
-	unzip "$ARCHIVES_ZIP_FILE"
+mkdir -p $JENKINS_BUILD_ARCHIVE_DIR
+if [ -e "$WS_ARCHIVES_DIR" ]; then
+    echo "Found $WS_ARCHIVES_DIR, uploading its contents"
+    cp -r "$WS_ARCHIVES_DIR" $JENKINS_BUILD_ARCHIVE_DIR
 else
-	# the include_raw is done from fdio-infra-publish publisher
-	mkdir -p "$ARCHIVES_DIR"
-	if [ -e "$WS_ARCHIVES_DIR" ]; then
-		echo "Found $WS_ARCHIVES_DIR, uploading its contents"
-		cp -r "$WS_ARCHIVES_DIR" .
-	else
-		echo "No $WS_ARCHIVES_DIR found. Creating a dummy file."
-		echo "No archives found while doing backup upload" > "$ARCHIVES_DIR/no-archives-found.txt"
-	fi
+    echo "No $WS_ARCHIVES_DIR found. Creating a dummy file."
+    echo "No archives found while doing backup upload" > "$JENKINS_BUILD_ARCHIVE_DIR/no-archives-found.txt"
 fi
 
 echo "Contents of the archives dir:"
