@@ -109,7 +109,12 @@ format_image_tags() {
     #       bug in docker hub which returns old tags which were deleted via
     #       the webUI, but are still retrieved by 'docker pull -a'
     image_tags="$(docker images | grep $1 | grep $image_arch | grep -v prod-curr | sort -r | mawk '{print $1":"$2}' | tr '\n' ' ')"
+    set +e # Handle case where original image has been deleted from dockerhub.
     image_realname="$(docker images | grep $1 | grep $image_arch | sort -r | grep -v prod | mawk '{print $1":"$2}')"
+    set -e
+    if [ -z "${image_realname:-}" ] ; then
+        image_realname="$image_tags"
+    fi
 }
 
 get_image_id_tags() {
