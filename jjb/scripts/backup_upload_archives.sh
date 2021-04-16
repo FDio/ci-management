@@ -19,8 +19,8 @@ PYTHON_SCRIPT="/w/workspace/test-logs/artifact.py"
 
 # This script uploads the artifacts to a backup upload location
 if [ -f "$PYTHON_SCRIPT" ]; then
-	echo "WARNING: $PYTHON_SCRIPT already exists - assume backup archive upload already done"
-	exit 0
+    echo "WARNING: $PYTHON_SCRIPT already exists - assume backup archive upload already done"
+    exit 0
 fi
 
 # the Python code below needs boto3 installed
@@ -35,6 +35,8 @@ cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'
 import argparse
 import gzip
 import os
+import io
+import requests
 from mimetypes import MimeTypes
 
 from boto3 import resource
@@ -159,13 +161,11 @@ if __name__ == u"__main__":
 END_OF_PYTHON_SCRIPT
 
 WS_ARCHIVES_DIR="$WORKSPACE/archives"
-JENKINS_BUILD_ARCHIVE_DIR="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER"
-
 TMP_ARCHIVES_DIR="/tmp/archives"
-mkdir -p $TMP_ARCHIVES_DIR
-pushd $TMP_ARCHIVES_DIR
+JENKINS_BUILD_ARCHIVE_DIR="$TMP_ARCHIVES_DIR/$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER"
 
 mkdir -p $JENKINS_BUILD_ARCHIVE_DIR
+
 if [ -e "$WS_ARCHIVES_DIR" ]; then
     echo "Found $WS_ARCHIVES_DIR, uploading its contents"
     cp -r $WS_ARCHIVES_DIR/* $JENKINS_BUILD_ARCHIVE_DIR
@@ -174,8 +174,18 @@ else
     echo "No archives found while doing backup upload" > "$JENKINS_BUILD_ARCHIVE_DIR/no-archives-found.txt"
 fi
 
-echo "Contents of the archives dir:"
+console_log="$JENKINS_BUILD_ARCHIVE_DIR/console.log"
+echo "Downloading Jenkins console log to '$console_log'"
+wget -qO "$console_log" "$BUILD_URL/consoleText"
+
+console_log="$JENKINS_BUILD_ARCHIVE_DIR/console-timestamp.log"
+echo "Downloading Jenkins console timestamp log to '$console_log'"
+wget -qO "$console_log" "$BUILD_URL/timestamps?time=HH:mm:ss&appendLog"
+
+pushd $TMP_ARCHIVES_DIR
+echo "Contents of the archives dir '$TMP_ARCHIVES_DIR':"
 ls -alR $TMP_ARCHIVES_DIR
-echo "Running uploader script $PYTHON_SCRIPT:"
-python3 $PYTHON_SCRIPT -d . -b logs || echo "Failed to upload logs"
+archive_cmd="python3 $PYTHON_SCRIPT -d . -b logs"
+echo -e "\nRunning uploader script '$archive_cmd':\n"
+$archive_cmd || echo "Failed to upload logs"
 popd
