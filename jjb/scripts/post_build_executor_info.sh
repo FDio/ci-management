@@ -24,15 +24,23 @@ OS_ARCH=$(uname -m)
 echo "$long_line"
 echo "Executor Runtime Attributes:"
 echo "OS: $OS_ID-$OS_VERSION_ID"
+echo "    $(uname -a)"
+echo "Number CPUs: $(nproc)"
 echo "Arch: $OS_ARCH"
 echo "Nomad Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
 echo "Container ID: $(hostname)"
+echo "$long_line"
+echo -e "lscpu:\n$(lscpu)"
+echo "$long_line"
+echo -e "df -h:\n$(df -h)"
+echo "$long_line"
+echo -e "free -m:\n$(free -m)"
 
 if [ -n "$(which ccache)" ] ; then
     echo "$long_line"
+    echo "ccache statistics:"
     [ -n "${CCACHE_DISABLE:-}" ] && echo "CCACHE_DISABLE = '$CCACHE_DISABLE'"
     [ -n "${CCACHE_DIR:-}" ] && echo "CCACHE_DIR = '$CCACHE_DIR'"
-    echo "ccache statistics:"
     ccache -s
 fi
 
