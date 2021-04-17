@@ -39,6 +39,30 @@
       "revId": "0c699957599e81c304fed8f2c9a24f8d2753bdff",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9d128a_c29554b1",
+        "filename": "docker/scripts/lib_dnf.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-04-17T17:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3a0cde_300b0f4b",
+      "range": {
+        "startLine": 169,
+        "startChar": 33,
+        "endLine": 169,
+        "endChar": 53
+      },
+      "revId": "0c699957599e81c304fed8f2c9a24f8d2753bdff",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
