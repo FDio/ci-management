@@ -28,6 +28,8 @@
           branch: 'master'
       - dev-next-socket:
           branch: 'dev-next-socket'
+      - dev-mitm-proxy:
+          branch: 'dev-mitm-proxy'
 
 - project:
     name: tldk-view
