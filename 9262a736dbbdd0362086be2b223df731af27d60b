@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71a66f85_f8d14bd6",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-04-21T17:28:25Z",
+      "side": 1,
+      "message": "\u0027\u0027",
+      "range": {
+        "startLine": 195,
+        "startChar": 26,
+        "endLine": 195,
+        "endChar": 51
+      },
+      "revId": "9262a736dbbdd0362086be2b223df731af27d60b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
