@@ -275,6 +275,7 @@
     name: vpp-csit-verify-perf
     jobs:
       - 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
+      - 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
     project: 'vpp'
     skip-vote: 'false'
     stream:
@@ -293,31 +294,40 @@
     testbed-arch:
       - 2n-clx:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 2n-skx:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 2n-zn2:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 3n-skx:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 3n-hsw:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 2n-dnv:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 3n-dnv:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu.focal.main'
           executor-arch: 'x86_64'
       - 3n-tsh:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu-arm.focal.main'
           executor-arch: 'aarch64'
           make-parallel-jobs: '16'
       - 2n-tx2:
           os: 'ubuntu2004'
+          repo-os-part: 'ubuntu-arm.focal.main'
           executor-arch: 'aarch64'
           make-parallel-jobs: '16'
 
@@ -1003,7 +1013,7 @@
       - project-parameter:
           project: '{project}'
       - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
+          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
 
@@ -1044,6 +1054,96 @@
 
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
+
+# VPP-CSIT-BISECT JOB TEMPLATE
+- job-template:
+    name: 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
+    description: |
+      <ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>testbed architecture
+              <ul>
+                  <li>{testbed-arch}
+              </ul>
+          <li>Objective FIXME
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    archive-artifacts: >
+      **/csit_*/**/*.*
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: 100
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "1.0"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "60"
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - repo-name-parameter:
+          repo-name: '{repo-stream-part}.{repo-os-part}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 300
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'bisecttest-{testbed-arch}'
+          skip-vote: true
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/csit-bisect.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-CSIT-BISECT JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 - job-template:
