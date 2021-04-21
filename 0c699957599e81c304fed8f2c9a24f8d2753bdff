@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c021ab63_a76652cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-04-21T21:14:22Z",
+      "side": 1,
+      "message": "\u003e is this cumulative? same question as I had before. \nMaximum cache size per OS (centos7, centos8, debian9, debian10, ubuntu1804, ubuntu2004), so worst case x86-64 is 60G on x86_64 and 30G on aarch64.  When VPP 20.09 jobs are removed, then centos7 \u0026 debian9 caches can be removed from the nomad hosts.\n\n\u003e does multiple parallel runs produce more data?\nNo.  If multiple jobs compile same c file on same os \u0026 complier that does not exist in the cache, then only 1 entry will be stored in the cache when completed.\n\nEventually cache misses will cause the cache size to hit the max (10G) at which time the cache will be pruned to provide room for new cache entries.\n\n\u003e do you have link to sandbox tests? \nSandbox Test Results using fdiotools/builder-ubuntu2004:sandbox-aarch64 image built from this patch:\n  https://jenkins.fd.io/sandbox/job/31914-vpp-verify-master-ubuntu2004-aarch64/1/\n\nSandbox Test Results using current production executor image:\n  https://jenkins.fd.io/sandbox/job/31914-vpp-verify-master-ubuntu2004-x86_64/1/\n\nNOTE: In order to test the JCASC changes, this gerrit must be merged.  Then a final round of testing with sandbox images will be performed to verify ccache for vpp build jobs on all os variants.\n\n\u003e did you test on ARM as well?\nyes, multiple vpp \u0027make pkg-verify\u0027 jobs executed in parallel on separate docker images with ccache enabled and /tmp/ccache",
+      "parentUuid": "148ab5e1_7d79fb95",
+      "revId": "0c699957599e81c304fed8f2c9a24f8d2753bdff",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae3a0cde_300b0f4b",
         "filename": "docker/scripts/lib_dnf.sh",
         "patchSetId": 3
