@@ -48,6 +48,9 @@ STACKTRACE=""
 # Returns stacktrace filename in STACKTRACE
 generate_vpp_stacktrace_and_delete_core() {
     local corefile="$1"
+    echo "Uncompressing core file $file"
+    gunzip "$corefile"
+    corefile="${corefile::(-3)}"
     if grep -qe 'debug' <<< "$WORKSPACE" ; then
         local binfile="$WORKSPACE/build-root/install-vpp_debug-native/vpp/bin/vpp"
     else
@@ -61,8 +64,9 @@ generate_vpp_stacktrace_and_delete_core() {
     echo "Removing core file: $corefile"
     rm -f "$corefile"
     # Dump stacktrace to console log
-    if [ -f $STACKTRACE ] ; then
+    if [ -f "$STACKTRACE" ] ; then
         echo -e "\n=====[ $STACKTRACE ]=====\n$(cat $STACKTRACE)\n=====[ $STACKTRACE ]=====\n"
+        gzip "$STACKTRACE"
     else
         echo "Stacktrace file not generated!"
         STACKTRACE=""
@@ -77,30 +81,12 @@ env > $BUILD_ENV_LOG
 
 echo "ARCHIVE_ARTIFACTS = '$ARCHIVE_ARTIFACTS'"
 if [ -n "${ARCHIVE_ARTIFACTS:-}" ] ; then
-    pushd $WORKSPACE
+    pushd "$WORKSPACE"
     shopt -s globstar  # Enable globstar to copy archives
     for file in $ARCHIVE_ARTIFACTS ; do
         if [ -f "$file" ] ; then
-            fname="$(basename $file)"
-            # Decompress core.gz file
-            if grep -qe '^core.*\.gz$' <<<"$fname" ; then
-                echo "Uncompressing core file $file"
-                gunzip "$file"
-                file="${file::(-3)}"
-            fi
-            # Convert core file to stacktrace
-            if [ "${fname::4}" = "core" ] ; then
-                generate_vpp_stacktrace_and_delete_core $file
-                [ -z "$STACKTRACE" ] && continue
-                file=$STACKTRACE
-            fi
-            # Set destination filename
-            if [ "${file::26}" = "/tmp/vpp-failed-unittests/" ] ; then
-                destfile=$WS_ARCHIVES_DIR${file:25}
-            else
-                destfile=$WS_ARCHIVE_DIR$file
-            fi
             echo "Archiving '$file' to '$destfile'"
+            destfile="$WS_ARCHIVE_DIR$file"
             destdir="$(dirname $destfile)"
             mkdir -p $destdir
             mv -f $file $destfile
@@ -121,6 +107,16 @@ find $WS_ARCHIVES_DIR -type f -print0 \
                 | egrep -e ':.*text.*' \
                 | cut -d: -f1 \
                 | xargs -d'\n' -r gzip
+
+# generate stack trace for VPP core files for upload instead of core file.
+if [ -d "$WORKSPACE/build-root" ] ; then
+    for file in $(find $WS_ARCHIVES_DIR -type f -name 'core*.gz') ; do
+        generate_vpp_stacktrace_and_delete_core $file
+    done
+fi
+
+# Remove any socket files in archive
+find $WS_ARCHIVES_DIR -type s -exec rm -rf {} \;
 
 echo "Workspace archived artifacts:"
 ls -alR $WS_ARCHIVES_DIR

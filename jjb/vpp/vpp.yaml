@@ -70,11 +70,10 @@
     project: 'vpp'
     make-parallel-jobs: '4'
     make-test-os: 'ubuntu-20.04'
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/40/32040/1'
           repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
@@ -127,7 +126,6 @@
     project: 'vpp'
     make-parallel-jobs: '4'
     make-test-os: 'ubuntu-20.04'
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     comment-trigger-value: 'debug-verify'
     stream:
       - master:
@@ -191,11 +189,10 @@
     project: 'vpp'
     make-parallel-jobs: '16'
     make-test-os: 'ubuntu-20.04'
-    archive-artifacts: '/tmp/vpp-failed-unittests/*/*'
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/29/32029/4'
           repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
@@ -388,6 +385,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -398,8 +397,6 @@
           project: '{project}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
-      - workspace-archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -505,6 +502,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -521,8 +520,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -573,6 +570,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -589,8 +588,6 @@
           repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -656,7 +653,7 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
@@ -737,7 +734,7 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
