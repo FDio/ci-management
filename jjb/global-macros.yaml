@@ -203,14 +203,6 @@
           name: TOPO
           default: '{topo}'
           description: "Topology parameter"
-
-- parameter:
-    name: workspace-archive-artifacts-parameter
-    parameters:
-      - string:
-          name: WS_ARCHIVE_ARTIFACTS
-          default: '{artifacts}'
-          description: "Artifacts to archive in $WORKSPACE/archives."
 # [end] Keep 'parameter' entries ordered alphabetically, please.
 
 #### SCMS
