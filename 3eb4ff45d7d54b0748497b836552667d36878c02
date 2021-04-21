@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9439cff8_0e583b6f",
+        "filename": "docker/scripts/update_dockerhub_prod_tags.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-04-21T17:34:22Z",
+      "side": 1,
+      "message": "\"|| true\" somewhere is shorter than flipping to +e and back.\nEven better would be to put the whole command into the \"if\" condition.\nFinally, \" || echo $image_tags\" would create a one-liner.\n\nNot sure which one is the most readable.",
+      "range": {
+        "startLine": 113,
+        "startChar": 113,
+        "endLine": 113,
+        "endChar": 114
+      },
+      "revId": "3eb4ff45d7d54b0748497b836552667d36878c02",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
