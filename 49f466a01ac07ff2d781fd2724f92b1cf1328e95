@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3263da13_5865a5e2",
+        "filename": "jjb/scripts/backup_upload_archives.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-04-22T11:04:30Z",
+      "side": 1,
+      "message": "reemove",
+      "revId": "49f466a01ac07ff2d781fd2724f92b1cf1328e95",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
