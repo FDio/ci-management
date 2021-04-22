@@ -16,6 +16,24 @@
       "revId": "49f466a01ac07ff2d781fd2724f92b1cf1328e95",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe6e27f_b7226fb1",
+        "filename": "jjb/scripts/backup_upload_archives.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-04-22T13:28:55Z",
+      "side": 1,
+      "message": "Good catch! Done.",
+      "parentUuid": "3263da13_5865a5e2",
+      "revId": "49f466a01ac07ff2d781fd2724f92b1cf1328e95",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
