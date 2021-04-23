@@ -221,7 +221,7 @@ generate_apt_dockerfile_clean() {
 
 # Clean up copy-in build tree
 RUN dbld_dump_build_logs.sh \\
-  && rm -rf "/tmp/*" "$DOCKER_BUILD_FILES_DIR"
+  && rm -rf "/tmp/*" "$DOCKER_BUILD_FILES_DIR" "/root/.ccache"
 EOF
 }
 
@@ -260,6 +260,7 @@ WORKDIR /
 $vpp_install_skip_sysctl_envvar
 ENV VPP_ZOMBIE_NOCHECK="1"
 ENV CCACHE_DIR="/scratch/ccache"
+ENV CCACHE_MAXSIZE="10G"
 EOF
     generate_apt_dockerfile_clean
 }

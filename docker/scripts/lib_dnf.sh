@@ -38,7 +38,7 @@ generate_dnf_dockerfile_clean() {
 
 # Clean up
 RUN dbld_dump_build_logs.sh \\
-  && rm -rf "/tmp/*"
+  && rm -rf "/tmp/*" "/root/.ccache"
 EOF
 }
 
@@ -167,6 +167,7 @@ RUN gem install package_cloud \\
 WORKDIR /
 ENV VPP_ZOMBIE_NOCHECK="1"
 ENV CCACHE_DIR="/scratch/ccache"
+ENV CCACHE_MAXSIZE="10G"
 EOF
     generate_dnf_dockerfile_clean
 }
