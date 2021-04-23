@@ -25,6 +25,7 @@ file_delimiter="----- %< -----"
 long_line="************************************************************************"
 downloads_cache="/root/Downloads"
 
+# Node info
 echo "$long_line"
 echo "Executor Runtime Attributes:"
 echo "OS: $OS_ID-$OS_VERSION_ID"
@@ -41,6 +42,31 @@ else
     echo "Unknown Executor: '$dockerfile' not found!"
 fi
 
+# Performance analysis
+perf_trials=2
+perf_interval=1
+if [ "$OS_ID" == "ubuntu" ] || [ "$OS_ID" = "debian" ] ; then
+    SYSSTAT_PATH="/var/log/sysstat"
+elif [ "$OS_ID" == "centos" ] ; then
+    SYSSTAT_PATH="/var/log/sa"
+fi
+echo "$long_line"
+echo "Virtual memory stat"
+vmstat ${perf_interval} ${perf_trials}
+echo "CPU time breakdowns per CPU"
+mpstat -P ALL ${perf_interval}  ${perf_trials}
+echo "Per-process summary"
+pidstat ${perf_interval} ${perf_trials}
+echo "Block device stats"
+iostat -xz ${perf_interval} ${perf_trials}
+echo "Memory utilization"
+free -m
+echo "Network interface throughput"
+sar -n DEV -o ${SYSSTAT_PATH} ${perf_interval} ${perf_trials}
+echo "TCP metrics"
+sar -n TCP,ETCP -o ${SYSSTAT_PATH} ${perf_interval} ${perf_trials}
+
+# SW stack
 echo "$long_line"
 echo "Executor package list:"
 if [ "$OS_ID" == "ubuntu" ] || [ "$OS_ID" = "debian" ] ; then
