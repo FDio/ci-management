@@ -57,6 +57,24 @@
       "revId": "cccda431f00784b75cf0c28b69e55457e8131f02",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4abd4f1_9457d105",
+        "filename": "jjb/scripts/post_build_executor_info.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-04-23T15:34:22Z",
+      "side": 1,
+      "message": "Most excellent!\n\nI added the sysstat requirements to the docker image builder scripts in 32103.\nI need to build a new set of docker images due to new vpp external deps version and will include systat in them so it can be tested next week.",
+      "parentUuid": "e53fbca5_1c493d5d",
+      "revId": "cccda431f00784b75cf0c28b69e55457e8131f02",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
