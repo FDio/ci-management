@@ -126,6 +126,7 @@ RUN dnf install -y \\
         rsync \\
         ruby-devel \\
         sshpass \\
+        sysstat \\
         sudo \\
         tree \\
         unzip \\
