@@ -178,6 +178,7 @@ RUN apt-get update -qq \\
              ruby-dev \\
              software-properties-common \\
              sshpass \\
+             sysstat \\
              sudo \\
              texlive-fonts-extra \\
              texlive-fonts-recommended \\
