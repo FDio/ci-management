@@ -35,7 +35,6 @@ cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'
 import argparse
 import gzip
 import os
-import requests
 from mimetypes import MimeTypes
 
 from boto3 import resource
