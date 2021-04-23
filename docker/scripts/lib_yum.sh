@@ -120,6 +120,7 @@ RUN yum install -y \\
         rake \\
         ruby-devel \\
         sshpass \\
+        sysstat \\
         sudo \\
         tree \\
         unzip \\
