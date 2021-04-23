@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a8bbdd2_21fc2293",
+        "filename": "jjb/scripts/post_build_executor_info.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-04-23T12:54:13Z",
+      "side": 1,
+      "message": "Maybe you can get inspired by: https://netflixtechblog.com/linux-performance-analysis-in-60-000-milliseconds-accc10403c55\nI would like to consider it to have as initial run before payload.",
+      "revId": "cccda431f00784b75cf0c28b69e55457e8131f02",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
