@@ -230,7 +230,7 @@
           os: "{os}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.ubuntu.bionic.main"
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
@@ -321,7 +321,7 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
@@ -379,7 +379,7 @@
           stream: "{repository-name}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
@@ -473,7 +473,7 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
@@ -539,7 +539,7 @@
           stream: "hicn"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - workspace-archive-artifacts-parameter:
+      - archive-artifacts-parameter:
           artifacts: '{archive-artifacts}'
 
     scm:
