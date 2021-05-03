@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a717ad10_7381bc55",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-05-03T08:24:18Z",
+      "side": 1,
+      "message": "What is the current process, is sysstat already installed in the docker images (even though this change has not been merged yet)?",
+      "range": {
+        "startLine": 181,
+        "startChar": 13,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "9ea3eb362256b959037ec06be34f510b317db8bb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
