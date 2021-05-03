@@ -739,6 +739,15 @@
           max-failed-builds: 1
 
 - publisher:
+    name: retry-build-on-git-clone-error
+    publishers:
+      - naginator:
+          max-failed-builds: 6
+          progressive-delay-increment: 5
+          progressive-delay-maximum: 180
+          regular-expression: '.*Error cloning remote repo.*'
+
+- publisher:
     name: robot-report
     publishers:
       - robot:

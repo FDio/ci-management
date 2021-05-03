@@ -517,4 +517,5 @@
           - ../scripts/vpp/make-test-docs.sh
 
     publishers:
+      - retry-build-on-git-clone-error
       - fdio-infra-publish
