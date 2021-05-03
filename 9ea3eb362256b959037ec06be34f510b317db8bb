@@ -22,6 +22,30 @@
       "revId": "9ea3eb362256b959037ec06be34f510b317db8bb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00025503_f2e3442f",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-05-03T16:33:34Z",
+      "side": 1,
+      "message": "sysstat is not currently installed in docker images.  Only in images based on this patch.\n\nFYI, I generated a new set of sandbox docker images over the weekend to put into production that does not contain sysstat.  Once I\u0027ve put them into production, I will generate a new set of sandbox images for testing this gerrit change.",
+      "parentUuid": "a717ad10_7381bc55",
+      "range": {
+        "startLine": 181,
+        "startChar": 13,
+        "endLine": 181,
+        "endChar": 20
+      },
+      "revId": "9ea3eb362256b959037ec06be34f510b317db8bb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
