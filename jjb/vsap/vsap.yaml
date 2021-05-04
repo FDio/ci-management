@@ -45,7 +45,7 @@
     name: 'vsap-verify-{stream}-{os}-{mode}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-x86_64'
     concurrent: true
 
     build-discarder:
@@ -97,14 +97,13 @@
           - include-raw-vsap-build.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - job-template:
     name: 'vsap-merge-{stream}-{os}-{mode}'
 
     project-type: freestyle
-    node: '{os}-us'
+    node: 'builder-{os}-prod-x86_64'
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -166,8 +165,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - fdio-infra-publish
 
 - project:
     name: vsap-info

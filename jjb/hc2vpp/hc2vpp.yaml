@@ -79,8 +79,7 @@
     publishers:
       - email-notification:
           email-prefix: '[hc2vpp]'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'hc2vpp-merge-{stream}-{os}'
@@ -145,8 +144,7 @@
           branch: '{stream}'
       - email-notification:
         email-prefix: '[hc2vpp]'
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - job-template:
     name: 'hc2vpp-integration-{stream}-{os}'
@@ -249,8 +247,7 @@
           unique-version: true
           deploy-unstable: false
           release-env-var: SKIP_JAR_DEPLOY
-      - fdio-infra-shiplogs:
-          maven-version: 'mvn36'
+      - lf-infra-publish
 
 - project:
     name: hc2vpp-info
