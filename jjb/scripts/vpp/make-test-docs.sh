@@ -28,17 +28,22 @@ fi
 
 DOCS_REPO_URL=${DOCS_REPO_URL:-"https://nexus.fd.io/content/sites/site"}
 PROJECT_PATH=${PROJECT_PATH:-"io/fd/vpp"}
-DOC_DIR=${DOC_DIR:-"build-root/build-test/doc/html"}
+DOC_DIR=${DOC_DIR:-"test/doc/build/html"}
 SITE_DIR=${SITE_DIR:-"build-root/docs/deploy-site"}
 RESOURCES_DIR=${RESOURCES_DIR:-"${SITE_DIR}/src/site/resources/vpp_make_test"}
 MVN=${MVN:-"/opt/apache/maven/bin/mvn"}
 VERSION=${VERSION:-"$(./build-root/scripts/version rpm-version)"}
+
+if [[ ${JOB_NAME} == *2009* ]] || [[ ${JOB_NAME} == *2101* ]] ; then
+    DOC_DIR="build-root/build-test/doc/html"
+fi
 
 make test-doc
 
 if [[ ${JOB_NAME} == *merge* ]]; then
   mkdir -p ${RESOURCES_DIR}
   mv -f ${DOC_DIR} ${RESOURCES_DIR}
+  ls -alR ${RESOURCES_DIR}
   cd ${SITE_DIR}
 
   cat > pom.xml << EOF
