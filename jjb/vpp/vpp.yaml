@@ -482,7 +482,6 @@
           - ../scripts/vpp/commitmsg.sh
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 
 # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
@@ -552,7 +551,6 @@
           - ../scripts/vpp/build.sh
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-VERIFY JOB TEMPLATE
 
@@ -623,7 +621,6 @@
           - ../scripts/vpp/debug-build.sh
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
 
@@ -704,7 +701,6 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
 
@@ -771,7 +767,6 @@
           - ../scripts/vpp/gcc-build.sh
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-GCC-VERIFY JOB TEMPLATE
 
@@ -860,7 +855,6 @@
       - robot-report:
           output-path: 'archives'
 
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -948,7 +942,6 @@
       - robot-report:
           output-path: 'archives'
 
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
@@ -1046,7 +1039,6 @@
       - robot-report:
           output-path: 'csit_current/0/'
 
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
@@ -1111,7 +1103,6 @@
       # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
     publishers:
-      - retry-build-on-git-clone-error
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 # [end] JOB TEMPLATE DEFINITIONS
