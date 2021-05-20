@@ -668,6 +668,7 @@
                 - shell: !include-raw: scripts/post_build_executor_info.sh
                 - shell: !include-raw: scripts/post_build_deploy_archives.sh
                 - shell: !include-raw: scripts/backup_upload_archives.sh
+                - shell: !include-raw: scripts/notify_on_core.sh
                 - fdio-infra-ship-logs
           mark-unstable-if-failed: true
       - workspace-cleanup:
