@@ -21,8 +21,8 @@ VPP_CRC_CHECKER_CMD="$VPP_CRC_CHECKER --check-patchset"
 send_notify() {
 	    # 'roomId' field from the response of:
 	    # curl https://api.ciscospark.com/v1/memberships  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}"
-	    WEBEX_TEAMS_ROOM_ID='Y2lzY29zcGFyazovL3VzL1JPT00vMzUzZmI3OTAtYTVjNS0xMWVhLWI4ZjYtMDUxN2I4NzFmOWU5'
-	    curl https://api.ciscospark.com/v1/messages -X POST  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}" -H "Content-Type: application/json" --data '{"roomId":"'${WEBEX_TEAMS_ROOM_ID}'", "markdown": "'"${WEBEX_TEAMS_MESSAGE}"'" }' || true
+	    WEBEX_TEAMS_ROOM_ID='Y2lzY29zcGFyazovL3VzL1JPT00vNmQ3NzllOTAtYjk0NS0xMWViLTgxYzAtMzdhNmIxZThmMzNi'
+	    curl https://api.ciscospark.com/v1/messages -X POST  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}" -H "Content-Type: application/json" --data '{"roomId":"'${WEBEX_TEAMS_ROOM_ID}'", "markdown": "'"Redirected from api checkstyle sandbx job."'" }' || true
 }
 
 if [ -f $VPP_CRC_CHECKER ]; then
