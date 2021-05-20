@@ -22,7 +22,7 @@ send_notify() {
 	    # 'roomId' field from the response of:
 	    # curl https://api.ciscospark.com/v1/memberships  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}"
 	    WEBEX_TEAMS_ROOM_ID='Y2lzY29zcGFyazovL3VzL1JPT00vMzUzZmI3OTAtYTVjNS0xMWVhLWI4ZjYtMDUxN2I4NzFmOWU5'
-	    curl https://api.ciscospark.com/v1/messages -X POST  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}" -H "Content-Type: application/json" --data '{"roomId":"'${WEBEX_TEAMS_ROOM_ID}'", "markdown": "'"${WEBEX_TEAMS_MESSAGE}"'" }' || true
+	    curl https://api.ciscospark.com/v1/messages -X POST  -H "Authorization: Bearer ${SECRET_WEBEX_TEAMS_ACCESS_TOKEN}" -H "Content-Type: application/json" --data '{"roomId":"'${WEBEX_TEAMS_ROOM_ID}'", "markdown": "'"Sandbox testing, disregard this message."'" }' || true
 }
 
 if [ -f $VPP_CRC_CHECKER ]; then
