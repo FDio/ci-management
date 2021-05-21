@@ -829,6 +829,10 @@
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '90'
+      - credentials-binding:
+          - text:
+              credential-id: VppApiCompatNotify
+              variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
 
     triggers:
       - timed: '{periodicity}'
@@ -917,6 +921,10 @@
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '90'
+      - credentials-binding:
+          - text:
+              credential-id: VppApiCompatNotify
+              variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
 
     triggers:
       - 'gerrit-trigger-vpp-csit-devicetest-full':
@@ -1013,6 +1021,10 @@
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
           build-timeout: 300
+      - credentials-binding:
+          - text:
+              credential-id: VppApiCompatNotify
+              variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
 
     triggers:
       - gerrit-trigger-csit-perftest:
