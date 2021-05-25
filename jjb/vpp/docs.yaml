@@ -23,6 +23,10 @@
           branch: 'stable/2101'
           branch-refspec: ''
           os: 'ubuntu1804'
+      - '2106':
+          branch: 'stable/2106'
+          branch-refspec: ''
+          os: 'ubuntu1804'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
