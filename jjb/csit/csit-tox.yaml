@@ -33,6 +33,8 @@
           branch: 'rls2009_lts'
       - '2101':
           branch: 'rls2101'
+      - '2106':
+          branch: 'rls2106'
 
 - job-template:
     name: 'csit-verify-tox-{stream}-{os}-{executor-arch}'
