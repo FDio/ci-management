@@ -39,6 +39,9 @@
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
+            - '2106':
+                branch: 'rls2106'
+                branch-id: 'oper-rls2106'
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly':
           stream:
             - master:
@@ -50,6 +53,9 @@
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
+            - '2106':
+                branch: 'rls2106'
+                branch-id: 'oper-rls2106'
 
     project: 'csit'
     branch: 'master'
@@ -67,6 +73,9 @@
       - '2101':
           branch: 'rls2101'
           branch-id: 'oper-rls2101'
+      - '2106':
+          branch: 'rls2106'
+          branch-id: 'oper-rls2106'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
