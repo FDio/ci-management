@@ -64,9 +64,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2009':
-          branch: 'rls2009'
-          branch-id: 'oper-rls2009'
       - '2009_lts':
           branch: 'rls2009_lts'
           branch-id: 'oper-rls2009_lts'
