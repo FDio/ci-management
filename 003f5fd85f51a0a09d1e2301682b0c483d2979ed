@@ -46,6 +46,30 @@
       "revId": "003f5fd85f51a0a09d1e2301682b0c483d2979ed",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbdc099b_c29dd215",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-05-31T06:23:57Z",
+      "side": 1,
+      "message": "The reference to those jobs are in old reports. Do you want to delete old archived reports? No. Idiotic thinking as usual.",
+      "parentUuid": "5193cd70_cb93f2ec",
+      "range": {
+        "startLine": 20,
+        "startChar": 47,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "003f5fd85f51a0a09d1e2301682b0c483d2979ed",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
