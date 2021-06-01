@@ -330,9 +330,6 @@
       - 3n-skx:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
-      - 3n-hsw:
-          os: 'ubuntu2004'
-          executor-arch: 'x86_64'
       - 2n-dnv:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
