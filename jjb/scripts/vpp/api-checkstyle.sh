@@ -32,10 +32,6 @@ if [ -f $VPP_CRC_CHECKER ]; then
     echo "Running $VPP_CRC_CHECKER_CMD"
     if $VPP_CRC_CHECKER_CMD; then
 	    echo "API check successful"
-
-	    # for now - notify the same room during the monitoring period about the successes as well
-	    WEBEX_TEAMS_MESSAGE="API check successful for $GERRIT_REFSPEC - see $BUILD_URL"
-	    send_notify
     else
 	    RET_CODE=$?
 	    echo "API check failed: ret code $RET_CODE; please read https://wiki.fd.io/view/VPP/ApiChangeProcess and discuss with ayourtch@gmail.com if unsure how to proceed"
