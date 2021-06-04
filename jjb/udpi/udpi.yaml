@@ -104,7 +104,7 @@
           - include-raw-udpi-build.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -172,7 +172,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
