@@ -155,7 +155,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
 
 - job-template:
     name: "cicn-libparc-verify-{stream}-{os}-{executor-arch}"
@@ -200,7 +200,7 @@
           - include-raw-cicn-libparc-build.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
 
 - job-template:
     name: "cicn-viper-merge-{stream}-{os}-{executor-arch}"
@@ -278,7 +278,7 @@
           - ../scripts/packagecloud_push.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
 
 - job-template:
     name: "cicn-viper-verify-{stream}-{os}-{executor-arch}"
@@ -323,7 +323,7 @@
           - include-raw-cicn-viper-build.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
 
 - project:
     name: cicn-info
