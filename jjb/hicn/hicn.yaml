@@ -291,7 +291,7 @@
           - include-raw-hicn-checkstyle.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: true
           max-failed-builds: 1
@@ -346,7 +346,7 @@
           - include-raw-hicn-build.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -429,7 +429,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
@@ -506,7 +506,7 @@
           - include-raw-hicn-extras-build.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 2
@@ -595,7 +595,7 @@
           - include-raw-hicn-maven-push.sh
 
     publishers:
-      - fdio-infra-publish
+      - lf-infra-publish
       - naginator:
           rerun-unstable-builds: false
           max-failed-builds: 1
