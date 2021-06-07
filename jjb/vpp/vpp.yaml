@@ -113,6 +113,8 @@
       - stream: 'master'
         os: 'centos7'
       - stream: 'master'
+        os: 'centos8'
+      - stream: 'master'
         os: 'debian9'
       # OS deprecated on 2106
       - stream: '2106'
@@ -235,6 +237,10 @@
           repo-os-part: 'ubuntu.focal.main'
     executor-arch: 'aarch64'
     exclude:
+      # OS deprecated in master
+      - stream: 'master'
+        os: 'centos8'
+      - stream: 'master'
       # OS introduced after 2009
       - stream: '2009'
         os: 'centos8'
