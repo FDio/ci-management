@@ -240,7 +240,6 @@
       # OS deprecated in master
       - stream: 'master'
         os: 'centos8'
-      - stream: 'master'
       # OS introduced after 2009
       - stream: '2009'
         os: 'centos8'
