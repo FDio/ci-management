@@ -173,11 +173,11 @@ else
 fi
 
 console_log="$JENKINS_BUILD_ARCHIVE_DIR/console.log"
-echo "Downloading Jenkins console log to '$console_log'"
+echo "Retrieving Jenkins console log to '$console_log'"
 wget -qO "$console_log" "$BUILD_URL/consoleText"
 
 console_log="$JENKINS_BUILD_ARCHIVE_DIR/console-timestamp.log"
-echo "Downloading Jenkins console timestamp log to '$console_log'"
+echo "Retrieving Jenkins console timestamp log to '$console_log'"
 wget -qO "$console_log" "$BUILD_URL/timestamps?time=HH:mm:ss&appendLog"
 
 pushd $TMP_ARCHIVES_DIR
