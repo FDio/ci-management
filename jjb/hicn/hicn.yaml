@@ -20,6 +20,8 @@
 
     project: "hicn"
     os:
+      - ubuntu1804:
+          repo-os-part: "ubuntu.bionic.main"
       - centos7:
           repo-os-part: "centos7"
 
@@ -43,8 +45,6 @@
 
     project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
 
@@ -65,25 +65,6 @@
           repository-name: "hicn"
 
 - project:
-    name: hicn-os-in-master-x86_64
-    jobs:
-      - "hicn-verify-{stream}-{os}-{executor-arch}"
-      - "hicn-merge-{stream}-{os}-{executor-arch}"
-
-    project: "hicn"
-    os:
-      - centos8:
-          repo-os-part: "centos8"
-
-    executor-arch: "x86_64"
-
-    stream:
-      - "master":
-          branch: "master"
-          repo-stream-part: "master"
-          repository-name: "hicn"
-
-- project:
     name: hicn-aarch64
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
@@ -92,8 +73,8 @@
     project: "hicn"
 
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu-arm.bionic.main"
+      - ubuntu2004:
+          repo-os-part: "ubuntu-arm.focal.main"
 
     executor-arch: "aarch64"
 
@@ -101,10 +82,6 @@
       - master:
           branch: "master"
           repo-stream-part: "master"
-          repository-name: "hicn"
-      - "2005":
-          branch: "stable/2005"
-          repo-stream-part: "stable.2005"
           repository-name: "hicn"
 
 - project:
@@ -114,12 +91,8 @@
 
     project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-      - centos8:
-          repo-os-part: "centos8"
 
     executor-arch: "x86_64"
 
@@ -135,8 +108,8 @@
 
     project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu-arm.bionic.main"
+      - ubuntu2004:
+          repo-os-part: "ubuntu-arm.focal.main"
 
     executor-arch: "aarch64"
 
@@ -169,12 +142,8 @@
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu.bionic.main"
       - ubuntu2004:
           repo-os-part: "ubuntu.focal.main"
-      - centos8:
-          repo-os-part: "centos8"
 
     executor-arch: "x86_64"
 
@@ -191,8 +160,8 @@
 
     project: "hicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu-arm.bionic.main"
+      - ubuntu2004:
+          repo-os-part: "ubuntu-arm.focal.main"
 
     executor-arch: "aarch64"
 
