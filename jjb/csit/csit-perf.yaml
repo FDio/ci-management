@@ -355,7 +355,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -376,10 +375,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
       # This is a manually-triggered verify job, part of API coverage.
       # CRC checking is needed to ensure vpp crc job breaks only when intended.
       # Can be removed when this job is no longer needed for full API coverage.
@@ -412,11 +407,6 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -447,7 +437,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -465,10 +454,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -489,11 +474,6 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -524,7 +504,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -542,10 +521,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -566,11 +541,6 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -600,7 +570,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -614,10 +583,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -638,11 +603,6 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -689,7 +649,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -707,10 +666,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -738,11 +693,6 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -773,7 +723,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -791,10 +740,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -815,11 +760,6 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -864,7 +804,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -885,10 +824,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -916,11 +851,6 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -965,7 +895,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -986,10 +915,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1017,11 +942,6 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -1066,7 +986,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -1087,10 +1006,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1118,11 +1033,6 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
 
 - job-template:
@@ -1167,7 +1077,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -1188,10 +1097,6 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -1219,9 +1124,4 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
-
       - fdio-infra-publish
