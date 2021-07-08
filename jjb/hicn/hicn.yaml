@@ -220,7 +220,7 @@
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.ubuntu.bionic.main"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
@@ -300,6 +300,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -310,8 +312,6 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -354,6 +354,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -368,8 +370,6 @@
           stream: "{repository-name}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -452,6 +452,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -462,8 +464,6 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -514,6 +514,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -528,8 +530,6 @@
           stream: "hicn"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:

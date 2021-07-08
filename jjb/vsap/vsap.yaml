@@ -55,6 +55,8 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
@@ -68,10 +70,6 @@
           stream: '{stream}'
       - mode-parameter:
           mode: '{mode}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:
@@ -112,6 +110,8 @@
       artifactNumToKeep: '{build-artifact-num-to-keep}'
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - project-parameter:
           project: '{project}'
       - gerrit-parameter:
@@ -125,10 +125,6 @@
           mode: '{mode}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:
