@@ -43,6 +43,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -55,10 +57,6 @@
           maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -117,6 +115,8 @@
       artifactNumToKeep: "{build-artifact-num-to-keep}"
 
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: "{archive-artifacts}"
       - project-parameter:
           project: "{project}"
       - gerrit-parameter:
@@ -129,10 +129,6 @@
           maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
