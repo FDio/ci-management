@@ -675,6 +675,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - make-parallel-jobs-parameter:
@@ -689,8 +691,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -756,6 +756,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -770,8 +772,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -825,7 +825,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
 
     build-discarder:
@@ -888,9 +887,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -913,7 +909,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
 
     build-discarder:
@@ -975,9 +970,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
@@ -1003,9 +995,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: >
-      **/csit_current/**/*.*
-      **/csit_parent/**/*.*
     latest-only: false
 
     build-discarder:
