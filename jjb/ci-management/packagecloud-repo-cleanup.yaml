@@ -52,10 +52,6 @@
           os: '{os}'
       - stream-parameter:
           stream: 'release'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers:
@@ -116,10 +112,6 @@
           os: '{os}'
       - stream-parameter:
           stream: 'hicn'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers:

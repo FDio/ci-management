@@ -25,14 +25,6 @@
           description: "Architecture parameter"
 
 - parameter:
-    name: archive-artifacts-parameter
-    parameters:
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{artifacts}'
-          description: "Artifacts to archive on the log server."
-
-- parameter:
     name: compiler-parameter
     parameters:
       - string:
@@ -620,15 +612,6 @@
 #### PUBLISHERS
 # Keep 'publisher' entries ordered alphabetically, please.
 - publisher:
-    name: archive-artifacts
-    publishers:
-      - archive:
-          artifacts: '{artifacts}'
-          allow-empty: true
-          fingerprint: true
-          latest-only: true
-
-- publisher:
     name: email-notification
     publishers:
       - email-ext:
@@ -667,7 +650,7 @@
               build-steps:
                 - shell: !include-raw: scripts/post_build_executor_info.sh
                 - shell: !include-raw: scripts/post_build_deploy_archives.sh
-                - shell: !include-raw: scripts/backup_upload_archives.sh
+                - fdio-infra-ship-backup-logs
                 - fdio-infra-ship-logs
           mark-unstable-if-failed: true
       - workspace-cleanup:
@@ -725,6 +708,18 @@
           num-to-keep: '{build-num-to-keep}'
 
 - builder:
+    name: fdio-infra-ship-backup-logs
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: "jenkins-s3-log-ship"
+              variable: $HOME/.aws/credentials
+      - shell: !include-raw:
+          - scripts/logs_publish.sh
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-clear-credentials.sh
+
+- builder:
     name: fdio-infra-ship-logs
     builders:
       # Ensure no pre-existing .netrc files are overriding logs config
@@ -750,7 +745,7 @@
       - shell: !include-raw:
           - ../global-jjb/shell/logs-clear-credentials.sh
       - description-setter:
-          regexp: "(^(Nexus|S3) build logs: .*)"
+          regexp: "(^Nexus build logs: .*)"
 
 - builder:
     name: packer-validate

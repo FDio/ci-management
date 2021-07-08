@@ -68,10 +68,6 @@
           stream: '{stream}'
       - mode-parameter:
           mode: '{mode}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:
@@ -125,10 +121,6 @@
           mode: '{mode}'
       - repo-name-parameter:
           repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:

@@ -202,7 +202,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
-    archive-artifacts: "**/tmp/hicn-failed-unittests/*/* **/core"
 
     build-discarder:
       daysToKeep: "{build-days-to-keep}"
@@ -219,8 +218,6 @@
           os: "{os}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.ubuntu.bionic.main"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -310,8 +307,6 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -368,8 +363,6 @@
           stream: "{repository-name}"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -462,8 +455,6 @@
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -528,8 +519,6 @@
           stream: "hicn"
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:

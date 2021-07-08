@@ -28,9 +28,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
-    archive-artifacts:
-      - "**/build-doxygen/lib/doc/html/*"
-      - "**/docs/build/html"
     allow-empty: "true"
     fingerprint: false
     only-if-success: true
@@ -55,10 +52,6 @@
           maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -102,9 +95,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: false
-    archive-artifacts:
-      - "**/build-doxygen/lib/doc/html/*"
-      - "**/docs/build/html"
     allow-empty: "true"
     fingerprint: false
     only-if-success: true
@@ -129,10 +119,6 @@
           maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
