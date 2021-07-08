@@ -40,7 +40,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '*.log'
     latest-only: false
 
     build-discarder:
@@ -55,10 +54,8 @@
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -112,12 +109,4 @@
           - ../scripts/csit/tox.sh
 
     publishers:
-      # TODO: Remove this when a voting pylint difference checker
-      # with nice enough output is implemented.
-      - violations:
-          pylint:
-            min: 10
-            max: 250
-            unstable: 250
-            pattern: 'pylint.log'
       - fdio-infra-publish
