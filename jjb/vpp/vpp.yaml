@@ -421,8 +421,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+      - archive-artifacts-parameter
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -538,8 +537,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+      - archive-artifacts-parameter
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -606,8 +604,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+      - archive-artifacts-parameter
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -675,6 +672,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter
       - gerrit-parameter:
           branch: '{branch}'
       - make-parallel-jobs-parameter:
@@ -689,8 +687,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -756,6 +752,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -770,8 +767,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -888,9 +883,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -975,9 +967,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
@@ -1095,8 +1084,7 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+      - archive-artifacts-parameter
       # Not sure whether not failing has any useful usage,
       # but it does not hurt to have some flexibility for future.
       - csit-fail-on-crc-mismatch-parameter:

@@ -200,7 +200,7 @@
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.ubuntu.bionic.main"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
@@ -291,7 +291,7 @@
       - stream-parameter:
           stream: "{stream}"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
@@ -349,7 +349,7 @@
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
@@ -443,7 +443,7 @@
       - stream-parameter:
           stream: "{stream}"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
@@ -509,7 +509,7 @@
       - repo-name-parameter:
           repo-name: "{repo-stream-part}.{repo-os-part}"
       - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          artifacts: "{archive-artifacts}"
 
     scm:
       - gerrit-trigger-scm:
