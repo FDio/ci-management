@@ -5,7 +5,7 @@ include_path=.
 recursive=True
 
 [jenkins]
-#user=jenkins
-#password=1234567890abcdef1234567890abcdef
+user=pmikus
+password=11127e164500c7ab7c1783410264b1728a
 url=https://jenkins.fd.io/sandbox
 query_plugins_info=False
