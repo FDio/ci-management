@@ -80,7 +80,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -101,10 +100,6 @@
       - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
       # This is an automatic verify job, part of API coverage.
       # CRC checking is needed to ensure vpp crc job breaks only when intended.
       # Unlikely to be removed, as this job is primary source of API coverage.
@@ -136,10 +131,6 @@
           - ../scripts/csit/device-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
       - fdio-infra-publish
 
 - job-template:
@@ -148,7 +139,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -166,10 +156,6 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -195,10 +181,6 @@
           - ../scripts/csit/device-semiweekly.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
       - fdio-infra-publish
 
 - job-template:
@@ -207,7 +189,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: false
-    archive-artifacts: 'archive/*.*'
     latest-only: false
 
     build-discarder:
@@ -225,10 +206,6 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - git-scm:
@@ -256,8 +233,4 @@
           - ../scripts/csit/device-verify.sh
 
     publishers:
-      - robot:
-          output-path: 'archives'
-          other-files:
-            - '*.*'
       - fdio-infra-publish
