@@ -888,9 +888,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -975,9 +972,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
