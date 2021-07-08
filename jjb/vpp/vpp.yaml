@@ -675,6 +675,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - make-parallel-jobs-parameter:
@@ -689,8 +691,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -756,6 +756,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
+      - archive-artifacts-parameter:
+          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -770,8 +772,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -888,9 +888,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -975,9 +972,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
