@@ -68,10 +68,6 @@
           branch: '{branch}'
       - maven-exec:
           maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -149,10 +145,6 @@
           branch: '{branch}'
       - maven-exec:
           maven-version: 'mvn33-new'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:

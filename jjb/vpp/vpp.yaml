@@ -416,8 +416,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -533,8 +531,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -601,8 +597,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:
@@ -684,8 +678,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -765,8 +757,6 @@
           repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -820,7 +810,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
 
     build-discarder:
@@ -831,8 +820,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - gerrit-csit-refspec-parameter
       - gerrit-event-comment-text-parameter
       - gerrit-event-type-parameter
@@ -883,9 +870,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
@@ -908,7 +892,6 @@
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: '**/csit_current/**/*.*'
     latest-only: false
 
     build-discarder:
@@ -919,8 +902,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - gerrit-csit-refspec-parameter
       - gerrit-event-comment-text-parameter
       - gerrit-event-type-parameter
@@ -970,9 +951,6 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - robot-report:
-          output-path: 'archives'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
@@ -998,9 +976,6 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
-    archive-artifacts: >
-      **/csit_current/**/*.*
-      **/csit_parent/**/*.*
     latest-only: false
 
     build-discarder:
@@ -1011,8 +986,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "10.0"
       - csit-perf-trial-multiplicity-parameter:
@@ -1090,8 +1063,6 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
       # Not sure whether not failing has any useful usage,
       # but it does not hurt to have some flexibility for future.
       - csit-fail-on-crc-mismatch-parameter:

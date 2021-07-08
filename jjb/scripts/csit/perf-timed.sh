@@ -40,3 +40,4 @@ fi
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
 source "${csit_entry_dir}/with_oper_for_vpp.sh" "bootstrap_verify_perf.sh"
+cp -R "${WORKSPACE}/csit/archives" "${WORKSPACE}/archives" || true
