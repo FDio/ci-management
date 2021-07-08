@@ -35,15 +35,12 @@ cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'
 import argparse
 import gzip
 import os
+import requests
 from mimetypes import MimeTypes
 
-from boto3 import resource
-from botocore.client import Config
+from boto3 import Session
 
 ENDPOINT_URL = u"http://storage.service.consul:9000"
-AWS_ACCESS_KEY_ID = u"storage"
-AWS_SECRET_ACCESS_KEY = u"Storage1234"
-REGION_NAME = u"yul1"
 COMPRESS_MIME = (
     u"text/html",
     u"text/xml",
@@ -134,16 +131,11 @@ def main():
     )
     args = parser.parse_args()
 
-    # Create main storage resource.
-    storage = resource(
+    # Create main storage session.
+    session = Session(profile_name=PROFILE_NAME)
+    storage = session.resource(
         u"s3",
-        endpoint_url=ENDPOINT_URL,
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-        config=Config(
-            signature_version=u"s3v4"
-        ),
-        region_name=REGION_NAME
+        endpoint_url=ENDPOINT_URL
     )
 
     upload_recursive(
@@ -183,6 +175,14 @@ wget -qO "$console_log" "$BUILD_URL/timestamps?time=HH:mm:ss&appendLog"
 pushd $TMP_ARCHIVES_DIR
 echo "Contents of the archives dir '$TMP_ARCHIVES_DIR':"
 ls -alR $TMP_ARCHIVES_DIR
+
+# FIXME: s3 config (until migrated to vault, then account will be reset)
+mkdir -p ${HOME}/.aws
+echo "[fdio-logs-s3-nomad]" >> "$HOME/.aws/config"
+echo "[fdio-logs-s3-nomad]
+aws_access_key_id = storage
+aws_secret_access_key = Storage1234" >> "$HOME/.aws/credentials"
+
 archive_cmd="python3 $PYTHON_SCRIPT -d . -b logs"
 echo -e "\nRunning uploader script '$archive_cmd':\n"
 $archive_cmd || echo "Failed to upload logs"
