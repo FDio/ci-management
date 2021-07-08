@@ -79,28 +79,6 @@ mkdir -p "$WS_ARCHIVES_DIR"
 echo "Logging build environment variables in '$BUILD_ENV_LOG'..."
 env > $BUILD_ENV_LOG
 
-echo "ARCHIVE_ARTIFACTS = '$ARCHIVE_ARTIFACTS'"
-if [ -n "${ARCHIVE_ARTIFACTS:-}" ] ; then
-    pushd "$WORKSPACE"
-    shopt -s globstar  # Enable globstar to copy archives
-    for file in $ARCHIVE_ARTIFACTS ; do
-        if [ -f "$file" ] ; then
-            echo "Archiving '$file' to '$destfile'"
-            destfile="$WS_ARCHIVE_DIR$file"
-            destdir="$(dirname $destfile)"
-            mkdir -p $destdir
-            mv -f $file $destfile
-        else
-            echo "Not archiving '$file'"
-            if ! grep -qe '*' <<<"$file" ; then
-                echo "WARNING: No artifacts detected in ARCHIVE_ARTIFACTS '$ARCHIVE_ARTIFACTS'!"
-            fi
-        fi
-    done
-    shopt -u globstar  # Disable globstar
-    popd
-fi
-
 # find and gzip any 'text' files
 find $WS_ARCHIVES_DIR -type f -print0 \
                 | xargs -0r file \
