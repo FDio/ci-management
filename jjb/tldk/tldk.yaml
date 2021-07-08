@@ -18,7 +18,6 @@
       - '{project}-verify-{stream}-{os}'
       - '{project}-merge-{stream}-{os}'
       - '{project}-verify-image-{stream}-{os}'
-      - 'tldk-csit-verify-func-{stream}-{os}-virl'
 
     project: 'tldk'
     os:
@@ -187,59 +186,6 @@
           !include-raw-escape: include-raw-build.sh
 
     publishers:
-      - lf-infra-publish
-
-- job-template:
-    name: 'tldk-csit-verify-func-{stream}-{os}-virl'
-
-    project-type: freestyle
-    node: '{os}-builder-4c-4g'
-    concurrent: true
-    archive-artifacts: >
-      **/csit/report.html
-      **/csit/log.html
-      **/csit/output.xml
-    latest-only: false
-
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-manually-triggered:
-          name: '{project}'
-          branch: '{branch}'
-          comment-trigger-value: 'verify-tldk-func'
-
-    builders:
-      - shell:
-          !include-raw-escape: include-raw-tldk-csit-functional-virl.sh
-
-    publishers:
-      - robot-report:
-          output-path: ''
       - lf-infra-publish
 
 - project:
