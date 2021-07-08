@@ -47,3 +47,4 @@ git checkout "${BRANCH_NAME}"
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
 source "${csit_entry_dir}/bootstrap_vpp_device.sh"
+cp -R "${WORKSPACE}/csit/archives" "${WORKSPACE}/archives" || true
