@@ -198,6 +198,12 @@
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -224,6 +230,12 @@
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -250,6 +262,12 @@
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -276,6 +294,12 @@
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
 
     project: 'csit'
     branch: 'master'
