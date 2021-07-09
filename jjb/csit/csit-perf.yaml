@@ -171,6 +171,12 @@
             - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+            - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
