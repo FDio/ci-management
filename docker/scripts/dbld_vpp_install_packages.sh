@@ -39,11 +39,8 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     make_vpp "install-dep" "$branch"
     make_vpp "centos-pyyaml" "$branch" # VPP Makefile tests for centos versions
     if [ "$OS_ID" = "ubuntu" ] ; then
-        # TODO: fix VPP stable/2005 bug in sphinx-make.sh
-        #       which fails on 'yum install python3-venv'
-        #       that does not exist.
         # 'Make docs jobs are only run on ubuntu executors
-        #  so only run for ubuntu build executors until fixed.
+        #  so only run for ubuntu build executors.
         make_vpp "docs-venv" "$branch"
     elif [ "$OS_NAME" = "debian-9" ] ; then
         apt_override_cmake_install_with_pip3_version
@@ -51,16 +48,30 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
 
     # Download, build, and cache external deps packages
     make_vpp "install-ext-deps" "$branch"
-    set +e
     vpp_ext_dir="$DOCKER_VPP_DIR/build/external"
-    [ -d "$vpp_ext_dir/downloads" ] \
-        && rsync -ac "$vpp_ext_dir/downloads/." "$DOCKER_DOWNLOADS_DIR"
-    [ -n "$(ls $vpp_ext_dir/*.deb)" ] \
-        && rsync -ac "$vpp_ext_dir/*.deb" "$DOCKER_DOWNLOADS_DIR"
-    [ -n "$(ls $vpp_ext_dir/*.rpm)" ] \
-        && rsync -ac "$vpp_ext_dir/*.rpm" "$DOCKER_DOWNLOADS_DIR"
-    set -e
-
+    rsync -ac $vpp_ext_dir/downloads/. $DOCKER_DOWNLOADS_DIR || true
+    if which apt >/dev/null ; then
+        vpp_ext_deps_pkg=$vpp_ext_dir/$(dpkg -l vpp-ext-deps 2>/dev/null | mawk '/vpp-ext-deps/{print $2"_"$3"_"$4".deb"}')
+    elif which dnf >/dev/null ; then
+        inst_vpp_ext_deps="$(dnf list vpp-ext-deps 2>/dev/null | grep vpp-ext-deps)"
+        vpp_ext_deps_ver="$(echo $inst_vpp_ext_deps | mawk '{print $2}')"
+        vpp_ext_deps_arch="$(echo $inst_vpp_ext_deps | mawk '{print $1}'| cut -d'.' -f2)"
+        vpp_ext_deps_pkg="$vpp_ext_dir/vpp-ext-deps-${vpp_ext_deps_ver}.${vpp_ext_deps_arch}.rpm"
+    elif which yum >/dev/null ; then
+        inst_vpp_ext_deps="$(yum list vpp-ext-deps 2>/dev/null | grep vpp-ext-deps)"
+        vpp_ext_deps_ver="$(echo $inst_vpp_ext_deps | mawk '{print $2}')"
+        vpp_ext_deps_arch="$(echo $inst_vpp_ext_deps | mawk '{print $1}' | cut -d'.' -f2)"
+        vpp_ext_deps_pkg="$vpp_ext_dir/vpp-ext-deps-${vpp_ext_deps_ver}.${vpp_ext_deps_arch}.rpm"
+    else
+        echo "ERROR: Package Manager not installed!"
+        exit 1
+    fi
+    if [ -f "$vpp_ext_deps_pkg" ] ; then
+        cp -f $vpp_ext_deps_pkg $DOCKER_DOWNLOADS_DIR
+    else
+        echo "ERROR: Missing VPP external deps package: '$vpp_ext_deps_pkg'"
+        exit 1
+    fi
     # Install/cache python packages
     if [ "$OS_ID" = "ubuntu" ] ; then
         make_vpp_test "test-dep" "$branch"
