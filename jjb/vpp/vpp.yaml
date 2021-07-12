@@ -245,11 +245,6 @@
         os: 'centos8'
       - stream: '2009'
         os: 'ubuntu2004'
-      # OS introduced after 2101
-      - stream: '2101'
-        os: 'centos8'
-      - stream: '2101'
-        os: 'ubuntu2004'
 # [end] VPP-AARCH64 PROJECT
 
 # VPP-CSIT-VERIFY-DEVICE PROJECT
