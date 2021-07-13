@@ -22,7 +22,7 @@ export AWS_ENDPOINT_URL="http://storage.service.consul:9000"
 mkdir -p ${HOME}/.aws
 echo "[default]
 aws_access_key_id = storage
-aws_secret_access_key = Storage1234" >> "$HOME/.aws/credentials"
+aws_secret_access_key = Storage1234" > "$HOME/.aws/credentials"
 
 PYTHON_SCRIPT="/w/workspace/test-logs/logs_publish.py"
 
