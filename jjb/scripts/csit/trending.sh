@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "---> jjb/scripts/csit/report.sh"
+echo "---> jjb/scripts/csit/trending.sh"
 
 set -exuo pipefail
 
 csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
-source "${csit_entry_dir}/bootstrap_report.sh"
+source "${csit_entry_dir}/bootstrap_trending.sh"
