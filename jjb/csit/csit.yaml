@@ -68,8 +68,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
 
     scm:
       - gerrit-trigger-scm:
@@ -103,16 +101,6 @@
             notbuilt: true
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -121,6 +109,7 @@
           - ../scripts/csit/docs.sh
 
     publishers:
+      - fdio-infra-publish-docs
       - fdio-infra-publish
 
 - job-template:
@@ -129,10 +118,7 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: false
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
+    latest-only: false
 
     build-discarder:
       daysToKeep: '{build-days-to-keep}'
@@ -145,14 +131,13 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
           refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'default'
+          choosing-strategy: 'gerrit'
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -177,16 +162,6 @@
             notbuilt: true
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -195,6 +170,7 @@
           - ../scripts/csit/report.sh
 
     publishers:
+      - fdio-infra-publish-docs
       - fdio-infra-publish
 
 - job-template:
@@ -215,8 +191,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
 
     scm:
       - gerrit-trigger-scm:
@@ -232,22 +206,12 @@
       - timed: '0 2,14 * * *'
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/csit/cpta.sh
+          - ../scripts/csit/trending.sh
 
     publishers:
       - email-ext:
@@ -295,6 +259,7 @@
           always: true
           failure: false
 
+      - fdio-infra-publish-docs
       - fdio-infra-publish
 
 - job-template:
@@ -315,8 +280,6 @@
           project: '{project}'
       - gerrit-parameter:
           branch: 'rls2009_lts'
-      - maven-exec:
-          maven-version: 'mvn33-new'
 
     scm:
       - gerrit-trigger-scm:
@@ -332,22 +295,12 @@
       - timed: '0 0 * * 1'
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'csit-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'csit-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/csit/cpta.sh
+          - ../scripts/csit/trending.sh
 
     publishers:
       - email-ext:
@@ -395,7 +348,9 @@
           always: true
           failure: false
 
+      - fdio-infra-publish-docs
       - fdio-infra-publish
+
 
 - project:
     name: csit-info

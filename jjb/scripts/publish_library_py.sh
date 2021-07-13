@@ -13,24 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "---> logs_publish.sh"
+echo "---> publish_library_py.sh"
 
-CDN_URL="logs.nginx.service.consul"
-export AWS_ENDPOINT_URL="http://storage.service.consul:9000"
+set -exuo pipefail
 
-# FIXME: s3 config (until migrated to config provider, then pwd will be reset)
-mkdir -p ${HOME}/.aws
-echo "[default]
-aws_access_key_id = storage
-aws_secret_access_key = Storage1234" >> "$HOME/.aws/credentials"
-
-PYTHON_SCRIPT="/w/workspace/test-logs/logs_publish.py"
-
-# This script uploads the artifacts to a backup upload location
-if [ -f "$PYTHON_SCRIPT" ]; then
-    echo "WARNING: $PYTHON_SCRIPT already exists - assume backup archive upload already done"
-    exit 0
-fi
+PYTHON_SCRIPT="/w/workspace/publish_library.py"
 
 pip3 install boto3
 mkdir -p $(dirname "$PYTHON_SCRIPT")
@@ -38,7 +25,7 @@ mkdir -p $(dirname "$PYTHON_SCRIPT")
 cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'
 #!/usr/bin/python3
 
-"""Storage utilities library."""
+"""S3 publish library."""
 
 import gzip
 import logging
@@ -130,7 +117,7 @@ def upload(s3_resource, s3_bucket, src_fpath, s3_path):
     if not mime:
         mime = u"application/octet-stream"
 
-    if s3_bucket not in u"docs.fd.io":
+    if u"logs" in s3_bucket:
         if mime in COMPRESS_MIME and encoding != u"gzip":
             compress(src_fpath)
             src_fpath = src_fpath + u".gz"
@@ -176,6 +163,27 @@ def upload_recursive(s3_resource, s3_bucket, src_fpath, s3_path):
                 src_fpath=_src_fpath,
                 s3_path=_s3_path
             )
+
+
+def deploy_docs(s3_bucket, s3_path, docs_dir):
+    """Ship docs dir content to S3 bucket. Requires the s3 bucket to exist.
+
+    :param s3_bucket: Name of S3 bucket. Eg: lf-project-date
+    :param s3_path: Path on S3 bucket to place the docs. Eg:
+        csit/${GERRIT_BRANCH}/report
+    :param docs_dir: Directory in which to recursively upload content.
+    :type s3_bucket: Object
+    :type s3_path: str
+    :type docs_dir: str
+    """
+    s3_resource = boto3.resource(u"s3")
+
+    upload_recursive(
+        s3_resource=s3_resource,
+        s3_bucket=s3_bucket,
+        src_fpath=docs_dir,
+        s3_path=s3_path
+    )
 
 
 def deploy_s3(s3_bucket, s3_path, build_url, workspace):
@@ -273,19 +281,3 @@ if __name__ == u"__main__":
     globals()[sys.argv[1]](*sys.argv[2:])
 
 END_OF_PYTHON_SCRIPT
-
-# The 'deploy_s3' command below expects the archives
-# directory to exist.  Normally lf-infra-sysstat or similar would
-# create it and add content, but to make sure this script is
-# self-contained, we ensure it exists here.
-mkdir -p "$WORKSPACE/archives"
-
-s3_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
-echo "INFO: S3 path $s3_path"
-
-echo "INFO: archiving backup logs to S3"
-# shellcheck disable=SC2086
-python3 $PYTHON_SCRIPT deploy_s3 "logs.fd.io" "$s3_path" \
-    "$BUILD_URL" "$WORKSPACE"
-
-echo "S3 build backup logs: <a href=\"https://$CDN_URL/$s3_path\">https://$CDN_URL/$s3_path</a>"
