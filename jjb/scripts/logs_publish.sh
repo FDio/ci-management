@@ -15,6 +15,7 @@
 
 echo "---> logs_publish.sh"
 
+S3_BUCKET="logs.fd.io"
 CDN_URL="logs.nginx.service.consul"
 export AWS_ENDPOINT_URL="http://storage.service.consul:9000"
 
@@ -22,9 +23,9 @@ export AWS_ENDPOINT_URL="http://storage.service.consul:9000"
 mkdir -p ${HOME}/.aws
 echo "[default]
 aws_access_key_id = storage
-aws_secret_access_key = Storage1234" >> "$HOME/.aws/credentials"
+aws_secret_access_key = Storage1234" > "$HOME/.aws/credentials"
 
-PYTHON_SCRIPT="/w/workspace/test-logs/logs_publish.py"
+PYTHON_SCRIPT="/w/workspace/s3_publish.py"
 
 # This script uploads the artifacts to a backup upload location
 if [ -f "$PYTHON_SCRIPT" ]; then
@@ -274,18 +275,14 @@ if __name__ == u"__main__":
 
 END_OF_PYTHON_SCRIPT
 
-# The 'deploy_s3' command below expects the archives
-# directory to exist.  Normally lf-infra-sysstat or similar would
-# create it and add content, but to make sure this script is
-# self-contained, we ensure it exists here.
 mkdir -p "$WORKSPACE/archives"
 
 s3_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
+
 echo "INFO: S3 path $s3_path"
 
 echo "INFO: archiving backup logs to S3"
-# shellcheck disable=SC2086
-python3 $PYTHON_SCRIPT deploy_s3 "logs.fd.io" "$s3_path" \
+python3 $PYTHON_SCRIPT deploy_s3 "$S3_BUCKET" "$s3_path" \
     "$BUILD_URL" "$WORKSPACE"
 
 echo "S3 build backup logs: <a href=\"https://$CDN_URL/$s3_path\">https://$CDN_URL/$s3_path</a>"
