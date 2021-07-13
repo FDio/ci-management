@@ -34,6 +34,24 @@
       "revId": "3f324cdec433ecd3e6ef89da8e89f0057b14aa2c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a6ecbe_f37f26e3",
+        "filename": "jjb/scripts/logs_deploy.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-07-13T05:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db520c3_b58bb52e",
+      "revId": "3f324cdec433ecd3e6ef89da8e89f0057b14aa2c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
