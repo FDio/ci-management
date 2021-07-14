@@ -46,6 +46,30 @@
       "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe51f7b_d2d6a057",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-07-14T12:03:22Z",
+      "side": 1,
+      "message": "Yes I see that now. It looks like a bug in global-jjb. Lftools was moving files since the deploy script was added (unrelated bug is calling that \"copy\").\n\nDetails I written before seeing this comment:\n\nThe global-jjb script calls Nexus deploy first [6]. This deploy is done by a script from lftools, version depends on docker image creation [7], currently it is 0.35.1. When ARCHIVE_ARTIFACTS is set to archives, an innocent looking call to copy_archives [8] actually moves [9] the files out from archives directory (to pwd, which is workspace), thus making sure the LFN S3 archival attempt at [10] will not see archives, either because ARCHIVE_ARTIFACTS was not set, or because it was emptied by Nexus upload.\nLuckily, nexus upload somehow finds the robot output even with ARCHIVE_ARTIFACTS unset (I do not see how yet).\n\n[6] https://github.com/lfit/releng-global-jjb/blob/92449c24828b0dbd582637ce3d1d705390da4126/shell/logs-deploy.sh#L46\n[7] https://github.com/FDio/ci-management/blob/c9cf42cce23df5207876ab77eb7c81bbf0e8e679/docker/scripts/dbld_lfit_requirements.sh#L62\n[8] https://github.com/lfit/releng-lftools/blob/master/shell/deploy#L165\n[9] https://github.com/lfit/releng-lftools/blob/master/shell/deploy#L39\n[10] https://github.com/lfit/releng-global-jjb/blob/92449c24828b0dbd582637ce3d1d705390da4126/shell/logs-deploy.sh#L62-L63",
+      "parentUuid": "9ad1c725_beb0f0cc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
