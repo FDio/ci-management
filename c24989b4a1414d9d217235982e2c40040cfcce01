@@ -22,6 +22,30 @@
       "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad1c725_beb0f0cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-07-14T10:32:04Z",
+      "side": 1,
+      "message": "It is not only description setter which Jenkins cannot interpret twice (takes the first or later), but the lf deploy.py is destructive operation on files. Means Nexus macro will effectively delete files in /archive. So next snippet for S3 is empty. Reversing order will yield the same.",
+      "parentUuid": "6d9c198a_fee044ed",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
