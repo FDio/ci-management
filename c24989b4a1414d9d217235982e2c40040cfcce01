@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d9c198a_fee044ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-07-14T10:00:52Z",
+      "side": 1,
+      "message": "Do you mean it is hard to use description setter to put both links to the run description, or do you mean some other issue?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
