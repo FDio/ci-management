@@ -446,7 +446,7 @@
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: false
+    concurrent: true
     archive-artifacts: 'csit/archive/*.*'
     latest-only: false
 
@@ -461,6 +461,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-csit-refspec-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
