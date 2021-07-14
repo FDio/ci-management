@@ -28,8 +28,6 @@ providers:
   - name: 'verify-merge'
     cloud: vexxhost
     max-servers: 10
-    availability-zones:
-      - 'ca-ymq-2'
     template-hostname: 'np-verify-merge-{timestamp}-nodepool-template'
     keypair: 'jenkins'
     networks:
@@ -46,8 +44,6 @@ providers:
   - name: 'multilink'
     cloud: vexxhost
     max-servers: 16
-    availability-zones:
-      - 'ca-ymq-2'
     template-hostname: 'np-multi-link-{timestamp}-nodepool-template'
     keypair: 'jenkins'
     networks:
