@@ -461,6 +461,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
+      - gerrit-refspec-parameter
       - csit-perf-trial-duration-parameter:
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
