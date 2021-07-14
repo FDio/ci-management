@@ -757,6 +757,8 @@
                     target: $HOME/.aws/credentials
       - lf-infra-create-netrc:
           server-id: logs
+      - inject:
+          properties-content: ARCHIVE_ARTIFACTS=archive/
       - shell: !include-raw:
           - ../global-jjb/shell/logs-deploy.sh
       - shell: !include-raw:
