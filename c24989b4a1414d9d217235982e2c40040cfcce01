@@ -70,6 +70,30 @@
       "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e8b324e_1df3b60c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-07-14T12:53:29Z",
+      "side": 1,
+      "message": "\u003e actually moves [9]\n\nThe Python script is called instead, but the behavior is the same [11]\n\n[11] https://github.com/lfit/releng-lftools/blob/df0e01e5dd03d603d434a4314c4d514c6a062b84/lftools/deploy.py#L247-L248",
+      "parentUuid": "cbe51f7b_d2d6a057",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "c24989b4a1414d9d217235982e2c40040cfcce01",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
