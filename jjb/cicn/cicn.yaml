@@ -48,6 +48,8 @@
     os:
       - ubuntu1804:
           repo-os-part: "ubuntu-arm.bionic.main"
+      - ubuntu2004:
+          repo-os-part: "ubuntu-arm.focal.main"
 
     executor-arch: "aarch64"
 
