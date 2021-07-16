@@ -1,0 +1,4 @@
+{
+  "url":"https://packagecloud.io",
+  "token":"$PACKAGECLOUD_TOKEN"
+}
