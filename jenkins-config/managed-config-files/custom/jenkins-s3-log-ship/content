@@ -1,0 +1,4 @@
+[default]
+aws_access_key_id = $JENKINS_S3_LOG_SHIP_USR
+aws_secret_access_key = $JENKINS_S3_LOG_SHIP_PSW
+region = us-east-1
