@@ -55,6 +55,10 @@
           branch: "master"
           repo-stream-part: "master"
           repository-name: "hicn"
+      - "2101":
+          branch: "stable/2101"
+          repo-stream-part: "stable.2101"
+          repository-name: "hicn"
       - "2009":
           branch: "stable/2009"
           repo-stream-part: "stable.2009"
