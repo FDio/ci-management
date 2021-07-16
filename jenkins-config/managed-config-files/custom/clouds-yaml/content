@@ -1,0 +1,10 @@
+clouds:
+  vexci:
+    auth:
+      username: "$VEXCI_CLOUD_CREDENTIAL_USR"
+      project_name: "9130c79d-75b8-466e-8e57-4eccce50e28e"
+      password: "$VEXCI_CLOUD_CREDENTIAL_PSW"
+      auth_url: 'https://auth.vexxhost.net/v3/'
+      user_domain_name: Default
+      project_domain_name: Default
+    region_name: ca-ymq-1
