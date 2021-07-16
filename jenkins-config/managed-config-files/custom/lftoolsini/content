@@ -1,0 +1,3 @@
+[nexus.opendaylight.org]
+username=$JENKINS_RELEASE_USR
+password=$JENKINS_RELEASE_PSW
