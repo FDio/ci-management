@@ -1,0 +1,12 @@
+{
+  "cloud_auth_url": "https://auth.vexxhost.net/v3/",
+  "cloud_tenant": "$PACKER_CLOUD_TENANT",
+  "stack_tenant": "$PACKER_CLOUD_TENANT",
+  "cloud_user": "$PACKER_CLOUD_USER_USR",
+  "stack_user": "$PACKER_CLOUD_USER_USR",
+  "cloud_pass": "$PACKER_CLOUD_USER_PSW",
+  "stack_pass": "$PACKER_CLOUD_USER_PSW",
+  "cloud_network": "bcb9a62c-5a82-4293-a8c6-d73e8c2dbd03",
+  "stack_network": "bcb9a62c-5a82-4293-a8c6-d73e8c2dbd03",
+  "ssh_proxy_host": ""
+}
