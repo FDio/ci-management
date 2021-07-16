@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <mirrors>
+    <mirror>
+      <id>rotterdam-release-mirror</id>
+      <name>Local Nexus mirror for rotteram builds</name>
+      <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+    <mirror>
+      <id>fd-release-mirror</id>
+      <name>Local Nexus mirror for fd.io builds</name>
+      <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+            
+  <profiles>
+    <profile>
+      <id>rotterdam-release</id>
+      <repositories>
+        <repository>
+          <id>rotterdam-mirror</id>
+          <name>rotterdam-mirror</name>
+          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>rotterdam-mirror</id>
+          <name>rotterdam-mirror</name>
+          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+ 
+    <profile>
+      <id>rotterdam-snapshot</id>
+      <repositories>
+        <repository>
+          <id>rotterdam-snapshot</id>
+          <name>rotterdam-snapshot</name>
+          <url>${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>rotterdam-snapshot</id>
+          <name>rotterdamn-snapshot</name>
+          <url>${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+<!---->
+
+    <profile>
+      <id>fdio-release</id>
+      <repositories>
+        <repository>
+          <id>fdio-mirror</id>
+          <name>fdio-mirror</name>
+          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      
+      <pluginRepositories>
+        <pluginRepository>
+          <id>fdio-mirror</id>
+          <name>fdio-mirror</name>
+          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+ 
+    <profile>
+      <id>fdio-snapshot</id>
+      <repositories>
+        <repository>
+          <id>fdio-snapshot</id>
+          <name>fdio-snapshot</name>
+          <url>${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      
+	<profile>
+      <id>staging</id>
+      <repositories>
+        <repository>
+          <id>staging</id>
+          <name>staging</name>
+          <url>${env.NEXUSPROXY}/content/repositories/staging/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+	
+      <pluginRepositories>
+        <pluginRepository>
+          <id>fdio-snapshot</id>
+          <name>fdio-snapshot</name>
+          <url>${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    
+	<profile>
+      <id>site</id>
+      <repositories>
+        <repository>
+          <id>site</id>
+          <name>site</name>
+          <url>${env.NEXUSPROXY}/content/repositories/site/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>rotterdam-release</activeProfile>
+    <activeProfile>rotterdam-snapshot</activeProfile>
+    <activeProfile>fdio-release</activeProfile>
+    <activeProfile>fdio-snapshot</activeProfile>
+	<activeProfile>staging</activeProfile>
+    <activeProfile>site</activeProfile>
+  </activeProfiles>
+</settings>
