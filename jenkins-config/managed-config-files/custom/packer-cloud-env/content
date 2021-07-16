@@ -1,0 +1,12 @@
+{
+  "cloud_auth_url": "https://auth.vexxhost.net/v3/",
+  "cloud_tenant": "$A",
+  "stack_tenant": "$A",
+  "cloud_user": "$B",
+  "stack_user": "$B",
+  "cloud_pass": "$C",
+  "stack_pass": "$C",
+  "cloud_network": "$D",
+  "stack_network": "$D",
+  "ssh_proxy_host": ""
+}
