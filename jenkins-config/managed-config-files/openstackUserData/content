@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git clone --recurse-submodules https://github.com/magma/ci-management.git /opt/ciman
+/opt/ciman/global-jjb/jenkins-init-scripts/init.sh
+
+#IPADDR=$(facter ipaddress)
+#HOSTNAME=$(facter hostname)
+#FQDN=$(facter fqdn)
+
+#echo "${IPADDR} ${HOSTNAME} ${FQDN}" >> /etc/hosts
