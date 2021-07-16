@@ -1,0 +1,10 @@
+[job_builder]
+ignore_cache=True
+keep_descriptions=False
+include_path=.:scripts:~/git/
+recursive=True
+
+[sandbox]
+url=https://jenkins.fd.io/sandbox
+user=$JENKINS-JOBBUILDER_USR
+password=$JENKINS-JOBBUILDER_PSW
