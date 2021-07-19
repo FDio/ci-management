@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926983f0_16649446",
+        "filename": "jenkins-config/managed-config-files/custom/jjbini/content",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-07-19T17:14:10Z",
+      "side": 1,
+      "message": "I would recommend a different ID for this credential. Doesn\u0027t matter if the account has rotterdam in it\u0027s name since it gets masked out by things. There\u0027s no reason we should be showing folks the old pre-launch name though ;)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6cbd5c75a848bd1ccb857c60067dc23bb7fff0ee",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76bf81e0_c11d70c3",
+        "filename": "jenkins-config/managed-config-files/custom/jjbini/customizedCredentialMappings.sandbox.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-07-19T17:14:10Z",
+      "side": 1,
+      "message": "I would recommend a different ID for this credential. Doesn\u0027t matter if the account has rotterdam in it\u0027s name since it gets masked out by things. There\u0027s no reason we should be showing folks the old pre-launch name though ;)",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 36
+      },
+      "revId": "6cbd5c75a848bd1ccb857c60067dc23bb7fff0ee",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
