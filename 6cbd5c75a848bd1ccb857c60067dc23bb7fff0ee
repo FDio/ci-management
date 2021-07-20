@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00bb342a_969dc777",
+        "filename": "jenkins-config/managed-config-files/custom/jjbini/content",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-07-20T12:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "926983f0_16649446",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6cbd5c75a848bd1ccb857c60067dc23bb7fff0ee",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76bf81e0_c11d70c3",
         "filename": "jenkins-config/managed-config-files/custom/jjbini/customizedCredentialMappings.sandbox.yaml",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6cbd5c75a848bd1ccb857c60067dc23bb7fff0ee",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0f51ce_e382b6f5",
+        "filename": "jenkins-config/managed-config-files/custom/jjbini/customizedCredentialMappings.sandbox.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-07-20T12:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76bf81e0_c11d70c3",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 36
+      },
+      "revId": "6cbd5c75a848bd1ccb857c60067dc23bb7fff0ee",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
