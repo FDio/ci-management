@@ -146,7 +146,7 @@
 
     triggers:
       - reverse:
-          jobs: "hicn-merge-{stream}-ubuntu1804"
+          jobs: "hicn-merge-{stream}-{os}-{executor-arch}"
           result: "success"
       - gerrit:
           server-name: "Primary"
