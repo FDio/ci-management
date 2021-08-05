@@ -38,5 +38,5 @@ fi
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
 source "${csit_entry_dir}/with_oper_for_vpp.sh" "per_patch_perf.sh"
-cp -R "${WORKSPACE}/csit_current/"* "${WORKSPACE}/archives/" || true
-cp -R "${WORKSPACE}/csit_parent/"* "${WORKSPACE}/archives/" || true
+cp -R "${WORKSPACE}/csit_current" "${WORKSPACE}/archives/" || true
+cp -R "${WORKSPACE}/csit_parent" "${WORKSPACE}/archives/" || true
