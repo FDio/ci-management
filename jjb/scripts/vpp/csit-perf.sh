@@ -26,6 +26,18 @@ set -exuo pipefail
 # - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
 # - Multiple other side effects by entry script(s), see CSIT repository.
 
+function copy_to_archive_dir () {
+    # Copy csit_current and csit_parent to archive/.
+    # This is a "teardown" function, so errors are ignored.
+    set -xuo pipefail
+    set +e
+    arch_dir="${WORKSPACE}/archives/"
+    mkdir -p "${arch_dir}/csit_current"
+    mkdir -p "${arch_dir}/csit_parent"
+    cp -R "${WORKSPACE}/csit_current" "${arch_dir}/csit_current"
+    cp -R "${WORKSPACE}/csit_parent" "${arch_dir}/csit_parent"
+}
+
 cd "${WORKSPACE}"
 git clone https://gerrit.fd.io/r/csit --depth=1 --no-single-branch --no-checkout
 pushd "${WORKSPACE}/csit"
@@ -37,6 +49,5 @@ else
 fi
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
+trap "copy_to_archive_dir" EXIT
 source "${csit_entry_dir}/with_oper_for_vpp.sh" "per_patch_perf.sh"
-cp -R "${WORKSPACE}/csit_current/"* "${WORKSPACE}/archives/" || true
-cp -R "${WORKSPACE}/csit_parent/"* "${WORKSPACE}/archives/" || true
