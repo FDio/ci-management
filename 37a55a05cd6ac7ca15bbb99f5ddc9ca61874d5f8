@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3127159_1992e676",
+        "filename": "jjb/scripts/vpp/csit-perf.sh",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-05T16:43:43Z",
+      "side": 1,
+      "message": "Without the asterisk, please.\n\nBase has two outputs in regular places:\nhttps://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/vpp-csit-verify-perf-master-ubuntu2004-x86_64-2n-skx/1/csit_current/0/\nhttps://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/vpp-csit-verify-perf-master-ubuntu2004-x86_64-2n-skx/1/csit_parent/0/\n\nPatch set #29 also has both outputs, but in unexpected places:\nhttps://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/vpp-csit-verify-perf-master-ubuntu2004-x86_64-2n-skx/4/\nhttps://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/vpp-csit-verify-perf-master-ubuntu2004-x86_64-2n-skx/4/0/\n\nIn both cases /0/ is an artifact from times we did multiple robot invocations (hoping for less fake anomalies.)",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "37a55a05cd6ac7ca15bbb99f5ddc9ca61874d5f8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
