@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "180f51fc_23c052de",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/deb_dpdk-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the DEB_DPDK project has been archived",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d2c9b6_b25d0f73",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/honeycomb-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the Honeycomb project has been archived",
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "634cfca6_49f14609",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/jvpp-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the JVPP project has been archived",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0373994_f939c83e",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/nsh_sfc-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the NSH_SFC project has been archived",
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73eac57a_4eb2894a",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/puppet-fdio-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the puppet-fdio project has been archived",
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb7e643_6a3f182a",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/rpm_dpdk-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the RPM_DPDK project has been archived",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e06b83_d9619275",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/sweetcomb-settings/content",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-08-05T20:35:10Z",
+      "side": 1,
+      "message": "This file can be removed, the sweetcomb project has been archived",
+      "revId": "927c6edf7bff5931ad56575d62e4ed392a6cf501",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
