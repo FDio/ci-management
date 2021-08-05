@@ -22,6 +22,30 @@
       "revId": "37a55a05cd6ac7ca15bbb99f5ddc9ca61874d5f8",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421eb40e_4fdb6c62",
+        "filename": "jjb/scripts/vpp/csit-perf.sh",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-05T16:49:38Z",
+      "side": 1,
+      "message": "This is merged, continuing in https://gerrit.fd.io/r/c/ci-management/+/33385",
+      "parentUuid": "f3127159_1992e676",
+      "range": {
+        "startLine": 41,
+        "startChar": 34,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "37a55a05cd6ac7ca15bbb99f5ddc9ca61874d5f8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
