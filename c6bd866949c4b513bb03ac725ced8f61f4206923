@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bec468f1_d2ac75a7",
+        "filename": "jjb/scripts/vpp/csit-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-05T17:40:30Z",
+      "side": 0,
+      "message": "https://logs.fd.io/sandbox/vex-yul-rot-jenkins-2/vpp-csit-verify-device-master-ubuntu2004-x86_64-1n-skx/4/ shows patch set #2 works.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "c6bd866949c4b513bb03ac725ced8f61f4206923",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
