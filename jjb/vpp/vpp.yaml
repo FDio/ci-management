@@ -1038,6 +1038,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/csit-perf.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/copy_archives.sh
 
     publishers:
       - robot-report:
