@@ -46,6 +46,30 @@
       "revId": "c841491aa2a606ce68867a6e05f5d9cf1dbb6d9f",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f93394d_edf2bc0e",
+        "filename": "jjb/hicn/hicn-docs.yaml",
+        "patchSetId": 23
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-08-05T16:26:03Z",
+      "side": 0,
+      "message": "Doc verify jobs have not archived artifacts for a long time to avoid job failures due to nexus upload faults.  In addition, it is not clear to me that archiving the docs verify jobs has enough value to justify the expense.  Git history should be sufficient.\n\nAlso, HICN docs are published via a ReadTheDocs.io build which pulls the doc source from the github mirror:  https://readthedocs.org/projects/hicn/builds/13346154/\n\nThe general docs workflow will be addressed once nexus has been retired and doc storage has been moved to S3.",
+      "parentUuid": "2306ba76_369f4d68",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "c841491aa2a606ce68867a6e05f5d9cf1dbb6d9f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
