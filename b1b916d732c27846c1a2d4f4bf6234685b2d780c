@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "847c11c4_323fb8d7",
+        "filename": "jjb/scripts/vpp/csit-perf.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-05T18:45:56Z",
+      "side": 1,
+      "message": "Does not work, CSIT code overwrites the trap.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 4
+      },
+      "revId": "b1b916d732c27846c1a2d4f4bf6234685b2d780c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
