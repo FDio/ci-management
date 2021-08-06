@@ -69,5 +69,5 @@ tsc:
     approval: 'missing'
     changes:
         - type: 'approval'
-          name: 'Dave Wallace'
-          link: 'http://ircbot.wl.linuxfoundation.org/meetings/fdio-meeting/2020/fdio-meeting.2020-02-06-16.01.log.html'
+          name: 'Peter Mikus'
+          link: 'https://ircbot.wl.linuxfoundation.org/meetings/fdio-meeting/2021/fd_io_tsc/fdio-meeting-fd_io_tsc.2021-07-22-15.01.log.html'
