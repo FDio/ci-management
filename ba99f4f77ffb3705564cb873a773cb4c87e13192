@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f30a82f_8403a249",
+        "filename": "jenkins-config/managed-config-files/custom/jenkins-s3-docs-ship/content",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-06T12:36:35Z",
+      "side": 1,
+      "message": "can we double check why logs and docs has same account (if so docs bucket is still permission denied) and also whether we should rather use $JENKINS_S3_DOCS_SHIP_USR/$JENKINS_S3_DOCS_SHIP_PSW ?",
+      "revId": "ba99f4f77ffb3705564cb873a773cb4c87e13192",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "902b7c09_669f89ed",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/trex-settings/content",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-06T12:36:35Z",
+      "side": 1,
+      "message": "is this still alive?",
+      "revId": "ba99f4f77ffb3705564cb873a773cb4c87e13192",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
