@@ -34,6 +34,24 @@
       "revId": "b5db427856105164e14cb14d59f729b6413eb9b8",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11305e9b_ffe78406",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-08-06T21:07:55Z",
+      "side": 1,
+      "message": "I modified this patch with the syntax from [0] and tested it with \u0027unset LOGS_SERVER\u0027 in logs-deploy.sh and the descriptor \u0027S3 build logs\u0027 link shows up with the log files on S3 (same as /14 of Vratko\u0027s testing):\n\nhttps://jenkins.fd.io/sandbox/job/daw-33395-csit-verify-tox-master-ubuntu2004-x86_64/1/\n\nhttps://s3-logs.fd.io/logs/sandbox/vex-yul-rot-jenkins-2/daw-33395-csit-verify-tox-master-ubuntu2004-x86_64/1/\n\nThere was nothing in the descriptor previously when we did not add the \u0027unset LOGS_SERVER\u0027, but it did show up when that was added.",
+      "parentUuid": "134800fd_52614649",
+      "revId": "b5db427856105164e14cb14d59f729b6413eb9b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
