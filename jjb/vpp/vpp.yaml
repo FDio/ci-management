@@ -1040,8 +1040,21 @@
           - ../scripts/vpp/csit-perf.sh
 
     publishers:
+      - postbuildscript:
+          # Can be removed when all CSIT branches use correct archive directory.
+          builders:
+            - build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - shell:
+                    !include-raw-escape:
+                    - ../scripts/vpp/copy_archives.sh
       - robot-report:
-          output-path: 'csit_current/0/'
+          output-path: 'archives/csit_current/0/'
 
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
