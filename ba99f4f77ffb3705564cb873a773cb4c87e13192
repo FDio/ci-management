@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22fa092f_57d772c8",
+        "filename": "jenkins-config/managed-config-files/custom/jenkins-s3-docs-ship/content",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-06T20:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f30a82f_8403a249",
+      "revId": "ba99f4f77ffb3705564cb873a773cb4c87e13192",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "902b7c09_669f89ed",
         "filename": "jenkins-config/managed-config-files/mavenSettings/trex-settings/content",
         "patchSetId": 12
@@ -51,6 +69,24 @@
       "revId": "ba99f4f77ffb3705564cb873a773cb4c87e13192",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc20a6ce_e5fbf43e",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/trex-settings/content",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-06T20:02:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec6931c_7b61ebbe",
+      "revId": "ba99f4f77ffb3705564cb873a773cb4c87e13192",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
