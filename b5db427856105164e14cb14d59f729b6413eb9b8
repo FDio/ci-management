@@ -52,6 +52,24 @@
       "revId": "b5db427856105164e14cb14d59f729b6413eb9b8",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd862620_8acda1c5",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-09T08:13:54Z",
+      "side": 1,
+      "message": "Yes, I think I did wrong manual edit when testing the old syntax.\nNew week, so I can try testing old syntax again.",
+      "parentUuid": "11305e9b_ffe78406",
+      "revId": "b5db427856105164e14cb14d59f729b6413eb9b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
