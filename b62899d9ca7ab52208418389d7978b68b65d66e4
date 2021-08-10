@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d672600d_50aaf94b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-10T09:48:49Z",
+      "side": 1,
+      "message": "Does this mean we can run the jobs in Sandbox (without polluting production data)?",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "b62899d9ca7ab52208418389d7978b68b65d66e4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc608bd_e7c55b5e",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-10T09:48:49Z",
+      "side": 1,
+      "message": "docs",
+      "range": {
+        "startLine": 107,
+        "startChar": 28,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "b62899d9ca7ab52208418389d7978b68b65d66e4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
