@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78947e5d_b504c469",
+        "filename": "jenkins-config/managed-config-files/custom/packagecloud/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "While this is valid json, it would be better to make this more readable by breaking all of this out on separate lines:\n\n{\n  \"url\": \"https://packagecloud.io\",\n  \"token\": \"$PACKAGECLOUD_TOKEN\"\n}",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12094f90_203796a4",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/cicn-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d70f5c_91c9963e",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/csit-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d0f991_3d87719a",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/hc2vpp-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0495e3b_606fba39",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/hicn-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0928e2b0_2d7888c4",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/jenkins-log-archives-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f19197b_9d6cf9dc",
+        "filename": "jenkins-config/managed-config-files/mavenSettings/vpp-settings/content",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-10T20:00:21Z",
+      "side": 1,
+      "message": "This is pointing to a non-existent template file",
+      "revId": "b6f3a0465307da31ed12ce30e4c21d2ade2e5cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
