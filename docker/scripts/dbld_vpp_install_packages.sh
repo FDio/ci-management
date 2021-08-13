@@ -38,8 +38,8 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     # Install OS packages
     make_vpp "install-dep" "$branch"
     make_vpp "centos-pyyaml" "$branch" # VPP Makefile tests for centos versions
-    if [ "$OS_ID" = "ubuntu" ] ; then
-        # 'Make docs jobs are only run on ubuntu executors
+    if [ "$OS_ID" = "ubuntu" ] && [ "$OS_ARCH" = "x86_64" ] ; then
+        # 'Make docs jobs are only run on ubuntu x86_64 executors
         #  so only run for ubuntu build executors.
         make_vpp "docs-venv" "$branch"
     elif [ "$OS_NAME" = "debian-9" ] ; then

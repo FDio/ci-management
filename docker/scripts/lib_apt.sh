@@ -54,8 +54,8 @@ apt_override_cmake_install_with_pip3_version() {
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
-        debian_docker_inst_sed="| sed -e 's/has_rootless_extras="1"//g' | sh
-"
+    local dpkg_arch="$(dpkg --print-architecture)"
+
     cat <<EOF >>"$DOCKERFILE"
 
 # Create download dir to cache external tarballs
@@ -196,6 +196,7 @@ RUN apt-get update -qq \\
              zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
+
 EOF
     # Docker installation script fails on debian-9, so don't install docker
     head $DOCKERFILE
@@ -205,6 +206,13 @@ EOF
 
     cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
+
+# Install terraform for CSIT
+#
+RUN wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_$dpkg_arch.zip \\
+  && unzip terraform_1.0.4_linux_$dpkg_arch.zip \\
+  && mv terraform /usr/bin \\
+  && rm -f terraform_1.0.4_linux_$dpkg_arch.zip
 
 # Install packages for all project branches
 #
