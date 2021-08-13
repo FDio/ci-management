@@ -54,8 +54,10 @@ apt_override_cmake_install_with_pip3_version() {
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
-        debian_docker_inst_sed="| sed -e 's/has_rootless_extras="1"//g' | sh
-"
+    local dpkg_arch="$(dpkg --print-architecture)"
+    local distro="$(lsb_release -cs)"
+
+
     cat <<EOF >>"$DOCKERFILE"
 
 # Create download dir to cache external tarballs
@@ -196,6 +198,7 @@ RUN apt-get update -qq \\
              zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
+
 EOF
     # Hack to prevent failure on debian-9 build
     head $DOCKERFILE
@@ -208,6 +211,23 @@ EOF
     cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
 
+EOF
+    # Terraform is only available via apt on X86_64
+    #
+    # TODO: download install terraform linux_arm64 zip tarball on AARCH64
+    if [ "$OS_ARCH" = "x86_64" ] ; then
+    cat <<EOF >>"$DOCKERFILE"
+# Install terraform for CSIT
+#
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - \\
+  && apt-add-repository "deb [arch=$dpkg_arch] https://apt.releases.hashicorp.com $distro main"  \\
+  && apt-get update -qq \\
+  && apt-get install -y terraform
+
+EOF
+    fi
+
+    cat <<EOF >>"$DOCKERFILE"
 # Install packages for all project branches
 #
 RUN apt-get update -qq \\
