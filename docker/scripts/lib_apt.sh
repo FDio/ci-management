@@ -197,11 +197,9 @@ RUN apt-get update -qq \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
 EOF
-    # Hack to prevent failure on debian-9 build
+    # Docker installation script fails on debian-9, so don't install docker
     head $DOCKERFILE
-    if grep -qe 'debian:9' "$DOCKERFILE" ; then
-        echo "  && curl -fsSL https://get.docker.com | sed -e 's/has_rootless_extras=\"1\"//g' | sh \ " >>"$DOCKERFILE"
-    else
+    if ! grep -qe 'debian:9' "$DOCKERFILE" ; then
         echo "  && curl -fsSL https://get.docker.com | sh \ " >>"$DOCKERFILE"
     fi
 
