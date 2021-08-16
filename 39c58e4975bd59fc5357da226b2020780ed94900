@@ -1,0 +1,360 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02afc367_c69e6a7e",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 3,
+        "startChar": 56,
+        "endLine": 3,
+        "endChar": 57
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b73b8d_3485c745",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 4,
+        "startChar": 63,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52dcf3de_5e56143e",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1c71c8_ddcdaadd",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b13bf3_d18a7f95",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d825a02_ce37df0e",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7ab0a1_e5354408",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Useless comment",
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb2ebc92_023fdbd2",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a98f89_9075a19a",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0df919_4afbada7",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0636be8d_5f554888",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Hard tab instead of expanded tab",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d8b3f4_0bca2cdd",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Hard tab instead of expanded tab",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2953d779_e809f4a7",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 4
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d30effb_277a6a22",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Hard tab instead of expanded tab",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef8af21_ca8f45cd",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Dangling whitespace",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0f84e4_abbf49ce",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2021-08-16T20:22:15Z",
+      "side": 1,
+      "message": "Hard tab instead of expanded tab",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
