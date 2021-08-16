@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3f8efc9_3396c573",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-16T07:51:23Z",
+      "side": 1,
+      "message": "RUN wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_darwin_$dpkg_arch.zip \\\\\n    unzip terraform_1.0.4_darwin_$dpkg_arch.zip \\\\\n    mv terraform /usr/bin/path",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 3
+      },
+      "revId": "7d762ca2908deb1545402540b518eb6b41cc0532",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
