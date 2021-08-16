@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24f99005_049d310d",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02afc367_c69e6a7e",
+      "range": {
+        "startLine": 3,
+        "startChar": 56,
+        "endLine": 3,
+        "endChar": 57
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8b73b8d_3485c745",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -45,6 +69,30 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20cd25b7_ee033e8f",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b73b8d_3485c745",
+      "range": {
+        "startLine": 4,
+        "startChar": 63,
+        "endLine": 4,
+        "endChar": 64
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "efc85272_c55dcc42",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52dcf3de_5e56143e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1c71c8_ddcdaadd",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e60d1b42_4bcb6e4b",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb1c71c8_ddcdaadd",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71b13bf3_d18a7f95",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -108,6 +204,24 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e70d49_010b9c65",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b13bf3_d18a7f95",
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "00760c2f_6fe648cd",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d825a02_ce37df0e",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a7ab0a1_e5354408",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -148,6 +286,24 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a61576_c1393e64",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a7ab0a1_e5354408",
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "f834ce22_aa42cefd",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2ebc92_023fdbd2",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4a98f89_9075a19a",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -194,6 +374,30 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c96c6e_303a66e1",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a98f89_9075a19a",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "ef658ff0_49db8616",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e0df919_4afbada7",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 6
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0636be8d_5f554888",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -240,6 +468,30 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f214b749_eeccf747",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0636be8d_5f554888",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "d6f9ff18_27c82941",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d8b3f4_0bca2cdd",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2953d779_e809f4a7",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -286,6 +562,30 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f077e66_defa0f8b",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2953d779_e809f4a7",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 4
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "d2be915a_67da8716",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d30effb_277a6a22",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eef8af21_ca8f45cd",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -335,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "ef00ad73_069103f0",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef8af21_ca8f45cd",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f0f84e4_abbf49ce",
         "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
         "patchSetId": 27
@@ -355,6 +703,30 @@
       "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aaf6fbf_b04866d5",
+        "filename": "jenkins-config/managed-config-files/globalMavenSettings/global-settings/content",
+        "patchSetId": 27
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-16T21:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f0f84e4_abbf49ce",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 1
+      },
+      "revId": "39c58e4975bd59fc5357da226b2020780ed94900",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
