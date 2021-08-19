@@ -77,7 +77,7 @@
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
+            - file-id: 'packagecloud'
               target: '/root/.packagecloud'
       - config-file-provider:
           files:
@@ -142,7 +142,7 @@
     builders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
+            - file-id: 'packagecloud'
               target: '/root/.packagecloud'
       - config-file-provider:
           files:

@@ -198,8 +198,8 @@
     prebuilders:
       - config-file-provider:
           files:
-            - file-id: '.packagecloud'
-              target: '/home/jenkins'
+            - file-id: 'packagecloud'
+              target: '/home/jenkins/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
