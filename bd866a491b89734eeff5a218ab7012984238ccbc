@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1c9f47c_562f10ce",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2021-08-19T21:22:42Z",
+      "side": 1,
+      "message": "I see in other places you updated the target with the dot filename, will that be required here as well?",
+      "revId": "bd866a491b89734eeff5a218ab7012984238ccbc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
