@@ -5,20 +5,20 @@ include_path=.:scripts:~/git/
 recursive=True
 
 [jenkins]
-user=$JENKINS_JOBBUILDER_USR
-password=$JENKINS_JOBBUILDER_PSW
+user=$JOBBUILDER_PROD_USR
+password=$JOBBUILDER_PROD_PSW
 url=https://jenkins.fd.io
 query_plugins_info=True
 
 [production]
-user=$JENKINS_JOBBUILDER_USR
-password=$JENKINS_JOBBUILDER_PSW
+user=$JOBBUILDER_PROD_USR
+password=$JOBBUILDER_PROD_PSW
 url=https://jenkins.fd.io
 query_plugins_info=True
 
 [sandbox]
-user=$JENKINS_JOBBUILDER_USR
-password=$JENKINS_JOBBUILDER_PSW
+user=$JOBBUILDER_SANDBOX_USR
+password=$JOBBUILDER_SANDBOX_PSW
 url=https://jenkins.fd.io/sandbox
 query_plugins_info=True
 
