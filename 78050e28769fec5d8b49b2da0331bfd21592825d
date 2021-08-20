@@ -22,6 +22,30 @@
       "revId": "78050e28769fec5d8b49b2da0331bfd21592825d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3977086_43e84c77",
+        "filename": "jjb/csit/csit.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-20T09:33:21Z",
+      "side": 1,
+      "message": "https://gerrit.fd.io/r/c/ci-management/+/33118/13/jjb/csit/csit.yaml#b151\n\nIt was like that. I assume it is set to \u0027\u0027 by default by gerrit so it was working before. But yes i agree to remove as it is useless as we cannot configure from outside",
+      "parentUuid": "19d4ea44_a5b22553",
+      "range": {
+        "startLine": 138,
+        "startChar": 19,
+        "endLine": 138,
+        "endChar": 36
+      },
+      "revId": "78050e28769fec5d8b49b2da0331bfd21592825d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
