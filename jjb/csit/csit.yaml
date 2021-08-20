@@ -19,8 +19,8 @@
     jobs:
       - 'csit-docs-merge-{stream}-{os}-{executor-arch}'
       - 'csit-report-merge-{stream}-{os}-{executor-arch}'
-      - 'csit-trending-daily-master-{os}-{executor-arch}'
-      - 'csit-trending-weekly-2009-lts-{os}-{executor-arch}'
+      - 'csit-trending-merge-daily-master-{os}-{executor-arch}'
+      - 'csit-trending-merge-weekly-2009-lts-{os}-{executor-arch}'
 
     project: 'csit'
     branch: 'master'
@@ -131,13 +131,12 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
       - fdio-infra-wrappers-non-activity-timeout:
@@ -174,7 +173,7 @@
       - fdio-infra-publish
 
 - job-template:
-    name: 'csit-trending-daily-master-{os}-{executor-arch}'
+    name: 'csit-trending-merge-daily-master-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -263,7 +262,7 @@
       - fdio-infra-publish
 
 - job-template:
-    name: 'csit-trending-weekly-2009-lts-{os}-{executor-arch}'
+    name: 'csit-trending-merge-weekly-2009-lts-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
