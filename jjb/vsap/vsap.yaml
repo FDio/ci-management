@@ -152,11 +152,11 @@
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
-              target: '/root'
+              target: '/root/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
-              target: '/root'
+              target: '/root/packagecloud_api'
       - shell:
           !include-raw-escape:
           - include-raw-vsap-build.sh
