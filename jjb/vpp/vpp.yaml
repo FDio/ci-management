@@ -698,11 +698,11 @@
       - config-file-provider:
           files:
             - file-id: '.packagecloud'
-              target: '/root'
+              target: '/root/.packagecloud'
       - config-file-provider:
           files:
             - file-id: 'packagecloud_api'
-              target: '/root'
+              target: '/root/.packagecloud_api'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -1115,7 +1115,7 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/check_crc.sh
-      # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
+    # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
 
     publishers:
       - fdio-infra-publish
