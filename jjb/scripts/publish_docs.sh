@@ -24,7 +24,7 @@ PYTHON_SCRIPT="/w/workspace/publish_library.py"
 if [[ ${JOB_NAME} == *merge* ]]; then
     case "${JOB_NAME}" in
         *"csit-trending"*)
-            SITE_DIR="${WORKSPACE}/resources/tools/trending/_build"
+            SITE_DIR="${WORKSPACE}/resources/tools/presentation/_build"
             s3_path="csit/${GERRIT_BRANCH}/trending"
             ;;
         *"csit-report"*)
