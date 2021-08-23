@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71cc3d1e_1e51d288",
+        "filename": "docker/scripts/lib_apt.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-23T09:30:02Z",
+      "side": 1,
+      "message": "i would change indentation.\n\nalso lets remove zip as well (it will save some space):\n\n  \u0026\u0026 rm terraform_1.0.4_linux_$dpkg_arch.zip",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "47a1b6c6a06ff7e5c6610737b5c87d7362d021cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
