@@ -81,7 +81,7 @@
 
     triggers:
       - reverse:
-          jobs: 'csit-vpp-device-{stream}-ubuntu1804-1n-skx-weekly'
+          jobs: 'csit-vpp-device-{stream}-{os}-{executor-arch}-1n-skx-weekly'
           result: 'success'
       - gerrit:
           server-name: 'Primary'
