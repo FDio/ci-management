@@ -21,4 +21,3 @@ user=$JOBBUILDER_SANDBOX_USR
 password=$JOBBUILDER_SANDBOX_PSW
 url=https://jenkins.fd.io/sandbox
 query_plugins_info=True
-
