@@ -629,6 +629,68 @@
           latest-only: true
 
 - publisher:
+    name: csit-trending-failed
+    publishers:
+      - email-ext:
+          # yamllint disable-line rule:line-length
+          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: '{branch}: Failed tests as of $BUILD_TIMESTAMP'
+          # yamllint disable-line rule:line-length
+          body: |
+              Following tests failed in the last trending job runs, listed per testbed type.
+
+              ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
+          success: true
+
+- publisher:
+    name: csit-trending-failed-job
+    publishers:
+      - email-ext:
+          # yamllint disable-line rule:line-length
+          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: '{branch}: The build number $BUILD_NUMBER of the job $JOB_NAME failed'
+          # yamllint disable-line rule:line-length
+          body: |
+              For more information see $BUILD_URL.
+          failure: true
+
+- publisher:
+    name: csit-trending-progressions
+    publishers:
+      - email-ext:
+          # yamllint disable-line rule:line-length
+          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: '{branch}: Progressions as of $BUILD_TIMESTAMP'
+          # yamllint disable-line rule:line-length
+          body: |
+              Following progressions occured in the last trending job runs, listed per testbed type.
+
+              ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
+          success: true
+
+- publisher:
+    name: csit-trending-regressions
+    publishers:
+      - email-ext:
+          # yamllint disable-line rule:line-length
+          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: '{branch}: Regressions as of $BUILD_TIMESTAMP'
+          # yamllint disable-line rule:line-length
+          body: |
+              Following regressions occured in the last trending job runs, listed per testbed type.
+
+              ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
+          success: true
+
+- publisher:
     name: email-notification
     publishers:
       - email-ext:
@@ -734,6 +796,7 @@
       - robot:
           output-path: '{output-path}'
           other-files: ''
+
 # [end] Keep 'publisher' entries ordered alphabetically, please.
 
 #### BUILDERS
