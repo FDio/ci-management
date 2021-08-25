@@ -37,9 +37,8 @@ echo "${EMAIL_BODY}" > "${FAILED_TESTS}"
 echo "${EMAIL_BODY}" > "${REGRESSIONS}"
 echo "${EMAIL_BODY}" > "${PROGRESSIONS}"
 
-cd "${DOC_DIR}"
-chmod +x ./run_cpta.sh
-STATUS=$(./run_cpta.sh | tail -1)
+csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
+source "${csit_entry_dir}/bootstrap_trending.sh"
 
 cd "${WORKSPACE}"
 rm -rf "${SITE_DIR}/"*
@@ -47,43 +46,3 @@ rm -rf "${SITE_DIR}/"*
 mkdir -p "${RESOURCES_DIR}"
 ls "${RESOURCES_DIR}"
 mv -f "${BUILD_DIR}/"* "${RESOURCES_DIR}"
-
-cd "${SITE_DIR}"
-
-cat > pom.xml << EOF
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>io.fd.csit</groupId>
-    <artifactId>docs</artifactId>
-    <version>1.0.0</version>
-    <packaging>pom</packaging>
-    <properties>
-        <generateReports>false</generateReports>
-    </properties>
-    <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav-jackrabbit</artifactId>
-                <version>2.10</version>
-            </extension>
-        </extensions>
-    </build>
-    <distributionManagement>
-        <site>
-            <id>fdio-site</id>
-            <url>dav:${DOCS_REPO_URL}/${PROJECT_PATH}/${GERRIT_BRANCH}</url>
-        </site>
-    </distributionManagement>
-</project>
-EOF
-
-${MVN} site:site site:deploy -gs "${GLOBAL_SETTINGS_FILE}" -s "${SETTINGS_FILE}" -T 4C
-
-cd -
-
-if [ "${STATUS}" == "PASS" ]; then
-    exit 0
-else
-    exit 1
-fi

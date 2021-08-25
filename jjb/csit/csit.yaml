@@ -210,7 +210,7 @@
           - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/csit/trending.sh
+          - ../scripts/csit/cpta.sh
 
     publishers:
       - email-ext:
@@ -299,7 +299,7 @@
           - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/csit/trending.sh
+          - ../scripts/csit/cpta.sh
 
     publishers:
       - email-ext:
