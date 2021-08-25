@@ -223,7 +223,7 @@
           body: |
                 Following tests failed in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-failed-tests.txt"}}
+                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
 
           always: true
           failure: false
@@ -238,7 +238,7 @@
           body: |
                 Following regressions occured in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-regressions.txt"}}
+                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
 
           always: true
           failure: false
@@ -253,7 +253,7 @@
           body: |
                 Following progressions occured in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-progressions.txt"}}
+                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
 
           always: true
           failure: false
@@ -312,7 +312,7 @@
           body: |
                 Following tests failed in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-failed-tests.txt"}}
+                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
 
           always: true
           failure: false
@@ -327,7 +327,7 @@
           body: |
                 Following regressions occured in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-regressions.txt"}}
+                ${{FILE,path="path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
 
           always: true
           failure: false
@@ -342,7 +342,7 @@
           body: |
                 Following progressions occured in the last trending job runs, listed per testbed type.
 
-                ${{FILE,path="build-root/docs/deploy-site/src/site/resources/trending/_static/vpp/trending-progressions.txt"}}
+                ${{FILE,path="path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
 
           always: true
           failure: false
