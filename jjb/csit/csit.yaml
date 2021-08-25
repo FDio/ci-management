@@ -213,51 +213,14 @@
           - ../scripts/csit/trending.sh
 
     publishers:
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: 'Failed tests as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following tests failed in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
-
-          always: true
-          failure: false
-
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: 'Regressions as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following regressions occured in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
-
-          always: true
-          failure: false
-
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: 'Progressions as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following progressions occured in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
-
-          always: true
-          failure: false
-
+      - csit-trending-job-failed:
+          branch: 'master'
+      - csit-trending-failed:
+          branch: 'master'
+      - csit-trending-regressions:
+          branch: 'master'
+      - csit-trending-progressions:
+          branch: 'master'
       - fdio-infra-publish-docs
       - fdio-infra-publish
 
@@ -302,51 +265,14 @@
           - ../scripts/csit/trending.sh
 
     publishers:
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: '2009 LTS: Failed tests as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following tests failed in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-failed-tests.txt"}}
-
-          always: true
-          failure: false
-
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: '2009 LTS: Regressions as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following regressions occured in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
-
-          always: true
-          failure: false
-
-      - email-ext:
-          # yamllint disable-line rule:line-length
-          recipients: 'tifrank@cisco.com, csit-report+int+616+181919729795594561@lists.fd.io'
-          reply-to: ''
-          content-type: 'text'
-          subject: '2009 LTS: Progressions as of  $BUILD_TIMESTAMP'
-          # yamllint disable-line rule:line-length
-          body: |
-                Following progressions occured in the last trending job runs, listed per testbed type.
-
-                ${{FILE,path="path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
-
-          always: true
-          failure: false
-
+      - csit-trending-job-failed:
+          branch: '2009 LTS'
+      - csit-trending-failed:
+          branch: '2009 LTS'
+      - csit-trending-regressions:
+          branch: '2009 LTS'
+      - csit-trending-progressions:
+          branch: '2009 LTS'
       - fdio-infra-publish-docs
       - fdio-infra-publish
 
