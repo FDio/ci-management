@@ -22,6 +22,30 @@
       "revId": "5990b3c60ab8743196f57dc3d65bdf6d3809130d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55dc8adf_f4ade988",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-26T13:49:45Z",
+      "side": 1,
+      "message": "https://jenkins.fd.io/sandbox/job/csit-trending-merge-daily-master-ubuntu2004-x86_64/configure\n\nfixed the rest in latest PS\n\ndefaulting was outdated. Now explicit failure and success makes the correct config in jenkins",
+      "parentUuid": "4aa8795c_61817409",
+      "range": {
+        "startLine": 658,
+        "startChar": 35,
+        "endLine": 658,
+        "endChar": 49
+      },
+      "revId": "5990b3c60ab8743196f57dc3d65bdf6d3809130d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
