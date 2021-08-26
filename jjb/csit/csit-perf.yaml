@@ -65,6 +65,14 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
           periodicity: '0 0 * * 6'
+      - 'csit-trex-perf-verify-{stream}-{node-arch}':
+          node-arch:
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -239,6 +247,14 @@
             - 3n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+      - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -303,12 +319,20 @@
             - 3n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+      - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
 
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
-    csit-perf-trial-duration: "1.0"
-    csit-perf-trial-multiplicity: "10"
+    csit-perf-trial-duration: '1.0'
+    csit-perf-trial-multiplicity: '10'
     stream:
       - master:
           branch: 'master'
@@ -625,6 +649,101 @@
       - shell:
           !include-raw-escape:
           - ../scripts/csit/perf-timed.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
+    name: 'csit-trex-perf-verify-{stream}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>perf verify - per csit gerrit patch
+              </ul>
+          <li>job
+              <ul>
+                  <li>name: <b>csit-trex-perf-verify-{stream}-{node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-trex-{node-arch}-perftest tag_list</b>
+              </ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected using trigger keyword followed by tags
+                  <li>all test-cases are labelled with CSIT RF topic tags
+                      defined in <i>csit/docs/tag_documentation.rst</i>
+              </ul>
+          <li>proposed keywords
+              <ul>
+                  <li>focus on testing specified trex packet processing path
+                  <li>format: csit-{node-arch}-perftest tag_list
+              </ul>
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: no
+                  <li>analyse: no
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    latest-only: false
+
+    build-discarder:
+      daysToKeep: '{build-days-to-keep}'
+      numToKeep: '{build-num-to-keep}'
+      artifactDaysToKeep: '{build-artifact-days-to-keep}'
+      artifactNumToKeep: '{build-artifact-num-to-keep}'
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+      # This is a manually-triggered verify job, part of API coverage.
+      # CRC checking is needed to ensure vpp crc job breaks only when intended.
+      # Can be removed when this job is no longer needed for full API coverage.
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'True'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-trex-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
 
     publishers:
       - fdio-infra-publish
