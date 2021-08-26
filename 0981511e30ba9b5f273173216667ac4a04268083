@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bbc0fdc_7bbdbf89",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-08-26T08:12:20Z",
+      "side": 1,
+      "message": "Alphabetically, Progressions should come before Regressions.",
+      "range": {
+        "startLine": 662,
+        "startChar": 24,
+        "endLine": 662,
+        "endChar": 25
+      },
+      "revId": "0981511e30ba9b5f273173216667ac4a04268083",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
