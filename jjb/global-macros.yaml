@@ -809,7 +809,7 @@
       - shell: !include-raw:
           - ../global-jjb/shell/logs-clear-credentials.sh
       - description-setter:
-          regexp: "(^Nexus build logs: .*)"
+          regexp: "(^S3 build logs: .*)"
 
 - builder:
     name: packer-validate
