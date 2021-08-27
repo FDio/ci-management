@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a77bd6d_d5104542",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-08-27T09:15:01Z",
+      "side": 1,
+      "message": "there is not a plan to go back to nexus.",
+      "range": {
+        "startLine": 812,
+        "startChar": 22,
+        "endLine": 812,
+        "endChar": 27
+      },
+      "revId": "41edb128a92fd142be87b6300e4f9b9fe04fc161",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
