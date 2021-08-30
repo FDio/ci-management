@@ -90,11 +90,9 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
 
-    build-discarder:
-      daysToKeep: "{build-days-to-keep}"
-      numToKeep: "{build-num-to-keep}"
-      artifactDaysToKeep: "{build-artifact-days-to-keep}"
-      artifactNumToKeep: "{build-artifact-num-to-keep}"
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:
@@ -166,11 +164,9 @@
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
 
-    build-discarder:
-      daysToKeep: "{build-days-to-keep}"
-      numToKeep: "{build-num-to-keep}"
-      artifactDaysToKeep: "{build-artifact-days-to-keep}"
-      artifactNumToKeep: "{build-artifact-num-to-keep}"
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:
@@ -210,11 +206,9 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
 
-    build-discarder:
-      daysToKeep: "{build-days-to-keep}"
-      numToKeep: "{build-num-to-keep}"
-      artifactDaysToKeep: "{build-artifact-days-to-keep}"
-      artifactNumToKeep: "{build-artifact-num-to-keep}"
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:
@@ -289,11 +283,9 @@
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
 
-    build-discarder:
-      daysToKeep: "{build-days-to-keep}"
-      numToKeep: "{build-num-to-keep}"
-      artifactDaysToKeep: "{build-artifact-days-to-keep}"
-      artifactNumToKeep: "{build-artifact-num-to-keep}"
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:

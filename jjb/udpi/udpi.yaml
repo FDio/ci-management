@@ -48,11 +48,9 @@
     node: 'builder-{os}-prod-x86_64'
     concurrent: true
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:
@@ -116,11 +114,9 @@
     project-type: freestyle
     node: 'builder-{os}-prod-x86_64'
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     parameters:
       - project-parameter:
