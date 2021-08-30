@@ -37,4 +37,10 @@ else
 fi
 popd
 csit_entry_dir="${WORKSPACE}/csit/resources/libraries/bash/entry"
-source "${csit_entry_dir}/with_oper_for_vpp.sh" "per_patch_device.sh"
+if [ -f "${csit_entry_dir}/per_patch_device.sh" ]; then
+    # Remove this possibility when all CSIT branches have migrated.
+    bootstrap="per_patch_device.sh"
+else
+    bootstrap="bootstrap_vpp_device.sh"
+fi
+source "${csit_entry_dir}/with_oper_for_vpp.sh" "${bootstrap}"
