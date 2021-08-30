@@ -744,13 +744,6 @@
       - shell: |
           $WORKSPACE/scripts/check-unicode.sh jjb/
 
-- property:
-    name: fdio-infra-properties
-    properties:
-      - build-discarder:
-          days-to-keep: '{build-days-to-keep}'
-          num-to-keep: '{build-num-to-keep}'
-
 - builder:
     name: fdio-infra-ship-docs
     builders:
