@@ -408,11 +408,8 @@
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -523,11 +520,9 @@
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -589,11 +584,9 @@
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: '{build-num-to-keep}'
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -656,11 +649,9 @@
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -735,11 +726,9 @@
     node: 'builder-{os}-prod-{executor-arch}'
     concurrent: true
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -812,11 +801,9 @@
     concurrent: true
     latest-only: false
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -894,11 +881,9 @@
     concurrent: true
     latest-only: false
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -978,11 +963,9 @@
     concurrent: true
     latest-only: false
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
@@ -1068,11 +1051,9 @@
     concurrent: true
     latest-only: false
 
-    build-discarder:
-      daysToKeep: '{build-days-to-keep}'
-      numToKeep: 100
-      artifactDaysToKeep: '{build-artifact-days-to-keep}'
-      artifactNumToKeep: '{build-artifact-num-to-keep}'
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
