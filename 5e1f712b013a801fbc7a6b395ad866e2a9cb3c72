@@ -22,6 +22,30 @@
       "revId": "5e1f712b013a801fbc7a6b395ad866e2a9cb3c72",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b29259_2fcc52d7",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-08-31T17:43:23Z",
+      "side": 1,
+      "message": "test cruft...  Good catch!",
+      "parentUuid": "4a4773fb_66376798",
+      "range": {
+        "startLine": 39,
+        "startChar": 27,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "5e1f712b013a801fbc7a6b395ad866e2a9cb3c72",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
