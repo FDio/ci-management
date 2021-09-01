@@ -409,7 +409,8 @@
     concurrent: true
 
     properties:
-      - lf-infra-properties
+      - lf-infra-properties::
+          build-days-to-keep: "{build-days-to-keep}"
 
     # Please keep parameters in alphabetical order
     parameters:
