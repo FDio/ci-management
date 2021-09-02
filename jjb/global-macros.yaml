@@ -674,8 +674,8 @@
               Following progressions occured in the last trending job runs, listed per testbed type.
 
               ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-progressions.txt"}}
-          failure: true
-          success: false
+          failure: false
+          success: true
 
 - publisher:
     name: csit-trending-regressions
@@ -691,8 +691,8 @@
               Following regressions occured in the last trending job runs, listed per testbed type.
 
               ${{FILE,path="resources/tools/presentation/_build/_static/vpp/trending-regressions.txt"}}
-          failure: true
-          success: false
+          failure: false
+          success: true
 
 - publisher:
     name: email-notification
