@@ -848,11 +848,7 @@
           csit-perf-trial-duration: "{csit-perf-trial-duration}"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
-      # This is a manually-triggered verify job, part of API coverage.
-      # CRC checking is needed to ensure vpp crc job breaks only when intended.
-      # Can be removed when this job is no longer needed for full API coverage.
-      - csit-fail-on-crc-mismatch-parameter:
-          fail-on-crc-mismatch: 'True'
+      # This job does not interact with VPP so not setting fail-on-crc-mismatch.
 
     scm:
       - gerrit-trigger-scm:
