@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46736053_9e616347",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-02T11:37:03Z",
+      "side": 1,
+      "message": "https://gerrit.fd.io/r/c/ci-management/+/33657",
+      "range": {
+        "startLine": 705,
+        "startChar": 32,
+        "endLine": 705,
+        "endChar": 38
+      },
+      "revId": "876a58f9a343cfbd1a8c184b2ae56a0ced299cc2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    }
+  ]
+}
