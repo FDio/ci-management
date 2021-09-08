@@ -1,7 +1,7 @@
 DOCKER_REGISTRY=https://jenkins.fd.io/sandbox/
-GERRIT_URL=git://162.253.54.31/mirror/$PROJECT
-GIT_BASE=git://162.253.54.31/mirror/$PROJECT
-GIT_URL=git://162.253.54.31/mirror
+GERRIT_URL=git://10.30.48.3/mirror/$PROJECT
+GIT_BASE=git://10.30.48.3/mirror/$PROJECT
+GIT_URL=git://10.30.48.3/mirror
 JENKINS_HOSTNAME=vex-yul-rot-jenkins-2
 LOGS_SERVER=https://logs.fd.io
 NEXUS_URL=https://nexus.fd.io
