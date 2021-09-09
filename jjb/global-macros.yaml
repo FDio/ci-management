@@ -812,12 +812,22 @@
           $WORKSPACE/scripts/check-unicode.sh jjb/
 
 - builder:
-    name: fdio-infra-ship-docs
+    name: fdio-infra-ship-backup-logs
     builders:
       - config-file-provider:
           files:
-            - file-id: "jenkins-log-archives-settings"
-              variable: "SETTINGS_FILE"
+            - file-id: "jenkins-s3-log-ship"
+              variable: $HOME/.aws/credentials
+      - shell: !include-raw:
+          - scripts/publish_library_py.sh
+      - shell: !include-raw:
+          - scripts/publish_backup_logs.sh
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-clear-credentials.sh
+
+- builder:
+    name: fdio-infra-ship-docs
+    builders:
       - config-file-provider:
           files:
             - file-id: "jenkins-s3-docs-ship"
@@ -830,42 +840,16 @@
           - ../global-jjb/shell/logs-clear-credentials.sh
 
 - builder:
-    name: fdio-infra-ship-backup-logs
+    name: fdio-infra-ship-logs
     builders:
       - config-file-provider:
           files:
             - file-id: "jenkins-s3-log-ship"
-              variable: $HOME/.aws/credentials
+              target: $HOME/.aws/credentials
       - shell: !include-raw:
           - scripts/publish_library_py.sh
       - shell: !include-raw:
           - scripts/publish_logs.sh
-      - shell: !include-raw:
-          - ../global-jjb/shell/logs-clear-credentials.sh
-
-- builder:
-    name: fdio-infra-ship-logs
-    builders:
-      # Ensure no pre-existing .netrc files are overriding logs config
-      - lf-provide-maven-settings-cleanup
-      - config-file-provider:
-          files:
-            - file-id: "jenkins-log-archives-settings"
-              variable: "SETTINGS_FILE"
-      - conditional-step:
-          condition-kind: regex-match
-          regex: "^.*logs-s3.*"
-          label: $S3_BUCKET
-          on-evaluation-failure: dont-run
-          steps:
-            - config-file-provider:
-                files:
-                  - file-id: "jenkins-s3-log-ship"
-                    target: $HOME/.aws/credentials
-      - lf-infra-create-netrc:
-          server-id: logs
-      - shell: !include-raw:
-          - ../global-jjb/shell/logs-deploy.sh
       - shell: !include-raw:
           - ../global-jjb/shell/logs-clear-credentials.sh
       - description-setter:

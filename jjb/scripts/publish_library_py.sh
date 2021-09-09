@@ -27,6 +27,7 @@ cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'
 
 """S3 publish library."""
 
+import glob
 import gzip
 import logging
 import os
@@ -49,23 +50,37 @@ logging.basicConfig(
 )
 logging.getLogger(u"botocore").setLevel(logging.INFO)
 
-COMPRESS_MIME = (
-    u"text/html",
-    u"text/xml",
-    u"text/plain",
-    u"application/octet-stream"
-)
 
+def compress_text(src_dpath):
+    """Compress all text files in directory.
 
-def compress(src_fpath):
-    """Compress a single file.
-
-    :param src_fpath: Input file path.
-    :type src_fpath: str
+    :param src_dpath: Input dir path.
+    :type src_dpath: str
     """
-    with open(src_fpath, u"rb") as orig_file:
-        with gzip.open(src_fpath + ".gz", u"wb") as zipped_file:
-            zipped_file.writelines(orig_file)
+    save_dir = os.getcwd()
+    os.chdir(src_dpath)
+
+    compress_types = [
+        "**/*.html",
+        "**/*.log",
+        "**/*.txt",
+        "**/*.xml",
+        "**/*.json"
+    ]
+    paths = []
+    for _type in compress_types:
+        search = os.path.join(src_dpath, _type)
+        paths.extend(glob.glob(search, recursive=True))
+
+    for _file in paths:
+        # glob may follow symlink paths that open can't find
+        if os.path.exists(_file):
+            gz_file = u"{}.gz".format(_file)
+            with open(_file, "rb") as src, gzip.open(gz_file, "wb") as dest:
+                shutil.copyfileobj(src, dest)
+                os.remove(_file)
+
+    os.chdir(save_dir)
 
 
 def copy_archives(workspace):
@@ -111,22 +126,37 @@ def upload(s3_resource, s3_bucket, src_fpath, s3_path):
     :type src_fpath: str
     :type s3_path: str
     """
-    mime_guess = MimeTypes().guess_type(src_fpath)
-    mime = mime_guess[0]
-    encoding = mime_guess[1]
-    if not mime:
-        mime = u"application/octet-stream"
+    extra_args = {
+        u"ContentType": u"text/plain"
+    }
+    text_html_extra_args = {
+        u"ContentType": u"text/html",
+        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+    }
+    text_plain_extra_args = {
+        u"ContentType": u"text/plain",
+        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+    }
+    app_xml_extra_args = {
+        u"ContentType": u"application/xml",
+        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+    }
 
-    if u"logs" in s3_bucket:
-        if mime in COMPRESS_MIME and encoding != u"gzip":
-            compress(src_fpath)
-            src_fpath = src_fpath + u".gz"
-            s3_path = s3_path + u".gz"
+    mime = MimeTypes().guess_type(src_fpath)[0]
+    encoding = MimeTypes().guess_type(src_fpath)[1]
 
-    extra_args = {u"ContentType": mime}
+    if mime is None and encoding is None:
+        extra_args = extra_args
+    elif mime is None or mime in u"text/plain":
+        extra_args = text_plain_extra_args
+    elif mime in u"text/html":
+        extra_args = text_html_extra_args
+    elif mime in u"application/xml":
+        extra_args = app_xml_extra_args
+    else:
+        extra_args = extra_args
 
     try:
-        logging.info(u"Attempting to upload file " + src_fpath)
         s3_resource.Bucket(s3_bucket).upload_file(
             src_fpath, s3_path, ExtraArgs=extra_args
         )
@@ -176,7 +206,15 @@ def deploy_docs(s3_bucket, s3_path, docs_dir):
     :type s3_path: str
     :type docs_dir: str
     """
-    s3_resource = boto3.resource(u"s3")
+    try:
+        s3_resource = boto3.resource(
+            u"s3",
+            endpoint_url=os.environ[u"AWS_ENDPOINT_URL"]
+        )
+    except KeyError:
+        s3_resource = boto3.resource(
+            u"s3"
+        )
 
     upload_recursive(
         s3_resource=s3_resource,
@@ -204,10 +242,15 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
     :type build_url: str
     :type workspace: str
     """
-    s3_resource = boto3.resource(
-        u"s3",
-        endpoint_url=os.environ[u"AWS_ENDPOINT_URL"]
-    )
+    try:
+        s3_resource = boto3.resource(
+            u"s3",
+            endpoint_url=os.environ[u"AWS_ENDPOINT_URL"]
+        )
+    except KeyError:
+        s3_resource = boto3.resource(
+            u"s3"
+        )  
 
     previous_dir = os.getcwd()
     work_dir = tempfile.mkdtemp(prefix="backup-s3.")
@@ -219,34 +262,6 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
     # Create additional build logs.
     with open(u"_build-details.log", u"w+") as f:
         f.write(u"build-url: " + build_url)
-
-    with open(u"_sys-info.log", u"w+") as f:
-        sys_cmds = []
-
-        logging.debug(u"Platform: " + sys.platform)
-        if sys.platform == u"linux" or sys.platform == u"linux2":
-            sys_cmds = [
-                [u"uname", u"-a"],
-                [u"lscpu"],
-                [u"nproc"],
-                [u"df", u"-h"],
-                [u"free", u"-m"],
-                [u"ip", u"addr"],
-                [u"sar", u"-b", u"-r", u"-n", u"DEV"],
-                [u"sar", u"-P", u"ALL"],
-            ]
-
-        for c in sys_cmds:
-            try:
-                output = subprocess.check_output(c).decode(u"utf-8")
-            except FileNotFoundError:
-                logging.debug(u"Command not found: " + c)
-                continue
-
-            cmd = u" ".join(c)
-            output = u"---> " + cmd + "\n" + output + "\n"
-            f.write(output)
-            logging.info(output)
 
     # Magic string used to trim console logs at the appropriate level during
     # wget.
@@ -265,6 +280,8 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
         f.write(
             six.text_type(resp.content.decode(u"utf-8").split(MAGIC_STRING)[0])
         )
+
+    compress_text(work_dir)
 
     upload_recursive(
         s3_resource=s3_resource,
