@@ -220,34 +220,6 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
     with open(u"_build-details.log", u"w+") as f:
         f.write(u"build-url: " + build_url)
 
-    with open(u"_sys-info.log", u"w+") as f:
-        sys_cmds = []
-
-        logging.debug(u"Platform: " + sys.platform)
-        if sys.platform == u"linux" or sys.platform == u"linux2":
-            sys_cmds = [
-                [u"uname", u"-a"],
-                [u"lscpu"],
-                [u"nproc"],
-                [u"df", u"-h"],
-                [u"free", u"-m"],
-                [u"ip", u"addr"],
-                [u"sar", u"-b", u"-r", u"-n", u"DEV"],
-                [u"sar", u"-P", u"ALL"],
-            ]
-
-        for c in sys_cmds:
-            try:
-                output = subprocess.check_output(c).decode(u"utf-8")
-            except FileNotFoundError:
-                logging.debug(u"Command not found: " + c)
-                continue
-
-            cmd = u" ".join(c)
-            output = u"---> " + cmd + "\n" + output + "\n"
-            f.write(output)
-            logging.info(output)
-
     # Magic string used to trim console logs at the appropriate level during
     # wget.
     MAGIC_STRING = u"-----END_OF_BUILD-----"
