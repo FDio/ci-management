@@ -13,9 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "---> publish_logs.sh"
+echo "---> publish_backup_logs.sh"
 
+S3_BUCKET="logs.fd.io"
+CDN_URL="logs.nginx.service.consul"
+export AWS_ENDPOINT_URL="http://storage.service.consul:9000"
 PYTHON_SCRIPT="/w/workspace/publish_library.py"
+
+# FIXME: s3 config (until migrated to config provider, then pwd will be reset)
+mkdir -p ${HOME}/.aws
+echo "[default]
+aws_access_key_id = storage
+aws_secret_access_key = Storage1234" > "$HOME/.aws/credentials"
 
 mkdir -p "$WORKSPACE/archives"
 
@@ -23,8 +32,8 @@ s3_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
 
 echo "INFO: S3 path $s3_path"
 
-echo "INFO: archiving logs to S3"
+echo "INFO: archiving backup logs to S3"
 python3 $PYTHON_SCRIPT deploy_s3 "$S3_BUCKET" "$s3_path" \
     "$BUILD_URL" "$WORKSPACE"
 
-echo "S3 build logs: <a href=\"https://$CDN_URL/$s3_path\">https://$CDN_URL/$s3_path</a>"
+echo "S3 build backup logs: <a href=\"https://$CDN_URL/$s3_path\">https://$CDN_URL/$s3_path</a>"
