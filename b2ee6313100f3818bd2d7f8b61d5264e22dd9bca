@@ -22,6 +22,30 @@
       "revId": "b2ee6313100f3818bd2d7f8b61d5264e22dd9bca",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a1c043_303b968d",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-09-14T06:34:16Z",
+      "side": 1,
+      "message": "Good catch...no idea, but aligning to same.\nPreviously it was also quite unclear",
+      "parentUuid": "446c2144_d3a1cf53",
+      "range": {
+        "startLine": 820,
+        "startChar": 14,
+        "endLine": 820,
+        "endChar": 22
+      },
+      "revId": "b2ee6313100f3818bd2d7f8b61d5264e22dd9bca",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
