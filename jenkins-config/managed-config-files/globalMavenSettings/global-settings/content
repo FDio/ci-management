@@ -8,13 +8,13 @@
     <mirror>
       <id>rotterdam-release-mirror</id>
       <name>Local Nexus mirror for rotteram builds</name>
-      <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+      <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
       <mirrorOf>central</mirrorOf>
     </mirror>
     <mirror>
       <id>fd-release-mirror</id>
       <name>Local Nexus mirror for fd.io builds</name>
-      <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+      <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
       <mirrorOf>central</mirrorOf>
     </mirror>
   </mirrors>
@@ -26,7 +26,7 @@
         <repository>
           <id>rotterdam-mirror</id>
           <name>rotterdam-mirror</name>
-          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
           <releases>
             <enabled>true</enabled>
             <updatePolicy>never</updatePolicy>
@@ -41,7 +41,7 @@
         <pluginRepository>
           <id>rotterdam-mirror</id>
           <name>rotterdam-mirror</name>
-          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
           <releases>
             <enabled>true</enabled>
             <updatePolicy>never</updatePolicy>
@@ -59,7 +59,7 @@
         <repository>
           <id>rotterdam-snapshot</id>
           <name>rotterdam-snapshot</name>
-          <url>${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -73,7 +73,7 @@
         <pluginRepository>
           <id>rotterdam-snapshot</id>
           <name>rotterdamn-snapshot</name>
-          <url>${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/rotterdam.snapshot/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -90,7 +90,7 @@
         <repository>
           <id>fdio-mirror</id>
           <name>fdio-mirror</name>
-          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
           <releases>
             <enabled>true</enabled>
             <updatePolicy>never</updatePolicy>
@@ -105,7 +105,7 @@
         <pluginRepository>
           <id>fdio-mirror</id>
           <name>fdio-mirror</name>
-          <url>${env.NEXUSPROXY}/content/repositories/public/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/public/</url>
           <releases>
             <enabled>true</enabled>
             <updatePolicy>never</updatePolicy>
@@ -123,7 +123,7 @@
         <repository>
           <id>fdio-snapshot</id>
           <name>fdio-snapshot</name>
-          <url>${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -139,7 +139,7 @@
         <repository>
           <id>staging</id>
           <name>staging</name>
-          <url>${env.NEXUSPROXY}/content/repositories/staging/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/staging/</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -154,7 +154,7 @@
         <pluginRepository>
           <id>fdio-snapshot</id>
           <name>fdio-snapshot</name>
-          <url>${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/fd.io.snapshot/</url>
           <releases>
             <enabled>false</enabled>
           </releases>
@@ -171,7 +171,7 @@
         <repository>
           <id>site</id>
           <name>site</name>
-          <url>${env.NEXUSPROXY}/content/repositories/site/</url>
+          <url>^${env.NEXUSPROXY}/content/repositories/site/</url>
           <releases>
             <enabled>true</enabled>
           </releases>
