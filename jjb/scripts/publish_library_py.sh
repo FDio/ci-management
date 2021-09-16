@@ -126,24 +126,21 @@ def upload(s3_resource, s3_bucket, src_fpath, s3_path):
     :type src_fpath: str
     :type s3_path: str
     """
+    mime = MimeTypes().guess_type(src_fpath)[0]
+    encoding = MimeTypes().guess_type(src_fpath)[1]
+
     extra_args = {
         u"ContentType": u"text/plain"
     }
     text_html_extra_args = {
-        u"ContentType": u"text/html",
-        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+        u"ContentType": u"text/html"
     }
     text_plain_extra_args = {
-        u"ContentType": u"text/plain",
-        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+        u"ContentType": u"text/plain"
     }
     app_xml_extra_args = {
-        u"ContentType": u"application/xml",
-        u"ContentEncoding": MimeTypes().guess_type(src_fpath)[1]
+        u"ContentType": u"application/xml"
     }
-
-    mime = MimeTypes().guess_type(src_fpath)[0]
-    encoding = MimeTypes().guess_type(src_fpath)[1]
 
     if mime is None and encoding is None:
         extra_args = extra_args
@@ -155,6 +152,9 @@ def upload(s3_resource, s3_bucket, src_fpath, s3_path):
         extra_args = app_xml_extra_args
     else:
         extra_args = extra_args
+
+    if encoding:
+        extra_args[u"ContentEncoding"] = encoding
 
     try:
         s3_resource.Bucket(s3_bucket).upload_file(
@@ -250,7 +250,7 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
     except KeyError:
         s3_resource = boto3.resource(
             u"s3"
-        )  
+        )
 
     previous_dir = os.getcwd()
     work_dir = tempfile.mkdtemp(prefix="backup-s3.")
