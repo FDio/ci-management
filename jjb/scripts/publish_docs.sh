@@ -17,32 +17,37 @@ echo "---> publish_docs.sh"
 
 set -exuo pipefail
 
-S3_BUCKET="fdio-docs-s3-cloudfront-index"
 CDN_URL="s3-docs.fd.io"
-PYTHON_SCRIPT="/w/workspace/publish_library.py"
 
 if [[ ${JOB_NAME} == *merge* ]]; then
     case "${JOB_NAME}" in
         *"csit-trending"*)
-            SITE_DIR="${WORKSPACE}/resources/tools/presentation/_build"
-            s3_path="csit/${GERRIT_BRANCH}/trending"
+            workspace_dir="${WORKSPACE}/resources/tools/presentation/_build"
+            bucket_path="/csit/${GERRIT_BRANCH}/trending/"
             ;;
         *"csit-report"*)
-            SITE_DIR="${WORKSPACE}/resources/tools/presentation/_build"
-            s3_path="csit/${GERRIT_BRANCH}/report"
+            workspace_dir="${WORKSPACE}/resources/tools/presentation/_build"
+            bucket_path="/csit/${GERRIT_BRANCH}/report/"
             ;;
         *"csit-docs"*)
-            SITE_DIR="${WORKSPACE}/resources/tools/doc_gen/_build"
-            s3_path="csit/${GERRIT_BRANCH}/docs"
+            workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
+            bucket_path="/csit/${GERRIT_BRANCH}/docs/"
             ;;
         *)
             die "Unknown job: ${JOB_NAME}"
     esac
 
-    echo "INFO: S3 path $s3_path"
+    export TF_VAR_workspace_dir=$workspace_dir
+    export TF_VAR_bucket_path=$bucket_path
+    export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
+    export AWS_DEFAULT_REGION="us-east-1"
 
     echo "INFO: archiving docs to S3"
-    python3 $PYTHON_SCRIPT deploy_docs "$S3_BUCKET" "$s3_path" "$SITE_DIR"
+    pushd ..
+    terraform init -no-color
+    terraform plan -no-color
+    terraform apply -no-color -auto-approve
+    popd
 
-    echo "S3 docs: <a href=\"https://$CDN_URL/$s3_path\">https://$CDN_URL/$s3_path</a>"
+    echo "S3 docs: <a href=\"https://$CDN_URL/$bucket_path\">https://$CDN_URL/$bucket_path</a>"
 fi
