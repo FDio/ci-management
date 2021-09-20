@@ -104,8 +104,12 @@ def copy_archives(workspace):
             for file_or_dir in os.listdir(archives_dir):
                 f = os.path.join(archives_dir, file_or_dir)
                 try:
-                    logging.debug(u"Copying " + f)
-                    shutil.copy(f, dest_dir)
+                    if os.path.isdir(f):
+                        logging.debug(u"Copying tree " + f)
+                        shutil.copytree(f, dest_dir)
+                    else:
+                        logging.debug(u"Copying file " + f)
+                        shutil.copy2(f, dest_dir)
                 except shutil.Error as e:
                     logging.error(e)
                     raise RuntimeError(u"Could not copy " + f)
