@@ -101,14 +101,17 @@ def copy_archives(workspace):
             raise RuntimeError(u"Not a directory.")
         else:
             logging.debug("Archives dir {} does exist.".format(archives_dir))
-            for file_or_dir in os.listdir(archives_dir):
-                f = os.path.join(archives_dir, file_or_dir)
+            for item in os.listdir(archives_dir):
+                src = os.path.join(archives_dir, item)
+                dst = os.path.join(dest_dir, item)
                 try:
-                    logging.debug(u"Copying " + f)
-                    shutil.copy(f, dest_dir)
+                    if os.path.isdir(src):
+                        copytree(src, dst, symlinks=False, ignore=None)
+                    else:
+                        shutil.copy2(src, dst)
                 except shutil.Error as e:
                     logging.error(e)
-                    raise RuntimeError(u"Could not copy " + f)
+                    raise RuntimeError(u"Could not copy " + src)
     else:
         logging.error(u"Archives dir does not exist.")
         raise RuntimeError(u"Missing directory " + archives_dir)
