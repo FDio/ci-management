@@ -55,6 +55,11 @@
           branch-refspec: ''
           os: 'ubuntu1804'
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          os: 'ubuntu1804'
+          repo-stream-part: 'stable.2110'
     executor-arch: 'x86_64'
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
@@ -94,6 +99,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
     os:
       - centos7:
           repo-os-part: 'centos7'
@@ -120,6 +129,13 @@
       - stream: '2106'
         os: 'centos7'
       - stream: '2106'
+        os: 'debian9'
+      # OS deprecated on 2110
+      - stream: '2110'
+        os: 'centos7'
+      - stream: '2110'
+        os: 'centos8'
+      - stream: '2110'
         os: 'debian9'
       # 2009 LTS supports all OS variants
       # OS deprecated in 2101
@@ -190,6 +206,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -228,6 +248,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
     os:
       - centos8:
           repo-os-part: 'centos8'
@@ -239,6 +263,9 @@
     exclude:
       # OS deprecated in master
       - stream: 'master'
+        os: 'centos8'
+      # OS deprecated in 2110
+      - stream: '2110'
         os: 'centos8'
       # OS introduced after 2009
       - stream: '2009'
@@ -283,6 +310,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
     testbed-arch:
       - 1n-skx:
           os: 'ubuntu2004'
@@ -317,6 +348,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
     testbed-arch:
       - 2n-clx:
           os: 'ubuntu2004'
@@ -374,6 +409,10 @@
           branch: 'stable/2106'
           branch-refspec: ''
           repo-stream-part: 'stable.2106'
+      - '2110':
+          branch: 'stable/2110'
+          branch-refspec: ''
+          repo-stream-part: 'stable.2110'
     os: ubuntu2004
 # [end] VPP-CSIT-API-CRC PROJECT
 
