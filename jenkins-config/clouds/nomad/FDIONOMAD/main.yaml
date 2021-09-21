@@ -2,12 +2,12 @@
 jenkins:
   clouds:
     - nomad:
-        jenkinsUrl: "https://10.30.48.3/"
+        jenkinsUrl: "https://10.30.48.5/"
         name: "FDIONOMAD"
         nomadUrl: "http://10.32.8.17:4646"
         jenkinsTunnel: ""
         prune: false
         nomadACLCredentialsId: ""
         workerTimeout: 5
-        workerUrl: "https://10.30.48.3/jnlpJars/slave.jar"
+        workerUrl: "https://10.30.48.5/jnlpJars/slave.jar"
         templates:
