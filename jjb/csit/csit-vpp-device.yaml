@@ -33,29 +33,23 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2009_lts':
-                branch: 'rls2009_lts'
-                branch-id: 'oper-rls2009_lts'
-            - '2101':
-                branch: 'rls2101'
-                branch-id: 'oper-rls2101'
             - '2106':
                 branch: 'rls2106'
                 branch-id: 'oper-rls2106'
+            - '2110':
+                branch: 'rls2110'
+                branch-id: 'oper-rls2110'
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly':
           stream:
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2009_lts':
-                branch: 'rls2009_lts'
-                branch-id: 'oper-rls2009_lts'
-            - '2101':
-                branch: 'rls2101'
-                branch-id: 'oper-rls2101'
             - '2106':
                 branch: 'rls2106'
                 branch-id: 'oper-rls2106'
+            - '2110':
+                branch: 'rls2110'
+                branch-id: 'oper-rls2110'
 
     project: 'csit'
     branch: 'master'
@@ -64,15 +58,12 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2009_lts':
-          branch: 'rls2009_lts'
-          branch-id: 'oper-rls2009_lts'
-      - '2101':
-          branch: 'rls2101'
-          branch-id: 'oper-rls2101'
       - '2106':
           branch: 'rls2106'
           branch-id: 'oper-rls2106'
+      - '2110':
+          branch: 'rls2110'
+          branch-id: 'oper-rls2110'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
