@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cf4d458_1119f451",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-22T12:18:27Z",
+      "side": 1,
+      "message": "This looks dangerous.\nIn the Sandbox log I see:\n\n  + pushd ..\n  /w/workspace /w/workspace/csit-docs-merge-master-ubuntu2004-x86_64\n\nThe csit-docs-merge-master-ubuntu2004-x86_64 directory is where CSIT was cloned to, not sure why the terraform commands need to be one level higher.\n\nIt is possible that (since we are using transient executors) there is nothing else in /w/workspace/, but would feel safer with no directory change.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "7288c65cf58f4d3122a7909e7bc28677e33989e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
