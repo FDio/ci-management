@@ -22,6 +22,30 @@
       "revId": "7288c65cf58f4d3122a7909e7bc28677e33989e6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d75681_69f7daa3",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-09-22T13:08:27Z",
+      "side": 1,
+      "message": "There is nothing in that dir as each job runs in separate container (so no collision with others).\nThere are 2 reasons behind:\n- collision in case you have terraform in project main dir (like terraform based project),\n- all jjb scripts are deployed in /w/workspace, thus calling terraform deployed from JJB cannot be done in SCM dir anyhow.\n\nThis is because /w/workspace is main workspace dir for any jenkins job.\nThe fact that we are using project dir is fine for project scripting, but not for job stuff.",
+      "parentUuid": "7cf4d458_1119f451",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "7288c65cf58f4d3122a7909e7bc28677e33989e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
