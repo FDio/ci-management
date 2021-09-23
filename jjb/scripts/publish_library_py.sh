@@ -36,6 +36,8 @@ import subprocess
 import sys
 import tempfile
 
+from urllib.parse import urljoin
+
 import boto3
 from botocore.exceptions import ClientError
 import requests
@@ -73,6 +75,15 @@ FILE_TYPE = {
 }
 
 
+COMPRESS_TYPES = (
+    "**/*.html",
+    "**/*.log",
+    "**/*.txt",
+    "**/*.xml",
+    "**/*.json",
+)
+
+
 def compress_text(src_dpath):
     """Compress all text files in directory.
 
@@ -82,15 +93,8 @@ def compress_text(src_dpath):
     save_dir = os.getcwd()
     os.chdir(src_dpath)
 
-    compress_types = [
-        "**/*.html",
-        "**/*.log",
-        "**/*.txt",
-        "**/*.xml",
-        "**/*.json"
-    ]
-    paths = []
-    for _type in compress_types:
+    paths = list()
+    for _type in COMPRESS_TYPES:
         search = os.path.join(src_dpath, _type)
         paths.extend(glob.glob(search, recursive=True))
 
@@ -106,7 +110,7 @@ def compress_text(src_dpath):
 
 
 def copy_archives(workspace):
-    """Copy files or directories in a $WORKSPACE/archives to the current
+    """Copy files or directories in a \$WORKSPACE/archives to the current
     directory.
 
     :params workspace: Workspace directery with archives directory.
@@ -117,26 +121,44 @@ def copy_archives(workspace):
 
     logging.debug(u"Copying files from " + archives_dir + u" to " + dest_dir)
 
-    if os.path.exists(archives_dir):
-        if os.path.isfile(archives_dir):
-            logging.error(u"Target is a file, not a directory.")
-            raise RuntimeError(u"Not a directory.")
-        else:
-            logging.debug("Archives dir {} does exist.".format(archives_dir))
-            for item in os.listdir(archives_dir):
-                src = os.path.join(archives_dir, item)
-                dst = os.path.join(dest_dir, item)
-                try:
-                    if os.path.isdir(src):
-                        shutil.copytree(src, dst, symlinks=False, ignore=None)
-                    else:
-                        shutil.copy2(src, dst)
-                except shutil.Error as e:
-                    logging.error(e)
-                    raise RuntimeError(u"Could not copy " + src)
-    else:
+    if not os.path.exists(archives_dir):
         logging.error(u"Archives dir does not exist.")
         raise RuntimeError(u"Missing directory " + archives_dir)
+    if os.path.isfile(archives_dir):
+        logging.error(u"Target is a file, not a directory.")
+        raise RuntimeError(u"Not a directory.")
+    logging.debug("Archives dir {} does exist.".format(archives_dir))
+    for item in os.listdir(archives_dir):
+        src = os.path.join(archives_dir, item)
+        dst = os.path.join(dest_dir, item)
+        try:
+            if os.path.isdir(src):
+                shutil.copytree(src, dst, symlinks=False, ignore=None)
+            else:
+                shutil.copy2(src, dst)
+        except shutil.Error as e:
+            logging.error(e)
+            raise RuntimeError(u"Could not copy " + src)
+
+
+def is_gzip_file(filepath):
+    """Retrun whether the file is gzipped.
+
+    Do not trust the extension, look at first two bytes to decide.
+
+    On failure, some subclass of OSError is raised.
+    FileNotFoundError, IsADirectoryError and PermissionError are obvious,
+    but no documentation say others (e.g. TimeoutError) cannot happen.
+    Callers should expect OSError if they want to catch a failure.
+
+    :param filepath: Path to the file to be checked.
+    :type filepath: Union[str, os.PathLike]
+    :returns: True if it is gzipped, False otherwise.
+    :rtype: bool
+    :raises OSError: From open() or read(), if the file access fails.
+    """
+    with open(filepath, u"rb") as test_f:
+        return test_f.read(2) == b"\x1f\x8b"
 
 
 def upload(s3_resource, s3_bucket, src_fpath, s3_path):
@@ -151,28 +173,20 @@ def upload(s3_resource, s3_bucket, src_fpath, s3_path):
     :type src_fpath: str
     :type s3_path: str
     """
-    def is_gzip_file(filepath):
-        with open(filepath, u"rb") as test_f:
-            return test_f.read(2) == b"\x1f\x8b"
-
     if os.path.isdir(src_fpath):
         return
-    if os.path.isfile(src_fpath):
-        file_name, file_extension = os.path.splitext(src_fpath)
-        content_encoding = u""
-        content_type = u"application/octet-stream"
-        if is_gzip_file(src_fpath):
-            file_name, file_extension = os.path.splitext(file_name)
-            content_encoding = "gzip"
-        content_type = FILE_TYPE.get(
-            file_extension.strip("."),
-            u"application/octet-stream"
-        )
+    if not os.path.isfile(src_fpath):
+        logging.warn(f"Not a file: {src_fpath}")
+        return
 
-        extra_args = dict()
-        extra_args[u"ContentType"] = content_type
-        if content_encoding:
-            extra_args[u"ContentEncoding"] = content_encoding
+    extra_args = dict()
+    file_name, file_extension = os.path.splitext(src_fpath)
+    if is_gzip_file(src_fpath):
+        extra_args[u"ContentEncoding"] = "gzip"
+        file_name, file_extension = os.path.splitext(file_name)
+    extra_args[u"ContentType"] = FILE_TYPE.get(
+        file_extension.strip("."), u"application/octet-stream"
+    )
 
     try:
         s3_resource.Bucket(s3_bucket).upload_file(
@@ -200,16 +214,17 @@ def upload_recursive(s3_resource, s3_bucket, src_fpath, s3_path):
     :type src_fpath: str
     :type s3_path: str
     """
-    for path, _, files in os.walk(src_fpath):
-        for file in files:
-            _path = path.replace(src_fpath, u"")
-            _src_fpath = path + u"/" + file
-            _s3_path = os.path.normpath(s3_path + u"/" + _path + u"/" + file)
+    for deep_path, _, filenames in os.walk(src_fpath):
+        for filename in filenames:
+            deep_src_fpath = os.path.join(deep_path, filename)
+            relative_path = deep_path.replace(src_fpath, u"")
+            rel_fpath = os.path.normpath(os.path.join(relative_path, filename))
+            deep_s3_path = urljoin(s3_path, rel_fpath)
             upload(
                 s3_resource=s3_resource,
                 s3_bucket=s3_bucket,
-                src_fpath=_src_fpath,
-                s3_path=_s3_path
+                src_fpath=deep_src_fpath,
+                s3_path=deep_s3_path
             )
 
 
@@ -218,7 +233,7 @@ def deploy_docs(s3_bucket, s3_path, docs_dir):
 
     :param s3_bucket: Name of S3 bucket. Eg: lf-project-date
     :param s3_path: Path on S3 bucket to place the docs. Eg:
-        csit/${GERRIT_BRANCH}/report
+        csit/\${GERRIT_BRANCH}/report
     :param docs_dir: Directory in which to recursively upload content.
     :type s3_bucket: Object
     :type s3_path: str
@@ -250,11 +265,11 @@ def deploy_s3(s3_bucket, s3_path, build_url, workspace):
 
     :param s3_bucket: Name of S3 bucket. Eg: lf-project-date
     :param s3_path: Path on S3 bucket place the logs and archives. Eg:
-        $JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER
+        \$JENKINS_HOSTNAME/\$JOB_NAME/\$BUILD_NUMBER
     :param build_url: URL of the Jenkins build. Jenkins typically provides this
-        via the $BUILD_URL environment variable.
+        via the \$BUILD_URL environment variable.
     :param workspace: Directory in which to search, typically in Jenkins this is
-        $WORKSPACE
+        \$WORKSPACE
     :type s3_bucket: Object
     :type s3_path: str
     :type build_url: str
