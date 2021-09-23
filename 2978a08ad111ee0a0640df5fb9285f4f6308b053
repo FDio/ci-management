@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "859e14e9_5872c5df",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T12:40:43Z",
+      "side": 1,
+      "message": "IOError is just an alias for OSError, since Python 3.3 (I hope we are not running this with an older interpreter).\nDocstring expanded.",
+      "parentUuid": "e889f865_d023f2d9",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 19
+      },
+      "revId": "2978a08ad111ee0a0640df5fb9285f4f6308b053",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562eaac3_eedbd545",
         "filename": "jjb/scripts/publish_library_py.sh",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2978a08ad111ee0a0640df5fb9285f4f6308b053",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73bd2bc1_e0f48830",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T12:40:43Z",
+      "side": 1,
+      "message": "\u003e print some\n\nDone.",
+      "parentUuid": "562eaac3_eedbd545",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "2978a08ad111ee0a0640df5fb9285f4f6308b053",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
