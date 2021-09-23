@@ -33,9 +33,6 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2009_lts':
-                branch: 'rls2009_lts'
-                branch-id: 'oper-rls2009_lts'
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
@@ -47,9 +44,6 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2009_lts':
-                branch: 'rls2009_lts'
-                branch-id: 'oper-rls2009_lts'
             - '2101':
                 branch: 'rls2101'
                 branch-id: 'oper-rls2101'
@@ -64,9 +58,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2009_lts':
-          branch: 'rls2009_lts'
-          branch-id: 'oper-rls2009_lts'
       - '2101':
           branch: 'rls2101'
           branch-id: 'oper-rls2101'

@@ -20,7 +20,6 @@
       - 'csit-docs-merge-{stream}-{os}-{executor-arch}'
       - 'csit-report-merge-{stream}-{os}-{executor-arch}'
       - 'csit-trending-merge-daily-master-{os}-{executor-arch}'
-      - 'csit-trending-merge-weekly-2009-lts-{os}-{executor-arch}'
 
     project: 'csit'
     branch: 'master'
@@ -31,8 +30,6 @@
     stream:
       - master:
           branch: 'master'
-      - '2009_lts':
-          branch: 'rls2009_lts'
       - '2101':
           branch: 'rls2101'
       - '2101_1':
@@ -217,57 +214,6 @@
           branch: 'master'
       - fdio-infra-publish-docs
       - fdio-infra-publish
-
-- job-template:
-    name: 'csit-trending-merge-weekly-2009-lts-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: 'rls2009_lts'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: '0 0 * * 1'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/csit/trending.sh
-
-    publishers:
-      - csit-trending-failed:
-          branch: '2009 LTS'
-      - csit-trending-failed-job:
-          branch: '2009 LTS'
-      - csit-trending-progressions:
-          branch: '2009 LTS'
-      - csit-trending-regressions:
-          branch: '2009 LTS'
-      - fdio-infra-publish-docs
-      - fdio-infra-publish
-
 
 - project:
     name: csit-info
