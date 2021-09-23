@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbbee52c_6e5e6f3a",
+        "filename": "jjb/scripts/terraform_s3_docs_ship.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T10:21:15Z",
+      "side": 1,
+      "message": "More items are listed in https://gerrit.fd.io/r/c/ci-management/+/33803/1/jjb/scripts/publish_library_py.sh\nMaybe this is enough for docs (but not for logs).",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "702ac5f0a92355fa63cb188f43d81f07e9bc3362",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
