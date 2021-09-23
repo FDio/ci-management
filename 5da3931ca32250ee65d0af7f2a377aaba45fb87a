@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5adb66_3a63a20e",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-09-23T12:47:29Z",
+      "side": 1,
+      "message": "now i fully not understand why i need to have so many variables for nothing.\n\nthere is no deep or rel or relative...",
+      "range": {
+        "startLine": 226,
+        "startChar": 26,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "5da3931ca32250ee65d0af7f2a377aaba45fb87a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
