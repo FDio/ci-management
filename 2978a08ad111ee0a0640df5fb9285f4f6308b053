@@ -116,6 +116,30 @@
       "revId": "2978a08ad111ee0a0640df5fb9285f4f6308b053",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786170f1_403cd0ac",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T12:42:25Z",
+      "side": 1,
+      "message": "Applied urljoin and renamed variables, \"path\" and \"_path\" were too similar.",
+      "parentUuid": "7e85aa27_aca76e42",
+      "range": {
+        "startLine": 214,
+        "startChar": 40,
+        "endLine": 214,
+        "endChar": 52
+      },
+      "revId": "2978a08ad111ee0a0640df5fb9285f4f6308b053",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
