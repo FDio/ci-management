@@ -22,6 +22,30 @@
       "revId": "71a536357c8ca7a8d31ca60b181e2fd9c9819008",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13d8758_93143966",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-09-23T10:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42e6a653_0e309c66",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "71a536357c8ca7a8d31ca60b181e2fd9c9819008",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
