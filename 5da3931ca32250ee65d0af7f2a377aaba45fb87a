@@ -22,6 +22,30 @@
       "revId": "5da3931ca32250ee65d0af7f2a377aaba45fb87a",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da592886_4237500d",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T14:41:32Z",
+      "side": 1,
+      "message": "deep_src_fpath is a new name for _src_fpath (not to be confused with src_fpath argument).\nrelative_path is a new name for _path (not to be confused with path variable).\ndeep_s3_path is a new name for _s3_path (not to be confused with s3_path argument).\nOnly rel_fpath is a new thing, previously it was the argument for os.path.normpath.\n\nDeep means it points into some deep inner node of the archived tree (not the root in arguments). Relative means this is a directory path relative to the root (to src_fpath).\n\nBut created #3 with no variables, just nested expressions, if you like that better.",
+      "parentUuid": "9f5adb66_3a63a20e",
+      "range": {
+        "startLine": 226,
+        "startChar": 26,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "5da3931ca32250ee65d0af7f2a377aaba45fb87a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
