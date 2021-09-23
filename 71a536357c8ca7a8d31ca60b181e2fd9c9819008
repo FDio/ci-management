@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42e6a653_0e309c66",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2021-09-23T10:17:21Z",
+      "side": 1,
+      "message": "When you are using .get(with the second default parameter), you do not need to check for key in line 167.",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 40
+      },
+      "revId": "71a536357c8ca7a8d31ca60b181e2fd9c9819008",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
