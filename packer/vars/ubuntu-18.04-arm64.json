@@ -8,5 +8,6 @@
   "source_ami_filter_owner": "099720109477",
   "ssh_user": "ubuntu",
   "vm_use_block_storage": "true",
-  "vm_image_disk_format": "raw"
+  "vm_image_disk_format": "raw",
+  "docker_source_image": "arm64v8/ubuntu:18.04"
 }
