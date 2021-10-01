@@ -250,6 +250,14 @@
             - 3n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+      - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -312,6 +320,14 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+      - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
+          node-arch:
+            - 2n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
 
@@ -1120,6 +1136,95 @@
       - fdio-infra-publish
 
 - job-template:
+    name: 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get trex performance iterative data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-trex-perf-report-iterative-{stream_report}-
+                      {node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-trex-report-iter-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-trex-report-iter-{node-arch}-perftest trex-00
+              </ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report_iterative/{node-arch}/
+                      test_set_id.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: trex performance
+                  <li>analyse: trex performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-trex-report-iter-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
     name: 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}'
 
     description: |
@@ -1284,6 +1389,95 @@
           project: '{project}'
           branch: '{branch}'
           trigger-word: 'csit-dpdk-report-cov-{node-arch}-perftest'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/perf-verify.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
+    name: 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}'
+
+    description: |
+      <ul>
+          <li>objective
+              <ul>
+                  <li>get trex performance coverage data for csit report
+              </ul>
+          <li>job
+              <ul>
+                  <li>name:
+                      <b>csit-trex-perf-report-coverage-{stream_report}-
+                      {node-arch}</b>
+                  <li>trigger: keyword in comment to csit patch:
+                      <b>csit-trex-report-cov-{node-arch}-perftest
+                      test_set_id</b>
+                  <li>trigger example:
+                      csit-trex-report-cov-{node-arch}-perftest trex-00
+              </ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>perf test-cases selection
+              <ul>
+                  <li>test-cases selected by tags defined in
+                      <i>csit/docs/job_specs/report_coverage/{node-arch}/
+                      test_set_id.md</i>
+              </ul>
+
+          <li>results
+              <ul>
+                  <li>jjb verify: PASS/FAIL
+                  <li>present: trex performance
+                  <li>analyse: trex performance
+              </ul>
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "{csit-perf-trial-duration}"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "{csit-perf-trial-multiplicity}"
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-trex-report-cov-{node-arch}-perftest'
           skip-vote: false
 
     builders:
