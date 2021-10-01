@@ -21,16 +21,17 @@ set -exuo pipefail
 #
 # Variables read:
 # - WORKSPACE - Jenkins workspace to create csit subdirectory in.
+# - GIT_URL - Git clone URL
 # - CSIT_REF - Override ref of CSIT git repository to checkout.
 # Directories updated:
 # - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
 # - Multiple other side effects by entry script(s), see CSIT repository.
 
 cd "${WORKSPACE}"
-git clone https://gerrit.fd.io/r/csit --depth=1 --no-single-branch --no-checkout
+git clone "${GIT_URL}/csit" --depth=1 --no-single-branch --no-checkout
 pushd "${WORKSPACE}/csit"
 if [[ -n "${CSIT_REF-}" ]]; then
-    git fetch --depth=1 https://gerrit.fd.io/r/csit "${CSIT_REF}"
+    git fetch --depth=1 "${GIT_URL}/csit" "${CSIT_REF}"
     git checkout FETCH_HEAD
 else
     git checkout HEAD

@@ -21,13 +21,14 @@ set -exuo pipefail
 #
 # Variables read:
 # - WORKSPACE - Jenkins workspace to create csit subdirectory in.
+# - GIT_URL - Git clone URL
 # - BRANCH_ID - CSIT operational branch to be used for test.
 # Directories updated:
 # - ${WORKSPACE}/csit - Created, holding a checked out CSIT repository.
 # - Multiple other side effects by entry script(s), see CSIT repository.
 
 cd "${WORKSPACE}"
-git clone https://gerrit.fd.io/r/csit --depth=1 --no-single-branch --no-checkout
+git clone "${GIT_URL}/csit" --depth=1 --no-single-branch --no-checkout
 # Check BRANCH_ID value.
 if [[ -z "${BRANCH_ID-}" ]]; then
     echo "BRANCH_ID not provided => 'oper' belonging to master will be used."
