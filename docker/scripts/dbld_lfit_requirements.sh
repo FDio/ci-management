@@ -54,10 +54,5 @@ OLD_PATH="$PATH"
 python3 -m venv "$LF_VENV"
 PATH="$LF_VENV/bin:$PATH"
 python3 -m pip install --upgrade pip
-# on Debian-9 lftools needs to be installed before it is upgraded
-# in order to get the latest version.
-if [ "$OS_ID" = "debian"  ] && [ "$OS_VERSION_ID" = "9" ] ; then
-    python3 -m pip install lftools
-fi
 python3 -m pip install --upgrade --upgrade-strategy eager lftools
 PATH="$OLD_PATH"

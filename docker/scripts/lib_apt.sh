@@ -35,22 +35,6 @@ apt_install_packages() {
             --allow-change-held-packages $@
 }
 
-# Used for older OS distro's which are incompatible
-# with modern distro cmake vesrion
-apt_override_cmake_install_with_pip3_version() {
-    local os_cmake="/usr/bin/cmake"
-    local os_cmake_ver="$($os_cmake --version | head -1)"
-    local pip3_cmake="/usr/local/bin/cmake"
-
-    python3 -m pip --disable-pip-version-check install cmake || true
-    local pip3_cmake_ver="$($pip3_cmake --version | head -1)"
-    echo_log "Overriding $OS_NAME '$os_cmake_ver' with '$pip3_cmake_ver'!"
-    apt-get remove -y cmake --autoremove || true
-    update-alternatives --quiet --remove-all cmake || true
-    update-alternatives --quiet --install "$os_cmake" cmake "$pip3_cmake" 100
-    echo_log "Default cmake ($(which cmake)) version: '$(cmake --version | head -1)'!"
-}
-
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
@@ -198,11 +182,6 @@ RUN apt-get update -qq \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
 
 EOF
-    # Docker installation script fails on debian-9, so don't install docker
-    head $DOCKERFILE
-    if ! grep -qe 'debian:9' "$DOCKERFILE" ; then
-        echo "  && curl -fsSL https://get.docker.com | sh \ " >>"$DOCKERFILE"
-    fi
 
     cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
@@ -239,10 +218,6 @@ builder_generate_apt_dockerfile() {
     local executor_image="$3"
     local vpp_install_skip_sysctl_envvar="";
 
-    if grep -q "debian-9"  <<< "$executor_os_name" ; then
-        # Workaround to VPP package installation failure on debian-9
-        vpp_install_skip_sysctl_envvar="ENV VPP_INSTALL_SKIP_SYSCTL=1"
-    fi
     generate_apt_dockerfile_common $executor_class $executor_image
     csit_builder_generate_docker_build_files
     cat <<EOF >>"$DOCKERFILE"
