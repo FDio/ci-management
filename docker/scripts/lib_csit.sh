@@ -107,9 +107,6 @@ csit_install_packages() {
             debian*)
                 apt_install_packages $packages
                 ;;
-            centos-7)
-                yum_install_packages $packages
-                ;;
             centos-8)
                 dnf_install_packages $packages
                 ;;

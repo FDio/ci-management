@@ -86,8 +86,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
             dump_apt_package_list "$branch" ;;
         *debian*)
             dump_apt_package_list "$branch" ;;
-        *centos:7)
-            dump_yum_package_list "$branch" ;;
         *centos:8)
             dump_dnf_package_list "$branch" ;;
     esac
