@@ -39,17 +39,6 @@
           branch-refspec: ''
           os: 'ubuntu2004'
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2009'
-          os: 'ubuntu1804'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -85,16 +74,6 @@
           branch: 'master'
           branch-refspec: ''
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -104,12 +83,8 @@
           branch-refspec: ''
           repo-stream-part: 'stable.2110'
     os:
-      - centos7:
-          repo-os-part: 'centos7'
       - centos8:
           repo-os-part: 'centos8'
-      - debian9:
-          repo-os-part: 'stretch'
       - debian10:
           repo-os-part: 'buster'
       - ubuntu1804:
@@ -120,35 +95,16 @@
     exclude:
       # OS deprecated in master
       - stream: 'master'
-        os: 'centos7'
-      - stream: 'master'
         os: 'centos8'
-      - stream: 'master'
-        os: 'debian9'
-      # OS deprecated on 2106
-      - stream: '2106'
-        os: 'centos7'
-      - stream: '2106'
-        os: 'debian9'
       # OS deprecated on 2110
       - stream: '2110'
-        os: 'centos7'
-      - stream: '2110'
         os: 'centos8'
-      - stream: '2110'
-        os: 'debian9'
-      # 2009 LTS supports all OS variants
-      # OS deprecated in 2101
-      - stream: '2101'
-        os: 'centos7'
-      - stream: '2101'
-        os: 'debian9'
 # [end] VPP-X86_64 PROJECT
 
 # VPP-DEBUG-X86_64 PROJECT
 #
 # Currently a periodic job due to intermittent failures.
-# Limiting branches to master and 2009, since other branches
+# Limiting branches to master, since other branches
 # may not get fixes for the intermittent failures.
 #
 - project:
@@ -166,13 +122,6 @@
           # Once per hour
           periodicity: 'H * * * *'
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          # Once per day
-          periodicity: 'H H * * *'
-          repo-stream-part: 'stable.2009'
     os:
       - ubuntu2004:
           repo-os-part: 'ubuntu.focal.main'
@@ -194,14 +143,6 @@
           branch: 'master'
           branch-refspec: ''
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -234,16 +175,6 @@
           branch: 'master'
           branch-refspec: ''
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -267,11 +198,6 @@
       # OS deprecated in 2110
       - stream: '2110'
         os: 'centos8'
-      # OS introduced after 2009
-      - stream: '2009'
-        os: 'centos8'
-      - stream: '2009'
-        os: 'ubuntu2004'
 # [end] VPP-AARCH64 PROJECT
 
 # VPP-CSIT-VERIFY-DEVICE PROJECT
@@ -288,8 +214,8 @@
           skip-vote: 'true'
           comment-trigger-value: 'devicetest-periodic'
           exclude:
-            - stream: '2009'
-            - stream: '2101'
+            - stream: '2106'
+            - stream: '2110'
             - testbed-arch: '1n-skx'
     project: 'vpp'
     skip-vote: 'false'
@@ -298,14 +224,6 @@
           branch: 'master'
           branch-refspec: ''
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -336,14 +254,6 @@
           branch: 'master'
           branch-refspec: ''
           repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
@@ -397,14 +307,6 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2009'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
