@@ -33,6 +33,26 @@ if [[ ${JOB_NAME} == *merge* ]]; then
             workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
             bucket_path="/csit/${GERRIT_BRANCH}/docs/"
             ;;
+        *"vpp-docs"*)
+            vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            workspace_dir="${WORKSPACE}/build-root/docs/html"
+            if [[ "${SILO}" = "production" ]] ; then
+                silo_dir=""
+            else
+                silo_dir="/${SILO}"
+            fi
+            bucket_path="/vpp${silo_dir}/${vpp_release}/"
+            ;;
+        *"vpp-make-test-docs"*)
+            vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            workspace_dir="${WORKSPACE}/test/doc/build/html"
+            if [[ "${SILO}" = "production" ]] ; then
+                silo_dir=""
+            else
+                silo_dir="/${SILO}"
+            fi
+            bucket_path="/vpp${silo_dir}/${vpp_release}/vpp_make_test/html/"
+            ;;
         *)
             die "Unknown job: ${JOB_NAME}"
     esac
@@ -48,5 +68,5 @@ if [[ ${JOB_NAME} == *merge* ]]; then
     terraform apply -no-color -auto-approve
     popd
 
-    echo "S3 docs: <a href=\"https://$CDN_URL/$bucket_path\">https://$CDN_URL/$bucket_path</a>"
+    echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"
 fi

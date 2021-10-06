@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Cisco and/or its affiliates.
+# Copyright (c) 2021 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -58,14 +58,6 @@
       - "2101":
           branch: "stable/2101"
           repo-stream-part: "stable.2101"
-          repository-name: "hicn"
-      - "2009":
-          branch: "stable/2009"
-          repo-stream-part: "stable.2009"
-          repository-name: "hicn"
-      - "2005":
-          branch: "stable/2005"
-          repo-stream-part: "stable.2005"
           repository-name: "hicn"
 
 - project:
@@ -138,14 +130,6 @@
       - "2101":
           branch: "stable/2101"
           repo-stream-part: "stable.2101"
-          repository-name: "hicn"
-      - "2009":
-          branch: "stable/2009"
-          repo-stream-part: "stable.2009"
-          repository-name: "hicn"
-      - "2005":
-          branch: "stable/2005"
-          repo-stream-part: "stable.2005"
           repository-name: "hicn"
       - lightng:
           branch: "hicn-light-ng"
