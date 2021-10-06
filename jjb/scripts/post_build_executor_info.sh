@@ -45,14 +45,3 @@ if [ -n "$(which ccache)" ] ; then
 fi
 
 echo "$long_line"
-
-# Avoid sar anomaly on centos-7 in global-jjb/shell/logs-deploy.sh
-#
-# Note: VPP 20.09 will be removed in the next release cycle (21.10),
-#       therefore this hack is better than polluting the docker image
-#       build scripts with code to avoid installing sysstat on centos-7.
-#
-# TODO: Remove when vpp-*-2009-centos7-x86_64 jobs are removed
-if [ "$OS_ID" = "centos" ] && [ "$OS_VERSION_ID" = "7"  ] ; then
-    sudo yum remove -y sysstat >& /dev/null || true
-fi

@@ -13,12 +13,6 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
