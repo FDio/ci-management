@@ -26,11 +26,11 @@
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          os: 'ubuntu1804'
+          os: 'ubuntu2004'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          os: 'ubuntu1804'
+          os: 'ubuntu2004'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
@@ -54,8 +54,6 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
       - gerrit-refspec-parameter:
@@ -77,16 +75,6 @@
           branch: '{branch}'
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -125,8 +113,6 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
 
@@ -162,16 +148,6 @@
             notbuilt: true
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -183,6 +159,7 @@
           - ../scripts/vpp/docs.sh
 
     publishers:
+      - fdio-infra-publish-docs
       - fdio-infra-publish
 
 
@@ -208,8 +185,6 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
       - gerrit-refspec-parameter:
@@ -231,16 +206,6 @@
           branch: '{branch}'
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -276,8 +241,6 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
-      - maven-exec:
-          maven-version: 'mvn33-new'
       - stream-parameter:
           stream: '{stream}'
 
@@ -313,16 +276,6 @@
             notbuilt: true
 
     builders:
-      - maven-target:
-          maven-version: 'mvn33-new'
-          goals: '--version'
-          settings: 'vpp-settings'
-          settings-type: cfp
-          global-settings: 'global-settings'
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -334,4 +287,5 @@
           - ../scripts/vpp/make-test-docs.sh
 
     publishers:
+      - fdio-infra-publish-docs
       - fdio-infra-publish
