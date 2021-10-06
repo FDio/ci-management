@@ -17,6 +17,11 @@ echo "---> publish_docs.sh"
 
 set -exuo pipefail
 
+if [[ "${SILO}" != "production" ]] ; then
+    echo "WARNING: Doc upload not supported on Jenkins '${SILO}'..."
+    exit 0
+fi
+
 CDN_URL="s3-docs.fd.io"
 
 if [[ ${JOB_NAME} == *merge* ]]; then
@@ -33,6 +38,24 @@ if [[ ${JOB_NAME} == *merge* ]]; then
             workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
             bucket_path="/csit/${GERRIT_BRANCH}/docs/"
             ;;
+        *"vpp-docs"*)
+            vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            # TODO: Remove conditional statement when stable/2106 and
+            #       stable/2110 are no longer supported
+            if [[ "${vpp_release::2}" -ge "22" ]] ; then
+                workspace_dir="${WORKSPACE}/build-root/docs/html"
+            else
+                workspace_dir="${WORKSPACE}/docs/_build/html"
+            fi
+            bucket_path="/vpp/${vpp_release}/"
+            ;;
+        # TODO: Remove 'vpp-make-test-docs' when stable/2106 and
+        #       stable/2110 are no longer supported
+        *"vpp-make-test-docs"*)
+            vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            workspace_dir="${WORKSPACE}/test/doc/build/html"
+            bucket_path="/vpp/${vpp_release}/vpp_make_test/html/"
+            ;;
         *)
             die "Unknown job: ${JOB_NAME}"
     esac
@@ -48,5 +71,5 @@ if [[ ${JOB_NAME} == *merge* ]]; then
     terraform apply -no-color -auto-approve
     popd
 
-    echo "S3 docs: <a href=\"https://$CDN_URL/$bucket_path\">https://$CDN_URL/$bucket_path</a>"
+    echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"
 fi
