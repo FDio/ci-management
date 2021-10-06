@@ -33,33 +33,23 @@
     jobs:
       - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    os: 'ubuntu2004'
     stream:
       - master:
           branch: 'master'
           branch-refspec: ''
-          os: 'ubuntu2004'
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2009'
-          os: 'ubuntu1804'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          os: 'ubuntu1804'
-          repo-stream-part: 'stable.2110'
     executor-arch: 'x86_64'
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
@@ -84,38 +74,27 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
           make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
           make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
     os:
-      - centos7:
-          repo-os-part: 'centos7'
-      - centos8:
-          repo-os-part: 'centos8'
-      - debian9:
-          repo-os-part: 'stretch'
-      - debian10:
-          repo-os-part: 'buster'
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
+      - centos7
+      - centos8
+      - debian9
+      - debian10
+      - ubuntu1804
+      - ubuntu2004
     executor-arch: 'x86_64'
     exclude:
       # OS deprecated in master
@@ -165,17 +144,7 @@
           branch-refspec: ''
           # Once per hour
           periodicity: 'H * * * *'
-          repo-stream-part: 'master'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-18.04'
-          # Once per day
-          periodicity: 'H H * * *'
-          repo-stream-part: 'stable.2009'
-    os:
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
+    os: 'ubuntu2004'
     executor-arch: 'x86_64'
 # [end] VPP-DEBUG-X86_64 PROJECT
 
@@ -186,30 +155,23 @@
       - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     executor-arch: 'x86_64'
-    os:
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
+    os: 'ubuntu2004'
     stream:
       - master:
           branch: 'master'
           branch-refspec: ''
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -233,32 +195,24 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
           make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
           make-test-os: 'ubuntu-18.04'
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
     os:
-      - centos8:
-          repo-os-part: 'centos8'
-      - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
-      - ubuntu2004:
-          repo-os-part: 'ubuntu.focal.main'
+      - centos8
+      - ubuntu1804
+      - ubuntu2004
     executor-arch: 'aarch64'
     exclude:
       # OS deprecated in master
@@ -297,23 +251,18 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
     testbed-arch:
       - 1n-skx:
           os: 'ubuntu2004'
@@ -335,23 +284,18 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-          repo-stream-part: 'master'
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
     testbed-arch:
       - 2n-clx:
           os: 'ubuntu2004'
@@ -400,20 +344,16 @@
       - '2009':
           branch: 'stable/2009'
           branch-refspec: ''
-          repo-stream-part: 'stable.2009'
       - '2101':
           branch: 'stable/2101'
           branch-refspec: ''
-          repo-stream-part: 'stable.2101'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
-          repo-stream-part: 'stable.2106'
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
-          repo-stream-part: 'stable.2110'
-    os: ubuntu2004
+    os: 'ubuntu2004'
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS
@@ -461,8 +401,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
 
     scm:
       - gerrit-trigger-scm:
@@ -578,8 +516,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
 
@@ -642,8 +578,6 @@
           os: 'ubuntu1804'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
 
@@ -705,8 +639,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
 
@@ -746,10 +678,6 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
-
-      - provide-maven-settings:
-          settings-file: 'vpp-settings'
-          global-settings-file: 'global-settings'
       - shell:
           !include-raw-escape:
           - ../scripts/packagecloud_push.sh
@@ -782,8 +710,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
 
@@ -860,8 +786,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
 
@@ -940,8 +864,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
 
@@ -1026,8 +948,6 @@
           os: '{os}'
       - project-parameter:
           project: '{project}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.ubuntu.bionic.main'
       - stream-parameter:
           stream: '{stream}'
 
