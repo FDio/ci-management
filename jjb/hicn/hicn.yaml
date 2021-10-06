@@ -22,8 +22,6 @@
     os:
       - ubuntu1804:
           repo-os-part: "ubuntu.bionic.main"
-      - centos7:
-          repo-os-part: "centos7"
 
     executor-arch: "x86_64"
 

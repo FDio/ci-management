@@ -15,14 +15,6 @@
           branch: 'master'
           branch-refspec: ''
           os: 'ubuntu2004'
-      - '2009':
-          branch: 'stable/2009'
-          branch-refspec: ''
-          os: 'ubuntu1804'
-      - '2101':
-          branch: 'stable/2101'
-          branch-refspec: ''
-          os: 'ubuntu1804'
       - '2106':
           branch: 'stable/2106'
           branch-refspec: ''
