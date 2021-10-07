@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fac24bd_cc5ec956",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-10-07T14:42:22Z",
+      "side": 1,
+      "message": "Is there a way to delete all https://s3-docs.fd.io/vpp/sandbox/* from s3?\n\nIf so, I\u0027ll add a periodic job to delete all of the sandbox content weekly.\n\nThis would be a nice feature to improve UX for docs review as part of the release process, but I agree this content shouldn\u0027t be permanently available publicly.",
+      "parentUuid": "97b4a98e_78046e6d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85ffebbb_16c05abc",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47189d7_eafb930a",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-10-07T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85ffebbb_16c05abc",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d4ccc87c_2a89ac78",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-10-07T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd188e69_78894fe2",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fa59ce_4c76f9b4",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4b5abe_3e40b5d5",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-10-07T14:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fa59ce_4c76f9b4",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
