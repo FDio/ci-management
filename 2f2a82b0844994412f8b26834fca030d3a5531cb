@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "03f7c65f_bff5671b",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2021-10-08T05:46:05Z",
+      "side": 1,
+      "message": "i will have to check the ACLs. it is quite strict, but think of it in this way: if base account would have delete rights, anybody can write a code that destroy not only \"sandbox\", but also production. think of it as there is no sandbox in fact. this is not like jenkins running in 2 instances separated. it is one account. we must have an additional account and additional bucket for sandbox. There is no need to do cron job as the \"sandbox bucket\" can have retention policy set to 1 week  and the problem is solved. We do not even need to mess with jenkins periodic jobs and have a delete permissions. \nSo my suggestion is to request bucket with same settings as this one, named as -sandbox and retention policy set to delete content in 7days.",
+      "parentUuid": "3fac24bd_cc5ec956",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85ffebbb_16c05abc",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 1
