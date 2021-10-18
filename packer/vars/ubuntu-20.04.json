@@ -1,0 +1,10 @@
+{
+  "source_ami_filter_name": "*ubuntu*20.04*",
+  "source_ami_filter_owner": "aws-marketplace",
+  "source_ami_filter_product_code": "a8jyynf4hjutohctm41o2z18m",
+  "base_image": "Ubuntu 20.04.3 LTS (x86_64) [2021-10-04]",
+  "distro": "Ubuntu 20.04",
+  "docker_source_image": "ubuntu:20.04",
+  "ssh_user": "ubuntu",
+  "cloud_user_data": "common-packer/provision/ubuntu-user_data.sh"
+}

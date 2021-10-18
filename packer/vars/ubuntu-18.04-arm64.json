@@ -1,6 +1,6 @@
 {
   "arch": "arm64",
-  "base_image": "Ubuntu 18.04 LTS (arm64) [2020-02-18]",
+  "base_image": "Ubuntu 18.04.6 LTS (aarch64) [2021-09-28]",
   "cloud_user_data": "common-packer/provision/ubuntu-user_data.sh",
   "distro": "Ubuntu 18.04",
   "flavor": "v2-standard-1",
