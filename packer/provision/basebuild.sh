@@ -182,6 +182,17 @@ ubuntu_systems() {
     echo "---> Forcing CA certificate update $(date +'%Y%m%dT%H%M%S')"
       sudo update-ca-certificates -f > /dev/null 2>&1
     echo "<--- Forcing CA certificate update $(date +'%Y%m%dT%H%M%S')"
+
+    # Install TLDK development tools
+    echo "---> Installing TLDK packages $(date +'%Y%m%dT%H%M%S')"
+    TLDK_PKGS="libaprutil1-dev libc-dev-bin libc6-dev \
+      libcrypt-dev libexpat1-dev libldap2-dev libsctp-dev libsctp1 \
+      libserf-1-1 libsvn1 ibutf8proc2 linux-libc-dev bsd-compat-headers \
+      libexecinfo-dev python3-pyelftools libnuma-dev"
+    apt install -y ${TLDK_PKGS}
+
+    pip3 install meson ninja
+
 }
 
 opensuse_systems() {
