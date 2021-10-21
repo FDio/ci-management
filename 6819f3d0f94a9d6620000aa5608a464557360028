@@ -16,6 +16,24 @@
       "revId": "6819f3d0f94a9d6620000aa5608a464557360028",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7c6d60_f4c76a17",
+        "filename": "packer/provision/basebuild.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-10-21T16:49:16Z",
+      "side": 1,
+      "message": "libcap-dev install can be found on line 168",
+      "parentUuid": "5c556333_786a9923",
+      "revId": "6819f3d0f94a9d6620000aa5608a464557360028",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
     }
   ]
 }
