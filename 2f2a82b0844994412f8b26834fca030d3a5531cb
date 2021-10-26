@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dce8a193_2f8a6189",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-10-26T19:08:18Z",
+      "side": 1,
+      "message": "Punting on this for now.  May try setting up sandbox S3 bucket at a later time.",
+      "parentUuid": "03f7c65f_bff5671b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "2f2a82b0844994412f8b26834fca030d3a5531cb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85ffebbb_16c05abc",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 1
