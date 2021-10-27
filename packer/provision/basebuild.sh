@@ -158,11 +158,10 @@ ubuntu_systems() {
     # DEB Install deb_dpdk packages to shorten build times
     ###REMOVED sphinx-rtd-theme
     echo "---> Installing deb_dpdk packages $(date +'%Y%m%dT%H%M%S')"
-    DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev debian-xcontrol devscripts \
-      pristine-tar dh-python python-sphinx libpcap0.8-dev libstdc++5 \
-      python-scapy inkscape libxen-dev libxenstore3.0 python-sphinx-rtd-theme \
-      python3 python3-sphinx python3-sphinx-rtd-theme libnuma-dev \
-      libibverbs-dev"
+    DEB_DPDK_PKGS="google-mock lsb-release dpkg-dev devscripts pristine-tar \
+      dh-python sphinx-doc sphinx-common libpcap0.8-dev libstdc++5 \
+      python3-scapy inkscape libxen-dev libxenstore3.0 python3 \
+      python3-sphinx python3-sphinx-rtd-theme libibverbs-dev libnuma-dev"
     apt install -y ${DEB_DPDK_PKGS}
 
     sudo apt install -y libcap-dev libpcap-dev
