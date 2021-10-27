@@ -27,6 +27,6 @@
     project-name: ci-management
     jobs:
       - gerrit-info-yaml-verify
-    build-node: centos7-builder-8c-8g
+    build-node: centos7-builder-4c-4g
     project: ci-management
     branch: master
