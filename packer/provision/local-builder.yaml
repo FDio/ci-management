@@ -24,6 +24,46 @@
       when: ansible_distribution == 'Ubuntu'
       become: true
 
+    - apt_repository:
+        repo: ppa:deadsnakes/ppa
+        state: present
+      become: true
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: 'yes'
+        update_cache: yes
+      become: true
+      when: ansible_distribution == 'Ubuntu'
+
+    - name: Install python-tox and deps
+      pip:
+        name:
+          - tox
+          - tox-pyenv
+          - virtualenv
+        state: present
+      become: true
+
+    - name: 'Install TLDK Packages'
+      apt:
+        name:
+          - libaprutil1-dev
+          - libc-dev-bin
+          - libc6-dev
+          - libcap-dev
+          - libcrypt-dev
+          - libexpat1-dev
+          - libldap2-dev
+          - libsctp-dev
+          - libsctp1
+          - libserf-1-1
+          - libsvn1
+          - linux-libc-dev
+          - python3-pyelftools
+          - libnuma-dev
+
   roles:
     - lfit.mono-install
 
