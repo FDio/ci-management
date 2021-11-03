@@ -16,6 +16,24 @@
       "revId": "84ee1f534658524aaf3980360d556f1316a8f4ab",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbc9288_91c35621",
+        "filename": "packer/provision/local-builder.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2021-11-03T16:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b80ca75d_38164fc4",
+      "revId": "84ee1f534658524aaf3980360d556f1316a8f4ab",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
     }
   ]
 }
