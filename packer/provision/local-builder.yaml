@@ -15,7 +15,7 @@
         value: '128'
         reload: no
       # yamllint disable-line rule:line-length
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+      when: ansible_distribution == 'Ubuntu'
       become: true
 
     - name: 'Install PackageCloud'
