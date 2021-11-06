@@ -53,6 +53,6 @@ mkdir -p "$LF_VENV"
 OLD_PATH="$PATH"
 python3 -m venv "$LF_VENV"
 PATH="$LF_VENV/bin:$PATH"
-python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip==21.2.4
 python3 -m pip install --upgrade --upgrade-strategy eager lftools
 PATH="$OLD_PATH"
