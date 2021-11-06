@@ -43,27 +43,15 @@ RETVAL="0"
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-# TODO: Mount ccache volume into docker container, then enable this.
-#
-#export CCACHE_DIR=/scratch/docker-build/ccache
-#if [ -d $CCACHE_DIR ];then
-#    echo "ccache size:"
-#    du -sh $CCACHE_DIR
-#else
-#    echo $CCACHE_DIR does not exist.
-#fi
-
-if [ -n "${MAKE_PARALLEL_FLAGS}" ]
-then
+if [ -n "${MAKE_PARALLEL_FLAGS}" ] ; then
   echo "Building VPP. Number of cores for build set with" \
        "MAKE_PARALLEL_FLAGS='${MAKE_PARALLEL_FLAGS}'."
-elif [ -n "${MAKE_PARALLEL_JOBS}" ]
-then
+elif [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
   echo "Building VPP. Number of cores for build set with" \
        "MAKE_PARALLEL_JOBS='${MAKE_PARALLEL_JOBS}'."
 else
-  echo "Building VPP. Number of cores not set, " \
-       "using build default ($(grep -c ^processor /proc/cpuinfo))."
+    echo "Building VPP. Number of cores not set," \
+         "using build default ($(grep -c ^processor /proc/cpuinfo))."
 fi
 
 make_build_test() {
@@ -75,15 +63,19 @@ make_build_test() {
         BUILD_ERROR="FAILED 'make install-ext-deps'"
         return
     fi
+    if ! make UNATTENDED=yes test-dep ; then
+        BUILD_ERROR="FAILED 'make test-dep'"
+        return
+    fi
     if ! make UNATTENDED=yes pkg-verify ; then
         BUILD_ERROR="FAILED 'make pkg-verify'"
-	return
+	    return
     fi
-    if [ "${IS_CSIT_VPP_JOB,,}" == "true" ]; then
-	# CSIT jobs don't need to run make test
-	return
+    if [ "${IS_CSIT_VPP_JOB,,}" == "true" ] ; then
+	    # CSIT jobs don't need to run make test
+	    return
     fi
-    if [ -n "${MAKE_PARALLEL_JOBS}" ]; then
+    if [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
         export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
         echo "Testing VPP with ${TEST_JOBS} cores."
     else
@@ -91,29 +83,33 @@ make_build_test() {
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${VPPAPIGEN_TEST_OS}" ]; then
-	if ! src/tools/vppapigen/test_vppapigen.py; then
-	    BUILD_ERROR="FAILED src/tools/vppapigen/test_vppapigen.py"
-	    return
-	fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${VPPAPIGEN_TEST_OS}" ] ; then
+        if ! src/tools/vppapigen/test_vppapigen.py ; then
+            BUILD_ERROR="FAILED src/tools/vppapigen/test_vppapigen.py"
+            return
+        fi
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ]; then
-	if ! make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test; then
-	    BUILD_ERROR="FAILED 'make test'"
-	    return
-	fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ] ; then
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test ; then
+            BUILD_ERROR="FAILED 'make test'"
+            return
+        fi
     else
-	echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
+        echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" ] && git grep VPP_WORKER_CONFIG; then
-	if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test; then
-	    BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
-	    return
-	else
-          echo -e "\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} MULTIWORKER MAKE TEST SUCCESSFULLY COMPLETED\n"
-	fi
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" ] \
+            && git grep -q VPP_WORKER_CONFIG ; then
+        if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes \
+                RETRIES=3 test ; then
+            BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
+            return
+        else
+            echo -e "\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
+                    "MULTIWORKER MAKE TEST SUCCESSFULLY COMPLETED\n"
+        fi
     else
-	echo "Skip running 'make test' with VPP_WORKER_CONFIG='workers 2' on ${OS_ID}-${OS_VERSION_ID}"
+        echo "Skip running 'make test' with VPP_WORKER_CONFIG='workers 2'" \
+             "on ${OS_ID}-${OS_VERSION_ID}"
     fi
 }
 
@@ -124,5 +120,6 @@ if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
     RETVAL="1"
 fi
-echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^} BUILD $BUILD_RESULT\n$line\n"
+echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
+        "BUILD $BUILD_RESULT\n$line\n"
 exit $RETVAL
