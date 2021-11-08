@@ -60,6 +60,7 @@
           - libsvn1
           - linux-libc-dev
           - python3-pyelftools
+          - python3-scapy
           - libnuma-dev
           - meson
       when: ansible_distribution == 'Ubuntu'
