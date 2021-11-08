@@ -21,7 +21,7 @@
 
     project: 'tldk'
     os:
-      - ubuntu1604
+      - ubuntu2004
     stream:
       - master:
           branch: 'master'
