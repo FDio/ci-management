@@ -218,6 +218,7 @@
     name: vpp-csit-verify-perf
     jobs:
       - 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
+      - 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
     project: 'vpp'
     skip-vote: 'false'
     stream:
@@ -929,6 +930,102 @@
 
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
+
+# VPP-CSIT-BISECT JOB TEMPLATE
+- job-template:
+    name: 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
+    description: |
+      <ul>
+          <li>executor
+              <ul>
+                  <li>builder-{os}-prod-{executor-arch}
+              </ul>
+          <li>testbed architecture
+              <ul>
+                  <li>{testbed-arch}
+              </ul>
+          <li>Objective FIXME
+      </ul>
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - csit-perf-trial-duration-parameter:
+          csit-perf-trial-duration: "1.0"
+      - csit-perf-trial-multiplicity-parameter:
+          csit-perf-trial-multiplicity: "60"
+      - gerrit-csit-refspec-parameter
+      - gerrit-event-comment-text-parameter
+      - gerrit-event-type-parameter
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: 300
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'bisecttest-{testbed-arch}'
+          skip-vote: true
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_dpdk_dev_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/csit-bisect.sh
+
+    publishers:
+      - postbuildscript:
+          # Can be removed when all CSIT branches use correct archive directory.
+          builders:
+            - build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - shell:
+                    !include-raw-escape:
+                    - ../scripts/vpp/copy_archives.sh
+
+      - fdio-infra-publish
+# [end] VPP-CSIT-BISECT JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 - job-template:
