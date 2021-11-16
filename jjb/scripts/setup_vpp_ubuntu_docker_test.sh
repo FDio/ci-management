@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##############################################################################
-# Copyright (c) 2018 The Linux Foundation and others.
+# Copyright (c) 2021 The Linux Foundation and others.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -29,18 +29,4 @@ if [ -n ${DOCKER_TEST} ] ; then
         fi
 	sudo mount -o remount /dev/shm -o size=${MEM} || true
         echo "/dev/shm remounted with size='${MEM}'"
-fi
-
-# This will remove any previously installed external packages
-# for old branch builds
-if [ "${GERRIT_BRANCH}" != "master" ]; then
-    echo "Removing $OS_ID-$OS_VERSION_ID package 'vpp-ext-deps'"
-    if [ "${OS_ID,,}" == "ubuntu" ] || [ "${OS_ID,,}" == "debian" ] ; then
-        sudo apt-get -y remove vpp-ext-deps || true
-    elif [ "${OS_ID,,}" == "centos" ]; then
-        sudo yum -y erase vpp-ext-deps || true
-        sudo yum clean all || true
-    else
-        echo "ERROR: Unsupported OS '$OS_ID'!"
-    fi
 fi

@@ -475,7 +475,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
@@ -539,7 +539,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/debug-build.sh
@@ -606,7 +606,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/build.sh
@@ -669,7 +669,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/gcc-build.sh
@@ -747,7 +747,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/csit-device.sh
@@ -824,7 +824,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/csit-device.sh
@@ -909,7 +909,7 @@
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/setup_vpp_dpdk_dev_env.sh
+          - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/csit-perf.sh

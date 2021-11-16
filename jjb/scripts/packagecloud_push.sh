@@ -40,38 +40,53 @@ sleep 10
 FACTER_OS=$(/usr/bin/facter operatingsystem)
 push_cmd=""
 push_ext_deps_cmd=""
+ext_deps_pkg=""
+downloads_dir="/root/Downloads"
+
+create_deb_push_cmds()
+{
+    local distro="$1"
+
+    if [ "$distro" = "debian" ] || [ "$distro" = "ubuntu" ] ; then
+        FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
+        DEBS=$(find . -type f -iname '*.deb' | grep -v vpp-ext-deps | xargs || true)
+        push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/${distro}/${FACTER_LSBNAME}/main/ ${DEBS}"
+        ext_deps_ver="$(dpkg -l vpp-ext-deps | mawk '/vpp-ext-deps/{print $3}' || true)"
+        ext_deps_pkg="$(find . -type f -iname 'vpp-ext-deps*.deb' | grep $ext_deps_ver || find $downloads_dir -type f -iname 'vpp-ext-deps*.deb' | grep $ext_deps_ver || true)"
+        if [ -n "$ext_deps_pkg}" ] ; then
+            push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/${distro}/${FACTER_LSBNAME}/main/ ${ext_deps_pkg}"
+        fi
+    else
+        echo "ERROR: Unknown distro: '$distro'"
+        return 1
+    fi
+}
+
+create_rpm_push_cmds()
+{
+    FACTER_OSMAJREL=$(/usr/bin/facter operatingsystemmajrelease)
+    FACTER_ARCH=$(/usr/bin/facter architecture)
+    RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v vpp-ext-deps | xargs || true)
+    push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${RPMS}"
+    ext_deps_ver="$(dnf list vpp-ext-deps | mawk '/vpp-ext-deps/{print $2}' || true)"
+    ext_deps_pkg="$(find . -type f -iname 'vpp-ext-deps*.rpm' | grep $ext_deps_ver || find $downloads_dir -type f -iname 'vpp-ext-deps*.rpm' | grep $ext_deps_ver || true)"
+    if [ -n "$ext_deps_pkg" ] ; then
+        push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${ext_deps_pkg}"
+    fi
+}
 
 # PCIO_CO and SILO are Jenkins Global Environment variables defined in
 # .../ci-management/jenkins-config/global-vars-*.sh
 if [ -f ~/.packagecloud ]; then
     case "$FACTER_OS" in
         Debian)
-            FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
-            DEBS=$(find . -type f -iname '*.deb' | grep -v vpp-ext-deps)
-            push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${DEBS}"
-            EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
-            if [ -n "$EXT_DEPS_DEB" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/debian/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB}"
-            fi
+            create_deb_push_cmds debian
             ;;
         Ubuntu)
-            FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
-            DEBS=$(find . -type f -iname '*.deb' | grep -v vpp-ext-deps)
-            push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${DEBS}"
-            EXT_DEPS_DEB=$(find . -type f -iname 'vpp-ext-deps*.deb')
-            if [ -n "$EXT_DEPS_DEB" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/ubuntu/${FACTER_LSBNAME}/main/ ${EXT_DEPS_DEB}"
-            fi
+            create_deb_push_cmds ubuntu
             ;;
         CentOS)
-            FACTER_OSMAJREL=$(/usr/bin/facter operatingsystemmajrelease)
-            FACTER_ARCH=$(/usr/bin/facter architecture)
-            RPMS=$(find . -type f -iregex '.*/.*\.\(s\)?rpm' | grep -v vpp-ext-deps)
-            push_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${RPMS}"
-            EXT_DEPS_RPM=$(find . -type f -iname 'vpp-ext-deps*.rpm')
-            if [ -n "$EXT_DEPS_RPM" ] ; then
-                push_ext_deps_cmd="package_cloud push ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ ${EXT_DEPS_RPM}"
-            fi
+            create_rpm_push_cmds
             ;;
         *)
             echo -e "\n$line\n* ERROR: Unsupported OS '$FACTER_OS'\n* PACKAGECLOUD PUSH FAILED!\n$line\n"
@@ -86,10 +101,7 @@ if [ -f ~/.packagecloud ]; then
     else
         $push_cmd
         if [ -n "$push_ext_deps_cmd" ] ; then
-            # Don't fail script if vpp-ext-deps push fails.
-            set +e
-            $push_ext_deps_cmd
-            set -e
+            $push_ext_deps_cmd || true
         fi
     fi
 else
