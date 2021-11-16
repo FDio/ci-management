@@ -84,6 +84,8 @@
       # OS deprecated in master
       - stream: 'master'
         os: 'centos8'
+      - stream: 'master'
+        os: 'ubuntu1804'
       # OS deprecated on 2110
       - stream: '2110'
         os: 'centos8'
@@ -169,6 +171,8 @@
       # OS deprecated in master
       - stream: 'master'
         os: 'centos8'
+      - stream: 'master'
+        os: 'ubuntu1804'
       # OS deprecated in 2110
       - stream: '2110'
         os: 'centos8'
@@ -503,7 +507,7 @@
       - make-test-os-parameter:
           make-test-os: '{make-test-os}'
       - os-parameter:
-          os: 'ubuntu1804'
+          os: '{os}'
       - project-parameter:
           project: '{project}'
       - stream-parameter:
