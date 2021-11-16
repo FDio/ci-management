@@ -148,7 +148,7 @@
       - 'vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    make-parallel-jobs: '16'
+    make-parallel-jobs: '24'
     make-test-os: 'ubuntu-20.04'
     stream:
       - master:
@@ -252,11 +252,11 @@
       - 3n-tsh:
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
-          make-parallel-jobs: '16'
+          make-parallel-jobs: '24'
       - 2n-tx2:
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
-          make-parallel-jobs: '16'
+          make-parallel-jobs: '24'
 
 # [end] VPP-CSIT-VERIFY-PERF PROJECT
 
