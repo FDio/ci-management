@@ -16,7 +16,6 @@
     gerrit-server-name: Primary
     jenkins-ssh-credential: jenkins-gerrit-credentials
     lftools-version: <1.0.0
-    archive-artifacts: ''
 
     # fd.io branch defaults
     branch: master

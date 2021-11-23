@@ -8,20 +8,16 @@
     project: 'hc2vpp'
     os:
       - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
           skip-site: 'false'
           skip-jar-deploy: 'false'
       - centos7:
-          repo-os-part: 'centos7'
           skip-site: 'true'
           skip-jar-deploy: 'true'
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
       - '1904':
           branch: 'stable/1904'
-          repo-stream-part: 'stable.1904'
 
 - project:
     name: hc2vpp-view
@@ -98,8 +94,6 @@
           maven: 'mvn36'
       - maven-exec:
           maven-version: 'mvn36'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
 
     scm:
       - gerrit-trigger-scm:
@@ -163,8 +157,6 @@
           maven: 'mvn36'
       - maven-exec:
           maven-version: 'mvn36'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
       - string:
           name: SKIP_JAR_DEPLOY
           default: '{skip-jar-deploy}'

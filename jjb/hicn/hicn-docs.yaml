@@ -6,18 +6,12 @@
       - "hicn-docs-merge-{stream}-{os}-{executor-arch}"
 
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-
+    os: ubuntu2004
     executor-arch: "x86_64"
-
     stream:
       - "master":
           branch: "master"
           branch-refspec: ""
-          repo-stream-part: "master"
-          repository-name: "hicn"
     type:
       - short
       - long
@@ -28,9 +22,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
-    archive-artifacts:
-      - "**/build-doxygen/lib/doc/html/*"
-      - "**/docs/build/html"
     allow-empty: "true"
     fingerprint: false
     only-if-success: true
@@ -49,14 +40,8 @@
           refspec: "{branch-refspec}"
       - os-parameter:
           os: "{os}"
-      - maven-exec:
-          maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -74,25 +59,11 @@
           branch: "{branch}"
 
     builders:
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "hicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: "hicn-settings"
-          global-settings-file: "global-settings"
       - shell: !include-raw-escape: ../scripts/setup_executor_env.sh
-      - shell: !include-raw-escape: include-raw-hicn-docs.sh
+      - shell: !include-raw-escape: ../scripts/hicn/docs.sh
 
     publishers:
       - fdio-infra-publish
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
 
 - job-template:
     name: "hicn-docs-merge-{stream}-{os}-{executor-arch}"
@@ -100,9 +71,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: false
-    archive-artifacts:
-      - "**/build-doxygen/lib/doc/html/*"
-      - "**/docs/build/html"
     allow-empty: "true"
     fingerprint: false
     only-if-success: true
@@ -121,14 +89,8 @@
           refspec: "{branch-refspec}"
       - os-parameter:
           os: "{os}"
-      - maven-exec:
-          maven-version: "mvn33-new"
       - stream-parameter:
           stream: "{stream}"
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: "{archive-artifacts}"
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -162,22 +124,9 @@
             notbuilt: true
 
     builders:
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "hicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
-      - provide-maven-settings:
-          settings-file: "hicn-settings"
-          global-settings-file: "global-settings"
       - shell: !include-raw-escape: ../scripts/setup_executor_env.sh
-      - shell: !include-raw-escape: include-raw-hicn-docs.sh
+      - shell: !include-raw-escape: ../scripts/hicn/docs.sh
 
     publishers:
+      - fdio-infra-publish-docs
       - fdio-infra-publish
-      - naginator:
-          rerun-unstable-builds: false
-          max-failed-builds: 1
-          fixed-delay: 90
