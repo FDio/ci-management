@@ -17,81 +17,50 @@
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
-
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-
+    os: ubuntu2004
     executor-arch: "x86_64"
-
     stream:
       - "master":
           branch: "master"
-          repo-stream-part: "master"
-          repository-name: "hicn"
       - "2101":
           branch: "stable/2101"
-          repo-stream-part: "stable.2101"
-          repository-name: "hicn"
 
 - project:
     name: hicn-aarch64
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
-
     project: "hicn"
-
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu-arm.focal.main"
-
+    os: ubuntu2004
     executor-arch: "aarch64"
-
     stream:
       - master:
           branch: "master"
-          repo-stream-part: "master"
-          repository-name: "hicn"
       - "2101":
           branch: "stable/2101"
-          repo-stream-part: "stable.2101"
-          repository-name: "hicn"
 
 - project:
     name: hicn-beta-x86_64
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
-
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-
+    os: ubuntu2004
     executor-arch: "x86_64"
-
     stream:
       - lightng:
           branch: "hicn-light-ng"
-          repo-stream-part: "hicn-light-ng"
 
 - project:
     name: hicn-beta-aarch64
     jobs:
       - "hicn-verify-{stream}-{os}-{executor-arch}"
-
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu-arm.focal.main"
-
+    os: ubuntu2004
     executor-arch: "aarch64"
-
     stream:
       - lightng:
           branch: "hicn-light-ng"
-          repo-stream-part: "hicn-light-ng"
 
 - project:
     name: hicn-misc
@@ -101,17 +70,11 @@
     stream:
       - master:
           branch: "master"
-          repo-stream-part: "master"
       - "2101":
           branch: "stable/2101"
-          repo-stream-part: "stable.2101"
-          repository-name: "hicn"
       - lightng:
           branch: "hicn-light-ng"
-          repo-stream-part: "hicn-light-ng"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
+    os: ubuntu2004
     executor-arch: "x86_64"
 
 - project:
@@ -120,34 +83,23 @@
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-
+    os: ubuntu2004
     executor-arch: "x86_64"
-
     stream:
       - master:
           branch: "master"
-          repo-stream-part: "master"
 
 - project:
     name: hicn-extras-aarch64
     jobs:
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
-
     project: "hicn"
-    os:
-      - ubuntu2004:
-          repo-os-part: "ubuntu-arm.focal.main"
-
+    os: ubuntu2004
     executor-arch: "aarch64"
-
     stream:
       - master:
           branch: "master"
-          repo-stream-part: "master"
 
 - project:
     name: hicn-view
@@ -161,7 +113,6 @@
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
     concurrent: true
-    archive-artifacts: "**/tmp/hicn-failed-unittests/*/* **/core"
 
     properties:
       - lf-infra-properties:
@@ -174,10 +125,6 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.ubuntu.bionic.main"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -234,7 +181,7 @@
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-checkstyle.sh
+          - ../scripts/hicn/checkstyle.sh
 
     publishers:
       - fdio-infra-publish
@@ -261,12 +208,8 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -287,7 +230,7 @@
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-build.sh
+          - ../scripts/hicn/build.sh
 
     publishers:
       - fdio-infra-publish
@@ -313,16 +256,8 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - maven-project-parameter:
-          maven: "mvn33-new"
-      - maven-exec:
-          maven-version: "mvn33-new"
       - stream-parameter:
-          stream: "{repository-name}"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
+          stream: "{stream}"
 
     scm:
       - gerrit-trigger-scm:
@@ -348,27 +283,14 @@
           files:
             - file-id: "packagecloud_api"
               target: "/root/packagecloud_api"
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "hicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-checkstyle.sh
+          - ../scripts/hicn/checkstyle.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-build.sh
-      - provide-maven-settings:
-          settings-file: "hicn-settings"
-          global-settings-file: "global-settings"
+          - ../scripts/hicn/build.sh
       - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell: !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-publish
@@ -409,12 +331,8 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "{stream}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -443,7 +361,7 @@
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-extras-build.sh
+          - ../scripts/hicn/build-extras.sh
 
     publishers:
       - fdio-infra-publish
@@ -469,16 +387,8 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - maven-project-parameter:
-          maven: "mvn33-new"
-      - maven-exec:
-          maven-version: "mvn33-new"
       - stream-parameter:
           stream: "hicn"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
-      - archive-artifacts-parameter:
-          artifacts: '{archive-artifacts}'
 
     scm:
       - gerrit-trigger-scm:
@@ -512,25 +422,12 @@
           files:
             - file-id: "packagecloud_api"
               target: "/root/packagecloud_api"
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "hicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-hicn-extras-build.sh
-      - provide-maven-settings:
-          settings-file: "hicn-settings"
-          global-settings-file: "global-settings"
+          - ../scripts/hicn/build-extras.sh
       - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
-      - shell: !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-hicn-maven-push.sh
 
     publishers:
       - fdio-infra-publish

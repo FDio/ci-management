@@ -20,19 +20,15 @@
 
     project: "cicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu.bionic.main"
-      - ubuntu2004:
-          repo-os-part: "ubuntu.focal.main"
-      - centos8:
-          repo-os-part: "centos8"
+      - ubuntu1804
+      - ubuntu2004
+      - centos8
 
     executor-arch: "x86_64"
 
     stream:
       - master:
           branch: "cframework/master"
-          repo-stream-part: "master"
 
     type:
       - short
@@ -46,17 +42,14 @@
 
     project: "cicn"
     os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu-arm.bionic.main"
-      - ubuntu2004:
-          repo-os-part: "ubuntu-arm.focal.main"
+      - ubuntu1804
+      - ubuntu2004
 
     executor-arch: "aarch64"
 
     stream:
       - master:
           branch: "cframework/master"
-          repo-stream-part: "master"
 
     type:
       - short
@@ -69,16 +62,13 @@
       - "cicn-viper-merge-{stream}-{os}-{executor-arch}"
 
     project: "cicn"
-    os:
-      - ubuntu1804:
-          repo-os-part: "ubuntu.bionic.main"
+    os: ubuntu1804
 
     executor-arch: "x86_64"
 
     stream:
       - master:
           branch: "viper/master"
-          repo-stream-part: "master"
 
     type:
       - short
@@ -101,12 +91,6 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - maven-project-parameter:
-          maven: "mvn33-new"
-      - maven-exec:
-          maven-version: "mvn33-new"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "hicn"
 
@@ -134,23 +118,10 @@
           files:
             - file-id: "packagecloud_api"
               target: "/root/packagecloud_api"
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "cicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-cicn-libparc-build.sh
-      - provide-maven-settings:
-          settings-file: "cicn-settings"
-          global-settings-file: "global-settings"
-      - shell: !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-cicn-maven-push.sh
+          - ../scripts/cicn/build-libparc.sh
       - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
@@ -195,7 +166,7 @@
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-cicn-libparc-build.sh
+          - ../scripts/cicn/build-libparc.sh
 
     publishers:
       - fdio-infra-publish
@@ -217,12 +188,6 @@
           branch: "{branch}"
       - os-parameter:
           os: "{os}"
-      - maven-project-parameter:
-          maven: "mvn33-new"
-      - maven-exec:
-          maven-version: "mvn33-new"
-      - repo-name-parameter:
-          repo-name: "{repo-stream-part}.{repo-os-part}"
       - stream-parameter:
           stream: "hicn"
 
@@ -253,23 +218,10 @@
           files:
             - file-id: "packagecloud_api"
               target: "/root/packagecloud_api"
-      - maven-target:
-          maven-version: "mvn33-new"
-          goals: "--version"
-          settings: "cicn-settings"
-          settings-type: cfp
-          global-settings: "global-settings"
-          global-settings-type: cfp
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-cicn-viper-build.sh
-      - provide-maven-settings:
-          settings-file: "cicn-settings"
-          global-settings-file: "global-settings"
-      - shell: !include-raw-escape:
-          - ../scripts/maven_push_functions.sh
-          - include-raw-cicn-maven-push.sh
+          - ../scripts/cicn/build-viper.sh
       - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
 
@@ -314,7 +266,7 @@
       - shell: !include-raw-escape:
           - ../scripts/setup_executor_env.sh
       - shell: !include-raw-escape:
-          - include-raw-cicn-viper-build.sh
+          - ../scripts/cicn/build-viper.sh
 
     publishers:
       - fdio-infra-publish
