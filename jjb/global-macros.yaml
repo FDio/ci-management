@@ -25,14 +25,6 @@
           description: "Architecture parameter"
 
 - parameter:
-    name: archive-artifacts-parameter
-    parameters:
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{artifacts}'
-          description: "Artifacts to archive on the log server."
-
-- parameter:
     name: compiler-parameter
     parameters:
       - string:
@@ -179,14 +171,6 @@
           default: '{project}'
           # yamllint disable-line rule:line-length
           description: "JJB configured PROJECT parameter to identify a Gerrit project"
-
-- parameter:
-    name: repo-name-parameter
-    parameters:
-      - string:
-          name: REPO_NAME
-          default: '{repo-name}'
-          description: 'Name of repo to which to publish packaging'
 
 - parameter:
     name: stream-parameter

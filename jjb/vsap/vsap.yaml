@@ -22,18 +22,13 @@
       - 'vsap-merge-{stream}-{os}-{mode}'
 
     project: 'vsap'
-    os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
+    os: ubuntu1804
     stream:
       - '2005':
           branch: 'stable/2005'
-          repo-stream-part: 'stable.2005'
     mode:
-      - vcl:
-          repo-mode-part: 'vcl'
-      - ldp:
-          repo-mode-part: 'ldp'
+      - vcl
+      - ldp
 
 - project:
     name: vsap-view
@@ -60,16 +55,10 @@
       - gerrit-refspec-parameter
       - os-parameter:
           os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
       - stream-parameter:
           stream: '{stream}'
       - mode-parameter:
           mode: '{mode}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:
@@ -119,12 +108,6 @@
           stream: '{stream}'
       - mode-parameter:
           mode: '{mode}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}.{repo-mode-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm-recursive:

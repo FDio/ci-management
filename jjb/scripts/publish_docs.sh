@@ -38,6 +38,16 @@ if [[ ${JOB_NAME} == *merge* ]]; then
             workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
             bucket_path="/csit/${GERRIT_BRANCH}/docs/"
             ;;
+        *"cicn-docs"*)
+            cicn_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            workspace_dir="${WORKSPACE}/build/documentation/deploy-site"
+            bucket_path="/cicn/${cicn_release}/"
+            ;;
+        *"hicn-docs"*)
+            hicn_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
+            workspace_dir="${WORKSPACE}/build/doc/deploy-site"
+            bucket_path="/hicn/${hicn_release}/"
+            ;;
         *"vpp-docs"*)
             vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
             # TODO: Remove conditional statement when stable/2106 and
