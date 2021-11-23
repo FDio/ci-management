@@ -1,8 +1,8 @@
 #!/bin/bash
-# basic build script example
+echo "---> jjb/scripts/cicn/build-viper.sh"
 set -euxo pipefail
 IFS=$'\n\t'
 
-pushd libparc/scripts
+pushd scripts
 bash build-package.sh
 popd
