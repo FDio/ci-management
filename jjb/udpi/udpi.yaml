@@ -23,17 +23,13 @@
 
     project: 'udpi'
     os:
-      - ubuntu1604:
-          repo-os-part: 'ubuntu.xenial.main'
-      - centos7:
-          repo-os-part: 'centos7'
+      - ubuntu1604
+      - centos7
     stream:
       - master:
           branch: 'master'
-          repo-stream-part: 'master'
       - '2001':
           branch: 'stable/2001'
-          repo-stream-part: 'stable.2001'
 
 - project:
     name: udpi-view
@@ -59,14 +55,8 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
       - stream-parameter:
           stream: '{stream}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
@@ -127,12 +117,6 @@
           os: '{os}'
       - stream-parameter:
           stream: '{stream}'
-      - repo-name-parameter:
-          repo-name: '{repo-stream-part}.{repo-os-part}'
-      - string:
-          name: ARCHIVE_ARTIFACTS
-          default: '{archive-artifacts}'
-          description: Artifacts to archive to the logs server.
 
     scm:
       - gerrit-trigger-scm:
