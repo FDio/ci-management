@@ -184,17 +184,6 @@
     jobs:
       - 'vpp-csit-verify-device-perpatch':
           make-parallel-jobs: '32'
-          exclude:
-            - testbed-arch: '1n-tx2'
-      - 'vpp-csit-verify-device-periodic':
-          make-parallel-jobs: '32'
-          periodicity: 'H * * * *'
-          skip-vote: 'true'
-          comment-trigger-value: 'devicetest-periodic'
-          exclude:
-            - stream: '2106'
-            - stream: '2110'
-            - testbed-arch: '1n-skx'
     project: 'vpp'
     skip-vote: 'false'
     stream:
@@ -214,6 +203,7 @@
       - 1n-tx2:
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
+          skip-vote: 'true'
 
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
 
@@ -677,84 +667,6 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-GCC-VERIFY JOB TEMPLATE
-
-# VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
-- job-template:
-    name: 'vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}'
-    id: 'vpp-csit-verify-device-periodic'
-    description: |
-      <ul>
-          <li>executor
-              <ul>
-                  <li>csit-builder-{os}-prod-{executor-arch}
-              </ul>
-          <li>testbed architecture
-              <ul>
-                  <li>{testbed-arch}
-              </ul>
-      </ul>
-
-    project-type: freestyle
-    node: 'csit-builder-{os}-prod-{executor-arch}'
-    concurrent: true
-    latest-only: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-csit-refspec-parameter
-      - gerrit-event-comment-text-parameter
-      - gerrit-event-type-parameter
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '90'
-
-    triggers:
-      - timed: '{periodicity}'
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/csit-device.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-CSIT-VERIFY-DEVICE-PERIODIC JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 - job-template:
