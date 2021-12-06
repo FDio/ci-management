@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb2c18e6_e1bb9d63",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-12-06T15:43:55Z",
+      "side": 1,
+      "message": "Please use the job name in the job template: \n  \u0027vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}\u0027\n\nand remove \u0027id: vpp-csit-verify-device-perpatch\u0027 from the job template (line 674).",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 40
+      },
+      "revId": "87d5cee707010e868be6b99061195c21b170e8ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2edc7cf_fe5e85ee",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2021-12-06T15:43:55Z",
+      "side": 1,
+      "message": "Please remove this per previous comment.",
+      "revId": "87d5cee707010e868be6b99061195c21b170e8ea",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
