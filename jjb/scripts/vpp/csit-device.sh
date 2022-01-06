@@ -17,6 +17,12 @@ echo "---> jjb/scripts/vpp/csit-device.sh"
 
 set -exuo pipefail
 
+line="*************************************************************************"
+if [[ "${SILO}" = "production" ]] && [[ ${JOB_NAME} == *tx2 ]] ; then
+    echo -e "\n$line\nSkipping ${JOB_NAME} on Jenkins ${SILO}..."
+    exit 0
+fi
+
 # Clone CSIT git repository and proceed with entry script located there.
 #
 # Variables read:
