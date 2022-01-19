@@ -15,7 +15,18 @@
 
 echo "---> jjb/scripts/setup_vpp_ext_deps.sh"
 
-set -e -o pipefail
+# Normally we would have the settings in any bash script stricter:
+#    set -e -o pipefail
+#
+# But there is a corner case scenario that triggers an error,
+# namely when a new packagecloud repo is created, it is completely
+# empty. Then the installation fails. However, since this
+# script is an optimization, it is okay for it to fail without failing
+# the entire job.
+#
+# Therefore, we do not use the "-e" here.
+
+set -o pipefail
 
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
