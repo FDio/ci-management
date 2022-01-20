@@ -106,6 +106,9 @@
             - '2110':
                 branch: 'rls2110'
                 branch-id: 'oper-rls2110'
+            - '2202':
+                branch: 'rls2202'
+                branch-id: 'oper-rls2202'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
             - 2n-clx:
@@ -334,6 +337,9 @@
       - '2110':
           branch: 'rls2110'
           branch-id: 'oper-rls2110'
+      - '2202':
+          branch: 'rls2202'
+          branch-id: 'oper-rls2202'
     stream_report:
       - '2106':
           branch: 'rls2106'
@@ -341,6 +347,9 @@
       - '2110':
           branch: 'rls2110'
           branch-id: 'oper-rls2110'
+      - '2202':
+          branch: 'rls2202'
+          branch-id: 'oper-rls2202'
 
     build-artifact-num-to-keep: 10
 
