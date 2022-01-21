@@ -20,6 +20,9 @@
     jobs:
       - 'csit-dpdk-perf-verify-{stream}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -46,6 +49,9 @@
                 executor-arch: 'aarch64'
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -72,6 +78,9 @@
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -108,6 +117,10 @@
                 branch-id: 'oper-rls2202'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+                periodicity: '0 2 * * 1,3,5'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -142,6 +155,9 @@
                 periodicity: '0 2 * * 4'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -164,6 +180,9 @@
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -182,6 +201,9 @@
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -214,6 +236,9 @@
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -251,6 +276,9 @@
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -283,6 +311,9 @@
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
