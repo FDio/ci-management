@@ -253,6 +253,9 @@
           branch: 'stable/2202'
           branch-refspec: ''
     testbed-arch:
+      - 2n-icx:
+          os: 'ubuntu2004'
+          executor-arch: 'x86_64'
       - 2n-clx:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
