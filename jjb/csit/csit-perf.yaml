@@ -124,11 +124,11 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,3,5'
+                periodicity: '0 2 * * 1-5'
             - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,3,5'
+                periodicity: '0 2 * * 1-5'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
