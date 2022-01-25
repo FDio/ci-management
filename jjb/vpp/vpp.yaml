@@ -212,9 +212,6 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2106':
-          branch: 'stable/2106'
-          branch-refspec: ''
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
@@ -243,9 +240,6 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2106':
-          branch: 'stable/2106'
-          branch-refspec: ''
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
@@ -266,6 +260,9 @@
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
       - 3n-skx:
+          os: 'ubuntu2004'
+          executor-arch: 'x86_64'
+      - 3n-icx:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
       - 2n-dnv:
@@ -299,9 +296,6 @@
     stream:
       - master:
           branch: 'master'
-          branch-refspec: ''
-      - '2106':
-          branch: 'stable/2106'
           branch-refspec: ''
       - '2110':
           branch: 'stable/2110'
