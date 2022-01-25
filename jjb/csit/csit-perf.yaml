@@ -41,6 +41,9 @@
             - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+            - 3n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 3n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -65,6 +68,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-tsh:
@@ -97,6 +103,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
@@ -145,6 +154,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
                 periodicity: '0 2 * * 1,4'
+            - 3n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+                periodicity: '0 2 * * 1,4'
             - 3n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -165,6 +178,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-aws:
@@ -190,6 +206,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
@@ -220,6 +239,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
@@ -255,6 +277,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
@@ -297,6 +322,9 @@
             - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+            - 3n-icx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 3n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -330,6 +358,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
             - 3n-skx:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-dnv:
