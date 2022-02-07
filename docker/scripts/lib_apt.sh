@@ -96,9 +96,8 @@ ENV LANG="en_US.UTF-8" LANGUAGE="en_US" LC_ALL="en_US.UTF-8"
 #        build-essential
 #
 # TODO:  Fix broken project requirement install targets
-#        graphviz         for 'make bootstrap-doxygen' (VPP)
-#        doxygen          for 'make doxygen' (VPP)
-#        enchant          for 'make docs' (VPP)
+#        graphviz         for doxygen (HICN)
+#        doxygen          for doxygen (HICN)
 #        libffi-dev       for python cffi install (Ubuntu20.04/VPP/aarch64)
 #        liblapack-dev    for python numpy/scipy (CSIT/aarch64)
 #        libopenblas-dev  for python numpy/scipy (CSIT/aarch64)
@@ -130,7 +129,6 @@ RUN apt-get update -qq \\
              default-jre \\
              dnsutils \\
              doxygen \\
-             enchant \\
              emacs \\
              facter \\
              gawk \\
@@ -180,7 +178,6 @@ RUN apt-get update -qq \\
              zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
-
 EOF
 
     cat <<EOF >>"$DOCKERFILE"

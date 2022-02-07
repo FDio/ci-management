@@ -83,6 +83,7 @@
     os:
       - centos8
       - debian10
+      - debian11
       - ubuntu1804
       - ubuntu2004
     executor-arch: 'x86_64'
@@ -100,6 +101,13 @@
         os: 'centos8'
       - stream: '2202'
         os: 'ubuntu1804'
+      # os added in master
+      - stream: '2106'
+        os: 'debian11'
+      - stream: '2110'
+        os: 'debian11'
+      - stream: '2202'
+        os: 'debian11'
 # [end] VPP-X86_64 PROJECT
 
 # VPP-DEBUG-X86_64 PROJECT
