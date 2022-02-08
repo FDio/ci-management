@@ -75,8 +75,6 @@ def main(args: List[str]) -> None:
     for arg in args:
         if arg.lower() == '--ubuntu':
             distro = 'ubuntu'
-        elif arg.lower() == '--centos':
-            distro = 'centos'
         elif arg.lower() == '--x86_64':
             arch = 'x86_64'
         elif arg.lower() == '--aarch64':

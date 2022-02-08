@@ -23,8 +23,6 @@ alias lib_csit_imported=true
 export CIMAN_DOCKER_SCRIPTS="${CIMAN_DOCKER_SCRIPTS:-$(dirname $BASH_SOURCE)}"
 . "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_apt.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_yum.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_dnf.sh"
 
 CSIT_SUPPORTED_EXECUTOR_CLASSES="builder csit_dut"
 csit_supported_executor_class() {
@@ -36,9 +34,6 @@ csit_supported_executor_class() {
 
 csit_supported_os() {
     case "$1" in
-        # TODO: Remove ubuntu-18.04 once CSIT has completed transition
-        #       to ubuntu-20.04
-        ubuntu-18.04) return 0 ;;
         ubuntu-20.04) return 0 ;;
                    *) ;;
     esac
@@ -70,18 +65,7 @@ csit_install_packages() {
     bld_log="${bld_log}-$branchname-csit_install_packages-bld.log"
 
     git clean -qfdx
-
-    # Install PyYAML required by dbld_csit_find_ansible_packages.py
-    #
-    # Note: Conditional install due to Bug 1696324 -
-    #       Update to python3.6 breaks PyYAML dependencies
-    # Status:       CLOSED CANTFIX
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1696324
-    if [ "$OS_NAME" = "centos-8" ] ; then
-        dnf_install_packages python3-pyyaml
-    else
-        python3 -m pip install pyyaml
-    fi
+    python3 -m pip install pyyaml
 
     local exclude_roles="-e calibration -e kernel -e mellanox -e nomad -e consul"
     [ "$OS_ARCH" = "aarch64" ] && exclude_roles="$exclude_roles -e iperf"
@@ -91,14 +75,10 @@ csit_install_packages() {
     packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
     packages="${packages/bionic /}"
     packages="${packages/focal /}"
+    packages="${packages/libmbedcrypto1/libmbedcrypto3}"
+    packages="${packages/libmbedtls10/libmbedtls12}"
+    packages="$(echo ${packages//python\-/python3\-} | tr ' ' '\n' | sort -u | xargs)"
 
-    # TODO: Fix Ubuntu-18.04 specific package names that fail on Ubuntu-20.04
-    #       (remove when CSIT is updated)
-    if [ "$OS_NAME" = "ubuntu-20.04" ] ; then
-        packages="${packages/libmbedcrypto1/libmbedcrypto3}"
-        packages="${packages/libmbedtls10/libmbedtls12}"
-        packages="$(echo ${packages//python\-/python3\-} | tr ' ' '\n' | sort -u | xargs)"
-    fi
     if [ -n "$packages" ] ; then
         case "$OS_NAME" in
             ubuntu*)
@@ -106,9 +86,6 @@ csit_install_packages() {
                 ;;
             debian*)
                 apt_install_packages $packages
-                ;;
-            centos-8)
-                dnf_install_packages $packages
                 ;;
             *)
                 echo "Unsupported OS ($OS_ID): CSIT packages NOT INSTALLED!"

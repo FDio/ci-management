@@ -25,8 +25,6 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . "$CIMAN_DOCKER_SCRIPTS/lib_vpp.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_csit.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_apt.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_yum.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_dnf.sh"
 
 all_os_names=""
 ci_tag=""
@@ -119,9 +117,6 @@ for executor_os_name in $os_names ; do
                                     "$docker_from_image" "$executor_docker_image" ;;
         debian*)
             generate_apt_dockerfile "$EXECUTOR_CLASS" "$executor_os_name" \
-                                    "$docker_from_image" "$executor_docker_image" ;;
-        centos-8)
-            generate_dnf_dockerfile "$EXECUTOR_CLASS" "$executor_os_name" \
                                     "$docker_from_image" "$executor_docker_image" ;;
         *)
             echo "ERROR: Don't know how to generate dockerfile for OS $executor_os_name!"
