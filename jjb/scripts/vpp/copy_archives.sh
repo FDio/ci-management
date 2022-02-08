@@ -30,9 +30,9 @@ set +e
 # Variables read:
 # - WORKSPACE - Jenkins workspace to create csit subdirectory in.
 # Directories updated:
-# - ${WORKSPACE}/archives/csit_current - Current patch results are copied here.
-# - ${WORKSPACE}/archives/csit_parent - Parent patch results are copied here.
+# - ${WORKSPACE}/archives/csit_* - Test results for various VPP builds are here.
+#   e.g. csit_current and csit_parent for vpp per-patch perf job.
 
 mkdir -p "${WORKSPACE}/archives"
-cp -Rv "${WORKSPACE}/csit_current" "${WORKSPACE}/archives"
-cp -Rv "${WORKSPACE}/csit_parent" "${WORKSPACE}/archives"
+# Using asterisk as bisect job creates more direcotries.
+cp -Rv "${WORKSPACE}/csit_"* "${WORKSPACE}/archives"
