@@ -120,9 +120,6 @@ for executor_os_name in $os_names ; do
         debian*)
             generate_apt_dockerfile "$EXECUTOR_CLASS" "$executor_os_name" \
                                     "$docker_from_image" "$executor_docker_image" ;;
-        centos-8)
-            generate_dnf_dockerfile "$EXECUTOR_CLASS" "$executor_os_name" \
-                                    "$docker_from_image" "$executor_docker_image" ;;
         *)
             echo "ERROR: Don't know how to generate dockerfile for OS $executor_os_name!"
             usage ;;

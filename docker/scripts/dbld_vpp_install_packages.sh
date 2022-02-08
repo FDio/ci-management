@@ -37,7 +37,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
 
     # Install OS packages
     make_vpp "install-dep" "$branch"
-    make_vpp "centos-pyyaml" "$branch" # VPP Makefile tests for centos versions
     if [ "$OS_ID" = "ubuntu" ] && [ "$OS_ARCH" = "x86_64" ] ; then
         # 'Make docs jobs are only run on ubuntu x86_64 executors
         #  so only run for ubuntu build executors.
@@ -88,8 +87,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
             dump_apt_package_list "$branch" ;;
         *debian*)
             dump_apt_package_list "$branch" ;;
-        *centos:8)
-            dump_dnf_package_list "$branch" ;;
     esac
 done
 
