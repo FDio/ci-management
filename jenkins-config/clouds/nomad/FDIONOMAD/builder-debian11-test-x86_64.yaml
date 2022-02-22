@@ -1,0 +1,15 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "amd64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    cpu: 14000
+    image: "fdiotools/builder-debian11:test-x86_64"
+    labels: "builder-debian11-test-x86_64"
+    memory: 14000
+    prefix: "builder-debian11-test-x86_64"
+    hostVolumes: "/tmp/ccache.debian11:/scratch/ccache"
