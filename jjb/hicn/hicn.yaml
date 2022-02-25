@@ -72,6 +72,28 @@
           branch: "master"
 
 - project:
+    name: hicn-vpp-latest-x86_64
+    jobs:
+      - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
+    project: "hicn"
+    os: ubuntu2004
+    executor-arch: "x86_64"
+    stream:
+      - master:
+          branch: "master"
+
+- project:
+    name: hicn-vpp-latest-aarch64
+    jobs:
+      - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
+    project: "hicn"
+    os: ubuntu2004
+    executor-arch: "aarch64"
+    stream:
+      - master:
+          branch: "master"
+
+- project:
     name: hicn-view
     views:
       - project-view
@@ -425,6 +447,54 @@
           - ../scripts/hicn/build-extras.sh
       - shell: !include-raw-escape:
           - ../scripts/packagecloud_push.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
+    name: "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
+
+    project-type: freestyle
+    node: "builder-{os}-prod-{executor-arch}"
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: "{project}"
+      - gerrit-parameter:
+          branch: "{branch}"
+      - os-parameter:
+          os: "{os}"
+      - stream-parameter:
+          stream: "{stream}"
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+
+      - timed: 'H H * * *'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: 'verify-vpp-latest'
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell: !include-raw-escape:
+          - ../scripts/hicn/build-vpp-latest.sh
 
     publishers:
       - fdio-infra-publish
