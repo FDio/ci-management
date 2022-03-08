@@ -129,7 +129,7 @@
             - 2n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,3,5'
+                periodicity: '0 2 * * 1,4'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -141,31 +141,31 @@
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 3n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 3n-tsh:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-                periodicity: '0 2 * * 4'
+                periodicity: '0 2 * * 1-5'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
