@@ -129,7 +129,7 @@
             - 2n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-                periodicity: '0 2 * * 1,4'
+                periodicity: '0 2 * * 1-5'
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
