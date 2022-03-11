@@ -18,8 +18,6 @@ set -euxo pipefail
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . "$CIMAN_DOCKER_SCRIPTS/lib_vpp.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_apt.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_yum.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_dnf.sh"
 
 must_be_run_in_docker_build
 
@@ -37,7 +35,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
 
     # Install OS packages
     make_vpp "install-dep" "$branch"
-    make_vpp "centos-pyyaml" "$branch" # VPP Makefile tests for centos versions
     if [ "$OS_ID" = "ubuntu" ] && [ "$OS_ARCH" = "x86_64" ] ; then
         # 'Make docs jobs are only run on ubuntu x86_64 executors
         #  so only run for ubuntu build executors.
@@ -50,16 +47,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     rsync -ac $vpp_ext_dir/downloads/. $DOCKER_DOWNLOADS_DIR || true
     if which apt >/dev/null ; then
         vpp_ext_deps_pkg=$vpp_ext_dir/$(dpkg -l vpp-ext-deps 2>/dev/null | mawk '/vpp-ext-deps/{print $2"_"$3"_"$4".deb"}')
-    elif which dnf >/dev/null ; then
-        inst_vpp_ext_deps="$(dnf list vpp-ext-deps 2>/dev/null | grep vpp-ext-deps)"
-        vpp_ext_deps_ver="$(echo $inst_vpp_ext_deps | mawk '{print $2}')"
-        vpp_ext_deps_arch="$(echo $inst_vpp_ext_deps | mawk '{print $1}'| cut -d'.' -f2)"
-        vpp_ext_deps_pkg="$vpp_ext_dir/vpp-ext-deps-${vpp_ext_deps_ver}.${vpp_ext_deps_arch}.rpm"
-    elif which yum >/dev/null ; then
-        inst_vpp_ext_deps="$(yum list vpp-ext-deps 2>/dev/null | grep vpp-ext-deps)"
-        vpp_ext_deps_ver="$(echo $inst_vpp_ext_deps | mawk '{print $2}')"
-        vpp_ext_deps_arch="$(echo $inst_vpp_ext_deps | mawk '{print $1}' | cut -d'.' -f2)"
-        vpp_ext_deps_pkg="$vpp_ext_dir/vpp-ext-deps-${vpp_ext_deps_ver}.${vpp_ext_deps_arch}.rpm"
     else
         echo "ERROR: Package Manager not installed!"
         exit 1
@@ -88,8 +75,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
             dump_apt_package_list "$branch" ;;
         *debian*)
             dump_apt_package_list "$branch" ;;
-        *centos:8)
-            dump_dnf_package_list "$branch" ;;
     esac
 done
 
