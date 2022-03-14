@@ -13,9 +13,6 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2106':
-          branch: 'stable/2106'
-          branch-refspec: ''
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
@@ -23,7 +20,7 @@
           branch: 'stable/2202'
           branch-refspec: ''
 
-# TODO: Remove when stable/2106 and stable/2110 are no longer supported.
+# TODO: Remove when stable/2110 is no longer supported.
 - project:
     name: make-test-docs
     jobs:
@@ -35,9 +32,6 @@
     os: 'ubuntu2004'
 
     stream:
-      - '2106':
-          branch: 'stable/2106'
-          branch-refspec: ''
       - '2110':
           branch: 'stable/2110'
           branch-refspec: ''
