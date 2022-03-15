@@ -34,16 +34,6 @@ libparc-dev \
 libmemif-dev \
 longbow-dev"
 
-export PACKAGE_LIST_CENTOS="libhicnctrl-devel \
-libhicnctrl-memif-devel \
-libhicntransport-memif-devel \
-libhicn-devel \
-libhicntransport-devel \
-hicn-plugin-devel \
-libparc-devel \
-libmemif-devel \
-longbow-devel"
-
 export VERSION_WHITELIST="19.01-227 \
 19.08-289 \
 20.01-73 \
