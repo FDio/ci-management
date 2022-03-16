@@ -1,6 +1,0 @@
----
-templates:
-  - image: "fdiotools/builder-centos8:test-aarch64"
-    labels: "builder-centos8-test-aarch64"
-    prefix: "builder-centos8-test-aarch64"
-    hostVolumes: "/tmp/ccache.centos8:/scratch/ccache"
