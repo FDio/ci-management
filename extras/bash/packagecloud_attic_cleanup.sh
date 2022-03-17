@@ -16,7 +16,7 @@ get_more_packages() {
 }
 
 get_more_packages
-while [ -n "$(cat $packages_json)" ] ; do
+while [ "$(cat $packages_json)" != "[]" ] ; do
     for pkg in $(cat $packages_json | jq '.[].destroy_url' | xargs) ; do
         # shellcheck disable=SC2086
         echo "Deleting $(basename $pkg)"
