@@ -21,3 +21,6 @@ target/
 
 # Python Virtualenv
 venv/
+
+# VSCode
+.vscode
