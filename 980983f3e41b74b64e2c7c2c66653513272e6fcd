@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beb31da2_c82036fb",
+        "filename": "extras/bash/packagecloud_attic_cleanup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-03-17T06:07:35Z",
+      "side": 1,
+      "message": "wondering why it must go via jq. but fine.",
+      "range": {
+        "startLine": 15,
+        "startChar": 86,
+        "endLine": 15,
+        "endChar": 93
+      },
+      "revId": "980983f3e41b74b64e2c7c2c66653513272e6fcd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
