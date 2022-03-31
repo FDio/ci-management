@@ -23,8 +23,6 @@
     stream:
       - "master":
           branch: "master"
-      - "2101":
-          branch: "stable/2101"
 
 - project:
     name: hicn-aarch64
@@ -37,30 +35,6 @@
     stream:
       - master:
           branch: "master"
-      - "2101":
-          branch: "stable/2101"
-
-- project:
-    name: hicn-beta-x86_64
-    jobs:
-      - "hicn-verify-{stream}-{os}-{executor-arch}"
-    project: "hicn"
-    os: ubuntu2004
-    executor-arch: "x86_64"
-    stream:
-      - lightng:
-          branch: "hicn-light-ng"
-
-- project:
-    name: hicn-beta-aarch64
-    jobs:
-      - "hicn-verify-{stream}-{os}-{executor-arch}"
-    project: "hicn"
-    os: ubuntu2004
-    executor-arch: "aarch64"
-    stream:
-      - lightng:
-          branch: "hicn-light-ng"
 
 - project:
     name: hicn-misc
@@ -70,10 +44,6 @@
     stream:
       - master:
           branch: "master"
-      - "2101":
-          branch: "stable/2101"
-      - lightng:
-          branch: "hicn-light-ng"
     os: ubuntu2004
     executor-arch: "x86_64"
 
