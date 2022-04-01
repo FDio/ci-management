@@ -21,7 +21,7 @@
     os: ubuntu2004
     executor-arch: "x86_64"
     stream:
-      - "master":
+      - hicn:
           branch: "master"
 
 - project:
@@ -33,7 +33,7 @@
     os: ubuntu2004
     executor-arch: "aarch64"
     stream:
-      - master:
+      - hicn:
           branch: "master"
 
 - project:
@@ -42,7 +42,7 @@
       - "hicn-checkstyle-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
     stream:
-      - master:
+      - hicn:
           branch: "master"
     os: ubuntu2004
     executor-arch: "x86_64"
@@ -56,7 +56,7 @@
     os: ubuntu2004
     executor-arch: "x86_64"
     stream:
-      - master:
+      - hicn:
           branch: "master"
 
 - project:
@@ -68,7 +68,7 @@
     os: ubuntu2004
     executor-arch: "aarch64"
     stream:
-      - master:
+      - hicn:
           branch: "master"
 
 - project:
