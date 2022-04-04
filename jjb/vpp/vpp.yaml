@@ -255,6 +255,10 @@
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
           make-parallel-jobs: '16'
+      - 3n-alt:
+          os: 'ubuntu2004'
+          executor-arch: 'aarch64'
+          make-parallel-jobs: '16'
       - 2n-tx2:
           os: 'ubuntu2004'
           executor-arch: 'aarch64'
