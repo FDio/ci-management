@@ -85,6 +85,9 @@
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-verify-{stream}-{node-arch}':
           node-arch:
+            - 1n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -227,6 +230,9 @@
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
+            - 1n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -315,6 +321,9 @@
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
+            - 1n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -402,6 +411,9 @@
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
+            - 1n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
             - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
