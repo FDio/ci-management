@@ -9,6 +9,7 @@ echo "---> jjb/scripts/hicn/docs.sh"
 bash scripts/build-packages.sh sphinx
 
 if [[ "${JOB_NAME}" == *merge* ]]; then
+  mkdir -p "${SITE_DIR}"
   mv -f "${DOC_DIR}" "${SITE_DIR}"
   find "${SITE_DIR}" -type f '(' -name '*.md5' -o -name '*.dot' -o -name '*.map' ')' -delete
 fi
