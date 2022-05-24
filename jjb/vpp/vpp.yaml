@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -44,6 +44,9 @@
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
@@ -74,6 +77,9 @@
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
+          branch-refspec: ''
     os:
       - debian10
       - debian11
@@ -81,11 +87,14 @@
       - ubuntu2004
     executor-arch: 'x86_64'
     exclude:
-      # OS deprecated in master
+      # OS deprecated on master
       - stream: 'master'
         os: 'ubuntu1804'
       # OS deprecated on 2202
       - stream: '2202'
+        os: 'ubuntu1804'
+      # OS deprecated on 2206
+      - stream: '2206'
         os: 'ubuntu1804'
       # os added in master
       - stream: '2106'
@@ -138,6 +147,9 @@
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
+          branch-refspec: ''
 # [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
@@ -167,16 +179,22 @@
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
+          branch-refspec: ''
     os:
       - ubuntu1804
       - ubuntu2004
     executor-arch: 'aarch64'
     exclude:
-      # OS deprecated in master
+      # OS deprecated on master
       - stream: 'master'
         os: 'ubuntu1804'
-      # OS deprecated in 2202
+      # OS deprecated on 2202
       - stream: '2202'
+        os: 'ubuntu1804'
+      # OS deprecated on 2206
+      - stream: '2206'
         os: 'ubuntu1804'
 # [end] VPP-AARCH64 PROJECT
 
@@ -192,11 +210,11 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2110':
-          branch: 'stable/2110'
-          branch-refspec: ''
       - '2202':
           branch: 'stable/2202'
+          branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
           branch-refspec: ''
     testbed-arch:
       - 1n-skx:
@@ -220,11 +238,11 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2110':
-          branch: 'stable/2110'
-          branch-refspec: ''
       - '2202':
           branch: 'stable/2202'
+          branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
           branch-refspec: ''
     testbed-arch:
       - 2n-icx:
@@ -281,11 +299,11 @@
       - master:
           branch: 'master'
           branch-refspec: ''
-      - '2110':
-          branch: 'stable/2110'
-          branch-refspec: ''
       - '2202':
           branch: 'stable/2202'
+          branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
           branch-refspec: ''
     os: 'ubuntu2004'
 # [end] VPP-CSIT-API-CRC PROJECT

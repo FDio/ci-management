@@ -19,6 +19,9 @@
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+      - '2206':
+          branch: 'stable/2206'
+          branch-refspec: ''
 
 # TODO: Remove when stable/2110 is no longer supported.
 - project:

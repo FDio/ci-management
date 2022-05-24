@@ -1,7 +1,7 @@
 # lib_vpp.sh - Docker build script VPP library.
 #              For import only.
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -99,8 +99,8 @@ docker_build_setup_vpp() {
 #       to create an enumerated set of jobs jobs that match the
 #       definitions here.
 declare -A VPP_BRANCHES
-VPP_BRANCHES["debian-10"]="stable/2110 stable/2202 master"
-VPP_BRANCHES["debian-11"]="master"
+VPP_BRANCHES["debian-10"]="stable/2110 stable/2202 stable/2206 master"
+VPP_BRANCHES["debian-11"]="stable/2206 master"
 VPP_BRANCHES["ubuntu-18.04"]="stable/2110"
-VPP_BRANCHES["ubuntu-20.04"]="stable/2110 stable/2202 master"
+VPP_BRANCHES["ubuntu-20.04"]="stable/2110 stable/2202 stable/2206 master"
 export VPP_BRANCHES
