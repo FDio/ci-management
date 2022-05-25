@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbac6cc5_f437af3b",
+        "filename": "jjb/ci-management/ci-management-jobs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2022-05-25T19:52:43Z",
+      "side": 0,
+      "message": "I found that the pin is actually still needed :-/ just update this to 4.1.0",
+      "revId": "80d46437303b224faf1773dc5cf8a1fec71bc40e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
