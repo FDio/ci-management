@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b1fa5f2_06a3dea0",
+        "filename": "jjb/scripts/vpp/docs.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-05-25T06:06:52Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "81e22dec9306d45601cfd7cf018e688df0d137db",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": true
+    }
+  ]
+}
