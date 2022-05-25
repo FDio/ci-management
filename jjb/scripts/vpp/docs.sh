@@ -30,7 +30,7 @@ fi
 #       longer supported
 vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
 if [[ "${vpp_release::2}" -ge "22" ]] ; then
-    CONFIRM=-y FORCE=--force-yes make docs
+    CONFIRM=-y FORCE=--force-yes make docs docs-spell
 else
     CONFIRM=-y FORCE=--force-yes make docs-venv docs
 fi
