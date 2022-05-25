@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e55a1066_3c4aa5a9",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-05-25T13:59:40Z",
+      "side": 1,
+      "message": "For future reference --\n \nI intentionally left this in as it should be pushed as a separate patch along with the rest of the stable/2110 clean up after VPP 22.06 release is complete.\n\n-- but no need to revert at this point.  It is not likely that there will be any additional 21.10 cherry-picks.",
+      "parentUuid": "789c1733_8f46ba20",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "6624a41f290f7ab2ec48c658bf117d1f5f236af9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d3733ae_5622f628",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 1
