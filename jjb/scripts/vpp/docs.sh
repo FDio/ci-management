@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -30,7 +30,7 @@ fi
 #       longer supported
 vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
 if [[ "${vpp_release::2}" -ge "22" ]] ; then
-    CONFIRM=-y FORCE=--force-yes make docs
+    CONFIRM=-y FORCE=--force-yes make docs docs-spell
 else
     CONFIRM=-y FORCE=--force-yes make docs-venv docs
 fi
