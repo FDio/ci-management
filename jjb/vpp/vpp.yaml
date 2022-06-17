@@ -402,8 +402,6 @@
                   pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
               forbidden-file-paths:
                 - compare-type: REG_EXP
-                  pattern: .*docs\/.*
-                - compare-type: REG_EXP
                   pattern: .*extras\/emacs\/.*
               disable-strict-forbidden-file-verification: 'true'
           override-votes: true
@@ -436,6 +434,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/commitmsg.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/docs_spell.sh
 
     publishers:
       - fdio-infra-publish

@@ -46,12 +46,9 @@ make_vpp() {
         return
     fi
     git clean -qfdx
-    description="'make UNATTENDED=y $target' in $(pwd) ($branch)"
+    description="'make UNATTENDED=yes $target' in $(pwd) ($branch)"
     echo_log -e "    Starting  $description..."
-    local force_opts="--allow-downgrades --allow-remove-essential"
-    force_opts="$force_opts --allow-change-held-packages"
-    make UNATTENDED=y CONFIRM="-y" FORCE="$force_opts" \
-         $target 2>&1 | tee -a "$bld_log"
+    make UNATTENDED=yes $target 2>&1 | tee -a "$bld_log"
     git checkout -q -- .
     echo_log "    Completed $description!"
 }
