@@ -16,6 +16,23 @@
       "message": "Jenkins Sandbox Test Results:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-2110-ubuntu2004-x86_64/\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-2202-ubuntu2004-x86_64/\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-2206-ubuntu2004-x86_64/\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-master-ubuntu2004-x86_64/",
       "revId": "ae4e3c4af29fea66d3396161958c8fa111912d7d",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "976940cf_7736d889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2022-06-20T22:20:35Z",
+      "side": 1,
+      "message": "remerge",
+      "revId": "ae4e3c4af29fea66d3396161958c8fa111912d7d",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
