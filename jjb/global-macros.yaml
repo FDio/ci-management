@@ -729,7 +729,7 @@
     # macro to finish up a build.
     #
     # Handles the following:
-    #   - Shipping logs to Nexus or S3 logs repository
+    #   - Shipping logs to S3 logs repository
     #   - Cleanup workspace
     publishers:
       - postbuildscript:
@@ -744,7 +744,6 @@
               build-steps:
                 - shell: !include-raw: scripts/post_build_executor_info.sh
                 - shell: !include-raw: scripts/post_build_deploy_archives.sh
-                - fdio-infra-ship-backup-logs
                 - fdio-infra-ship-logs
           mark-unstable-if-failed: true
       - workspace-cleanup:
@@ -794,20 +793,6 @@
     builders:
       - shell: |
           $WORKSPACE/scripts/check-unicode.sh jjb/
-
-- builder:
-    name: fdio-infra-ship-backup-logs
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: "jenkins-s3-log-ship"
-              target: $HOME/.aws/credentials
-      - shell: !include-raw:
-          - scripts/publish_library_py.sh
-      - shell: !include-raw:
-          - scripts/publish_backup_logs.sh
-      - shell: !include-raw:
-          - ../global-jjb/shell/logs-clear-credentials.sh
 
 - builder:
     name: fdio-infra-ship-docs
