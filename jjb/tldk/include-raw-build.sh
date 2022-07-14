@@ -28,31 +28,66 @@ fi
 echo "sha1sum of this script: ${0}"
 sha1sum $0
 
-# Make TLDK
-make
+# depending on the branch being targetted, the build system may be meson + ninja
+# or may be make
+if [ "${GERRIT_BRANCH}" = "dev-mitm-proxy" ]; then
+  # this block is meson + ninja
+  # Make TLDK
+  meson build
+  ninja -C build
 
-echo "*******************************************************************"
-echo "* TLDK BUILD SUCCESSFULLY COMPLETED"
-echo "*******************************************************************"
+  echo "*******************************************************************"
+  echo "* TLDK BUILD SUCCESSFULLY COMPLETED"
+  echo "*******************************************************************"
 
-# Run unit tests application
-sudo $WORKSPACE/x86_64-native-linuxapp-gcc/app/gtest-rfc --lcores=0 -n 2
+  # Run unit tests application
+  sudo $WORKSPACE/build/app/test/tldk-test --lcores=0 -n 2
 
-echo "*******************************************************************"
-echo "* TLDK UNIT TESTS SUCCESSFUL"
-echo "*******************************************************************"
+  echo "*******************************************************************"
+  echo "* TLDK UNIT TESTS SUCCESSFUL"
+  echo "*******************************************************************"
 
-if [ -f "$WORKSPACE/examples/l4fwd/test/run_test.sh" ]
-then
-	export ETH_DEV="tap"
-	export L4FWD_PATH=$WORKSPACE/x86_64-native-linuxapp-gcc/app/l4fwd
-	export L4FWD_FECORE=0
-	export L4FWD_BECORE=1
+  if [ -f "$WORKSPACE/examples/l4fwd/test/run_test.sh" ]
+  then
+    export ETH_DEV="tap"
+    export L4FWD_PATH=$WORKSPACE/build/examples/l4fwd/tldk-l4fwd
+    export L4FWD_FECORE=0
+    export L4FWD_BECORE=1
 
-	sudo -E /bin/bash $WORKSPACE/examples/l4fwd/test/run_test.sh -46a
+    sudo -E /bin/bash $WORKSPACE/examples/l4fwd/test/run_test.sh -46a
 
-	echo "*****************************************************************"
-	echo "* TLDK OFO/LOST SEGMENT TESTS SUCCESSFUL"
-	echo "*****************************************************************"
+    echo "*****************************************************************"
+    echo "* TLDK OFO/LOST SEGMENT TESTS SUCCESSFUL"
+    echo "*****************************************************************"
+  fi
+
+else
+  # this block is make files
+  # Make TLDK
+  make
+
+  echo "*******************************************************************"
+  echo "* TLDK BUILD SUCCESSFULLY COMPLETED"
+  echo "*******************************************************************"
+
+  # Run unit tests application
+  sudo $WORKSPACE/x86_64-native-linuxapp-gcc/app/gtest-rfc --lcores=0 -n 2
+
+  echo "*******************************************************************"
+  echo "* TLDK UNIT TESTS SUCCESSFUL"
+  echo "*******************************************************************"
+
+  if [ -f "$WORKSPACE/examples/l4fwd/test/run_test.sh" ]
+  then
+    export ETH_DEV="tap"
+    export L4FWD_PATH=$WORKSPACE/x86_64-native-linuxapp-gcc/app/l4fwd
+    export L4FWD_FECORE=0
+    export L4FWD_BECORE=1
+
+    sudo -E /bin/bash $WORKSPACE/examples/l4fwd/test/run_test.sh -46a
+
+    echo "*****************************************************************"
+    echo "* TLDK OFO/LOST SEGMENT TESTS SUCCESSFUL"
+    echo "*****************************************************************"
+  fi
 fi
-
