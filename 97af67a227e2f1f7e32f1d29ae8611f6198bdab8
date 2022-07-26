@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d1c206_431406f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-07-26T07:21:29Z",
+      "side": 1,
+      "message": "Example: https://jenkins.fd.io/job/csit-vpp-perf-verify-master-3n-dnv/126/console",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "97af67a227e2f1f7e32f1d29ae8611f6198bdab8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
