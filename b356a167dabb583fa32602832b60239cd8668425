@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb40b7e_39716b3c",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-07-26T12:09:28Z",
+      "side": 1,
+      "message": "Tried running this on Sandbox, resulted in \"bad substitution\".\nJust \"${GERRIT_BRANCH}\" will probably work.\n\nhttps://logs.fd.io/logs/sandbox/vex-yul-rot-jenkins-2/tldk-verify-image-master-ubuntu2004/4/console.log.gz",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "b356a167dabb583fa32602832b60239cd8668425",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
