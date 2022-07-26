@@ -54,6 +54,7 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
@@ -99,6 +100,7 @@
           branch: '{branch}'
       - os-parameter:
           os: '{os}'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
