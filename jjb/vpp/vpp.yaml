@@ -772,7 +772,7 @@
           - ../scripts/vpp/csit-device.sh
 
     publishers:
-      - fdio-infra-publish
+      - csit-infra-publish
 # [end] VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
@@ -873,7 +873,7 @@
       - robot-report:
           output-path: 'archives/csit_current/0/'
 
-      - fdio-infra-publish
+      - csit-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE

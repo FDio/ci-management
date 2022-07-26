@@ -742,9 +742,7 @@
                 - SUCCESS
                 - UNSTABLE
               build-steps:
-                - shell: !include-raw: scripts/post_build_executor_info.sh
-                - shell: !include-raw: scripts/post_build_deploy_archives.sh
-                - fdio-infra-ship-logs
+                - fdio-infra-publish-builder
           mark-unstable-if-failed: true
       - workspace-cleanup:
           exclude:
@@ -752,6 +750,30 @@
             # properties file as input for triggering another build.
             - "**/*.jenkins-trigger"
           fail-build: false
+
+- publisher:
+    name: csit-infra-publish
+    # Macro to finish up a build.
+    #
+    # Handles the following:
+    #   - Shipping logs to S3 logs repository
+    #
+    # Workspace is not cleaned up, as nomad does that automatically,
+    # and we want to keep data needed for testbed unreservation
+    # when execution is interrupted, e.g. by run timing out.
+    publishers:
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - fdio-infra-publish-builder
+          mark-unstable-if-failed: true
 
 - publisher:
     name: jacoco-report
@@ -823,6 +845,14 @@
           - ../global-jjb/shell/logs-clear-credentials.sh
       - description-setter:
           regexp: "(^S3 build logs: .*)"
+
+- builder:
+    # A common block used by multiple publishers.
+    name: fdio-infra-publish-builder
+    builders:
+        - shell: !include-raw: scripts/post_build_executor_info.sh
+        - shell: !include-raw: scripts/post_build_deploy_archives.sh
+        - fdio-infra-ship-logs
 
 - builder:
     name: packer-validate
