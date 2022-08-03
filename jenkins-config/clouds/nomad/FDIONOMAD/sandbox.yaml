@@ -4,7 +4,7 @@ jenkins:
     - nomad:
         jenkinsUrl: "https://jenkins.fd.io/sandbox"
         name: "FDIONOMAD"
-        nomadUrl: "http://10.32.8.17:4646"
+        nomadUrl: "http://10.30.51.23:4646"
         jenkinsTunnel: ""
         prune: false
         nomadACLCredentialsId: ""
