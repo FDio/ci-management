@@ -77,6 +77,52 @@
       - project-view
     project-name: hicn
 
+- project:
+    name: hicn-sonar
+    jobs:
+      - hicn-sonar-scanner
+    project: hicn
+    sonarcloud: true
+    sonarcloud-project-organization: "{sonarcloud_project_organization}"
+    sonarcloud-api-token: "{sonarcloud_api_token}"
+    sonarcloud-project-key: "{sonarcloud_project_organization}-{project}"
+    stream:
+      - hicn:
+          branch: "master"
+
+- job-template:
+    name: hicn-sonar-scanner
+
+    project-type: freestyle
+    node: centos7-docker-4c-4g
+    concurrent: true
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: ""
+          choosing-strategy: "default"
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: "{build-timeout}"
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: "{project}"
+          branch: "{branch}"
+
+    builders:
+      - inject:
+          # Switch this to the sonar wrapper when JJB 2.0 is available
+          properties-content: |
+            SONAR_HOST_URL=https://sonarcloud.io
+            PROJECT_KEY={sonarcloud-project-key}
+            PROJECT_ORGANIZATION={sonarcloud-project-organization}
+            API_TOKEN={sonarcloud-api-token}
+      - shell: !include-raw-escape:
+          - ../scripts/hicn/sonar.sh
+
 - job-template:
     name: "hicn-checkstyle-verify-{stream}-{os}-{executor-arch}"
 
@@ -260,20 +306,6 @@
 
     publishers:
       - fdio-infra-publish
-
-- project:
-    name: hicn-sonar
-    project: hicn
-    project-name: hicn
-    mvn-settings: hicn-settings
-    sonarcloud: true
-    sonarcloud-project-organization: "{sonarcloud_project_organization}"
-    sonarcloud-api-token: "{sonarcloud_api_token}"
-    sonarcloud-project-key: "{sonarcloud_project_organization}_{project-name}"
-    branch: master
-    build-node: centos7-docker-2c-2g
-    jobs:
-      - gerrit-maven-sonar
 
 - job-template:
     name: "hicn-extras-verify-{stream}-{os}-{executor-arch}"
