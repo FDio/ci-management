@@ -97,6 +97,14 @@
     node: centos7-docker-4c-4g
     concurrent: true
 
+    parameters:
+      - project-parameter:
+          project: "{project}"
+      - gerrit-parameter:
+          branch: "{branch}"
+      - stream-parameter:
+          stream: "{stream}"
+
     scm:
       - gerrit-trigger-scm:
           credentials-id: "jenkins-gerrit-credentials"
