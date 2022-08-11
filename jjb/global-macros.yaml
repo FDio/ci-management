@@ -280,6 +280,22 @@
 #### TRIGGERS
 # Keep 'trigger' entries ordered alphabetically, please.
 - trigger:
+    name: gerrit-trigger-build
+    # Comes from hicn, some verify jobs wait for build to pass.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'build_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+
+- trigger:
     name: gerrit-trigger-checkstyle
     # Comes from VPP, some verify jobs wait for checkstyle to pass.
     # This macro is to be used for such verify jobs which are voting.
