@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -62,25 +62,6 @@ if [ "${OS_ID,,}" == "ubuntu" ] || [ "${OS_ID,,}" == "debian" ] ; then
     echo "Removing packagecloud.io repository references and running apt-get update"
     sudo rm -f /etc/apt/sources.list.d/fdio_*.list
     sudo apt-get update -qq || true
-#TODO: Remove centos when VPP 21.06 is no longer supported
-elif [ "${OS_ID,,}" == "centos" ] ; then
-    if [ "${STREAM}" != "master" ] ; then
-        echo "stream '${STREAM}' is not master: replacing packagecloud repo list with stream specific list"
-        sudo yum -y erase vpp-ext-deps || true
-        sudo yum clean all || true
-        sudo rm -f /etc/yum.repos.d/fdio_master.repo
-        curl -s $INSTALL_URL/script.rpm.sh | sudo bash || true
-    fi
-    vpp_ext_deps_version="$(yum -q list vpp-ext-deps 2> /dev/null | mawk '/vpp-ext-deps/{print $2}')"
-    vpp_ext_deps_pkg="$(yum -q list vpp-ext-deps 2> /dev/null | mawk '/vpp-ext-deps/{print $1}')"
-    vpp_ext_deps_pkg="${vpp_ext_deps_pkg/./-${vpp_ext_deps_version}.}.rpm"
-    if [ -f "$vpp_ext_deps_pkg" ] ; then
-        echo "Installing cached vpp-ext-deps pkg: $vpp_ext_deps_pkg"
-        sudo yum -y localinstall "$downloads_dir/$vpp_ext_deps_pkg" || true
-   else
-        echo "Installing vpp-ext-deps from packagecloud.io"
-        sudo yum -y install vpp-ext-deps || true
-    fi
 else
     echo "ERROR: Unsupported OS '$OS_ID'!"
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -49,7 +49,7 @@ make_build_release_build_test_gcov_sanity() {
     fi
     # TODO: Add 'smoke test' env var to select smoke test cases
     #       then update this accordingly.  For now pick a few basic suites...
-    MAKE_TEST_SUITES="vlib vppinfra vpe_api vapi vom bihash"
+    MAKE_TEST_SUITES="vlib vppinfra vpe_api vapi cli bihash"
     for suite in $MAKE_TEST_SUITES ; do
         if ! make UNATTENDED=yes GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test ; then
             BUILD_ERROR="FAILED 'make GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test'!"

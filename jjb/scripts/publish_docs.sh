@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -45,21 +45,8 @@ if [[ ${JOB_NAME} == *merge* ]]; then
             ;;
         *"vpp-docs"*)
             vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
-            # TODO: Remove conditional statement when stable/2106 and
-            #       stable/2110 are no longer supported
-            if [[ "${vpp_release::2}" -ge "22" ]] ; then
-                workspace_dir="${WORKSPACE}/build-root/docs/html"
-            else
-                workspace_dir="${WORKSPACE}/docs/_build/html"
-            fi
+            workspace_dir="${WORKSPACE}/build-root/docs/html"
             bucket_path="/vpp/${vpp_release}/"
-            ;;
-        # TODO: Remove 'vpp-make-test-docs' when stable/2106 and
-        #       stable/2110 are no longer supported
-        *"vpp-make-test-docs"*)
-            vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
-            workspace_dir="${WORKSPACE}/test/doc/build/html"
-            bucket_path="/vpp/${vpp_release}/vpp_make_test/html/"
             ;;
         *)
             die "Unknown job: ${JOB_NAME}"

@@ -96,8 +96,7 @@ docker_build_setup_vpp() {
 #       to create an enumerated set of jobs jobs that match the
 #       definitions here.
 declare -A VPP_BRANCHES
-VPP_BRANCHES["debian-10"]="stable/2110 stable/2202 stable/2206 master"
+VPP_BRANCHES["debian-10"]="stable/2202 stable/2206 master"
 VPP_BRANCHES["debian-11"]="stable/2206 master"
-VPP_BRANCHES["ubuntu-18.04"]="stable/2110"
-VPP_BRANCHES["ubuntu-20.04"]="stable/2110 stable/2202 stable/2206 master"
+VPP_BRANCHES["ubuntu-20.04"]="stable/2202 stable/2206 master"
 export VPP_BRANCHES

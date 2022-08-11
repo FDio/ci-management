@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2022 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -58,11 +58,11 @@ usage() {
     echo "       $script i[nspect] <prod image>"
     echo
     echo "  revert: swaps 'prod-<arch>' and 'prod-prev-<arch>' images"
-    echo "          <prod image>: e.g. fdiotools/builder-ubuntu1804:prod-x86_64"
+    echo "          <prod image>: e.g. fdiotools/builder-ubuntu2204:prod-x86_64"
     echo
     echo " promote: moves 'prod-<arch>' image to 'prod-prev-<arch>' tag and"
     echo "          tags <new image> with 'prod-<arch>'"
-    echo "          <new image>: e.g. fdiotools/builder-ubuntu1804:2020_09_23_151655-x86_64"
+    echo "          <new image>: e.g. fdiotools/builder-ubuntu2204:2022_07_23_151655-x86_64"
     echo " inspect: prints out all tags for prod-<arch> and prod-prev-<arch>"
     echo
     exit 1

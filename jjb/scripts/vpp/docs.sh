@@ -26,11 +26,4 @@ if [[ ${JOB_NAME} == *merge* ]] && [ -n "${GERRIT_NEWREV:-}" ] &&
     exit 0
 fi
 
-# TODO: Remove conditional statement when stable/2106 and stable/2110 are no
-#       longer supported
-vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
-if [[ "${vpp_release::2}" -ge "22" ]] ; then
-    make UNATTENDED=yes docs docs-spell
-else
-    make UNATTENDED=yes docs-venv docs
-fi
+make UNATTENDED=yes docs
