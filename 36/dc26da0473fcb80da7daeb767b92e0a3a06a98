@@ -1,0 +1,8 @@
+Verified+1: fd.io JJB <jobbuilder@projectrotterdam.info>
+Code-Review+1: Mauro Sardara <msardara@cisco.com>
+Code-Review+2: Vratko Polak <vrpolak@cisco.com>
+Submitted-by: Vratko Polak <vrpolak@cisco.com>
+Submitted-at: Fri, 12 Aug 2022 14:00:36 +0000
+Reviewed-on: https://gerrit.fd.io/r/c/ci-management/+/35652
+Project: ci-management
+Branch: refs/heads/master
