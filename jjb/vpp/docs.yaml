@@ -7,24 +7,35 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
-    os: 'ubuntu2004'
-
+    os:
+      - 'ubuntu2004'
+      - 'ubuntu2204'
     stream:
-      - master:
+      - 'master':
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/36/37036/3'
       - '2202':
           branch: 'stable/2202'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/10/36410/1'
       - '2206':
           branch: 'stable/2206'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/17/37017/1'
+    exclude:
+      # os deprecated in master (22.10)
+      - stream: 'master'
+        os: 'ubuntu2004'
+      # os added in 22.10
+      - stream: '2202'
+        os: 'ubuntu2204'
+      # os added in 22.10
+      - stream: '2206'
+        os: 'ubuntu2204'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'builder-{os}-sandbox-{executor-arch}'
     concurrent: true
     allow-empty: 'true'
     fingerprint: false
@@ -80,7 +91,7 @@
     name: 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'builder-{os}-sandbox-{executor-arch}'
     concurrent: false
     allow-empty: 'true'
     fingerprint: false
