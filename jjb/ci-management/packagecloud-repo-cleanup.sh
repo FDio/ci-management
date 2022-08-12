@@ -1,13 +1,12 @@
 #!/bin/bash
 echo "---> jjb/ci-management/packagecloud-repo-cleanup.sh"
 
-set -euo pipefail
+set -euxo pipefail
 
 # Number of packages to keep.
 N_PACKAGES=5
 
 PACKAGECLOUD_REPO_DEB="https://packagecloud.io/install/repositories/fdio/${STREAM}/script.deb.sh"
-PACKAGECLOUD_REPO_RPM="https://packagecloud.io/install/repositories/fdio/${STREAM}/script.rpm.sh"
 
 FACTER_OS=$(/usr/bin/facter operatingsystem)
 PACKAGE_LIST=""
@@ -77,46 +76,6 @@ build_package_blacklist_ubuntu () {
     echo ${OUTPUT_LIST}
 }
 
-# Params
-# $1: Package list
-build_package_blacklist_centos () {
-    PACKAGE_LIST=${@}
-    OUTPUT_LIST=""
-    VERSIONS=""
-    ARCH=$(uname -m)
-
-    for package in ${PACKAGE_LIST}; do
-        OUTPUT=$(yum --showduplicates list ${package} 2> /dev/null)
-        if [[ ${?} -ne 0 || -z "${OUTPUT}" ]]; then
-            continue
-        fi
-
-        VERSIONS="$(echo ${OUTPUT} | grep -Eo "${VERSION_REGEX}" | head -n -${N_PACKAGES})"
-
-        for version in ${VERSIONS}; do
-            if ! check_version_whitelist ${version}; then
-                OUTPUT_LIST+="${package}-${version}.${ARCH}.rpm "
-            fi
-        done
-    done
-
-    echo ${OUTPUT_LIST}
-}
-
-promote_attic_repo_centos () {
-    FACTER_OSMAJREL=$(/usr/bin/facter operatingsystemmajrelease)
-    FACTER_ARCH=$(/usr/bin/facter architecture)
-
-    for package in ${@}; do
-        echo package_cloud promote \
-            ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ \
-            ${package} ${PCIO_CO}/attic/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/
-        package_cloud promote \
-            ${PCIO_CO}/${STREAM}/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/ \
-            ${package} ${PCIO_CO}/attic/el/${FACTER_OSMAJREL}/os/${FACTER_ARCH}/
-    done
-}
-
 promote_attic_repo_ubuntu () {
     FACTER_LSBNAME=$(/usr/bin/facter lsbdistcodename)
 
@@ -139,12 +98,6 @@ setup_fdio_repo () {
         FUNCTIONS["package_blacklist"]="build_package_blacklist_ubuntu"
         FUNCTIONS["promote_attic_repo"]="promote_attic_repo_ubuntu"
         PACKAGE_LIST="${PACKAGE_LIST_COMMON} ${PACKAGE_LIST_UBUNTU}"
-      ;;
-      CentOS)
-        curl -s ${PACKAGECLOUD_REPO_RPM} | sudo bash
-        FUNCTIONS["package_blacklist"]="build_package_blacklist_centos"
-        FUNCTIONS["promote_attic_repo"]="promote_attic_repo_centos"
-        PACKAGE_LIST="${PACKAGE_LIST_COMMON} ${PACKAGE_LIST_CENTOS}"
       ;;
       *)
         echo_err "Distribution ${FACTER_OS} is not supported."

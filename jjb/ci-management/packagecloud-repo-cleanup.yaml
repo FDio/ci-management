@@ -5,10 +5,7 @@
       - 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
     project: 'ci-management'
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu.bionic.main'
-      - centos7:
-          repo-os-part: 'centos7'
+      - ubuntu2004
 
     executor-arch: "x86_64"
 
@@ -19,8 +16,7 @@
       - 'packagecloud-repo-cleanup-hicn-{os}-{executor-arch}'
     project: 'ci-management'
     os:
-      - ubuntu1804:
-          repo-os-part: 'ubuntu-arm.bionic.main'
+      - ubuntu2004
 
     executor-arch: "aarch64"
 
