@@ -7,18 +7,29 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
-    os: 'ubuntu2004'
-
+    os:
+      - 'ubuntu2004'
+      - 'ubuntu2204'
     stream:
-      - master:
+      - 'master':
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/06/37006/2'
       - '2202':
           branch: 'stable/2202'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/10/36410/1'
       - '2206':
           branch: 'stable/2206'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/87/36687/2'
+    exclude:
+      # os deprecated in master (22.10)
+      - stream: 'master'
+        os: 'ubuntu2004'
+      # os added in 22.10
+      - stream: '2202'
+        os: 'ubuntu2204'
+      # os added in 22.10
+      - stream: '2206'
+        os: 'ubuntu2204'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
