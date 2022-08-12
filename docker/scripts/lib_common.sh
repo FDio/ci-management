@@ -156,12 +156,12 @@ export EXECUTOR_CLASS_ARCH="$EXECUTOR_DEFAULT_CLASS-$OS_ARCH"
 export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit_dut csit_shim"
 export EXECUTOR_ARCHS="aarch64 x86_64"
 declare -A EXECUTOR_CLASS_ARCH_OS_NAMES
-EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="debian-10 debian-11 ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-20.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-20.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="ubuntu-20.04 ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="debian-10 debian-11 ubuntu-20.04 ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-22.04"
 export EXECUTOR_CLASS_ARCH_OS_NAMES
 
 executor_list_roles() {
