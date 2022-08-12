@@ -15,7 +15,8 @@
 - project:
     name: hicn-x86_64
     jobs:
-      - "hicn-verify-{stream}-{os}-{executor-arch}"
+      - "hicn-verify-build-{stream}-{os}-{executor-arch}"
+      - "hicn-verify-functest-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
     os: ubuntu2004
@@ -27,7 +28,7 @@
 - project:
     name: hicn-aarch64
     jobs:
-      - "hicn-verify-{stream}-{os}-{executor-arch}"
+      - "hicn-verify-build-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
     os: ubuntu2004
@@ -214,7 +215,7 @@
           fixed-delay: 90
 
 - job-template:
-    name: "hicn-verify-{stream}-{os}-{executor-arch}"
+    name: "hicn-verify-build-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
     node: "builder-{os}-prod-{executor-arch}"
@@ -246,6 +247,66 @@
 
     triggers:
       - gerrit-trigger-checkstyle:
+          name: "{project}"
+          branch: "{branch}"
+      - gerrit:
+          override-votes: true
+          gerrit-build-notbuilt-verified-value: 0
+          gerrit-build-successful-verified-value: 1
+          # yamllint disable-line rule:line-length
+          notbuilt-message: "Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes."
+          # yamllint disable-line rule:line-length
+          failed-message: "Build failed. No further verify jobs will be started."
+          successful-message: "build_success"
+          skip-vote:
+            successful: true
+            failed: false
+            unstable: false
+            notbuilt: false
+
+
+    builders:
+      - shell: !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell: !include-raw-escape:
+          - ../scripts/hicn/build.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
+    name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
+
+    project-type: freestyle
+    node: "{os}-builder-4c-4g"
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: "{project}"
+      - gerrit-parameter:
+          branch: "{branch}"
+      - os-parameter:
+          os: "{os}"
+      - stream-parameter:
+          stream: "{stream}"
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: "jenkins-gerrit-credentials"
+          refspec: "$GERRIT_REFSPEC"
+          choosing-strategy: "gerrit"
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-build:
           name: "{project}"
           branch: "{branch}"
 
