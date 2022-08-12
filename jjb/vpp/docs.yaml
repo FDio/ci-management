@@ -7,10 +7,11 @@
 
     project: 'vpp'
     executor-arch: 'x86_64'
-    os: 'ubuntu2004'
-
+    os:
+      - 'ubuntu2004'
+      - 'ubuntu2204'
     stream:
-      - master:
+      - 'master':
           branch: 'master'
           branch-refspec: ''
       - '2202':
@@ -19,6 +20,16 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+    exclude:
+      # os deprecated in master (22.10)
+      - stream: 'master'
+        os: 'ubuntu2004'
+      # os added in 22.10
+      - stream: '2202'
+        os: 'ubuntu2204'
+      # os added in 22.10
+      - stream: '2206'
+        os: 'ubuntu2204'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
