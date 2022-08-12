@@ -34,7 +34,8 @@ csit_supported_executor_class() {
 
 csit_supported_os() {
     case "$1" in
-        ubuntu-20.04) return 0 ;;
+        # TODO: fix to be only ubuntu-22.04 once migration is complete.
+        ubuntu-2[02].04) return 0 ;;
                    *) ;;
     esac
     return 1
