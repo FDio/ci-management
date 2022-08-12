@@ -16,6 +16,24 @@
       "message": "@Mauro,\n\nI don\u0027t recall if I completed sandbox testing on this yet, but can you please review and let me know if this fits with your ongoing CI work for hicn?\n\nI\u0027m happy to either test it/get it merged or abandon it based on your input.",
       "revId": "014a9e3521c74fa22af7560ee689f73b494557c9",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5459d948_9549d097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 794
+      },
+      "writtenOn": "2022-08-12T14:23:43Z",
+      "side": 1,
+      "message": "I think the job is useful to early spot incompatibilities with the new vpp version.\n\nLooks good to me, but before merging I just need to add the corresponding script into the hicn project.\n\nFor the moment I will just add a placeholder script `build-vpp-latest.sh` that returns 0 and then I will complete the script with the correct logic.",
+      "parentUuid": "9f4df15c_1571e207",
+      "revId": "014a9e3521c74fa22af7560ee689f73b494557c9",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
