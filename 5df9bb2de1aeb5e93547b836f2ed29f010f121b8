@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89882c54_8b4aa881",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-15T11:57:03Z",
+      "side": 1,
+      "message": "Going to rebase, so I can use https://gerrit.fd.io/r/c/ci-management/+/36735 to verify this directly.",
+      "revId": "5df9bb2de1aeb5e93547b836f2ed29f010f121b8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
