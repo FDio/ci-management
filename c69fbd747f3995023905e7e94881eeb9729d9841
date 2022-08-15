@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62ed014_1a48dbca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-15T13:06:15Z",
+      "side": 1,
+      "message": "is changing\n\n[1] changes to meson (in a backward-incompatible way), so this adds support for that. Also in a backward incompatible way, which I guess is fine.\n\n[1] https://gerrit.fd.io/r/c/tldk/+/36197",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e343c2ed_e41980c9",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-15T13:06:15Z",
+      "side": 1,
+      "message": "That fails on Sandbox [2] [3] due to:\n  meson.build:4:0: ERROR: Meson version is 0.53.2 but project requires \u003e\u003d 0.55.0\n\n@Dave what is meson version in your Ubuntu 22.04 images? Can you bump it to 0.55.0 if lower?\n\nMy recommendation for the next steps:\n1. Wait for Ubuntu 22.04 executor images (with high enough meson version).\n2. Switch TLDK jobs to Ubuntu 22.04.\n3. Rebase this Change.\n4. Reverify on Sandbox (and merge when it works).\n\n[2] https://jenkins.fd.io/sandbox/job/tldk-verify-dev-mitm-proxy-ubuntu2004/2/\n[3] https://jenkins.fd.io/sandbox/job/tldk-verify-image-dev-mitm-proxy-ubuntu2004/2/",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
