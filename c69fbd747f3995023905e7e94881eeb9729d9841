@@ -69,6 +69,30 @@
       },
       "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc6fc0d_9eb0c91e",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-15T14:12:34Z",
+      "side": 1,
+      "message": "\u003e TLDK runs on openstack executors\n\nOh. In that case, @Vanessa can you upgrade meson version on those?",
+      "parentUuid": "96b06fa6_3f727401",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
