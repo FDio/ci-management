@@ -45,6 +45,30 @@
       },
       "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b06fa6_3f727401",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-08-15T14:03:34Z",
+      "side": 1,
+      "message": "@Vratko,\n\nTLDK runs on openstack executors, not the nomad/docker container executors, so this failure is not relevant to the meson version installed in the docker executor image.\n\nThat being said, the meson version used by the DPDK external build in VPP is pinned to v0.55.0:\n\nhttps://github.com/FDio/vpp/blob/master/build/external/packages/dpdk.mk#L180\n\nwhich will be cached in the docker executor images by the build script.\n\nAlso note that the docker executor image build script does not install all of the project dependencies.  It runs all of the build targets which contain external dependencies in the docker build scripts causing all of the external packages to be cached in the docker image.",
+      "parentUuid": "e343c2ed_e41980c9",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
