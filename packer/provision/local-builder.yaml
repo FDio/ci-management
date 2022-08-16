@@ -41,6 +41,7 @@
           - tox
           - tox-pyenv
           - virtualenv
+          - meson==0.59.0
         state: present
       become: true
 
@@ -62,7 +63,6 @@
           - python3-pyelftools
           - python3-scapy
           - libnuma-dev
-          - meson
       when: ansible_distribution == 'Ubuntu'
       become: true
 
