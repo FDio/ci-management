@@ -247,16 +247,16 @@
 
     triggers:
       - gerrit:
-          server-name: 'Primary'
+          server-name: "Primary"
           trigger-on:
             - comment-added-contains-event:
-                comment-contains-value: 'checkstyle_success'
+                comment-contains-value: "checkstyle_success"
           projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
+            - project-compare-type: "ANT"
+              project-pattern: "{project}"
               branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
+                - branch-compare-type: "ANT"
+                  branch-pattern: "**/{branch}""
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
           gerrit-build-successful-verified-value: 1
@@ -270,7 +270,6 @@
             failed: false
             unstable: false
             notbuilt: false
-
 
     builders:
       - shell: !include-raw-escape:
@@ -323,7 +322,7 @@
 
     publishers:
       - robot-report:
-          output-path: 'tests'
+          output-path: "tests"
 
 - job-template:
     name: "hicn-merge-{stream}-{os}-{executor-arch}"
