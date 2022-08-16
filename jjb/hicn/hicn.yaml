@@ -253,7 +253,7 @@
                 comment-contains-value: 'checkstyle_success'
           projects:
             - project-compare-type: 'ANT'
-              project-pattern: '{name}'
+              project-pattern: "{project}"
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
@@ -270,7 +270,6 @@
             failed: false
             unstable: false
             notbuilt: false
-
 
     builders:
       - shell: !include-raw-escape:
