@@ -246,10 +246,17 @@
           build-timeout: 120
 
     triggers:
-      - gerrit-trigger-checkstyle:
-          name: "{project}"
-          branch: "{branch}"
       - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: 'checkstyle_success'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{name}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
           gerrit-build-successful-verified-value: 1
@@ -278,7 +285,7 @@
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "{os}-builder-4c-4g"
+    node: "centos7-docker-4c-4g"
     concurrent: true
 
     properties:
@@ -312,12 +319,11 @@
 
     builders:
       - shell: !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell: !include-raw-escape:
-          - ../scripts/hicn/build.sh
+          - ../scripts/hicn/functest.sh
 
     publishers:
-      - fdio-infra-publish
+      - robot-report:
+          output-path: 'tests'
 
 - job-template:
     name: "hicn-merge-{stream}-{os}-{executor-arch}"
