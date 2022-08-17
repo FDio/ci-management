@@ -63,6 +63,7 @@
           - python3-scapy
           - libnuma-dev
           - meson
+          - ninja
       when: ansible_distribution == 'Ubuntu'
       become: true
 
