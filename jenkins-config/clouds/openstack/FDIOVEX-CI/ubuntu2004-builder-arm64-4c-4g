@@ -1,0 +1,3 @@
+IMAGE_NAME=ZZCI - Ubuntu 20.04 - builder - arm64 - 20211120-085353.738
+LABELS=ubuntu2004-builder-arm64-4c-4g
+HARDWARE_ID=v3-standard-4 
