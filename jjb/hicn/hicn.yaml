@@ -264,7 +264,7 @@
           notbuilt-message: "Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes."
           # yamllint disable-line rule:line-length
           failed-message: "Build failed. No further verify jobs will be started."
-          successful-message: "build_success"
+          successful-message: "build_success-{stream}-{os}-{executor-arch}"
           skip-vote:
             successful: true
             failed: false
@@ -279,6 +279,8 @@
 
     publishers:
       - fdio-infra-publish
+      - archive-artifacts:
+          artifacts: "packages/*.deb, packages/*.rpm"
 
 - job-template:
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
@@ -315,6 +317,9 @@
       - gerrit-trigger-build:
           name: "{project}"
           branch: "{branch}"
+          stream: "{stream}"
+          os: "{os}"
+          executor-arch: "{executor-arch}"
 
     builders:
       - shell: !include-raw-escape:
