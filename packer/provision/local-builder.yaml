@@ -42,6 +42,7 @@
           - tox-pyenv
           - virtualenv
           - meson==0.59.0
+          - ninja
         state: present
       become: true
 
