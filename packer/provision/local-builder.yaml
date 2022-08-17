@@ -41,8 +41,6 @@
           - tox
           - tox-pyenv
           - virtualenv
-          - meson==0.59.0
-          - ninja
         state: present
       become: true
 
@@ -64,6 +62,11 @@
           - python3-pyelftools
           - python3-scapy
           - libnuma-dev
+      pip:
+        name:
+          - meson==0.59.0
+          - ninja
+        state: present
       when: ansible_distribution == 'Ubuntu'
       become: true
 
