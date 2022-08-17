@@ -117,6 +117,53 @@
       },
       "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c79cc5_2434b8af",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-17T15:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb8071e_92c445bb",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4787eae7_33156c2a",
+        "filename": "jjb/tldk/include-raw-build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-17T15:06:06Z",
+      "side": 1,
+      "message": "So we updated meson (and ninja) in executor images.\nNow the run_test.sh script complains [4] [5] about this not being an executable file.\n\nI recommend to move as much logic as possible to tldk git repository, so each branch can be updated separately and not much editing is needed in the branch-agnostic code her in ci-management. See how CSIT does that [6].\n\n[4] https://jenkins.fd.io/sandbox/job/tldk-verify-dev-mitm-proxy-ubuntu2004/4/console\n[5] https://jenkins.fd.io/sandbox/job/tldk-verify-image-dev-mitm-proxy-ubuntu2004/15/console\n[6] https://github.com/FDio/ci-management/blob/2db30aa5a938494a710a89cab5943675c1143918/jjb/scripts/csit/device-verify.sh",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 64
+      },
+      "revId": "c69fbd747f3995023905e7e94881eeb9729d9841",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
