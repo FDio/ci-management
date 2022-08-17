@@ -41,12 +41,10 @@
           - tox
           - tox-pyenv
           - virtualenv
-          - meson==0.59.0
-          - ninja
         state: present
       become: true
 
-    - name: 'Install TLDK Packages'
+    - name: 'Apt Install TLDK Packages'
       apt:
         name:
           - libaprutil1-dev
@@ -64,6 +62,16 @@
           - python3-pyelftools
           - python3-scapy
           - libnuma-dev
+        state: present
+      when: ansible_distribution == 'Ubuntu'
+      become: true
+
+    - name: Pip Install TLDK Packages
+      pip:
+        name:
+          - meson==0.59.0
+          - ninja
+        state: present
       when: ansible_distribution == 'Ubuntu'
       become: true
 
