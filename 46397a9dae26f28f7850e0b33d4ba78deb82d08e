@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "309034b2_9d085dff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-08-18T10:01:41Z",
+      "side": 1,
+      "message": "\u003e https://jenkins.fd.io/job/ci-management-jenkins-cfg-verify/172/ : FAILURE\n\nIs there a problem with the image, or is it just too many images to check within the 10 min timeout (so we should apply a longer timeout)?",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
