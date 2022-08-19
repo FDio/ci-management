@@ -26,9 +26,6 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -38,9 +35,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -61,18 +55,12 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -88,18 +76,12 @@
             - 1n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-clx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
@@ -111,9 +93,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -146,10 +125,6 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -161,10 +136,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-icx:
                 os: 'ubuntu2004'
@@ -190,12 +161,6 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -213,12 +178,6 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-clx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 3n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-icx:
@@ -239,9 +198,6 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -251,9 +207,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -280,9 +233,6 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -292,9 +242,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -318,18 +265,12 @@
             - 1n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-clx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-dnv:
@@ -341,9 +282,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -370,9 +308,6 @@
             - 2n-clx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
-            - 2n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 2n-dnv:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -382,9 +317,6 @@
             - 2n-tx2:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
-            - 3n-skx:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
@@ -406,9 +338,6 @@
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2004'
-                executor-arch: 'x86_64'
-            - 2n-skx:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
 

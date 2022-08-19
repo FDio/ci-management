@@ -214,13 +214,7 @@
       - 2n-clx:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
-      - 2n-skx:
-          os: 'ubuntu2004'
-          executor-arch: 'x86_64'
       - 2n-zn2:
-          os: 'ubuntu2004'
-          executor-arch: 'x86_64'
-      - 3n-skx:
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
       - 3n-icx:
