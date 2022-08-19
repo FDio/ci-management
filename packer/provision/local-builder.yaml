@@ -40,9 +40,10 @@
         name:
           - tox
           - tox-pyenv
-          - virtualenv
+          - python-virtualenv
         state: present
       become: true
+      when: ansible_distribution == 'Ubuntu'
 
     - name: 'Apt Install TLDK Packages'
       apt:
