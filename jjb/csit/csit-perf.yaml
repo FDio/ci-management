@@ -53,6 +53,9 @@
             - 3n-alt:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -82,6 +85,9 @@
             - 3n-alt:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-verify-{stream}-{node-arch}':
           node-arch:
@@ -126,6 +132,9 @@
             - 3n-alt:
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
           stream:
             - master:
                 branch: 'master'
@@ -182,6 +191,10 @@
                 os: 'ubuntu2004'
                 executor-arch: 'aarch64'
                 periodicity: '30 22 * * 0-4'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -200,6 +213,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 2n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-snr:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
           stream:
@@ -272,6 +288,9 @@
             - 3n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -311,6 +330,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-snr:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
@@ -362,6 +384,9 @@
             - 3n-aws:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
+            - 3n-snr:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -401,6 +426,9 @@
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2004'
+                executor-arch: 'x86_64'
+            - 3n-snr:
                 os: 'ubuntu2004'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
