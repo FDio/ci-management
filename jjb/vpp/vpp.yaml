@@ -181,10 +181,10 @@
           branch-refspec: ''
     testbed-arch:
       - 1n-skx:
-          os: 'ubuntu2004'
+          os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 1n-tx2:
-          os: 'ubuntu2004'
+          os: 'ubuntu2204'
           executor-arch: 'aarch64'
           skip-vote: 'true'
 
@@ -212,7 +212,7 @@
           os: 'ubuntu2004'
           executor-arch: 'x86_64'
       - 2n-clx:
-          os: 'ubuntu2004'
+          os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 2n-zn2:
           os: 'ubuntu2004'
