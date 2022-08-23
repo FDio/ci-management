@@ -35,6 +35,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02eeee2_768ac0fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2022-08-23T15:07:42Z",
+      "side": 1,
+      "message": "We were having intermittent timeout issues last week. Those issues have been resolved.",
+      "parentUuid": "309034b2_9d085dff",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86829cf6_41e7e709",
@@ -52,6 +70,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17ffdbd_5895aaba",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX-CI/ubuntu2004-builder-arm64-4c-4g",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2022-08-23T15:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86829cf6_41e7e709",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60ac7510_5753e1de",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-23T15:00:05Z",
       "side": 1,
       "message": "Please remove extra space at the end of line #3",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb57a704_724d55af",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX-CI/ubuntu2004-docker-arm64-4c-4g.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2022-08-23T15:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ac7510_5753e1de",
       "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
