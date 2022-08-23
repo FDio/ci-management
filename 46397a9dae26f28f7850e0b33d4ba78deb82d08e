@@ -33,6 +33,40 @@
       "message": "recheck",
       "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86829cf6_41e7e709",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX-CI/ubuntu2004-builder-arm64-4c-4g",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2022-08-23T15:00:05Z",
+      "side": 1,
+      "message": "Please remove extra space at the end of line #3",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ac7510_5753e1de",
+        "filename": "jenkins-config/clouds/openstack/FDIOVEX-CI/ubuntu2004-docker-arm64-4c-4g.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 2527
+      },
+      "writtenOn": "2022-08-23T15:00:05Z",
+      "side": 1,
+      "message": "Please remove extra space at the end of line #3",
+      "revId": "46397a9dae26f28f7850e0b33d4ba78deb82d08e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
