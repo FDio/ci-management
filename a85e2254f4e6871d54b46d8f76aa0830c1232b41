@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3f7838_d5764b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 180
+      },
+      "writtenOn": "2022-08-23T07:42:23Z",
+      "side": 1,
+      "message": "The alerting mail (old trending) was replaced by http://csit.fd.io/news/#eNrLyk-yTczJAQAKzAKy",
+      "revId": "a85e2254f4e6871d54b46d8f76aa0830c1232b41",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
