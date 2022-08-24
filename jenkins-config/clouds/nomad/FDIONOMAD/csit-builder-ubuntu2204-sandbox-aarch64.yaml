@@ -1,0 +1,13 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "csitarm"
+    image: "fdiotools/builder-ubuntu2204:sandbox-aarch64"
+    labels: "csit-builder-ubuntu2204-sandbox-aarch64"
+    memory: 14000
+    prefix: "csit-builder-ubuntu2204-sandbox-aarch64"
