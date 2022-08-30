@@ -17,12 +17,12 @@
     description: 'CSIT jenkins jobs.'
     node-arch:
       - '1n-skx':
-          os: 'ubuntu2004'
+          os: 'ubuntu2204'
           executor-arch: 'x86_64'
           make-parallel-jobs: '32'
           skip-vote: 'false'
       - '1n-tx2':
-          os: 'ubuntu2004'
+          os: 'ubuntu2204'
           executor-arch: 'aarch64'
           make-parallel-jobs: '32'
           skip-vote: 'true'
