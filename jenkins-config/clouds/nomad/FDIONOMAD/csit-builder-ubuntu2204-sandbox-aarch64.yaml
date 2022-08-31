@@ -9,5 +9,5 @@ templates:
         rtarget: "csitarm"
     image: "fdiotools/builder-ubuntu2204:sandbox-aarch64"
     labels: "csit-builder-ubuntu2204-sandbox-aarch64"
-    memory: 14000
+    memory: 24000
     prefix: "csit-builder-ubuntu2204-sandbox-aarch64"
