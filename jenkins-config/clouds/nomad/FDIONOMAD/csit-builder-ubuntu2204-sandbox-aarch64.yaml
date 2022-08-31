@@ -11,3 +11,4 @@ templates:
     labels: "csit-builder-ubuntu2204-sandbox-aarch64"
     memory: 24000
     prefix: "csit-builder-ubuntu2204-sandbox-aarch64"
+    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache"
