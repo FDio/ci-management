@@ -16,6 +16,52 @@
       "message": "Test results of vpp jobs in Jenkins Sandbox:\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-checkstyle-verify-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-api-crc-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-api-crc-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-api-crc-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-2202-ubuntu2004-aarch64-1n-tx2/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-2202-ubuntu2004-aarch64-1n-skx/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-2206-ubuntu2004-aarch64-1n-tx2/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-2206-ubuntu2004-aarch64-1n-skx/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-master-ubuntu2204-aarch64-1n-tx2/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-master-ubuntu2204-aarch64-1n-skx/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-gcc-verify-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-gcc-verify-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-gcc-verify-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2202-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2202-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2206-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2206-debian11-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2206-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-debian11-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-ubuntu2204-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-merge-master-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2202-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2202-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2202-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2206-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2206-debian11-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2206-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-debian10-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-debian11-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-ubuntu2004-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-ubuntu2204-aarch64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-verify-master-ubuntu2204-x86_64/1/\n",
       "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e35970c_1415a4d7",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-09-05T08:43:17Z",
+      "side": 1,
+      "message": "we cannot do both. it won\u0027t work. those two OS are backward incompatible",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b174f705_c8fcd48f",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-09-05T08:43:17Z",
+      "side": 1,
+      "message": "we do not support both permutation. it is not possible. keep as it was before",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
