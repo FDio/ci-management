@@ -65,6 +65,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78eb3cf_5506d7de",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-06T15:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e3095e_16f74df5",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b174f705_c8fcd48f",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Ack.  See previous comment.",
       "parentUuid": "b174f705_c8fcd48f",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6668b41_192801d7",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-06T15:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3c0100_0dab8c66",
       "range": {
         "startLine": 260,
         "startChar": 0,
