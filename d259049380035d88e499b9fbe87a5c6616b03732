@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34e3095e_16f74df5",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-06T13:58:25Z",
+      "side": 1,
+      "message": "Hmm, VPP fails to build on stable/2202 \u0026 stable/2206.\n\nSo I guess we should simply remove all vpp-csit jobs for those branches, as I do not recommend upgrading those branches to build on ubuntu-22.04.",
+      "parentUuid": "5e35970c_1415a4d7",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b174f705_c8fcd48f",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-05T08:43:17Z",
       "side": 1,
       "message": "we do not support both permutation. it is not possible. keep as it was before",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 18
+      },
+      "revId": "d259049380035d88e499b9fbe87a5c6616b03732",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3c0100_0dab8c66",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-06T13:58:25Z",
+      "side": 1,
+      "message": "Ack.  See previous comment.",
+      "parentUuid": "b174f705_c8fcd48f",
       "range": {
         "startLine": 260,
         "startChar": 0,
