@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef6e86c_6c761964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-07T23:18:06Z",
+      "side": 1,
+      "message": "The following gerrit change(s) resolve the vpp-csit-verify-device-*-1n-tx2 job failures so reverting gerrit 34848 to restart execution of these jobs:\n\nhttps://gerrit.fd.io/r/c/vpp/+/36964\nhttps://gerrit.fd.io/r/c/vpp/+/37017\n\nNote: vpp-csit-verify-device-*-1n-tx2 jobs are still non-voting.  After verifying these jobs are working properly, another patch will be pushed to re-enable voting.",
+      "revId": "7c63dc622387fb4b9830b902e13dc158ff32cfeb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
