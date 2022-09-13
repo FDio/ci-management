@@ -23,7 +23,7 @@
     project: 'csit'
     branch: 'master'
     os:
-      - 'ubuntu2004'
+      - 'ubuntu2204'
     executor-arch: 'x86_64'
     build-artifact-num-to-keep: 10
     stream:
