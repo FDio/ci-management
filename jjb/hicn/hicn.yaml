@@ -303,6 +303,14 @@
       - fdio-infra-publish
       - archive-artifacts:
           artifacts: "packages/*.deb, packages/*.rpm"
+      - xunit:
+          thresholdmode: 'percent'
+          thresholds:
+            - failed:
+                  failure: 0
+          types:
+            - gtest:
+                pattern: "**/reports/*report.xml"
 
 - job-template:
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
@@ -406,6 +414,14 @@
 
     publishers:
       - fdio-infra-publish
+      - xunit:
+          thresholdmode: 'percent'
+          thresholds:
+            - failed:
+                  failure: 0
+          types:
+            - gtest:
+                pattern: "**/reports/*report.xml"
 
 - job-template:
     name: "hicn-extras-verify-{stream}-{os}-{executor-arch}"
