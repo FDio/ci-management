@@ -20,6 +20,9 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     exclude:
       # os deprecated in master (22.10)
       - stream: 'master'

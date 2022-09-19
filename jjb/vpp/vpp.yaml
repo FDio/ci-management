@@ -46,6 +46,9 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
       # os deprecated in master (22.10)
@@ -85,6 +88,9 @@
           branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
+          branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
           branch-refspec: ''
     os:
       - debian10
@@ -149,6 +155,9 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     exclude:
       # os deprecated in master (22.10)
       - stream: 'master'
@@ -187,6 +196,9 @@
           branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
+          branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
           branch-refspec: ''
     os:
       - ubuntu2004
@@ -290,6 +302,9 @@
           branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
+          branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
           branch-refspec: ''
     os:
       - 'ubuntu2004'
