@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628041ce_560d55d1",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-09-19T22:50:15Z",
+      "side": 1,
+      "message": "vpp-device jobs should be run for all branches which support ubuntu-22.04, so the following should be added for stable/2210:\n      - \u00272210\u0027:\n          branch: \u0027stable/2210\u0027\n          branch-refspec: \u0027\u0027\n\nNote: stable/2202 \u0026 stable/2206 branches were removed as a by-product of the infrastructure upgrade to ubuntu-22.04.  Any device driver cherry-picks to either of those branches will require hand verification.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 28
+      },
+      "revId": "1cb5bdb922d6f056ff9fe80d362669bd10464337",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
