@@ -46,9 +46,15 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
-      # os deprecated in master (22.10)
+      # os deprecated in 22.10
+      - stream: '2210'
+        os: 'ubuntu2004'
+      # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
       # os added in 22.10
@@ -86,6 +92,9 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     os:
       - debian10
       - debian11
@@ -93,6 +102,12 @@
       - ubuntu2204
     executor-arch: 'x86_64'
     exclude:
+      # os deprecated in 22.10
+      - stream: '2210'
+        os: 'debian10'
+      # os deprecated in master
+      - stream: 'master'
+        os: 'debian10'
       # os added in 22.06
       - stream: '2202'
         os: 'debian11'
@@ -149,8 +164,14 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     exclude:
-      # os deprecated in master (22.10)
+      # os deprecated in 22.10
+      - stream: '2210'
+        os: 'ubuntu2004'
+      # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
       # os added in 22.10
@@ -187,6 +208,9 @@
           branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
+          branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
           branch-refspec: ''
     os:
       - ubuntu2004
@@ -291,11 +315,17 @@
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
     os:
       - 'ubuntu2004'
       - 'ubuntu2204'
     exclude:
-      # os deprecated in master (22.10)
+      # os deprecated in 22.10
+      - stream: '2210'
+        os: 'ubuntu2004'
+      # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
       # os added in 22.10
