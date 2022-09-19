@@ -29,7 +29,7 @@
 
 jjb-sandbox-env()
 {
-    local jjb_version=${JJB_VERSION:-"3.5.0"}
+    local jjb_version=${JJB_VERSION:-"4.1.0"}
 
     if [ -z "$WS_ROOT" ] ; then
         echo "ERROR: WS_ROOT is not set!"
