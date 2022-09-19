@@ -356,8 +356,9 @@
           - ../scripts/hicn/functest.sh
 
     publishers:
-      - robot-report:
+      - robot:
           output-path: "tests"
+          pass-threshold: 75.0
 
 - job-template:
     name: "hicn-merge-{stream}-{os}-{executor-arch}"
