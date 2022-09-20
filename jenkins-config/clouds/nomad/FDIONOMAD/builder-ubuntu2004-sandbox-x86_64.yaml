@@ -7,9 +7,7 @@ templates:
       - ltarget: "^${node.class}"
         operand: "="
         rtarget: "builder"
-    cpu: 14000
     image: "fdiotools/builder-ubuntu2004:sandbox-x86_64"
     labels: "builder-ubuntu2004-sandbox-x86_64"
-    memory: 14000
     prefix: "builder-ubuntu2004-sandbox-x86_64"
     hostVolumes: "/tmp/ccache.ubuntu2004:/scratch/ccache"

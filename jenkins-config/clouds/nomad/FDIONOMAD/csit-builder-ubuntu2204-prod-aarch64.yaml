@@ -9,6 +9,5 @@ templates:
         rtarget: "csitarm"
     image: "fdiotools/builder-ubuntu2204:prod-aarch64"
     labels: "csit-builder-ubuntu2204-prod-aarch64"
-    memory: 24000
     prefix: "csit-builder-ubuntu2204-prod-aarch64"
     hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache"

@@ -7,8 +7,6 @@ templates:
       - ltarget: "^${node.class}"
         operand: "="
         rtarget: "csit"
-    cpu: 15000
     image: "fdiotools/builder-ubuntu2004:sandbox-x86_64"
     labels: "csit-builder-ubuntu2004-sandbox-x86_64"
-    memory: 16000
     prefix: "csit-builder-ubuntu2004-sandbox-x86_64"
