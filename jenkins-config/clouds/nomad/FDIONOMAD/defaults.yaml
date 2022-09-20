@@ -8,8 +8,8 @@ templates:
         operand: "="
         rtarget: "builder"
     datacenters: "yul1"
-    cpu: 6000
-    memory: 10000
+    cpu: 24000
+    memory: 24000
     disk: 3000
     priority: 50
     idleTerminationInMinutes: 10

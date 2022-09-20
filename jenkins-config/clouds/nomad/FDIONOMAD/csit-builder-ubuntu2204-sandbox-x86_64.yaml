@@ -7,9 +7,7 @@ templates:
       - ltarget: "^${node.class}"
         operand: "="
         rtarget: "csit"
-    cpu: 20000
     image: "fdiotools/builder-ubuntu2204:sandbox-x86_64"
     labels: "csit-builder-ubuntu2204-sandbox-x86_64"
-    memory: 24000
     prefix: "csit-builder-ubuntu2204-sandbox-x86_64"
     hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache"
