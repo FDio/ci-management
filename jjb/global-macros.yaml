@@ -49,6 +49,14 @@
           description: "The OS on which 'make test' is run."
 
 - parameter:
+    name: make-test-multiworker-os-parameter
+    parameters:
+      - string:
+          name: MAKE_TEST_MULTIWORKER_OS
+          default: '{make-test-multiworker-os}'
+          description: "The OS on which 'make test' is run with multiple VPP workers."
+
+- parameter:
     name: csit-fail-on-crc-mismatch-parameter
     parameters:
       - string:

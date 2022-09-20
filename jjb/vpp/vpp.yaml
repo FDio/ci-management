@@ -81,20 +81,27 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-20.04'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
+          make-test-os: 'ubuntu-22.04'
+          make-test-multiworker-os: 'debian-11'
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: 'debian-11'
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: 'debian-11'
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: 'debian-11'
     os:
       - debian10
       - debian11
@@ -102,6 +109,9 @@
       - ubuntu2204
     executor-arch: 'x86_64'
     exclude:
+      # os deprecated in 22.06
+      - stream: '2206'
+        os: 'debian10'
       # os deprecated in 22.10
       - stream: '2210'
         os: 'debian10'
@@ -131,7 +141,7 @@
       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-20.04'
+    make-test-os: 'ubuntu-22.04'
     comment-trigger-value: 'debug-verify'
     stream:
       - 'master':
@@ -150,6 +160,7 @@
     jobs:
       - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    make-parallel-jobs: '4'
     os:
       - ubuntu2004
       - ubuntu2204
@@ -197,21 +208,28 @@
       - 'vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    make-parallel-jobs: '16'
-    make-test-os: 'ubuntu-20.04'
+    make-parallel-jobs: '4'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
+          make-test-os: 'ubuntu-22.04'
+          make-test-multiworker-os: ''
       - '2202':
           branch: 'stable/2202'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: ''
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+          make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: ''
     os:
       - ubuntu2004
       - ubuntu2204
@@ -496,6 +514,8 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - make-test-os-parameter:
           make-test-os: '{make-test-os}'
+      - make-test-multiworker-os-parameter:
+          make-test-multiworker-os: '{make-test-multiworker-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:
@@ -619,6 +639,8 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - make-test-os-parameter:
           make-test-os: '{make-test-os}'
+      - make-test-multiworker-os-parameter:
+          make-test-multiworker-os: '{make-test-multiworker-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:

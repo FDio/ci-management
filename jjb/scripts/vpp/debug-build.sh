@@ -22,6 +22,7 @@ OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_ARCH=$(uname -m)
 DRYRUN="${DRYRUN:-}"
+MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
 RETVAL="0"
@@ -47,9 +48,21 @@ make_build_test_debug() {
         BUILD_ERROR="FAILED 'make build'"
         return
     fi
-    if ! make UNATTENDED=yes TEST_JOBS=auto test-debug ; then
-        BUILD_ERROR="FAILED 'make test-debug'"
-        return
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ] ; then
+        if [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
+            TEST_JOBS="${MAKE_PARALLEL_JOBS}"
+            echo "Testing VPP with ${TEST_JOBS} cores."
+        else
+            TEST_JOBS="auto"
+            echo "Testing VPP with automatically calculated number of cores. " \
+                "See test logs for the exact number."
+        fi
+        if ! make UNATTENDED=yes TEST_JOBS="$TEST_JOBS" test-debug ; then
+            BUILD_ERROR="FAILED 'make UNATTENDED=yes TEST_JOBS=$TEST_JOBS test-debug'"
+            return
+        fi
+    else
+        echo "Skip running 'make test-debug' on ${OS_ID}-${OS_VERSION_ID}"
     fi
 }
 

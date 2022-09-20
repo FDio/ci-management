@@ -47,16 +47,24 @@ make_build_release_build_test_gcov_sanity() {
         BUILD_ERROR="FAILED 'make build'"
         return
     fi
+    if [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
+        TEST_JOBS="${MAKE_PARALLEL_JOBS}"
+        echo "Testing VPP with ${TEST_JOBS} cores."
+    else
+        TEST_JOBS="auto"
+        echo "Testing VPP with automatically calculated number of cores. " \
+             "See test logs for the exact number."
+    fi
     # TODO: Add 'smoke test' env var to select smoke test cases
     #       then update this accordingly.  For now pick a few basic suites...
     MAKE_TEST_SUITES="vlib vppinfra vpe_api vapi cli bihash"
     for suite in $MAKE_TEST_SUITES ; do
-        if ! make UNATTENDED=yes GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test ; then
-            BUILD_ERROR="FAILED 'make GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test'!"
+        if ! make UNATTENDED=yes TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test ; then
+            BUILD_ERROR="FAILED 'make TESTS_GCOV=1 TEST_JOBS=$TEST_JOBS TEST=$suite test'!"
             return
         fi
-        if ! make UNATTENDED=yes GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test-debug ; then
-            BUILD_ERROR="FAILED 'make GCOV_TESTS=1 TEST_JOBS=auto TEST=$suite test-debug'!"
+        if ! make UNATTENDED=yes TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test-debug ; then
+            BUILD_ERROR="FAILED 'make TESTS_GCOV=1 TEST_JOBS=$TEST_JOBS TEST=$suite test-debug'!"
             return
         fi
     done

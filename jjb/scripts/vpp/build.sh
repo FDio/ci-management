@@ -33,8 +33,8 @@ DRYRUN="${DRYRUN:-}"
 IS_CSIT_VPP_JOB="${IS_CSIT_VPP_JOB:-}"
 MAKE_PARALLEL_FLAGS="${MAKE_PARALLEL_FLAGS:-}"
 MAKE_PARALLEL_JOBS="${MAKE_PARALLEL_JOBS:-}"
-MAKE_TEST_OS="${MAKE_TEST_OS:-ubuntu-18.04}"
-MAKE_TEST_MULTIWORKER_OS="${MAKE_TEST_MULTIWORKER_OS:-debian-10}"
+MAKE_TEST_OS="${MAKE_TEST_OS:-ubuntu-22.04}"
+MAKE_TEST_MULTIWORKER_OS="${MAKE_TEST_MULTIWORKER_OS:-debian-11}"
 VPPAPIGEN_TEST_OS="${VPPAPIGEN_TEST_OS:-${MAKE_TEST_OS}}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
@@ -76,10 +76,10 @@ make_build_test() {
 	    return
     fi
     if [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
-        export TEST_JOBS="${MAKE_PARALLEL_JOBS}"
+        TEST_JOBS="${MAKE_PARALLEL_JOBS}"
         echo "Testing VPP with ${TEST_JOBS} cores."
     else
-        export TEST_JOBS="auto"
+        TEST_JOBS="auto"
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
@@ -90,26 +90,35 @@ make_build_test() {
         fi
     fi
     if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ] ; then
-        if ! make COMPRESS_FAILED_TEST_LOGS=yes RETRIES=3 test ; then
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" RETRIES=3 test ; then
             BUILD_ERROR="FAILED 'make test'"
             return
         fi
     else
         echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" ] \
-            && git grep -q VPP_WORKER_CONFIG ; then
-        if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes \
-                RETRIES=3 test ; then
-            BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
-            return
+    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" ] ; then
+        if git grep -q VPP_WORKER_CONFIG ; then
+            if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes \
+                    RETRIES=3 TEST_JOBS="$TEST_JOBS" test ; then
+                BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
+                return
+            else
+                echo -e "\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
+                        "MULTIWORKER MAKE TEST SUCCESSFULLY COMPLETED\n"
+            fi
+        elif git grep -q VPP_WORKER_COUNT ; then
+            if ! make VPP_WORKER_COUNT="2" COMPRESS_FAILED_TEST_LOGS=yes \
+                    RETRIES=3 TEST_JOBS="$TEST_JOBS" test ; then
+                BUILD_ERROR="FAILED 'make test' with VPP_WORKER_CONFIG='workers 2'"
+                return
+            else
+                echo -e "\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
+                        "MULTIWORKER MAKE TEST SUCCESSFULLY COMPLETED\n"
+            fi
         else
-            echo -e "\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
-                    "MULTIWORKER MAKE TEST SUCCESSFULLY COMPLETED\n"
+            echo "Skip running MULTIWORKER MAKE TEST on ${OS_ID}-${OS_VERSION_ID}"
         fi
-    else
-        echo "Skip running 'make test' with VPP_WORKER_CONFIG='workers 2'" \
-             "on ${OS_ID}-${OS_VERSION_ID}"
     fi
 }
 
