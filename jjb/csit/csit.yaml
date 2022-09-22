@@ -29,10 +29,10 @@
     stream:
       - master:
           branch: 'master'
-      - '2202':
-          branch: 'rls2202'
       - '2206':
           branch: 'rls2206'
+      - '2210':
+          branch: 'rls2210'
 
 - project:
     name: csit-view
