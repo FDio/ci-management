@@ -80,7 +80,7 @@
       - 'csit-trex-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
@@ -175,7 +175,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
           stream:
             - master:
@@ -224,10 +224,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2204'
@@ -262,10 +262,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2204'
@@ -273,7 +273,7 @@
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -305,10 +305,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2204'
@@ -343,10 +343,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2204'
@@ -354,7 +354,7 @@
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2004'
+                os: 'ubuntu2204'
                 executor-arch: 'x86_64'
 
     project: 'csit'
