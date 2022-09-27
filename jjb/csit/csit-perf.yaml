@@ -182,6 +182,12 @@
                 branch: 'master'
                 branch-id: 'oper'
           periodicity: '0 0 * * 6'
+      - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
+          node-arch:
+            - 1n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
