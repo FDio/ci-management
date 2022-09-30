@@ -47,6 +47,24 @@ if [[ ${JOB_NAME} == *merge* ]]; then
         *)
             die "Unknown job: ${JOB_NAME}"
     esac
+<<<<<<< PATCH SET (cfb63c fix(core): TF_LOG verbosity)
+
+    export TF_VAR_workspace_dir=$workspace_dir
+    export TF_VAR_bucket_path=$bucket_path
+    export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
+    export AWS_DEFAULT_REGION="us-east-1"
+
+    export TF_LOG="INFO"
+    export TF_LOG_PATH="$WORKSPACE/archives/terraform.log"
+
+    echo "INFO: archiving docs to S3"
+    pushd ..
+    terraform init -no-color
+    terraform apply -no-color -auto-approve
+    popd
+
+    echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"
+=======
 elif [[ ${JOB_NAME} == *verify* ]]; then
     bucket="vpp-docs-7day-retention"
     # Use the same bucket path as logs so that the docs can be viewed by
@@ -66,6 +84,7 @@ elif [[ ${JOB_NAME} == *verify* ]]; then
     esac
 else
     die "Unknown job: ${JOB_NAME}"
+>>>>>>> BASE      (a925b0 CSIT: Change the names of [semi]weekly jobs to keep the rule)
 fi
 
 export TF_VAR_workspace_dir="$workspace_dir"
