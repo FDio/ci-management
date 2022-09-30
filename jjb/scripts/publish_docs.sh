@@ -57,6 +57,9 @@ if [[ ${JOB_NAME} == *merge* ]]; then
     export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
     export AWS_DEFAULT_REGION="us-east-1"
 
+    export TF_LOG="INFO"
+    export TF_LOG_PATH="$WORKSPACE/archives/terraform.log"
+
     echo "INFO: archiving docs to S3"
     pushd ..
     terraform init -no-color
