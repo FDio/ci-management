@@ -74,6 +74,10 @@ export TF_VAR_bucket="$bucket"
 export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
 export AWS_DEFAULT_REGION="us-east-1"
 
+export TF_LOG="INFO"
+export TF_LOG_PATH="$WORKSPACE/archives/terraform.log"
+cat $HOME/.aws/credentials
+
 echo "INFO: archiving docs to S3 bucket '$bucket'"
 pushd ..
 terraform init -no-color
