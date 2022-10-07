@@ -147,8 +147,7 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          # Once per hour
-          periodicity: 'H * * * *'
+          make-test-os: 'ubuntu-22.04'
     os: 'ubuntu2204'
     executor-arch: 'x86_64'
 
@@ -596,7 +595,9 @@
           build-timeout: '{build-timeout}'
 
     triggers:
-      - timed: '{periodicity}'
+      - gerrit-trigger-checkstyle-nonvoting:
+          name: '{project}'
+          branch: '{branch}'
       - gerrit-trigger-manually-triggered:
           comment-trigger-value: '{comment-trigger-value}'
           name: '{project}'
