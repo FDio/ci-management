@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7831ad2_a4f696ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-10-10T15:10:21Z",
+      "side": 1,
+      "message": "Jenkins Sandbox Test Results:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-debug-verify-master-ubuntu2204-x86_64/1/",
+      "revId": "9df6585d42f4cf3b470c9b0d02a843f5f24df7a4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
