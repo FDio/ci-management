@@ -598,10 +598,6 @@
       - gerrit-trigger-checkstyle-nonvoting:
           name: '{project}'
           branch: '{branch}'
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
 
     builders:
       - shell:
