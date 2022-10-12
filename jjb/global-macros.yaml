@@ -703,6 +703,37 @@
           success: true
 
 - publisher:
+    name: vpp-dpdk-rdma-version-mismatch
+    publishers:
+      - email-ext:
+          # NOTE: noreply@jenkins.fd.io must be a member of vpp-build@lists.fd.io
+          #       for the email to be distributed to the group members.
+          # yamllint disable-line rule:line-length
+          recipients: 'vpp-build@lists.fd.io'
+          reply-to: ''
+          content-type: 'text'
+          subject: '{branch}: vpp-dpdk-rdma-version-mismatch job failed!'
+          # yamllint disable-line rule:line-length
+          body: |
+              Build $BUILD_NUMBER of $JOB_NAME failed.
+              Check $BUILD_URL
+              console log to see if the job failed due to a package version mismatch or
+              a CI infra issue. If the failure was due to a CI infra issue, then
+              there is nothing else to be done.
+
+              However, if there was a package version mismatch, then the MLX driver
+              is NOT being built in the VPP DPDK library. Please push a gerrit change
+              with the updated package version(s) in the version matrix file, resolve
+              any build issues, and merge the change to re-enable the building of the
+              MLX DPDK driver in the VPP DPDK library.
+
+              Thanks,
+              The VPP Build Maintainers
+
+          failure: true
+          success: false
+
+- publisher:
     name: email-notification
     publishers:
       - email-ext:
