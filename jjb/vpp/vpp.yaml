@@ -154,6 +154,29 @@
 
 # [end] VPP-DEBUG-X86_64 PROJECT
 
+# VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
+#
+# Currently a periodic job due to intermittent failures.
+# Limiting branches to master, since other branches
+# may not get fixes for the intermittent failures.
+#
+- project:
+    name: vpp-dpdk-rdma-version-mismatch-x86_64
+    jobs:
+      - 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-test-os: 'ubuntu-22.04'
+    comment-trigger-value: 'dpdk-rdma-version-mismatch'
+    stream:
+      - 'master':
+          branch: 'master'
+          # Once per day at 00:15
+          periodicity: '15 0 * * 0-6'
+    os: 'ubuntu2204'
+    executor-arch: 'x86_64'
+
+# [end] VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
+
 # VPP-GCC-X86_64 PROJECT
 - project:
     name: vpp-gcc-x86_64
@@ -619,6 +642,67 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
+
+# VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
+- job-template:
+    name: 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - make-test-os-parameter:
+          make-test-os: '{make-test-os}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/dpdk-rdma-version-mismatch.sh
+
+    publishers:
+      - vpp-dpdk-rdma-version-mismatch:
+          branch: '{branch}'
+      - fdio-infra-publish
+# [end] VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
 
 # VPP-MERGE JOB TEMPLATE
 - job-template:
