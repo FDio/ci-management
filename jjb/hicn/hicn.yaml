@@ -360,6 +360,7 @@
           output-path: "tests"
           pass-threshold: 75.0
           only-critical: false
+      - fdio-infra-publish
 
 - job-template:
     name: "hicn-merge-{stream}-{os}-{executor-arch}"
