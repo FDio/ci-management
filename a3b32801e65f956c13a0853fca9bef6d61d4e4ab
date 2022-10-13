@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32de7cb6_44bed997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2022-10-13T14:08:09Z",
+      "side": 1,
+      "message": "Tested here: https://jenkins.fd.io/sandbox/job/hicn-verify-functest-hicn-ubuntu2004-x86_64/43/\n(job is marked unstable due to some issues running on the sandbox, but the console logs show the log publisher working as intended)",
+      "revId": "a3b32801e65f956c13a0853fca9bef6d61d4e4ab",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
