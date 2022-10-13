@@ -19,6 +19,10 @@ set +e  # Do not affect the build result if some part of archiving fails.
 WS_ARCHIVES_DIR="$WORKSPACE/archives"
 BUILD_ENV_LOG="$WS_ARCHIVES_DIR/_build-enviroment-variables.log"
 
+if curl --output robot-plugin.zip "$BUILD_URL/robot/report/*zip*/robot-plugin.zip"; then
+    unzip -d ./archives robot-plugin.zip
+fi
+
 # Generate gdb-command script to output vpp stack traceback from core files.
 gdb_cmdfile="/tmp/gdb-commands"
 cat >$gdb_cmdfile <<'__END__'
