@@ -22,6 +22,30 @@
       },
       "revId": "d5fc6bd0e4e5081f87fb405bc0963e50c6ae3a32",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a910493_0f963efa",
+        "filename": "jjb/scripts/vpp/dpdk-rdma-version-mismatch.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-10-13T15:58:52Z",
+      "side": 1,
+      "message": "Copy-pasta / historical code included in all vpp jjb scripts.\nI will push a separate patch to remove from all scripts.",
+      "parentUuid": "41931c7c_823d720b",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "d5fc6bd0e4e5081f87fb405bc0963e50c6ae3a32",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
