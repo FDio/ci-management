@@ -22,9 +22,6 @@ EXTERNAL_BUILD_DIR="$WORKSPACE/build/external"
 RETVAL="0"
 MISMATCH_RESULT="INCLUDED IN"
 
-echo "sha1sum of this script: ${0}"
-sha1sum $0
-
 make -C "$EXTERNAL_BUILD_DIR" build-deb
 source "$EXTERNAL_BUILD_DIR/dpdk_mlx_default.sh" || true
 

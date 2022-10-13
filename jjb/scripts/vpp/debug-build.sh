@@ -27,9 +27,6 @@ BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
 RETVAL="0"
 
-echo "sha1sum of this script: ${0}"
-sha1sum $0
-
 # run with ASAN on
 # disable ASAN for now in the debug build - it's broken with PAPI
 # in make test transitioning to unix sockets

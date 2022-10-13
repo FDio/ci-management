@@ -25,9 +25,6 @@ DRYRUN="${DRYRUN:-}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
 RETVAL="0"
-
-echo "sha1sum of this script: ${0}"
-sha1sum $0
 export CC=gcc
 
 make_build_release_build_test_gcov_sanity() {

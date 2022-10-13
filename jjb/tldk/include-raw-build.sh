@@ -25,9 +25,6 @@ else
     echo "Cannot find /etc/bootstrap-functions.sha"
 fi
 
-echo "sha1sum of this script: ${0}"
-sha1sum $0
-
 # Make TLDK
 make
 
@@ -55,4 +52,3 @@ then
 	echo "* TLDK OFO/LOST SEGMENT TESTS SUCCESSFUL"
 	echo "*****************************************************************"
 fi
-
