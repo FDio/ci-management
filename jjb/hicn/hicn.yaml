@@ -316,7 +316,7 @@
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "centos7-docker-4c-4g"
+    node: "ubuntu2004-builder-4c-4g"
     concurrent: true
 
     properties:
