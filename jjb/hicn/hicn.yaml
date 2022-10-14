@@ -279,9 +279,6 @@
               branches:
                 - branch-compare-type: "ANT"
                   branch-pattern: "**/{branch}"
-          override-votes: true
-          gerrit-build-notbuilt-verified-value: 0
-          gerrit-build-successful-verified-value: 1
           # yamllint disable-line rule:line-length
           notbuilt-message: "Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes."
           # yamllint disable-line rule:line-length
@@ -289,9 +286,14 @@
           successful-message: "build_success-{stream}-{os}-{executor-arch}"
           skip-vote:
             successful: true
-            failed: false
-            unstable: false
-            notbuilt: false
+            failed: true
+            unstable: true
+            notbuilt: true
+          override-votes: true
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
 
     builders:
       - shell: !include-raw-escape:
