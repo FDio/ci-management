@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a1bd35_96561717",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2022-10-17T18:58:07Z",
+      "side": 1,
+      "message": "This latest patch is working properly on the sandbox, and is ready for review.",
+      "revId": "7d9c0de9c63cb9483b80f5deedb7920cffbedcb6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
