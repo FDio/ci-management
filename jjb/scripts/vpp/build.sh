@@ -40,9 +40,6 @@ BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
 RETVAL="0"
 
-echo "sha1sum of this script: ${0}"
-sha1sum $0
-
 if [ -n "${MAKE_PARALLEL_FLAGS}" ] ; then
   echo "Building VPP. Number of cores for build set with" \
        "MAKE_PARALLEL_FLAGS='${MAKE_PARALLEL_FLAGS}'."
