@@ -17,7 +17,6 @@ templates:
     prefixCmd: ""
     forcePull: true
     hostVolumes: ""
-    hostname: "${NOMAD_JOB_NAME}__${NOMAD_GROUP_NAME}__${NOMAD_TASK_NAME}__${node.unique.name}__${NOMAD_ALLOC_ID}"
     privileged: true
     reusable: false
     useRawExec: false
