@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae1e3f3_50ab0b00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-10-19T16:08:57Z",
+      "side": 1,
+      "message": "@Vanessa,\nhow to we verify/validate the JCasC configuration in this change?",
+      "revId": "672f06dd9d8a2b0b4c536e70d71c40bb85d720f4",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
