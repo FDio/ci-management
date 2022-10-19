@@ -30,7 +30,6 @@ echo "$long_line"
 echo "Executor Runtime Attributes:"
 echo "OS: $OS_ID-$OS_VERSION_ID"
 echo "Arch: $OS_ARCH"
-echo "Nomad Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
 echo "Container ID: $(hostname)"
 
 echo "$long_line"
