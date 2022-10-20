@@ -10,4 +10,6 @@ templates:
     image: "fdiotools/builder-ubuntu2004:sandbox-x86_64"
     labels: "builder-ubuntu2004-sandbox-x86_64"
     prefix: "builder-ubuntu2004-sandbox-x86_64"
-    hostVolumes: "/tmp/ccache.ubuntu2004:/scratch/ccache"
+    hostVolumes:
+      - "/tmp/ccache.ubuntu2004:/scratch/ccache"
+      - "/scratch/nomad:/scratch/nomad"

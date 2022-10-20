@@ -10,4 +10,6 @@ templates:
     image: "fdiotools/builder-debian10:prod-x86_64"
     labels: "builder-debian10-prod-x86_64"
     prefix: "builder-debian10-prod-x86_64"
-    hostVolumes: "/tmp/ccache.debian10:/scratch/ccache"
+    hostVolumes:
+      - "/tmp/ccache.debian10:/scratch/ccache"
+      - "/scratch/nomad:/scratch/nomad"
