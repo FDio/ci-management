@@ -21,13 +21,24 @@ long_line="*********************************************************************
 OS_ID=$(grep '^ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_VERSION_ID=$(grep '^VERSION_ID=' /etc/os-release | cut -f2- -d= | sed -e 's/\"//g')
 OS_ARCH=$(uname -m)
+
+# Requires all nomad client machines to run the following command
+# and mount /scratch/nomad into the docker container:
+# sudo mkdir -p /scratch/nomad && echo "$(hostname)-$(uname -m)" | sudo tee /scratch/nomad/nomad-client
+nomad_client_file="/scratch/nomad/nomad-client"
+if [ -f "$nomad_client_file" ] ; then
+    NOMAD_CLIENT="$(cat $nomad_client_file)"
+else
+    NOMAD_CLIENT="Unknown"
+fi
+
 echo "$long_line"
 echo "Executor Runtime Attributes:"
 echo "OS: $OS_ID-$OS_VERSION_ID"
 echo "    $(uname -a)"
 echo "Number CPUs: $(nproc)"
 echo "Arch: $OS_ARCH"
-echo "Nomad Hostname: $(grep search /etc/resolv.conf | cut -d' ' -f2 | head -1)"
+echo "Nomad Client Hostname: $NOMAD_CLIENT"
 echo "Container ID: $(hostname)"
 echo "$long_line"
 echo -e "lscpu:\n$(lscpu)"
