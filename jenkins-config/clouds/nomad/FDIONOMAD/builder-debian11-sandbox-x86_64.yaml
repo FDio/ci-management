@@ -10,4 +10,4 @@ templates:
     image: "fdiotools/builder-debian11:sandbox-x86_64"
     labels: "builder-debian11-sandbox-x86_64"
     prefix: "builder-debian11-sandbox-x86_64"
-    hostVolumes: "/tmp/ccache.debian11:/scratch/ccache"
+    hostVolumes: "/tmp/ccache.debian11:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"

@@ -10,3 +10,4 @@ templates:
     image: "fdiotools/builder-ubuntu2004:prod-x86_64"
     labels: "csit-builder-ubuntu2004-prod-x86_64"
     prefix: "csit-builder-ubuntu2004-prod-x86_64"
+    hostVolumes: "/scratch/nomad:/scratch/nomad:ro"

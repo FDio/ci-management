@@ -10,4 +10,4 @@ templates:
     image: "fdiotools/builder-ubuntu2204:sandbox-x86_64"
     labels: "csit-builder-ubuntu2204-sandbox-x86_64"
     prefix: "csit-builder-ubuntu2204-sandbox-x86_64"
-    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache"
+    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"

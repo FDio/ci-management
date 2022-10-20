@@ -10,3 +10,4 @@ templates:
     image: "fdiotools/builder-ubuntu2004:sandbox-aarch64"
     labels: "csit-builder-ubuntu2004-sandbox-aarch64"
     prefix: "csit-builder-ubuntu2004-sandbox-aarch64"
+    hostVolumes: "/scratch/nomad:/scratch/nomad:ro"
