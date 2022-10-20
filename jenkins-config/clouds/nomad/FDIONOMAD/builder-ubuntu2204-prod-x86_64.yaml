@@ -10,4 +10,6 @@ templates:
     image: "fdiotools/builder-ubuntu2204:prod-x86_64"
     labels: "builder-ubuntu2204-prod-x86_64"
     prefix: "builder-ubuntu2204-prod-x86_64"
-    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache"
+    hostVolumes:
+      - "/tmp/ccache.ubuntu2204:/scratch/ccache"
+      - "/scratch/nomad:/scratch/nomad"
