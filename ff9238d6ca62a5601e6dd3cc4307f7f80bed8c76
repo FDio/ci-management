@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d804416_7676df51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-10-20T01:57:06Z",
+      "side": 1,
+      "message": "I created /scratch/nomad/nomad-client on all nomad servers per the comment in jjb/scripts/setup_executor_env.sh by hand.  It would probably be a good idea to add the creation of the file to the ansible nomad recipe\n\nThe output of Nomad Hostname was broken by upgrade of infra to Ubuntu-22.04.  This information is required to help troubleshoot intermittent \u0027make test\u0027 failures that have gotten worse on Ubuntu-22.04",
+      "revId": "ff9238d6ca62a5601e6dd3cc4307f7f80bed8c76",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
