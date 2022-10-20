@@ -16,7 +16,7 @@ templates:
     numExecutors: 1
     prefixCmd: ""
     forcePull: true
-    hostVolumes: ""
+    hostVolumes: "/scratch/nomad:/scratch/nomad:ro"
     privileged: true
     reusable: false
     useRawExec: false
