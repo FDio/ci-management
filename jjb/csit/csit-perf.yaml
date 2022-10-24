@@ -82,6 +82,9 @@
             - 1n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-icx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -188,6 +191,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
+            - 2n-icx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -281,6 +288,9 @@
             - 1n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-icx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -360,6 +370,9 @@
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
 
