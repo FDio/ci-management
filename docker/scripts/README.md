@@ -250,8 +250,9 @@ script will be written to automate the process.
 
 ## DockerHub Repositories
 
-- fdiotools/builder-debian10
+- fdiotools/builder-debian11
 - fdiotools/builder-ubuntu2004
+- fdiotools/builder-ubuntu2204
 - fdiotools/csit_dut-ubuntu2004
 - fdiotools/csit_shim-ubuntu2004
 
@@ -269,7 +270,4 @@ a production image to the previous image used in production.
 Jenkins-Nomad Label.
 - sandbox-aarch64: Tag used to select the aarch64 sandbox image by the
 associated Jenkins-Nomad Label.
-- test-x86_64: Tag used to select the x86_64 sandbox image by the associated
-Jenkins-Nomad Label.
-- test-aarch64: Tag used to select the aarch64 sandbox image by the associated
-Jenkins-Nomad Label.
+

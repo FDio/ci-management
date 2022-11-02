@@ -14,9 +14,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -30,9 +27,6 @@
       # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
