@@ -40,9 +40,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -57,9 +54,6 @@
       # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
@@ -87,11 +81,6 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04'
-          make-test-multiworker-os: 'debian-11'
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -103,27 +92,11 @@
           make-test-os: 'ubuntu-20.04'
           make-test-multiworker-os: 'debian-11'
     os:
-      - debian10
       - debian11
       - ubuntu2004
       - ubuntu2204
     executor-arch: 'x86_64'
     exclude:
-      # os deprecated in 22.06
-      - stream: '2206'
-        os: 'debian10'
-      # os deprecated in 22.10
-      - stream: '2210'
-        os: 'debian10'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'debian10'
-      # os added in 22.06
-      - stream: '2202'
-        os: 'debian11'
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
@@ -191,9 +164,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -207,9 +177,6 @@
       # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
@@ -237,11 +204,6 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-22.04'
           make-test-multiworker-os: ''
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04'
-          make-test-multiworker-os: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -257,9 +219,6 @@
       - ubuntu2204
     executor-arch: 'aarch64'
     exclude:
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
@@ -352,9 +311,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2202':
-          branch: 'stable/2202'
-          branch-refspec: ''
       - '2206':
           branch: 'stable/2206'
           branch-refspec: ''
@@ -371,9 +327,6 @@
       # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
-      # os added in 22.10
-      - stream: '2202'
-        os: 'ubuntu2204'
       # os added in 22.10
       - stream: '2206'
         os: 'ubuntu2204'
