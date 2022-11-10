@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a696eb_9889f009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-11-10T20:24:39Z",
+      "side": 1,
+      "message": "Test results from Jenkins Sandbox with VPP gerrit change forcing test failure in SanityTestCase:\n\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/daw-vpp-debug-verify-master-ubuntu2204-x86_64/3/",
+      "revId": "824b8c81257765f5e44c1b41087b8db0c41c6b6e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
