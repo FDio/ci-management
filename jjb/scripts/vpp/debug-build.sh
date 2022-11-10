@@ -54,8 +54,9 @@ make_build_test_debug() {
             echo "Testing VPP with automatically calculated number of cores. " \
                 "See test logs for the exact number."
         fi
-        if ! make UNATTENDED=yes TEST_JOBS="$TEST_JOBS" test-debug ; then
-            BUILD_ERROR="FAILED 'make UNATTENDED=yes TEST_JOBS=$TEST_JOBS test-debug'"
+        if ! make UNATTENDED=yes COMPRESS_FAILED_TEST_LOGS=yes \
+                TEST_JOBS="$TEST_JOBS" test-debug ; then
+            BUILD_ERROR="FAILED 'make UNATTENDED=yes COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS=$TEST_JOBS test-debug'"
             return
         fi
     else
