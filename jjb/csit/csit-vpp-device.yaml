@@ -25,7 +25,7 @@
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
           make-parallel-jobs: '32'
-          skip-vote: 'true'
+          skip-vote: 'false'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly':
