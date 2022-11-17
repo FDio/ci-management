@@ -85,6 +85,7 @@
           - ../scripts/vpp/docs.sh
 
     publishers:
+      - fdio-infra-publish-docs-7day
       - fdio-infra-publish
 
 - job-template:

@@ -131,7 +131,8 @@ get_gerrit_refspec() {
     local query="$(ssh -p 29418 gerrit.fd.io gerrit query status:merged project:$project branch:$branch limit:1 --format=JSON --current-patch-set | tr ',' '\n' | grep refs | cut -d'"' -f4)"
 
     if [ -z "$query" ] ; then
-        echo "ERROR: Invalid project ($1) or branch ($2)"
+        echo "ERROR: Invalid argument(s): branch ($1) project ($2)"
+        echo "Usage: $0 <branch> <project>"
     else
         echo "$query"
     fi
