@@ -17,12 +17,8 @@ echo "---> publish_docs.sh"
 
 set -exuo pipefail
 
-if [[ "${SILO}" != "production" ]] ; then
-    echo "WARNING: Doc upload not supported on Jenkins '${SILO}'..."
-    exit 0
-fi
-
 CDN_URL="s3-docs.fd.io"
+bucket="fdio-docs-s3-cloudfront-index"
 
 if [[ ${JOB_NAME} == *merge* ]]; then
     case "${JOB_NAME}" in
@@ -51,17 +47,41 @@ if [[ ${JOB_NAME} == *merge* ]]; then
         *)
             die "Unknown job: ${JOB_NAME}"
     esac
-
-    export TF_VAR_workspace_dir=$workspace_dir
-    export TF_VAR_bucket_path=$bucket_path
-    export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
-    export AWS_DEFAULT_REGION="us-east-1"
-
-    echo "INFO: archiving docs to S3"
-    pushd ..
-    terraform init -no-color
-    terraform apply -no-color -auto-approve
-    popd
-
-    echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"
+elif [[ ${JOB_NAME} == *verify* ]]; then
+    case "${JOB_NAME}" in
+        *"csit-docs"*)
+            workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
+            bucket_path="/csit/${GERRIT_BRANCH}/docs/"
+            ;;
+        *"hicn-docs"*)
+            hicn_release="$(git describe --long --match "v*" | cut -d- -f1 | sed -e 's/^v//')"
+            workspace_dir="${WORKSPACE}/build/doc/deploy-site"
+            bucket_path="/hicn/${hicn_release}/"
+            ;;
+        *"vpp-docs"*)
+            CDN_URL="s3-docs-7day.fd.io"
+            workspace_dir="${WORKSPACE}/build-root/docs/html"
+            bucket="vpp-docs-7day-retention"
+            # Use the same bucket path as logs so that the docs can be viewed by
+            # s/s3-logs/s3-docs-7day/ in the URL after selecting the logs URL from
+            # the jenkins job page.
+            bucket_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
+            ;;
+        *)
+            die "Unknown job: ${JOB_NAME}"
+    esac
+else
+    die "Unknown job: ${JOB_NAME}"
 fi
+
+export AWS_SHARED_CREDENTIALS_FILE=$HOME/.aws/credentials
+export AWS_DEFAULT_REGION="us-east-1"
+
+echo "INFO: archiving docs to S3 bucket '$bucket'"
+pushd ..
+terraform init -no-color
+terraform apply -no-color -auto-approve -var="workspace_dir=$workspace_dir" \
+    -var="bucket=$bucket" -var="bucket_path=$bucket_path"
+popd
+
+echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"

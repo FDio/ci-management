@@ -754,10 +754,10 @@
 
 - publisher:
     name: fdio-infra-publish-docs
-    # macro to finish up a build.
+    # macro to finish up a docs build.
     #
     # Handles the following:
-    #   - Shipping docs S3 logs repository
+    #   - Shipping docs to the docs S3 bucket
     #   - Cleanup workspace
     publishers:
       - postbuildscript:
@@ -771,6 +771,33 @@
                 - UNSTABLE
               build-steps:
                 - fdio-infra-ship-docs
+          mark-unstable-if-failed: true
+      - workspace-cleanup:
+          exclude:
+            # Do not clean up *.jenkins-trigger files for jobs that use a
+            # properties file as input for triggering another build.
+            - "**/*.jenkins-trigger"
+          fail-build: false
+
+- publisher:
+    name: fdio-infra-publish-docs-7day
+    # macro to finish up a verify docs build.
+    #
+    # Handles the following:
+    #   - Shipping docs to the docs 7-day retention S3 bucket
+    #   - Cleanup workspace
+    publishers:
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - fdio-infra-ship-docs-7day
           mark-unstable-if-failed: true
       - workspace-cleanup:
           exclude:
@@ -855,6 +882,20 @@
       - config-file-provider:
           files:
             - file-id: "jenkins-s3-docs-ship"
+              target: $HOME/.aws/credentials
+      - shell: !include-raw:
+          - scripts/terraform_s3_docs_ship.sh
+      - shell: !include-raw:
+          - scripts/publish_docs.sh
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-clear-credentials.sh
+
+- builder:
+    name: fdio-infra-ship-docs-7day
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: "jenkins-s3-vpp-docs-ship"
               target: $HOME/.aws/credentials
       - shell: !include-raw:
           - scripts/terraform_s3_docs_ship.sh
