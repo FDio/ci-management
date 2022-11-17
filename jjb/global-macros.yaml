@@ -780,6 +780,33 @@
           fail-build: false
 
 - publisher:
+    name: fdio-infra-publish-vpp-docs
+    # macro to finish up a build.
+    #
+    # Handles the following:
+    #   - Shipping docs S3 logs repository
+    #   - Cleanup workspace
+    publishers:
+      - postbuildscript:
+          builders:
+            - role: BOTH
+              build-on:
+                - ABORTED
+                - FAILURE
+                - NOT_BUILT
+                - SUCCESS
+                - UNSTABLE
+              build-steps:
+                - fdio-infra-ship-vpp-docs
+          mark-unstable-if-failed: true
+      - workspace-cleanup:
+          exclude:
+            # Do not clean up *.jenkins-trigger files for jobs that use a
+            # properties file as input for triggering another build.
+            - "**/*.jenkins-trigger"
+          fail-build: false
+
+- publisher:
     name: fdio-infra-publish
     # macro to finish up a build.
     #
@@ -855,6 +882,20 @@
       - config-file-provider:
           files:
             - file-id: "jenkins-s3-docs-ship"
+              target: $HOME/.aws/credentials
+      - shell: !include-raw:
+          - scripts/terraform_s3_docs_ship.sh
+      - shell: !include-raw:
+          - scripts/publish_docs.sh
+      - shell: !include-raw:
+          - ../global-jjb/shell/logs-clear-credentials.sh
+
+- builder:
+    name: fdio-infra-ship-vpp-docs
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: "jenkins-s3-vpp-docs-ship"
               target: $HOME/.aws/credentials
       - shell: !include-raw:
           - scripts/terraform_s3_docs_ship.sh
