@@ -16,6 +16,23 @@
       "message": "Jenkins Sandbox Test Results:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-2206-ubuntu2004-x86_64/1/\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-2206-ubuntu2004-x86_64/1/\nhttps://s3-docs-7day.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-2206-ubuntu2004-x86_64/1/\n\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-2210-ubuntu2204-x86_64/1/\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-2210-ubuntu2204-x86_64/1/\nhttps://s3-docs-7day.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-2210-ubuntu2204-x86_64/1/\n\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-verify-master-ubuntu2204-x86_64/1/\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-master-ubuntu2204-x86_64/1/\nhttps://s3-docs-7day.fd.io/vex-yul-rot-jenkins-2/vpp-docs-verify-master-ubuntu2204-x86_64/1/",
       "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044c6887_eba9e60b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2022-11-23T23:27:23Z",
+      "side": 1,
+      "message": "Jenkins Sandbox Test Results for docs merge jobs:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2210-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-master-ubuntu2204-x86_64/1/",
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
