@@ -33,6 +33,115 @@
       "message": "Jenkins Sandbox Test Results for docs merge jobs:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2206-ubuntu2004-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-2210-ubuntu2204-x86_64/1/\nhttps://jenkins.fd.io/sandbox/job/vpp-docs-merge-master-ubuntu2204-x86_64/1/",
       "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b41150a4_3b75d2ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-11-25T18:10:35Z",
+      "side": 1,
+      "message": "mainly .sh script i do not like, but the logic seems to be ok",
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a3ed23_027e5831",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-11-25T18:10:35Z",
+      "side": 1,
+      "message": "not true, in fact, as the only diff is the credentials mapping but logic is in shell script based on job name. maybe rephrase",
+      "range": {
+        "startLine": 787,
+        "startChar": 10,
+        "endLine": 787,
+        "endChar": 61
+      },
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a036498_6098be29",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-11-25T18:10:35Z",
+      "side": 1,
+      "message": "this will go into production bucket!\nverify job cannot push to \"fdio-docs-s3-cloudfront-index\"",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 54
+      },
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238fa346_57436441",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-11-25T18:10:35Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20329b22_b4e4d451",
+        "filename": "jjb/scripts/publish_docs.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-11-25T18:10:35Z",
+      "side": 1,
+      "message": "I prefer export variable",
+      "range": {
+        "startLine": 83,
+        "startChar": 46,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "945827346fca95df3e5564f3b7452288d6c1f347",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
