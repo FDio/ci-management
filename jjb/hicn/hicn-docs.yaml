@@ -63,6 +63,7 @@
       - shell: !include-raw-escape: ../scripts/hicn/docs.sh
 
     publishers:
+      - fdio-infra-publish-docs-7day
       - fdio-infra-publish
 
 - job-template:
