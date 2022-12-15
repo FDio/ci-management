@@ -273,12 +273,6 @@
       - 3n-icx:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
-      - 2n-dnv:
-          os: 'ubuntu2204'
-          executor-arch: 'x86_64'
-      - 3n-dnv:
-          os: 'ubuntu2204'
-          executor-arch: 'x86_64'
       - 3n-tsh:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
