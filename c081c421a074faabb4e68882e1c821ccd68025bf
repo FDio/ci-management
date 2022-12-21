@@ -16,6 +16,23 @@
       "message": "Sandbox runs:\nNon-perf still deletes: https://jenkins.fd.io/sandbox/job/csit-verify-tox-master-ubuntu2204-x86_64/1/consoleText\nPerf does not delete: https://jenkins.fd.io/sandbox/job/csit-vpp-perf-verify-master-2n-clx/1/consoleText",
       "revId": "c081c421a074faabb4e68882e1c821ccd68025bf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a6bc7c_da04dece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2022-12-21T13:23:21Z",
+      "side": 1,
+      "message": "i need reserve to be manual",
+      "revId": "c081c421a074faabb4e68882e1c821ccd68025bf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
