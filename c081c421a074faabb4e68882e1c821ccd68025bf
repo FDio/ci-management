@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a824f0_7afe7a74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2022-12-21T13:16:30Z",
+      "side": 1,
+      "message": "Sandbox runs:\nNon-perf still deletes: https://jenkins.fd.io/sandbox/job/csit-verify-tox-master-ubuntu2204-x86_64/1/consoleText\nPerf does not delete: https://jenkins.fd.io/sandbox/job/csit-vpp-perf-verify-master-2n-clx/1/consoleText",
+      "revId": "c081c421a074faabb4e68882e1c821ccd68025bf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
