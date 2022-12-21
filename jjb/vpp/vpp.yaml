@@ -954,7 +954,7 @@
       - robot-report:
           output-path: 'archives/csit_current/0/'
 
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE

@@ -458,7 +458,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master-{node-arch}'
@@ -523,7 +523,7 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}'
@@ -588,7 +588,7 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}'
@@ -648,7 +648,7 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}'
@@ -708,7 +708,7 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-trex-perf-verify-{stream}-{node-arch}'
@@ -797,7 +797,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-dpdk-perf-verify-{stream}-{node-arch}'
@@ -888,7 +888,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master-{node-arch}'
@@ -953,7 +953,7 @@
           - ../scripts/csit/perf-timed.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}'
@@ -1042,7 +1042,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}'
@@ -1131,7 +1131,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}'
@@ -1220,7 +1220,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}'
@@ -1309,7 +1309,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}'
@@ -1398,7 +1398,7 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup
 
 - job-template:
     name: 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}'
@@ -1487,4 +1487,4 @@
           - ../scripts/csit/perf-verify.sh
 
     publishers:
-      - fdio-infra-publish
+      - fdio-infra-publish-no-cleanup

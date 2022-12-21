@@ -814,6 +814,22 @@
     #   - Shipping logs to S3 logs repository
     #   - Cleanup workspace
     publishers:
+      - fdio-infra-publish-no-cleanup
+      - workspace-cleanup:
+          exclude:
+            # Do not clean up *.jenkins-trigger files for jobs that use a
+            # properties file as input for triggering another build.
+            - "**/*.jenkins-trigger"
+          fail-build: false
+
+- publisher:
+    name: fdio-infra-publish-no-cleanup
+    # Macro to finish up a performance job.
+    # Cleanup prevents the job from unregistering its testbed properly.
+    #
+    # Handles the following:
+    #   - Shipping logs to S3 logs repository
+    publishers:
       - postbuildscript:
           builders:
             - role: BOTH
@@ -828,12 +844,6 @@
                 - shell: !include-raw: scripts/post_build_deploy_archives.sh
                 - fdio-infra-ship-logs
           mark-unstable-if-failed: true
-      - workspace-cleanup:
-          exclude:
-            # Do not clean up *.jenkins-trigger files for jobs that use a
-            # properties file as input for triggering another build.
-            - "**/*.jenkins-trigger"
-          fail-build: false
 
 - publisher:
     name: jacoco-report
