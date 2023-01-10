@@ -22,8 +22,12 @@
     os: ubuntu2004
     executor-arch: "x86_64"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
 
 - project:
     name: hicn-aarch64
@@ -34,8 +38,12 @@
     os: ubuntu2004
     executor-arch: "aarch64"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
 
 - project:
     name: hicn-misc
@@ -43,8 +51,12 @@
       - "hicn-checkstyle-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
     os: ubuntu2004
     executor-arch: "x86_64"
 
@@ -57,8 +69,12 @@
     os: ubuntu2004
     executor-arch: "x86_64"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
 
 - project:
     name: hicn-extras-aarch64
@@ -69,8 +85,12 @@
     os: ubuntu2004
     executor-arch: "aarch64"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
 
 - project:
     name: hicn-vpp-latest-x86_64
@@ -80,8 +100,9 @@
     os: ubuntu2004
     executor-arch: "x86_64"
     stream:
-      - master:
+      - "master":
           branch: "master"
+          repo: "hicn"
 
 - project:
     name: hicn-vpp-latest-aarch64
@@ -91,8 +112,9 @@
     os: ubuntu2004
     executor-arch: "aarch64"
     stream:
-      - master:
+      - "master":
           branch: "master"
+          repo: "hicn"
 
 - project:
     name: hicn-view
@@ -110,8 +132,12 @@
     sonarcloud-api-token: "{sonarcloud_api_token}"
     sonarcloud-project-key: "{sonarcloud_project_organization}-{project}"
     stream:
-      - hicn:
+      - "master":
           branch: "master"
+          repo: "hicn"
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
 
 - job-template:
     name: hicn-sonar-scanner
@@ -126,7 +152,7 @@
       - gerrit-parameter:
           branch: "{branch}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -255,7 +281,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -306,10 +332,10 @@
       - archive-artifacts:
           artifacts: "packages/*.deb, packages/*.rpm"
       - xunit:
-          thresholdmode: 'percent'
+          thresholdmode: "percent"
           thresholds:
             - failed:
-                  failure: 0
+                failure: 0
           types:
             - gtest:
                 pattern: "**/reports/*report.xml"
@@ -333,7 +359,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -420,10 +446,10 @@
     publishers:
       - fdio-infra-publish
       - xunit:
-          thresholdmode: 'percent'
+          thresholdmode: "percent"
           thresholds:
             - failed:
-                  failure: 0
+                failure: 0
           types:
             - gtest:
                 pattern: "**/reports/*report.xml"
@@ -447,7 +473,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -499,7 +525,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "hicn"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -562,7 +588,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -575,12 +601,11 @@
           build-timeout: 120
 
     triggers:
-
-      - timed: 'H H * * *'
+      - timed: "H H * * *"
       - gerrit-trigger-manually-triggered:
-          comment-trigger-value: 'verify-vpp-latest'
-          name: '{project}'
-          branch: '{branch}'
+          comment-trigger-value: "verify-vpp-latest"
+          name: "{project}"
+          branch: "{branch}"
 
     builders:
       - shell: !include-raw-escape:
