@@ -11,6 +11,11 @@
     stream:
       - "master":
           branch: "master"
+          repo: "hicn"
+          branch-refspec: ""
+      - "2210":
+          branch: "stable/2210"
+          repo: "2210"
           branch-refspec: ""
     type:
       - short
@@ -41,7 +46,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
@@ -91,7 +96,7 @@
       - os-parameter:
           os: "{os}"
       - stream-parameter:
-          stream: "{stream}"
+          stream: "{repo}"
 
     scm:
       - gerrit-trigger-scm:
