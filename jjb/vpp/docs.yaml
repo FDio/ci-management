@@ -20,7 +20,13 @@
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
     exclude:
+      # os deprecated in 23.02
+      - stream: '2302'
+        os: 'ubuntu2004'
       # os deprecated in 22.10
       - stream: '2210'
         os: 'ubuntu2004'

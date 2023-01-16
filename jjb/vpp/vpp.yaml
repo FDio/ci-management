@@ -46,8 +46,14 @@
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
+      # os deprecated in 23.02
+      - stream: '2302'
+        os: 'ubuntu2004'
       # os deprecated in 22.10
       - stream: '2210'
         os: 'ubuntu2004'
@@ -90,6 +96,11 @@
           branch: 'stable/2210'
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04'
+          make-test-multiworker-os: 'debian-11'
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
     os:
       - debian11
@@ -170,7 +181,13 @@
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
     exclude:
+      # os deprecated in 23.02
+      - stream: '2302'
+        os: 'ubuntu2004'
       # os deprecated in 22.10
       - stream: '2210'
         os: 'ubuntu2004'
@@ -214,6 +231,11 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04'
           make-test-multiworker-os: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-22.04'
+          make-test-multiworker-os: ''
     os:
       - ubuntu2004
       - ubuntu2204
@@ -238,6 +260,9 @@
           branch-refspec: ''
       - '2210':
           branch: 'stable/2210'
+          branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
           branch-refspec: ''
     testbed-arch:
       - 1n-skx:
@@ -311,10 +336,16 @@
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
     os:
       - 'ubuntu2004'
       - 'ubuntu2204'
     exclude:
+      # os deprecated in 23.02
+      - stream: '2302'
+        os: 'ubuntu2004'
       # os deprecated in 22.10
       - stream: '2210'
         os: 'ubuntu2004'
