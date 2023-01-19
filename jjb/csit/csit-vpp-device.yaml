@@ -33,17 +33,17 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2210':
-                branch: 'rls2210'
-                branch-id: 'oper-rls2210'
+            - '2302':
+                branch: 'rls2302'
+                branch-id: 'oper-rls2302'
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly':
           stream:
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2210':
-                branch: 'rls2210'
-                branch-id: 'oper-rls2210'
+            - '2302':
+                branch: 'rls2302'
+                branch-id: 'oper-rls2302'
 
     project: 'csit'
     branch: 'master'
@@ -52,9 +52,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2210':
-          branch: 'rls2210'
-          branch-id: 'oper-rls2210'
+      - '2302':
+          branch: 'rls2302'
+          branch-id: 'oper-rls2302'
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
