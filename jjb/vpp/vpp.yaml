@@ -85,7 +85,7 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-22.04'
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
       - '2206':
           branch: 'stable/2206'
@@ -100,7 +100,7 @@
       - '2302':
           branch: 'stable/2302'
           branch-refspec: ''
-          make-test-os: 'ubuntu-22.04'
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
     os:
       - debian11
@@ -125,13 +125,13 @@
       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-22.04'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
     comment-trigger-value: 'debug-verify'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-22.04'
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
     os: 'ubuntu2204'
     executor-arch: 'x86_64'
 
@@ -148,7 +148,7 @@
     jobs:
       - 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    make-test-os: 'ubuntu-22.04'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
     comment-trigger-value: 'dpdk-rdma-version-mismatch'
     stream:
       - 'master':
@@ -219,7 +219,7 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-22.04'
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
       - '2206':
           branch: 'stable/2206'
@@ -234,7 +234,7 @@
       - '2302':
           branch: 'stable/2302'
           branch-refspec: ''
-          make-test-os: 'ubuntu-22.04'
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
     os:
       - ubuntu2004

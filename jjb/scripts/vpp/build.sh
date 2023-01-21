@@ -80,13 +80,13 @@ make_build_test() {
         echo "Testing VPP with automatically calculated number of cores. " \
              "See test logs for the exact number."
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${VPPAPIGEN_TEST_OS}" ] ; then
+    if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${VPPAPIGEN_TEST_OS}"; then
         if ! src/tools/vppapigen/test_vppapigen.py ; then
             BUILD_ERROR="FAILED src/tools/vppapigen/test_vppapigen.py"
             return
         fi
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ] ; then
+    if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
         if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" RETRIES=3 test ; then
             BUILD_ERROR="FAILED 'make test'"
             return
@@ -94,7 +94,7 @@ make_build_test() {
     else
         echo "Skip running 'make test' on ${OS_ID}-${OS_VERSION_ID}"
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_MULTIWORKER_OS}" ] ; then
+    if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_MULTIWORKER_OS}"; then
         if git grep -q VPP_WORKER_CONFIG ; then
             if ! make VPP_WORKER_CONFIG="workers 2" COMPRESS_FAILED_TEST_LOGS=yes \
                     RETRIES=3 TEST_JOBS="$TEST_JOBS" test ; then
@@ -116,6 +116,8 @@ make_build_test() {
         else
             echo "Skip running MULTIWORKER MAKE TEST on ${OS_ID}-${OS_VERSION_ID}"
         fi
+    else
+        echo "Skip running MULTIWORKER MAKE TEST on ${OS_ID}-${OS_VERSION_ID}"
     fi
 }
 

@@ -45,7 +45,7 @@ make_build_test_debug() {
         BUILD_ERROR="FAILED 'make build'"
         return
     fi
-    if [ "${OS_ID}-${OS_VERSION_ID}" == "${MAKE_TEST_OS}" ] ; then
+    if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
         if [ -n "${MAKE_PARALLEL_JOBS}" ] ; then
             TEST_JOBS="${MAKE_PARALLEL_JOBS}"
             echo "Testing VPP with ${TEST_JOBS} cores."
