@@ -1,0 +1,120 @@
+# Copyright (c) 2023 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+- project:
+    name: csit
+    description: 'CSIT Jenkins jobs.'
+
+    jobs:
+      - 'csit-terraform-aws-eb-version-upload-{os}-{executor-arch}'
+      - 'csit-terraform-aws-eb-version-deploy-{os}-{executor-arch}'
+
+    project: 'csit'
+    branch: 'master'
+    os:
+      - 'ubuntu2204'
+    executor-arch: 'x86_64'
+    build-artifact-num-to-keep: 10
+
+- job-template:
+    name: 'csit-terraform-aws-eb-version-upload-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: false
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-terraform:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'terraform-cdash-upload'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/terraform-aws-eb-version-upload.sh
+
+    publishers:
+      - fdio-infra-publish
+
+- job-template:
+    name: 'csit-terraform-aws-eb-version-deploy-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: false
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers-non-activity-timeout:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-terraform:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'terraform-cdash-deploy'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/terraform-aws-eb-version-deploy.sh
+
+    publishers:
+      - fdio-infra-publish

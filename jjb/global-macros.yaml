@@ -369,6 +369,27 @@
             notbuilt: '{skip-vote}'
 
 - trigger:
+    name: gerrit-trigger-csit-terraform
+    # Manual trigger common for csit-terraform jobs.
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - comment-added-contains-event:
+                comment-contains-value: '{trigger-word}'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+          skip-vote:
+            successful: '{skip-vote}'
+            failed: '{skip-vote}'
+            unstable: '{skip-vote}'
+            notbuilt: '{skip-vote}'
+
+- trigger:
     name: gerrit-trigger-csit-vpp-devicetest-full
     # Comes from CSIT, for automatic jobs running device tests with VPP builds.
     # The job acts as an automatic verify job for CSIT contributions.
