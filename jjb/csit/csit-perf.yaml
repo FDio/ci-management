@@ -120,46 +120,45 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 2n-tx2:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 3n-tsh:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '30 22 * * 1,4'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
