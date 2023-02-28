@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -330,9 +330,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2206':
-          branch: 'stable/2206'
-          branch-refspec: ''
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
@@ -340,21 +337,7 @@
           branch: 'stable/2302'
           branch-refspec: ''
     os:
-      - 'ubuntu2004'
       - 'ubuntu2204'
-    exclude:
-      # os deprecated in 23.02
-      - stream: '2302'
-        os: 'ubuntu2004'
-      # os deprecated in 22.10
-      - stream: '2210'
-        os: 'ubuntu2004'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'ubuntu2004'
-      # os added in 22.10
-      - stream: '2206'
-        os: 'ubuntu2204'
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS

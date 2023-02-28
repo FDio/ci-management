@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -17,7 +17,6 @@
     description: 'CSIT Jenkins jobs.'
 
     jobs:
-      - 'csit-docs-merge-{stream}-{os}-{executor-arch}'
       - 'csit-report-merge-{stream}-{os}-{executor-arch}'
 
     project: 'csit'
@@ -39,70 +38,6 @@
     views:
       - project-view
     project-name: csit
-
-- job-template:
-    name: 'csit-docs-merge-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-    allow-empty: 'true'
-    fingerprint: false
-    only-if-success: true
-    default-excludes: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    parameters:
-      - project-parameter:
-          project: '{project}'
-      - gerrit-parameter:
-          branch: '{branch}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - reverse:
-          jobs: 'csit-vpp-device-{stream}-{os}-{executor-arch}-1n-skx-weekly'
-          result: 'success'
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'run-docs'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: true
-            failed: true
-            unstable: true
-            notbuilt: true
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/csit/docs.sh
-
-    publishers:
-      - fdio-infra-publish-docs
-      - fdio-infra-publish
 
 - job-template:
     name: 'csit-report-merge-{stream}-{os}-{executor-arch}'
