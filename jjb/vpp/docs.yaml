@@ -14,9 +14,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2206':
-          branch: 'stable/2206'
-          branch-refspec: ''
       - '2210':
           branch: 'stable/2210'
           branch-refspec: ''
@@ -34,8 +31,6 @@
       - stream: 'master'
         os: 'ubuntu2004'
       # os added in 22.10
-      - stream: '2206'
-        os: 'ubuntu2204'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
