@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424eff8a_bd0ddd52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2023-03-01T20:28:43Z",
+      "side": 1,
+      "message": "JJB test results:\n\n(venv) /scratch/dwallacelf/lf/ci-management.post-2302$ jjsb-test -n vpp-*\nNumber of jobs generated:  62\nJob name:  vpp-checkstyle-verify-2210-ubuntu2204-x86_64\nJob name:  vpp-checkstyle-verify-2302-ubuntu2204-x86_64\nJob name:  vpp-checkstyle-verify-master-ubuntu2204-x86_64\nJob name:  vpp-csit-verify-api-crc-2210-ubuntu2204-x86_64\nJob name:  vpp-csit-verify-api-crc-2302-ubuntu2204-x86_64\nJob name:  vpp-csit-verify-api-crc-master-ubuntu2204-x86_64\nJob name:  vpp-csit-verify-device-2210-ubuntu2204-aarch64-1n-tx2\nJob name:  vpp-csit-verify-device-2210-ubuntu2204-x86_64-1n-skx\nJob name:  vpp-csit-verify-device-2302-ubuntu2204-aarch64-1n-tx2\nJob name:  vpp-csit-verify-device-2302-ubuntu2204-x86_64-1n-skx\nJob name:  vpp-csit-verify-device-master-ubuntu2204-aarch64-1n-tx2\nJob name:  vpp-csit-verify-device-master-ubuntu2204-x86_64-1n-skx\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-aarch64-2n-tx2\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-aarch64-3n-alt\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-aarch64-3n-tsh\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-x86_64-2n-clx\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-x86_64-2n-icx\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-x86_64-2n-zn2\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-x86_64-3n-icx\nJob name:  vpp-csit-verify-perf-master-ubuntu2204-x86_64-3n-snr\nJob name:  vpp-debug-verify-master-ubuntu2204-x86_64\nJob name:  vpp-docs-merge-2210-ubuntu2204-x86_64\nJob name:  vpp-docs-merge-2302-ubuntu2204-x86_64\nJob name:  vpp-docs-merge-master-ubuntu2204-x86_64\nJob name:  vpp-docs-verify-2210-ubuntu2204-x86_64\nJob name:  vpp-docs-verify-2302-ubuntu2204-x86_64\nJob name:  vpp-docs-verify-master-ubuntu2204-x86_64\nJob name:  vpp-dpdk-rdma-version-mismatch-master-ubuntu2204-x86_64\nJob name:  vpp-gcc-verify-2210-ubuntu2204-x86_64\nJob name:  vpp-gcc-verify-2302-ubuntu2204-x86_64\nJob name:  vpp-gcc-verify-master-ubuntu2204-x86_64\nJob name:  vpp-info-yaml-verify\nJob name:  vpp-merge-2210-debian11-x86_64\nJob name:  vpp-merge-2210-ubuntu2004-aarch64\nJob name:  vpp-merge-2210-ubuntu2004-x86_64\nJob name:  vpp-merge-2210-ubuntu2204-aarch64\nJob name:  vpp-merge-2210-ubuntu2204-x86_64\nJob name:  vpp-merge-2302-debian11-x86_64\nJob name:  vpp-merge-2302-ubuntu2004-aarch64\nJob name:  vpp-merge-2302-ubuntu2004-x86_64\nJob name:  vpp-merge-2302-ubuntu2204-aarch64\nJob name:  vpp-merge-2302-ubuntu2204-x86_64\nJob name:  vpp-merge-master-debian11-x86_64\nJob name:  vpp-merge-master-ubuntu2004-aarch64\nJob name:  vpp-merge-master-ubuntu2004-x86_64\nJob name:  vpp-merge-master-ubuntu2204-aarch64\nJob name:  vpp-merge-master-ubuntu2204-x86_64\nJob name:  vpp-verify-2210-debian11-x86_64\nJob name:  vpp-verify-2210-ubuntu2004-aarch64\nJob name:  vpp-verify-2210-ubuntu2004-x86_64\nJob name:  vpp-verify-2210-ubuntu2204-aarch64\nJob name:  vpp-verify-2210-ubuntu2204-x86_64\nJob name:  vpp-verify-2302-debian11-x86_64\nJob name:  vpp-verify-2302-ubuntu2004-aarch64\nJob name:  vpp-verify-2302-ubuntu2004-x86_64\nJob name:  vpp-verify-2302-ubuntu2204-aarch64\nJob name:  vpp-verify-2302-ubuntu2204-x86_64\nJob name:  vpp-verify-master-debian11-x86_64\nJob name:  vpp-verify-master-ubuntu2004-aarch64\nJob name:  vpp-verify-master-ubuntu2004-x86_64\nJob name:  vpp-verify-master-ubuntu2204-aarch64\nJob name:  vpp-verify-master-ubuntu2204-x86_64\n",
+      "revId": "bf6abd087907c6eef605376ebc4273e4b0beb290",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
