@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo "---> jjb/scripts/csit/cdash-upload.sh"
+echo "---> jjb/scripts/csit/terraform-aws-eb-version-verify.sh"
 
 set -exuo pipefail
 
 csit_entry_dir="${WORKSPACE}/resources/libraries/bash/entry"
-source "${csit_entry_dir}/bootstrap_cdash_upload.sh"
+source "${csit_entry_dir}/bootstrap_aws_eb_version_verify.sh"
