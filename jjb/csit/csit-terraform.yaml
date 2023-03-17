@@ -17,7 +17,7 @@
     description: 'CSIT Jenkins jobs.'
 
     jobs:
-      - 'csit-terraform-aws-eb-version-upload-{os}-{executor-arch}'
+      - 'csit-terraform-aws-eb-version-verify-{os}-{executor-arch}'
       - 'csit-terraform-aws-eb-version-deploy-{os}-{executor-arch}'
 
     project: 'csit'
@@ -28,7 +28,7 @@
     build-artifact-num-to-keep: 10
 
 - job-template:
-    name: 'csit-terraform-aws-eb-version-upload-{os}-{executor-arch}'
+    name: 'csit-terraform-aws-eb-version-verify-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -59,7 +59,7 @@
       - gerrit-trigger-csit-terraform:
           project: '{project}'
           branch: '{branch}'
-          trigger-word: 'terraform-cdash-upload'
+          trigger-word: 'terraform-cdash-verify'
           skip-vote: false
 
     builders:
@@ -68,7 +68,7 @@
           - ../scripts/setup_executor_env.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/csit/terraform-aws-eb-version-upload.sh
+          - ../scripts/csit/terraform-aws-eb-version-verify.sh
 
     publishers:
       - fdio-infra-publish
