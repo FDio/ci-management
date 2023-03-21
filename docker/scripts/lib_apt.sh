@@ -1,7 +1,7 @@
 # lib_apt.sh - Docker build script apt library.
 #              For import only.
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -104,7 +104,7 @@ ENV LANG="en_US.UTF-8" LANGUAGE="en_US" LC_ALL="en_US.UTF-8"
 #        libpcap-dev      for python pypcap install (CSIT)
 #        sshpass          for CSIT jobs
 #
-#        From .../csit/resources/tools/presentation/run_report_*.sh:
+#        From .../csit/resources/tools/presentation/run_report_*.sh: // TO BE REMOVED IN RLS2306
 #        libxml2
 #        libxml2-dev
 #        libxslt-dev
@@ -185,10 +185,21 @@ EOF
 
 # Install terraform for CSIT
 #
-RUN wget https://releases.hashicorp.com/terraform/1.0.4/terraform_1.0.4_linux_$dpkg_arch.zip \\
-  && unzip terraform_1.0.4_linux_$dpkg_arch.zip \\
+RUN wget https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_$dpkg_arch.zip \\
+  && unzip terraform_1.4.2_linux_$dpkg_arch.zip \\
   && mv terraform /usr/bin \\
-  && rm -f terraform_1.0.4_linux_$dpkg_arch.zip
+  && rm -f terraform_1.4.2_linux_$dpkg_arch.zip
+
+# Install hugo for CSIT
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
+  && dpkg -i hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
+  && rm -f hugo_extended_0.111.3_linux-$dpkg_arch.deb
+
+# Install Go for Hugo for CSIT
+RUN wget https://go.dev/dl/go1.20.2.linux-$dpkg_arch.tar.gz \\
+  && rm -rf /usr/local/go \\
+  && tar -C /usr/local -xzf go1.20.2.linux-$dpkg_arch.tar.gz \\
+  && rm -f go1.20.2.linux-$dpkg_arch.tar.gz
 
 # Install packages for all project branches
 #
