@@ -1,7 +1,7 @@
 # lib_csit.sh - Docker build script CSIT library.
 #               For import only.
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -34,8 +34,7 @@ csit_supported_executor_class() {
 
 csit_supported_os() {
     case "$1" in
-        # TODO: fix to be only ubuntu-22.04 once migration is complete.
-        ubuntu-2[02].04) return 0 ;;
+        ubuntu-22.04) return 0 ;;
                    *) ;;
     esac
     return 1
