@@ -214,7 +214,7 @@
                   branch-pattern: '**/{branch}'
               file-paths:
                 - compare-type: 'REG_EXP'
-                  pattern: '.*/docs/.*'
+                  pattern: '.*docs/.*'
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
           gerrit-build-successful-verified-value: 1
@@ -291,7 +291,7 @@
                   branch-pattern: '**/{branch}'
               file-paths:
                 - compare-type: 'REG_EXP'
-                  pattern: '.*/docs/.*'
+                  pattern: '.*docs/.*'
           skip-vote:
             successful: true
             failed: false
