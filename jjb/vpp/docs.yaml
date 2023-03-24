@@ -2,8 +2,10 @@
 - project:
     name: docs
     jobs:
-      - 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
       - 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-docs-merge-{stream}-{os}-{executor-arch}'
+      - 'vpp-docsonly-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-docsonly-merge-{stream}-{os}-{executor-arch}'
 
     project: 'vpp'
     executor-arch: 'x86_64'
@@ -155,6 +157,163 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/docs.sh
+
+    publishers:
+      - fdio-infra-publish-docs
+      - fdio-infra-publish
+
+- job-template:
+    name: 'vpp-docsonly-verify-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - patchset-created-event:
+                exclude-drafts: 'true'
+                exclude-trivial-rebase: 'false'
+                exclude-no-code-change: 'false'
+            - draft-published-event
+            - comment-added-contains-event:
+                comment-contains-value: 'recheck-docsonly'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+              file-paths:
+                - compare-type: 'REG_EXP'
+                  pattern: '.*/docs/.*'
+          override-votes: true
+          gerrit-build-notbuilt-verified-value: 0
+          gerrit-build-successful-verified-value: 1
+          skip-vote:
+            successful: true
+            failed: false
+            unstable: false
+            notbuilt: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/commitmsg.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/docs.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/docs_spell.sh
+
+    publishers:
+      - fdio-infra-publish-docs-7day
+      - fdio-infra-publish
+
+- job-template:
+    name: 'vpp-docsonly-merge-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    allow-empty: 'true'
+    fingerprint: false
+    only-if-success: true
+    default-excludes: false
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'default'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - change-merged-event
+            - comment-added-contains-event:
+                comment-contains-value: 'remerge-docsonly'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+              file-paths:
+                - compare-type: 'REG_EXP'
+                  pattern: '.*/docs/.*'
+          skip-vote:
+            successful: true
+            failed: false
+            unstable: false
+            notbuilt: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/commitmsg.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/docs.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/docs_spell.sh
 
     publishers:
       - fdio-infra-publish-docs

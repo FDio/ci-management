@@ -383,8 +383,6 @@
             - comment-added-contains-event:
                 comment-contains-value: 'checkstylecheck'
             - comment-added-contains-event:
-                comment-contains-value: 'docsonly'
-            - comment-added-contains-event:
                 comment-contains-value: 'recheck'
             - comment-added-contains-event:
                 comment-contains-value: 'reverify'
@@ -688,6 +686,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/commitmsg.sh
       - shell:
           !include-raw-escape:
           - ../scripts/setup_vpp_ubuntu_docker_test.sh
