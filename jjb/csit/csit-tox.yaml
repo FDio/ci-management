@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -34,7 +34,7 @@
     name: 'csit-verify-tox-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 's-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
