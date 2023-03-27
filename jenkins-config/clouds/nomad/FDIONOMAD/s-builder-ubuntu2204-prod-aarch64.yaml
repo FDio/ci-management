@@ -1,0 +1,15 @@
+---
+templates:
+  - constraints:
+      - ltarget: "^${attr.cpu.arch}"
+        operand: "="
+        rtarget: "arm64"
+      - ltarget: "^${node.class}"
+        operand: "="
+        rtarget: "builder"
+    image: "fdiotools/builder-ubuntu2204:prod-aarch64"
+    cpu: 4000
+    memory: 4096
+    labels: "s-builder-ubuntu2204-prod-aarch64"
+    prefix: "s-builder-ubuntu2204-prod-aarch64"
+    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
