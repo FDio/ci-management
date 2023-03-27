@@ -398,10 +398,6 @@
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-{node-arch}-perftest tag_list</b>
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected using trigger keyword followed by tags
@@ -430,7 +426,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -493,10 +489,6 @@
               <ul>
                   <li>check vpp perf mrr daily
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>all CSIT VPP MRR perf suites
@@ -510,7 +502,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -558,10 +550,6 @@
               <ul>
                   <li>check vpp perf hoststack daily
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>all CSIT VPP HOSTSTACK perf suites
@@ -575,7 +563,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -623,10 +611,6 @@
               <ul>
                   <li>check vpp perf mrr weekly on {node-arch}
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>NF Density CSIT VPP MRR perf suites
@@ -640,7 +624,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -688,10 +672,6 @@
               <ul>
                   <li>check vpp perf ndrpdr weekly on {node-arch}
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>pre-selected CSIT VPP NDRPDR perf suites
@@ -704,7 +684,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -748,10 +728,6 @@
               <ul>
                   <li>check trex perf ndrpdr weekly on {node-arch}
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>pre-selected CSIT TREX NDRPDR perf suites
@@ -764,7 +740,7 @@
               </ul>
       </ul>
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -814,10 +790,6 @@
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-trex-{node-arch}-perftest tag_list</b>
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected using trigger keyword followed by tags
@@ -838,7 +810,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -903,10 +875,6 @@
                   <li>trigger: keyword in comment to csit patch:
                       <b>csit-dpdk-{node-arch}-perftest tag_list</b>
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected using trigger keyword followed by tags
@@ -930,7 +898,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -988,10 +956,6 @@
               <ul>
                   <li>check dpdk perf mrr weekly
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>all CSIT DPDK MRR perf suites
@@ -1005,7 +969,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -1064,10 +1028,6 @@
                   <li>trigger example:
                       csit-vpp-report-iter-{node-arch}-perftest vpp-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1084,7 +1044,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -1153,10 +1113,6 @@
                   <li>trigger example:
                       csit-dpdk-report-iter-{node-arch}-perftest dpdk-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1173,7 +1129,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -1242,10 +1198,6 @@
                   <li>trigger example:
                       csit-trex-report-iter-{node-arch}-perftest trex-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1262,7 +1214,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -1331,10 +1283,6 @@
                   <li>trigger example:
                       csit-vpp-report-cov-{node-arch}-perftest ip4-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1351,7 +1299,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -1420,10 +1368,6 @@
                   <li>trigger example:
                       csit-dpdk-report-cov-{node-arch}-perftest dpdk-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1440,7 +1384,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
@@ -1509,10 +1453,6 @@
                   <li>trigger example:
                       csit-trex-report-cov-{node-arch}-perftest trex-00
               </ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
           <li>perf test-cases selection
               <ul>
                   <li>test-cases selected by tags defined in
@@ -1529,7 +1469,7 @@
       </ul>
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 
