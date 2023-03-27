@@ -31,7 +31,7 @@
     name: 'csit-terraform-aws-eb-version-verify-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 's-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
@@ -77,7 +77,7 @@
     name: 'csit-terraform-aws-eb-version-deploy-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
+    node: 's-builder-{os}-prod-{executor-arch}'
     concurrent: false
     latest-only: false
 
