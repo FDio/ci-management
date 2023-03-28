@@ -229,9 +229,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2210':
-          branch: 'stable/2210'
-          branch-refspec: ''
       - '2302':
           branch: 'stable/2302'
           branch-refspec: ''
@@ -261,6 +258,9 @@
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 2n-clx:
+          os: 'ubuntu2204'
+          executor-arch: 'x86_64'
+      - 2n-spr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 2n-zn2:
@@ -300,9 +300,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2210':
-          branch: 'stable/2210'
           branch-refspec: ''
       - '2302':
           branch: 'stable/2302'
