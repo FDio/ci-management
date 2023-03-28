@@ -1,5 +1,5 @@
-# Copyright (c) 2022 Cisco and/or its affiliates.
-# Copyright (c) 2019 PANTHEON.tech s.r.o. and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
+# Copyright (c) 2023 PANTHEON.tech s.r.o. and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -26,6 +26,9 @@
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -50,6 +53,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-zn2:
@@ -79,12 +85,18 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-zn2:
@@ -109,9 +121,6 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2210':
-                branch: 'rls2210'
-                branch-id: 'oper-rls2210'
             - '2302':
                 branch: 'rls2302'
                 branch-id: 'oper-rls2302'
@@ -122,6 +131,10 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
@@ -155,6 +168,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -162,6 +179,9 @@
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
@@ -185,12 +205,19 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-zn2:
@@ -218,6 +245,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-zn2:
@@ -252,6 +282,9 @@
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -284,12 +317,18 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-clx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-zn2:
@@ -324,6 +363,9 @@
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -356,6 +398,9 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
 
     project: 'csit'
     branch: 'master'
@@ -366,16 +411,10 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2210':
-          branch: 'rls2210'
-          branch-id: 'oper-rls2210'
       - '2302':
           branch: 'rls2302'
           branch-id: 'oper-rls2302'
     stream_report:
-      - '2210':
-          branch: 'rls2210'
-          branch-id: 'oper-rls2210'
       - '2302':
           branch: 'rls2302'
           branch-id: 'oper-rls2302'
