@@ -80,4 +80,4 @@ terraform init -no-color
 terraform apply -no-color -auto-approve
 popd
 
-echo "S3 docs: <a href=\"https://${CDN_URL}${bucket_path}\">https://${CDN_URL}${bucket_path}</a>"
+echo "S3 docs: <a href=\"https://${CDN_URL}/${bucket_path}\">https://${CDN_URL}/${bucket_path}</a>"
