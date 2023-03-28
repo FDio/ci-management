@@ -218,11 +218,6 @@
           override-votes: true
           gerrit-build-notbuilt-verified-value: 0
           gerrit-build-successful-verified-value: 1
-          skip-vote:
-            successful: true
-            failed: false
-            unstable: false
-            notbuilt: false
 
     builders:
       - shell:
