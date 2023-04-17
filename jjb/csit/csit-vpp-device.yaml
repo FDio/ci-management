@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Cisco and/or its affiliates.
+# Copyright (c) 2023 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -15,6 +15,15 @@
 - project:
     name: csit-vpp-device
     description: 'CSIT jenkins jobs.'
+    jobs:
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly'
+      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly'
+      - 'csit-vpp-device-report-coverage-{stream}-{node-arch}':
+          stream:
+            - '2302':
+                branch: 'rls2302'
+                branch-id: 'oper-rls2302'
     node-arch:
       - '1n-skx':
           os: 'ubuntu2204'
@@ -26,25 +35,6 @@
           executor-arch: 'aarch64'
           make-parallel-jobs: '32'
           skip-vote: 'false'
-    jobs:
-      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
-      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly':
-          stream:
-            - master:
-                branch: 'master'
-                branch-id: 'oper'
-            - '2302':
-                branch: 'rls2302'
-                branch-id: 'oper-rls2302'
-      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly':
-          stream:
-            - master:
-                branch: 'master'
-                branch-id: 'oper'
-            - '2302':
-                branch: 'rls2302'
-                branch-id: 'oper-rls2302'
-
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
@@ -55,6 +45,61 @@
       - '2302':
           branch: 'rls2302'
           branch-id: 'oper-rls2302'
+
+- job-template:
+    name: 'csit-vpp-device-report-coverage-{stream}-{node-arch}'
+
+    project-type: freestyle
+    node: 'csit-builder-{os}-prod-{executor-arch}'
+    concurrent: true
+    latest-only: false
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    parameters:
+      - project-parameter:
+          project: '{project}'
+      - gerrit-parameter:
+          branch: '{branch}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - gerrit-refspec-parameter
+      - gerrit-event-type-parameter
+      - gerrit-event-comment-text-parameter
+      - csit-fail-on-crc-mismatch-parameter:
+          fail-on-crc-mismatch: 'True'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: '{build-timeout}'
+
+    triggers:
+      - gerrit-trigger-csit-perftest:
+          project: '{project}'
+          branch: '{branch}'
+          trigger-word: 'csit-vpp-report-dev-{node-arch}'
+          skip-vote: false
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/csit/device-verify.sh
+
+    publishers:
+      - fdio-infra-publish
 
 - job-template:
     name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
