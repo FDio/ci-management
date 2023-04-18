@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ae1f88_eb1e7350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2023-04-18T20:38:41Z",
+      "side": 1,
+      "message": "I have reached out to the PTL \u0026 committers of both projects to confirm that it is ok to archive these projects.  \n\nAssuming they agree and the TSC approves the archiving of the projects then this change can be merged.",
+      "revId": "16542aa43fbae87f35874322ce67cfd658209653",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
