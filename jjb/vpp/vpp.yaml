@@ -934,9 +934,6 @@
                 - shell:
                     !include-raw-escape:
                     - ../scripts/vpp/copy_archives.sh
-      - robot-report:
-          output-path: 'archives/csit_current/0/'
-
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
 
