@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e49a9cc_c4c0a078",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-05-04T19:38:27Z",
+      "side": 1,
+      "message": "This patch cannot merge until the JJB version is upgraded and Global JJB upgrade is complete",
+      "revId": "2938f24b98a3d6bd36a1fd96dc71eafc18b4e676",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
