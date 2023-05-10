@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c645d72b_92ca53c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-05-10T17:53:16Z",
+      "side": 1,
+      "message": "This merge was forced because CI jobs won\u0027t pass until we get the image updated with a newer version of Open SSL",
+      "revId": "909b5c33b35ccf42615f1846cca8018c14216235",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
