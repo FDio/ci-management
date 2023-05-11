@@ -7,12 +7,12 @@
       - gerrit-jenkins-sandbox-cleanup
       - gerrit-jjb-deploy-job
       - gerrit-jjb-merge:
-          build-node: centos7-builder-4c-4g
+          build-node: centos8-builder-2c-2g
       - gerrit-jjb-verify
 
     project: ci-management
     project-name: ci-management
-    build-node: centos7-builder-4c-4g
+    build-node: centos8-builder-2c-2g
     build-timeout: 15
     jjb-version: 5.0.2
 
@@ -27,6 +27,6 @@
     project-name: ci-management
     jobs:
       - gerrit-info-yaml-verify
-    build-node: centos7-builder-4c-4g
+    build-node: centos8-builder-2c-2g
     project: ci-management
     branch: master
