@@ -817,7 +817,8 @@
 
     # Please keep parameters in alphabetical order
     parameters:
-      - gerrit-csit-refspec-parameter
+      - gerrit-csit-refspec-parameter:
+          csit-refspec: 'refs/changes/86/35686/77'
       - gerrit-event-comment-text-parameter
       - gerrit-event-type-parameter
       - gerrit-parameter:
@@ -901,7 +902,8 @@
           csit-perf-trial-duration: "10.0"
       - csit-perf-trial-multiplicity-parameter:
           csit-perf-trial-multiplicity: "5"
-      - gerrit-csit-refspec-parameter
+      - gerrit-csit-refspec-parameter:
+          csit-refspec: 'refs/changes/86/35686/77'
       - gerrit-event-comment-text-parameter
       - gerrit-event-type-parameter
       - gerrit-refspec-parameter:
@@ -984,7 +986,8 @@
       # but it does not hurt to have some flexibility for future.
       - csit-fail-on-crc-mismatch-parameter:
           fail-on-crc-mismatch: 'True'
-      - gerrit-csit-refspec-parameter
+      - gerrit-csit-refspec-parameter:
+          csit-refspec: 'refs/changes/86/35686/77'
       - gerrit-parameter:
           branch: '{branch}'
       - gerrit-refspec-parameter:

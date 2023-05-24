@@ -85,7 +85,7 @@
     parameters:
       - string:
           name: CSIT_REF
-          default: ''
+          default: '{csit-refspec}'
           # yamllint disable-line rule:line-length
           description: "GERRIT_REFSPEC parameter to override separately cloned CSIT repository, leave empty for autodetection / no override."
 
