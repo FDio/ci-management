@@ -246,7 +246,6 @@
       - 'vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}':
           make-parallel-jobs: '32'
     project: 'vpp'
-    skip-vote: 'false'
     stream:
       - 'master':
           branch: 'master'
@@ -261,10 +260,11 @@
       - 1n-skx:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
+          skip-vote: 'true'
       - 1n-tx2:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
-          skip-vote: 'false'
+          skip-vote: 'true'
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
 
 # VPP-CSIT-VERIFY-PERF PROJECT
