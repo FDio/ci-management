@@ -47,6 +47,9 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 3na-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -77,6 +80,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 3n-snr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3nb-spr:
@@ -121,6 +127,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 3n-snr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3nb-spr:
@@ -171,6 +180,10 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
+            - 3na-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -186,6 +199,10 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-icx:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
+            - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
@@ -255,6 +272,9 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 3na-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -294,6 +314,9 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 3na-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -330,6 +353,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3nb-spr:
@@ -381,6 +407,9 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 3na-spr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -417,6 +446,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3nb-spr:
