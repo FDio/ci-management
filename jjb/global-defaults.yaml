@@ -30,6 +30,10 @@
     csit-perf-trial-duration: 1.0
     csit-perf-trial-multiplicity: 1
 
+    # Config for PackageCloud.IO archive of DEB/RPM packages
+    packagecloud-account: fdio
+    packagecloud-repo: staging
+
     # Sonarcloud
     sonarcloud_project_organization: fdio
     sonarcloud_api_token: 9ea26e0b0bbe1f436a0df06d61d1e97dc5a3d6e3
