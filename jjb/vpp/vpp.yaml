@@ -32,6 +32,7 @@
     name: vpp-checkstyle-x86_64
     jobs:
       - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
+
     project: 'vpp'
     os:
       - ubuntu2004
@@ -63,6 +64,14 @@
       # os deprecated in master
       - stream: 'master'
         os: 'ubuntu2004'
+
+- project:
+    name: vpp-packagecloud-release
+    project-name: vpp-checkstyle-x86_64
+    build-node: centos8-builder-2c-2g
+    jobs:
+      - "gerrit-packagecloud-release-verify"
+      - "gerrit-packagecloud-release-merge"
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
