@@ -1013,3 +1013,22 @@
       - fdio-infra-publish
 # [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
 # [end] JOB TEMPLATE DEFINITIONS
+
+- project:
+    name: vpp-release
+    project: vpp
+    project-name: vpp
+    build-node: centos8-builder-2c-2g
+    mvn-settings: vpp-settings
+    jobs:
+      - "gerrit-packagecloud-release-verify"
+
+- project:
+    name: vpp-packagecloud-release
+    project: vpp
+    project-name: vpp
+    build-node: centos8-builder-2c-2g
+    mvn-settings: vpp-settings
+    jobs:
+      - "gerrit-packagecloud-release-merge"
+      - "{project-name}-gerrit-release-jobs"
