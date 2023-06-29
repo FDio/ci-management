@@ -1,0 +1,32 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-executables-have-shebangs
+        stages: [manual]
+      - id: check-json
+        exclude: (.vscode|.devcontainer)
+      - id: no-commit-to-branch
+        args:
+          - --branch=dev
+          - --branch=master
+          - --branch=main
+          - --branch=rc
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+      - id: gitlint
+
+  # - repo: https://github.com/adrienverge/yamllint.git
+  #   rev: v1.32.0
+  #   hooks:
+  #     - id: yamllint
+
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v3.0.0-alpha.9-for-vscode
+  #   hooks:
+  #     - id: prettier
+  #       stages: [commit]
