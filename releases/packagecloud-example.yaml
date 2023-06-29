@@ -1,0 +1,19 @@
+---
+# Self-serve release jobs allow project committers to promote a jar file,
+# container image, Python package or PackageCloud artifact from a staging area
+# to a release area. A release yaml file controls the process, and Jenkins
+# promotes the artifact when a project committer merges the release yaml file
+# in Gerrit.
+# PackageCloud Release Files documentation can be found in the RelEng Docs
+# yamllint disable-line rule:line-length
+# https://docs.releng.linuxfoundation.org/projects/global-jjb/en/latest/jjb/lf-release-jobs.html?highlight=packagecloud#packagecloud-release-files
+
+package_name: tree
+packages:
+    - name: tree_1.6.0_amd64.deb
+    - name: tree-dev_1.6.0_amd64.deb
+    - name: tree-devel-1.6.0-1.x86_64.rpm
+    - name: tree-1.6.0-1.x86_64.rpm
+ref: 5555cd2dd345fbeec0d3e2162e00835852342cda
+log_dir: example-project-packagecloud-merge/21
+version: 1.6.0
