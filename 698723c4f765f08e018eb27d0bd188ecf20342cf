@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da16834_ec2238fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2023-07-06T02:33:16Z",
+      "side": 1,
+      "message": "Jenkins Sandbox Test Results:\n\nhttps://jenkins.fd.io/sandbox/job/vpp-cov-verify-master-ubuntu2004-x86_64/1/\nhttps://s3-docs-7day.fd.io/vex-yul-rot-jenkins-2/vpp-cov-verify-master-ubuntu2004-x86_64/1/",
+      "revId": "698723c4f765f08e018eb27d0bd188ecf20342cf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
