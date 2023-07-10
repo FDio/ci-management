@@ -1,8 +1,8 @@
 [client]
-bridge-hostname: vex-yul-rot-ingress-1.ci.codeaurora.org
+bridge-hostname: sigul-bridge-yul.linuxfoundation.org
 bridge-port: 44334
 client-cert-nickname: $SIGUL_CONFIG_USR
-server-hostname: pdx-wl-sigul-server-1.int.codeaurora.org
+server-hostname: vex-yul-wl-sigul-server-1.dr.codeaurora.org
 user-name: $SIGUL_CONFIG_USR
 
 [koji]
