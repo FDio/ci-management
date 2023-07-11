@@ -110,6 +110,8 @@
     executor-arch: 'x86_64'
 # [end] VPP-X86_64 PROJECT
 
+# [end] VPP-COV-X86_64 PROJECT
+
 # VPP-DEBUG-X86_64 PROJECT
 #
 # Currently a periodic job due to intermittent failures.
@@ -157,44 +159,27 @@
 
 # [end] VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
 
-# VPP-GCC-X86_64 PROJECT
+# VPP-COV-X86_64 PROJECT
+#
+# A per-patch job to produce code coverage.
+#
+# TODO: switch OS to ubuntu-22.04 once the skipping of intermittently failing
+#       tests are removed
+#
 - project:
-    name: vpp-gcc-x86_64
+    name: vpp-cov-x86_64
     jobs:
-      - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+      - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     make-parallel-jobs: '4'
-    os:
-      - ubuntu2004
-      - ubuntu2204
-    executor-arch: 'x86_64'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+    comment-trigger-value: 'cov-verify'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2210':
-          branch: 'stable/2210'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
-          branch-refspec: ''
-      - '2306':
-          branch: 'stable/2306'
-          branch-refspec: ''
-    exclude:
-      # os deprecated in 23.06
-      - stream: '2306'
-        os: 'ubuntu2004'
-      # os deprecated in 23.02
-      - stream: '2302'
-        os: 'ubuntu2004'
-      # os deprecated in 22.10
-      - stream: '2210'
-        os: 'ubuntu2004'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'ubuntu2004'
-# [end] VPP-GCC-X86_64 PROJECT
+    os: 'ubuntu2004'
+    executor-arch: 'x86_64'
 
 # VPP-AARCH64 PROJECT
 #
@@ -593,7 +578,7 @@
 
     publishers:
       - fdio-infra-publish
-# [end] VPP-DEBUG-VERIFY-PERIODIC JOB TEMPLATE
+# [end] VPP-DEBUG-VERIFY JOB TEMPLATE
 
 # VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
 - job-template:
@@ -731,9 +716,9 @@
       - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
 
-# VPP-GCC-VERIFY JOB TEMPLATE
+# VPP-COV-VERIFY JOB TEMPLATE
 - job-template:
-    name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+    name: 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'builder-{os}-prod-{executor-arch}'
@@ -751,6 +736,8 @@
           refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
+      - make-test-os-parameter:
+          make-test-os: '{make-test-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:
@@ -766,10 +753,10 @@
 
     wrappers:
       - fdio-infra-wrappers:
-          build-timeout: 120
+          build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-checkstyle:
+      - gerrit-trigger-checkstyle-nonvoting:
           name: '{project}'
           branch: '{branch}'
 
@@ -785,11 +772,12 @@
           - ../scripts/setup_vpp_ext_deps.sh
       - shell:
           !include-raw-escape:
-          - ../scripts/vpp/gcc-build.sh
+          - ../scripts/vpp/cov-build.sh
 
     publishers:
+      - fdio-infra-publish-cov-7day
       - fdio-infra-publish
-# [end] VPP-GCC-VERIFY JOB TEMPLATE
+# [end] VPP-COV-VERIFY JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-DEVICE-PERPATCH JOB TEMPLATE
 - job-template:
