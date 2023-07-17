@@ -179,7 +179,7 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -187,7 +187,7 @@
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -209,7 +209,7 @@
             - 3nb-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-mrr-weekly-{stream}-{node-arch}':
           node-arch:
             - 2n-icx:
