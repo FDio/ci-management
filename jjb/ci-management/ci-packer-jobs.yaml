@@ -9,7 +9,7 @@
     project-name: ci-management
     build-node: centos8-builder-2c-2g
     openstack-cloud: vexci
-    packer-version: 1.4.0
+    packer-version: 1.8.2
 
     platforms:
       - centos-7
