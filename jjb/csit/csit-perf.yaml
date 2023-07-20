@@ -207,6 +207,9 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
           stream:
             - master:
                 branch: 'master'
@@ -286,6 +289,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6in:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
@@ -375,6 +381,9 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -411,6 +420,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
             - 2n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6in:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-aws:
