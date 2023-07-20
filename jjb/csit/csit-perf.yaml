@@ -88,6 +88,9 @@
             - 1n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 1n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -207,6 +210,12 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6gn:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
           stream:
             - master:
                 branch: 'master'
@@ -215,6 +224,10 @@
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 1n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
+            - 1n-c6in:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
@@ -288,7 +301,19 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6gn:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6gn:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
@@ -340,6 +365,9 @@
             - 1n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 1n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -375,7 +403,19 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6gn:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6gn:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
@@ -413,7 +453,19 @@
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+            - 2n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 2n-c6gn:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
             - 3n-aws:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6in:
+                os: 'ubuntu2204'
+                executor-arch: 'x86_64'
+            - 3n-c6gn:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
