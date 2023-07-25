@@ -178,6 +178,8 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
+          # Once per day at 00:25
+          periodicity: '25 0 * * 0-6'
     os: 'ubuntu2004'
     executor-arch: 'x86_64'
 
@@ -732,8 +734,6 @@
     parameters:
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
       - make-parallel-jobs-parameter:
           make-parallel-jobs: '{make-parallel-jobs}'
       - make-test-os-parameter:
@@ -748,15 +748,17 @@
     scm:
       - gerrit-trigger-scm:
           credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
+          refspec: ''
+          choosing-strategy: 'default'
 
     wrappers:
       - fdio-infra-wrappers:
           build-timeout: '{build-timeout}'
 
     triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
+      - timed: '{periodicity}'
+      - gerrit-trigger-manually-triggered:
+          comment-trigger-value: '{comment-trigger-value}'
           name: '{project}'
           branch: '{branch}'
 

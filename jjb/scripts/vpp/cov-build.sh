@@ -85,7 +85,7 @@ make_test_coverage_report() {
         fi
     fi
     if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
-        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" RETRIES=3 test-cov ; then
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" test-cov ; then
             BUILD_ERROR="FAILED 'make test-cov'"
             return
         fi
