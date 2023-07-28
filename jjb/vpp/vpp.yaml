@@ -110,7 +110,45 @@
     executor-arch: 'x86_64'
 # [end] VPP-X86_64 PROJECT
 
-# [end] VPP-COV-X86_64 PROJECT
+# VPP-GCC-X86_64 PROJECT
+- project:
+    name: vpp-gcc-x86_64
+    jobs:
+      - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    make-parallel-jobs: '4'
+    os:
+      - ubuntu2004
+      - ubuntu2204
+    executor-arch: 'x86_64'
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+      - '2210':
+          branch: 'stable/2210'
+          branch-refspec: ''
+      - '2302':
+          branch: 'stable/2302'
+          branch-refspec: ''
+      - '2306':
+          branch: 'stable/2306'
+          branch-refspec: ''
+    exclude:
+      # os deprecated in 23.06
+      - stream: '2306'
+        os: 'ubuntu2004'
+      # os deprecated in 23.02
+      - stream: '2302'
+        os: 'ubuntu2004'
+      # os deprecated in 22.10
+      - stream: '2210'
+        os: 'ubuntu2004'
+      # os deprecated in master
+      - stream: 'master'
+        os: 'ubuntu2004'
+
+# [end] VPP-GCC-X86_64 PROJECT
 
 # VPP-DEBUG-X86_64 PROJECT
 #
@@ -182,6 +220,8 @@
           periodicity: '25 0 * * 0-6'
     os: 'ubuntu2004'
     executor-arch: 'x86_64'
+
+# [end] VPP-COV-X86_64 PROJECT
 
 # VPP-AARCH64 PROJECT
 #
@@ -717,6 +757,66 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
+
+# VPP-GCC-VERIFY JOB TEMPLATE
+- job-template:
+    name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - make-parallel-jobs-parameter:
+          make-parallel-jobs: '{make-parallel-jobs}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ext_deps.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/gcc-build.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-GCC-VERIFY JOB TEMPLATE
 
 # VPP-COV-VERIFY JOB TEMPLATE
 - job-template:
