@@ -1,31 +1,96 @@
 ---
-templates:
-  - constraints:
-      - ltarget: "^${attr.cpu.arch}"
-        operand: "="
-        rtarget: "arm64"
-      - ltarget: "^${node.class}"
-        operand: "="
-        rtarget: "builder"
-    datacenters: "yul1"
-    cpu: 24000
-    memory: 24000
-    disk: 3000
-    priority: 50
-    idleTerminationInMinutes: 10
-    numExecutors: 1
-    prefixCmd: ""
-    forcePull: true
-    hostVolumes: "/scratch/nomad:/scratch/nomad:ro"
-    privileged: true
-    reusable: false
-    useRawExec: false
-    network: "bridge"
-    region: "global"
-    remoteFs: "/w"
-    username: "fdionomad"
-    password: "hidden"
-    capAdd: ""
-    capDrop: ""
-    securityOpt: ""
-    extraHosts: ""
+- idleTerminationInMinutes: 10
+  jobTemplate: |-
+    {
+      "Job": {
+         "ID": "%WORKER_NAME%",
+         "Name": "%WORKER_NAME%",
+         "Region": "global",
+         "Type": "batch",
+         "Priority": 50,
+         "Datacenters": [
+            "yul1"
+         ],
+         "Constraints": [
+           {
+             "LTarget": "^${attr.cpu.arch}",
+             "Operand": "=",
+           },
+           {
+             "LTarget": "^${node.class}",
+             "Operand": "=",
+           }
+         ],
+         "TaskGroups": [
+           {
+             "Name": "jenkins-worker-taskgroup",
+             "Count": 1,
+             "Tasks": [
+               {
+                 "Name": "jenkins-worker",
+                 "Driver": "docker",
+                 "Config": {
+                   "args": [
+                     "-cp",
+                     "/local/slave.jar",
+                     "hudson.remoting.jnlp.Main",
+                     "-headless",
+                     "-workDir",
+                     "/w/",
+                     "%WORKER_SECRET%",
+                     "%WORKER_NAME%"
+                   ],
+                   "privileged": true,
+                   "auth": [
+                     {
+                       "password": "dh1$NFD.io",
+                       "username": "fdionomad"
+                     }
+                   ],
+                   "network_mode": "bridge",
+                   "volumes": [
+                   "/tmp/ccache.ubuntu2204:/scratch/ccache",
+                   "/scratch/nomad:/scratch/nomad:ro"
+                   ],
+                   "command": "java",
+                   "force_pull": true
+                 },
+                 "Resources": {
+                    "CPU": 24000,
+|                   "MemoryMB": 24000,
+                   "Networks": [
+                     {
+                       "MBits": 1,
+                       "ReservedPorts": []
+                     }
+                 ],
+                 "Devices": []
+               },
+               "LogConfig": {
+                 "MaxFiles": 1,
+                 "MaxFileSizeMB": 10
+               },
+               "Artifacts": [
+                 {
+                   "RelativeDest": "/local/"
+                 }
+               ]
+             }
+           ],
+           "RestartPolicy": {
+             "Interval": 10000000000,
+             "Mode": "fail",
+             "Delay": 1000000000,
+             "Attempts": 0
+           },
+           "EphemeralDisk": {
+             "Migrate": false,
+             "Sticky": false
+           }
+         }
+       ]
+     }
+          }
+   numExecutors: 1
+   remoteFs: "/w"
+   reusable: false
