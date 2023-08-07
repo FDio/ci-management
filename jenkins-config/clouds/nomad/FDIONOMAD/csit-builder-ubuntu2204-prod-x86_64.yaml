@@ -1,13 +1,4 @@
 ---
 templates:
-  - constraints:
-      - ltarget: "^${attr.cpu.arch}"
-        operand: "="
-        rtarget: "amd64"
-      - ltarget: "^${node.class}"
-        operand: "="
-        rtarget: "csit"
-    image: "fdiotools/builder-ubuntu2204:prod-x86_64"
-    labels: "csit-builder-ubuntu2204-prod-x86_64"
+  - labels: "csit-builder-ubuntu2204-prod-x86_64"
     prefix: "csit-builder-ubuntu2204-prod-x86_64"
-    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
