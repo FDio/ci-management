@@ -1,31 +1,7 @@
 ---
 templates:
-  - constraints:
-      - ltarget: "^${attr.cpu.arch}"
-        operand: "="
-        rtarget: "arm64"
-      - ltarget: "^${node.class}"
-        operand: "="
-        rtarget: "builder"
-    datacenters: "yul1"
-    cpu: 24000
-    memory: 24000
-    disk: 3000
-    priority: 50
-    idleTerminationInMinutes: 10
+  - idleTerminationInMinutes: 10
     numExecutors: 1
-    prefixCmd: ""
-    forcePull: true
-    hostVolumes: "/scratch/nomad:/scratch/nomad:ro"
-    privileged: true
-    reusable: false
-    useRawExec: false
-    network: "bridge"
-    region: "global"
     remoteFs: "/w"
-    username: "fdionomad"
-    password: "hidden"
-    capAdd: ""
-    capDrop: ""
-    securityOpt: ""
-    extraHosts: ""
+    reusable: false
+    jobTemplate: |-
