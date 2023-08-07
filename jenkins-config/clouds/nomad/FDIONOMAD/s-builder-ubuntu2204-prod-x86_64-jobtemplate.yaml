@@ -1,0 +1,21 @@
+---
+Job:
+  Contstraints:
+    - LTarget: ^${attr.cpu.arch}
+      Operand: =
+      RTarget: amd64
+    - LTarget: ^${node.class}
+      Operand: =
+      RTarget: builder
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Tasks:
+        - Name: jenkins-worker
+          Config:
+            image: fdiotools/builder-ubuntu2204:prod-x86_64
+            volumes:
+              - /tmp/ccache.ubuntu2204:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro
+          Resources:
+            CPU: 4000
+            MemoryMB: 4096
