@@ -1,13 +1,13 @@
 ---
 templates:
   - constraints:
-      - ltarget: "^${attr.cpu.arch}"
-        operand: "="
-        rtarget: "amd64"
-      - ltarget: "^${node.class}"
-        operand: "="
-        rtarget: "builder"
+      - Ltarget: "^${attr.cpu.arch}"
+        Operand: "="
+        Rtarget: "amd64"
+      - Ltarget: "^${node.class}"
+        Operand: "="
+        Rtarget: "builder"
     image: "fdiotools/builder-ubuntu2004:prod-x86_64"
     labels: "builder-ubuntu2004-prod-x86_64"
     prefix: "builder-ubuntu2004-prod-x86_64"
-    hostVolumes: "/tmp/ccache.ubuntu2004:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
+    volumes: "/tmp/ccache.ubuntu2004:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
