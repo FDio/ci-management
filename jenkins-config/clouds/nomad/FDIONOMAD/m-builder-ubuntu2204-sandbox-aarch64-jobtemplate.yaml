@@ -1,0 +1,24 @@
+---
+Job:
+  Contstraints:
+    - LTarget: ^${attr.cpu.arch}
+      Operand: =
+      RTarget: arm64
+    - LTarget: ^${node.class}
+      Operand: =
+      RTarget: builder
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Tasks:
+        - Name: jenkins-worker
+          Config:
+            args:
+            image: fdiotools/builder-ubuntu2204:sandbox-aarch64
+            volumes:
+              - /tmp/ccache.ubuntu2204:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro
+            command: java
+            force_pull: true
+          Resources:
+            CPU: 8000
+            MemoryMB: 8192
