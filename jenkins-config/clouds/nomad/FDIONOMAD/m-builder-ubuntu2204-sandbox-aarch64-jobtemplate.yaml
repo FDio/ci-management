@@ -1,0 +1,15 @@
+---
+Job:
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Tasks:
+        - Name: jenkins-worker
+          Config:
+            args:
+            image: fdiotools/builder-ubuntu2204:sandbox-aarch64
+            volumes:
+              - /tmp/ccache.ubuntu2204:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro
+          Resources:
+            CPU: 8000
+            MemoryMB: 8192
