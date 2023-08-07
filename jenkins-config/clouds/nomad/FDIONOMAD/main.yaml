@@ -2,12 +2,8 @@
 jenkins:
   clouds:
     - nomad:
-        jenkinsUrl: "https://jenkins.fd.io/"
+        url: "https://jenkins.fd.io/"
         name: "FDIONOMAD"
         nomadUrl: "http://10.30.51.23:4646"
-        jenkinsTunnel: ""
-        prune: false
-        nomadACLCredentialsId: ""
         workerTimeout: 5
-        workerUrl: "https://jenkins.fd.io/jnlpJars/slave.jar"
-        templates:
+        GetterSource: "https://jenkins.fd.io/jnlpJars/slave.jar"
