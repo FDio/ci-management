@@ -1,0 +1,20 @@
+---
+Job:
+  Contstraints:
+    - LTarget: ^${attr.cpu.arch}
+      Operand: =
+      RTarget: arm64
+    - LTarget: ^${node.class}
+      Operand: =
+      RTarget: builder
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Count: 1
+      Tasks:
+        - Name: jenkins-worker
+          Driver: docker
+          Config:
+            image: fdiotools/builder-debian11:prod-x86_64
+            volumes:
+              - /tmp/ccache.debian11:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro
