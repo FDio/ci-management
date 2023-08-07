@@ -1,13 +1,4 @@
 ---
 templates:
-  - constraints:
-      - ltarget: "^${attr.cpu.arch}"
-        operand: "="
-        rtarget: "arm64"
-      - ltarget: "^${node.class}"
-        operand: "="
-        rtarget: "csitarm"
-    image: "fdiotools/builder-ubuntu2204:sandbox-aarch64"
-    labels: "csit-builder-ubuntu2204-sandbox-aarch64"
+  - labels: "csit-builder-ubuntu2204-sandbox-aarch64"
     prefix: "csit-builder-ubuntu2204-sandbox-aarch64"
-    hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
