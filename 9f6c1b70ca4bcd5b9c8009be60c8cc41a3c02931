@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e1fcaf_fc0273a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-08T15:10:52Z",
+      "side": 1,
+      "message": "Please rebase onto the latest HEAD of master. Your change is based on a version that is too old to pass GitHub Actions based validation.",
+      "revId": "9f6c1b70ca4bcd5b9c8009be60c8cc41a3c02931",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
