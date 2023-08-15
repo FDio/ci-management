@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eaa690f_68b56fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2023-08-15T18:37:46Z",
+      "side": 1,
+      "message": "Jenkins Sandbox Test Results:\n-----------------------------\nVerify that DPDK/RDMA-CORE matrix check completes successfully with valid matrix file update:\n\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/daw-vpp-checkstyle-verify-master-ubuntu2204-x86_64/1/console-timestamp.log.gz\n\n----\nVerify that DPDK/RDMA-CORE matrix check is skipped without matrix file in the changeset:\n\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/daw-vpp-checkstyle-verify-master-ubuntu2204-x86_64/2/console-timestamp.log.gz\n\n----\nVerify that DPDK/RDMA-CORE matrix check fails with invalid matrix file update:\n\nhttps://s3-logs.fd.io/vex-yul-rot-jenkins-2/daw-vpp-checkstyle-verify-master-ubuntu2204-x86_64/3/console-timestamp.log.gz",
+      "revId": "7b4321b0bb2ce96fc2dd64e975f1afb3bc7884a3",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
