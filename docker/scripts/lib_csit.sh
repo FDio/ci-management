@@ -50,12 +50,14 @@ csit_checkout_branch_for_vpp() {
         && source "$csit_bash_function_dir/branch.sh"
     CSIT_DIR="$csit_dir" checkout_csit_for_vpp "$vpp_branch"
 
+    # shellcheck disable=SC2034
     csit_branch="$(git branch | grep -e '^*' | mawk '{print $2}')"
 }
 
 csit_install_packages() {
     local branch="$1"
-    local branchname="$(echo $branch | sed -e 's,/,_,')"
+    local branchname
+    branchname="$(echo $branch | sed -e 's,/,_,')"
     local csit_dir="$DOCKER_CSIT_DIR"
     local csit_ansible_dir="$csit_dir/fdio.infra.ansible"
     if [ ! -d "$csit_ansible_dir" ] ; then
@@ -71,7 +73,8 @@ csit_install_packages() {
     [ "$OS_ARCH" = "aarch64" ] && exclude_roles="$exclude_roles -e iperf"
 
     # Not in double quotes to let bash remove newline characters
-    local yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
+    local yaml_files
+    yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
     packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
     packages="${packages/bionic /}"
     packages="${packages/focal /}"
@@ -96,7 +99,6 @@ csit_install_packages() {
 
 csit_pip_cache() {
     local branch="$1"
-    local VENV_OPTS=""
     # ensure PS1 is defined (used by virtualenv activate script)
     PS1=${PS1:-"#"}
     CSIT_DIR="$DOCKER_CSIT_DIR"
@@ -104,8 +106,11 @@ csit_pip_cache() {
     if [ -f "$CSIT_DIR/VPP_REPO_URL" ] \
            && [ -f "$CSIT_DIR/requirements.txt" ]; then
 
+        local branchname
+        # use bash variable substitution to replace '/' with '_' to convert from
+        # vpp to csit branch name nomenclature
+        branchname="${branch////_}"
         local csit_bash_function_dir="$CSIT_DIR/resources/libraries/bash/function"
-        local branchname="$(echo $branch | sed -e 's,/,_,')"
         local bld_log="$DOCKER_BUILD_LOG_DIR"
         bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname-csit_pip_cache-bld.log"
         local pip_cmd="python3 -m pip --disable-pip-version-check"
@@ -116,25 +121,34 @@ csit_pip_cache() {
         git clean -qfdx
         rm -rf "$PYTHONPATH/env"
 
-        # TODO: Update CSIT release branches to avoid build breakage
-        #       Fixes https://github.com/pypa/pip/issues/8260
-        $pip_cmd install pip==21.0.1
-        #       rls2009_lts-* branches missing cherry-pick of
-        #       https://gerrit.fd.io/r/c/csit/+/31338
-        sed -i 's/scipy==1.1.0/scipy==1.5.4/' "$PYTHONPATH/requirements.txt"
-
         # Virtualenv version is pinned in common.sh in newer csit branches.
         # (note: xargs removes leading/trailing spaces)
         local common_sh="$csit_bash_function_dir/common.sh"
         install_virtualenv="$(grep 'virtualenv' $common_sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
         $install_virtualenv
-        virtualenv --no-download --python=$(which python3) "$CSIT_DIR/env"
+        virtualenv --no-download --python="$(which python3)" "$CSIT_DIR/env"
         source "$CSIT_DIR/env/bin/activate"
 
         if [ "$OS_ARCH" = "aarch64" ] ; then
-            local numpy_ver="$(grep numpy $PYTHONPATH/requirements.txt)"
+            local numpy_ver
+            numpy_ver="$(grep numpy $PYTHONPATH/requirements.txt)"
             [ -n "$numpy_ver" ] && $pip_cmd install $numpy_ver 2>&1 | \
                 tee -a $bld_log
+        fi
+
+        # TODO: Update CSIT release branches to PyYAML==6.0.1 or greater
+        # then remove this workaround: https://github.com/yaml/pyyaml/issues/736
+        if grep -q 'PyYAML==5.4.1' "$PYTHONPATH/requirements.txt" ; then
+            local constraintfile
+            constraintfile="/tmp/constraint.txt"
+
+            # create a constraint file that limits the Cython version to one that should work
+            echo 'Cython < 3.0' > "$constraintfile"
+
+            # seed pip's local wheel cache with a PyYAML wheel
+            PIP_CONSTRAINT="$constraintfile" $pip_cmd wheel PyYAML==5.4.1
+
+            rm -f "$constraintfile"
         fi
 
         # Install csit python requirements
@@ -144,9 +158,9 @@ csit_pip_cache() {
         $pip_cmd install -r "$CSIT_DIR/tox-requirements.txt" 2>&1 | \
             tee -a "$bld_log"
         # Run tox which installs pylint requirments
-        pushd $CSIT_DIR >& /dev/null
+        pushd "$CSIT_DIR" >& /dev/null || exit 1
         tox || true
-        popd >& /dev/null
+        popd >& /dev/null || exit 1
 
         # Clean up virtualenv directories
         deactivate
