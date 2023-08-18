@@ -11,3 +11,4 @@ templates:
     labels: "csit-builder-ubuntu2204-prod-aarch64"
     prefix: "csit-builder-ubuntu2204-prod-aarch64"
     hostVolumes: "/tmp/ccache.ubuntu2204:/scratch/ccache,/scratch/nomad:/scratch/nomad:ro"
+    cpu: 9000
