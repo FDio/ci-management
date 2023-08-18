@@ -16,6 +16,857 @@
       "message": "testing on the sandbox",
       "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bf0252_ce0b004a",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-debian11-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703c30fc_56eab8a5",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-debian11-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca800dad_21ccf31c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-debian11-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8202c6f7_62f1afba",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-debian11-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c169db66_60a84563",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs to move into a -jobtemplate file",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 54
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1817c08f_4f860a96",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs to move into a -jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d20771_444c660c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ebb30fc_c8ad6c18",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b21c45_592f1999",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs o move into a -jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0718364_48b171d8",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs to move into a jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4a69fb_3c269b28",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b02825_7451b88f",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a4545c_6c7d9ef6",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe541103_a3a0e61f",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b55a9a4_3be0be1c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs to move into a jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0523d77e_e2ab758d",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This needs to move into a jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2ed7a9_80d9bb69",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15180a1b_a7315c93",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ad6436_622982fe",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a23fee_6fe69944",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7d3c71_a3bcc0a9",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-x86_64-jobtemplate.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "This appears to be redundant since it\u0027s in the jobtemplate default",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283f8b05_e838fd97",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b6e1a1_07f19efa",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81a3ecf_5c98039e",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 57
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a85bd6_546b0b2f",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6dddbe_39a4b413",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730f4be4_6137308c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5951940_16a43916",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94f8f94_9837bee8",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2e621f_2e4df9af",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e1b91b_60f4604a",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75014c34_601e89d2",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858c3710_df9a774f",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec05224f_59345382",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cefb4cb_d6e9c689",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/m-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e437ad_44019881",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5cd4e6_640799fd",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6013b44d_51b84b7c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bda7cb_82d45342",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-prod-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9094da98_0577c844",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a180eb_cd584cc3",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fb11e8_8ba89b45",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c856ef2e_d1574a47",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/s-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2023-08-18T13:00:09Z",
+      "side": 1,
+      "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
