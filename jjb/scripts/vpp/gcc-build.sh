@@ -36,11 +36,11 @@ make_build_release_build_test_gcov_sanity() {
         BUILD_ERROR="FAILED 'make install-ext-deps'"
         return
     fi
-    if ! make UNATTENDED=yes build-release ; then
-        BUILD_ERROR="FAILED 'make build'"
+    if ! make UNATTENDED=yes CCACHE_DISABLE=1 build-release ; then
+        BUILD_ERROR="FAILED 'make build-release'"
         return
     fi
-    if ! make UNATTENDED=yes build ; then
+    if ! make UNATTENDED=yes CCACHE_DISABLE=1 build ; then
         BUILD_ERROR="FAILED 'make build'"
         return
     fi
@@ -56,12 +56,12 @@ make_build_release_build_test_gcov_sanity() {
     #       then update this accordingly.  For now pick a few basic suites...
     MAKE_TEST_SUITES="vlib vppinfra vpe_api vapi cli bihash"
     for suite in $MAKE_TEST_SUITES ; do
-        if ! make UNATTENDED=yes TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test ; then
-            BUILD_ERROR="FAILED 'make TESTS_GCOV=1 TEST_JOBS=$TEST_JOBS TEST=$suite test'!"
+        if ! make UNATTENDED=yes CCACHE_DISABLE=1 TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test ; then
+            BUILD_ERROR="FAILED 'make TEST=$suite test'!"
             return
         fi
-        if ! make UNATTENDED=yes TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test-debug ; then
-            BUILD_ERROR="FAILED 'make TESTS_GCOV=1 TEST_JOBS=$TEST_JOBS TEST=$suite test-debug'!"
+        if ! make UNATTENDED=yes CCACHE_DISABLE=1 TESTS_GCOV=1 TEST_JOBS="$TEST_JOBS" TEST=$suite test-debug ; then
+            BUILD_ERROR="FAILED 'make TEST=$suite test-debug'!"
             return
         fi
     done
