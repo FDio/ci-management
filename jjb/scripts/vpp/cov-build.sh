@@ -62,7 +62,7 @@ make_test_coverage_report() {
         BUILD_ERROR="FAILED 'make test-dep'"
         return
     fi
-    if ! make UNATTENDED=yes pkg-verify ; then
+    if ! make UNATTENDED=yes CCACHE_DISABLE=1 pkg-verify ; then
         BUILD_ERROR="FAILED 'make pkg-verify'"
 	    return
     fi
@@ -85,7 +85,7 @@ make_test_coverage_report() {
         fi
     fi
     if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
-        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" test-cov ; then
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" CCACHE_DISABLE=1 test-cov ; then
             BUILD_ERROR="FAILED 'make test-cov'"
             return
         fi
