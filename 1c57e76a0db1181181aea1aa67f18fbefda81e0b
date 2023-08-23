@@ -837,6 +837,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c58f9c_04b0ffa2",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-prod-x86_64-jobtemplate.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa7d3c71_a3bcc0a9",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "283f8b05_e838fd97",
