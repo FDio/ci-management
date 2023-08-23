@@ -1048,6 +1048,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3882060e_f95a93da",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f6dddbe_39a4b413",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "730f4be4_6137308c",
@@ -1061,6 +1085,24 @@
       "writtenOn": "2023-08-18T13:00:09Z",
       "side": 1,
       "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25059b30_e19eb41a",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/csit-builder-ubuntu2204-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:49:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730f4be4_6137308c",
       "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
