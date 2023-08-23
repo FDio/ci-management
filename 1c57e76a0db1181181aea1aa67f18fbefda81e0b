@@ -205,6 +205,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6980695c_fe116c8e",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T13:55:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c169db66_60a84563",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 54
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1817c08f_4f860a96",
@@ -218,6 +242,24 @@
       "writtenOn": "2023-08-18T13:00:09Z",
       "side": 1,
       "message": "This needs to move into a -jobtemplate file",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a27b38c_7a273a12",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-prod-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T13:55:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1817c08f_4f860a96",
       "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
