@@ -363,6 +363,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28d87eb_2c61bd3c",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b21c45_592f1999",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0718364_48b171d8",
@@ -380,6 +398,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e89235_6d4ab305",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-aarch64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0718364_48b171d8",
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f4a69fb_3c269b28",
@@ -393,6 +429,30 @@
       "writtenOn": "2023-08-18T13:00:09Z",
       "side": 1,
       "message": "I see that this has moved to the corresponding -jobtemplate file, it needs to be removed from here.",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "1c57e76a0db1181181aea1aa67f18fbefda81e0b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89332c1a_d53e4616",
+        "filename": "jenkins-config/clouds/nomad/FDIONOMAD/builder-ubuntu2004-sandbox-x86_64.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2023-08-23T15:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f4a69fb_3c269b28",
       "range": {
         "startLine": 3,
         "startChar": 4,
