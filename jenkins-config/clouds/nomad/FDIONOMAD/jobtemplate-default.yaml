@@ -35,7 +35,7 @@ Job:
             privileged: true
             image: fdiotools/builder-ubuntu2204:sandbox-aarch64
             auth:
-              - password: dh1$NFD.io
+              - password: hidden
                 username: fdionomad
             network_mode: bridge
             volumes:
