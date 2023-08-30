@@ -12,7 +12,20 @@ Job:
       Tasks:
         - Name: jenkins-worker
           Config:
+            args:
+              - -cp
+              - /local/slave.jar
+              - hudson.remoting.jnlp.Main
+              - -headless
+              - -url
+              - https://jenkins.fd.io/sandbox
+              - -workDir
+              - /w/
+              - '%WORKER_SECRET%'
+              - '%WORKER_NAME%'
             image: fdiotools/builder-ubuntu2204:sandbox-aarch64
             volumes:
               - /tmp/ccache.ubuntu2204:/scratch/ccache
               - /scratch/nomad:/scratch/nomad:ro
+          Artifacts:
+            - GetterSource: https://jenkins.fd.io/sandbox/jnlpJars/slave.jar

@@ -1,6 +1,4 @@
 ---
 templates:
-  - CPU: 8000
-    MemoryMB: 8192
-    labels: "m-builder-ubuntu2204-prod-x86_64"
+  - labels: "m-builder-ubuntu2204-prod-x86_64"
     prefix: "m-builder-ubuntu2204-prod-x86_64"

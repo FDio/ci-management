@@ -27,13 +27,13 @@ Job:
               - hudson.remoting.jnlp.Main
               - -headless
               - -url
-              - https://jenkins.fd.io/sandbox
+              - https://jenkins.fd.io
               - -workDir
               - /w/
               - '%WORKER_SECRET%'
               - '%WORKER_NAME%'
             privileged: true
-            image: fdiotools/builder-ubuntu2204:sandbox-aarch64
+            image: fdiotools/builder-ubuntu2204:prod-aarch64
             auth:
               - password: hidden
                 username: fdionomad
