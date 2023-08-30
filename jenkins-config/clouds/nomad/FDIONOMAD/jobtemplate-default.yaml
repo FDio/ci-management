@@ -55,7 +55,6 @@ Job:
             MaxFileSizeMB: 10
           Artifacts:
             - GetterSource: https://jenkins.fd.io/jnlpJars/slave.jar
-            - RelativeDest: local/
       RestartPolicy:
         Interval: 10000000000
         Mode: fail
