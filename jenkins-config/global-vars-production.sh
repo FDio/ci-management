@@ -1,4 +1,4 @@
-DOCKER_REGISTRY=https://jenkins.fd.io/sandbox/
+DOCKER_REGISTRY=https://jenkins.fd.io
 GERRIT_URL=git://10.30.48.3/mirror/$PROJECT
 GIT_BASE=git://10.30.48.3/mirror/$PROJECT
 GIT_URL=git://10.30.48.3/mirror
