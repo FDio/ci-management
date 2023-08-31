@@ -2,7 +2,6 @@
 jenkins:
   clouds:
     - nomad:
-        jenkinsUrl: "https://jenkins.fd.io/sandbox/"
         name: "FDIONOMAD"
         nomadUrl: "http://10.30.51.23:4646"
         prune: "false"
