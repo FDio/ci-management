@@ -1,6 +1,6 @@
 ---
 Job:
-  Contstraints:
+  Constraints:
     - LTarget: ^${attr.cpu.arch}
       Operand: =
       RTarget: arm64

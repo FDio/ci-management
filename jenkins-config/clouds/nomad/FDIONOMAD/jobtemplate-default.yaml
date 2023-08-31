@@ -7,7 +7,7 @@ Job:
   Priority: 50
   Datacenters:
     - yul1
-  Contstraints:
+  Constraints:
     - LTarget: ^${attr.cpu.arch}
       Operand: =
       RTarget: arm64
