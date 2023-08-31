@@ -28,4 +28,4 @@ Job:
               - /tmp/ccache.ubuntu2004:/scratch/ccache
               - /scratch/nomad:/scratch/nomad:ro
           Artifacts:
-            - GetterSource: https://jenkins.fd.io/jnlpJars/slave.jar
+            - GetterSource: https://jenkins.fd.io/sandbox/jnlpJars/slave.jar

@@ -12,6 +12,17 @@ Job:
       Tasks:
         - Name: jenkins-worker
           Config:
+            args:
+              - -cp
+              - /local/slave.jar
+              - hudson.remoting.jnlp.Main
+              - -headless
+              - -url
+              - https://jenkins.fd.io/sandbox
+              - -workDir
+              - /w/
+              - '%WORKER_SECRET%'
+              - '%WORKER_NAME%'
             image: fdiotools/builder-debian11:sandbox-x86_64
             volumes:
               - /tmp/ccache.debian11:/scratch/ccache
