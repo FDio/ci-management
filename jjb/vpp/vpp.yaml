@@ -266,6 +266,7 @@
       - 1n-skx:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
+          skip-vote: 'true'
       - 1n-tx2:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
