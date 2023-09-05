@@ -315,6 +315,12 @@
       - 3n-snr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
+      - 3na-spr:
+          os: 'ubuntu2204'
+          executor-arch: 'x86_64'
+      - 3nb-spr:
+          os: 'ubuntu2204'
+          executor-arch: 'x86_64'
 # [end] VPP-CSIT-VERIFY-PERF PROJECT
 
 # VPP-CSIT-API-CRC PROJECT
