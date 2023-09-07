@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011d977a_b958c187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 60
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2023-09-07T08:05:27Z",
+      "side": 1,
+      "message": "jjb-deploy vpp-csit-bisect-master-ubuntu2204-x86_64-3nb-spr",
+      "revId": "41c7dc681076166a4d04481670938ebdb64b47d2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
