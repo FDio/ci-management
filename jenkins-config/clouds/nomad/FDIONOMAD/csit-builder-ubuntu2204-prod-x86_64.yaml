@@ -1,4 +1,6 @@
 ---
 templates:
-  - labels: "csit-builder-ubuntu2204-prod-x86_64"
-    prefix: "csit-builder-ubuntu2204-prod-x86_64"
+  - prefix: "csit-builder-ubuntu2204-prod-x86_64"
+    labels:
+      - "csit-builder-ubuntu2204-prod-x86_64"
+      - "csit-builder-ubuntu2204-sandbox-x86_64"

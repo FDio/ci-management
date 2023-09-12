@@ -1,4 +1,6 @@
 ---
 templates:
-  - labels: "builder-debian11-prod-x86_64"
-    prefix: "builder-debian11-prod-x86_64"
+  - prefix: "builder-debian11-prod-x86_64"
+    labels:
+      - "builder-debian11-prod-x86_64"
+      - "builder-debian11-sandbox-x86_64"
