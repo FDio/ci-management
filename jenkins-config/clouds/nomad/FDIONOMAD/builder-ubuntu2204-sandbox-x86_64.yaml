@@ -1,4 +1,6 @@
 ---
 templates:
-  - labels: "builder-ubuntu2204-sandbox-x86_64"
-    prefix: "builder-ubuntu2204-sandbox-x86_64"
+  - prefix: "builder-ubuntu2204-sandbox-x86_64"
+    labels:
+      - "builder-ubuntu2204-sandbox-x86_64"
+      - "builder-ubuntu2204-prod-x86_64"

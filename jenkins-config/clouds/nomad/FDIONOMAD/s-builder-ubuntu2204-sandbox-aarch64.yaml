@@ -1,4 +1,6 @@
 ---
 templates:
-  - labels: "s-builder-ubuntu2204-sandbox-aarch64"
-    prefix: "s-builder-ubuntu2204-sandbox-aarch64"
+  - prefix: "s-builder-ubuntu2204-sandbox-aarch64"
+    labels:
+      - "s-builder-ubuntu2204-sandbox-aarch64"
+      - "s-builder-ubuntu2204-prod-aarch64"
