@@ -263,7 +263,7 @@
           branch: 'stable/2306'
           branch-refspec: ''
     testbed-arch:
-      - 1n-skx:
+      - 1n-spr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
           skip-vote: 'true'
