@@ -46,8 +46,14 @@
       - '2306':
           branch: 'stable/2306'
           branch-refspec: ''
+      - '2310':
+          branch: 'stable/2310'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
+      # os deprecated in 23.10
+      - stream: '2310'
+        os: 'ubuntu2004'
       # os deprecated in 23.06
       - stream: '2306'
         os: 'ubuntu2004'
@@ -92,6 +98,11 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
+      - '2310':
+          branch: 'stable/2310'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+          make-test-multiworker-os: 'debian-11'
     os:
       - debian11
       - ubuntu2004
@@ -120,7 +131,13 @@
       - '2306':
           branch: 'stable/2306'
           branch-refspec: ''
+      - '2310':
+          branch: 'stable/2310'
+          branch-refspec: ''
     exclude:
+      # os deprecated in 23.10
+      - stream: '2310'
+        os: 'ubuntu2004'
       # os deprecated in 23.06
       - stream: '2306'
         os: 'ubuntu2004'
@@ -238,6 +255,11 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
+      - '2310':
+          branch: 'stable/2310'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+          make-test-multiworker-os: ''
     os:
       - ubuntu2004
       - ubuntu2204
@@ -261,6 +283,9 @@
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
+          branch-refspec: ''
+      - '2310':
+          branch: 'stable/2310'
           branch-refspec: ''
     testbed-arch:
       - 1n-spr:
@@ -343,6 +368,9 @@
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
+          branch-refspec: ''
+      - '2310':
+          branch: 'stable/2310'
           branch-refspec: ''
     os:
       - 'ubuntu2204'
