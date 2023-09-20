@@ -60,9 +60,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     # Install/cache python packages
     make_vpp_test "test-dep" "$branch"
     if [ "$OS_ID" = "ubuntu" ] ; then
-        # TODO: Remove make test-doc after VPP 21.06 and 21.10 are no longer supported
-        #       which is deprecated in master (VPP 22.02)
-        make_vpp_test "doc" "$branch"
         make_vpp test-wipe "$branch"
     fi
     # Clean up virtual environment

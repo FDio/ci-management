@@ -124,9 +124,6 @@ remove_pyc_files_and_pycache_dirs() {
 }
 
 # OS type variables
-# TODO: Investigate if sourcing /etc/os-release and using env vars from it
-#       works across all OS variants.  If so, clean up copy-pasta...
-#       Alternatively use facter as does LF Releng scripts.
 export OS_ID="$(grep '^ID=' /etc/os-release | cut -d= -f2 | sed -e 's/\"//g')"
 export OS_VERSION_ID="$(grep '^VERSION_ID=' /etc/os-release | cut -d= -f2 | sed -e 's/\"//g')"
 export OS_CODENAME="$(grep 'VERSION_CODENAME=' /etc/os-release | cut -d= -f2)"

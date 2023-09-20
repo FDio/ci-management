@@ -183,8 +183,7 @@ tags, but for now testing is a manual operation.
 
 2. Edit jjb/vpp/vpp.yam (or other project yaml file) and replace '-prod-' with '-sandbox-' for all of the docker image
 
-3. `jjb-sandbox-env`  # This bash function currently lives in ../vpp/extras/bash/functions.sh
- - TODO: move it to ci-management repo.
+3. `jjb-sandbox-env`
 
 4. For each job using one of the docker images:
 
@@ -270,4 +269,3 @@ a production image to the previous image used in production.
 Jenkins-Nomad Label.
 - sandbox-aarch64: Tag used to select the aarch64 sandbox image by the
 associated Jenkins-Nomad Label.
-

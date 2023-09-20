@@ -187,10 +187,8 @@ get_all_tags_from_dockerhub() {
 
 verify_image_version_date_format() {
     version="$1"
-    # TODO: Remove regex1 when legacy nomenclature is no longer on docker hub.
-    local regex1="^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]$"
-    local regex2="^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]_UTC$"
-    if [[ "$version" =~ $regex1 ]] || [[ "$version" =~ $regex2 ]]; then
+    local ver_regex="^[0-9]{4}_[0-1][0-9]_[0-3][0-9]_[0-2][0-9][0-5][0-9][0-5][0-9]_UTC$"
+    if [[ "$version" =~ $ver_regex ]]; then
         return 0
     fi
     return 1
