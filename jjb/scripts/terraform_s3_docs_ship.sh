@@ -18,6 +18,15 @@ echo "---> terraform_s3_docs_ship.sh"
 set -exuo pipefail
 
 cat >"/w/workspace/main.tf" <<'END_OF_TERRAFORM_SCRIPT'
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.18.1"
+    }
+  }
+}
+
 provider "aws" {
   region                      = "us-east-1"
   profile                     = "default"
