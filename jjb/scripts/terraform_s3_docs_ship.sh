@@ -81,7 +81,7 @@ variable "bucket_path" {
   type        = string
 }
 
-resource "aws_s3_object" "object" {
+resource "aws_s3_bucket_object" "object" {
   for_each = fileset(var.workspace_dir, var.file_match_pattern)
 
   bucket = var.bucket
