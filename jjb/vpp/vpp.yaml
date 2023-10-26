@@ -211,7 +211,7 @@
     project: 'vpp'
     make-parallel-jobs: '4'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-    comment-trigger-value: 'cov-verify'
+    comment-trigger-value: 'gcov-report'
     stream:
       - 'master':
           branch: 'master'
