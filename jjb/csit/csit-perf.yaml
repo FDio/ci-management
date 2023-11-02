@@ -147,11 +147,11 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -179,7 +179,7 @@
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 3na-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -193,7 +193,7 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
