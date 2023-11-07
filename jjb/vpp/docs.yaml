@@ -10,14 +10,10 @@
     project: 'vpp'
     executor-arch: 'x86_64'
     os:
-      - 'ubuntu2004'
       - 'ubuntu2204'
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
@@ -25,20 +21,6 @@
       - '2310':
           branch: 'stable/2310'
           branch-refspec: ''
-    exclude:
-      # os deprecated in 23.10
-      - stream: '2310'
-        os: 'ubuntu2004'
-      # os deprecated in 23.06
-      - stream: '2306'
-        os: 'ubuntu2004'
-      # os deprecated in 23.02
-      - stream: '2302'
-        os: 'ubuntu2004'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'ubuntu2004'
-      # os added in 22.10
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
