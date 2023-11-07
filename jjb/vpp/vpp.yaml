@@ -34,14 +34,10 @@
       - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - ubuntu2004
       - ubuntu2204
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
@@ -50,19 +46,6 @@
           branch: 'stable/2310'
           branch-refspec: ''
     executor-arch: 'x86_64'
-    exclude:
-      # os deprecated in 23.10
-      - stream: '2310'
-        os: 'ubuntu2004'
-      # os deprecated in 23.06
-      - stream: '2306'
-        os: 'ubuntu2004'
-      # os deprecated in 23.02
-      - stream: '2302'
-        os: 'ubuntu2004'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'ubuntu2004'
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
@@ -85,11 +68,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: 'debian-11'
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
@@ -118,15 +96,11 @@
     project: 'vpp'
     make-parallel-jobs: '4'
     os:
-      - ubuntu2004
       - ubuntu2204
     executor-arch: 'x86_64'
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
@@ -134,19 +108,6 @@
       - '2310':
           branch: 'stable/2310'
           branch-refspec: ''
-    exclude:
-      # os deprecated in 23.10
-      - stream: '2310'
-        os: 'ubuntu2004'
-      # os deprecated in 23.06
-      - stream: '2306'
-        os: 'ubuntu2004'
-      # os deprecated in 23.02
-      - stream: '2302'
-        os: 'ubuntu2004'
-      # os deprecated in master
-      - stream: 'master'
-        os: 'ubuntu2004'
 
 # [end] VPP-GCC-X86_64 PROJECT
 
@@ -245,11 +206,6 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
-      - '2302':
-          branch: 'stable/2302'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: ''
       - '2306':
           branch: 'stable/2306'
           branch-refspec: ''
@@ -277,9 +233,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
@@ -362,9 +315,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2302':
-          branch: 'stable/2302'
           branch-refspec: ''
       - '2306':
           branch: 'stable/2306'
