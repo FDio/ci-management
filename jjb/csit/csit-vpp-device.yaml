@@ -17,8 +17,8 @@
     description: 'CSIT jenkins jobs.'
     jobs:
       - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}'
-      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly'
-      - 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly'
+      - 'csit-vpp-device-semiweekly-{stream}-{os}-{executor-arch}-{node-arch}'
+      - 'csit-vpp-device-weekly-{stream}-{os}-{executor-arch}-{node-arch}'
       - 'csit-vpp-device-report-coverage-{stream}-{node-arch}':
           stream:
             - '2310':
@@ -159,7 +159,7 @@
       - fdio-infra-publish
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-semiweekly'
+    name: 'csit-vpp-device-semiweekly-{stream}-{os}-{executor-arch}-{node-arch}'
 
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
@@ -207,7 +207,7 @@
       - fdio-infra-publish
 
 - job-template:
-    name: 'csit-vpp-device-{stream}-{os}-{executor-arch}-{node-arch}-weekly'
+    name: 'csit-vpp-device-weekly-{stream}-{os}-{executor-arch}-{node-arch}'
 
     project-type: freestyle
     node: 'csit-builder-{os}-prod-{executor-arch}'
