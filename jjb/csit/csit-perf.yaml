@@ -148,9 +148,9 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2310':
-                branch: 'rls2310'
-                branch-id: 'oper-rls2310'
+            - '2402':
+                branch: 'rls2402'
+                branch-id: 'oper-rls2402'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -515,13 +515,13 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2310':
-          branch: 'rls2310'
-          branch-id: 'oper-rls2310'
+      - '2402':
+          branch: 'rls2402'
+          branch-id: 'oper-rls2402'
     stream_report:
-      - '2310':
-          branch: 'rls2310'
-          branch-id: 'oper-rls2310'
+      - '2402':
+          branch: 'rls2402'
+          branch-id: 'oper-rls2402'
 
     build-artifact-num-to-keep: 10
 
