@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b068e657_45cdde1a",
+        "filename": "jjb/csit/csit-perf.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2023-11-27T16:48:23Z",
+      "side": 1,
+      "message": "\u0027c7gn\u0027",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 21
+      },
+      "revId": "d99b2e5f5c2e8d4288bf38b1728d1d97c20218ac",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
