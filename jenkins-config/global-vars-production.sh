@@ -1,7 +1,7 @@
 DOCKER_REGISTRY=https://jenkins.fd.io
-GERRIT_URL=git://10.30.48.3/mirror/$PROJECT
-GIT_BASE=git://10.30.48.3/mirror/$PROJECT
-GIT_URL=git://10.30.48.3/mirror
+GERRIT_URL=https://github.com/FDio/$PROJECT
+GIT_BASE=https://github.com/FDio/$PROJECT
+GIT_URL=https://github.com/FDio
 JENKINS_HOSTNAME=vex-yul-rot-jenkins-1
 PACKAGECLOUDPROXY=https://packagecloud.io/fdio
 PCIO_CO=fdio
