@@ -1,6 +1,4 @@
 ---
 templates:
   - prefix: "builder-ubuntu2004-sandbox-aarch64"
-    labels:
-      - "builder-ubuntu2004-sandbox-aarch64"
-      - "builder-ubuntu2004-prod-aarch64"
+    labels: "builder-ubuntu2004-sandbox-aarch64"
