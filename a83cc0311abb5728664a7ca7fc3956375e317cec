@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "23c13e90_55f18bb6",
         "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Naming convention is include-raw-vpp-...",
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c673fe0b_a7e4f01d",
         "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
@@ -32,10 +33,10 @@
       "message": "Separated to a new parent change [0] so we can discuss file naming there.\n\n[0] https://gerrit.fd.io/r/c/ci-management/+/24057",
       "parentUuid": "23c13e90_55f18bb6",
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "093034b4_d7d5330c",
         "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
@@ -50,10 +51,10 @@
       "message": "I mean [1], as that is a convention for jjb/vpp (as opposed to jjb/csit), which I already violated in past by adding check_crc.sh file.\n\n[1] https://gerrit.fd.io/r/c/ci-management/+/24059",
       "parentUuid": "c673fe0b_a7e4f01d",
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e3ce4552_c855e0fa",
         "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
@@ -68,10 +69,10 @@
       "message": "Agree but until [1] is merged you have to follow what is current scheme",
       "parentUuid": "093034b4_d7d5330c",
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "604a56b4_b2e3f88f",
         "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
@@ -86,10 +87,28 @@
       "message": "That is fine. Currently [1] is parent of this. If I decide to change the order, I will rename the file to match the prevailing scheme.",
       "parentUuid": "e3ce4552_c855e0fa",
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc27011_5bede42f",
+        "filename": "jjb/vpp/vpp-csit-perf-bisect.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2023-12-13T17:31:38Z",
+      "side": 1,
+      "message": "Naming scheme changed in the meantime.",
+      "parentUuid": "604a56b4_b2e3f88f",
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "b7995f24_deeceba0",
         "filename": "jjb/vpp/vpp-macros.yaml",
@@ -109,10 +128,10 @@
         "endChar": 4
       },
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "beda75f6_117f57fe",
         "filename": "jjb/vpp/vpp-macros.yaml",
@@ -133,10 +152,10 @@
         "endChar": 4
       },
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2f722c16_7e95dbb1",
         "filename": "jjb/vpp/vpp-macros.yaml",
@@ -157,10 +176,10 @@
         "endChar": 4
       },
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8b3b7f25_c7a6b381",
         "filename": "jjb/vpp/vpp-macros.yaml",
@@ -181,10 +200,10 @@
         "endChar": 4
       },
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a17dbec4_3ff32e60",
         "filename": "jjb/vpp/vpp-macros.yaml",
@@ -205,8 +224,31 @@
         "endChar": 4
       },
       "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
-      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2",
-      "unresolved": true
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11facc98_c6445ed2",
+        "filename": "jjb/vpp/vpp-macros.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2023-12-13T17:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17dbec4_3ff32e60",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 4
+      },
+      "revId": "a83cc0311abb5728664a7ca7fc3956375e317cec",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
