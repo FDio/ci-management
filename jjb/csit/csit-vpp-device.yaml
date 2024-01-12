@@ -21,9 +21,9 @@
       - 'csit-vpp-device-weekly-{stream}-{os}-{executor-arch}-{node-arch}'
       - 'csit-vpp-device-report-coverage-{stream}-{node-arch}':
           stream:
-            - '2310':
-                branch: 'rls2310'
-                branch-id: 'oper-rls2310'
+            - '2402':
+                branch: 'rls2402'
+                branch-id: 'oper-rls2402'
     node-arch:
       - '1n-tx2':
           os: 'ubuntu2204'
@@ -42,9 +42,9 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2310':
-          branch: 'rls2310'
-          branch-id: 'oper-rls2310'
+      - '2402':
+          branch: 'rls2402'
+          branch-id: 'oper-rls2402'
 
 - job-template:
     name: 'csit-vpp-device-report-coverage-{stream}-{node-arch}'
