@@ -30,6 +30,11 @@
 #          executor-arch: 'aarch64'
 #          make-parallel-jobs: '32'
 #          skip-vote: 'false'
+      - '1n-alt':
+          os: 'ubuntu2204'
+          executor-arch: 'aarch64'
+          make-parallel-jobs: '32'
+          skip-vote: 'false'
       - '1n-spr':
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
