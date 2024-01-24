@@ -16,6 +16,23 @@
       "message": "Waits for either 40224 or 40231, or for a new oper branch with 40228. Otherwise, merging this would block VPP.",
       "revId": "858aed52765490a487532757eaaa1eb2b1b4eb93",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06db780c_5fc7dc24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-01-24T09:09:14Z",
+      "side": 1,
+      "message": "No blockers that I am aware of, but Juraj must confirm.",
+      "revId": "858aed52765490a487532757eaaa1eb2b1b4eb93",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
