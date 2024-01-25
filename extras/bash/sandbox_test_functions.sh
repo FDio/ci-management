@@ -72,8 +72,10 @@ jjb-sandbox-env()
     rm -rf $VENV_DIR \
        && python3 -m venv $VENV_DIR \
        && source $VENV_DIR/bin/activate \
+       && pip3 install --upgrade pip \
        && pip3 install wheel \
        && pip3 install jenkins-job-builder==$jjb_version
+
 
     alias jjsb='jenkins-jobs --conf $JENKINS_INI'
     function jjsb-test() {
