@@ -104,22 +104,6 @@ ENV LANG="en_US.UTF-8" LANGUAGE="en_US" LC_ALL="en_US.UTF-8"
 #        libpcap-dev      for python pypcap install (CSIT)
 #        sshpass          for CSIT jobs
 #
-#        From .../csit/resources/tools/presentation/run_report_*.sh: // TO BE REMOVED IN RLS2306
-#        libxml2
-#        libxml2-dev
-#        libxslt-dev
-#        build-essential
-#        zlib1g-dev
-#        unzip
-#        xvrb
-#        texlive-latex-recommended
-#        texlive-fonts-recommended
-#        texlive-fonts-extra
-#        texlive-latex-extra
-#        latexmk
-#        wkhtmltopdf
-#        inkscape
-#
 RUN apt-get update -qq \\
   && apt-get install -y \\
              apt-transport-https \\
@@ -138,21 +122,16 @@ RUN apt-get update -qq \\
              git-review \\
              gnupg-agent \\
              graphviz \\
-             inkscape \\
              iproute2 \\
              iputils-clockdiff \\
              iputils-ping \\
              iputils-tracepath \\
              jq \\
-             latexmk \\
              libffi-dev \\
              liblapack-dev \\
              libopenblas-dev \\
              libpcap-dev \\
-             libxml2 \\
-             libxml2-dev \\
              libxml-xpath-perl \\
-             libxslt-dev \\
              make \\
              python3-pip \\
              python3-venv \\
@@ -162,42 +141,22 @@ RUN apt-get update -qq \\
              sshpass \\
              sysstat \\
              sudo \\
-             texlive-fonts-extra \\
-             texlive-fonts-recommended \\
-             texlive-latex-extra \\
-             texlive-latex-recommended \\
              traceroute \\
              tree \\
-             unzip \\
              vim \\
              wget \\
-             wkhtmltopdf \\
              xmlstarlet \\
-             xvfb \\
              xz-utils \\
-             zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
-EOF
-
-    cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
 
 # Install terraform for CSIT
 #
-RUN wget https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_$dpkg_arch.zip \\
-  && unzip terraform_1.4.2_linux_$dpkg_arch.zip \\
+RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$dpkg_arch.zip \\
+  && unzip terraform_1.7.3_linux_$dpkg_arch.zip \\
   && mv terraform /usr/bin \\
-  && rm -f terraform_1.4.2_linux_$dpkg_arch.zip
-
-# Install Hugo and Go for CSIT
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && dpkg -i hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && rm -f hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && wget https://go.dev/dl/go1.20.2.linux-$dpkg_arch.tar.gz \\
-  && rm -rf /usr/local/go \\
-  && tar -C /usr/local -xzf go1.20.2.linux-$dpkg_arch.tar.gz \\
-  && rm -f go1.20.2.linux-$dpkg_arch.tar.gz
+  && rm -f terraform_1.7.3_linux_$dpkg_arch.zip
 
 # Install packages for all project branches
 #
