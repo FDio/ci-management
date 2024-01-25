@@ -42,6 +42,9 @@ for vpp_branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     csit_install_packages "$csit_branch"
 
     # Install/cache python packages
+    csit_install_hugo "$csit_branch"
+
+    # Install/cache python packages
     csit_pip_cache "$csit_branch"
 done
 

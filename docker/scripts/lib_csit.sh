@@ -76,7 +76,7 @@ csit_install_packages() {
     local yaml_files
     yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
     packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
-    packages="${packages/bionic /}"
+    packages="${packages/jammy /}"
     packages="${packages/focal /}"
     packages="${packages/libmbedcrypto1/libmbedcrypto3}"
     packages="${packages/libmbedtls10/libmbedtls12}"
@@ -94,6 +94,34 @@ csit_install_packages() {
                 echo "Unsupported OS ($OS_ID): CSIT packages NOT INSTALLED!"
                 ;;
         esac
+    fi
+}
+
+csit_install_hugo() {
+    local branch="$1"
+    CSIT_DIR="$DOCKER_CSIT_DIR"
+
+    if [ -f "$CSIT_DIR/VPP_REPO_URL" ] \
+           && [ -f "$CSIT_DIR/requirements.txt" ]; then
+
+        local branchname
+        # use bash variable substitution to replace '/' with '_' to convert from
+        # vpp to csit branch name nomenclature
+        branchname="${branch////_}"
+        local csit_bash_function_dir="$CSIT_DIR/resources/libraries/bash/function"
+        local bld_log="$DOCKER_BUILD_LOG_DIR"
+        bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname-csit_pip_cache-bld.log"
+
+        description="Install CSIT hugo packages from $branch branch"
+        echo_log "    Starting  $description..."
+        git clean -qfdx
+
+        source $csit_bash_function_dir/hugo.sh
+        go_install
+        hugo_install
+    else
+        echo_log "ERROR: Missing or invalid CSIT_DIR: '$CSIT_DIR'!"
+        return 1
     fi
 }
 
@@ -121,13 +149,10 @@ csit_pip_cache() {
         git clean -qfdx
         rm -rf "$PYTHONPATH/env"
 
-        # Virtualenv version is pinned in common.sh in newer csit branches.
-        # (note: xargs removes leading/trailing spaces)
+        # Activate / install CSIT python virtualenv ($CSIT_DIR/requirements.txt)
         local common_sh="$csit_bash_function_dir/common.sh"
-        install_virtualenv="$(grep 'virtualenv' $common_sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
-        $install_virtualenv
-        virtualenv --no-download --python="$(which python3)" "$CSIT_DIR/env"
-        source "$CSIT_DIR/env/bin/activate"
+        source $common_sh
+        activate_virtualenv | tee -a "$bld_log"
 
         if [ "$OS_ARCH" = "aarch64" ] ; then
             local numpy_ver
@@ -151,16 +176,10 @@ csit_pip_cache() {
             rm -f "$constraintfile"
         fi
 
-        # Install csit python requirements
-        $pip_cmd install -r "$CSIT_DIR/requirements.txt" 2>&1 | \
-            tee -a "$bld_log"
         # Install tox python requirements
-        $pip_cmd install -r "$CSIT_DIR/tox-requirements.txt" 2>&1 | \
+        deactivate
+        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/tox-requirements.txt" |\
             tee -a "$bld_log"
-        # Run tox which installs pylint requirments
-        pushd "$CSIT_DIR" >& /dev/null || exit 1
-        tox || true
-        popd >& /dev/null || exit 1
 
         # Clean up virtualenv directories
         deactivate
