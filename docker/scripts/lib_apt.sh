@@ -178,9 +178,6 @@ RUN apt-get update -qq \\
              zlib1g-dev \\
   && curl -L https://packagecloud.io/fdio/master/gpgkey | apt-key add - \\
   && curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | bash \\
-EOF
-
-    cat <<EOF >>"$DOCKERFILE"
   && rm -r /var/lib/apt/lists/*
 
 # Install terraform for CSIT
@@ -190,19 +187,9 @@ RUN wget https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_$d
   && mv terraform /usr/bin \\
   && rm -f terraform_1.4.2_linux_$dpkg_arch.zip
 
-# Install Hugo and Go for CSIT
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && dpkg -i hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && rm -f hugo_extended_0.111.3_linux-$dpkg_arch.deb \\
-  && wget https://go.dev/dl/go1.20.2.linux-$dpkg_arch.tar.gz \\
-  && rm -rf /usr/local/go \\
-  && tar -C /usr/local -xzf go1.20.2.linux-$dpkg_arch.tar.gz \\
-  && rm -f go1.20.2.linux-$dpkg_arch.tar.gz
-
 # Install packages for all project branches
 #
 RUN apt-get update -qq \\
-  && dbld_vpp_install_packages.sh \\
   && dbld_csit_install_packages.sh \\
   && rm -r /var/lib/apt/lists/*
 EOF

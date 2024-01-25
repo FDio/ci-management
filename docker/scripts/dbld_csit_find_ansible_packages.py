@@ -58,7 +58,7 @@ def is_csit_ansible_yaml_file(filename: str):
      (root,ext) = os.path.splitext(filename)
      if ext == '.yaml' \
         and filename.find('csit/') >= 0 \
-        and filename.find('/ansible/') > 0 \
+        and filename.find('ansible/') > 0 \
         and os.path.isfile(filename):
          return True
      else:

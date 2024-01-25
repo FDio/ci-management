@@ -42,7 +42,14 @@ for vpp_branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     csit_install_packages "$csit_branch"
 
     # Install/cache python packages
-    csit_pip_cache "$csit_branch"
+    csit_install_hugo "$csit_branch"
+
+    # Install/cache python packages
+    if grep -q 'PyYAML==5.4.1' "$DOCKER_CSIT_DIR/requirements.txt" ; then
+        to_be_deprecated_csit_pip_cache "$csit_branch"
+    else
+        csit_pip_cache "$csit_branch"
+    fi
 done
 
 echo_log -e "Completed $(basename $0)!\n\n=========="

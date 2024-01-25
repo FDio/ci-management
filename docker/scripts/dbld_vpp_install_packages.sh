@@ -35,11 +35,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
 
     # Install OS packages
     make_vpp "install-dep" "$branch"
-    if [ "$OS_ID" = "ubuntu" ] && [ "$OS_ARCH" = "x86_64" ] ; then
-        # 'Make docs jobs are only run on ubuntu x86_64 executors
-        #  so only run for ubuntu build executors.
-        make_vpp "docs-venv" "$branch"
-    fi
 
     # Download, build, and cache external deps packages
     make_vpp "install-ext-deps" "$branch"
