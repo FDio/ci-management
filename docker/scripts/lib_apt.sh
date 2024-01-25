@@ -202,6 +202,8 @@ RUN wget https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extend
 # Install packages for all project branches
 #
 RUN apt-get update -qq \\
+  && python3 -m pip install --upgrade pip==23.3.2 \\
+  && python3 -m pip cache purge \\
   && dbld_vpp_install_packages.sh \\
   && dbld_csit_install_packages.sh \\
   && rm -r /var/lib/apt/lists/*
