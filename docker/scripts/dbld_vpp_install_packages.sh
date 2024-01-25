@@ -35,11 +35,6 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
 
     # Install OS packages
     make_vpp "install-dep" "$branch"
-    if [ "$OS_ID" = "ubuntu" ] && [ "$OS_ARCH" = "x86_64" ] ; then
-        # 'Make docs jobs are only run on ubuntu x86_64 executors
-        #  so only run for ubuntu build executors.
-        make_vpp "docs-venv" "$branch"
-    fi
 
     # Download, build, and cache external deps packages
     make_vpp "install-ext-deps" "$branch"
@@ -57,6 +52,12 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
         echo "ERROR: Missing VPP external deps package: '$vpp_ext_deps_pkg'"
         exit 1
     fi
+    # TODO: remove this after all supported VPP branches have removed
+    # python3-virtualenv & virtualenv from install-deps which are no longer
+    # used in vpp repo.  These packages can mess up csit virtualenv
+    # installation which uses pip3
+    sudo apt remove -y --purge --autoremove python3-virtualenv virtualenv || true
+
     # Install/cache python packages
     make_vpp_test "test-dep" "$branch"
     if [ "$OS_ID" = "ubuntu" ] ; then
