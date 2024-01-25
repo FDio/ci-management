@@ -69,14 +69,14 @@ csit_install_packages() {
     git clean -qfdx
     python3 -m pip install pyyaml
 
-    local exclude_roles="-e calibration -e kernel -e mellanox -e nomad -e consul"
+    local exclude_roles="-e calibration -e kernel -e mellanox -e nomad -e consul -e aws -e vpp"
     [ "$OS_ARCH" = "aarch64" ] && exclude_roles="$exclude_roles -e iperf"
 
     # Not in double quotes to let bash remove newline characters
     local yaml_files
     yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
     packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
-    packages="${packages/bionic /}"
+    packages="${packages/jammy /}"
     packages="${packages/focal /}"
     packages="${packages/libmbedcrypto1/libmbedcrypto3}"
     packages="${packages/libmbedtls10/libmbedtls12}"
@@ -85,15 +85,121 @@ csit_install_packages() {
     if [ -n "$packages" ] ; then
         case "$OS_NAME" in
             ubuntu*)
-                apt_install_packages $packages
+                apt_install_packages "$packages" 2>&1 | tee -a "$bld_log"
                 ;;
             debian*)
-                apt_install_packages $packages
+                apt_install_packages "$packages" 2>&1 | tee -a "$bld_log"
                 ;;
             *)
                 echo "Unsupported OS ($OS_ID): CSIT packages NOT INSTALLED!"
                 ;;
         esac
+    fi
+}
+
+csit_install_hugo() {
+    local branch="$1"
+    CSIT_DIR="$DOCKER_CSIT_DIR"
+
+    if [ -f "$CSIT_DIR/VPP_REPO_URL" ] \
+           && [ -f "$CSIT_DIR/requirements.txt" ]; then
+
+        local branchname
+        # use bash variable substitution to replace '/' with '_' to convert from
+        # vpp to csit branch name nomenclature
+        branchname="${branch////_}"
+        local csit_bash_function_dir="$CSIT_DIR/resources/libraries/bash/function"
+        local bld_log="$DOCKER_BUILD_LOG_DIR"
+        bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname-csit_install_hugo-bld.log"
+
+        description="Install CSIT hugo packages from $branch branch"
+        echo_log "    Starting  $description..."
+        git clean -qfdx
+
+        source "$csit_bash_function_dir"/hugo.sh
+        go_install 2>&1 | tee -a "$bld_log"
+        hugo_install 2>&1 | tee -a "$bld_log"
+
+    else
+        echo_log "ERROR: Missing or invalid CSIT_DIR: '$CSIT_DIR'!"
+        return 1
+    fi
+}
+
+to_be_deprecated_csit_pip_cache() {
+    local branch="$1"
+    # ensure PS1 is defined (used by virtualenv activate script)
+    PS1=${PS1:-"#"}
+    CSIT_DIR="$DOCKER_CSIT_DIR"
+
+    if [ -f "$CSIT_DIR/VPP_REPO_URL" ] \
+           && [ -f "$CSIT_DIR/requirements.txt" ]; then
+
+        local branchname
+        # use bash variable substitution to replace '/' with '_' to convert from
+        # vpp to csit branch name nomenclature
+        branchname="${branch////_}"
+        local csit_bash_function_dir="$CSIT_DIR/resources/libraries/bash/function"
+        local bld_log="$DOCKER_BUILD_LOG_DIR"
+        bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname-to_be_deprecated_csit_pip_cache-bld.log"
+        local pip_cmd="python3 -m pip --disable-pip-version-check"
+        export PYTHONPATH=$CSIT_DIR
+
+        description="Install CSIT python packages from $branch branch"
+        echo_log "    Starting  $description..."
+        git clean -qfdx
+        rm -rf "$PYTHONPATH/env"
+
+        # Virtualenv version is pinned in common.sh in newer csit branches.
+        # (note: xargs removes leading/trailing spaces)
+        local common_sh="$csit_bash_function_dir/common.sh"
+        install_virtualenv="$(grep 'virtualenv' $common_sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
+        $install_virtualenv 2>&1 | tee -a "$bld_log"
+        virtualenv --no-download --python="$(which python3)" "$CSIT_DIR/env" 2>&1 | tee -a "$bld_log"
+        source "$CSIT_DIR/env/bin/activate" 2>&1 | tee -a "$bld_log"
+
+        if [ "$OS_ARCH" = "aarch64" ] ; then
+            local numpy_ver
+            numpy_ver="$(grep numpy $PYTHONPATH/requirements.txt)"
+            [ -n "$numpy_ver" ] && $pip_cmd install $numpy_ver 2>&1 | \
+                tee -a $bld_log
+        fi
+
+        # TODO: Update CSIT release branches to PyYAML==6.0.1 or greater
+        # then remove this workaround: https://github.com/yaml/pyyaml/issues/736
+        if grep -q 'PyYAML==5.4.1' "$PYTHONPATH/requirements.txt" ; then
+            local constraintfile
+            constraintfile="/tmp/constraint.txt"
+
+            # create a constraint file that limits the Cython version to one that should work
+            echo 'Cython < 3.0' > "$constraintfile"
+            # seed pip's local wheel cache with a PyYAML wheel
+            PIP_CONSTRAINT="$constraintfile" $pip_cmd wheel PyYAML==5.4.1 2>&1 | tee -a "$bld_log"
+            rm -f "$constraintfile"
+        fi
+        # Install csit python requirements
+        $pip_cmd install -r "$CSIT_DIR/requirements.txt" 2>&1 | \
+            tee -a "$bld_log"
+        # Install tox python requirements
+        $pip_cmd install -r "$CSIT_DIR/tox-requirements.txt" 2>&1 | \
+            tee -a "$bld_log"
+        $pip_cmd install pip --upgrade 2>&1 | tee -a "$bld_log"
+        command -v "deactivate" && deactivate
+
+        # Clean up virtualenv directories
+        # Install csit python requirements
+        $pip_cmd install -r "$CSIT_DIR/requirements.txt" 2>&1 | \
+            tee -a "$bld_log"
+        # Install tox python requirements
+        $pip_cmd install -r "$CSIT_DIR/tox-requirements.txt" 2>&1 | \
+            tee -a "$bld_log"
+        command -v "deactivate" && deactivate
+        git checkout -q -- .
+        git clean -qfdx
+        echo_log "    Completed $description!"
+    else
+        echo_log "ERROR: Missing or invalid CSIT_DIR: '$CSIT_DIR'!"
+        return 1
     fi
 }
 
@@ -121,49 +227,28 @@ csit_pip_cache() {
         git clean -qfdx
         rm -rf "$PYTHONPATH/env"
 
-        # Virtualenv version is pinned in common.sh in newer csit branches.
-        # (note: xargs removes leading/trailing spaces)
+        # Activate / install CSIT python virtualenv ($CSIT_DIR/requirements.txt)
         local common_sh="$csit_bash_function_dir/common.sh"
-        install_virtualenv="$(grep 'virtualenv' $common_sh | grep pip | grep install | cut -d'|' -f1 | xargs)"
-        $install_virtualenv
-        virtualenv --no-download --python="$(which python3)" "$CSIT_DIR/env"
-        source "$CSIT_DIR/env/bin/activate"
+        source $common_sh
+        # TODO: figure out what happened to virtualenv/pip that causes a activate
+        # to fail to instantiate the venv & a cache SNAFU that causes cache
+        # misses in the CI.  Running the activate_virtualenv function twice populates
+        # the appropriate pip cache (.cache/pip/http dir was moved to http-v2 in
+        # pip3 23.x) appropriately so do it twice.
+        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/requirements.txt" 2>&1 | tee -a "$bld_log"
+        command -v "deactivate" && deactivate
+        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/requirements.txt" 2>&1 | tee -a "$bld_log"
+        command -v "deactivate" && deactivate
 
-        if [ "$OS_ARCH" = "aarch64" ] ; then
-            local numpy_ver
-            numpy_ver="$(grep numpy $PYTHONPATH/requirements.txt)"
-            [ -n "$numpy_ver" ] && $pip_cmd install $numpy_ver 2>&1 | \
-                tee -a $bld_log
-        fi
-
-        # TODO: Update CSIT release branches to PyYAML==6.0.1 or greater
-        # then remove this workaround: https://github.com/yaml/pyyaml/issues/736
-        if grep -q 'PyYAML==5.4.1' "$PYTHONPATH/requirements.txt" ; then
-            local constraintfile
-            constraintfile="/tmp/constraint.txt"
-
-            # create a constraint file that limits the Cython version to one that should work
-            echo 'Cython < 3.0' > "$constraintfile"
-
-            # seed pip's local wheel cache with a PyYAML wheel
-            PIP_CONSTRAINT="$constraintfile" $pip_cmd wheel PyYAML==5.4.1
-
-            rm -f "$constraintfile"
-        fi
-
-        # Install csit python requirements
-        $pip_cmd install -r "$CSIT_DIR/requirements.txt" 2>&1 | \
-            tee -a "$bld_log"
         # Install tox python requirements
-        $pip_cmd install -r "$CSIT_DIR/tox-requirements.txt" 2>&1 | \
+        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/tox-requirements.txt" 2>&1 |\
             tee -a "$bld_log"
-        # Run tox which installs pylint requirments
-        pushd "$CSIT_DIR" >& /dev/null || exit 1
-        tox || true
-        popd >& /dev/null || exit 1
+        command -v "deactivate" && deactivate
+        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/tox-requirements.txt" 2>&1 |\
+            tee -a "$bld_log"
 
         # Clean up virtualenv directories
-        deactivate
+        command -v "deactivate" && deactivate
         git checkout -q -- .
         git clean -qfdx
         echo_log "    Completed $description!"
