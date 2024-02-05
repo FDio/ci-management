@@ -228,26 +228,27 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-spr:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
             - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+                periodicity: '0 0 * * 6'
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+                periodicity: '0 0 * * 1'
             - 2n-c6in:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
+                periodicity: '0 0 * * 1'
             - 2n-c7gn:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
+                periodicity: '0 0 * * 1'
           stream:
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-          periodicity: '0 0 * * 6'
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 1n-aws:
