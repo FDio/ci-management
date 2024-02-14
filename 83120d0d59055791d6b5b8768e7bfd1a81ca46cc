@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aad15a75_6f5071e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-02-14T22:10:11Z",
+      "side": 1,
+      "message": "Waiting for end of VPP 24.02 Release cycle to complete.",
+      "revId": "83120d0d59055791d6b5b8768e7bfd1a81ca46cc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
