@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0304a4_7182749f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2024-03-04T19:40:10Z",
+      "side": 1,
+      "message": "Do not merge without Dave\u0027s approval",
+      "revId": "e8601777c4ad75a5b2c78ad550d995c823523835",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
