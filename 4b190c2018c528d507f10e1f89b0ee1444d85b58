@@ -16,6 +16,23 @@
       "message": "Do we need to manually give this a +1 verify, since we\u0027re removing the workflow?",
       "revId": "4b190c2018c528d507f10e1f89b0ee1444d85b58",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc531735_b24fc399",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453
+      },
+      "writtenOn": "2024-03-07T20:19:35Z",
+      "side": 1,
+      "message": "+1 verified. We expect this to fail verification, since we\u0027re removing the current verify job.",
+      "revId": "4b190c2018c528d507f10e1f89b0ee1444d85b58",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
