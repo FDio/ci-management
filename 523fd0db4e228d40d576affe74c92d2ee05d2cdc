@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c810b7aa_2d94f0db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-03-11T19:37:08Z",
+      "side": 1,
+      "message": "global-jjb v0.89.9 was merged [0], so this gerrit change should be abandoned.\n\n[0] https://gerrit.fd.io/r/c/ci-management/+/40458",
+      "revId": "523fd0db4e228d40d576affe74c92d2ee05d2cdc",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
