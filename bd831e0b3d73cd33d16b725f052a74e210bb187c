@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "043a9896_d3f21eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-03-11T19:32:41Z",
+      "side": 1,
+      "message": "Can you please upgrade the jjb version in the bash sandbox environment function [0] as well?\n\n[0] https://github.com/FDio/ci-management/blob/master/extras/bash/sandbox_test_functions.sh#L32",
+      "revId": "bd831e0b3d73cd33d16b725f052a74e210bb187c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
