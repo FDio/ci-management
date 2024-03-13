@@ -25,11 +25,6 @@
                 branch: 'rls2402'
                 branch-id: 'oper-rls2402'
     node-arch:
-#      - '1n-tx2':
-#          os: 'ubuntu2204'
-#          executor-arch: 'aarch64'
-#          make-parallel-jobs: '32'
-#          skip-vote: 'false'
       - '1n-alt':
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
@@ -39,7 +34,7 @@
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
           make-parallel-jobs: '32'
-          skip-vote: 'false'
+          skip-vote: 'true'
     project: 'csit'
     branch: 'master'
     branch-id: 'oper'
