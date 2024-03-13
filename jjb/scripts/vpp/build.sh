@@ -60,6 +60,11 @@ make_build_test() {
         BUILD_ERROR="FAILED 'make install-ext-deps'"
         return
     fi
+    if [ -f extras/scripts/build_static_vppctl.sh ]; then
+	if ! extras/scripts/build_static_vppctl.sh ; then
+        BUILD_ERROR="FAILED 'extras/scripts/build_static_vppctl.sh'"
+	return
+    fi
     if ! make UNATTENDED=yes test-dep ; then
         BUILD_ERROR="FAILED 'make test-dep'"
         return
