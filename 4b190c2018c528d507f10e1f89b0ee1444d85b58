@@ -33,6 +33,23 @@
       "message": "+1 verified. We expect this to fail verification, since we\u0027re removing the current verify job.",
       "revId": "4b190c2018c528d507f10e1f89b0ee1444d85b58",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5eca03_0ec05d21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2024-03-13T14:45:40Z",
+      "side": 1,
+      "message": "remerge",
+      "revId": "4b190c2018c528d507f10e1f89b0ee1444d85b58",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ],
   "submitRequirementResults": [
