@@ -1,5 +1,5 @@
 ---
-# GLOBAL jenkins defaults
+# GLOBAL jenkins defaults.
 
 - defaults:
     name: global
