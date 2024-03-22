@@ -15,6 +15,7 @@
     # global-jjb
     gerrit-server-name: Primary
     jenkins-ssh-credential: jenkins-gerrit-credentials
+    jjb_version: 5.0.2
     lftools-version: <1.0.0
 
     # fd.io branch defaults

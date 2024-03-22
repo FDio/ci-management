@@ -67,8 +67,7 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-fail-on-crc-mismatch-parameter:
@@ -123,8 +122,7 @@
           make-parallel-jobs: '{make-parallel-jobs}'
       - os-parameter:
           os: '{os}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       # This is an automatic verify job, part of API coverage.
