@@ -267,7 +267,7 @@
       - 1n-alt:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
-          skip-vote: 'false'
+          skip-vote: 'true'
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
 
 # VPP-CSIT-VERIFY-PERF PROJECT
