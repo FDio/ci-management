@@ -595,8 +595,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -980,8 +979,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1069,8 +1067,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1216,8 +1213,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1302,8 +1298,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1388,8 +1383,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1474,8 +1468,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1560,8 +1553,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
@@ -1646,8 +1638,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
       - gerrit-event-type-parameter
       - gerrit-event-comment-text-parameter
       - csit-perf-trial-duration-parameter:
