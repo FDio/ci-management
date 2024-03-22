@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530ba3fe_34d8953b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-03-22T10:09:13Z",
+      "side": 1,
+      "message": "Ah, sorry for my confusion. Job parameter values are determined before cloning any repo, so 6.0.0 comes from last merge job, no relation to ci-man patchset under test.\n\njjb-deploy",
+      "revId": "e305d5c70c0c343fd70ed48b20bc3b057dda268e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
