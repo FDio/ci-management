@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1152e2e7_30248c0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-03-22T09:13:15Z",
+      "side": 1,
+      "message": "\u003e https://jenkins.fd.io/job/ci-management-jjb-verify/1919/ : FAILURE\n\nThis job failing is WORSE than log uploads not working.",
+      "revId": "5964c21f0ff2364bdf73286bdafcb5c70f6d475b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
