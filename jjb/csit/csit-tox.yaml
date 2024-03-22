@@ -45,8 +45,7 @@
           project: '{project}'
       - gerrit-parameter:
           branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '$GERRIT_REFSPEC'
+      - gerrit-refspec-parameter
 
     scm:
       - gerrit-trigger-scm:
