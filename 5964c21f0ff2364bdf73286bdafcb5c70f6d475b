@@ -16,6 +16,23 @@
       "message": "\u003e https://jenkins.fd.io/job/ci-management-jjb-verify/1919/ : FAILURE\n\nThis job failing is WORSE than log uploads not working.",
       "revId": "5964c21f0ff2364bdf73286bdafcb5c70f6d475b",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a53731b_237caf7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-03-22T09:42:32Z",
+      "side": 1,
+      "message": "From https://jenkins.fd.io/job/ci-management-jjb-verify/1919/console\n\n03:26:27 ---\u003e jjb-verify-job.sh\n03:26:27 Checking for JIRA URLs in commit message...\n03:26:27 lf-git-validate-jira-urls(): WARNING: JIRA_URL not set, continuing anyway\n03:26:27 lf-jjb-check-ascii(): INFO: All JJB YAML files contain only printable  ASCII characters\n03:26:27 Setup pyenv:\n03:26:27   system\n03:26:27   3.8.13\n03:26:27   3.9.13\n03:26:27 * 3.10.6 (set by /w/workspace/ci-management-jjb-verify/.python-version)\n03:26:31 lf-activate-venv(): INFO: Creating python3 venv at /tmp/venv-NZkp\n03:26:31 lf-activate-venv(): INFO: Save venv in file: /tmp/.jjb_venv\n03:26:43 lf-activate-venv(): INFO: Installing: jenkins-job-builder\u003d\u003d6.0.0 setuptools\u003d\u003d65.7.0 \n\nI do not know yet where does the 6.0.0 come from...\n...found something in global-jjb/jjb/lf-ci-jobs.yaml:68 testing.",
+      "revId": "5964c21f0ff2364bdf73286bdafcb5c70f6d475b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
