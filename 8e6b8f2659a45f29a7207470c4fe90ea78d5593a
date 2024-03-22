@@ -50,6 +50,23 @@
       "message": "As I wrote in https://lists.linuxfoundation.org/pipermail/lf-releng/2024-March/000362.html this needs manually triggered merge run with changed JJB_VERSION. I did that, it will be https://jenkins.fd.io/job/ci-management-jjb-merge/1026 (if executors are working now).",
       "revId": "8e6b8f2659a45f29a7207470c4fe90ea78d5593a",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d5cff9_155b29c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-03-22T16:49:14Z",
+      "side": 1,
+      "message": "Just to confirm it now works:\nremerge",
+      "revId": "8e6b8f2659a45f29a7207470c4fe90ea78d5593a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ],
   "submitRequirementResults": [
