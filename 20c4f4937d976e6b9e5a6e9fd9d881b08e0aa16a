@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ed470d_84440592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-03-22T11:04:33Z",
+      "side": 1,
+      "message": "\u003e https://jenkins.fd.io/job/ci-management-jjb-verify/1923/ : FAILURE\n\nExpected due to jjb version mismatch.\n\n\u003e https://jenkins.fd.io/job/ci-management-jjb-verify/1924/ : UNSTABLE\n\nThat was me triggering manually https://jenkins.fd.io/job/ci-management-jjb-verify/1924/parameters/\nThe jjb test passed, only logs upload failed as described in the commit message.\n\nI also tried sandbox: https://jenkins.fd.io/sandbox/job/ci-management-jjb-verify/2/console\nbut that got 401 when trying to get_plugins_info(), looks like a separate issue.\n\nOverall, I think this is safe enough, but it will need similar manual start of the merge job to repair all jobs.",
+      "revId": "20c4f4937d976e6b9e5a6e9fd9d881b08e0aa16a",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
