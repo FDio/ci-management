@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86cb52ad_6eeb9b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T08:12:49Z",
+      "side": 1,
+      "message": "jjb-deploy ci-management-jjb-deploy-job",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
