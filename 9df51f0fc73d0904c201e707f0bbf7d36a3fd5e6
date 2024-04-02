@@ -86,6 +86,23 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bea041_9bb80cef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T17:42:36Z",
+      "side": 1,
+      "message": "\u003e As far as I can tell, this will work correctly.\n\u003e 1. Use production deploy job to create deploy job on Sandbox.\n\u003e 1.1. Make any manual changes to needed for jobs to run correctly on Sandbox.\n\u003e 2. Use deploy job on Sandbox to update the same deploy job on Sandbox.\n\u003e I am not sure why the previous attempt [4] failed\n\nOk, I think now I understand better. Due to missing [2], step 1 happens to work correctly, and even ci-verify job manually started with 6.0.0 does not check the mangled bash scripts.\n\nFinally, using this production deploy run [5] has caused a bad change in previously well configured (by the above 1-5 step process) visible here [6].\n\nThe conclusion this step:\n  merging this (new production job configurations, created using jjb 5.0.2)\nwill break all jobs (incliding ci-merge) again.\n\nSo this change (after we verify again after [2]) is good by itself, but it needs a specific way to apply:\n6. Merge this, but...\n7. Immediately cancel the scheduled ci0merge run to avoid breakage.\n8. Start the ci-merge job manually with jjb-version set to 6.0.0.\n\nAlternatively, fix the issues described in here [7].\n\n[5] https://jenkins.fd.io/job/ci-management-jjb-deploy-job/80/parameters/\n[6] https://jenkins.fd.io/sandbox/job/vpp-csit-verify-device-master-ubuntu2204-aarch64-1n-alt/jobConfigHistory/showDiffFiles?timestamp1\u003d2024-04-02_16-51-23\u0026timestamp2\u003d2024-04-02_17-28-24\n[7] https://lists.linuxfoundation.org/pipermail/lf-releng/2024-March/000362.html",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f480cd2c_6c87186a",
