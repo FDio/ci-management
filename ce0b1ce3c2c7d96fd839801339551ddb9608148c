@@ -33,6 +33,23 @@
       "message": "jjb-deploy vpp-csit-verify-perf-master-ubuntu2204-x86_64-2n-spr",
       "revId": "ce0b1ce3c2c7d96fd839801339551ddb9608148c",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7134afcf_212abb6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T13:38:06Z",
+      "side": 1,
+      "message": "jjb-deploy ci-management-jjb-deploy-job",
+      "revId": "ce0b1ce3c2c7d96fd839801339551ddb9608148c",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ],
   "submitRequirementResults": [
