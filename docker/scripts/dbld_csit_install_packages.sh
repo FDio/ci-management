@@ -42,7 +42,19 @@ for vpp_branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     csit_install_packages "$csit_branch"
 
     # Install/cache python packages
+    csit_install_hugo "$csit_branch"
+
+    # Install/cache python packages
     csit_pip_cache "$csit_branch"
 done
+
+# Install csit OS packages
+csit_install_packages "master"
+
+# Install/cache python packages
+csit_install_hugo "master"
+
+# Install/cache python packages
+csit_pip_cache "master"
 
 echo_log -e "Completed $(basename $0)!\n\n=========="
