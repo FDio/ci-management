@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97c4cb3_cbc086f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-04-02T01:38:21Z",
+      "side": 1,
+      "message": "Docker executor build scripts tested on sandbox with latest images generated from them and they have been promoted to production.",
+      "revId": "7b7ffa99873e679b637ef00a3953ddd1f5a28aae",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
