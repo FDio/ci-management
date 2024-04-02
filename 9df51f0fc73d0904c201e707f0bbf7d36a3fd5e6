@@ -69,6 +69,23 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e987778a_c5c61290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T17:18:09Z",
+      "side": 1,
+      "message": "jjb-deploy vpp-csit-verify-device-master-ubuntu2204-aarch64-1n-alt",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f480cd2c_6c87186a",
