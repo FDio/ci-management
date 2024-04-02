@@ -67,6 +67,29 @@
       "message": "reverify",
       "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f480cd2c_6c87186a",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-04-02T16:15:57Z",
+      "side": 1,
+      "message": "This change is breaks the bash scripts which upload artifacts to AWS S3.  Please remove all of these changes in this file and retest to identify why they are necessary.  I do not see a reason for these changes to be required.",
+      "range": {
+        "startLine": 875,
+        "startChar": 25,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
