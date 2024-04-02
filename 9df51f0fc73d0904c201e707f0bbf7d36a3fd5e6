@@ -16,6 +16,23 @@
       "message": "jjb-deploy ci-management-jjb-deploy-job",
       "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f58f29b_81878be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T10:09:58Z",
+      "side": 1,
+      "message": "jjb-deploy ci-management-jjb-deploy-job",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
