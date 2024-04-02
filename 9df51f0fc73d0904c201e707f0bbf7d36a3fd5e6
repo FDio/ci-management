@@ -50,6 +50,23 @@
       "message": "As far as I can tell, this will work correctly.\nStill, I would prefer having [2] (and also [3]) merged to global-jjb first, then making this change use the newer global-jjb commit, and then using the following process to test the upgrade on Sandbox:\n1. Use production deploy job to create deploy job on Sandbox.\n1.1. Make any manual changes to needed for jobs to run correctly on Sandbox.\n2. Use deploy job on Sandbox to update the same deploy job on Sandbox.\n3. Look at deploy job history, specifically the diff between production-deployed  and sandbox-deployed configuration.\n3.1. Make any manual changes again.\n4. Use the new Sandbox deploy job configuration to create few other jobs on Sandbox.\n5. Test that those jobs work as expected (after required manual changes).\n\nAfter that, merging this (new production job configurations, created using jjb 5.0.2) and remerging (updated production job configurations, created using jjb 6.0.0) should finish the upgrade process (assuming the first merge does not fail).\n\nI am not sure why the previous attempt [4] failed, as otherwise there is not much difference between this and that.\n\n[2] 72775: Fix: update submodules in jjb-deploy-job | https://gerrit.linuxfoundation.org/infra/c/releng/global-jjb/+/72775\n[3] 72776: Fix: Add comment as parameter to deploy job | https://gerrit.linuxfoundation.org/infra/c/releng/global-jjb/+/72776\n[4] https://gerrit.fd.io/r/c/ci-management/+/40403",
       "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4affbc1c_6f3a6558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-02T15:32:48Z",
+      "side": 1,
+      "message": "reverify",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
