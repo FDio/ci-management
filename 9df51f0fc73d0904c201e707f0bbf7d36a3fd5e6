@@ -160,6 +160,30 @@
       },
       "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5578f80e_d8c527ce",
+        "filename": "jjb/global-macros.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2024-04-03T10:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f480cd2c_6c87186a",
+      "range": {
+        "startLine": 875,
+        "startChar": 25,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
