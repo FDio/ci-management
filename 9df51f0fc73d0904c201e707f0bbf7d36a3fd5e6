@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5329712b_29bae3f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 663
+      },
+      "writtenOn": "2024-04-03T03:27:07Z",
+      "side": 1,
+      "message": "Yes, you are right! Since JJB 6x is not backward compatible we\u0027ll have to either clean up the jobs on Jenkins with 5x and upload all the jobs configs with 6x.\nThe job configs should not change once the JJB merge completes successfully with 6x.\n\nI believe the jobs that have started would not be impacted since they should already have a snapshot of the config trigger with JJB 5x. However with 6x to be sure that, the job queued should be canceled or restarted once the JJB configs with 6x are completed. The previous issues occurred since the JJB merge was not completed successfully and the change in question was reverted before the merge was completed. \n\nThis change specifically requires running the JJB merge twice. A \"remerge\" comment on the CR should be good enough to rerun the JJB merge with JJB version 6.0.0 on the second run. \n\nI propose the following approach:\n1. +2 the CR (Do not submit)\n2. Put Jenkins on shutdown mode.\n3. Manually update the JJB-merge job configs to pick up JJB 6x\n4. Cancel the JJB merge job and with running a \"remrge\" on the CR to pick up the most recent change.\n5. Re-run JJB-merge with 6x and other test jobs to ensure the upgrade is completed successfully.\n\nWill wait of your confirmation before proceeding with the update. PS Note: All of LF projects are updated to JJB 6x.",
+      "parentUuid": "09bea041_9bb80cef",
+      "revId": "9df51f0fc73d0904c201e707f0bbf7d36a3fd5e6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f480cd2c_6c87186a",
         "filename": "jjb/global-macros.yaml",
         "patchSetId": 1
