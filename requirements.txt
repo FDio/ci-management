@@ -11,4 +11,4 @@
 # It is recommended to keep this value the same
 # as the default value in global-jjb.
 
-jenkins-job-builder==6.0.0
+jenkins-job-builder==6.1.0 #boo
