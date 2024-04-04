@@ -1,0 +1,14 @@
+# This file is useful for configuring jobs from a local machine,
+# but it is also read from ci-man jobs.
+# This simplifies testing for JJB upgrades,
+# e.g. deploy job configured using a previous version
+# will use this version (from commit under test,
+# assuming it uses "auto" value of JJB_VERSION parameter)
+# when deploying jobs to Sandbox.
+# Similarly, verify and merge jobs will use this version,
+# so yaml parsing will be correct.
+
+# It is recommended to keep this value the same
+# as the default value in global-jjb.
+
+jenkins-job-builder==6.0.0
