@@ -1,6 +1,6 @@
 ---
 templates:
-  - idleTerminationInMinutes: 10
+  - idleTerminationInMinutes: 1
     numExecutors: 1
     remoteFs: "/w"
     reusable: false
