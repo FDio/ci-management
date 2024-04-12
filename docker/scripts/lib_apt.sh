@@ -163,6 +163,8 @@ RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$d
 RUN apt-get update -qq \\
   && dbld_vpp_install_packages.sh \\
   && dbld_csit_install_packages.sh \\
+  && apt-get -y autoremove \\
+  && apt-get install -y pkg-config \\
   && rm -r /var/lib/apt/lists/*
 EOF
 }
