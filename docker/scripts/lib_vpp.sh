@@ -1,7 +1,7 @@
 # lib_vpp.sh - Docker build script VPP library.
 #              For import only.
 
-# Copyright (c) 2023 Cisco and/or its affiliates.
+# Copyright (c) 2024 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -20,8 +20,8 @@ if [ -n "$(alias lib_vpp_imported 2> /dev/null)" ] ; then
 fi
 alias lib_vpp_imported=true
 
-export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
-. $CIMAN_DOCKER_SCRIPTS/lib_common.sh
+export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname "${BASH_SOURCE[0]}")"}
+. "$CIMAN_DOCKER_SCRIPTS"/lib_common.sh
 
 
 VPP_SUPPORTED_EXECUTOR_CLASSES="builder"
@@ -32,10 +32,23 @@ vpp_supported_executor_class() {
     return 0
 }
 
+install_hst_deps() {
+    local branch=${1:-"master"}
+    local branchname=${branch/\//_}
+    local hst_dir="./extras/hs-test"
+    local bld_log="$DOCKER_BUILD_LOG_DIR"
+    bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
+    bld_log="${bld_log}-install_hst_deps_bld.log"
+
+    if [ -d "$hst_dir" ] ; then
+        make -C "$hst_dir" install-deps 2>&1 | tee -a "$bld_log"
+    fi
+}
+
 make_vpp() {
     local target=$1
     local branch=${2:-"master"}
-    local branchname="$(echo $branch | sed -e 's,/,_,')"
+    local branchname=${branch/\//_}
     local bld_log="$DOCKER_BUILD_LOG_DIR"
     bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
     bld_log="${bld_log}-make_vpp_${target}-bld.log"
@@ -48,7 +61,7 @@ make_vpp() {
     git clean -qfdx
     description="'make UNATTENDED=yes $target' in $(pwd) ($branch)"
     echo_log -e "    Starting  $description..."
-    make UNATTENDED=yes $target 2>&1 | tee -a "$bld_log"
+    make UNATTENDED=yes "$target" 2>&1 | tee -a "$bld_log"
     git checkout -q -- .
     echo_log "    Completed $description!"
 }
@@ -56,7 +69,7 @@ make_vpp() {
 make_vpp_test() {
     local target=$1
     local branch=${2:-"master"}
-    local branchname="$(echo $branch | sed -e 's,/,_,')"
+    local branchname=${branch/\//_}
     local bld_log="$DOCKER_BUILD_LOG_DIR"
     bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
     bld_log="${bld_log}-make_vpp_test_${target}-bld.log"
