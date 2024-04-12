@@ -105,7 +105,7 @@ docker_build_setup_ciman
 docker_build_setup_vpp
 docker_build_setup_csit
 for executor_os_name in $os_names ; do
-    docker_from_image="$(echo $executor_os_name | sed -e 's/-/:/')"
+    docker_from_image="${executor_os_name/-/:}"
     # Remove '-' and '.' from executor_os_name in Docker Hub repo name
     os_name="${executor_os_name//-}"
     repository="fdiotools/${EXECUTOR_CLASS}-${os_name//.}"
