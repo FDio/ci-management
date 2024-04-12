@@ -52,6 +52,38 @@
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
+# VPP-HST-X86_64 PROJECT
+- project:
+    name: vpp-verify-hst-x86_64
+    jobs:
+      - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    os:
+      - ubuntu2204
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+    executor-arch: 'x86_64'
+
+# [end] VPP-HST-X86_64 PROJECT
+
+# VPP-HST-DEBUG-X86_64 PROJECT
+- project:
+    name: vpp-verify-hst-debug-x86_64
+    jobs:
+      - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    os:
+      - ubuntu2204
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+    executor-arch: 'x86_64'
+
+# [end] VPP-HST-DEBUG-X86_64 PROJECT
+
 # VPP-X86_64 PROJECT
 #
 # NOTE: The list of supported branches for each OS are maintained
@@ -489,6 +521,122 @@
       - fdio-infra-publish
 
 # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
+
+# VPP-VERIFY-HST JOB TEMPLATE
+- job-template:
+    name: 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'hst-{os}-prod-{executor-arch}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ext_deps.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/hst.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-VERIFY-HST JOB TEMPLATE
+
+# VPP-VERIFY-HST-DEBUG JOB TEMPLATE
+- job-template:
+    name: 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'hst-{os}-prod-{executor-arch}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ext_deps.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/debug-hst.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-VERIFY-HST-DEBUG JOB TEMPLATE
 
 # VPP-VERIFY JOB TEMPLATE
 - job-template:
