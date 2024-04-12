@@ -20,6 +20,9 @@ if [ -n "$(alias lib_apt_imported 2> /dev/null)" ] ; then
 fi
 alias lib_apt_imported=true
 
+DIND_FROM_IMAGE="cruizba/ubuntu-dind:latest"
+HST_FROM_IMAGE="ubuntu:22.04"
+
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_csit.sh"
@@ -163,6 +166,7 @@ RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$d
 RUN apt-get update -qq \\
   && dbld_vpp_install_packages.sh \\
   && dbld_csit_install_packages.sh \\
+  && apt-get install -y pkg-config \\
   && rm -r /var/lib/apt/lists/*
 EOF
 }
@@ -172,7 +176,28 @@ generate_apt_dockerfile_clean() {
 
 # Clean up copy-in build tree
 RUN dbld_dump_build_logs.sh \\
+  && apt-get -y autoremove \\
   && rm -rf "/tmp/*" "$DOCKER_BUILD_FILES_DIR" "/root/.ccache"
+EOF
+}
+
+generate_apt_dockerfile_install_golang() {
+    local GO_VERSION="$1"
+
+    cat <<EOF >>"$DOCKERFILE"
+
+# Install golang for HostStack Test (HST) jobs
+#
+ENV GOPATH /go
+ENV GOROOT /usr/local/go
+ENV PATH \$GOPATH/bin:/usr/local/go/bin:\$PATH
+RUN rm -rf /usr/local/go /usr/bin/go \\
+    && wget -P /tmp "https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz" \\
+    && tar -C /usr/local -xzf "/tmp/go${GO_VERSION}.linux-amd64.tar.gz" \\
+    && rm "/tmp/go${GO_VERSION}.linux-amd64.tar.gz" \\
+    && ln -s /usr/local/go/bin/go /usr/bin/go \\
+    && echo -n "\nGOPATH=\$GOPATH\nGOROOT=\$GOROOT" | tee -a /etc/environment \\
+    && mkdir -p "\$GOPATH/src" "\$GOPATH/bin" && chmod -R 777 "\$GOPATH"
 EOF
 }
 
@@ -181,10 +206,14 @@ builder_generate_apt_dockerfile() {
     local executor_class="$1"
     local executor_os_name="$2"
     local executor_image="$3"
+    local install_golang="$4"
     local vpp_install_skip_sysctl_envvar="";
 
     generate_apt_dockerfile_common $executor_class $executor_image
     csit_builder_generate_docker_build_files
+    if [ "$install_golang" = "true" ] ; then
+        generate_apt_dockerfile_install_golang "1.21.9"
+    fi
     cat <<EOF >>"$DOCKERFILE"
 
 # Install LF-IT requirements
@@ -336,6 +365,12 @@ generate_apt_dockerfile() {
     local executor_os_name="$2"
     local from_image="$3"
     local executor_image="$4"
+    local install_golang="false"
+
+    if [ "$from_image" = "$HST_FROM_IMAGE" ] ; then
+        from_image="$DIND_FROM_IMAGE"
+        install_golang="true"
+    fi
 
     cat <<EOF  >"$DOCKERIGNOREFILE"
 **/__pycache__
@@ -348,5 +383,5 @@ LABEL Vendor="fd.io"
 LABEL Version="$DOCKER_TAG"
 EOF
     ${executor_class}_generate_apt_dockerfile "$executor_class" \
-        "$executor_os_name" "$executor_image"
+        "$executor_os_name" "$executor_image" "$install_golang"
 }
