@@ -30,5 +30,7 @@ Job:
           Artifacts:
             - GetterSource: https://jenkins.fd.io/sandbox/jnlpJars/slave.jar
           Resources:
-            # Limit scheduling of only 1 job per server by specifying > 3/4 of available CPU
-            CPU: 400000
+            # Limit scheduling of only 1 job per server by specifying max cpushares and more than half memory
+            CPU: 262144
+            MemoryMB: 128000
+            
