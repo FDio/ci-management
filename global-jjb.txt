@@ -1,0 +1,6 @@
+Remember, when global-jjb submodule is updated,
+ci-management-jjb-merge job uses the previous configuration
+(including scripts from the old submodule) when updating itself.
+To make sure the new configuration is stable,
+single "remerge" is recommended for any global-jjb commit bump.
+This may even fix jobs if the first merge run failed after configuring jobs.
