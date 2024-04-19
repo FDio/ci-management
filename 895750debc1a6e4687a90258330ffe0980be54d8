@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5246386_cddbc2b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-04-19T11:09:15Z",
+      "side": 1,
+      "message": "jjb-deploy csit-vpp-perf-soak-weekly-master-2n-clx",
+      "revId": "895750debc1a6e4687a90258330ffe0980be54d8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
