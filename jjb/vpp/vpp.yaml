@@ -45,6 +45,9 @@
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
+      - '2406':
+          branch: 'stable/2406'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
@@ -81,6 +84,11 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
+      - '2406':
+          branch: 'stable/2406'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+          make-test-multiworker-os: 'debian-11'
     os:
       - debian11
       - ubuntu2004
@@ -107,6 +115,9 @@
           branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
+          branch-refspec: ''
+      - '2406':
+          branch: 'stable/2406'
           branch-refspec: ''
 
 # [end] VPP-GCC-X86_64 PROJECT
@@ -216,6 +227,11 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
+      - '2406':
+          branch: 'stable/2406'
+          branch-refspec: ''
+          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+          make-test-multiworker-os: ''
     os:
       - ubuntu2004
       - ubuntu2204
@@ -239,6 +255,9 @@
           branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
+          branch-refspec: ''
+      - '2406':
+          branch: 'stable/2406'
           branch-refspec: ''
     testbed-arch:
       - 1n-spr:
@@ -330,6 +349,9 @@
           branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
+          branch-refspec: ''
+      - '2406':
+          branch: 'stable/2406'
           branch-refspec: ''
     os:
       - 'ubuntu2204'

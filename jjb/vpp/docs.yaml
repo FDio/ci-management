@@ -21,6 +21,9 @@
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
+      - '2406':
+          branch: 'stable/2406'
+          branch-refspec: ''
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
