@@ -25,8 +25,8 @@
     stream:
       - master:
           branch: 'master'
-      - '2402':
-          branch: 'rls2402'
+      - '2406':
+          branch: 'rls2406'
 
 - job-template:
     name: 'csit-verify-tox-{stream}-{os}-{executor-arch}'
