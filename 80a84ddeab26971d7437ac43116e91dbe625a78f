@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e406f2fc_2181b7ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-05-29T19:39:42Z",
+      "side": 1,
+      "message": "- docker container generation verified and images have been in production for a couple of weeks\n\n- hst jobs verified in sandbox (Note: failed runs are intentional utilizing VPP gerrit changes to cause test failures -- 40726 \u0026 40728)\n\nhttps://jenkins.fd.io/sandbox/job/daw-docker-vpp-verify-hst-debug-master-ubuntu2204-x86_64/\nhttps://jenkins.fd.io/sandbox/job/daw-docker-vpp-verify-hst-master-ubuntu2204-x86_64/",
+      "revId": "80a84ddeab26971d7437ac43116e91dbe625a78f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
