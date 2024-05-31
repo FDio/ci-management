@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2024 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -105,7 +105,7 @@ docker_build_setup_ciman
 docker_build_setup_vpp
 docker_build_setup_csit
 for executor_os_name in $os_names ; do
-    docker_from_image="$(echo $executor_os_name | sed -e 's/-/:/')"
+    docker_from_image="${executor_os_name/-/:}"
     # Remove '-' and '.' from executor_os_name in Docker Hub repo name
     os_name="${executor_os_name//-}"
     repository="fdiotools/${EXECUTOR_CLASS}-${os_name//.}"
