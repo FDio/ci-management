@@ -53,18 +53,18 @@
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
 # VPP-HST-X86_64 PROJECT
-- project:
-    name: vpp-verify-hst-x86_64
-    jobs:
-      - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - ubuntu2204
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
+# - project:
+#     name: vpp-verify-hst-x86_64
+#     jobs:
+#       - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - ubuntu2204
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
 
 # [end] VPP-HST-X86_64 PROJECT
 
