@@ -16,6 +16,23 @@
       "message": "Looking at the diff [0], the other edits inherited from global-jjb should also be safe.\n\n[0] https://github.com/lfit/releng-global-jjb/compare/b9d610a9e522d71a89d2daeb6f71b2bc2a71cdf7..395a21cbac34ed0d3cb6d0bd8cfea41032aae8ba",
       "revId": "8c26930eb4bca04f5a2fe4c6f5563df485a2b6f5",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178b2f62_48d7e830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-06-05T15:10:31Z",
+      "side": 1,
+      "message": "Please do not merge this until after the VPP Release 24.06 \u0026 CSIT Release 24.06 Report are complete.",
+      "revId": "8c26930eb4bca04f5a2fe4c6f5563df485a2b6f5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
