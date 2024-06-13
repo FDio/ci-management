@@ -94,6 +94,12 @@ docker_build_setup_vpp() {
         if [ ! -d "$DOCKER_VPP_DIR" ] ; then
             echo_log "Cloning VPP into $DOCKER_VPP_DIR..."
             git clone -q https://gerrit.fd.io/r/vpp $DOCKER_VPP_DIR
+            DL_CACHE_DIR="/root/Downloads"
+            if [ -d "$DL_CACHE_DIR" ] ; then
+                WS_BLD_EXT_DLD="$DOCKER_VPP_DIR"/build/external/downloads
+                mkdir -p "$WS_BLD_EXT_DLD"
+                cp -a "$DL_CACHE_DIR"/* "$WS_BLD_EXT_DLD"
+            fi
         fi
         clean_git_repo $DOCKER_VPP_DIR
     fi
