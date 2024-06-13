@@ -42,6 +42,7 @@ install_hst_deps() {
 
     if [ -d "$hst_dir" ] ; then
         make -C "$hst_dir" install-deps 2>&1 | tee -a "$bld_log"
+        make -C "$hst_dir" build build-debug build-cov  2>&1 | tee -a "$bld_log"
     fi
 }
 
@@ -50,6 +51,12 @@ make_vpp() {
     local branch=${2:-"master"}
     local branchname=${branch/\//_}
     local bld_log="$DOCKER_BUILD_LOG_DIR"
+    if [ "$target" = "install-ext-deps" ] ; then
+        if [ -d "$DOCKER_VPP_DL_CACHE_DIR" ] ; then
+            mkdir -p "$DOCKER_DOWNLOADS_DIR"
+            cp -a "$DOCKER_VPP_DL_CACHE_DIR"/* "$DOCKER_DOWNLOADS_DIR"
+        fi
+    fi
     bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
     bld_log="${bld_log}-make_vpp_${target}-bld.log"
 
@@ -94,6 +101,10 @@ docker_build_setup_vpp() {
         if [ ! -d "$DOCKER_VPP_DIR" ] ; then
             echo_log "Cloning VPP into $DOCKER_VPP_DIR..."
             git clone -q https://gerrit.fd.io/r/vpp $DOCKER_VPP_DIR
+            if [ -d "$DOCKER_DOWNLOADS_DIR" ] ; then
+                mkdir -p "$DOCKER_VPP_DL_CACHE_DIR"
+                cp -a "$DOCKER_DOWNLOADS_DIR"/* "$DOCKER_VPP_DL_CACHE_DIR"
+            fi
         fi
         clean_git_repo $DOCKER_VPP_DIR
     fi
