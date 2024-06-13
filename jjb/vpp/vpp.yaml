@@ -39,9 +39,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2310':
-          branch: 'stable/2310'
-          branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
@@ -106,11 +103,6 @@
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: 'debian-11'
-      - '2310':
-          branch: 'stable/2310'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: 'debian-11'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
@@ -141,9 +133,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2310':
-          branch: 'stable/2310'
           branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
@@ -246,11 +235,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: ''
-      - '2310':
-          branch: 'stable/2310'
           branch-refspec: ''
           make-test-os: 'ubuntu-20.04 ubuntu-22.04'
           make-test-multiworker-os: ''
@@ -370,9 +354,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2310':
-          branch: 'stable/2310'
           branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
