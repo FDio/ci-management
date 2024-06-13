@@ -20,7 +20,7 @@ if [ -n "$(alias lib_apt_imported 2> /dev/null)" ] ; then
 fi
 alias lib_apt_imported=true
 
-DIND_FROM_IMAGE="cruizba/ubuntu-dind:latest"
+DIND_FROM_IMAGE="cruizba/ubuntu-dind:jammy-26.1.3-r2"
 HST_FROM_IMAGE="ubuntu:22.04"
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
