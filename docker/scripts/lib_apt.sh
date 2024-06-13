@@ -20,7 +20,7 @@ if [ -n "$(alias lib_apt_imported 2> /dev/null)" ] ; then
 fi
 alias lib_apt_imported=true
 
-DIND_FROM_IMAGE="cruizba/ubuntu-dind:latest"
+DIND_FROM_IMAGE="cruizba/ubuntu-dind:jammy-26.1.3-r2"
 HST_FROM_IMAGE="ubuntu:22.04"
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
@@ -41,6 +41,7 @@ apt_install_packages() {
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
+    local install_golang="$3"
     local dpkg_arch="$(dpkg --print-architecture)"
 
     cat <<EOF >>"$DOCKERFILE"
@@ -160,6 +161,13 @@ RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$d
   && unzip terraform_1.7.3_linux_$dpkg_arch.zip \\
   && mv terraform /usr/bin \\
   && rm -f terraform_1.7.3_linux_$dpkg_arch.zip
+EOF
+
+    if [ "$install_golang" = "true" ] ; then
+        generate_apt_dockerfile_install_golang "1.21.11"
+    fi
+
+    cat <<EOF >>"$DOCKERFILE"
 
 # Install packages for all project branches
 #
@@ -182,7 +190,8 @@ EOF
 }
 
 generate_apt_dockerfile_install_golang() {
-    local GO_VERSION="$1"
+    local go_version="$1"
+    local go_tarball_arch="${OS_ARCH/aarch/arm}"
 
     cat <<EOF >>"$DOCKERFILE"
 
@@ -192,9 +201,9 @@ ENV GOPATH /go
 ENV GOROOT /usr/local/go
 ENV PATH \$GOPATH/bin:/usr/local/go/bin:\$PATH
 RUN rm -rf /usr/local/go /usr/bin/go \\
-    && wget -P /tmp "https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz" \\
-    && tar -C /usr/local -xzf "/tmp/go${GO_VERSION}.linux-amd64.tar.gz" \\
-    && rm "/tmp/go${GO_VERSION}.linux-amd64.tar.gz" \\
+    && wget -P /tmp "https://dl.google.com/go/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
+    && tar -C /usr/local -xzf "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
+    && rm "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
     && ln -s /usr/local/go/bin/go /usr/bin/go \\
     && echo -n "\nGOPATH=\$GOPATH\nGOROOT=\$GOROOT" | tee -a /etc/environment \\
     && mkdir -p "\$GOPATH/src" "\$GOPATH/bin" && chmod -R 777 "\$GOPATH"
@@ -209,11 +218,8 @@ builder_generate_apt_dockerfile() {
     local install_golang="$4"
     local vpp_install_skip_sysctl_envvar="";
 
-    generate_apt_dockerfile_common "$executor_class" "$executor_image"
+    generate_apt_dockerfile_common "$executor_class" "$executor_image" "$install_golang"
     csit_builder_generate_docker_build_files
-    if [ "$install_golang" = "true" ] ; then
-        generate_apt_dockerfile_install_golang "1.21.9"
-    fi
     cat <<EOF >>"$DOCKERFILE"
 
 # Install LF-IT requirements
