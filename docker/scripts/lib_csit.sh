@@ -75,7 +75,7 @@ csit_install_packages() {
     # Not in double quotes to let bash remove newline characters
     local yaml_files
     yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
-    packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
+    packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files) | grep -v "$OS_CODENAME"
     packages="${packages/jammy /}"
     packages="${packages/focal /}"
     packages="${packages/libmbedcrypto1/libmbedcrypto3}"

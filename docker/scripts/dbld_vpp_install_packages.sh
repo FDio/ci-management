@@ -33,11 +33,6 @@ do_git_config vpp
 for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     do_git_branch "$branch"
 
-    # Install hs-test depndencies
-    if [ "$OS_NAME" = "ubuntu-22.04" ] && [ "$branch" = "master" ] ; then
-        install_hst_deps "$branch"
-    fi
-
     # Install OS packages
     make_vpp "install-deps" "$branch"
 
@@ -57,6 +52,16 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
         echo "ERROR: Missing VPP external deps package: '$vpp_ext_deps_pkg'"
         exit 1
     fi
+
+    # Install hs-test depndencies
+    if [ "$OS_NAME" = "ubuntu-22.04" ] && [ "$branch" = "master" ] ; then
+        make_vpp build "$branch" "false"
+        make_vpp build-release "$branch" "false"
+        make_vpp build-vpp-gcov "$branch" "false"
+        install_hst_deps "$branch"
+        git clean -qfdx
+    fi
+
     # TODO: remove this after all supported VPP branches have removed
     # python3-virtualenv & virtualenv from install-deps which are no longer
     # used in vpp repo.  These packages can mess up csit virtualenv
