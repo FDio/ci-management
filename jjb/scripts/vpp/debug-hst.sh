@@ -36,15 +36,15 @@ vpp_make_build_debug() {
         BUILD_ERROR="FAILED 'make install-ext-deps'"
         return
     fi
-    if ! make UNATTENDED=yes build ; then
-        BUILD_ERROR="FAILED 'make build'"
+    if ! make VERBOSE=true VPPSRC="$(pwd)" -C "$HST_DIR" build-debug ; then
+        BUILD_ERROR="FAILED 'make -C $HST_DIR build-debug'"
         return
     fi
 }
 
 hst_test_debug() {
-    if ! make VERBOSE=true VPPSRC="$(pwd)" -C "$HST_DIR" build-debug test ; then
-        BUILD_ERROR="FAILED 'make -C $HST_DIR test' (debug)"
+    if ! make VERBOSE=true VPPSRC="$(pwd)" -C "$HST_DIR" test-debug ; then
+        BUILD_ERROR="FAILED 'make -C $HST_DIR test-debug'"
         return
     fi
 }
