@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4995763c_a363b296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-06-24T20:15:05Z",
+      "side": 1,
+      "message": "Verified in Jenkins Sandbox: https://jenkins.fd.io/sandbox/job/daw-fix-hstdbg-vpp-verify-hst-debug-master-ubuntu2204-x86_64/",
+      "revId": "a8c8b03900086b59f48b39899c24a00b4bcf3057",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
