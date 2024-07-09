@@ -295,11 +295,11 @@
       - 1n-spr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
-          skip-vote: 'true'
+          skip-vote: 'false'
       - 1n-alt:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
-          skip-vote: 'true'
+          skip-vote: 'false'
     exclude:
       # 1n-alt testbed not supported
       # in CSIT prior to 2402
