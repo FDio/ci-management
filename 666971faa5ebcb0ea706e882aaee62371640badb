@@ -16,6 +16,24 @@
       "message": "Also enable 1n-spr voting for csit-vpp job please, but that can be also done in a separate change.",
       "revId": "666971faa5ebcb0ea706e882aaee62371640badb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7600f3_4b0c4250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-07-09T14:33:38Z",
+      "side": 1,
+      "message": "@Vratko, can you please push a separate gerrit change for this?",
+      "parentUuid": "8fe05e7b_d8ce6abc",
+      "revId": "666971faa5ebcb0ea706e882aaee62371640badb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
