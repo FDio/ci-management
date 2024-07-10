@@ -34,6 +34,24 @@
       "parentUuid": "8fe05e7b_d8ce6abc",
       "revId": "666971faa5ebcb0ea706e882aaee62371640badb",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c420d2_ccd4dfc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263
+      },
+      "writtenOn": "2024-07-10T14:28:34Z",
+      "side": 1,
+      "message": "41253: feat(csit): Enable voting on 1n-spr csit-vpp jobs | https://gerrit.fd.io/r/c/ci-management/+/41253",
+      "parentUuid": "dd7600f3_4b0c4250",
+      "revId": "666971faa5ebcb0ea706e882aaee62371640badb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ],
   "submitRequirementResults": [
