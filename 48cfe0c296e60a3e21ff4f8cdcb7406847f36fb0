@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d741b48d_b4e4c5cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-07-24T12:32:53Z",
+      "side": 1,
+      "message": "ubuntu 24.04 upgrade",
+      "revId": "48cfe0c296e60a3e21ff4f8cdcb7406847f36fb0",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
