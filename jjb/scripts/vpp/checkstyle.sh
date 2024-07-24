@@ -34,9 +34,9 @@ if git show --stat | grep -q "$MATRIX_FILE" ; then
     fi
 fi
 
-if [ -n "$(grep -E '^checkstyle:' Makefile)" ]
+if grep -qE '^checkstyle:' Makefile
 then
-	make checkstyle
+    make UNATTENDED=yes install-deps checkstyle
 else
-        echo "Can't find checkstyle target in Makefile - skipping checkstyle"
+    echo "Can't find checkstyle target in Makefile - skipping checkstyle"
 fi
