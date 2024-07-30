@@ -292,7 +292,7 @@
       - 1n-spr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
-          skip-vote: 'false'
+          skip-vote: 'true'
       - 1n-alt:
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
