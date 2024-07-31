@@ -15,9 +15,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2310':
-          branch: 'stable/2310'
-          branch-refspec: ''
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''

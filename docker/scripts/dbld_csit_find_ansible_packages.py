@@ -37,6 +37,7 @@ class CsitAnsibleYamlStruct:
         self.__dict__.update(entries)
 
 def packages_in_csit_ansible_yaml_file(yamlfile: str, distro, arch) -> list:
+    codename = os.getenv("OS_CODENAME")
     with open(yamlfile) as yf:
         csit_ansible_yaml = yaml.safe_load(yf)
         if csit_ansible_yaml is None:
@@ -50,7 +51,11 @@ def packages_in_csit_ansible_yaml_file(yamlfile: str, distro, arch) -> list:
             packages += [pkg for pkg in cays.packages_by_arch[arch]
                          if type(pkg) is str]
         if distro in [*cays.packages_by_distro]:
-            packages += [pkg for pkg in cays.packages_by_distro[distro]
+            if codename in [*cays.packages_by_distro[distro]]:
+                packages += [pkg for pkg in cays.packages_by_distro[distro][codename]
+                         if type(pkg) is str]
+            else:
+                packages += [pkg for pkg in cays.packages_by_distro[distro]
                          if type(pkg) is str]
         return packages
 
