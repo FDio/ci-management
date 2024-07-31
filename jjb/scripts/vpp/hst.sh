@@ -62,5 +62,5 @@ if [ -n "$BUILD_ERROR" ] ; then
     RETVAL="1"
 fi
 echo -e "\n$line\n* VPP ${OS_ID^^}-${OS_VERSION_ID}-${OS_ARCH^^}" \
-        "BUILD $BUILD_RESULT\n$line\n"
+        "HostStack Test Suite $BUILD_RESULT\n$line\n"
 exit $RETVAL
