@@ -318,9 +318,6 @@
       - 2n-icx:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
-      - 2n-clx:
-          os: 'ubuntu2204'
-          executor-arch: 'x86_64'
       - 2n-spr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'

@@ -23,9 +23,6 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-clx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
             - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -59,9 +56,6 @@
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
@@ -111,9 +105,6 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-clx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
             - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -154,10 +145,6 @@
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
@@ -229,10 +216,6 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
-            - 2n-clx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-                periodicity: '0 0 * * 6'
             - 2n-aws:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -248,9 +231,6 @@
       - 'csit-vpp-perf-soak-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
@@ -280,9 +260,6 @@
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
@@ -319,9 +296,6 @@
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
@@ -369,9 +343,6 @@
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
@@ -426,9 +397,6 @@
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-clx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
             - 2n-spr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -474,9 +442,6 @@
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-icx:
-                os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-clx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 2n-spr:
