@@ -164,7 +164,7 @@ RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$d
 EOF
 
     if [ "$install_golang" = "true" ] ; then
-        generate_apt_dockerfile_install_golang "1.21.11"
+        generate_apt_dockerfile_install_golang
     fi
 
     cat <<EOF >>"$DOCKERFILE"
@@ -190,7 +190,6 @@ EOF
 }
 
 generate_apt_dockerfile_install_golang() {
-    local go_version="$1"
     local go_tarball_arch="amd64"
 
     if [ "$OS_ARCH" = "aarch64" ] ; then
@@ -205,9 +204,9 @@ ENV GOPATH /go
 ENV GOROOT /usr/local/go
 ENV PATH \$GOPATH/bin:/usr/local/go/bin:\$PATH
 RUN rm -rf /usr/local/go /usr/bin/go \\
-    && wget -P /tmp "https://go.dev/dl/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
-    && tar -C /usr/local -xzf "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
-    && rm "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
+    && wget -P /tmp "https://go.dev/dl/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
+    && tar -C /usr/local -xzf "/tmp/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
+    && rm "/tmp/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
     && ln -s /usr/local/go/bin/go /usr/bin/go \\
     && echo -n "\nGOPATH=\$GOPATH\nGOROOT=\$GOROOT" | tee -a /etc/environment \\
     && mkdir -p "\$GOPATH/src" "\$GOPATH/bin" && chmod -R 777 "\$GOPATH"

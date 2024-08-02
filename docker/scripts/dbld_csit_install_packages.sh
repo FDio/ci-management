@@ -16,8 +16,7 @@
 set -euxo pipefail
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
-. "$CIMAN_DOCKER_SCRIPTS/lib_csit.sh"
-. "$CIMAN_DOCKER_SCRIPTS/lib_vpp.sh"
+source "$CIMAN_DOCKER_SCRIPTS/lib_csit.sh"
 
 must_be_run_in_docker_build
 
@@ -34,7 +33,7 @@ else
 fi
 
 do_git_config csit
-for vpp_branch in ${VPP_BRANCHES[$OS_NAME]} ; do
+for vpp_branch in ${CSIT_VPP_BRANCHES[$OS_NAME]} ; do
     # Returns checked out branch in csit_branch
     csit_checkout_branch_for_vpp "$vpp_branch"
 
