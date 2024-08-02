@@ -117,7 +117,10 @@ csit_install_hugo() {
         git clean -qfdx
 
         source "$csit_bash_function_dir"/hugo.sh
-        go_install 2>&1 | tee -a "$bld_log"
+        hugo_go_version="$(declare -f go_install | grep go_version= | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')"
+        if [ "$hugo_go_version" -gt "$DOCKER_GO_VERSION" ] ; then
+            go_install 2>&1 | tee -a "$bld_log"
+        fi
         hugo_install 2>&1 | tee -a "$bld_log"
 
     else
