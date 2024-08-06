@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Copyright (c) 2021 Cisco and/or its affiliates.
+# Copyright (c) 2024 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -48,7 +48,11 @@ lf-activate-venv() {
 EOF
 
 # Install lftools & boto3 for log / artifact upload.
-python3 -m pip install boto3
+pip_options=""
+if [ "$OS_CODENAME" = "noble" ] ; then
+    pip_options=" --break-system-packages"
+fi
+python3 -m pip install$pip_options boto3
 mkdir -p "$LF_VENV"
 OLD_PATH="$PATH"
 python3 -m venv "$LF_VENV"
