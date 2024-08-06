@@ -19,7 +19,13 @@ set -exuo pipefail
 
 PYTHON_SCRIPT="/w/workspace/publish_library.py"
 
-pip3 install boto3
+OS_CODENAME="$(grep 'VERSION_CODENAME=' /etc/os-release | cut -d= -f2)"
+pip_options=""
+if [ "$OS_CODENAME" = "noble" ] ; then
+    pip_options=" --break-system-packages"
+fi
+# shellcheck disable=SC2086
+pip3 install$pip_options boto3
 mkdir -p $(dirname "$PYTHON_SCRIPT")
 
 cat >$PYTHON_SCRIPT <<'END_OF_PYTHON_SCRIPT'

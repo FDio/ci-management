@@ -153,8 +153,8 @@ export EXECUTOR_CLASS_ARCH="$EXECUTOR_DEFAULT_CLASS-$OS_ARCH"
 export EXECUTOR_CLASSES="$EXECUTOR_DEFAULT_CLASS csit_dut csit_shim"
 export EXECUTOR_ARCHS="aarch64 x86_64"
 declare -A EXECUTOR_CLASS_ARCH_OS_NAMES
-EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="ubuntu-20.04 ubuntu-22.04"
-EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="debian-11 ubuntu-20.04 ubuntu-22.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["builder-aarch64"]="ubuntu-20.04 ubuntu-22.04 ubuntu-24.04"
+EXECUTOR_CLASS_ARCH_OS_NAMES["builder-x86_64"]="debian-11 ubuntu-20.04 ubuntu-22.04 ubuntu-24.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-aarch64"]="ubuntu-22.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-22.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-22.04"
@@ -226,6 +226,7 @@ executor_verify_os_name() {
 # Docker variables
 export DOCKER_DATE=${DOCKER_DATE:-"$(date -u +%Y_%m_%d_%H%M%S_UTC)"}
 export DOCKER_BUILD_DIR="/scratch/docker-build"
+export DOCKER_BUILD_VENV_DIR="$DOCKER_BUILD_DIR"/venv
 export DOCKER_CIMAN_ROOT="$DOCKER_BUILD_DIR/ci-management"
 export DOCKERFILE="$DOCKER_BUILD_DIR/Dockerfile"
 export DOCKERIGNOREFILE="$DOCKER_BUILD_DIR/.dockerignore"
@@ -236,6 +237,7 @@ export DOCKER_VPP_DL_CACHE_DIR="$DOCKER_BUILD_DIR"/vpp_ext_deps_downloads
 export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR/csit"
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
 export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR/files"
+export DOCKER_GOLANG_VERSION="1.22.5"
 
 docker_build_setup_ciman() {
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
