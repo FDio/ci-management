@@ -8,19 +8,22 @@
       - 'vpp-docsonly-merge-{stream}-{os}-{executor-arch}'
 
     project: 'vpp'
-    executor-arch: 'x86_64'
-    os:
-      - 'ubuntu2204'
+    os: 'ubuntu2404'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
+          # TODO: Remove when ubuntu 24.04 is put into production.
+          os: 'ubuntu2204'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
+          os: 'ubuntu2204'
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
+          os: 'ubuntu2204'
+    executor-arch: 'x86_64'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'
