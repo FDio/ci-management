@@ -125,4 +125,5 @@ declare -A VPP_BRANCHES
 VPP_BRANCHES["debian-11"]="stable/2402 stable/2406 master"
 VPP_BRANCHES["ubuntu-20.04"]="stable/2402 stable/2406 master"
 VPP_BRANCHES["ubuntu-22.04"]="stable/2402 stable/2406 master"
+VPP_BRANCHES["ubuntu-24.04"]="master"
 export VPP_BRANCHES
