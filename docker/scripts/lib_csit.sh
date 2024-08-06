@@ -1,7 +1,7 @@
 # lib_csit.sh - Docker build script CSIT library.
 #               For import only.
 
-# Copyright (c) 2023 Cisco and/or its affiliates.
+# Copyright (c) 2024 Cisco and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -24,6 +24,20 @@ export CIMAN_DOCKER_SCRIPTS="${CIMAN_DOCKER_SCRIPTS:-$(dirname ${BASH_SOURCE[0]}
 . "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
 . "$CIMAN_DOCKER_SCRIPTS/lib_apt.sh"
 
+# Branches must be listed in chronological order -- oldest stable branch
+# first and master last.
+#
+# Note: CI Jobs for each architecture are maintained in
+#       .../ci-management/jjb/vpp/vpp.yaml
+#       All OS's and branches are included in the 'os' and 'stream'
+#       definitions respectively, then the exclude list maintained
+#       to create an enumerated set of jobs jobs that match the
+#       definitions here.
+declare -A CSIT_VPP_BRANCHES
+CSIT_VPP_BRANCHES["ubuntu-22.04"]="stable/2406 master"
+CSIT_VPP_BRANCHES["ubuntu-24.04"]="master"
+export CSIT_VPP_BRANCHES
+
 CSIT_SUPPORTED_EXECUTOR_CLASSES="builder csit_dut"
 csit_supported_executor_class() {
     if ! grep -q "${1:-}" <<< "$CSIT_SUPPORTED_EXECUTOR_CLASSES" ; then
@@ -35,6 +49,7 @@ csit_supported_executor_class() {
 csit_supported_os() {
     case "$1" in
         ubuntu-22.04) return 0 ;;
+        ubuntu-24.04) return 0 ;;
                    *) ;;
     esac
     return 1
@@ -67,7 +82,7 @@ csit_install_packages() {
     bld_log="${bld_log}-$branchname-csit_install_packages-bld.log"
 
     git clean -qfdx
-    python3 -m pip install pyyaml
+    pip install pyyaml
 
     local exclude_roles="-e calibration -e kernel -e mellanox -e nomad -e consul -e aws -e vpp"
     [ "$OS_ARCH" = "aarch64" ] && exclude_roles="$exclude_roles -e iperf"
@@ -75,9 +90,10 @@ csit_install_packages() {
     # Not in double quotes to let bash remove newline characters
     local yaml_files
     yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
-    packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files) | grep -v "$OS_CODENAME")"
+    packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
     packages="${packages/jammy /}"
     packages="${packages/focal /}"
+    packages="${packages/noble /}"
     packages="${packages/libmbedcrypto1/libmbedcrypto3}"
     packages="${packages/libmbedtls10/libmbedtls12}"
     packages="$(echo ${packages//python\-/python3\-} | tr ' ' '\n' | sort -u | xargs)"
@@ -117,7 +133,6 @@ csit_install_hugo() {
         git clean -qfdx
 
         source "$csit_bash_function_dir"/hugo.sh
-        go_install 2>&1 | tee -a "$bld_log"
         hugo_install 2>&1 | tee -a "$bld_log"
 
     else
@@ -150,10 +165,23 @@ csit_pip_cache() {
         rm -rf "$PYTHONPATH/env"
 
         # Activate / install CSIT python virtualenv ($CSIT_DIR/requirements.txt)
+        apt-get -y remove --autoremove python3-virtualenv
         local common_sh="$csit_bash_function_dir/common.sh"
+        if [ "$OS_CODENAME" = "noble" ] ; then
+            # TODO: Remove this once CSIT has upgraded virtualenv on master/oper_* branches
+            sed -i 's/pip3 install virtualenv==[0-9]\+\.[0-9]\+\.[0-9]\+/pip3 install --break-system-packages virtualenv==20.26.3/g' "${common_sh}"
+        fi
         # shellcheck disable=1090
-        source "$common_sh"
-        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/requirements.txt" 2>&1 | tee -a "$bld_log"
+        source "${common_sh}"
+        git restore "${common_sh}"
+
+        local csit_requirements="${CSIT_DIR}/requirements.txt"
+        if [ "$OS_CODENAME" = "noble" ] ; then
+            # TODO: Remove this once CSIT has updated to use pycryptodome on master/oper_* branches
+            sed -i 's/pycrypto==/#pycrpto==/g' "${csit_requirements}"
+        fi
+        activate_virtualenv "${CSIT_DIR}" "${csit_requirements}" 2>&1 | tee -a "$bld_log"
+        git restore "${csit_requirements}"
 
         # Install tox python requirements
         activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/tox-requirements.txt" 2>&1 |\

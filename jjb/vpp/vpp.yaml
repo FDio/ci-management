@@ -34,15 +34,17 @@
       - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - ubuntu2204
+      - ubuntu2404
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
       - '2402':
+          os: 'ubuntu2204'
           branch: 'stable/2402'
           branch-refspec: ''
       - '2406':
+          os: 'ubuntu2204'
           branch: 'stable/2406'
           branch-refspec: ''
     executor-arch: 'x86_64'
@@ -96,28 +98,33 @@
       - 'vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    os:
+      - 'debian11'
+      - 'ubuntu2004'
+      - 'ubuntu2204'
+      - 'ubuntu2404'
     make-parallel-jobs: '4'
+    make-test-multiworker-os: 'debian-11'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: 'debian-11'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: 'debian-11'
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: 'debian-11'
-    os:
-      - debian11
-      - ubuntu2004
-      - ubuntu2204
     executor-arch: 'x86_64'
+    exclude:
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2402'
+          os: 'ubuntu2404'
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2406'
+          os: 'ubuntu2404'
+
 # [end] VPP-X86_64 PROJECT
 
 # VPP-GCC-X86_64 PROJECT
@@ -126,9 +133,10 @@
     jobs:
       - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    make-parallel-jobs: '4'
     os:
-      - ubuntu2204
+      - 'ubuntu2004'
+      - 'ubuntu2404'
+    make-parallel-jobs: '4'
     executor-arch: 'x86_64'
     stream:
       - 'master':
@@ -140,6 +148,13 @@
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
+    exclude:
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2402'
+          os: 'ubuntu2404'
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2406'
+          os: 'ubuntu2404'
 
 # [end] VPP-GCC-X86_64 PROJECT
 
@@ -154,15 +169,14 @@
     jobs:
       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    os: 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     comment-trigger-value: 'debug-verify'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-    os: 'ubuntu2204'
     executor-arch: 'x86_64'
 
 # [end] VPP-DEBUG-X86_64 PROJECT
@@ -178,14 +192,13 @@
     jobs:
       - 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+    os: 'ubuntu2404'
     comment-trigger-value: 'dpdk-rdma-version-mismatch'
     stream:
       - 'master':
           branch: 'master'
           # Once per day at 00:15
           periodicity: '15 0 * * 0-6'
-    os: 'ubuntu2204'
     executor-arch: 'x86_64'
 
 # [end] VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
@@ -202,8 +215,9 @@
     jobs:
       - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    os: 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-20.04 ubuntu-22.04'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     comment-trigger-value: 'gcov-report'
     stream:
       - 'master':
@@ -211,7 +225,6 @@
           branch-refspec: ''
           # Once per day at 00:25
           periodicity: '25 0 * * 0-6'
-    os: 'ubuntu2004'
     executor-arch: 'x86_64'
 
 # [end] VPP-COV-X86_64 PROJECT
@@ -231,27 +244,31 @@
       - 'vpp-verify-{stream}-{os}-{executor-arch}'
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    os:
+      - ubuntu2004
+      - ubuntu2204
+      - ubuntu2404
     make-parallel-jobs: '4'
+    make-test-multiworker-os: 'debian-11'
+    make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: ''
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: ''
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
-          make-test-os: 'ubuntu-20.04 ubuntu-22.04'
-          make-test-multiworker-os: ''
-    os:
-      - ubuntu2004
-      - ubuntu2204
     executor-arch: 'aarch64'
+    exclude:
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2402'
+          os: 'ubuntu2404'
+        # ubuntu-24.04 introduced in VPP 24.10
+        - stream: '2406'
+          os: 'ubuntu2404'
 # [end] VPP-AARCH64 PROJECT
 
 # VPP-CSIT-VERIFY-DEVICE PROJECT
@@ -266,24 +283,15 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          branch: 'stable/2402'
-          branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
     testbed-arch:
       - 1n-spr:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'x86_64'
           skip-vote: 'false'
       - 1n-alt:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'aarch64'
           skip-vote: 'false'
-    exclude:
-      - testbed-arch: 1n-spr
-        stream: '2402'
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
 
 # VPP-CSIT-VERIFY-PERF PROJECT
@@ -344,14 +352,15 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
+          os: 'ubuntu2404'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
+          os: 'ubuntu2204'
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
-    os:
-      - 'ubuntu2204'
+          os: 'ubuntu2204'
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS
@@ -745,10 +754,6 @@
     parameters:
       - gerrit-parameter:
           branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - make-test-os-parameter:
-          make-test-os: '{make-test-os}'
       - os-parameter:
           os: '{os}'
       - project-parameter:
