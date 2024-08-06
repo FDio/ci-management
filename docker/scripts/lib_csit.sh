@@ -35,6 +35,7 @@ csit_supported_executor_class() {
 csit_supported_os() {
     case "$1" in
         ubuntu-22.04) return 0 ;;
+        ubuntu-24.04) return 0 ;;
                    *) ;;
     esac
     return 1
@@ -67,7 +68,7 @@ csit_install_packages() {
     bld_log="${bld_log}-$branchname-csit_install_packages-bld.log"
 
     git clean -qfdx
-    python3 -m pip install pyyaml
+    pip install pyyaml
 
     local exclude_roles="-e calibration -e kernel -e mellanox -e nomad -e consul -e aws -e vpp"
     [ "$OS_ARCH" = "aarch64" ] && exclude_roles="$exclude_roles -e iperf"
@@ -150,10 +151,23 @@ csit_pip_cache() {
         rm -rf "$PYTHONPATH/env"
 
         # Activate / install CSIT python virtualenv ($CSIT_DIR/requirements.txt)
+        apt-get -y remove --autoremove python3-virtualenv
         local common_sh="$csit_bash_function_dir/common.sh"
+        if [ "$OS_CODENAME" = "noble" ] ; then
+            # TODO: Remove this once CSIT has upgraded virtualenv on master/oper_* branches
+            sed -i 's/pip3 install virtualenv==[0-9]\+\.[0-9]\+\.[0-9]\+/pip3 install --break-system-packages virtualenv==20.26.3/g' "${common_sh}"
+        fi
         # shellcheck disable=1090
-        source "$common_sh"
-        activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/requirements.txt" 2>&1 | tee -a "$bld_log"
+        source "${common_sh}"
+        git restore "${common_sh}"
+
+        local csit_requirements="${CSIT_DIR}/requirements.txt"
+        if [ "$OS_CODENAME" = "noble" ] ; then
+            # TODO: Remove this once CSIT has updated to use pycryptodome on master/oper_* branches
+            sed -i 's/pycrypto==/#pycrpto==/g' "${csit_requirements}"
+        fi
+        activate_virtualenv "${CSIT_DIR}" "${csit_requirements}" 2>&1 | tee -a "$bld_log"
+        git restore "${csit_requirements}"
 
         # Install tox python requirements
         activate_virtualenv "${CSIT_DIR}" "${CSIT_DIR}/tox-requirements.txt" 2>&1 |\
