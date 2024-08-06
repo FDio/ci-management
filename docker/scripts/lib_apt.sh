@@ -139,6 +139,7 @@ RUN apt-get update -qq \\
              make \\
              python3-pip \\
              python3-venv \\
+             python3-virtualenv \\
              rsync \\
              ruby-dev \\
              software-properties-common \\

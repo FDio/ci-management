@@ -48,7 +48,10 @@ lf-activate-venv() {
 EOF
 
 # Install lftools & boto3 for log / artifact upload.
-python3 -m pip install boto3
+if [ "$OS_CODENAME" = "noble" ] ; then
+    pip_options=" --break-system-packages"
+fi
+python3 -m pip install"$pip_options" boto3
 mkdir -p "$LF_VENV"
 OLD_PATH="$PATH"
 python3 -m venv "$LF_VENV"

@@ -66,7 +66,7 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     # python3-virtualenv & virtualenv from install-deps which are no longer
     # used in vpp repo.  These packages can mess up csit virtualenv
     # installation which uses pip3
-    sudo apt remove -y --purge --autoremove python3-virtualenv virtualenv || true
+    #sudo apt remove -y --purge --autoremove python3-virtualenv virtualenv || true
 
     # Install/cache python packages
     make_vpp_test "test-dep" "$branch"
