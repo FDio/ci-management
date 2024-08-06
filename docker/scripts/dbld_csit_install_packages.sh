@@ -32,6 +32,9 @@ else
     echo_log "Starting  $(basename $0)"
 fi
 
+python3 -m venv "$DOCKER_BUILD_VENV_DIR"
+source "$DOCKER_BUILD_VENV_DIR"/bin/activate
+
 do_git_config csit
 for vpp_branch in ${CSIT_VPP_BRANCHES[$OS_NAME]} ; do
     # Returns checked out branch in csit_branch
@@ -43,8 +46,10 @@ for vpp_branch in ${CSIT_VPP_BRANCHES[$OS_NAME]} ; do
     # Install/cache python packages
     csit_install_hugo "$csit_branch"
 
+    deactivate
     # Install/cache python packages
     csit_pip_cache "$csit_branch"
+    source "$DOCKER_BUILD_VENV_DIR"/bin/activate
 done
 
 # Install csit OS packages
@@ -56,4 +61,5 @@ csit_install_hugo "master"
 # Install/cache python packages
 csit_pip_cache "master"
 
+deactivate
 echo_log -e "Completed $(basename $0)!\n\n=========="
