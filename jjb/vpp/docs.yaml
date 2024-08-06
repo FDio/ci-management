@@ -8,19 +8,20 @@
       - 'vpp-docsonly-merge-{stream}-{os}-{executor-arch}'
 
     project: 'vpp'
-    executor-arch: 'x86_64'
-    os:
-      - 'ubuntu2204'
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/57/41357/9'
+          os: 'ubuntu2404'
       - '2402':
           branch: 'stable/2402'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/13/41313/1'
+          os: 'ubuntu2204'
       - '2406':
           branch: 'stable/2406'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/22/41322/1'
+          os: 'ubuntu2204'
+    executor-arch: 'x86_64'
 
 - job-template:
     name: 'vpp-docs-verify-{stream}-{os}-{executor-arch}'

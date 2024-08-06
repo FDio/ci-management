@@ -41,7 +41,6 @@ apt_install_packages() {
 generate_apt_dockerfile_common() {
     local executor_class="$1"
     local executor_image="$2"
-    local install_golang="$3"
     local dpkg_arch="$(dpkg --print-architecture)"
 
     cat <<EOF >>"$DOCKERFILE"
@@ -163,9 +162,7 @@ RUN wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_$d
   && rm -f terraform_1.7.3_linux_$dpkg_arch.zip
 EOF
 
-    if [ "$install_golang" = "true" ] ; then
-        generate_apt_dockerfile_install_golang "1.21.11"
-    fi
+    generate_apt_dockerfile_install_golang
 
     cat <<EOF >>"$DOCKERFILE"
 
@@ -190,7 +187,6 @@ EOF
 }
 
 generate_apt_dockerfile_install_golang() {
-    local go_version="$1"
     local go_tarball_arch="amd64"
 
     if [ "$OS_ARCH" = "aarch64" ] ; then
@@ -205,9 +201,9 @@ ENV GOPATH /go
 ENV GOROOT /usr/local/go
 ENV PATH \$GOPATH/bin:/usr/local/go/bin:\$PATH
 RUN rm -rf /usr/local/go /usr/bin/go \\
-    && wget -P /tmp "https://go.dev/dl/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
-    && tar -C /usr/local -xzf "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
-    && rm "/tmp/go${go_version}.linux-${go_tarball_arch}.tar.gz" \\
+    && wget -P /tmp "https://go.dev/dl/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
+    && tar -C /usr/local -xzf "/tmp/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
+    && rm "/tmp/go${DOCKER_GOLANG_VERSION}.linux-${go_tarball_arch}.tar.gz" \\
     && ln -s /usr/local/go/bin/go /usr/bin/go \\
     && echo -n "\nGOPATH=\$GOPATH\nGOROOT=\$GOROOT" | tee -a /etc/environment \\
     && mkdir -p "\$GOPATH/src" "\$GOPATH/bin" && chmod -R 777 "\$GOPATH"
@@ -219,10 +215,9 @@ builder_generate_apt_dockerfile() {
     local executor_class="$1"
     local executor_os_name="$2"
     local executor_image="$3"
-    local install_golang="$4"
     local vpp_install_skip_sysctl_envvar="";
 
-    generate_apt_dockerfile_common "$executor_class" "$executor_image" "$install_golang"
+    generate_apt_dockerfile_common "$executor_class" "$executor_image"
     csit_builder_generate_docker_build_files
     cat <<EOF >>"$DOCKERFILE"
 
@@ -375,13 +370,11 @@ generate_apt_dockerfile() {
     local executor_os_name="$2"
     local from_image="$3"
     local executor_image="$4"
-    local install_golang="false"
     local is_dind_image="false"
 
     # TODO: Enable HST on AARCH64 when supported in vpp/extras/hs-test
     if [ "$from_image" = "$HST_FROM_IMAGE" ] ; then
         from_image="$DIND_FROM_IMAGE"
-        install_golang="true"
         is_dind_image="true"
     fi
 
@@ -403,5 +396,5 @@ EOF
     fi
 
     "${executor_class}"_generate_apt_dockerfile "$executor_class" \
-        "$executor_os_name" "$executor_image" "$install_golang"
+        "$executor_os_name" "$executor_image"
 }
