@@ -1,0 +1,11 @@
+---
+Job:
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Tasks:
+        - Name: jenkins-worker
+          Config:
+            image: fdiotools/builder-ubuntu2404:prod-aarch64
+            volumes:
+              - /tmp/ccache.ubuntu2404:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro

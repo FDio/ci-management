@@ -1,0 +1,4 @@
+---
+templates:
+  - prefix: "builder-ubuntu2404-prod-aarch64"
+    labels: "builder-ubuntu2404-prod-aarch64"
