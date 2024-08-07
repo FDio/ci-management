@@ -42,9 +42,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2406':
-          branch: 'rls2406'
-          branch-id: 'oper-rls2406'
 
 - job-template:
     name: 'csit-vpp-device-report-coverage-{stream}-{node-arch}'

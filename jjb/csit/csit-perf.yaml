@@ -139,9 +139,6 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2406':
-                branch: 'rls2406'
-                branch-id: 'oper-rls2406'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
             - 2n-icx:
@@ -507,9 +504,6 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2406':
-          branch: 'rls2406'
-          branch-id: 'oper-rls2406'
     stream_report:
       - '2406':
           branch: 'rls2406'
