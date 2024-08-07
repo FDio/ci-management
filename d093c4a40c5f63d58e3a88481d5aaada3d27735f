@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6f8e4b_52e2b7c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-07T08:52:58Z",
+      "side": 1,
+      "message": "then it is no clear why are you touching weekly",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "d093c4a40c5f63d58e3a88481d5aaada3d27735f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e142384c_e324dd2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-07T08:52:58Z",
+      "side": 1,
+      "message": "do not touch AWS jobs.",
+      "revId": "d093c4a40c5f63d58e3a88481d5aaada3d27735f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
