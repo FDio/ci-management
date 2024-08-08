@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca63dc3c_263ddc54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-08-08T03:13:37Z",
+      "side": 1,
+      "message": "vpp-checkstyle-verify-ubuntu2404-x86_64 passes on jenkins sandbox but\nmore job testing is required before merging.",
+      "revId": "2acc17520bba9a238c05829d43c8a45600467bcf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
