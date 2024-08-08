@@ -16,6 +16,75 @@
       "message": "vpp-checkstyle-verify-ubuntu2404-x86_64 passes on jenkins sandbox but\nmore job testing is required before merging.",
       "revId": "2acc17520bba9a238c05829d43c8a45600467bcf",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0af915e_b4c0f4c5",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-08T04:09:12Z",
+      "side": 1,
+      "message": "safe to remove",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "2acc17520bba9a238c05829d43c8a45600467bcf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb4b846_4e3009d1",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-08T04:09:12Z",
+      "side": 1,
+      "message": "we did upgrade in master",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 147
+      },
+      "revId": "2acc17520bba9a238c05829d43c8a45600467bcf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2370bb_7133a4e7",
+        "filename": "docker/scripts/lib_csit.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-08T04:09:12Z",
+      "side": 1,
+      "message": "we did in master",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "revId": "2acc17520bba9a238c05829d43c8a45600467bcf",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
