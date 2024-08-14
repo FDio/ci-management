@@ -1,0 +1,4 @@
+---
+templates:
+  - prefix: "csit-builder-ubuntu2404-sandbox-aarch64"
+    labels: "csit-builder-ubuntu2404-sandbox-aarch64"
