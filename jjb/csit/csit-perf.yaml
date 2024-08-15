@@ -29,15 +29,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -64,15 +58,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -111,15 +99,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -153,17 +135,9 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
                 periodicity: '30 22 * * 0-4'
             - 3n-alt:
                 os: 'ubuntu2204'
@@ -264,16 +238,10 @@
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2204'
-                executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
+                executor-arch: 'x86_64''
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -301,15 +269,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -348,15 +310,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -400,15 +356,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
@@ -447,15 +397,9 @@
             - 2n-zn2:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 2n-tx2:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
-            - 3n-tsh:
-                os: 'ubuntu2204'
-                executor-arch: 'aarch64'
             - 3n-alt:
                 os: 'ubuntu2204'
                 executor-arch: 'aarch64'
