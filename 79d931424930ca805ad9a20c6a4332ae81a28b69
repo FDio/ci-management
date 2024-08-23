@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c59e78f_4c4a35cc",
+        "filename": "docker/scripts/dbld_lfit_requirements.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-23T07:45:48Z",
+      "side": 1,
+      "message": "remove externally managed",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "79d931424930ca805ad9a20c6a4332ae81a28b69",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc90fdf2_290a1549",
         "filename": "jjb/scripts/publish_library_py.sh",
         "patchSetId": 12
