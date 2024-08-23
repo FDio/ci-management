@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc90fdf2_290a1549",
+        "filename": "jjb/scripts/publish_library_py.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2024-08-23T07:45:00Z",
+      "side": 1,
+      "message": "why are you doing it like this?\n\nwe are working with PIP all over the places in FDio \nit is time to REMOVE the safemark for python EXTERNALLY_MANAGED",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "79d931424930ca805ad9a20c6a4332ae81a28b69",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
