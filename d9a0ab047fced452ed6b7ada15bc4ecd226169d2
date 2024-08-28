@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739b4a99_f3985d0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-08-28T01:14:03Z",
+      "side": 1,
+      "message": "New docker images generated and tested on jenkins sandbox including ubuntu 24.04 pre-prod vpp jobs (all non-voting).",
+      "revId": "d9a0ab047fced452ed6b7ada15bc4ecd226169d2",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
