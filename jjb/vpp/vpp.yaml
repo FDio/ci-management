@@ -292,7 +292,7 @@
           make-parallel-jobs: '32'
     project: 'vpp'
     os: 'ubuntu2404'
-    skip-vote: 'false'
+    skip-vote: 'true'
     stream:
       - 'master':
           branch: 'master'
@@ -302,12 +302,12 @@
           # TODO: Remove when ubuntu2404 is put into production
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
-          skip-vote: 'false'
+          skip-vote: 'true'
       - 1n-alt:
           # TODO: Remove when ubuntu2404 is put into production
           os: 'ubuntu2204'
           executor-arch: 'aarch64'
-          skip-vote: 'false'
+          skip-vote: 'true'
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
 
 # VPP-CSIT-VERIFY-PERF PROJECT
