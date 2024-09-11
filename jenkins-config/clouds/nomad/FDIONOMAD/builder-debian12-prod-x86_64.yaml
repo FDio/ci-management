@@ -1,0 +1,4 @@
+---
+templates:
+  - prefix: "builder-debian12-prod-x86_64"
+    labels: "builder-debian12-prod-x86_64"
