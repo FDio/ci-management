@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8aa16d7_30380c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-09-13T17:04:16Z",
+      "side": 1,
+      "message": "Verified in jenkins sandbox:\n- https://jenkins.fd.io/sandbox/job/daw-docker-vpp-preprod-merge-master-debian12-x86_64/\n- https://jenkins.fd.io/sandbox/job/daw-docker-vpp-preprod-verify-master-debian12-x86_64/",
+      "revId": "7435c2dd66dc0c2ee05c003be41414c0c4a963bb",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
