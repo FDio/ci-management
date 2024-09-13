@@ -29,7 +29,7 @@
 
 jjb-sandbox-env()
 {
-    local jjb_version=${JJB_VERSION:-"6.0.0"}
+    local jjb_version=${JJB_VERSION:-"6.4.1"}
 
     if [ -z "$WS_ROOT" ] ; then
         echo "ERROR: WS_ROOT is not set!"
@@ -73,7 +73,7 @@ jjb-sandbox-env()
        && python3 -m venv $VENV_DIR \
        && source $VENV_DIR/bin/activate \
        && pip3 install --upgrade pip \
-       && pip3 install wheel \
+       && pip3 install --upgrade setuptools \
        && pip3 install jenkins-job-builder==$jjb_version
 
     alias jjsb='jenkins-jobs --conf $JENKINS_INI'

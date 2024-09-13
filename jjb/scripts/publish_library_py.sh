@@ -21,7 +21,7 @@ PYTHON_SCRIPT="/w/workspace/publish_library.py"
 
 OS_CODENAME="$(grep 'VERSION_CODENAME=' /etc/os-release | cut -d= -f2)"
 pip_options=""
-if [ "$OS_CODENAME" = "noble" ] ; then
+if [ "$OS_CODENAME" = "noble" ] || [ "$OS_CODENAME" = "bookworm" ] ; then
     pip_options=" --break-system-packages"
 fi
 # shellcheck disable=SC2086

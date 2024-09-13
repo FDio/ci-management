@@ -44,13 +44,14 @@
     project: 'vpp'
     os:
       - 'ubuntu2404'
+      - 'debian12'
     make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-11'
+    make-test-multiworker-os: 'debian-11 debian-12'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
+          branch-refspec: 'refs/changes/61/41561/3'
     executor-arch: 'x86_64'
 # [end] VPP-X86_64 PROJECT
 
@@ -109,7 +110,7 @@
     os:
       - 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-11'
+    make-test-multiworker-os: 'debian-11 debian-12'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
