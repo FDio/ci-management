@@ -123,6 +123,7 @@ docker_build_setup_vpp() {
 #       definitions here.
 declare -A VPP_BRANCHES
 VPP_BRANCHES["debian-11"]="stable/2402 stable/2406 master"
+VPP_BRANCHES["debian-12"]="master"
 VPP_BRANCHES["ubuntu-20.04"]="stable/2402 stable/2406 master"
 VPP_BRANCHES["ubuntu-22.04"]="stable/2402 stable/2406 master"
 VPP_BRANCHES["ubuntu-24.04"]="master"
