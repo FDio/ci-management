@@ -49,6 +49,10 @@
           os: 'ubuntu2204'
           branch: 'stable/2406'
           branch-refspec: ''
+      - '2410':
+          os: 'ubuntu2204'
+          branch: 'stable/2410'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
@@ -121,6 +125,9 @@
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
+      - '2410':
+          branch: 'stable/2410'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -153,6 +160,9 @@
           branch-refspec: ''
       - '2406':
           branch: 'stable/2406'
+          branch-refspec: ''
+      - '2410':
+          branch: 'stable/2410'
           branch-refspec: ''
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -274,6 +284,9 @@
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
+      - '2410':
+          branch: 'stable/2410'
+          branch-refspec: ''
     executor-arch: 'aarch64'
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -377,6 +390,10 @@
           os: 'ubuntu2204'
       - '2406':
           branch: 'stable/2406'
+          branch-refspec: ''
+          os: 'ubuntu2204'
+      - '2410':
+          branch: 'stable/2410'
           branch-refspec: ''
           os: 'ubuntu2204'
 # [end] VPP-CSIT-API-CRC PROJECT
