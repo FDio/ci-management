@@ -37,8 +37,6 @@
       - ubuntu2404
     stream:
       - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           branch: 'master'
           branch-refspec: ''
       - '2402':
@@ -104,12 +102,12 @@
     project: 'vpp'
     os:
       - 'debian11'
+      - 'debian12'
       - 'ubuntu2004'
       - 'ubuntu2204'
-      # TODO: Uncomment when ubuntu 24.04 is put into production
-      #- 'ubuntu2404'
+      - 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-11'
+    make-test-multiworker-os: 'debian-11 debian-12'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
@@ -129,6 +127,12 @@
         # ubuntu-24.04 introduced in VPP 24.10
         - stream: '2406'
           os: 'ubuntu2404'
+        # debian-12 introduced in VPP 24.10
+        - stream: '2402'
+          os: 'debian12'
+        # debian-12 introduced in VPP 24.10
+        - stream: '2406'
+          os: 'debian12'
 
 # [end] VPP-X86_64 PROJECT
 
@@ -140,8 +144,7 @@
     project: 'vpp'
     os:
       - 'ubuntu2004'
-      # TODO: Uncomment when ubuntu 24.04 is put into production
-      #- 'ubuntu2404'
+      - 'ubuntu2404'
     make-parallel-jobs: '4'
     executor-arch: 'x86_64'
     stream:
@@ -204,8 +207,6 @@
     comment-trigger-value: 'dpdk-rdma-version-mismatch'
     stream:
       - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           branch: 'master'
           # Once per day at 00:15
           periodicity: '15 0 * * 0-6'
@@ -225,14 +226,12 @@
     jobs:
       - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    os: 'ubuntu2404'
+    os: 'ubuntu2004'
     make-parallel-jobs: '4'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     comment-trigger-value: 'gcov-report'
     stream:
       - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           branch: 'master'
           branch-refspec: ''
           # Once per day at 00:25
@@ -257,10 +256,9 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - ubuntu2004
-      - ubuntu2204
-      # TODO: Uncomment when ubuntu 24.04 is put into production
-      #- 'ubuntu2404'
+      - 'ubuntu2004'
+      - 'ubuntu2204'
+      - 'ubuntu2404'
     make-parallel-jobs: '4'
     make-test-multiworker-os: 'debian-11'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
@@ -291,7 +289,7 @@
       - 'vpp-csit-verify-device-{stream}-{os}-{executor-arch}-{testbed-arch}':
           make-parallel-jobs: '32'
     project: 'vpp'
-    os: 'ubuntu2404'
+    os: 'ubuntu2204'
     skip-vote: 'true'
     stream:
       - 'master':
@@ -299,13 +297,9 @@
           branch-refspec: ''
     testbed-arch:
       - 1n-spr:
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           executor-arch: 'x86_64'
           skip-vote: 'true'
       - 1n-alt:
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           executor-arch: 'aarch64'
           skip-vote: 'true'
 # [end] VPP-CSIT-VERIFY-DEVICE PROJECT
@@ -369,8 +363,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
