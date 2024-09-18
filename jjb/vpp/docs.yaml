@@ -13,8 +13,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-          # TODO: Remove when ubuntu 24.04 is put into production.
-          os: 'ubuntu2204'
       - '2402':
           branch: 'stable/2402'
           branch-refspec: ''
