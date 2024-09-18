@@ -91,6 +91,7 @@ csit_install_packages() {
     local yaml_files
     yaml_files="$(grep -r packages_by $csit_ansible_dir | cut -d: -f1 | sort -u | grep -v $exclude_roles)"
     packages="$(dbld_csit_find_ansible_packages.py --$OS_ID --$OS_ARCH $yaml_files)"
+    packages="${packages/jammy /}"
     packages="${packages/focal /}"
     packages="${packages/noble /}"
     packages="${packages/libmbedcrypto1/libmbedcrypto3}"
