@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80114c57_de00168c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-09-19T18:35:52Z",
+      "side": 1,
+      "message": "Verified in jenkins sandbox with latest docker executor images generated from this change.",
+      "revId": "0ff26443b622063f3b739589b49192c519c6ba5e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
