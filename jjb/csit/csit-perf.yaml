@@ -20,6 +20,9 @@
     jobs:
       - 'csit-dpdk-perf-verify-{stream}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -49,6 +52,9 @@
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -90,6 +96,9 @@
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -123,6 +132,10 @@
                 branch-id: 'oper'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
+                periodicity: '30 22 * * 0-4'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -161,6 +174,10 @@
                 periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
+                periodicity: '30 22 * * 0-4'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -230,6 +247,9 @@
                 periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -260,6 +280,9 @@
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -301,6 +324,9 @@
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -347,6 +373,9 @@
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
@@ -388,6 +417,9 @@
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
+            - 2n-grc:
+                os: 'ubuntu2404'
+                executor-arch: 'aarch64'
             - 2n-icx:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
