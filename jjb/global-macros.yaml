@@ -390,56 +390,6 @@
             notbuilt: '{skip-vote}'
 
 - trigger:
-    name: gerrit-trigger-csit-vpp-devicetest-full
-    # Comes from CSIT, for automatic jobs running device tests with VPP builds.
-    # The job acts as an automatic verify job for CSIT contributions.
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            # The main way the job is triggered automatically on patch upload.
-            # Gated by tox job, so we do not spend resources on WiP changes.
-            - comment-added-contains-event:
-                comment-contains-value: 'tox_success'
-            # Manual trigger to allow testing WiP changes with selected tags.
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
-            # A comment with "recheck" restarts tox job, so no condition here.
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
-    name: gerrit-trigger-csit-vpp-devicetest-manual
-    # Comes from CSIT, for manual jobs running "device" tests with VPP builds.
-    # The job acts as a manual (optional) verify job for CSIT contributions.
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'csit-devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
     name: gerrit-trigger-manually-triggered
     triggers:
       - gerrit:
@@ -598,52 +548,6 @@
             failed: true
             unstable: true
             notbuilt: true
-
-- trigger:
-    name: gerrit-trigger-vpp-csit-devicetest-full
-    # Comes from VPP, for automated jobs running "device" tests with CSIT code.
-    # The job acts as an automatic verify job for VPP contributions.
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'checkstyle_success'
-            - comment-added-contains-event:
-                comment-contains-value: 'devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
-
-- trigger:
-    name: gerrit-trigger-vpp-csit-devicetest-manual
-    # Comes from VPP, for manual jobs running "device" tests with CSIT code.
-    # The job acts as a manual (optional) verify job for VPP contributions.
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - comment-added-contains-event:
-                comment-contains-value: 'devicetest'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{name}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-          skip-vote:
-            successful: '{skip-vote}'
-            failed: '{skip-vote}'
-            unstable: '{skip-vote}'
-            notbuilt: '{skip-vote}'
 # [end] Keep 'trigger' entries ordered alphabetically, please.
 
 #### PUBLISHERS
