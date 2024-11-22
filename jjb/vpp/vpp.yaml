@@ -315,7 +315,7 @@
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 2n-zn2:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3n-icx:
           os: 'ubuntu2204'
