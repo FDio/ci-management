@@ -36,13 +36,13 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -68,13 +68,13 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -112,13 +112,13 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -156,7 +156,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
                 periodicity: '30 22 * * 0-4'
             - 3n-snr:
@@ -164,7 +164,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3na-spr:
@@ -231,7 +231,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
@@ -266,13 +266,13 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -299,7 +299,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2204'
@@ -317,7 +317,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -343,7 +343,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2204'
@@ -355,7 +355,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -392,7 +392,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2204'
@@ -410,7 +410,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'
@@ -436,7 +436,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-alt:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2204'
@@ -454,7 +454,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-icxd:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
                 os: 'ubuntu2204'

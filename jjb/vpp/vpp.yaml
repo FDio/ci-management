@@ -321,14 +321,14 @@
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3n-alt:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'aarch64'
           make-parallel-jobs: '16'
       - 3n-snr:
           os: 'ubuntu2204'
           executor-arch: 'x86_64'
       - 3n-icxd:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3na-spr:
           os: 'ubuntu2204'
