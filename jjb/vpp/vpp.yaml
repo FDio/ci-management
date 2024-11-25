@@ -309,7 +309,7 @@
           branch-refspec: ''
     testbed-arch:
       - 2n-icx:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 2n-spr:
           os: 'ubuntu2204'
@@ -318,7 +318,7 @@
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3n-icx:
-          os: 'ubuntu2204'
+          os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3n-alt:
           os: 'ubuntu2204'
