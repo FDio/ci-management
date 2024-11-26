@@ -39,7 +39,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -71,7 +71,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -115,7 +115,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -160,7 +160,7 @@
                 executor-arch: 'aarch64'
                 periodicity: '30 22 * * 0-4'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-icxd:
@@ -269,7 +269,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -314,7 +314,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -352,7 +352,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -407,7 +407,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
@@ -451,7 +451,7 @@
                 os: 'ubuntu2204'
                 executor-arch: 'x86_64'
             - 3n-snr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icxd:
                 os: 'ubuntu2404'
