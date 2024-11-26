@@ -86,7 +86,7 @@
       - 'csit-trex-perf-verify-{stream}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
@@ -208,15 +208,15 @@
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
             - 2n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 1'
             - 2n-c6in:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 1'
             - 2n-c7gn:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
                 periodicity: '0 0 * * 1'
       - 'csit-vpp-perf-soak-weekly-master-{node-arch}':
@@ -237,7 +237,7 @@
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
             - 2n-icx:
@@ -302,16 +302,16 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c6in:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c7gn:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
@@ -346,10 +346,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
@@ -366,7 +366,7 @@
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
@@ -395,16 +395,16 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c6in:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c7gn:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
@@ -439,16 +439,16 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c6in:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-c7gn:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 3n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
@@ -465,7 +465,7 @@
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 1n-aws:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
