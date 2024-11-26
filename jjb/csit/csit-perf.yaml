@@ -27,7 +27,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -45,10 +45,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
@@ -59,7 +59,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -77,10 +77,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-verify-{stream}-{node-arch}':
@@ -92,7 +92,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-verify-{stream}-{node-arch}':
           node-arch:
@@ -103,7 +103,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -121,10 +121,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
           stream:
             - master:
@@ -144,7 +144,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 2n-zn2:
@@ -168,11 +168,11 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
@@ -186,7 +186,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3n-icx:
@@ -194,11 +194,11 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
@@ -225,7 +225,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-icx:
                 os: 'ubuntu2404'
@@ -245,7 +245,7 @@
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}':
@@ -257,7 +257,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -275,10 +275,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
@@ -290,7 +290,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -320,10 +320,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
@@ -334,7 +334,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -358,10 +358,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
@@ -372,7 +372,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-vpp-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -383,7 +383,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -413,10 +413,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -427,7 +427,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-zn2:
                 os: 'ubuntu2404'
@@ -457,10 +457,10 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3na-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
@@ -471,7 +471,7 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 2n-spr:
-                os: 'ubuntu2204'
+                os: 'ubuntu2404'
                 executor-arch: 'x86_64'
 
     project: 'csit'
