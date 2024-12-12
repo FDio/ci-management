@@ -88,6 +88,12 @@
             - 1n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 1n-c6in:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 1n-c7gn:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
