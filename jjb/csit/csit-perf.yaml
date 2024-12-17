@@ -50,6 +50,12 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-grc:
@@ -80,6 +86,12 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
@@ -141,6 +153,12 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
           stream:
             - master:
                 branch: 'master'
@@ -190,6 +208,14 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
           node-arch:
             - 2n-grc:
@@ -213,6 +239,14 @@
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
             - 3nb-spr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+                periodicity: '30 22 * * 0-4'
+            - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
                 periodicity: '30 22 * * 0-4'
@@ -295,6 +329,12 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
           periodicity: '0 0 * * 6'
       - 'csit-vpp-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
@@ -340,6 +380,12 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
             - 2n-grc:
@@ -376,6 +422,12 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
@@ -433,6 +485,12 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
       - 'csit-dpdk-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
             - 2n-grc:
@@ -475,6 +533,12 @@
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3nb-spr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 2n-emr:
+                os: 'ubuntu2404'
+                executor-arch: 'x86_64'
+            - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':

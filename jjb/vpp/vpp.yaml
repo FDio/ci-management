@@ -336,6 +336,12 @@
       - 3nb-spr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
+      - 2n-emr:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
+      - 3n-emr:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
 # [end] VPP-CSIT-VERIFY-PERF PROJECT
 
 # VPP-CSIT-API-CRC PROJECT
