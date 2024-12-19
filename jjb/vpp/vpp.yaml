@@ -39,10 +39,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          os: 'ubuntu2204'
-          branch: 'stable/2402'
-          branch-refspec: ''
       - '2406':
           os: 'ubuntu2204'
           branch: 'stable/2406'
@@ -117,9 +113,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          branch: 'stable/2402'
-          branch-refspec: ''
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
@@ -129,14 +122,8 @@
     executor-arch: 'x86_64'
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2402'
-          os: 'ubuntu2404'
-        # ubuntu-24.04 introduced in VPP 24.10
         - stream: '2406'
           os: 'ubuntu2404'
-        # debian-12 introduced in VPP 24.10
-        - stream: '2402'
-          os: 'debian12'
         # debian-12 introduced in VPP 24.10
         - stream: '2406'
           os: 'debian12'
@@ -158,9 +145,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          branch: 'stable/2402'
-          branch-refspec: ''
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
@@ -168,9 +152,6 @@
           branch: 'stable/2410'
           branch-refspec: ''
     exclude:
-        # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2402'
-          os: 'ubuntu2404'
         # ubuntu-24.04 introduced in VPP 24.10
         - stream: '2406'
           os: 'ubuntu2404'
@@ -276,9 +257,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          branch: 'stable/2402'
-          branch-refspec: ''
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
@@ -287,9 +265,6 @@
           branch-refspec: ''
     executor-arch: 'aarch64'
     exclude:
-        # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2402'
-          os: 'ubuntu2404'
         # ubuntu-24.04 introduced in VPP 24.10
         - stream: '2406'
           os: 'ubuntu2404'
@@ -360,10 +335,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2402':
-          branch: 'stable/2402'
-          branch-refspec: ''
-          os: 'ubuntu2204'
       - '2406':
           branch: 'stable/2406'
           branch-refspec: ''
