@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f7e12da_3ea6e4ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2024-12-19T16:22:08Z",
+      "side": 1,
+      "message": "Tested locally and on jenkins sandbox.",
+      "revId": "f3378b5fb7bba319551af6cca04874606c43abd5",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
