@@ -217,9 +217,9 @@
     jobs:
       - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
-    os: 'ubuntu2004'
+    os: 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
+    make-test-os: ubuntu-24.04'
     comment-trigger-value: 'gcov-report'
     stream:
       - 'master':
