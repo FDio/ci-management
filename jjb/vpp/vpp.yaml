@@ -101,13 +101,11 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - 'debian11'
       - 'debian12'
-      - 'ubuntu2004'
       - 'ubuntu2204'
       - 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-11 debian-12'
+    make-test-multiworker-os: 'debian-12'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
@@ -137,7 +135,6 @@
       - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - 'ubuntu2004'
       - 'ubuntu2404'
     make-parallel-jobs: '4'
     executor-arch: 'x86_64'
@@ -247,11 +244,10 @@
       - 'vpp-merge-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
-      - 'ubuntu2004'
       - 'ubuntu2204'
       - 'ubuntu2404'
     make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-11'
+    make-test-multiworker-os: 'debian-12'
     make-test-os: 'ubuntu-20.04 ubuntu-22.04 ubuntu-24.04'
     stream:
       - 'master':
