@@ -111,7 +111,7 @@ The following commands are useful to build the initial builder images:
 
 `cd <ci-managment repository directory>`
 
-`sudo ./docker/scripts/build_executor_docker_image.sh ubuntu-20.04 2>&1 | tee u2004-$(uname -m).log | grep -ve '^+'`
+`sudo ./docker/scripts/build_executor_docker_image.sh ubuntu-24.04 2>&1 | tee u2004-$(uname -m).log | grep -ve '^+'`
 
 `sudo ./docker/scripts/build_executor_docker_image.sh -apr sandbox 2>&1 | tee all-sandbox-$(uname -m).log | grep -ve '^+'`
 
@@ -133,10 +133,10 @@ avoids the pitfalls encountered with Docker-In-Docker environments:
 The environment in the docker shell contains all of the necessary
 environment variable definitions so the docker scripts can be run
 directly on the cli.  Here is an example command that would be used in a CI job
-which automates the generation and testing of a new ubuntu-20.04 docker image
+which automates the generation and testing of a new ubuntu-24.04 docker image
 and push it to Docker Hub fdiotools/builder-ubuntu2004:test-<arch>:
 
-`build_executor_docker_image.sh -pr test ubuntu-20.04`
+`build_executor_docker_image.sh -pr test ubuntu-24.04`
 
 In the future, a fully automated CI/CD pipeline may be created for production
 docker images.
@@ -249,11 +249,9 @@ script will be written to automate the process.
 
 ## DockerHub Repositories
 
-- fdiotools/builder-debian11
-- fdiotools/builder-ubuntu2004
+- fdiotools/builder-debian12
 - fdiotools/builder-ubuntu2204
-- fdiotools/csit_dut-ubuntu2004
-- fdiotools/csit_shim-ubuntu2004
+- fdiotools/builder-ubuntu2404
 
 ## Docker Image Tags
 
