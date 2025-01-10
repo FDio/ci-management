@@ -64,9 +64,6 @@ make_build_test_debug() {
     fi
 }
 
-# clang is not working with ASAN right now - see change 27268
-# also, it does not work with gcc-7, we need gcc-8 at least
-# on ubuntu 20.04 executor the gcc is gcc9
 if [ "${DRYRUN,,}" != "true" ] ; then
     make_build_test_debug
 fi

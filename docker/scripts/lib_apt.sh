@@ -101,7 +101,7 @@ ENV LANG="en_US.UTF-8" LANGUAGE="en_US" LC_ALL="en_US.UTF-8"
 # TODO:  Fix broken project requirement install targets
 #        graphviz         for doxygen (HICN)
 #        doxygen          for doxygen (HICN)
-#        libffi-dev       for python cffi install (Ubuntu20.04/VPP/aarch64)
+#        libffi-dev       for python cffi install (Ubuntu24.04/VPP/aarch64)
 #        liblapack-dev    for python numpy/scipy (CSIT/aarch64)
 #        libopenblas-dev  for python numpy/scipy (CSIT/aarch64)
 #        libpcap-dev      for python pypcap install (CSIT)
