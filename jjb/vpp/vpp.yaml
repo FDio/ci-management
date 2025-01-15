@@ -237,9 +237,6 @@
 #       in .../ci-management/docker/scripts/lib_vpp.sh
 #       The job configuration must be derived from that list, thus
 #       modifications to both should be made at the same time.
-#       The AARCH64 architecture is in the process of catching up
-#       with X86_64 in terms of OS coverage.  Thus the jobs are
-#       a subset of those defined in the docker image build script.
 - project:
     name: vpp-aarch64
     jobs:
@@ -269,6 +266,22 @@
         - stream: '2406'
           os: 'ubuntu2404'
 # [end] VPP-AARCH64 PROJECT
+
+# VPP-ARM-DRIVERS-AARCH64 PROJECT
+- project:
+    name: vpp-arm-drivers
+    jobs:
+      - 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
+    project: 'vpp-arm-drivers'
+    os:
+      - 'ubuntu2404'
+    make-parallel-jobs: '4'
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+    executor-arch: 'aarch64'
+# [end] VPP-ARM-DRIVERS-AARCH64 PROJECT
 
 # VPP-CSIT-VERIFY-PERF PROJECT
 - project:
@@ -477,6 +490,63 @@
       - fdio-infra-publish
 
 # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
+
+# VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
+- job-template:
+    name: 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-p'    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - gerrit-refspec-parameter:
+          refspec: '{branch-refspec}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: '$GERRIT_REFSPEC'
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-checkstyle:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ext_deps.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/arm-drivers.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
 
 # VPP-VERIFY-HST JOB TEMPLATE
 - job-template:
