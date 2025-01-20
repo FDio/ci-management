@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5da20b_813c1903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2025-01-20T13:00:35Z",
+      "side": 1,
+      "message": "Thanks a lot for the catch in copypasta, fixed!",
+      "revId": "cfe29ec433e7e23b245fc1557b15707da616bca6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80d0b568_2d18aec5",
@@ -14,6 +31,30 @@
       "writtenOn": "2025-01-20T12:52:31Z",
       "side": 1,
       "message": "master branch currently uses ubuntu2404 (from line 11 above).  This line should be removed so stable/2502 doesn\u0027t change to ubuntu2204.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "cfe29ec433e7e23b245fc1557b15707da616bca6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23fb3f0_fef67e12",
+        "filename": "jjb/vpp/docs.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2025-01-20T13:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d0b568_2d18aec5",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -47,6 +88,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12955edc_b53978d1",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2025-01-20T13:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ab9b309_dfb4573c",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 7
+      },
+      "revId": "cfe29ec433e7e23b245fc1557b15707da616bca6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51590dc1_458edc89",
@@ -60,6 +125,30 @@
       "writtenOn": "2025-01-20T12:52:31Z",
       "side": 1,
       "message": "master branch currently uses ubuntu2404 (from line 353 above).  This line should be removed so stable/2502 doesn\u0027t change to ubuntu2204.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 7
+      },
+      "revId": "cfe29ec433e7e23b245fc1557b15707da616bca6",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ccd8ae_d5f6705b",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 320
+      },
+      "writtenOn": "2025-01-20T13:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51590dc1_458edc89",
       "range": {
         "startLine": 371,
         "startChar": 0,
