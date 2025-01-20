@@ -47,6 +47,10 @@
           os: 'ubuntu2204'
           branch: 'stable/2410'
           branch-refspec: ''
+      - '2502':
+          os: 'ubuntu2404'
+          branch: 'stable/2502'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
@@ -117,6 +121,9 @@
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
+      - '2502':
+          branch: 'stable/2502'
+          branch-refspec: ''
     executor-arch: 'x86_64'
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -147,6 +154,9 @@
           branch-refspec: ''
       - '2410':
           branch: 'stable/2410'
+          branch-refspec: ''
+      - '2502':
+          branch: 'stable/2502'
           branch-refspec: ''
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -256,6 +266,9 @@
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
+      - '2502':
+          branch: 'stable/2502'
+          branch-refspec: ''
     executor-arch: 'aarch64'
     exclude:
         # ubuntu-24.04 introduced in VPP 24.10
@@ -352,6 +365,10 @@
           branch: 'stable/2410'
           branch-refspec: ''
           os: 'ubuntu2204'
+      - '2502':
+          branch: 'stable/2502'
+          branch-refspec: ''
+          os: 'ubuntu2404'
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS
