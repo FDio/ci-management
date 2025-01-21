@@ -305,6 +305,9 @@
           branch: 'master'
           branch-refspec: ''
     testbed-arch:
+      - 2n-grc:
+          os: 'ubuntu2404'
+          executor-arch: 'aarch64'
       - 2n-icx:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
