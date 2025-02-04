@@ -285,10 +285,6 @@
           periodicity: '0 0 * * 6'
       - 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}':
           node-arch:
-            - 1n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
-                periodicity: '0 0 * * 6'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -432,9 +428,6 @@
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-iterative-{stream_report}-{node-arch}':
           node-arch:
-            - 1n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -543,9 +536,6 @@
                 executor-arch: 'x86_64'
       - 'csit-trex-perf-report-coverage-{stream_report}-{node-arch}':
           node-arch:
-            - 1n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
