@@ -39,10 +39,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          os: 'ubuntu2204'
-          branch: 'stable/2406'
-          branch-refspec: ''
       - '2410':
           os: 'ubuntu2204'
           branch: 'stable/2410'
@@ -115,9 +111,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
@@ -125,13 +118,7 @@
           branch: 'stable/2502'
           branch-refspec: ''
     executor-arch: 'x86_64'
-    exclude:
-        # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2406'
-          os: 'ubuntu2404'
-        # debian-12 introduced in VPP 24.10
-        - stream: '2406'
-          os: 'debian12'
+    
 
 # [end] VPP-X86_64 PROJECT
 
@@ -149,19 +136,12 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
-    exclude:
-        # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2406'
-          os: 'ubuntu2404'
 
 # [end] VPP-GCC-X86_64 PROJECT
 
@@ -260,9 +240,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
@@ -270,10 +247,7 @@
           branch: 'stable/2502'
           branch-refspec: ''
     executor-arch: 'aarch64'
-    exclude:
-        # ubuntu-24.04 introduced in VPP 24.10
-        - stream: '2406'
-          os: 'ubuntu2404'
+
 # [end] VPP-AARCH64 PROJECT
 
 # VPP-ARM-DRIVERS-AARCH64 PROJECT
@@ -360,10 +334,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
-          os: 'ubuntu2204'
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''

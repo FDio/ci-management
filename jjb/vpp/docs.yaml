@@ -13,10 +13,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2406':
-          branch: 'stable/2406'
-          branch-refspec: ''
-          os: 'ubuntu2204'
       - '2410':
           branch: 'stable/2410'
           branch-refspec: ''
