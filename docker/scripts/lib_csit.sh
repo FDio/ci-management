@@ -34,8 +34,8 @@ export CIMAN_DOCKER_SCRIPTS="${CIMAN_DOCKER_SCRIPTS:-$(dirname ${BASH_SOURCE[0]}
 #       to create an enumerated set of jobs jobs that match the
 #       definitions here.
 declare -A CSIT_VPP_BRANCHES
-CSIT_VPP_BRANCHES["ubuntu-22.04"]="stable/2406 master"
-CSIT_VPP_BRANCHES["ubuntu-24.04"]="master"
+CSIT_VPP_BRANCHES["ubuntu-22.04"]="stable/2410 stable/2502 master"
+CSIT_VPP_BRANCHES["ubuntu-24.04"]="stable/2410 stable/2502 master"
 export CSIT_VPP_BRANCHES
 
 CSIT_SUPPORTED_EXECUTOR_CLASSES="builder csit_dut"
