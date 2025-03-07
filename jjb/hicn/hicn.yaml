@@ -19,7 +19,7 @@
       - "hicn-verify-functest-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
@@ -35,7 +35,7 @@
       - "hicn-verify-build-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
@@ -57,7 +57,7 @@
       - "2210":
           branch: "stable/2210"
           repo: "2210"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
 
 - project:
@@ -66,7 +66,7 @@
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
@@ -82,7 +82,7 @@
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
@@ -97,7 +97,7 @@
     jobs:
       - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
@@ -109,7 +109,7 @@
     jobs:
       - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
@@ -344,7 +344,7 @@
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "ubuntu2004-docker-4c-4g"
+    node: "ubuntu2204-docker-4c-4g"
     concurrent: true
 
     properties:

@@ -6,7 +6,7 @@
       - "hicn-docs-merge-{stream}-{os}-{executor-arch}"
 
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
