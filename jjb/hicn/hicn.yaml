@@ -19,15 +19,18 @@
       - "hicn-verify-functest-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
 
 - project:
     name: hicn-aarch64
@@ -35,15 +38,18 @@
       - "hicn-verify-build-{stream}-{os}-{executor-arch}"
       - "hicn-merge-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
 
 - project:
     name: hicn-misc
@@ -54,10 +60,13 @@
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
-    os: ubuntu2004
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
+    os: ubuntu2204
     executor-arch: "x86_64"
 
 - project:
@@ -66,15 +75,18 @@
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
 
 - project:
     name: hicn-extras-aarch64
@@ -82,22 +94,25 @@
       - "hicn-extras-verify-{stream}-{os}-{executor-arch}"
       - "hicn-extras-build-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
 
 - project:
     name: hicn-vpp-latest-x86_64
     jobs:
       - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "x86_64"
     stream:
       - "master":
@@ -109,7 +124,7 @@
     jobs:
       - "hicn-vpp-latest-verify-{stream}-{os}-{executor-arch}"
     project: "hicn"
-    os: ubuntu2004
+    os: ubuntu2204
     executor-arch: "aarch64"
     stream:
       - "master":
@@ -135,9 +150,12 @@
       - "master":
           branch: "master"
           repo: "hicn"
-      - "2210":
-          branch: "stable/2210"
-          repo: "2210"
+      - "2502":
+          branch: "stable/2502"
+          repo: "2502"
+      - "2410":
+          branch: "stable/2410"
+          repo: "2410"
 
 - job-template:
     name: "hicn-sonar-scanner-{stream}"
@@ -344,7 +362,7 @@
     name: "hicn-verify-functest-{stream}-{os}-{executor-arch}"
 
     project-type: freestyle
-    node: "ubuntu2004-docker-4c-4g"
+    node: "ubuntu2204-docker-4c-4g"
     concurrent: true
 
     properties:
