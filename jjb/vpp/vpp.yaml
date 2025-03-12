@@ -281,6 +281,7 @@
     name: vpp-arm-drivers
     jobs:
       - 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
+      - 'vpp-merge-arm-drivers-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
       - 'ubuntu2404'
@@ -938,6 +939,73 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-MERGE JOB TEMPLATE
+
+# VPP-MERGE-ARM-DRIVERS JOB TEMPLATE
+- job-template:
+    name: 'vpp-merge-arm-drivers-{stream}-{os}-{executor-arch}'
+
+    project-type: freestyle
+    node: 'builder-{os}-prod-{executor-arch}'
+    concurrent: true
+
+    properties:
+      - lf-infra-properties:
+          build-days-to-keep: "{build-days-to-keep}"
+
+    # Please keep parameters in alphabetical order
+    parameters:
+      - gerrit-parameter:
+          branch: '{branch}'
+      - os-parameter:
+          os: '{os}'
+      - project-parameter:
+          project: '{project}'
+      - stream-parameter:
+          stream: '{stream}'
+
+    scm:
+      - gerrit-trigger-scm:
+          credentials-id: 'jenkins-gerrit-credentials'
+          refspec: ''
+          choosing-strategy: 'gerrit'
+
+    wrappers:
+      - fdio-infra-wrappers:
+          build-timeout: 120
+
+    triggers:
+      - gerrit-trigger-patch-merged:
+          name: '{project}'
+          branch: '{branch}'
+
+    builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root/packagecloud_api'
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_executor_env.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ubuntu_docker_test.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/setup_vpp_ext_deps.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/vpp/arm-drivers.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
+
+    publishers:
+      - fdio-infra-publish
+# [end] VPP-MERGE-ARM-DRIVERS JOB TEMPLATE
 
 # VPP-GCC-VERIFY JOB TEMPLATE
 - job-template:
