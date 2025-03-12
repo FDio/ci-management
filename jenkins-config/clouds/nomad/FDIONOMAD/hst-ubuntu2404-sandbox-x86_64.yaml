@@ -1,0 +1,4 @@
+---
+templates:
+  - prefix: "hst-ubuntu2404-sandbox-x86_64"
+    labels: "hst-ubuntu2404-sandbox-x86_64"
