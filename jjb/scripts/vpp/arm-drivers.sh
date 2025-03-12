@@ -35,21 +35,27 @@ make_deps() {
         BUILD_ERROR="FAILED 'make install-ext-deps'"
         return
     fi
+    if [ -f extras/scripts/build_static_vppctl.sh ]; then
+        if ! extras/scripts/build_static_vppctl.sh ; then
+            BUILD_ERROR="FAILED 'extras/scripts/build_static_vppctl.sh'"
+            return
+        fi
+    fi
 }
-make_build_release_arm_driver() {
+make_pkg_verify_arm_driver() {
     vpp_platform="$1"
     git clean -fdx || true
-    if ! make UNATTENDED=yes build-release VPP_PLATFORM="$vpp_platform"; then
-        BUILD_ERROR="FAILED 'make build-release VPP_PLATFORM=$vpp_platform'"
+    if ! make UNATTENDED=yes pkg-verify VPP_PLATFORM="$vpp_platform"; then
+        BUILD_ERROR="FAILED 'make pkg-verify VPP_PLATFORM=$vpp_platform'"
         return
     fi
 }
 
 if [ "${DRYRUN,,}" != "true" ] ; then
     make_deps
-    make_build_release_arm_driver cn913x
-    make_build_release_arm_driver octeon9
-    make_build_release_arm_driver octeon10
+    make_pkg_verify_arm_driver cn913x
+    make_pkg_verify_arm_driver octeon9
+    make_pkg_verify_arm_driver octeon10
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
