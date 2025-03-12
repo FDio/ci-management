@@ -1,0 +1,4 @@
+---
+templates:
+  - prefix: "hst-ubuntu2204-prod-aarch64"
+    labels: "hst-ubuntu2204-prod-aarch64"
