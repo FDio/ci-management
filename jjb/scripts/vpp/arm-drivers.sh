@@ -43,6 +43,10 @@ make_build_release_arm_driver() {
         BUILD_ERROR="FAILED 'make build-release VPP_PLATFORM=$vpp_platform'"
         return
     fi
+    if ! make UNATTENDED=yes pkg-deb VPP_PLATFORM="$vpp_platform"; then
+        BUILD_ERROR="FAILED 'make pkg-deb VPP_PLATFORM=$vpp_platform'"
+        return
+    fi
 }
 
 if [ "${DRYRUN,,}" != "true" ] ; then

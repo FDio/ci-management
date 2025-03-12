@@ -283,6 +283,7 @@
       - 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
+      - 'ubuntu2204'
       - 'ubuntu2404'
     make-parallel-jobs: '4'
     stream:
@@ -548,6 +549,14 @@
           branch: '{branch}'
 
     builders:
+      - config-file-provider:
+          files:
+            - file-id: '.packagecloud'
+              target: '/root/.packagecloud'
+      - config-file-provider:
+          files:
+            - file-id: 'packagecloud_api'
+              target: '/root/packagecloud_api'
       - shell:
           !include-raw-escape:
           - ../scripts/setup_executor_env.sh
@@ -560,6 +569,9 @@
       - shell:
           !include-raw-escape:
           - ../scripts/vpp/arm-drivers.sh
+      - shell:
+          !include-raw-escape:
+          - ../scripts/packagecloud_push.sh
 
     publishers:
       - fdio-infra-publish
