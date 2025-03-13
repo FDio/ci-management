@@ -56,18 +56,19 @@
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
 # VPP-HST-X86_64 PROJECT
-# - project:
-#     name: vpp-verify-hst-x86_64
-#     jobs:
-#       - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
-#     project: 'vpp'
-#     os:
-#       - ubuntu2204
-#     stream:
-#       - 'master':
-#           branch: 'master'
-#           branch-refspec: ''
-#     executor-arch: 'x86_64'
+- project:
+    name: vpp-verify-hst-x86_64
+    jobs:
+      - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    skip-vote: 'true'
+    os:
+      - ubuntu2204
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+    executor-arch: 'x86_64'
 
 # [end] VPP-HST-X86_64 PROJECT
 
@@ -77,17 +78,34 @@
     jobs:
       - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
     project: 'vpp'
+    skip-vote: 'true'
     os:
       - ubuntu2204
+      - ubuntu2404
     stream:
       - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
           branch: 'master'
           branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-HST-DEBUG-X86_64 PROJECT
+
+# VPP-HST-DEBUG-AARCH64 PROJECT
+- project:
+    name: vpp-verify-hst-debug-aarch64
+    jobs:
+      - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+    project: 'vpp'
+    skip-vote: 'true'
+    os:
+      - ubuntu2204
+    stream:
+      - 'master':
+          branch: 'master'
+          branch-refspec: ''
+    executor-arch: 'aarch64'
+
+# [end] VPP-HST-DEBUG-AARCH64 PROJECT
 
 # VPP-X86_64 PROJECT
 #
