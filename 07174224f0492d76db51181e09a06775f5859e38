@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e41bad8_77c7dc74",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T02:40:55Z",
+      "side": 1,
+      "message": "This will not work because there is no variable named \u0027skip-vote\u0027 in the hst trigger (gerrit-trigger-checkstyle [0]).\n\nInstead, change the trigger in the job template to \u0027gerrit-trigger-checkstyle-nonvoting [1]\u0027\n\n[0] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L307\n[1] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L324",
+      "revId": "07174224f0492d76db51181e09a06775f5859e38",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1142a9b5_1727d4bc",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T02:40:55Z",
+      "side": 1,
+      "message": "This will not work because there is no variable named \u0027skip-vote\u0027 in the hst trigger (gerrit-trigger-checkstyle [0]).\n\nInstead, change the trigger in the job template to \u0027gerrit-trigger-checkstyle-nonvoting [1]\u0027\n\n[0] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L307\n[1] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L324",
+      "revId": "07174224f0492d76db51181e09a06775f5859e38",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b14e6e9_c4608a79",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T02:40:55Z",
+      "side": 1,
+      "message": "Note: combining both of these and setting the job template to nonvoting will disable voting for the current ubuntu2204 based job.\n\nThus, a separate project and job template will need to be created that is a replication of the current one, but changed to ubuntu2404 that is nonvoting.\n\nWhen it is time to make the new job voting, then the temporary project should be removed and this added.  For now, comment this line out and add a TODO comment documenting the plan.",
+      "revId": "07174224f0492d76db51181e09a06775f5859e38",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7191cc20_50e96b69",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T02:40:55Z",
+      "side": 1,
+      "message": "This will not work because there is no variable named \u0027skip-vote\u0027 in the hst trigger (gerrit-trigger-checkstyle [0]).\n\nInstead, change the trigger in the job template to \u0027gerrit-trigger-checkstyle-nonvoting [1]\u0027\n\n[0] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L307\n[1] https://github.com/FDio/ci-management/blob/master/jjb/global-macros.yaml#L324",
+      "revId": "07174224f0492d76db51181e09a06775f5859e38",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
