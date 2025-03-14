@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a611cb95_407ef0d0",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T01:34:54Z",
+      "side": 1,
+      "message": "Why do you need to push un-verified packages to packagecloud?\n\nPackages may only be pushed to packagecloud after the gerrit change has been verified, reviewed, and merged.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 0
+      },
+      "revId": "29eb48fae0033ce0ce4afa2c4ff99017d947846f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
