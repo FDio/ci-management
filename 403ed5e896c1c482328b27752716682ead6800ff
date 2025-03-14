@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d96ccd2_08fa631c",
+        "filename": "jjb/hicn/hicn.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-14T02:25:56Z",
+      "side": 1,
+      "message": "This label does not exist in https://github.com/FDio/ci-management/tree/master/jenkins-config/clouds/openstack/FDIOVEX-CI\n\nPlease verify with Vanessa what is available in the openstack cluster.",
+      "range": {
+        "startLine": 347,
+        "startChar": 10,
+        "endLine": 347,
+        "endChar": 35
+      },
+      "revId": "403ed5e896c1c482328b27752716682ead6800ff",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
