@@ -1,0 +1,23 @@
+---
+Job:
+  Constraints:
+    - LTarget: ^${attr.cpu.arch}
+      Operand: =
+      RTarget: arm64
+    - LTarget: ^${node.class}
+      Operand: =
+      RTarget: hst
+  TaskGroups:
+    - Name: jenkins-worker-taskgroup
+      Tasks:
+        - Name: jenkins-worker
+          Config:
+            image: fdiotools/builder-ubuntu2204:prod-aarch64
+            volumes:
+              - /tmp/ccache.ubuntu2204:/scratch/ccache
+              - /scratch/nomad:/scratch/nomad:ro
+          Resources:
+            # Limit scheduling of only 1 job per server by specifying max cpushares and more than half memory
+            CPU: 262144
+            MemoryMB: 384000
+
