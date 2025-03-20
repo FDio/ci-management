@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec03a0b9_a5c0d417",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3155
+      },
+      "writtenOn": "2025-03-20T10:47:18Z",
+      "side": 1,
+      "message": "Updated the patch with merge job for arm drivers.",
+      "revId": "cd5600d405d0b2fb671d06b4eeda85a1d1c6a346",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}

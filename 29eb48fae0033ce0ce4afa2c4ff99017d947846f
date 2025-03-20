@@ -22,6 +22,30 @@
       },
       "revId": "29eb48fae0033ce0ce4afa2c4ff99017d947846f",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c729c29_60cf2e93",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 3155
+      },
+      "writtenOn": "2025-03-20T10:47:18Z",
+      "side": 1,
+      "message": "Updated the patch with merge job for arm drivers.",
+      "parentUuid": "a611cb95_407ef0d0",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 0
+      },
+      "revId": "29eb48fae0033ce0ce4afa2c4ff99017d947846f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
