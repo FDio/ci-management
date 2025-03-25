@@ -182,7 +182,7 @@
             - 2n-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-zn2:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -190,7 +190,7 @@
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 3n-alt:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
@@ -210,7 +210,7 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -232,11 +232,11 @@
             - 2n-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 3na-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -244,7 +244,7 @@
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 1,4'
+                periodicity: '30 22 * * 0-4'
             - 2n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
