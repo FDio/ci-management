@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0734cde4_4ffcb747",
+        "filename": "jjb/scripts/vpp/arm-drivers.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-03-26T20:58:04Z",
+      "side": 1,
+      "message": "Since this is now run as part of a merge job, please include the below to skip the job if a newer gerrit change has been merged (see [0] for example):\n\n---- %\u003c ----\n\\# Don\u0027t build anything if this is a merge job being run when\n\\# the git HEAD id is not the same as the Gerrit New Revision id.\nif [[ ${JOB_NAME} \u003d\u003d *merge* ]] \u0026\u0026 [ -n \"${GERRIT_NEWREV:-}\" ] \u0026\u0026\n       [ \"$GERRIT_NEWREV\" !\u003d \"$GIT_COMMIT\" ] ; then\n    echo -e \"\\n$line\\nSkipping build. A newer patch has been merged.\\n$line\\n\"\n    exit 0\nfi\n---- $\u003c ----\n\n[0] https://github.com/FDio/ci-management/blob/master/jjb/scripts/vpp/build.sh#L21",
+      "revId": "2abfeb64091bcab84283af712f4d0518d863e794",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08b92d23_efd6ae0f",
         "filename": "jjb/vpp/vpp.yaml",
         "patchSetId": 3
