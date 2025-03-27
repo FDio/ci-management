@@ -18,6 +18,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a2bc3d_e34bec0b",
+        "filename": "jjb/scripts/vpp/arm-drivers.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3155
+      },
+      "writtenOn": "2025-03-27T05:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0734cde4_4ffcb747",
+      "revId": "2abfeb64091bcab84283af712f4d0518d863e794",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b92d23_efd6ae0f",
@@ -31,6 +49,30 @@
       "writtenOn": "2025-03-26T19:32:25Z",
       "side": 1,
       "message": "This does not belong in a merge job which runs against HEAD and not the gerrit refspec.  Please delete.",
+      "range": {
+        "startLine": 959,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 37
+      },
+      "revId": "2abfeb64091bcab84283af712f4d0518d863e794",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8fb186_10a2b4be",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 3155
+      },
+      "writtenOn": "2025-03-27T05:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b92d23_efd6ae0f",
       "range": {
         "startLine": 959,
         "startChar": 0,
