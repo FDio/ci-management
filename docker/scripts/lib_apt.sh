@@ -20,8 +20,26 @@ if [ -n "$(alias lib_apt_imported 2> /dev/null)" ] ; then
 fi
 alias lib_apt_imported=true
 
-DIND_FROM_IMAGE="cruizba/ubuntu-dind:jammy-26.1.3-r2"
-HST_FROM_IMAGE="ubuntu:22.04"
+select_dind_image() {
+    local input_image="$1"
+    local dind_image=""
+
+    case "$input_image" in
+      "ubuntu:22.04")
+        dind_image="cruizba/ubuntu-dind:jammy-26.1.3-r2"
+        is_dind_image="true"
+        ;;
+      "ubuntu:24.04")
+        dind_image="cruizba/ubuntu-dind:noble-26.1.3-r2"
+        is_dind_image="true"
+        ;;
+      *)
+        dind_image="$input_image"
+        ;;
+    esac
+
+    echo "$dind_image"
+}
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 . "$CIMAN_DOCKER_SCRIPTS/lib_common.sh"
@@ -374,10 +392,7 @@ generate_apt_dockerfile() {
     local is_dind_image="false"
 
     # TODO: Enable HST on AARCH64 when supported in vpp/extras/hs-test
-    if [ "$from_image" = "$HST_FROM_IMAGE" ] ; then
-        from_image="$DIND_FROM_IMAGE"
-        is_dind_image="true"
-    fi
+    from_image=$(select_dind_image "$from_image")
 
     cat <<EOF  >"$DOCKERIGNOREFILE"
 **/__pycache__
