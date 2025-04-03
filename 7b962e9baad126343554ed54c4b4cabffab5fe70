@@ -16,6 +16,23 @@
       "message": "Resolved",
       "revId": "7b962e9baad126343554ed54c4b4cabffab5fe70",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9b8594_59be106c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2025-04-03T17:34:37Z",
+      "side": 1,
+      "message": "Done. Tested new jobs on sandbox \u0026 verified ok.",
+      "revId": "7b962e9baad126343554ed54c4b4cabffab5fe70",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
