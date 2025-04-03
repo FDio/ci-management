@@ -30,7 +30,7 @@ set -exuo pipefail
 # - Multiple other side effects by entry script(s), see CSIT repository.
 
 cd "${WORKSPACE}"
-git clone "${GIT_URL}/csit" --depth=1 --no-single-branch --no-checkout
+git clone "${GIT_URL}" --depth=1 --no-single-branch --no-checkout
 pushd "${WORKSPACE}/csit"
 if [[ -n "${CSIT_REF-}" ]]; then
     git fetch --depth=1 "${GIT_URL}/csit" "${CSIT_REF}"
