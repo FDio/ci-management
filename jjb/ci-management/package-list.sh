@@ -1,33 +1,12 @@
 #!/bin/bash
 
-export PACKAGE_LIST_COMMON="libhicnctrl \
-libhicnctrl-memif \
-hicn-collectd-plugins \
-hicn-apps \
-hicn-light \
-hicn-apps-memif \
-libhicntransport-memif \
-libhicn \
-libhicntransport \
-hicn-plugin \
-facemgr \
-hicn-utils-memif \
-hicn-utils \
-hicn-sysrepo-plugin \
-hicn-extra-plugin \
+export PACKAGE_LIST_COMMON="facemgr \
 libparc \
 libparc-doc \
 longbow \
 longbow-doc"
 
-export PACKAGE_LIST_UBUNTU="libhicnctrl-dev \
-libhicn-ctrl-dev \
-libhicnctrl-memif-dev \
-libhicntransport-memif-dev \
-libhicn-dev \
-libhicntransport-dev \
-hicn-plugin-dev \
-libdash \
+export PACKAGE_LIST_UBUNTU="libdash \
 libdash-dev \
 libdash-doc \
 libparc-dev \

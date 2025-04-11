@@ -34,11 +34,6 @@ if [[ ${JOB_NAME} == *merge* ]]; then
             workspace_dir="${WORKSPACE}/resources/tools/doc_gen/_build"
             bucket_path="/csit/${GERRIT_BRANCH}/docs/"
             ;;
-        *"hicn-docs"*)
-            hicn_release="$(git describe --long --match "v*" | cut -d- -f1 | sed -e 's/^v//')"
-            workspace_dir="${WORKSPACE}/build/doc/deploy-site"
-            bucket_path="/hicn/${hicn_release}/"
-            ;;
         *"vpp-docs"*)
             vpp_release="$(${WORKSPACE}/build-root/scripts/version rpm-version)"
             workspace_dir="${WORKSPACE}/build-root/docs/html"
@@ -54,9 +49,6 @@ elif [[ ${JOB_NAME} == *verify* ]]; then
     # the jenkins job page.
     bucket_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
     case "${JOB_NAME}" in
-        *"hicn-docs"*)
-            workspace_dir="${WORKSPACE}/build/doc/deploy-site"
-            ;;
         *"vpp-docs"*)
             CDN_URL="s3-docs-7day.fd.io"
             workspace_dir="${WORKSPACE}/build-root/docs/html"
