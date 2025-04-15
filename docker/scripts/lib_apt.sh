@@ -22,23 +22,21 @@ alias lib_apt_imported=true
 
 select_dind_image() {
     local input_image="$1"
-    local dind_image=""
 
     case "$input_image" in
-      "ubuntu:22.04")
-        dind_image="cruizba/ubuntu-dind:jammy-26.1.3-r2"
-        is_dind_image="true"
-        ;;
-      "ubuntu:24.04")
-        dind_image="cruizba/ubuntu-dind:noble-26.1.3-r2"
-        is_dind_image="true"
-        ;;
-      *)
-        dind_image="$input_image"
-        ;;
+        "ubuntu:22.04")
+          is_dind_image="true"
+          echo "cruizba/ubuntu-dind:jammy-26.1.3-r2"
+          ;;
+        "ubuntu:24.04")
+          is_dind_image="true"
+          echo "cruizba/ubuntu-dind:noble-26.1.3-r2"
+          ;;
+        *)
+          is_dind_image="false"
+          echo "$input_image"
+          ;;
     esac
-
-    echo "$dind_image"
 }
 
 export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
