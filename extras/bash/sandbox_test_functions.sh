@@ -74,7 +74,8 @@ jjb-sandbox-env()
        && source $VENV_DIR/bin/activate \
        && pip3 install --upgrade pip \
        && pip3 install --upgrade setuptools \
-       && pip3 install jenkins-job-builder==$jjb_version
+       && pip3 install jenkins-job-builder==$jjb_version \
+       && pip3 install ruamel.yaml==0.18.10
 
     alias jjsb='jenkins-jobs --conf $JENKINS_INI'
     function jjsb-test() {
