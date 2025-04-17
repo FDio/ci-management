@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a907679_729cf099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 440
+      },
+      "writtenOn": "2025-04-17T19:31:33Z",
+      "side": 1,
+      "message": "Right, no reason to pin the version. I have updated the patch",
+      "revId": "49ad97d5552764f64d8580585ff9445ed1b2dd9f",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
