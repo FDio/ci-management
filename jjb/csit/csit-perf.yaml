@@ -1,5 +1,5 @@
-# Copyright (c) 2024 Cisco and/or its affiliates.
-# Copyright (c) 2024 PANTHEON.tech s.r.o. and/or its affiliates.
+# Copyright (c) 2025 Cisco and/or its affiliates.
+# Copyright (c) 2025 PANTHEON.tech s.r.o. and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -174,85 +174,85 @@
             - 2n-grc:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-zn2:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             # - 3n-alt:
             #     os: 'ubuntu2404'
             #     executor-arch: 'aarch64'
-            #     periodicity: '30 22 * * 0-4'
+            #     periodicity: '{csit-daily-regular-period}'
             - 3n-snr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3n-icxd:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3na-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
       - 'csit-vpp-perf-hoststack-daily-master-{node-arch}':
           node-arch:
             - 2n-grc:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3na-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3nb-spr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 2n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
             - 3n-emr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-                periodicity: '30 22 * * 0-4'
+                periodicity: '{csit-daily-regular-period}'
       - 'csit-vpp-perf-mrr-weekly-master-{node-arch}':
           node-arch:
             - 2n-icx:

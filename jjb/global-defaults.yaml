@@ -29,6 +29,12 @@
     # CSIT
     csit-perf-trial-duration: 1.0
     csit-perf-trial-multiplicity: 1
+    csit-daily-regular-period: |
+      TZ=Europe/Bratislava
+      31 21 * * 0-4
+    csit-daily-release-period: |
+      TZ=Europe/Bratislava
+      31 21 * * 1,4
 
     # Config for PackageCloud.IO archive of DEB/RPM packages
     packagecloud-account: fdio
