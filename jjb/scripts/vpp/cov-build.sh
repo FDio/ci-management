@@ -36,6 +36,8 @@ MAKE_TEST_MULTIWORKER_OS="${MAKE_TEST_MULTIWORKER_OS:-debian-12}"
 VPPAPIGEN_TEST_OS="${VPPAPIGEN_TEST_OS:-${MAKE_TEST_OS}}"
 BUILD_RESULT="SUCCESSFULLY COMPLETED"
 BUILD_ERROR=""
+FAILED_TESTS=""
+FAILED_HSTESTS=""
 RETVAL="0"
 
 if [ -n "${MAKE_PARALLEL_FLAGS}" ] ; then
@@ -85,10 +87,36 @@ make_test_coverage_report() {
         fi
     fi
     if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
-        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" CCACHE_DISABLE=1 test-cov ; then
-            BUILD_ERROR="FAILED 'make test-cov'"
-            return
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" CCACHE_DISABLE=1 test-cov-both; then
+            BUILD_ERROR="FAILED 'make test-cov-both'"
         fi
+	FAILURE_REGEX='--- addFailure\(\) ([A-Za-z0-9-]+\.[a-zA-Z0-9_-]+)'
+	for dir in /tmp/vpp-failed-unittests/*; do
+	    TESTCLASS_LOG="$(gunzip -c $dir/log.txt.gz)"
+	    while [[ $TESTCLASS_LOG =~ $FAILURE_REGEX ]]; do
+                FAILED_TESTS="$FAILED_TESTS${BASH_REMATCH[1]}"$'\n'
+		TESTCLASS_LOG=${TESTCLASS_LOG/"${BASH_REMATCH[0]}"/}
+	    done
+	done
+	if [[ -n $FAILED_TESTS ]]; then
+	    BUILD_ERROR="UNSTABLE 'make test-cov-both'"
+            echo -e "make test coverage run failed!\nFailed tests:\n$FAILED_TESTS"
+	else
+            echo "make test coverage run succeeded!"
+	fi
+	if [[ -f extras/hs-test/summary/report.json ]]; then
+	    FAILED_HSTESTS=$(jq '.[].SpecReports[] | select(.State=="failed").LeafNodeText' extras/hs-test/summary/report.json)
+	    if [[ -n $FAILED_HSTESTS ]]; then
+	        BUILD_ERROR="UNSTABLE 'make test-cov-both'"
+		echo -e "hs-test coverage run failed!\nFailed tests:\n$FAILED_HSTESTS"
+	    else
+                echo "hs-test coverage run succeeded!"
+	    fi
+	else
+            BUILD_ERROR="FAILED 'make test-cov-both'"
+	    echo "hs-test framework failed!"
+	fi
+        return
     else
         echo "Skip running 'make test-cov' on ${OS_ID}-${OS_VERSION_ID}"
     fi
