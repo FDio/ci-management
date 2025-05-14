@@ -85,10 +85,20 @@ make_test_coverage_report() {
         fi
     fi
     if grep -q "${OS_ID}-${OS_VERSION_ID}" <<< "${MAKE_TEST_OS}"; then
-        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" CCACHE_DISABLE=1 test-cov ; then
-            BUILD_ERROR="FAILED 'make test-cov'"
-            return
+        if ! make COMPRESS_FAILED_TEST_LOGS=yes TEST_JOBS="$TEST_JOBS" CCACHE_DISABLE=1 test-cov-both; then
+            BUILD_ERROR="FAILED 'make test-cov-both'"
         fi
+	if [[ -f extras/hs-test/summary/report.json ]]; then
+	    FAILED_TESTS=$(jq '.[].SpecReports[] | select(.State=="failed").LeafNodeText' extras/hs-test/summary/report.json)
+	    if [[ -n $FAILED_TESTS ]]; then
+	        BUILD_ERROR="UNSTABLE 'make test-cov-both'"
+		echo -e "hs-test coverage run failed!\nFailed tests:\n$FAILED_TESTS"
+	    fi
+	else
+            BUILD_ERROR="FAILED 'make test-cov-both'"
+	    echo "hs-test framework failed!"
+	fi
+        return
     else
         echo "Skip running 'make test-cov' on ${OS_ID}-${OS_VERSION_ID}"
     fi
