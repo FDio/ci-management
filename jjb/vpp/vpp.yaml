@@ -339,6 +339,9 @@
       - 3n-icxd:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
+      - 3n-oct:
+          os: 'ubuntu2404'
+          executor-arch: 'aarch64'
       - 3na-spr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
