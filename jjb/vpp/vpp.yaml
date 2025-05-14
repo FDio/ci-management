@@ -339,6 +339,15 @@
       - 3n-icxd:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
+<<<<<<< PATCH SET (66bedb feat(csit-vpp): Add 3n-oct testbed)
+      - 3n-oct:
+          os: 'ubuntu2404'
+          executor-arch: 'aarch64'
+      - 3n-snr:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
+=======
+>>>>>>> BASE      (f5e50e csit: Add 3n-oct jobs, remove csit-vpp-perf-mrr-weekly-maste)
       - 3na-spr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
