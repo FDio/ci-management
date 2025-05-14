@@ -49,3 +49,36 @@ terraform apply -no-color -auto-approve
 popd
 
 echo "S3 Test Coverage: <a href=\"https://${CDN_URL}/${bucket_path}\">https://${CDN_URL}/${bucket_path}</a>"
+
+# Check result
+FAILED_TESTS=""
+FAILED_HSTESTS=""
+
+FAILURE_REGEX='--- addFailure\(\) ([A-Za-z0-9-]+\.[a-zA-Z0-9_-]+)'
+for dir in /tmp/vpp-failed-unittests/*; do
+    TESTCLASS_LOG="$(gunzip -c $dir/log.txt.gz)"
+    while [[ $TESTCLASS_LOG =~ $FAILURE_REGEX ]]; do
+        FAILED_TESTS="$FAILED_TESTS${BASH_REMATCH[1]}"$'\n'
+	TESTCLASS_LOG=${TESTCLASS_LOG/"${BASH_REMATCH[0]}"/}
+    done
+done
+if [[ -n $FAILED_TESTS ]]; then
+    echo -e "make test coverage run failed!\nFailed tests:\n$FAILED_TESTS"
+else
+    echo "make test coverage run succeeded!"
+fi
+if [[ -f extras/hs-test/summary/report.json ]]; then
+    FAILED_HSTESTS=$(jq '.[].SpecReports[] | select(.State=="failed").LeafNodeText' extras/hs-test/summary/report.json)
+    if [[ -n $FAILED_HSTESTS ]]; then
+	echo -e "hs-test coverage run failed!\nFailed tests:\n$FAILED_HSTESTS"
+    else
+        echo "hs-test coverage run succeeded!"
+    fi
+else
+    echo "hs-test framework failed!"
+fi
+
+if [[ -n $FAILED_TESTS || -n $FAILED_HSTESTS ]]; then
+   die "Some tests failed, check the log!"
+fi
+
