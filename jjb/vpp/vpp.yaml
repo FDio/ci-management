@@ -1123,8 +1123,8 @@
           - ../scripts/vpp/cov-build.sh
 
     publishers:
-      - fdio-infra-publish-cov-7day
       - fdio-infra-publish
+      - fdio-infra-publish-cov-7day
 # [end] VPP-COV-VERIFY JOB TEMPLATE
 
 # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
