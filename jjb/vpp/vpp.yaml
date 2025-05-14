@@ -314,6 +314,9 @@
           branch: 'master'
           branch-refspec: ''
     testbed-arch:
+      - 2n-emr:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
       - 2n-grc:
           os: 'ubuntu2404'
           executor-arch: 'aarch64'
@@ -326,29 +329,26 @@
       - 2n-zn2:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
-      - 3n-icx:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
       - 3n-alt:
           os: 'ubuntu2404'
           executor-arch: 'aarch64'
           make-parallel-jobs: '16'
-      - 3n-snr:
+      - 3n-emr:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
+      - 3n-icx:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3n-icxd:
+          os: 'ubuntu2404'
+          executor-arch: 'x86_64'
+      - 3n-snr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3na-spr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
       - 3nb-spr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 2n-emr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-emr:
           os: 'ubuntu2404'
           executor-arch: 'x86_64'
 # [end] VPP-CSIT-VERIFY-PERF PROJECT
