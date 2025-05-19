@@ -47,6 +47,10 @@
           os: 'ubuntu2404'
           branch: 'stable/2502'
           branch-refspec: ''
+      - '2506':
+          os: 'ubuntu2404'
+          branch: 'stable/2506'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
@@ -63,6 +67,9 @@
     stream:
       - 'master':
           branch: 'master'
+          branch-refspec: ''
+      - '2506':
+          branch: 'stable/2506'
           branch-refspec: ''
     executor-arch: 'x86_64'
 
@@ -154,6 +161,9 @@
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
+      - '2506':
+          branch: 'stable/2506'
+          branch-refspec: ''
     executor-arch: 'x86_64'
 
 # [end] VPP-X86_64 PROJECT
@@ -177,6 +187,9 @@
           branch-refspec: ''
       - '2502':
           branch: 'stable/2502'
+          branch-refspec: ''
+      - '2506':
+          branch: 'stable/2506'
           branch-refspec: ''
 
 # [end] VPP-GCC-X86_64 PROJECT
@@ -282,6 +295,9 @@
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
+      - '2506':
+          branch: 'stable/2506'
+          branch-refspec: ''
     executor-arch: 'aarch64'
 # [end] VPP-AARCH64 PROJECT
 
@@ -377,6 +393,9 @@
           branch: 'stable/2502'
           branch-refspec: ''
           os: 'ubuntu2404'
+      - '2506':
+          branch: 'stable/2506'
+          branch-refspec: ''
 # [end] VPP-CSIT-API-CRC PROJECT
 
 # LF RELENG VPP PROJECTS
