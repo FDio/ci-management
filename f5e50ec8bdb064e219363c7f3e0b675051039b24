@@ -16,6 +16,24 @@
       "message": "Please add all the hst jobs to the stable/2506 branch.\nNaveen can push a separate patch to make them voting and I will merge them after this patch before RC1.",
       "revId": "f5e50ec8bdb064e219363c7f3e0b675051039b24",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e459806f_9a9292aa",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-05-19T11:54:03Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c202665d_c0dc0127",
+      "revId": "f5e50ec8bdb064e219363c7f3e0b675051039b24",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
