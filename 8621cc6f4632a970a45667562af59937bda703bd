@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ce2155_ad43e17a",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-05-19T11:46:29Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "8621cc6f4632a970a45667562af59937bda703bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff78ff76_048ee2a4",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-05-19T11:46:29Z",
+      "side": 1,
+      "message": "same comment here",
+      "revId": "8621cc6f4632a970a45667562af59937bda703bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adbc3448_1ed64a2d",
+        "filename": "jjb/vpp/vpp.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-05-19T11:46:29Z",
+      "side": 1,
+      "message": "And here as well.",
+      "revId": "8621cc6f4632a970a45667562af59937bda703bd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
