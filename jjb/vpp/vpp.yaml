@@ -55,12 +55,11 @@
 
 # [end] VPP-CHECKSTYLE-X86_64 PROJECT
 
-# TODO: Change job to voting once put into production
 # VPP-HST-X86_64 PROJECT
 - project:
-    name: vpp-verify-hst-nonvoting-x86_64
+    name: vpp-verify-hst-x86_64
     jobs:
-      - 'vpp-verify-hst-nonvoting-{stream}-{os}-{executor-arch}'
+      - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
       - ubuntu2204
@@ -83,31 +82,6 @@
     project: 'vpp'
     os:
       - ubuntu2204
-      # TODO: Uncomment when ubuntu2404 is put into production
-      # - ubuntu2404
-    stream:
-      - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
-          branch: 'stable/2506'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-HST-DEBUG-X86_64 PROJECT
-
-# TODO: Remove when ubuntu2404 is put into production
-# VPP-HST-DEBUG-X86_64 PROJECT
-- project:
-    name: vpp-verify-hst-debug-nonvoting-x86_64
-    jobs:
-      - 'vpp-verify-hst-debug-nonvoting-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
       - ubuntu2404
     stream:
       - 'master':
@@ -120,12 +94,11 @@
 
 # [end] VPP-HST-DEBUG-X86_64 PROJECT
 
-# TODO: Remove nonvoting from project name & jobs when aarch64 is put into production
 # VPP-HST-DEBUG-AARCH64 PROJECT
 - project:
-    name: vpp-verify-hst-debug-nonvoting-aarch64
+    name: vpp-verify-hst-debug-aarch64
     jobs:
-      - 'vpp-verify-hst-debug-nonvoting-{stream}-{os}-{executor-arch}'
+      - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
     project: 'vpp'
     os:
       - ubuntu2204
@@ -602,7 +575,7 @@
 
 # VPP-VERIFY-HST JOB TEMPLATE
 - job-template:
-    name: 'vpp-verify-hst-nonvoting-{stream}-{os}-{executor-arch}'
+    name: 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
     node: 'hst-{os}-prod-{executor-arch}'
@@ -636,7 +609,7 @@
           build-timeout: 120
 
     triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
+      - gerrit-trigger-checkstyle:
           name: '{project}'
           branch: '{branch}'
 
@@ -715,66 +688,6 @@
     publishers:
       - fdio-infra-publish
 # [end] VPP-VERIFY-HST-DEBUG JOB TEMPLATE
-
-# TODO: Remove when ubuntu2404 & aarch64 is put into production
-# VPP-VERIFY-HST-DEBUG JOB TEMPLATE
-- job-template:
-    name: 'vpp-verify-hst-debug-nonvoting-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'hst-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/debug-hst.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-VERIFY-HST-DEBUG JOB TEMPLATE
-
 
 # VPP-VERIFY JOB TEMPLATE
 - job-template:
