@@ -1,5 +1,5 @@
-# Copyright (c) 2024 Cisco and/or its affiliates.
-# Copyright (c) 2024 PANTHEON.tech s.r.o. and/or its affiliates.
+# Copyright (c) 2025 Cisco and/or its affiliates.
+# Copyright (c) 2025 PANTHEON.tech s.r.o. and/or its affiliates.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at:
@@ -166,9 +166,9 @@
             - master:
                 branch: 'master'
                 branch-id: 'oper'
-            - '2502':
-                branch: 'rls2502'
-                branch-id: 'oper-rls2502'
+            - '2506':
+                branch: 'rls2506'
+                branch-id: 'oper-rls2506'
       - 'csit-vpp-perf-mrr-daily-master-{node-arch}':
           node-arch:
             - 2n-grc:
@@ -564,13 +564,13 @@
       - master:
           branch: 'master'
           branch-id: 'oper'
-      - '2502':
-          branch: 'rls2502'
-          branch-id: 'oper-rls2502'
+      - '2506':
+          branch: 'rls2506'
+          branch-id: 'oper-rls2506'
     stream_report:
-      - '2502':
-          branch: 'rls2502'
-          branch-id: 'oper-rls2502'
+      - '2506':
+          branch: 'rls2506'
+          branch-id: 'oper-rls2506'
 
     build-artifact-num-to-keep: 10
 
