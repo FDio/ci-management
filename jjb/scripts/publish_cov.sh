@@ -27,7 +27,7 @@ bucket_path="$JENKINS_HOSTNAME/$JOB_NAME/$BUILD_NUMBER/"
 if [[ ${JOB_NAME} == *verify* ]]; then
     case "${JOB_NAME}" in
         *"vpp-cov"*)
-            workspace_dir="${WORKSPACE}/build-root/test-coverage/html"
+            workspace_dir="${WORKSPACE}/build-root/test-coverage-merged/html"
             ;;
         *)
             die "Unknown job: ${JOB_NAME}"
