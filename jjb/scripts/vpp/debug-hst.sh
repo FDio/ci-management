@@ -27,7 +27,7 @@ BUILD_ERROR=""
 RETVAL="0"
 HST_DIR="./extras/hs-test"
 
-vpp_make_build_debug() {
+hst_build_run() {
     if ! make UNATTENDED=yes install-dep ; then
         BUILD_ERROR="FAILED 'make install-dep'"
         return
@@ -40,9 +40,6 @@ vpp_make_build_debug() {
         BUILD_ERROR="FAILED 'make -C $HST_DIR build-debug'"
         return
     fi
-}
-
-hst_test_debug() {
     if ! make VERBOSE=true VPPSRC="$(pwd)" -C "$HST_DIR" test-debug ; then
         BUILD_ERROR="FAILED 'make -C $HST_DIR test-debug'"
         return
@@ -50,8 +47,7 @@ hst_test_debug() {
 }
 
 if [ "${DRYRUN,,}" != "true" ] ; then
-    vpp_make_build_debug
-    hst_test_debug
+    hst_build_run
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
