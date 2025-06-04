@@ -129,7 +129,7 @@ for executor_os_name in $os_names ; do
         cat "$DOCKERFILE"
         echo -e "$line\n"
     else
-        docker build -t "$executor_docker_image" "$DOCKER_BUILD_DIR"
+        docker build --privileged -t "$executor_docker_image" "$DOCKER_BUILD_DIR"
         rm -f "$DOCKERFILE"
         if [ -n "$ci_tag" ] ; then
             ci_image="$repository:$ci_tag"
