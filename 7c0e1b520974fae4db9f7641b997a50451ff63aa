@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd88b7c3_4bf2f2fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-06-05T10:32:16Z",
+      "side": 1,
+      "message": "i will wait if Altra support will pass or not.",
+      "revId": "7c0e1b520974fae4db9f7641b997a50451ff63aa",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
