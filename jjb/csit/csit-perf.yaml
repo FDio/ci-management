@@ -367,9 +367,6 @@
             - 2n-c7gn:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
-            - 3n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -412,9 +409,6 @@
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
             - 2n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
-            - 3n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
             - 3n-snr:
@@ -472,9 +466,6 @@
             - 2n-c7gn:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
-            - 3n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -525,9 +516,6 @@
             - 2n-c7gn:
                 os: 'ubuntu2404'
                 executor-arch: 'aarch64'
-            - 3n-aws:
-                os: 'ubuntu2404'
-                executor-arch: 'x86_64'
             - 3n-snr:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
