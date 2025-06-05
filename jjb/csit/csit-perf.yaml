@@ -355,9 +355,9 @@
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-            - 3n-alt:
-                os: 'ubuntu2404'
-                executor-arch: 'aarch64'
+            # - 3n-alt:
+            #     os: 'ubuntu2404'
+            #     executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -405,9 +405,9 @@
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-            - 3n-alt:
-                os: 'ubuntu2404'
-                executor-arch: 'aarch64'
+            # - 3n-alt:
+            #     os: 'ubuntu2404'
+            #     executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -454,9 +454,9 @@
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-            - 3n-alt:
-                os: 'ubuntu2404'
-                executor-arch: 'aarch64'
+            # - 3n-alt:
+            #     os: 'ubuntu2404'
+            #     executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
@@ -504,9 +504,9 @@
             - 3n-icx:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
-            - 3n-alt:
-                os: 'ubuntu2404'
-                executor-arch: 'aarch64'
+            # - 3n-alt:
+            #     os: 'ubuntu2404'
+            #     executor-arch: 'aarch64'
             - 2n-aws:
                 os: 'ubuntu2404'
                 executor-arch: 'x86_64'
