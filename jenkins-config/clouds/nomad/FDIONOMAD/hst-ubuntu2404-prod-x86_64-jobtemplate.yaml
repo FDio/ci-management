@@ -15,6 +15,7 @@ Job:
             image: fdiotools/builder-ubuntu2404:prod-x86_64
             volumes:
               - /tmp/ccache.ubuntu2404:/scratch/ccache
+              - /var/crash:/var/crash
               - /scratch/nomad:/scratch/nomad:ro
           Resources:
             # Limit scheduling of only 1 job per server by specifying max cpushares and more than half memory
