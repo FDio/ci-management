@@ -54,8 +54,12 @@ hst_test() {
 }
 
 if [ "${DRYRUN,,}" != "true" ] ; then
+    echo "Check for system core files"
+    ls -l /var/cache || true
     vpp_make_build
     hst_test
+    echo "Check for system core files"
+    ls -l /var/cache || truee
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"
