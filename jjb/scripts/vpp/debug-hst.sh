@@ -47,7 +47,11 @@ hst_build_run() {
 }
 
 if [ "${DRYRUN,,}" != "true" ] ; then
+    echo "Check for system core files"
+    ls -l /var/cache | true
     hst_build_run
+    echo "Check for system core files"
+    ls -l /var/cache | true
 fi
 if [ -n "$BUILD_ERROR" ] ; then
     BUILD_RESULT="$BUILD_ERROR"

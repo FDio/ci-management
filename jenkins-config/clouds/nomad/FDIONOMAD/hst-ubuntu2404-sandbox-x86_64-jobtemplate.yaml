@@ -26,6 +26,7 @@ Job:
             image: fdiotools/builder-ubuntu2404:sandbox-x86_64
             volumes:
               - /tmp/ccache.ubuntu2404:/scratch/ccache
+              - /var/crash:/var/crash
               - /scratch/nomad:/scratch/nomad:ro
           Artifacts:
             - GetterSource: https://jenkins.fd.io/sandbox/jnlpJars/slave.jar
