@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe3b389_e4d2f5b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-06-13T15:17:51Z",
+      "side": 1,
+      "message": "Tested during generation of current production docker executor images.",
+      "revId": "7764bdf0c786aaf3fe25a6003b0405da41e44f8b",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
