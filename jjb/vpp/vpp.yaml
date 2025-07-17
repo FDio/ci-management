@@ -39,10 +39,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2410':
-          os: 'ubuntu2204'
-          branch: 'stable/2410'
-          branch-refspec: ''
       - '2502':
           os: 'ubuntu2404'
           branch: 'stable/2502'
@@ -139,9 +135,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2410':
-          branch: 'stable/2410'
-          branch-refspec: ''
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
@@ -165,9 +158,6 @@
     stream:
       - 'master':
           branch: 'master'
-          branch-refspec: ''
-      - '2410':
-          branch: 'stable/2410'
           branch-refspec: ''
       - '2502':
           branch: 'stable/2502'
@@ -273,9 +263,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2410':
-          branch: 'stable/2410'
-          branch-refspec: ''
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
@@ -372,10 +359,6 @@
       - 'master':
           branch: 'master'
           branch-refspec: ''
-      - '2410':
-          branch: 'stable/2410'
-          branch-refspec: ''
-          os: 'ubuntu2204'
       - '2502':
           branch: 'stable/2502'
           branch-refspec: ''
