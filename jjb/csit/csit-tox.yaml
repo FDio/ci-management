@@ -32,7 +32,7 @@
     name: 'csit-verify-tox-{stream}-{os}-{executor-arch}'
 
     project-type: freestyle
-    node: 's-builder-{os}-prod-{executor-arch}'
+    node: 'm-builder-{os}-prod-{executor-arch}'
     concurrent: true
     latest-only: false
 

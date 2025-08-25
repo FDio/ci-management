@@ -1,4 +1,0 @@
----
-templates:
-  - prefix: "m-builder-ubuntu2204-sandbox-x86_64"
-    labels: "m-builder-ubuntu2204-sandbox-x86_64"

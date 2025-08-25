@@ -1,4 +1,0 @@
----
-templates:
-  - prefix: "s-builder-ubuntu2204-prod-aarch64"
-    labels: "s-builder-ubuntu2204-prod-aarch64"
