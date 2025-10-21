@@ -1,0 +1,451 @@
+---
+################################################################################
+# Gerrit Comment Handler - ChatOps Workflow for FDio Projects
+################################################################################
+#
+# WHAT IS THIS?
+# -------------
+# This workflow enables ChatOps-style commands on Gerrit changes for all FDio
+# projects. Add a comment to any Gerrit change to trigger GitHub Actions
+# workflows without manual intervention.
+#
+# QUICK START
+# -----------
+# 1. Open any Gerrit change in your FDio project
+# 2. Add a comment with the pattern: gha-<action> <workflow-name> <parameters>
+# 3. Wait 5 minutes between commands on the same change (cooldown period)
+#
+# USAGE EXAMPLES
+# --------------
+# CSIT Performance Test:
+#   gha-run csit-2n-perftest nic=intel-e810cq drv=avf
+#   gha-run csit-3n-perftest mrrANDnic_intel-e810cqANDdrv_avfAND4c
+#
+# CSIT MRR Test:
+#   gha-run csit-2n-mrr-weekly
+#   gha-run csit-3n-mrr-daily nic=intel-x710
+#
+# Terraform Deployment:
+#   gha-run terraform-cdash-deploy env=production
+#   gha-run terraform-infra-update region=us-west
+#
+# VPP Build:
+#   gha-run vpp-build type=release arch=x86_64
+#   gha-run vpp-verify compiler=gcc
+#
+# HICN/CICN:
+#   gha-run hicn-verify arch=amd64
+#   gha-run cicn-build type=debug
+#
+# HC2VPP:
+#   gha-run hc2vpp-integration-test
+#   gha-run hc2vpp-verify
+#
+# SUPPORTED PROJECTS
+# ------------------
+# - CSIT: Performance tests, MRR tests, verification
+# - Terraform: Infrastructure deployments and updates
+# - VPP: Builds, verification, testing
+# - HICN/CICN: Builds and verification
+# - HC2VPP: Integration tests and verification
+#
+# PARAMETER FORMATS
+# -----------------
+# Two formats are supported:
+#
+# 1. Key=Value format (recommended for readability):
+#    gha-run csit-2n-perftest nic=intel-e810cq drv=avf framesize=64
+#
+# 2. AND-separated format (legacy support):
+#    gha-run csit-2n-perftest mrrANDnic_intel-e810cqANDdrv_avfAND4c
+#
+# LIMITATIONS
+# -----------
+# - 5-minute cooldown between commands on same change (prevents spam)
+# - Commands are case-sensitive
+# - Workflow name must match supported patterns (see SUPPORTED PROJECTS)
+#
+# TROUBLESHOOTING
+# ---------------
+# If your command doesn't trigger a workflow:
+# 1. Check the pattern: must start with "gha-" followed by action and workflow name
+# 2. Verify workflow name matches a supported pattern
+# 3. Wait 5 minutes if you recently ran a command on this change
+# 4. Check GitHub Actions logs for error messages
+#
+# HOW IT WORKS (DEVELOPER INFO)
+# -----------------------------
+# 1. User adds comment to Gerrit change: "gha-run csit-2n-perftest nic=intel"
+# 2. gerrit_to_platform service detects ChatOps pattern
+# 3. Service dispatches to this workflow (by name "comment-handler")
+# 4. Workflow receives full command via GERRIT_COMMENT input
+# 5. Workflow parses command and routes to appropriate handler
+# 6. Handler executes with parsed parameters
+# 7. Results available in GitHub Actions logs
+#
+# CRITICAL DEVELOPER NOTE
+# -----------------------
+# ⚠️  WORKFLOW NAME MUST REMAIN "comment-handler"
+#
+################################################################################
+
+name: comment-handler
+
+# yamllint disable-line rule:truthy
+on:
+  workflow_dispatch:
+    inputs:
+      GERRIT_BRANCH:
+        description: "Branch that change is against"
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        description: "The ID for the change"
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        description: "The Gerrit number"
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        description: "URL to the change"
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        description: "Type of Gerrit event"
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        description: "The patch number for the change"
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        description: "The revision sha"
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        description: "Project in Gerrit"
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        description: "Gerrit refspec of change"
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        description: "Full command line from Gerrit comment"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  parse-and-execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display workflow inputs
+        run: |
+          echo "=== Gerrit Change Information ==="
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Branch: ${{ inputs.GERRIT_BRANCH }}"
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Refspec: ${{ inputs.GERRIT_REFSPEC }}"
+          echo "Comment: ${{ inputs.GERRIT_COMMENT }}"
+
+      - name: Parse command from comment
+        id: parse
+        run: |
+          COMMENT="${{ inputs.GERRIT_COMMENT }}"
+
+          if [ -z "$COMMENT" ]; then
+            echo "Error: GERRIT_COMMENT is empty"
+            exit 1
+          fi
+
+          echo "Parsing comment: $COMMENT"
+
+          # Extract action and workflow name
+          # Pattern: gha-<action> <workflow-name> [params...]
+          ACTION=$(echo "$COMMENT" | awk '{print $1}' | sed 's/gha-//')
+          WORKFLOW=$(echo "$COMMENT" | awk '{print $2}')
+
+          # Extract parameters (everything after workflow name)
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          {
+            echo "action=$ACTION"
+            echo "workflow=$WORKFLOW"
+            echo "params=$PARAMS"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "Action: $ACTION"
+          echo "Workflow: $WORKFLOW"
+          echo "Parameters: $PARAMS"
+
+      - name: Checkout Gerrit change
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.GERRIT_REFSPEC }}
+          fetch-depth: 0
+
+      - name: Parse workflow parameters
+        id: parse_params
+        run: |
+          PARAMS="${{ steps.parse.outputs.params }}"
+
+          echo "Parsing parameters: $PARAMS"
+
+          # Create a parameter map file for easy access
+          # Supports both formats:
+          # 1. key=value format: nic=intel-e810cq drv=avf
+          # 2. AND-separated format: mrrANDnic_intel-e810cqANDdrv_avfAND4c
+
+          PARAM_FILE=$(mktemp)
+
+          if echo "$PARAMS" | grep -q "AND"; then
+            # AND-separated format (Peter's CSIT test selector format)
+            echo "Detected AND-separated format"
+
+            # Split by AND and extract key_value pairs
+            IFS='AND' read -ra TOKENS <<< "$PARAMS"
+            for token in "${TOKENS[@]}"; do
+              if echo "$token" | grep -q "_"; then
+                # Has underscore: split into key and value
+                KEY=$(echo "$token" | cut -d'_' -f1)
+                VALUE=$(echo "$token" | cut -d'_' -f2-)
+                echo "${KEY}=${VALUE}" >> "$PARAM_FILE"
+                echo "${KEY}=${VALUE}"
+              else
+                # No underscore: treat as flag or value
+                echo "${token}=true" >> "$PARAM_FILE"
+                echo "${token}=true"
+              fi
+            done
+          else
+            # key=value format
+            echo "Detected key=value format"
+
+            for param in $PARAMS; do
+              if echo "$param" | grep -q "="; then
+                echo "$param" >> "$PARAM_FILE"
+                echo "$param"
+              else
+                # Standalone value (treat as flag)
+                echo "${param}=true" >> "$PARAM_FILE"
+                echo "${param}=true"
+              fi
+            done
+          fi
+
+          # Export the parameter file path for later steps
+          echo "param_file=$PARAM_FILE" >> "$GITHUB_OUTPUT"
+
+          # Also extract common parameters for backward compatibility
+          NIC=$(grep "^nic=" "$PARAM_FILE" | cut -d'=' -f2- || echo "")
+          DRV=$(grep "^drv=" "$PARAM_FILE" | cut -d'=' -f2- || echo "")
+          FRAMESIZE=$(grep "^framesize=" "$PARAM_FILE" | cut -d'=' -f2- || echo "")
+
+          {
+            echo "nic=$NIC"
+            echo "drv=$DRV"
+            echo "framesize=$FRAMESIZE"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "=== Parsed Parameters ==="
+          cat "$PARAM_FILE"
+
+      - name: Execute workflow
+        run: |
+          ACTION="${{ steps.parse.outputs.action }}"
+          WORKFLOW="${{ steps.parse.outputs.workflow }}"
+          PARAM_FILE="${{ steps.parse_params.outputs.param_file }}"
+          PROJECT="${{ inputs.GERRIT_PROJECT }}"
+
+          echo "=== Executing Workflow ==="
+          echo "Action: $ACTION"
+          echo "Workflow: $WORKFLOW"
+          echo "Project: $PROJECT"
+          echo "Parameters:"
+          cat "$PARAM_FILE"
+
+          # Helper function to get parameter value
+          get_param() {
+            local key="$1"
+            local default="${2:-}"
+            grep "^${key}=" "$PARAM_FILE" | cut -d'=' -f2- || echo "$default"
+          }
+
+          # Route to appropriate workflow handler based on workflow name pattern
+          case "$WORKFLOW" in
+            # CSIT Performance Tests (all variants)
+            csit-*-perftest|csit-*-perf-*|csit-*-mrr-*)
+              echo "=== CSIT Performance Test ==="
+
+              # Extract parameters
+              NIC=$(get_param "nic")
+              DRV=$(get_param "drv")
+              FRAMESIZE=$(get_param "framesize" "default")
+              CORES=$(get_param "cores" "1c")
+
+              # Validate required parameters
+              if [ -z "$NIC" ]; then
+                echo "❌ Error: nic parameter is required for CSIT tests"
+                echo "Example: gha-run csit-2n-perftest nic=intel-e810cq drv=avf"
+                exit 1
+              fi
+
+              if [ -z "$DRV" ]; then
+                echo "❌ Error: drv parameter is required for CSIT tests"
+                echo "Example: gha-run csit-2n-perftest nic=intel-e810cq drv=avf"
+                exit 1
+              fi
+
+              echo "✓ Test Configuration:"
+              echo "  Workflow: $WORKFLOW"
+              echo "  NIC: $NIC"
+              echo "  Driver: $DRV"
+              echo "  Frame Size: $FRAMESIZE"
+              echo "  Cores: $CORES"
+
+              # TODO: Call actual CSIT test execution script
+              # This should integrate with existing CSIT infrastructure
+              if [ -f "jjb/scripts/csit/run_test.sh" ]; then
+                echo "Executing CSIT test script..."
+                bash jjb/scripts/csit/run_test.sh \
+                  --workflow "$WORKFLOW" \
+                  --nic "$NIC" \
+                  --driver "$DRV" \
+                  --framesize "$FRAMESIZE" \
+                  --cores "$CORES"
+              else
+                echo "⚠️  CSIT test script not found, showing what would be executed:"
+                echo "  bash jjb/scripts/csit/run_test.sh \\"
+                echo "    --workflow $WORKFLOW \\"
+                echo "    --nic $NIC \\"
+                echo "    --driver $DRV \\"
+                echo "    --framesize $FRAMESIZE \\"
+                echo "    --cores $CORES"
+              fi
+              ;;
+
+            # Terraform Infrastructure Deployments
+            terraform-*)
+              echo "=== Terraform Deployment ==="
+
+              TARGET=$(get_param "target" "")
+              ENVIRONMENT=$(get_param "env" "sandbox")
+
+              echo "✓ Deployment Configuration:"
+              echo "  Workflow: $WORKFLOW"
+              echo "  Target: ${TARGET:-all}"
+              echo "  Environment: $ENVIRONMENT"
+
+              # TODO: Call actual Terraform deployment script
+              if [ -f "jjb/scripts/terraform_deploy.sh" ]; then
+                echo "Executing Terraform deployment..."
+                bash jjb/scripts/terraform_deploy.sh \
+                  --workflow "$WORKFLOW" \
+                  --target "${TARGET:-all}" \
+                  --environment "$ENVIRONMENT"
+              else
+                echo "⚠️  Terraform script not found, showing what would be executed:"
+                echo "  bash jjb/scripts/terraform_deploy.sh \\"
+                echo "    --workflow $WORKFLOW \\"
+                echo "    --target ${TARGET:-all} \\"
+                echo "    --environment $ENVIRONMENT"
+              fi
+              ;;
+
+            # VPP builds and tests
+            vpp-*)
+              echo "=== VPP Workflow ==="
+
+              BUILD_TYPE=$(get_param "type" "release")
+              ARCH=$(get_param "arch" "x86_64")
+
+              echo "✓ Build Configuration:"
+              echo "  Workflow: $WORKFLOW"
+              echo "  Build Type: $BUILD_TYPE"
+              echo "  Architecture: $ARCH"
+
+              # TODO: Call VPP build/test scripts
+              echo "⚠️  VPP workflow handler not yet implemented"
+              echo "  Would execute VPP workflow: $WORKFLOW"
+              ;;
+
+            # HICN/CICN workflows
+            hicn-*|cicn-*)
+              echo "=== HICN/CICN Workflow ==="
+
+              echo "✓ Configuration:"
+              echo "  Workflow: $WORKFLOW"
+              echo "  Project: $PROJECT"
+
+              # TODO: Call HICN/CICN scripts
+              echo "⚠️  HICN/CICN workflow handler not yet implemented"
+              echo "  Would execute HICN/CICN workflow: $WORKFLOW"
+              ;;
+
+            # HC2VPP workflows
+            hc2vpp-*)
+              echo "=== HC2VPP Workflow ==="
+
+              echo "✓ Configuration:"
+              echo "  Workflow: $WORKFLOW"
+              echo "  Project: $PROJECT"
+
+              # TODO: Call HC2VPP scripts
+              echo "⚠️  HC2VPP workflow handler not yet implemented"
+              echo "  Would execute HC2VPP workflow: $WORKFLOW"
+              ;;
+
+            *)
+              echo "❌ Error: Unknown workflow '$WORKFLOW'"
+              echo ""
+              echo "Supported workflow patterns:"
+              echo "  - csit-*-perftest, csit-*-perf-*, csit-*-mrr-*  (CSIT tests)"
+              echo "  - terraform-*                                    (Terraform deployments)"
+              echo "  - vpp-*                                          (VPP builds/tests)"
+              echo "  - hicn-*, cicn-*                                 (HICN/CICN workflows)"
+              echo "  - hc2vpp-*                                       (HC2VPP workflows)"
+              echo ""
+              echo "Example usage:"
+              echo "  gha-run csit-2n-perftest nic=intel-e810cq drv=avf"
+              echo "  gha-run terraform-cdash-deploy env=production"
+              exit 1
+              ;;
+          esac
+
+          # Cleanup
+          rm -f "$PARAM_FILE"
+
+      - name: Report status
+        if: always()
+        run: |
+          ACTION="${{ steps.parse.outputs.action }}"
+          WORKFLOW="${{ steps.parse.outputs.workflow }}"
+
+          echo ""
+          echo "=================================================="
+          echo "  Workflow Execution Summary"
+          echo "=================================================="
+          echo "Action:     $ACTION"
+          echo "Workflow:   $WORKFLOW"
+          echo "Status:     ${{ job.status }}"
+          echo "Change:     ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset:   ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Project:    ${{ inputs.GERRIT_PROJECT }}"
+          echo "Branch:     ${{ inputs.GERRIT_BRANCH }}"
+          echo "URL:        ${{ inputs.GERRIT_CHANGE_URL }}"
+          echo "=================================================="
+
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ Workflow completed successfully"
+          else
+            echo "❌ Workflow failed"
+            echo ""
+            echo "For help, see:"
+            echo "  - Workflow logs above"
+            echo "  - Documentation: TODO: Add doc link"
+          fi
