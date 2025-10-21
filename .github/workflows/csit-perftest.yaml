@@ -1,0 +1,191 @@
+---
+# csit-perftest.yaml
+#
+# CSIT Performance Test - Tier 2 Callable Workflow
+# Triggered by gerrit-comment-handler.yaml switchboard
+#
+# Command: gha-run csit-perftest
+#
+# This workflow demonstrates the Tier 2 pattern:
+# - Accepts GERRIT_* inputs from switchboard
+# - Handles own Gerrit status posting
+# - Implements security best practices
+# - Follows LF Releng standards
+
+name: CSIT Performance Test
+
+on:
+  workflow_call:
+    inputs:
+      GERRIT_BRANCH:
+        description: "Branch that change is against"
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        description: "Gerrit change ID"
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        description: "Gerrit change number"
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        description: "Gerrit change URL"
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        description: "Gerrit event type"
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        description: "Gerrit patchset number"
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        description: "Gerrit patchset SHA"
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        description: "Project in Gerrit"
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        description: "Gerrit refspec of change"
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        description: "Full command line from Gerrit comment"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: csit-perftest-${{ inputs.GERRIT_CHANGE_NUMBER }}-${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Setup and Parse Parameters
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      test-tags: ${{ steps.parse.outputs.test-tags }}
+      test-suite: ${{ steps.parse.outputs.test-suite }}
+    steps:
+      - name: Parse test parameters
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Security: Store input in environment variable to prevent command injection
+          # Extract optional parameters from comment
+
+          # Default values
+          TEST_TAGS="mrr"
+          TEST_SUITE="performance"
+
+          # Parse parameters if provided
+          # Format: gha-run csit-perftest [tags=X] [suite=Y]
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          if [[ -n "$PARAMS" ]]; then
+            for param in $PARAMS; do
+              if [[ "$param" =~ ^tags=([a-zA-Z0-9_-]+)$ ]]; then
+                TEST_TAGS="${BASH_REMATCH[1]}"
+              elif [[ "$param" =~ ^suite=([a-zA-Z0-9_-]+)$ ]]; then
+                TEST_SUITE="${BASH_REMATCH[1]}"
+              fi
+            done
+          fi
+
+          echo "test-tags=$TEST_TAGS" >> "$GITHUB_OUTPUT"
+          echo "test-suite=$TEST_SUITE" >> "$GITHUB_OUTPUT"
+          echo "Parsed parameters: tags=$TEST_TAGS suite=$TEST_SUITE"
+
+  test:
+    name: CSIT Performance Test
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Placeholder timeout. Adjust based on actual CSIT test duration in production.
+    steps:
+      - name: Notify Gerrit - Starting
+        run: |
+          echo "🚀 CSIT Performance Test Starting"
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}/${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Branch: ${{ inputs.GERRIT_BRANCH }}"
+          echo "Test Tags: ${{ needs.setup.outputs.test-tags }}"
+          echo "Test Suite: ${{ needs.setup.outputs.test-suite }}"
+          echo ""
+          echo "⚠️  Note: Gerrit status posting will be implemented using lfreleng-actions"
+          echo "For now, this demonstrates the workflow pattern"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+          fetch-depth: 0
+
+      - name: Display test environment
+        run: |
+          echo "=== Test Environment ==="
+          echo "OS: $(uname -a)"
+          echo "Python: $(python3 --version)"
+          echo "Git: $(git --version)"
+          echo ""
+          echo "=== Gerrit Context ==="
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Branch: ${{ inputs.GERRIT_BRANCH }}"
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Revision: ${{ inputs.GERRIT_PATCHSET_REVISION }}"
+          echo "RefSpec: ${{ inputs.GERRIT_REFSPEC }}"
+
+      - name: Placeholder - Run CSIT tests
+        run: |
+          echo "=== CSIT Performance Test Execution ==="
+          echo "This is a placeholder demonstrating the workflow pattern"
+          echo ""
+          echo "In production, this step would:"
+          echo "  1. Set up test environment"
+          echo "  2. Install dependencies"
+          echo "  3. Configure test parameters"
+          echo "  4. Execute CSIT performance tests"
+          echo "  5. Collect results"
+          echo ""
+          echo "Test Configuration:"
+          echo "  Tags: ${{ needs.setup.outputs.test-tags }}"
+          echo "  Suite: ${{ needs.setup.outputs.test-suite }}"
+          echo ""
+          echo "✅ Placeholder test completed successfully"
+
+      - name: Notify Gerrit - Success
+        if: success()
+        run: |
+          echo "✅ CSIT Performance Test PASSED"
+          echo ""
+          echo "⚠️  Note: In production, this would use lfreleng-actions/gerrit-verify"
+          echo "to post success status and vote +1 Verified to Gerrit"
+          echo ""
+          echo "Example:"
+          echo "  uses: lfreleng-actions/gerrit-verify@<SHA>"
+          echo "  with:"
+          echo "    gerrit-server: gerrit.fd.io"
+          echo "    gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "    vote-verified: 1"
+
+      - name: Notify Gerrit - Failure
+        if: failure()
+        run: |
+          echo "❌ CSIT Performance Test FAILED"
+          echo ""
+          echo "⚠️  Note: In production, this would use lfreleng-actions/gerrit-verify"
+          echo "to post failure status and vote -1 Verified to Gerrit"
+          echo ""
+          echo "Example:"
+          echo "  uses: lfreleng-actions/gerrit-verify@<SHA>"
+          echo "  with:"
+          echo "    gerrit-server: gerrit.fd.io"
+          echo "    gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "    vote-verified: -1"

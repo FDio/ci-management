@@ -1,0 +1,220 @@
+---
+name: Terraform Deploy
+
+# Tier 2 Callable Workflow - Terraform Deployment
+# Triggered by gerrit-comment-handler.yaml switchboard
+# Command: gha-run terraform-deploy [parameters]
+
+on:
+  workflow_call:
+    inputs:
+      GERRIT_BRANCH:
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        required: true
+        type: string
+        description: "Full comment text for parameter parsing"
+
+# Cancel in-progress runs when new workflow triggered on same patchset
+concurrency:
+  group: terraform-deploy-${{ inputs.GERRIT_CHANGE_NUMBER }}-${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    name: Setup and Parse Parameters
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      environment: ${{ steps.parse.outputs.environment }}
+      plan_only: ${{ steps.parse.outputs.plan_only }}
+      workspace: ${{ steps.parse.outputs.workspace }}
+    steps:
+      - name: Parse Terraform parameters
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Extract parameters from comment (format: gha-run terraform-deploy env=prod plan_only=true)
+          # Security: Comment stored in env variable, not directly expanded
+
+          # Default values
+          ENVIRONMENT="dev"
+          PLAN_ONLY="false"
+          WORKSPACE="default"
+
+          # Extract parameters after workflow name (skip "gha-run terraform-deploy")
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          if [ -n "$PARAMS" ]; then
+            # Parse each parameter
+            for param in $PARAMS; do
+              # Validate parameter format (key=value)
+              if [[ ! "$param" =~ ^[a-zA-Z0-9_-]+(=[a-zA-Z0-9_-]+)?$ ]]; then
+                echo "❌ ERROR: Invalid parameter format: $param" >&2
+                exit 1
+              fi
+
+              # Extract key and value
+              KEY=$(echo "$param" | cut -d'=' -f1)
+              VALUE=$(echo "$param" | cut -d'=' -f2)
+
+              case "$KEY" in
+                env|environment)
+                  ENVIRONMENT="$VALUE"
+                  ;;
+                plan_only)
+                  PLAN_ONLY="$VALUE"
+                  ;;
+                workspace)
+                  WORKSPACE="$VALUE"
+                  ;;
+                *)
+                  echo "⚠️  WARNING: Unknown parameter: $KEY" >&2
+                  ;;
+              esac
+            done
+          fi
+
+          # Set outputs
+          {
+            echo "environment=$ENVIRONMENT"
+            echo "plan_only=$PLAN_ONLY"
+            echo "workspace=$WORKSPACE"
+          } >> "$GITHUB_OUTPUT"
+
+          # Log parsed parameters
+          echo "Parsed parameters:"
+          echo "  environment=$ENVIRONMENT"
+          echo "  plan_only=$PLAN_ONLY"
+          echo "  workspace=$WORKSPACE"
+
+  deploy:
+    name: Terraform Deployment
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Placeholder timeout. Adjust based on actual deployment duration in production.
+    steps:
+      - name: Report workflow start to Gerrit
+        run: |
+          echo "🚀 Terraform Deploy workflow started"
+          echo "Environment: ${{ needs.setup.outputs.environment }}"
+          echo "Plan Only: ${{ needs.setup.outputs.plan_only }}"
+          echo "Workspace: ${{ needs.setup.outputs.workspace }}"
+          echo ""
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Revision: ${{ inputs.GERRIT_PATCHSET_REVISION }}"
+
+          # TODO: Post status to Gerrit using LF Releng action
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     comment: "Terraform deployment started"
+
+      - name: Checkout Gerrit change
+        run: |
+          echo "📥 Checking out change from Gerrit"
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Refspec: ${{ inputs.GERRIT_REFSPEC }}"
+
+          # TODO: Use LF Releng checkout action
+          # - uses: lfit/releng-reusable-workflows/gerrit-checkout-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-project: ${{ inputs.GERRIT_PROJECT }}
+          #     gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
+
+      - name: Setup Terraform
+        run: |
+          echo "🔧 Setting up Terraform"
+          echo "Environment: ${{ needs.setup.outputs.environment }}"
+          echo "Workspace: ${{ needs.setup.outputs.workspace }}"
+
+          # TODO: Install Terraform
+          # - uses: hashicorp/setup-terraform@v3
+          #   with:
+          #     terraform_version: 1.6.0
+
+      - name: Terraform Init
+        run: |
+          echo "📦 Initializing Terraform"
+
+          # TODO: Run terraform init
+          # terraform init -backend-config="environment=${{ needs.setup.outputs.environment }}"
+
+      - name: Terraform Plan
+        run: |
+          echo "📋 Running Terraform plan"
+
+          # TODO: Run terraform plan
+          # terraform plan -out=tfplan -var-file="${{ needs.setup.outputs.environment }}.tfvars"
+
+      - name: Terraform Apply
+        if: needs.setup.outputs.plan_only != 'true'
+        run: |
+          echo "🚀 Applying Terraform changes"
+
+          # TODO: Run terraform apply
+          # terraform apply -auto-approve tfplan
+
+      - name: Report success to Gerrit
+        if: success()
+        run: |
+          echo "✅ Terraform deployment completed successfully"
+
+          # TODO: Post success to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: +1
+          #     comment: "Terraform deployment successful"
+
+      - name: Report failure to Gerrit
+        if: failure()
+        run: |
+          echo "❌ Terraform deployment failed"
+
+          # TODO: Post failure to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: -1
+          #     comment: "Terraform deployment failed"

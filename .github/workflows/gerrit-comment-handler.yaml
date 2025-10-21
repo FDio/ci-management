@@ -1,0 +1,197 @@
+---
+# gerrit-comment-handler.yaml
+#
+# ChatOps Switchboard - Routes Gerrit comment commands to workflows
+# Filename must contain "comment-handler" for gerrit_to_platform discovery
+#
+# For usage documentation, see: .github/GERRIT-CHATOPS.md
+# For developer guide, see: .github/DEVELOPER-GUIDE.md
+
+name: Gerrit Comment Handler
+
+on:
+  workflow_dispatch:
+    inputs:
+      GERRIT_BRANCH:
+        description: "Branch that change is against"
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        description: "Gerrit change ID"
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        description: "Gerrit change number"
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        description: "Gerrit change URL"
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        description: "Gerrit event type"
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        description: "Gerrit patchset number"
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        description: "Gerrit patchset SHA"
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        description: "Project in Gerrit"
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        description: "Gerrit refspec of change"
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        description: "Full command line from Gerrit comment"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ inputs.GERRIT_CHANGE_NUMBER }}
+  cancel-in-progress: true
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      workflow: ${{ steps.parse.outputs.workflow }}
+    steps:
+      - name: Parse command securely
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Security: Store input in environment variable to prevent command injection
+          # Reference: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions
+
+          # Validate command format
+          if [[ ! "$COMMENT" =~ ^gha-run[[:space:]] ]]; then
+            echo "❌ ERROR: Invalid command format" >&2
+            echo ""
+            echo "Expected: gha-run <workflow-name>" >&2
+            echo "Received: $COMMENT" >&2
+            echo ""
+            echo "See .github/GERRIT-CHATOPS.md for usage" >&2
+            exit 1
+          fi
+
+          # Extract workflow name safely
+          WORKFLOW=$(echo "$COMMENT" | awk '{print $2}')
+
+          # Validate workflow name against allowlist
+          case "$WORKFLOW" in
+            csit-perftest|terraform-deploy|vpp-build|hicn-test|hc2vpp-test)
+              echo "workflow=$WORKFLOW" >> "$GITHUB_OUTPUT"
+              echo "✅ Routing to workflow: $WORKFLOW"
+              ;;
+            *)
+              echo "❌ ERROR: Unknown workflow '$WORKFLOW'" >&2
+              echo ""
+              echo "Available workflows:" >&2
+              echo "  - csit-perftest" >&2
+              echo "  - terraform-deploy" >&2
+              echo "  - vpp-build" >&2
+              echo "  - hicn-test" >&2
+              echo "  - hc2vpp-test" >&2
+              echo ""
+              echo "Usage: gha-run <workflow-name>" >&2
+              echo "See .github/GERRIT-CHATOPS.md for details" >&2
+              exit 1
+              ;;
+          esac
+
+  call-csit-perftest:
+    needs: parse
+    if: needs.parse.outputs.workflow == 'csit-perftest'
+    uses: ./.github/workflows/csit-perftest.yaml
+    secrets: inherit
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      GERRIT_COMMENT: ${{ inputs.GERRIT_COMMENT }}
+
+  call-terraform-deploy:
+    needs: parse
+    if: needs.parse.outputs.workflow == 'terraform-deploy'
+    uses: ./.github/workflows/terraform-deploy.yaml
+    secrets: inherit
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      GERRIT_COMMENT: ${{ inputs.GERRIT_COMMENT }}
+
+  call-vpp-build:
+    needs: parse
+    if: needs.parse.outputs.workflow == 'vpp-build'
+    uses: ./.github/workflows/vpp-build.yaml
+    secrets: inherit
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      GERRIT_COMMENT: ${{ inputs.GERRIT_COMMENT }}
+
+  call-hicn-test:
+    needs: parse
+    if: needs.parse.outputs.workflow == 'hicn-test'
+    uses: ./.github/workflows/hicn-test.yaml
+    secrets: inherit
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      GERRIT_COMMENT: ${{ inputs.GERRIT_COMMENT }}
+
+  call-hc2vpp-test:
+    needs: parse
+    if: needs.parse.outputs.workflow == 'hc2vpp-test'
+    uses: ./.github/workflows/hc2vpp-test.yaml
+    secrets: inherit
+    with:
+      GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
+      GERRIT_CHANGE_ID: ${{ inputs.GERRIT_CHANGE_ID }}
+      GERRIT_CHANGE_NUMBER: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+      GERRIT_CHANGE_URL: ${{ inputs.GERRIT_CHANGE_URL }}
+      GERRIT_EVENT_TYPE: ${{ inputs.GERRIT_EVENT_TYPE }}
+      GERRIT_PATCHSET_NUMBER: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+      GERRIT_PATCHSET_REVISION: ${{ inputs.GERRIT_PATCHSET_REVISION }}
+      GERRIT_PROJECT: ${{ inputs.GERRIT_PROJECT }}
+      GERRIT_REFSPEC: ${{ inputs.GERRIT_REFSPEC }}
+      GERRIT_COMMENT: ${{ inputs.GERRIT_COMMENT }}

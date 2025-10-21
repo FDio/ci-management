@@ -1,0 +1,227 @@
+---
+name: HICN Test
+
+# Tier 2 Callable Workflow - HICN Testing
+# Triggered by gerrit-comment-handler.yaml switchboard
+# Command: gha-run hicn-test [parameters]
+
+on:
+  workflow_call:
+    inputs:
+      GERRIT_BRANCH:
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        required: true
+        type: string
+        description: "Full comment text for parameter parsing"
+
+# Cancel in-progress runs when new workflow triggered on same patchset
+concurrency:
+  group: hicn-test-${{ inputs.GERRIT_CHANGE_NUMBER }}-${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      test_suite: ${{ steps.parse.outputs.test_suite }}
+      test_type: ${{ steps.parse.outputs.test_type }}
+      verbose: ${{ steps.parse.outputs.verbose }}
+    steps:
+      - name: Parse HICN test parameters
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Extract parameters from comment (format: gha-run hicn-test suite=functional type=unit)
+          # Security: Comment stored in env variable, not directly expanded
+
+          # Default values
+          TEST_SUITE="all"
+          TEST_TYPE="functional"
+          VERBOSE="false"
+
+          # Extract parameters after workflow name (skip "gha-run hicn-test")
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          if [ -n "$PARAMS" ]; then
+            # Parse each parameter
+            for param in $PARAMS; do
+              # Validate parameter format (key=value)
+              if [[ ! "$param" =~ ^[a-zA-Z0-9_-]+(=[a-zA-Z0-9_-]+)?$ ]]; then
+                echo "❌ ERROR: Invalid parameter format: $param" >&2
+                exit 1
+              fi
+
+              # Extract key and value
+              KEY=$(echo "$param" | cut -d'=' -f1)
+              VALUE=$(echo "$param" | cut -d'=' -f2)
+
+              case "$KEY" in
+                suite|test_suite)
+                  TEST_SUITE="$VALUE"
+                  ;;
+                type|test_type)
+                  TEST_TYPE="$VALUE"
+                  ;;
+                verbose)
+                  VERBOSE="$VALUE"
+                  ;;
+                *)
+                  echo "⚠️  WARNING: Unknown parameter: $KEY" >&2
+                  ;;
+              esac
+            done
+          fi
+
+          # Set outputs
+          {
+            echo "test_suite=$TEST_SUITE"
+            echo "test_type=$TEST_TYPE"
+            echo "verbose=$VERBOSE"
+          } >> "$GITHUB_OUTPUT"
+
+          # Log parsed parameters
+          echo "Parsed parameters:"
+          echo "  test_suite=$TEST_SUITE"
+          echo "  test_type=$TEST_TYPE"
+          echo "  verbose=$VERBOSE"
+
+  test:
+    name: HICN Test
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Placeholder timeout. Adjust based on actual HICN test duration in production.
+    steps:
+      - name: Report workflow start to Gerrit
+        run: |
+          echo "🚀 HICN Test workflow started"
+          echo "Test Suite: ${{ needs.setup.outputs.test_suite }}"
+          echo "Test Type: ${{ needs.setup.outputs.test_type }}"
+          echo "Verbose: ${{ needs.setup.outputs.verbose }}"
+          echo ""
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Revision: ${{ inputs.GERRIT_PATCHSET_REVISION }}"
+
+          # TODO: Post status to Gerrit using LF Releng action
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     comment: "HICN tests started"
+
+      - name: Checkout Gerrit change
+        run: |
+          echo "📥 Checking out change from Gerrit"
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Refspec: ${{ inputs.GERRIT_REFSPEC }}"
+
+          # TODO: Use LF Releng checkout action
+          # - uses: lfit/releng-reusable-workflows/gerrit-checkout-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-project: ${{ inputs.GERRIT_PROJECT }}
+          #     gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
+
+      - name: Install HICN dependencies
+        run: |
+          echo "📦 Installing HICN dependencies"
+
+          # TODO: Install HICN test dependencies
+          # Reference existing scripts if available
+          # Install testing frameworks, libraries
+
+      - name: Build HICN
+        run: |
+          echo "🔨 Building HICN"
+
+          # TODO: Build HICN components
+          # mkdir build && cd build
+          # cmake ..
+          # make
+
+      - name: Run HICN tests
+        run: |
+          echo "🧪 Running HICN tests"
+          echo "Suite: ${{ needs.setup.outputs.test_suite }}"
+          echo "Type: ${{ needs.setup.outputs.test_type }}"
+
+          # TODO: Execute HICN test suite
+          # cd build
+          # ctest --output-on-failure
+          # OR run specific test suite based on parameters
+
+      - name: Collect test results
+        if: always()
+        run: |
+          echo "📊 Collecting HICN test results"
+
+          # TODO: Collect and parse test results
+          # - uses: actions/upload-artifact@v4
+          #   with:
+          #     name: hicn-test-results-${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     path: build/Testing/
+          #     retention-days: 7
+
+      - name: Report success to Gerrit
+        if: success()
+        run: |
+          echo "✅ HICN tests completed successfully"
+
+          # TODO: Post success to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: +1
+          #     comment: "HICN tests passed (${{ needs.setup.outputs.test_suite }})"
+
+      - name: Report failure to Gerrit
+        if: failure()
+        run: |
+          echo "❌ HICN tests failed"
+
+          # TODO: Post failure to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: -1
+          #     comment: "HICN tests failed"
