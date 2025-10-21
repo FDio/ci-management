@@ -1,0 +1,225 @@
+---
+name: VPP Build
+
+# Tier 2 Callable Workflow - VPP Build and Test
+# Triggered by gerrit-comment-handler.yaml switchboard
+# Command: gha-run vpp-build [parameters]
+
+on:
+  workflow_call:
+    inputs:
+      GERRIT_BRANCH:
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        required: true
+        type: string
+        description: "Full comment text for parameter parsing"
+
+# Cancel in-progress runs when new workflow triggered on same patchset
+concurrency:
+  group: vpp-build-${{ inputs.GERRIT_CHANGE_NUMBER }}-${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      build_type: ${{ steps.parse.outputs.build_type }}
+      target_arch: ${{ steps.parse.outputs.target_arch }}
+      run_tests: ${{ steps.parse.outputs.run_tests }}
+    steps:
+      - name: Parse VPP build parameters
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Extract parameters from comment (format: gha-run vpp-build type=debug arch=x86_64)
+          # Security: Comment stored in env variable, not directly expanded
+
+          # Default values
+          BUILD_TYPE="release"
+          TARGET_ARCH="x86_64"
+          RUN_TESTS="true"
+
+          # Extract parameters after workflow name (skip "gha-run vpp-build")
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          if [ -n "$PARAMS" ]; then
+            # Parse each parameter
+            for param in $PARAMS; do
+              # Validate parameter format (key=value)
+              if [[ ! "$param" =~ ^[a-zA-Z0-9_-]+(=[a-zA-Z0-9_-]+)?$ ]]; then
+                echo "❌ ERROR: Invalid parameter format: $param" >&2
+                exit 1
+              fi
+
+              # Extract key and value
+              KEY=$(echo "$param" | cut -d'=' -f1)
+              VALUE=$(echo "$param" | cut -d'=' -f2)
+
+              case "$KEY" in
+                type|build_type)
+                  BUILD_TYPE="$VALUE"
+                  ;;
+                arch|target_arch)
+                  TARGET_ARCH="$VALUE"
+                  ;;
+                tests|run_tests)
+                  RUN_TESTS="$VALUE"
+                  ;;
+                *)
+                  echo "⚠️  WARNING: Unknown parameter: $KEY" >&2
+                  ;;
+              esac
+            done
+          fi
+
+          # Set outputs
+          echo "build_type=$BUILD_TYPE" >> $GITHUB_OUTPUT
+          echo "target_arch=$TARGET_ARCH" >> $GITHUB_OUTPUT
+          echo "run_tests=$RUN_TESTS" >> $GITHUB_OUTPUT
+
+          # Log parsed parameters
+          echo "Parsed parameters:"
+          echo "  build_type=$BUILD_TYPE"
+          echo "  target_arch=$TARGET_ARCH"
+          echo "  run_tests=$RUN_TESTS"
+
+  build:
+    name: VPP Build and Test
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Placeholder timeout. Adjust based on actual VPP build duration in production.
+    steps:
+      - name: Report workflow start to Gerrit
+        run: |
+          echo "🚀 VPP Build workflow started"
+          echo "Build Type: ${{ needs.setup.outputs.build_type }}"
+          echo "Target Arch: ${{ needs.setup.outputs.target_arch }}"
+          echo "Run Tests: ${{ needs.setup.outputs.run_tests }}"
+          echo ""
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Revision: ${{ inputs.GERRIT_PATCHSET_REVISION }}"
+
+          # TODO: Post status to Gerrit using LF Releng action
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     comment: "VPP build started"
+
+      - name: Checkout Gerrit change
+        run: |
+          echo "📥 Checking out change from Gerrit"
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Refspec: ${{ inputs.GERRIT_REFSPEC }}"
+
+          # TODO: Use LF Releng checkout action
+          # - uses: lfit/releng-reusable-workflows/gerrit-checkout-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-project: ${{ inputs.GERRIT_PROJECT }}
+          #     gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
+
+      - name: Install VPP build dependencies
+        run: |
+          echo "📦 Installing VPP build dependencies"
+
+          # TODO: Install dependencies from scripts/
+          # Reference existing scripts in docker/scripts/
+          # - source docker/scripts/lib_vpp.sh
+          # - dbld_vpp_install_packages
+
+      - name: Build VPP
+        run: |
+          echo "🔨 Building VPP"
+          echo "Build type: ${{ needs.setup.outputs.build_type }}"
+          echo "Architecture: ${{ needs.setup.outputs.target_arch }}"
+
+          # TODO: Run VPP build
+          # make build
+          # make build-release (if release)
+          # make pkg-deb (for packages)
+
+      - name: Run VPP tests
+        if: needs.setup.outputs.run_tests == 'true'
+        run: |
+          echo "🧪 Running VPP tests"
+
+          # TODO: Run VPP test suite
+          # make test
+          # make test-debug (if debug build)
+
+      - name: Archive build artifacts
+        run: |
+          echo "📦 Archiving VPP build artifacts"
+
+          # TODO: Upload artifacts
+          # - uses: actions/upload-artifact@v4
+          #   with:
+          #     name: vpp-build-${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     path: build-root/*.deb
+          #     retention-days: 7
+
+      - name: Report success to Gerrit
+        if: success()
+        run: |
+          echo "✅ VPP build completed successfully"
+
+          # TODO: Post success to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: +1
+          #     comment: "VPP build successful (${{ needs.setup.outputs.build_type }})"
+
+      - name: Report failure to Gerrit
+        if: failure()
+        run: |
+          echo "❌ VPP build failed"
+
+          # TODO: Post failure to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: -1
+          #     comment: "VPP build failed"

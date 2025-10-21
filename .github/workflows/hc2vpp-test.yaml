@@ -1,0 +1,230 @@
+---
+name: HC2VPP Test
+
+# Tier 2 Callable Workflow - HC2VPP Testing
+# Triggered by gerrit-comment-handler.yaml switchboard
+# Command: gha-run hc2vpp-test [parameters]
+
+on:
+  workflow_call:
+    inputs:
+      GERRIT_BRANCH:
+        required: true
+        type: string
+      GERRIT_CHANGE_ID:
+        required: true
+        type: string
+      GERRIT_CHANGE_NUMBER:
+        required: true
+        type: string
+      GERRIT_CHANGE_URL:
+        required: true
+        type: string
+      GERRIT_EVENT_TYPE:
+        required: true
+        type: string
+      GERRIT_PATCHSET_NUMBER:
+        required: true
+        type: string
+      GERRIT_PATCHSET_REVISION:
+        required: true
+        type: string
+      GERRIT_PROJECT:
+        required: true
+        type: string
+      GERRIT_REFSPEC:
+        required: true
+        type: string
+      GERRIT_COMMENT:
+        required: true
+        type: string
+        description: "Full comment text for parameter parsing"
+
+# Cancel in-progress runs when new workflow triggered on same patchset
+concurrency:
+  group: hc2vpp-test-${{ inputs.GERRIT_CHANGE_NUMBER }}-${{ inputs.GERRIT_PATCHSET_NUMBER }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    name: Setup Environment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5  # Lightweight parsing should complete quickly. Adjust if needed.
+    outputs:
+      test_suite: ${{ steps.parse.outputs.test_suite }}
+      test_type: ${{ steps.parse.outputs.test_type }}
+      vpp_version: ${{ steps.parse.outputs.vpp_version }}
+    steps:
+      - name: Parse HC2VPP test parameters
+        id: parse
+        env:
+          COMMENT: ${{ inputs.GERRIT_COMMENT }}
+        run: |
+          # Extract parameters from comment (format: gha-run hc2vpp-test suite=integration vpp=stable)
+          # Security: Comment stored in env variable, not directly expanded
+
+          # Default values
+          TEST_SUITE="integration"
+          TEST_TYPE="functional"
+          VPP_VERSION="stable"
+
+          # Extract parameters after workflow name (skip "gha-run hc2vpp-test")
+          PARAMS=$(echo "$COMMENT" | cut -d' ' -f3-)
+
+          if [ -n "$PARAMS" ]; then
+            # Parse each parameter
+            for param in $PARAMS; do
+              # Validate parameter format (key=value)
+              if [[ ! "$param" =~ ^[a-zA-Z0-9_-]+(=[a-zA-Z0-9_-]+)?$ ]]; then
+                echo "❌ ERROR: Invalid parameter format: $param" >&2
+                exit 1
+              fi
+
+              # Extract key and value
+              KEY=$(echo "$param" | cut -d'=' -f1)
+              VALUE=$(echo "$param" | cut -d'=' -f2)
+
+              case "$KEY" in
+                suite|test_suite)
+                  TEST_SUITE="$VALUE"
+                  ;;
+                type|test_type)
+                  TEST_TYPE="$VALUE"
+                  ;;
+                vpp|vpp_version)
+                  VPP_VERSION="$VALUE"
+                  ;;
+                *)
+                  echo "⚠️  WARNING: Unknown parameter: $KEY" >&2
+                  ;;
+              esac
+            done
+          fi
+
+          # Set outputs
+          echo "test_suite=$TEST_SUITE" >> $GITHUB_OUTPUT
+          echo "test_type=$TEST_TYPE" >> $GITHUB_OUTPUT
+          echo "vpp_version=$VPP_VERSION" >> $GITHUB_OUTPUT
+
+          # Log parsed parameters
+          echo "Parsed parameters:"
+          echo "  test_suite=$TEST_SUITE"
+          echo "  test_type=$TEST_TYPE"
+          echo "  vpp_version=$VPP_VERSION"
+
+  test:
+    name: HC2VPP Test
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # Placeholder timeout. Adjust based on actual HC2VPP test duration in production.
+    steps:
+      - name: Report workflow start to Gerrit
+        run: |
+          echo "🚀 HC2VPP Test workflow started"
+          echo "Test Suite: ${{ needs.setup.outputs.test_suite }}"
+          echo "Test Type: ${{ needs.setup.outputs.test_type }}"
+          echo "VPP Version: ${{ needs.setup.outputs.vpp_version }}"
+          echo ""
+          echo "Change: ${{ inputs.GERRIT_CHANGE_NUMBER }}"
+          echo "Patchset: ${{ inputs.GERRIT_PATCHSET_NUMBER }}"
+          echo "Revision: ${{ inputs.GERRIT_PATCHSET_REVISION }}"
+
+          # TODO: Post status to Gerrit using LF Releng action
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     comment: "HC2VPP tests started"
+
+      - name: Checkout Gerrit change
+        run: |
+          echo "📥 Checking out change from Gerrit"
+          echo "Project: ${{ inputs.GERRIT_PROJECT }}"
+          echo "Refspec: ${{ inputs.GERRIT_REFSPEC }}"
+
+          # TODO: Use LF Releng checkout action
+          # - uses: lfit/releng-reusable-workflows/gerrit-checkout-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-project: ${{ inputs.GERRIT_PROJECT }}
+          #     gerrit-refspec: ${{ inputs.GERRIT_REFSPEC }}
+
+      - name: Install VPP
+        run: |
+          echo "📦 Installing VPP (${{ needs.setup.outputs.vpp_version }})"
+
+          # TODO: Install VPP based on version parameter
+          # Reference existing scripts in docker/scripts/
+          # - source docker/scripts/lib_vpp.sh
+          # - dbld_vpp_install_packages
+
+      - name: Install HC2VPP dependencies
+        run: |
+          echo "📦 Installing HC2VPP dependencies"
+
+          # TODO: Install HC2VPP test dependencies
+          # Install Java, Maven, testing frameworks
+
+      - name: Build HC2VPP
+        run: |
+          echo "🔨 Building HC2VPP"
+
+          # TODO: Build HC2VPP components
+          # mvn clean install -DskipTests
+
+      - name: Run HC2VPP tests
+        run: |
+          echo "🧪 Running HC2VPP tests"
+          echo "Suite: ${{ needs.setup.outputs.test_suite }}"
+          echo "Type: ${{ needs.setup.outputs.test_type }}"
+
+          # TODO: Execute HC2VPP test suite
+          # mvn test -Dtest.suite=${{ needs.setup.outputs.test_suite }}
+          # OR run specific test suite based on parameters
+
+      - name: Collect test results
+        if: always()
+        run: |
+          echo "📊 Collecting HC2VPP test results"
+
+          # TODO: Collect and parse test results
+          # - uses: actions/upload-artifact@v4
+          #   with:
+          #     name: hc2vpp-test-results-${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     path: target/surefire-reports/
+          #     retention-days: 7
+
+      - name: Report success to Gerrit
+        if: success()
+        run: |
+          echo "✅ HC2VPP tests completed successfully"
+
+          # TODO: Post success to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: +1
+          #     comment: "HC2VPP tests passed (${{ needs.setup.outputs.test_suite }})"
+
+      - name: Report failure to Gerrit
+        if: failure()
+        run: |
+          echo "❌ HC2VPP tests failed"
+
+          # TODO: Post failure to Gerrit
+          # - uses: lfit/releng-reusable-workflows/gerrit-review-action@<SHA>
+          #   with:
+          #     gerrit-server: gerrit.fd.io
+          #     gerrit-change-number: ${{ inputs.GERRIT_CHANGE_NUMBER }}
+          #     gerrit-patchset-number: ${{ inputs.GERRIT_PATCHSET_NUMBER }}
+          #     vote-type: Verified
+          #     vote-value: -1
+          #     comment: "HC2VPP tests failed"
