@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dcfb768_78fd713e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2025-10-23T16:34:54Z",
+      "side": 1,
+      "message": "This workflow is missing some very much required boilerplate to properly function:\n\n1) There is no concurrency stanza which means that the same workflow can be called multiple times and all iterations will run to completion with no cancellation if another call is made\n\n2) No announcement to Gerrit is made via the `lfreleng-actions/gerrit-review-action`. As this is not a `verify` or `merge` job that action should be called with `vote-type` set to `clear` and `comment-only` set to `true` \n\n3) No change is checked out. If the intent is to run this on given changes, then you need to make sure to use the `lfreleng-actions/checkout-gerrit-change-action` with the relevant information. If the intent is to run on the top of the branch, then you can use the standard `actions/checkout` for the checkout\n\n4) No announcement to Gerrit is made with the status of the job run at the end. Please see our various reusable workflows on how to do this. Again, you\u0027ll probably need to run that with a `comment-only` set to `true` on the `lfreleng-actions/gerrit-review-action` call since this is likely not a voting job.",
+      "revId": "b52c6998d656d12bc60e34146de9bc9aabf11fb7",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
