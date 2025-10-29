@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b304b152_e3df0b09",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2025-10-29T15:46:50Z",
+      "side": 1,
+      "message": "This comment is misleading. The workflow name doesn\u0027t need to be / remain `comment-handler` the file name _must_ remain `gerrit-comment-handler.yaml` though.",
+      "parentUuid": "96710c3e_807f6ef8",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a8c191_2871d675",
         "filename": ".github/workflows/gerrit-comment-handler.yaml",
         "patchSetId": 5
