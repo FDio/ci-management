@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96710c3e_807f6ef8",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-10-29T08:57:36Z",
+      "side": 1,
+      "message": "this is not clear constraint. Why the syntax is:\ngha-\u003caction\u003e \u003cworkflow-name\u003e \u003cparameters\u003e\n\nif \u003cworkflow-name\u003e must be \"comment-handler\". Makes no sense to me. Also this will be hard to navigate in github UI?",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a8c191_2871d675",
         "filename": ".github/workflows/gerrit-comment-handler.yaml",
         "patchSetId": 5
