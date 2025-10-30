@@ -72,6 +72,30 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cccd832_594226ab",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Fixed the syntax to gha-run \u003ccommand\u003e, clarified that the FILE NAME (not workflow name) must stay gerrit-comment-handler.yaml, and added documentation explaining the 3 jobs work together as one ChatOps dispatcher.",
+      "parentUuid": "db8ac3de_0d324e2d",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a8c191_2871d675",
@@ -85,6 +109,24 @@
       "writtenOn": "2025-10-24T15:41:10Z",
       "side": 1,
       "message": "This step should be a separate job.",
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b371b5d2_54c1bd7e",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Changed to three separate jobs: notify-start, parse-and-execute, and report-status that run sequentially.",
+      "parentUuid": "a8a8c191_2871d675",
       "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
@@ -106,6 +148,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1e4e84_64a003b8",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Changed to commit SHA 7732e2793c9bd6e53304f94e9bd2ad04fb7f4718 with tag comment on the line.",
+      "parentUuid": "aa9ec9f3_9a87c922",
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d57f002_74060fd9",
@@ -119,6 +179,24 @@
       "writtenOn": "2025-10-24T15:41:10Z",
       "side": 1,
       "message": "Do not use `@main` use the current version commit SHA and put a comment of the tag after it on the line",
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10548fdf_9cc498aa",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Changed to commit SHA 7732e2793c9bd6e53304f94e9bd2ad04fb7f4718 with tag comment on the line.",
+      "parentUuid": "4d57f002_74060fd9",
       "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
@@ -140,6 +218,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad2a87d_00d016f2",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Created separate report-status job that requires parse-and-execute and uses im-open/workflow-conclusion action to get workflow status before reporting.",
+      "parentUuid": "0d9eb3ad_d46fbbe4",
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1520847_5a4125e9",
@@ -153,6 +249,24 @@
       "writtenOn": "2025-10-24T15:41:10Z",
       "side": 1,
       "message": "Do not use `@main` use the current version commit SHA and put a comment of the tag after it on the line",
+      "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b21bf11_39e384a0",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-30T18:33:35Z",
+      "side": 1,
+      "message": "Changed to commit SHA 7732e2793c9bd6e53304f94e9bd2ad04fb7f4718 with tag comment on the line.",
+      "parentUuid": "b1520847_5a4125e9",
       "revId": "bde7dd4eee40324581946badabd6f487dae7d2c1",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
