@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203850b1_7de1b502",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2025-10-30T19:19:15Z",
+      "side": 1,
+      "message": "This step is not needed. It should be obvious when looking at the GHA run what the overall status was.\n\nIf you want to output the rest of the information (not the status) consider doing it as a GHA annotation in the notify start job.",
+      "revId": "e1f32a15120094da73f5a7bad2fb3b16ed6847cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24be0499_d066cc6e",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2025-10-30T19:19:15Z",
+      "side": 1,
+      "message": "The whole point of using `im-open/workflow-conclusion` is to not have to do weird logic in the vote-type, just do the following:\n\n`vote-type: ${{ env.WORKFLOW_CONCLUSION }}`",
+      "revId": "e1f32a15120094da73f5a7bad2fb3b16ed6847cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
