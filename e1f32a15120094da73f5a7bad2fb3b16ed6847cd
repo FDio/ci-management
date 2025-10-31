@@ -18,6 +18,24 @@
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0e25fa_df5922e5",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-31T18:22:45Z",
+      "side": 1,
+      "message": "The report has been removed",
+      "parentUuid": "203850b1_7de1b502",
+      "revId": "e1f32a15120094da73f5a7bad2fb3b16ed6847cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24be0499_d066cc6e",
@@ -31,6 +49,24 @@
       "writtenOn": "2025-10-30T19:19:15Z",
       "side": 1,
       "message": "The whole point of using `im-open/workflow-conclusion` is to not have to do weird logic in the vote-type, just do the following:\n\n`vote-type: ${{ env.WORKFLOW_CONCLUSION }}`",
+      "revId": "e1f32a15120094da73f5a7bad2fb3b16ed6847cd",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e65d0c_6e27ffa5",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-10-31T18:22:45Z",
+      "side": 1,
+      "message": "Changed vote-type to use env.WORKFLOW_CONCLUSION directly.",
+      "parentUuid": "24be0499_d066cc6e",
       "revId": "e1f32a15120094da73f5a7bad2fb3b16ed6847cd",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
