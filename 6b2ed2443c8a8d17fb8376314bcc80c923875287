@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa810dbf_26e6a95e",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-04T11:09:27Z",
+      "side": 1,
+      "message": "this assumes, that all the Project (more than one job) logic should be part of one single workflow file? If so, this is not very structured approach?\nHow is it addressing per project flows? Can I assume that if CSIT triggers job only CSIT flows are addressed and invoked?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 60
+      },
+      "revId": "6b2ed2443c8a8d17fb8376314bcc80c923875287",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ca99c8_6cb13581",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-04T11:09:27Z",
+      "side": 1,
+      "message": "does not exist",
+      "range": {
+        "startLine": 203,
+        "startChar": 10,
+        "endLine": 203,
+        "endChar": 127
+      },
+      "revId": "6b2ed2443c8a8d17fb8376314bcc80c923875287",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
