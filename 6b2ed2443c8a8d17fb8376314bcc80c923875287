@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5bfd93d_6fcf00a4",
+        "filename": ".github/workflows/gerrit-comment-handler.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-04T11:15:33Z",
+      "side": 1,
+      "message": "Also I do not understand if comment-handler and patch-set created are mutual exclusive or not.\nShould we have reusable workflows for main logic of each job and only wrap them into comment-handler multiflow?",
+      "parentUuid": "fa810dbf_26e6a95e",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 60
+      },
+      "revId": "6b2ed2443c8a8d17fb8376314bcc80c923875287",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87ca99c8_6cb13581",
         "filename": ".github/workflows/gerrit-comment-handler.yaml",
         "patchSetId": 8
