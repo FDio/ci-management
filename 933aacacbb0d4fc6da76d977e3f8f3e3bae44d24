@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ad68c2_b5f623ac",
+        "filename": ".github/workflows/terraform-deploy.yaml",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-12T20:13:44Z",
+      "side": 1,
+      "message": "terraform does not need to be comment-handled",
+      "revId": "933aacacbb0d4fc6da76d977e3f8f3e3bae44d24",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8c0c8535_d15619f6",
@@ -14,6 +31,23 @@
       "writtenOn": "2025-11-12T20:08:49Z",
       "side": 1,
       "message": "per project GHA workflows are located in corresponding project repositories.\n\ne.g:\nhttps://github.com/FDio/csit/tree/master/.github/workflows",
+      "revId": "933aacacbb0d4fc6da76d977e3f8f3e3bae44d24",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f6135f_d3995c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-12T20:13:44Z",
+      "side": 1,
+      "message": "this proposed solution will not work for csit flows running on nomad for sure. See DM on slack for more details.",
       "revId": "933aacacbb0d4fc6da76d977e3f8f3e3bae44d24",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
