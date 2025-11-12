@@ -50,6 +50,23 @@
       "message": "this proposed solution will not work for csit flows running on nomad for sure. See DM on slack for more details.",
       "revId": "933aacacbb0d4fc6da76d977e3f8f3e3bae44d24",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c56f946_3311a28f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 76
+      },
+      "writtenOn": "2025-11-12T20:15:06Z",
+      "side": 1,
+      "message": "this can potentially work: https://github.com/pmikus/csit/blob/master/.github/workflows/gerrit-comment-handler.yaml\n\nneed to test it.",
+      "revId": "933aacacbb0d4fc6da76d977e3f8f3e3bae44d24",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
