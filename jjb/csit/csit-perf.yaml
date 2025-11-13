@@ -654,6 +654,8 @@
 - job-template:
     name: 'csit-vpp-perf-mrr-daily-master-{node-arch}'
 
+    disabled: true
+
     description: |
       <ul>
           <li>objective
@@ -714,6 +716,8 @@
 
 - job-template:
     name: 'csit-vpp-perf-hoststack-daily-master-{node-arch}'
+
+    disabled: true
 
     description: |
       <ul>
@@ -776,6 +780,8 @@
 - job-template:
     name: 'csit-vpp-perf-mrr-weekly-master-{node-arch}'
 
+    disabled: true
+
     description: |
       <ul>
           <li>objective
@@ -837,6 +843,8 @@
 - job-template:
     name: 'csit-vpp-perf-ndrpdr-weekly-master-{node-arch}'
 
+    disabled: true
+
     description: |
       <ul>
           <li>objective
@@ -892,6 +900,8 @@
 
 - job-template:
     name: 'csit-vpp-perf-soak-weekly-master-{node-arch}'
+
+    disabled: true
 
     description: |
       <ul>
@@ -953,6 +963,8 @@
 
 - job-template:
     name: 'csit-trex-perf-ndrpdr-weekly-master-{node-arch}'
+
+    disabled: true
 
     description: |
       <ul>
@@ -1183,6 +1195,8 @@
 
 - job-template:
     name: 'csit-dpdk-perf-mrr-weekly-master-{node-arch}'
+
+    disabled: true
 
     description: |
       <ul>
