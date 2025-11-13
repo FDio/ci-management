@@ -46,7 +46,7 @@ jobs:
   call-gerrit-ci-management-verify:
     # yamllint disable rule:line-length
     uses:
-      lfit/releng-reusable-workflows/.github/workflows/gerrit-ci-management-verify.yaml@f2f8dbc0a21a12ce851e807906b1ee7727ee9297 # v0.2.25
+      lfit/releng-reusable-workflows/.github/workflows/gerrit-ci-management-verify.yaml@21dee35da5cf13331dad63a2c81ae5bb6d023f95 # v0.2.25
     # yamllint enable rule:line-length
     with:
       GERRIT_BRANCH: ${{ inputs.GERRIT_BRANCH }}
