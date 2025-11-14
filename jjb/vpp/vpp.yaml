@@ -482,7 +482,7 @@
                   branch-pattern: '**/{branch}'
               file-paths:
                 - compare-type: REG_EXP
-                  pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
+                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
               forbidden-file-paths:
                 - compare-type: REG_EXP
                   pattern: .*extras\/emacs\/.*
