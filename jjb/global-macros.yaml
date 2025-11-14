@@ -419,6 +419,11 @@
               branches:
                 - branch-compare-type: 'ANT'
                   branch-pattern: '**/{branch}'
+              file-paths: '{file-paths}'
+              forbidden-file-paths: '{forbidden-file-paths}'
+              # yamllint disable rule:line-length
+              disable-strict-forbidden-file-verification: '{disable-strict-forbidden-file-verification}'
+              # yamllint enable rule:line-length
           # Force Jenkins always vote the values it should already have voted
           # during the prior verify phase
           override-votes: true

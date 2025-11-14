@@ -482,7 +482,7 @@
                   branch-pattern: '**/{branch}'
               file-paths:
                 - compare-type: REG_EXP
-                  pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
+                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
               forbidden-file-paths:
                 - compare-type: REG_EXP
                   pattern: .*extras\/emacs\/.*
@@ -925,6 +925,13 @@
       - gerrit-trigger-patch-merged:
           name: '{project}'
           branch: '{branch}'
+          file-paths:
+            - compare-type: REG_EXP
+              pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
+          forbidden-file-paths:
+            - compare-type: REG_EXP
+              pattern: .*extras\/emacs\/.*
+          disable-strict-forbidden-file-verification: 'true'
 
     builders:
       - config-file-provider:
