@@ -237,7 +237,7 @@ export DOCKER_VPP_DL_CACHE_DIR="$DOCKER_BUILD_DIR"/vpp_ext_deps_downloads
 export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR/csit"
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
 export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR/files"
-export DOCKER_GOLANG_VERSION="1.24.4"
+export DOCKER_GOLANG_VERSION="1.25.4"
 
 docker_build_setup_ciman() {
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
