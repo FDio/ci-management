@@ -16,6 +16,24 @@
       "message": "vpp-merge jobs should also have the same exclusion applied so that merging of .github/* files does not trigger VPP merge jobs",
       "revId": "e2cdfc01ddd45aa00d09ff3ef6a313fe1994c90e",
       "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb260a8_0a1809e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 541
+      },
+      "writtenOn": "2025-11-18T19:33:42Z",
+      "side": 1,
+      "message": "Modified the macro to exclude .github",
+      "parentUuid": "aac6776f_c8c43a9e",
+      "revId": "e2cdfc01ddd45aa00d09ff3ef6a313fe1994c90e",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
     }
   ]
 }
