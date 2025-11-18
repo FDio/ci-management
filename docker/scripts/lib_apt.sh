@@ -25,10 +25,10 @@ select_dind_image() {
 
     case "$input_image" in
         "ubuntu:22.04")
-            echo "cruizba/ubuntu-dind:jammy-28.2.1|true"
+            echo "cruizba/ubuntu-dind:jammy-29.0.0|true"
             ;;
         "ubuntu:24.04")
-            echo "cruizba/ubuntu-dind:noble-28.2.1|true"
+            echo "cruizba/ubuntu-dind:noble-29.0.0|true"
             ;;
         *)
             echo "$input_image|false"
