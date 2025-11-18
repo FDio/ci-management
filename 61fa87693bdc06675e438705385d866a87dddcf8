@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c1f7bf_7c01b60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2025-11-18T22:54:42Z",
+      "side": 1,
+      "message": "Verify vote inadvertently removed:\nSUCCESS: https://github.com/FDio/.github/actions/runs/19336986707",
+      "revId": "61fa87693bdc06675e438705385d866a87dddcf8",
+      "serverId": "6d2eb258-4fe2-443e-8a38-ca81da23d4c2"
+    }
+  ]
+}
