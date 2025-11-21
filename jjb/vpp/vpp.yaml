@@ -482,7 +482,7 @@
                   branch-pattern: '**/{branch}'
               file-paths:
                 - compare-type: REG_EXP
-                  pattern: ^((?!\/COMMIT_MSG|docs|_abc|_def[\/\.]).)*$
+                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
               forbidden-file-paths:
                 - compare-type: REG_EXP
                   pattern: .*extras\/emacs\/.*
@@ -922,9 +922,38 @@
           build-timeout: 120
 
     triggers:
-      - gerrit-trigger-patch-merged:
-          name: '{project}'
-          branch: '{branch}'
+      - gerrit:
+          server-name: 'Primary'
+          trigger-on:
+            - change-merged-event
+            - comment-added-contains-event:
+                comment-contains-value: 'remerge'
+          projects:
+            - project-compare-type: 'ANT'
+              project-pattern: '{project}'
+              branches:
+                - branch-compare-type: 'ANT'
+                  branch-pattern: '**/{branch}'
+              file-paths:
+                - compare-type: REG_EXP
+                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
+              forbidden-file-paths:
+                - compare-type: REG_EXP
+                  pattern: .*extras\/emacs\/.*
+              disable-strict-forbidden-file-verification: 'true'
+          # Force Jenkins always vote the values it should already have voted
+          # during the prior verify phase
+          override-votes: true
+          gerrit-build-started-verified-value: 1
+          gerrit-build-successful-verified-value: 1
+          gerrit-build-failed-verified-value: 1
+          gerrit-build-unstable-verified-value: 1
+          gerrit-build-notbuilt-verified-value: 1
+          gerrit-build-started-codereview-value: 0
+          gerrit-build-successful-codereview-value: 0
+          gerrit-build-failed-codereview-value: 0
+          gerrit-build-unstable-codereview-value: 0
+          gerrit-build-notbuilt-codereview-value: 0
 
     builders:
       - config-file-provider:
