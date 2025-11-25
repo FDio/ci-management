@@ -132,9 +132,11 @@ export OS_ARCH="$(uname -m)"
 case "$OS_ARCH" in
     x86_64)
         export DEB_ARCH="amd64"
+        export GHA_ARCH="x64"
         ;;
     aarch64)
         export DEB_ARCH="arm64"
+        export GHA_ARCH="arm64"
         ;;
     *)
         echo "ERROR: Unsupported OS architecture '$OS_ARCH'!"
@@ -160,6 +162,16 @@ EXECUTOR_CLASS_ARCH_OS_NAMES["csit_dut-x86_64"]="ubuntu-22.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-aarch64"]="ubuntu-22.04"
 EXECUTOR_CLASS_ARCH_OS_NAMES["csit_shim-x86_64"]="ubuntu-22.04"
 export EXECUTOR_CLASS_ARCH_OS_NAMES
+
+executor_verify_image() {
+    local docker_image="$1"
+    if [ -n "$docker_image" ] ; then
+        if docker pull "$docker_image" ; then
+            return 0
+        fi
+    fi
+    return 1
+}
 
 executor_list_roles() {
     local set_opts="$-"
@@ -227,17 +239,20 @@ executor_verify_os_name() {
 export DOCKER_DATE=${DOCKER_DATE:-"$(date -u +%Y_%m_%d_%H%M%S_UTC)"}
 export DOCKER_BUILD_DIR="/scratch/docker-build"
 export DOCKER_BUILD_VENV_DIR="$DOCKER_BUILD_DIR"/venv
-export DOCKER_CIMAN_ROOT="$DOCKER_BUILD_DIR/ci-management"
-export DOCKERFILE="$DOCKER_BUILD_DIR/Dockerfile"
-export DOCKERIGNOREFILE="$DOCKER_BUILD_DIR/.dockerignore"
+export DOCKER_CIMAN_ROOT="$DOCKER_BUILD_DIR"/ci-management
+export DOCKERFILE="$DOCKER_BUILD_DIR"/Dockerfile
+export DOCKERIGNOREFILE="$DOCKER_BUILD_DIR"/.dockerignore
 export DOCKERFILE_FROM=${DOCKERFILE_FROM:="${OS_ID}:${OS_VERSION_ID}"}
 export DOCKER_TAG="$DOCKER_DATE-$OS_ARCH"
-export DOCKER_VPP_DIR="$DOCKER_BUILD_DIR/vpp"
+export DOCKER_VPP_DIR="$DOCKER_BUILD_DIR"/vpp
 export DOCKER_VPP_DL_CACHE_DIR="$DOCKER_BUILD_DIR"/vpp_ext_deps_downloads
-export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR/csit"
+export DOCKER_CSIT_DIR="$DOCKER_BUILD_DIR"/csit
 export DOCKER_DOWNLOADS_DIR="/root/Downloads"
-export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR/files"
+export DOCKER_BUILD_FILES_DIR="$DOCKER_BUILD_DIR"/files
 export DOCKER_GOLANG_VERSION="1.25.4"
+export DOCKER_GHA_RUNNER_VERSION="2.328.0"
+export DOCKER_CIMAN_GHA_RUNNER_DIR="$DOCKER_CIMAN_ROOT"/docker/gha-runner
+export DOCKER_GHA_RUNNER_DIR="$DOCKER_BUILD_DIR"/gha-runner
 
 docker_build_setup_ciman() {
     if [ "$(dirname $CIMAN_ROOT)" != "$DOCKER_BUILD_DIR" ] ; then
