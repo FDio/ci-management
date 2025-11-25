@@ -32,6 +32,7 @@ ci_image=""
 os_names=""
 push_to_docker_hub=""
 dump_dockerfile=""
+gha_container=""
 
 usage() {
     set +x
@@ -41,6 +42,7 @@ usage() {
     echo "  -c <class>    Default is '$EXECUTOR_DEFAULT_CLASS'"
     executor_list_classes
     echo "  -d            Generate Dockerfile, dump it to stdout, and exit"
+    echo "  -g            Bake GitHub Action variant of builder class"
     echo "  -p            Push docker images to Docker Hub"
     echo "  -r <role>     Add a role based tag (e.g. sandbox-x86_64):"
     executor_list_roles
@@ -49,7 +51,7 @@ usage() {
 }
 
 must_be_run_as_root_or_docker_group
-while getopts ":ac:dhpr:" opt; do
+while getopts ":ac:dghpr:" opt; do
     case "$opt" in
         a)  all_os_names="1" ;;
         c) if executor_verify_class "$OPTARG" ; then
@@ -60,6 +62,7 @@ while getopts ":ac:dhpr:" opt; do
                usage
            fi ;;
         d) dump_dockerfile="1"; set +x ;;
+        g) gha_container="1" ;;
         h) usage ;;
         p) push_to_docker_hub="1" ;;
         r) if executor_verify_role "$OPTARG" ; then
@@ -100,10 +103,25 @@ for executor_os_name in $os_names ; do
     fi
 done
 
+docker_build_setup_gha() {
+    if [ -n "$gha_container" ] && vpp_supported_executor_class ; then
+        rm -rf "$DOCKER_GHA_RUNNER_DIR"
+        mkdir -p "$DOCKER_GHA_RUNNER_DIR"
+        cp "$DOCKER_CIMAN_GHA_RUNNER_DIR"/* "$DOCKER_GHA_RUNNER_DIR"
+        pushd "$DOCKER_GHA_RUNNER_DIR"
+        local gha_runner_tarball="actions-runner-linux-${GHA_ARCH}-${DOCKER_GHA_RUNNER_VERSION}.tar.gz"
+        wget https://github.com/actions/runner/releases/download/v${DOCKER_GHA_RUNNER_VERSION}/"$gha_runner_tarball"
+        tar xzf ./"$gha_runner_tarball"
+        rm -f "$gha_runner_tarball"
+        popd
+    fi
+}
+
 # Build the specified docker images
 docker_build_setup_ciman
 docker_build_setup_vpp
 docker_build_setup_csit
+docker_build_setup_gha
 for executor_os_name in $os_names ; do
     docker_from_image="${executor_os_name/-/:}"
     # Remove '-' and '.' from executor_os_name in Docker Hub repo name
@@ -131,10 +149,23 @@ for executor_os_name in $os_names ; do
     else
         docker build -t "$executor_docker_image" "$DOCKER_BUILD_DIR"
         rm -f "$DOCKERFILE"
+        if [ -n "$gha_container" ] ; then
+            gha_docker_image="${executor_docker_image/$EXECUTOR_CLASS/gha}"
+            docker buildx bake -f "$DOCKER_GHA_RUNNER_DIR"/docker-bake.hcl \
+                --set EXECUTOR_DOCKER_IMAGE="$executor_docker_image" \
+                --set GHA_DOCKER_IMAGE="$gha_docker_image" \
+                --set PLATFORMS=linux/"$DEB_ARCH" \
+                --set DOCKER_GHA_RUNNER_DIR="$DOCKER_GHA_RUNNER_DIR"
+        fi
         if [ -n "$ci_tag" ] ; then
             ci_image="$repository:$ci_tag"
             echo -e "\nAdding docker tag $ci_image to $executor_docker_image"
             docker tag "$executor_docker_image" "$ci_image"
+            if [ -n "$gha_container" ] ; then
+                gha_image="${ci_image/$EXECUTOR_CLASS/gha}"
+                echo -e "\nAdding docker tag $gha_image to $gha_docker_image"
+                docker tag "$gha_docker_image" "$gha_image"
+            fi
         fi
         if [ -n "$push_to_docker_hub" ] ; then
             echo -e "\nPushing $executor_docker_image to Docker Hub..."
