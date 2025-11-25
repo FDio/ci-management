@@ -204,7 +204,7 @@ verify_image_name() {
     # Invalid version
     if [ -z "$image_not_found" ] \
            && [ "$image_version" != "prod" ] \
-           && ! verify_image_version_date_format "$image_version"  ]] ; then
+           && ! verify_image_version_date_format "$image_version" ; then
         image_not_found="true"
         echo "ERROR: invalid version '$image_version' in '$image_name_new'!"
     fi
