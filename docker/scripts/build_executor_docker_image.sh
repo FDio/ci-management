@@ -29,29 +29,44 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname $BASH_SOURCE)"}
 all_os_names=""
 ci_tag=""
 ci_image=""
+gha_ci_image=""
 os_names=""
 push_to_docker_hub=""
 dump_dockerfile=""
+gha_container=""
+skip_executor_build=""
+executor_docker_image=""
+gha_docker_image=""
 
 usage() {
     set +x
     echo
     echo "Usage: $0 [-c <class>] [-p] [-r <role>] -a | <os name> [... <os name>]"
-    echo "  -a            Run all OS's supported on class $EXECUTOR_CLASS & arch $OS_ARCH"
-    echo "  -c <class>    Default is '$EXECUTOR_DEFAULT_CLASS'"
+    echo "  -a                Run all OS's supported on class $EXECUTOR_CLASS & arch $OS_ARCH"
+    echo "  -b <builder img>  Bake GitHub Action variant from specified builder class image"
+    echo "  -c <class>        Default is '$EXECUTOR_DEFAULT_CLASS'"
     executor_list_classes
-    echo "  -d            Generate Dockerfile, dump it to stdout, and exit"
-    echo "  -p            Push docker images to Docker Hub"
-    echo "  -r <role>     Add a role based tag (e.g. sandbox-x86_64):"
+    echo "  -d                Generate Dockerfile, dump it to stdout, and exit"
+    echo "  -g                Bake GitHub Action variant of builder class"
+    echo "  -p                Push docker images to Docker Hub"
+    echo "  -r <role>         Add a role based tag (e.g. sandbox-x86_64):"
     executor_list_roles
     executor_list_os_names
     exit 1
 }
 
 must_be_run_as_root_or_docker_group
-while getopts ":ac:dhpr:" opt; do
+while getopts ":ab:c:dghpr:" opt; do
     case "$opt" in
         a)  all_os_names="1" ;;
+        b) if executor_verify_image "$OPTARG" ; then
+               gha_container="1"
+               skip_executor_build="1"
+               executor_docker_image="$OPTARG"
+           else
+               echo "ERROR: Existing executor image '$OPTARG' not found!"
+               usage
+           fi ;;
         c) if executor_verify_class "$OPTARG" ; then
                EXECUTOR_CLASS="$OPTARG"
                EXECUTOR_CLASS_ARCH="$EXECUTOR_CLASS-$OS_ARCH"
@@ -60,6 +75,7 @@ while getopts ":ac:dhpr:" opt; do
                usage
            fi ;;
         d) dump_dockerfile="1"; set +x ;;
+        g) gha_container="1" ;;
         h) usage ;;
         p) push_to_docker_hub="1" ;;
         r) if executor_verify_role "$OPTARG" ; then
@@ -100,16 +116,40 @@ for executor_os_name in $os_names ; do
     fi
 done
 
+docker_build_setup_gha() {
+    if [ -n "$gha_container" ] && vpp_supported_executor_class ; then
+        rm -rf "$DOCKER_GHA_RUNNER_DIR"
+        mkdir -p "$DOCKER_GHA_RUNNER_DIR"
+        cp "$DOCKER_CIMAN_GHA_RUNNER_DIR"/* "$DOCKER_GHA_RUNNER_DIR"
+        pushd "$DOCKER_GHA_RUNNER_DIR"
+        local gha_runner_tarball="actions-runner-linux-${GHA_ARCH}-${DOCKER_GHA_RUNNER_VERSION}.tar.gz"
+        wget -q https://github.com/actions/runner/releases/download/v${DOCKER_GHA_RUNNER_VERSION}/"$gha_runner_tarball"
+        tar xzf ./"$gha_runner_tarball"
+        rm -f "$gha_runner_tarball"
+        popd
+    fi
+}
+
 # Build the specified docker images
 docker_build_setup_ciman
 docker_build_setup_vpp
 docker_build_setup_csit
+docker_build_setup_gha
 for executor_os_name in $os_names ; do
     docker_from_image="${executor_os_name/-/:}"
     # Remove '-' and '.' from executor_os_name in Docker Hub repo name
     os_name="${executor_os_name//-}"
-    repository="fdiotools/${EXECUTOR_CLASS}-${os_name//.}"
-    executor_docker_image="$repository:$DOCKER_TAG"
+    os_name="${os_name//.}"
+    repository="fdiotools/${EXECUTOR_CLASS}-$os_name"
+    if [ -z "$skip_executor_build" ] ; then
+        executor_docker_image="$repository:$DOCKER_TAG"
+    elif ! grep -q "$os_name" <<< "$executor_docker_image" ; then
+        set_opts="$-"
+        set +x # disable trace output
+        echo "ERROR: OS name '$os_name' missing from executor image specified in '-b $executor_docker_image'!"
+        echo
+        exit 1
+    fi
 
     case "$executor_os_name" in
         ubuntu*)
@@ -129,20 +169,49 @@ for executor_os_name in $os_names ; do
         cat "$DOCKERFILE"
         echo -e "$line\n"
     else
-        docker build -t "$executor_docker_image" "$DOCKER_BUILD_DIR"
-        rm -f "$DOCKERFILE"
+        docker login
+        if [ -z "$skip_executor_build" ] ; then
+            docker build -t "$executor_docker_image" "$DOCKER_BUILD_DIR"
+            rm -f "$DOCKERFILE"
+        fi
+        if [ -n "$gha_container" ] ; then
+            gha_docker_image="${executor_docker_image/$EXECUTOR_CLASS/gha}"
+            pushd "$DOCKER_GHA_RUNNER_DIR"
+            docker build \
+              --load \
+              --no-cache \
+              --platform linux/"$DEB_ARCH" \
+              --tag "$gha_docker_image" \
+              --build-arg BASE_IMAGE="$executor_docker_image" \
+              --build-arg DOCKER_GHA_RUNNER_DIR="${DOCKER_GHA_RUNNER_DIR}" \
+              -f "${DOCKER_GHA_RUNNER_DIR}/Dockerfile" \
+              "${DOCKER_GHA_RUNNER_DIR}"
+             popd
+        fi
         if [ -n "$ci_tag" ] ; then
             ci_image="$repository:$ci_tag"
             echo -e "\nAdding docker tag $ci_image to $executor_docker_image"
             docker tag "$executor_docker_image" "$ci_image"
+            if [ -n "$gha_container" ] ; then
+                gha_ci_image="${ci_image/$EXECUTOR_CLASS/gha}"
+                echo -e "\nAdding docker tag $gha_ci_image to $gha_docker_image"
+                docker tag "$gha_docker_image" "$gha_ci_image"
+            fi
         fi
         if [ -n "$push_to_docker_hub" ] ; then
-            echo -e "\nPushing $executor_docker_image to Docker Hub..."
-            docker login
+            echo -e "\nPushing jenkins docker image ''$executor_docker_image' to Docker Hub..."
             docker push "$executor_docker_image"
             if [ -n "$ci_image" ] ; then
-                echo -e "\nPushing $ci_image to Docker Hub..."
+                echo -e "\nPushing jenkins ci image tag '$ci_image' to Docker Hub..."
                 docker push "$ci_image"
+            fi
+            if [ -n "$gha_docker_image" ] ; then
+                echo -e "\nPushing gha docker image '$gha_docker_image' to Docker Hub..."
+                docker push "$gha_docker_image"
+            fi
+            if [ -n "$gha_ci_image" ] ; then
+                echo -e "\nPushing gha ci image tag '$gha_ci_image' to Docker Hub..."
+                docker push "$gha_ci_image"
             fi
         fi
     fi
