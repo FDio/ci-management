@@ -1,1370 +1,1370 @@
-# Copyright (c) 2025 Cisco and/or its affiliates.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at:
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
----
-# PROJECT DEFINITIONS
-#
-# Please keep projects grouped in this order:
-#     vpp-x86_64, vpp-aarch64, vpp-csit
-#
-# NOTES:
-#   - The 'branch-refspec' attribute is used for sandbox testing.
-#         Use the get_gerrit_refspec() bash function in
-#         .../ci-management/extras/bash/sandbox_test_functions.sh
-#         to query gerrit for the refspec of HEAD in a branch.
-#         TODO: see if there is a refspec that works without requiring
-#               use of get_gerrit_refspec and hand entering the result
-#               in the WebUI 'Build With Parameters' gerrit refspec field.
-# [end] NOTES
-
-# VPP-CHECKSTYLE-X86_64 PROJECT
-- project:
-    name: vpp-checkstyle-x86_64
-    jobs:
-      - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - ubuntu2404
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          os: 'ubuntu2404'
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          os: 'ubuntu2404'
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-CHECKSTYLE-X86_64 PROJECT
-
-# VPP-HST-X86_64 PROJECT
-- project:
-    name: vpp-verify-hst-x86_64
-    jobs:
-      - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - ubuntu2204
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-HST-X86_64 PROJECT
-
-# VPP-HST-DEBUG-X86_64 PROJECT
-- project:
-    name: vpp-verify-hst-debug-x86_64
-    jobs:
-      - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - ubuntu2204
-      - ubuntu2404
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-HST-DEBUG-X86_64 PROJECT
-
-# VPP-HST-DEBUG-AARCH64 PROJECT
-- project:
-    name: vpp-verify-hst-debug-aarch64
-    jobs:
-      - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - ubuntu2204
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'aarch64'
-
-# [end] VPP-HST-DEBUG-AARCH64 PROJECT
-
-# VPP-X86_64 PROJECT
-#
-# NOTE: The list of supported branches for each OS are maintained
-#       in .../ci-management/docker/scripts/lib_vpp.sh
-#       The job configuration must be derived from that list, thus
-#       modifications to both should be made at the same time.
-#       Since x86_64 is the primary development architecture, this
-#       project definition should be identical to the docker image
-#       build scripts.  Other architectures may be a subset.
-- project:
-    name: vpp-x86_64
-    jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - 'debian12'
-      - 'ubuntu2204'
-      - 'ubuntu2404'
-    make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-12'
-    make-test-os: 'ubuntu-22.04 ubuntu-24.04'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-X86_64 PROJECT
-
-# VPP-GCC-X86_64 PROJECT
-- project:
-    name: vpp-gcc-x86_64
-    jobs:
-      - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - 'ubuntu2404'
-    make-parallel-jobs: '4'
-    executor-arch: 'x86_64'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-
-# [end] VPP-GCC-X86_64 PROJECT
-
-# VPP-DEBUG-X86_64 PROJECT
-#
-# Currently a periodic job due to intermittent failures.
-# Limiting branches to master, since other branches
-# may not get fixes for the intermittent failures.
-#
-- project:
-    name: vpp-debug-x86_64
-    jobs:
-      - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os: 'ubuntu2404'
-    make-parallel-jobs: '4'
-    make-test-os: 'ubuntu-22.04 ubuntu-24.04'
-    comment-trigger-value: 'debug-verify'
-    stream:
-      - 'master':
-          # TODO: Remove when ubuntu2404 is put into production
-          os: 'ubuntu2204'
-          branch: 'master'
-          branch-refspec: ''
-    executor-arch: 'x86_64'
-
-# [end] VPP-DEBUG-X86_64 PROJECT
-
-# VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
-#
-# Currently a periodic job due to intermittent failures.
-# Limiting branches to master, since other branches
-# may not get fixes for the intermittent failures.
-#
-- project:
-    name: vpp-dpdk-rdma-version-mismatch-x86_64
-    jobs:
-      - 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os: 'ubuntu2404'
-    comment-trigger-value: 'dpdk-rdma-version-mismatch'
-    stream:
-      - 'master':
-          branch: 'master'
-          # Once per day at 00:15
-          periodicity: '15 0 * * 0-6'
-    executor-arch: 'x86_64'
-
-# [end] VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
-
-# VPP-COV-X86_64 PROJECT
-#
-# A per-patch job to produce code coverage.
-#
-# TODO: switch OS to ubuntu-22.04 once the skipping of intermittently failing
-#       tests are removed
-#
-- project:
-    name: vpp-cov-x86_64
-    jobs:
-      - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os: 'ubuntu2404'
-    make-parallel-jobs: '4'
-    make-test-os: ubuntu-24.04'
-    comment-trigger-value: 'gcov-report'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-          # Once per day at 00:25
-          periodicity: '25 0 * * 0-6'
-    executor-arch: 'x86_64'
-
-# [end] VPP-COV-X86_64 PROJECT
-
-# VPP-AARCH64 PROJECT
-#
-# NOTE: The list of supported branches for each OS are maintained
-#       in .../ci-management/docker/scripts/lib_vpp.sh
-#       The job configuration must be derived from that list, thus
-#       modifications to both should be made at the same time.
-- project:
-    name: vpp-aarch64
-    jobs:
-      - 'vpp-verify-{stream}-{os}-{executor-arch}'
-      - 'vpp-merge-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - 'ubuntu2204'
-      - 'ubuntu2404'
-    make-parallel-jobs: '4'
-    make-test-multiworker-os: 'debian-12'
-    make-test-os: 'ubuntu-22.04 ubuntu-24.04'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-    executor-arch: 'aarch64'
-# [end] VPP-AARCH64 PROJECT
-
-# VPP-ARM-DRIVERS-AARCH64 PROJECT
-- project:
-    name: vpp-arm-drivers
-    jobs:
-      - 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os:
-      - 'ubuntu2404'
-    make-parallel-jobs: '4'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-    executor-arch: 'aarch64'
-# [end] VPP-ARM-DRIVERS-AARCH64 PROJECT
-
-# VPP-CSIT-VERIFY-PERF PROJECT
-- project:
-    name: vpp-csit-verify-perf
-    jobs:
-      - 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
-      - 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
-    project: 'vpp'
-    skip-vote: 'false'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-    testbed-arch:
-      - 2n-grc:
-          os: 'ubuntu2404'
-          executor-arch: 'aarch64'
-      - 2n-icx:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 2n-spr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 2n-zn2:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-icx:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-alt:
-          os: 'ubuntu2404'
-          executor-arch: 'aarch64'
-          make-parallel-jobs: '16'
-      - 3n-snr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-icxd:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-oct:
-          os: 'ubuntu2404'
-          executor-arch: 'aarch64'
-      - 3na-spr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3nb-spr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 2n-emr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-      - 3n-emr:
-          os: 'ubuntu2404'
-          executor-arch: 'x86_64'
-# [end] VPP-CSIT-VERIFY-PERF PROJECT
-
-# VPP-CSIT-API-CRC PROJECT
-#
-# Only master and LTS branches are supported.
-#
-- project:
-    name: vpp-csit-api-crc
-    jobs:
-      - 'vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
-    project: 'vpp'
-    os: ubuntu2404
-    executor-arch: 'x86_64'
-    skip-vote: 'false'
-    stream:
-      - 'master':
-          branch: 'master'
-          branch-refspec: ''
-      - '2506':
-          branch: 'stable/2506'
-          branch-refspec: ''
-      - '2510':
-          branch: 'stable/2510'
-          branch-refspec: ''
-# [end] VPP-CSIT-API-CRC PROJECT
-
-# LF RELENG VPP PROJECTS
-- project:
-    name: vpp-info
-    project-name: vpp
-    jobs:
-      - gerrit-info-yaml-verify
-    build-node: centos7-builder-2c-2g
-    project: vpp
-    branch: master
-
-- project:
-    name: vpp-view
-    views:
-      - project-view
-    project-name: vpp
-# [end] LF RELENG VPP PROJECTS
-# [end] PROJECT DEFINITIONS
-
-# JOB TEMPLATE DEFINITIONS
-#
-# Please keep job templates in the same order as they are referenced
-# in the project definitions above.
-
-# VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-      - credentials-binding:
-          - text:
-              credential-id: VppApiCompatNotify
-              variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
-
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - patchset-created-event:
-                exclude-drafts: 'true'
-                exclude-trivial-rebase: 'false'
-                exclude-no-code-change: 'false'
-            - draft-published-event
-            - comment-added-contains-event:
-                comment-contains-value: 'checkstylecheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'recheck'
-            - comment-added-contains-event:
-                comment-contains-value: 'reverify'
-            # Following two are to cover missing functions of drafts
-            # going to review status
-            - comment-added-contains-event:
-                comment-contains-value: 'runtest'
-            - comment-added-contains-event:
-                comment-contains-value: 'This change is ready for review'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-              file-paths:
-                - compare-type: REG_EXP
-                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
-              forbidden-file-paths:
-                - compare-type: REG_EXP
-                  pattern: .*extras\/emacs\/.*
-              disable-strict-forbidden-file-verification: 'true'
-          override-votes: true
-          gerrit-build-notbuilt-verified-value: 0
-          gerrit-build-successful-verified-value: 1
-          # yamllint disable-line rule:line-length
-          notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
-          # yamllint disable-line rule:line-length
-          failed-message: 'Checkstyle failed. No further verify jobs will be started.'
-          successful-message: 'checkstyle_success'
-          skip-vote:
-            successful: true
-            failed: false
-            unstable: false
-            notbuilt: false
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/checkstyle.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/test-checkstyle.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/api-checkstyle.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/commitmsg.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/docs_spell.sh
-
-    publishers:
-      - fdio-infra-publish
-
-# [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
-
-# VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
-- job-template:
-    name: 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/arm-drivers.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
-
-# VPP-VERIFY-HST JOB TEMPLATE
-- job-template:
-    name: 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'hst-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/hst.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-VERIFY-HST JOB TEMPLATE
-
-# VPP-VERIFY-HST-DEBUG JOB TEMPLATE
-- job-template:
-    name: 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'hst-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/debug-hst.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-VERIFY-HST-DEBUG JOB TEMPLATE
-
-# VPP-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - make-test-os-parameter:
-          make-test-os: '{make-test-os}'
-      - make-test-multiworker-os-parameter:
-          make-test-multiworker-os: '{make-test-multiworker-os}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-VERIFY JOB TEMPLATE
-
-# VPP-DEBUG-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - make-test-os-parameter:
-          make-test-os: '{make-test-os}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - gerrit-trigger-checkstyle-nonvoting:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/debug-build.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-DEBUG-VERIFY JOB TEMPLATE
-
-# VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
-- job-template:
-    name: 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: '{periodicity}'
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/dpdk-rdma-version-mismatch.sh
-
-    publishers:
-      - vpp-dpdk-rdma-version-mismatch:
-          branch: '{branch}'
-      - fdio-infra-publish
-# [end] VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
-
-# VPP-MERGE JOB TEMPLATE
-- job-template:
-    name: 'vpp-merge-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - make-test-os-parameter:
-          make-test-os: '{make-test-os}'
-      - make-test-multiworker-os-parameter:
-          make-test-multiworker-os: '{make-test-multiworker-os}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit:
-          server-name: 'Primary'
-          trigger-on:
-            - change-merged-event
-            - comment-added-contains-event:
-                comment-contains-value: 'remerge'
-          projects:
-            - project-compare-type: 'ANT'
-              project-pattern: '{project}'
-              branches:
-                - branch-compare-type: 'ANT'
-                  branch-pattern: '**/{branch}'
-              file-paths:
-                - compare-type: REG_EXP
-                  pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
-              forbidden-file-paths:
-                - compare-type: REG_EXP
-                  pattern: .*extras\/emacs\/.*
-              disable-strict-forbidden-file-verification: 'true'
-          # Force Jenkins always vote the values it should already have voted
-          # during the prior verify phase
-          override-votes: true
-          gerrit-build-started-verified-value: 1
-          gerrit-build-successful-verified-value: 1
-          gerrit-build-failed-verified-value: 1
-          gerrit-build-unstable-verified-value: 1
-          gerrit-build-notbuilt-verified-value: 1
-          gerrit-build-started-codereview-value: 0
-          gerrit-build-successful-codereview-value: 0
-          gerrit-build-failed-codereview-value: 0
-          gerrit-build-unstable-codereview-value: 0
-          gerrit-build-notbuilt-codereview-value: 0
-
-    builders:
-      - config-file-provider:
-          files:
-            - file-id: '.packagecloud'
-              target: '/root/.packagecloud'
-      - config-file-provider:
-          files:
-            - file-id: 'packagecloud_api'
-              target: '/root/packagecloud_api'
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/commitmsg.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/build.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/packagecloud_push.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-MERGE JOB TEMPLATE
-
-# VPP-GCC-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: 120
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/gcc-build.sh
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-GCC-VERIFY JOB TEMPLATE
-
-# VPP-COV-VERIFY JOB TEMPLATE
-- job-template:
-    name: 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - gerrit-parameter:
-          branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - make-test-os-parameter:
-          make-test-os: '{make-test-os}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: ''
-          choosing-strategy: 'default'
-
-    wrappers:
-      - fdio-infra-wrappers:
-          build-timeout: '{build-timeout}'
-
-    triggers:
-      - timed: '{periodicity}'
-      - gerrit-trigger-manually-triggered:
-          comment-trigger-value: '{comment-trigger-value}'
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/cov-build.sh
-
-    publishers:
-      - fdio-infra-publish
-      - fdio-infra-publish-cov-7day
-# [end] VPP-COV-VERIFY JOB TEMPLATE
-
-# VPP-CSIT-VERIFY-PERF JOB TEMPLATE
-- job-template:
-    name: 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
-    description: |
-      <ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
-          <li>testbed architecture
-              <ul>
-                  <li>{testbed-arch}
-              </ul>
-          <li>Objective
-          Contrary to csit-vpp job, this also measures the parent performance,
-          and fails if performance regression is detected.
-          See https://github.com/FDio/csit/blob/master/docs/cpta/methodology/perpatch_performance_tests.rst
-      </ul>
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-    latest-only: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - csit-perf-trial-duration-parameter:
-          csit-perf-trial-duration: "10.0"
-      - csit-perf-trial-multiplicity-parameter:
-          csit-perf-trial-multiplicity: "5"
-      - gerrit-csit-refspec-parameter
-      - gerrit-event-comment-text-parameter
-      - gerrit-event-type-parameter
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: 300
-
-    triggers:
-      - gerrit-trigger-csit-perftest:
-          project: '{project}'
-          branch: '{branch}'
-          trigger-word: 'perftest-{testbed-arch}'
-          skip-vote: true
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/csit-perf.sh
-
-    publishers:
-      - postbuildscript:
-          # Can be removed when all CSIT branches use correct archive directory.
-          builders:
-            - build-on:
-                - ABORTED
-                - FAILURE
-                - NOT_BUILT
-                - SUCCESS
-                - UNSTABLE
-              build-steps:
-                - shell:
-                    !include-raw-escape:
-                    - ../scripts/vpp/copy_archives.sh
-      - fdio-infra-publish
-# [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
-
-# VPP-CSIT-BISECT JOB TEMPLATE
-- job-template:
-    name: 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
-    description: |
-      <ul>
-          <li>executor
-              <ul>
-                  <li>builder-{os}-prod-{executor-arch}
-              </ul>
-          <li>testbed architecture
-              <ul>
-                  <li>{testbed-arch}
-              </ul>
-          <li>Objective
-              <ul>
-                  <li>Find a cause of VPP performance jump among VPP commits.
-              </ul>
-      </ul>
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-    latest-only: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      - csit-perf-trial-duration-parameter:
-          csit-perf-trial-duration: "1.0"
-      - csit-perf-trial-multiplicity-parameter:
-          csit-perf-trial-multiplicity: "60"
-      - gerrit-csit-refspec-parameter
-      - gerrit-event-comment-text-parameter
-      - gerrit-event-type-parameter
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - gerrit-parameter:
-          branch: '{branch}'
-      - make-parallel-jobs-parameter:
-          make-parallel-jobs: '{make-parallel-jobs}'
-      - os-parameter:
-          os: '{os}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: 300
-
-    triggers:
-      - gerrit-trigger-csit-perftest:
-          project: '{project}'
-          branch: '{branch}'
-          trigger-word: 'bisecttest-{testbed-arch}'
-          skip-vote: true
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ext_deps.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/csit-bisect.sh
-
-    publishers:
-      - postbuildscript:
-          # Can be removed when all CSIT branches use correct archive directory.
-          builders:
-            - build-on:
-                - ABORTED
-                - FAILURE
-                - NOT_BUILT
-                - SUCCESS
-                - UNSTABLE
-              build-steps:
-                - shell:
-                    !include-raw-escape:
-                    - ../scripts/vpp/copy_archives.sh
-      - fdio-infra-publish
-# [end] VPP-CSIT-BISECT JOB TEMPLATE
-
-# VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
-- job-template:
-    name: 'vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
-
-    project-type: freestyle
-    node: 'builder-{os}-prod-{executor-arch}'
-    concurrent: true
-    latest-only: false
-
-    properties:
-      - lf-infra-properties:
-          build-days-to-keep: "{build-days-to-keep}"
-
-    # Please keep parameters in alphabetical order
-    parameters:
-      # Not sure whether not failing has any useful usage,
-      # but it does not hurt to have some flexibility for future.
-      - csit-fail-on-crc-mismatch-parameter:
-          fail-on-crc-mismatch: 'True'
-      - gerrit-csit-refspec-parameter
-      - gerrit-parameter:
-          branch: '{branch}'
-      - gerrit-refspec-parameter:
-          refspec: '{branch-refspec}'
-      - project-parameter:
-          project: '{project}'
-      - stream-parameter:
-          stream: '{stream}'
-
-    scm:
-      - gerrit-trigger-scm:
-          credentials-id: 'jenkins-gerrit-credentials'
-          refspec: '$GERRIT_REFSPEC'
-          choosing-strategy: 'gerrit'
-
-    wrappers:
-      - fdio-infra-wrappers-non-activity-timeout:
-          build-timeout: 300
-
-    triggers:
-      - gerrit-trigger-checkstyle:
-          name: '{project}'
-          branch: '{branch}'
-
-    builders:
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_executor_env.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/setup_vpp_ubuntu_docker_test.sh
-      - shell:
-          !include-raw-escape:
-          - ../scripts/vpp/check_crc.sh
-    # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
-
-    publishers:
-      - fdio-infra-publish
-# [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
-# [end] JOB TEMPLATE DEFINITIONS
-
-- project:
-    name: vpp-release
-    project: vpp
-    project-name: vpp
-    build-node: centos8-builder-2c-2g
-    mvn-settings: vpp-settings
-    jobs:
-      - "gerrit-packagecloud-release-verify"
-
-- project:
-    name: vpp-packagecloud-release
-    project: vpp
-    project-name: vpp
-    build-node: centos8-builder-2c-2g
-    mvn-settings: vpp-settings
-    jobs:
-      - "gerrit-packagecloud-release-merge"
-      - "{project-name}-gerrit-release-jobs"
+# # Copyright (c) 2025 Cisco and/or its affiliates.
+# # Licensed under the Apache License, Version 2.0 (the "License");
+# # you may not use this file except in compliance with the License.
+# # You may obtain a copy of the License at:
+# #
+# #     http://www.apache.org/licenses/LICENSE-2.0
+# #
+# # Unless required by applicable law or agreed to in writing, software
+# # distributed under the License is distributed on an "AS IS" BASIS,
+# # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# # See the License for the specific language governing permissions and
+# # limitations under the License.
+
+# ---
+# # PROJECT DEFINITIONS
+# #
+# # Please keep projects grouped in this order:
+# #     vpp-x86_64, vpp-aarch64, vpp-csit
+# #
+# # NOTES:
+# #   - The 'branch-refspec' attribute is used for sandbox testing.
+# #         Use the get_gerrit_refspec() bash function in
+# #         .../ci-management/extras/bash/sandbox_test_functions.sh
+# #         to query gerrit for the refspec of HEAD in a branch.
+# #         TODO: see if there is a refspec that works without requiring
+# #               use of get_gerrit_refspec and hand entering the result
+# #               in the WebUI 'Build With Parameters' gerrit refspec field.
+# # [end] NOTES
+
+# # VPP-CHECKSTYLE-X86_64 PROJECT
+# - project:
+#     name: vpp-checkstyle-x86_64
+#     jobs:
+#       - 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - ubuntu2404
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           os: 'ubuntu2404'
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           os: 'ubuntu2404'
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-CHECKSTYLE-X86_64 PROJECT
+
+# # VPP-HST-X86_64 PROJECT
+# - project:
+#     name: vpp-verify-hst-x86_64
+#     jobs:
+#       - 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - ubuntu2204
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-HST-X86_64 PROJECT
+
+# # VPP-HST-DEBUG-X86_64 PROJECT
+# - project:
+#     name: vpp-verify-hst-debug-x86_64
+#     jobs:
+#       - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - ubuntu2204
+#       - ubuntu2404
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-HST-DEBUG-X86_64 PROJECT
+
+# # VPP-HST-DEBUG-AARCH64 PROJECT
+# - project:
+#     name: vpp-verify-hst-debug-aarch64
+#     jobs:
+#       - 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - ubuntu2204
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'aarch64'
+
+# # [end] VPP-HST-DEBUG-AARCH64 PROJECT
+
+# # VPP-X86_64 PROJECT
+# #
+# # NOTE: The list of supported branches for each OS are maintained
+# #       in .../ci-management/docker/scripts/lib_vpp.sh
+# #       The job configuration must be derived from that list, thus
+# #       modifications to both should be made at the same time.
+# #       Since x86_64 is the primary development architecture, this
+# #       project definition should be identical to the docker image
+# #       build scripts.  Other architectures may be a subset.
+# - project:
+#     name: vpp-x86_64
+#     jobs:
+#       - 'vpp-verify-{stream}-{os}-{executor-arch}'
+#       # - 'vpp-merge-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - 'debian12'
+#       - 'ubuntu2204'
+#       - 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     make-test-multiworker-os: 'debian-12'
+#     make-test-os: 'ubuntu-22.04 ubuntu-24.04'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-X86_64 PROJECT
+
+# # VPP-GCC-X86_64 PROJECT
+# - project:
+#     name: vpp-gcc-x86_64
+#     jobs:
+#       - 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     executor-arch: 'x86_64'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+
+# # [end] VPP-GCC-X86_64 PROJECT
+
+# # VPP-DEBUG-X86_64 PROJECT
+# #
+# # Currently a periodic job due to intermittent failures.
+# # Limiting branches to master, since other branches
+# # may not get fixes for the intermittent failures.
+# #
+# - project:
+#     name: vpp-debug-x86_64
+#     jobs:
+#       - 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os: 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     make-test-os: 'ubuntu-22.04 ubuntu-24.04'
+#     comment-trigger-value: 'debug-verify'
+#     stream:
+#       - 'master':
+#           # TODO: Remove when ubuntu2404 is put into production
+#           os: 'ubuntu2204'
+#           branch: 'master'
+#           branch-refspec: ''
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-DEBUG-X86_64 PROJECT
+
+# # VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
+# #
+# # Currently a periodic job due to intermittent failures.
+# # Limiting branches to master, since other branches
+# # may not get fixes for the intermittent failures.
+# #
+# - project:
+#     name: vpp-dpdk-rdma-version-mismatch-x86_64
+#     jobs:
+#       - 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os: 'ubuntu2404'
+#     comment-trigger-value: 'dpdk-rdma-version-mismatch'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           # Once per day at 00:15
+#           periodicity: '15 0 * * 0-6'
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-DPDK-RDMA-VERSION-MISMATCH-X86_64 PROJECT
+
+# # VPP-COV-X86_64 PROJECT
+# #
+# # A per-patch job to produce code coverage.
+# #
+# # TODO: switch OS to ubuntu-22.04 once the skipping of intermittently failing
+# #       tests are removed
+# #
+# - project:
+#     name: vpp-cov-x86_64
+#     jobs:
+#       - 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os: 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     make-test-os: ubuntu-24.04'
+#     comment-trigger-value: 'gcov-report'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#           # Once per day at 00:25
+#           periodicity: '25 0 * * 0-6'
+#     executor-arch: 'x86_64'
+
+# # [end] VPP-COV-X86_64 PROJECT
+
+# # VPP-AARCH64 PROJECT
+# #
+# # NOTE: The list of supported branches for each OS are maintained
+# #       in .../ci-management/docker/scripts/lib_vpp.sh
+# #       The job configuration must be derived from that list, thus
+# #       modifications to both should be made at the same time.
+# - project:
+#     name: vpp-aarch64
+#     jobs:
+#       - 'vpp-verify-{stream}-{os}-{executor-arch}'
+#       # - 'vpp-merge-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - 'ubuntu2204'
+#       - 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     make-test-multiworker-os: 'debian-12'
+#     make-test-os: 'ubuntu-22.04 ubuntu-24.04'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+#     executor-arch: 'aarch64'
+# # [end] VPP-AARCH64 PROJECT
+
+# # VPP-ARM-DRIVERS-AARCH64 PROJECT
+# - project:
+#     name: vpp-arm-drivers
+#     jobs:
+#       - 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os:
+#       - 'ubuntu2404'
+#     make-parallel-jobs: '4'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#     executor-arch: 'aarch64'
+# # [end] VPP-ARM-DRIVERS-AARCH64 PROJECT
+
+# # VPP-CSIT-VERIFY-PERF PROJECT
+# - project:
+#     name: vpp-csit-verify-perf
+#     jobs:
+#       - 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
+#       - 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
+#     project: 'vpp'
+#     skip-vote: 'false'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#     testbed-arch:
+#       - 2n-grc:
+#           os: 'ubuntu2404'
+#           executor-arch: 'aarch64'
+#       - 2n-icx:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 2n-spr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 2n-zn2:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3n-icx:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3n-alt:
+#           os: 'ubuntu2404'
+#           executor-arch: 'aarch64'
+#           make-parallel-jobs: '16'
+#       - 3n-snr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3n-icxd:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3n-oct:
+#           os: 'ubuntu2404'
+#           executor-arch: 'aarch64'
+#       - 3na-spr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3nb-spr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 2n-emr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+#       - 3n-emr:
+#           os: 'ubuntu2404'
+#           executor-arch: 'x86_64'
+# # [end] VPP-CSIT-VERIFY-PERF PROJECT
+
+# # VPP-CSIT-API-CRC PROJECT
+# #
+# # Only master and LTS branches are supported.
+# #
+# - project:
+#     name: vpp-csit-api-crc
+#     jobs:
+#       - 'vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
+#     project: 'vpp'
+#     os: ubuntu2404
+#     executor-arch: 'x86_64'
+#     skip-vote: 'false'
+#     stream:
+#       - 'master':
+#           branch: 'master'
+#           branch-refspec: ''
+#       - '2506':
+#           branch: 'stable/2506'
+#           branch-refspec: ''
+#       - '2510':
+#           branch: 'stable/2510'
+#           branch-refspec: ''
+# # [end] VPP-CSIT-API-CRC PROJECT
+
+# # LF RELENG VPP PROJECTS
+# - project:
+#     name: vpp-info
+#     project-name: vpp
+#     jobs:
+#       - gerrit-info-yaml-verify
+#     build-node: centos7-builder-2c-2g
+#     project: vpp
+#     branch: master
+
+# - project:
+#     name: vpp-view
+#     views:
+#       - project-view
+#     project-name: vpp
+# # [end] LF RELENG VPP PROJECTS
+# # [end] PROJECT DEFINITIONS
+
+# # JOB TEMPLATE DEFINITIONS
+# #
+# # Please keep job templates in the same order as they are referenced
+# # in the project definitions above.
+
+# # VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-checkstyle-verify-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: '{build-timeout}'
+#       - credentials-binding:
+#           - text:
+#               credential-id: VppApiCompatNotify
+#               variable: SECRET_WEBEX_TEAMS_ACCESS_TOKEN
+
+#     triggers:
+#       - gerrit:
+#           server-name: 'Primary'
+#           trigger-on:
+#             - patchset-created-event:
+#                 exclude-drafts: 'true'
+#                 exclude-trivial-rebase: 'false'
+#                 exclude-no-code-change: 'false'
+#             - draft-published-event
+#             - comment-added-contains-event:
+#                 comment-contains-value: 'checkstylecheck'
+#             - comment-added-contains-event:
+#                 comment-contains-value: 'recheck'
+#             - comment-added-contains-event:
+#                 comment-contains-value: 'reverify'
+#             # Following two are to cover missing functions of drafts
+#             # going to review status
+#             - comment-added-contains-event:
+#                 comment-contains-value: 'runtest'
+#             - comment-added-contains-event:
+#                 comment-contains-value: 'This change is ready for review'
+#           projects:
+#             - project-compare-type: 'ANT'
+#               project-pattern: '{project}'
+#               branches:
+#                 - branch-compare-type: 'ANT'
+#                   branch-pattern: '**/{branch}'
+#               file-paths:
+#                 - compare-type: REG_EXP
+#                   pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
+#               forbidden-file-paths:
+#                 - compare-type: REG_EXP
+#                   pattern: .*extras\/emacs\/.*
+#               disable-strict-forbidden-file-verification: 'true'
+#           override-votes: false # true
+#           gerrit-build-notbuilt-verified-value: 0
+#           gerrit-build-successful-verified-value: 1
+#           # yamllint disable-line rule:line-length
+#           notbuilt-message: 'Automatic retry of failed jobs may be in process. A proper vote should be set when retry completes.'
+#           # yamllint disable-line rule:line-length
+#           failed-message: 'Checkstyle failed. No further verify jobs will be started.'
+#           successful-message: 'checkstyle_success'
+#           skip-vote:
+#             successful: true
+#             failed: true # false
+#             unstable: true # false
+#             notbuilt: true # false
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/checkstyle.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/test-checkstyle.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/api-checkstyle.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/commitmsg.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/docs_spell.sh
+
+#     publishers:
+#       - fdio-infra-publish
+
+# # [end] VPP-CHECKSTYLE-VERIFY JOB TEMPLATE
+
+# # VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-verify-arm-drivers-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: 120
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/arm-drivers.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-VERIFY-ARM-DRIVERS JOB TEMPLATE
+
+# # VPP-VERIFY-HST JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-verify-hst-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'hst-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: 120
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/hst.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-VERIFY-HST JOB TEMPLATE
+
+# # VPP-VERIFY-HST-DEBUG JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-verify-hst-debug-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'hst-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: 120
+
+#     triggers:
+#       - gerrit-trigger-checkstyle:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/debug-hst.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-VERIFY-HST-DEBUG JOB TEMPLATE
+
+# # VPP-VERIFY JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-verify-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - make-test-os-parameter:
+#           make-test-os: '{make-test-os}'
+#       - make-test-multiworker-os-parameter:
+#           make-test-multiworker-os: '{make-test-multiworker-os}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: 120
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/build.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-VERIFY JOB TEMPLATE
+
+# # VPP-DEBUG-VERIFY JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-debug-verify-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - make-test-os-parameter:
+#           make-test-os: '{make-test-os}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: '{build-timeout}'
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/debug-build.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-DEBUG-VERIFY JOB TEMPLATE
+
+# # VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-dpdk-rdma-version-mismatch-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: ''
+#           choosing-strategy: 'default'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: '{build-timeout}'
+
+#     triggers:
+#       - timed: '{periodicity}'
+#       - gerrit-trigger-manually-triggered:
+#           comment-trigger-value: '{comment-trigger-value}'
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/dpdk-rdma-version-mismatch.sh
+
+#     publishers:
+#       - vpp-dpdk-rdma-version-mismatch:
+#           branch: '{branch}'
+#       - fdio-infra-publish
+# # [end] VPP-DPDK-RDMA-VERSION-MISMATCH PERIODIC JOB TEMPLATE
+
+# # VPP-MERGE JOB TEMPLATE
+# # - job-template:
+# #     name: 'vpp-merge-{stream}-{os}-{executor-arch}'
+
+# #     project-type: freestyle
+# #     node: 'builder-{os}-prod-{executor-arch}'
+
+# #     properties:
+# #       - lf-infra-properties:
+# #           build-days-to-keep: "{build-days-to-keep}"
+
+# #     # Please keep parameters in alphabetical order
+# #     parameters:
+# #       - gerrit-parameter:
+# #           branch: '{branch}'
+# #       - make-parallel-jobs-parameter:
+# #           make-parallel-jobs: '{make-parallel-jobs}'
+# #       - make-test-os-parameter:
+# #           make-test-os: '{make-test-os}'
+# #       - make-test-multiworker-os-parameter:
+# #           make-test-multiworker-os: '{make-test-multiworker-os}'
+# #       - os-parameter:
+# #           os: '{os}'
+# #       - project-parameter:
+# #           project: '{project}'
+# #       - stream-parameter:
+# #           stream: '{stream}'
+
+# #     scm:
+# #       - gerrit-trigger-scm:
+# #           credentials-id: 'jenkins-gerrit-credentials'
+# #           refspec: ''
+# #           choosing-strategy: 'default'
+
+# #     wrappers:
+# #       - fdio-infra-wrappers:
+# #           build-timeout: 120
+
+# #     triggers:
+# #       - gerrit:
+# #           server-name: 'Primary'
+# #           trigger-on:
+# #             - change-merged-event
+# #             - comment-added-contains-event:
+# #                 comment-contains-value: 'remerge'
+# #           projects:
+# #             - project-compare-type: 'ANT'
+# #               project-pattern: '{project}'
+# #               branches:
+# #                 - branch-compare-type: 'ANT'
+# #                   branch-pattern: '**/{branch}'
+# #               file-paths:
+# #                 - compare-type: REG_EXP
+# #                   pattern: ^((?!\/COMMIT_MSG|docs|\.github|_abc|_def[\/\.]).)*$
+# #               forbidden-file-paths:
+# #                 - compare-type: REG_EXP
+# #                   pattern: .*extras\/emacs\/.*
+# #               disable-strict-forbidden-file-verification: 'true'
+# #           # Force Jenkins always vote the values it should already have voted
+# #           # during the prior verify phase
+# #           override-votes: true
+# #           gerrit-build-started-verified-value: 1
+# #           gerrit-build-successful-verified-value: 1
+# #           gerrit-build-failed-verified-value: 1
+# #           gerrit-build-unstable-verified-value: 1
+# #           gerrit-build-notbuilt-verified-value: 1
+# #           gerrit-build-started-codereview-value: 0
+# #           gerrit-build-successful-codereview-value: 0
+# #           gerrit-build-failed-codereview-value: 0
+# #           gerrit-build-unstable-codereview-value: 0
+# #           gerrit-build-notbuilt-codereview-value: 0
+
+# #     builders:
+# #       - config-file-provider:
+# #           files:
+# #             - file-id: '.packagecloud'
+# #               target: '/root/.packagecloud'
+# #       - config-file-provider:
+# #           files:
+# #             - file-id: 'packagecloud_api'
+# #               target: '/root/packagecloud_api'
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/setup_executor_env.sh
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/vpp/commitmsg.sh
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/setup_vpp_ext_deps.sh
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/vpp/build.sh
+# #       - shell:
+# #           !include-raw-escape:
+# #           - ../scripts/packagecloud_push.sh
+
+# #     publishers:
+# #       - fdio-infra-publish
+# # [end] VPP-MERGE JOB TEMPLATE
+
+# # VPP-GCC-VERIFY JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-gcc-verify-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: 120
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/gcc-build.sh
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-GCC-VERIFY JOB TEMPLATE
+
+# # VPP-COV-VERIFY JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-cov-verify-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - make-test-os-parameter:
+#           make-test-os: '{make-test-os}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: ''
+#           choosing-strategy: 'default'
+
+#     wrappers:
+#       - fdio-infra-wrappers:
+#           build-timeout: '{build-timeout}'
+
+#     triggers:
+#       - timed: '{periodicity}'
+#       - gerrit-trigger-manually-triggered:
+#           comment-trigger-value: '{comment-trigger-value}'
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/cov-build.sh
+
+#     publishers:
+#       - fdio-infra-publish
+#       - fdio-infra-publish-cov-7day
+# # [end] VPP-COV-VERIFY JOB TEMPLATE
+
+# # VPP-CSIT-VERIFY-PERF JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-csit-verify-perf-{stream}-{os}-{executor-arch}-{testbed-arch}'
+#     description: |
+#       <ul>
+#           <li>executor
+#               <ul>
+#                   <li>builder-{os}-prod-{executor-arch}
+#               </ul>
+#           <li>testbed architecture
+#               <ul>
+#                   <li>{testbed-arch}
+#               </ul>
+#           <li>Objective
+#           Contrary to csit-vpp job, this also measures the parent performance,
+#           and fails if performance regression is detected.
+#           See https://github.com/FDio/csit/blob/master/docs/cpta/methodology/perpatch_performance_tests.rst
+#       </ul>
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+#     latest-only: false
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - csit-perf-trial-duration-parameter:
+#           csit-perf-trial-duration: "10.0"
+#       - csit-perf-trial-multiplicity-parameter:
+#           csit-perf-trial-multiplicity: "5"
+#       - gerrit-csit-refspec-parameter
+#       - gerrit-event-comment-text-parameter
+#       - gerrit-event-type-parameter
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers-non-activity-timeout:
+#           build-timeout: 300
+
+#     triggers:
+#       - gerrit-trigger-csit-perftest:
+#           project: '{project}'
+#           branch: '{branch}'
+#           trigger-word: 'perftest-{testbed-arch}'
+#           skip-vote: true
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/csit-perf.sh
+
+#     publishers:
+#       - postbuildscript:
+#           # Can be removed when all CSIT branches use correct archive directory.
+#           builders:
+#             - build-on:
+#                 - ABORTED
+#                 - FAILURE
+#                 - NOT_BUILT
+#                 - SUCCESS
+#                 - UNSTABLE
+#               build-steps:
+#                 - shell:
+#                     !include-raw-escape:
+#                     - ../scripts/vpp/copy_archives.sh
+#       - fdio-infra-publish
+# # [end] VPP-CSIT-VERIFY-PERF JOB TEMPLATE
+
+# # VPP-CSIT-BISECT JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-csit-bisect-{stream}-{os}-{executor-arch}-{testbed-arch}'
+#     description: |
+#       <ul>
+#           <li>executor
+#               <ul>
+#                   <li>builder-{os}-prod-{executor-arch}
+#               </ul>
+#           <li>testbed architecture
+#               <ul>
+#                   <li>{testbed-arch}
+#               </ul>
+#           <li>Objective
+#               <ul>
+#                   <li>Find a cause of VPP performance jump among VPP commits.
+#               </ul>
+#       </ul>
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+#     latest-only: false
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       - csit-perf-trial-duration-parameter:
+#           csit-perf-trial-duration: "1.0"
+#       - csit-perf-trial-multiplicity-parameter:
+#           csit-perf-trial-multiplicity: "60"
+#       - gerrit-csit-refspec-parameter
+#       - gerrit-event-comment-text-parameter
+#       - gerrit-event-type-parameter
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - make-parallel-jobs-parameter:
+#           make-parallel-jobs: '{make-parallel-jobs}'
+#       - os-parameter:
+#           os: '{os}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers-non-activity-timeout:
+#           build-timeout: 300
+
+#     triggers:
+#       - gerrit-trigger-csit-perftest:
+#           project: '{project}'
+#           branch: '{branch}'
+#           trigger-word: 'bisecttest-{testbed-arch}'
+#           skip-vote: true
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ext_deps.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/csit-bisect.sh
+
+#     publishers:
+#       - postbuildscript:
+#           # Can be removed when all CSIT branches use correct archive directory.
+#           builders:
+#             - build-on:
+#                 - ABORTED
+#                 - FAILURE
+#                 - NOT_BUILT
+#                 - SUCCESS
+#                 - UNSTABLE
+#               build-steps:
+#                 - shell:
+#                     !include-raw-escape:
+#                     - ../scripts/vpp/copy_archives.sh
+#       - fdio-infra-publish
+# # [end] VPP-CSIT-BISECT JOB TEMPLATE
+
+# # VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
+# - job-template:
+#     name: 'vpp-csit-verify-api-crc-{stream}-{os}-{executor-arch}'
+
+#     project-type: freestyle
+#     node: 'builder-{os}-prod-{executor-arch}'
+#     concurrent: true
+#     latest-only: false
+
+#     properties:
+#       - lf-infra-properties:
+#           build-days-to-keep: "{build-days-to-keep}"
+
+#     # Please keep parameters in alphabetical order
+#     parameters:
+#       # Not sure whether not failing has any useful usage,
+#       # but it does not hurt to have some flexibility for future.
+#       - csit-fail-on-crc-mismatch-parameter:
+#           fail-on-crc-mismatch: 'True'
+#       - gerrit-csit-refspec-parameter
+#       - gerrit-parameter:
+#           branch: '{branch}'
+#       - gerrit-refspec-parameter:
+#           refspec: '{branch-refspec}'
+#       - project-parameter:
+#           project: '{project}'
+#       - stream-parameter:
+#           stream: '{stream}'
+
+#     scm:
+#       - gerrit-trigger-scm:
+#           credentials-id: 'jenkins-gerrit-credentials'
+#           refspec: '$GERRIT_REFSPEC'
+#           choosing-strategy: 'gerrit'
+
+#     wrappers:
+#       - fdio-infra-wrappers-non-activity-timeout:
+#           build-timeout: 300
+
+#     triggers:
+#       - gerrit-trigger-checkstyle-nonvoting:
+#           name: '{project}'
+#           branch: '{branch}'
+
+#     builders:
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_executor_env.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/setup_vpp_ubuntu_docker_test.sh
+#       - shell:
+#           !include-raw-escape:
+#           - ../scripts/vpp/check_crc.sh
+#     # TODO: Add sending e-mail notifications to vpp-api-dev@lists.fd.io
+
+#     publishers:
+#       - fdio-infra-publish
+# # [end] VPP-CSIT-VERIFY-API-CRC JOB TEMPLATE
+# # [end] JOB TEMPLATE DEFINITIONS
+
+# - project:
+#     name: vpp-release
+#     project: vpp
+#     project-name: vpp
+#     build-node: centos8-builder-2c-2g
+#     mvn-settings: vpp-settings
+#     jobs:
+#       - "gerrit-packagecloud-release-verify"
+
+# - project:
+#     name: vpp-packagecloud-release
+#     project: vpp
+#     project-name: vpp
+#     build-node: centos8-builder-2c-2g
+#     mvn-settings: vpp-settings
+#     jobs:
+#       - "gerrit-packagecloud-release-merge"
+#       - "{project-name}-gerrit-release-jobs"
