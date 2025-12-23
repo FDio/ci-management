@@ -386,7 +386,6 @@ generate_apt_dockerfile() {
     local executor_image="$4"
     local is_dind_image="false"
 
-    # TODO: Enable HST on AARCH64 when supported in vpp/extras/hs-test
     IFS="|" read -r from_image is_dind_image <<< "$(select_dind_image "$from_image")"
 
     cat <<EOF  >"$DOCKERIGNOREFILE"
