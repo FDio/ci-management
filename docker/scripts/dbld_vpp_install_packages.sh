@@ -54,13 +54,15 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     fi
 
     # Install hs-test depndencies
-    if [ "$OS_ID" = "ubuntu" ] ; then
-        make_vpp build "$branch" "false"
-        make_vpp build-release "$branch" "false"
-        make_vpp build-vpp-gcov "$branch" "false"
-        make_vpp checkstyle-go "$branch" "false"
-        install_hst_deps "$branch"
-        git clean -qfdx
+    if [ "$OS_ID" == "ubuntu" ] ; then
+        if [ "$branch" == "master" ] || [ "${branch/stable\//}" -gt "2506" ] ; then
+            make_vpp_hst test-cov "$branch" "false"
+            make_vpp_hst test "$branch" "false"
+            make_vpp_hst test-debug "$branch" "false"
+            make_vpp checkstyle-go "$branch" "false"
+            install_hst_deps "$branch"
+            git clean -qfdx
+        fi
     fi
 
     # TODO: remove this after all supported VPP branches have removed
