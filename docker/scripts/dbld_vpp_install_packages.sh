@@ -54,12 +54,13 @@ for branch in ${VPP_BRANCHES[$OS_NAME]} ; do
     fi
 
     # Install hs-test depndencies
-    if [ "$OS_ID" = "ubuntu" ] ; then
-        make_vpp build "$branch" "false"
-        make_vpp build-release "$branch" "false"
-        make_vpp build-vpp-gcov "$branch" "false"
-        make_vpp checkstyle-go "$branch" "false"
+    if [ "$OS_ID" == "ubuntu" ] && \
+        [ "$branch" == "master" ] || [ "${branch/stable\//}" -gt "2506" ] ; then
         install_hst_deps "$branch"
+        make_vpp_hst test-cov "$branch" "false"
+        make_vpp_hst test "$branch" "false"
+        make_vpp_hst test-debug "$branch" "false"
+        make_vpp checkstyle-go "$branch" "false"
         git clean -qfdx
     fi
 
