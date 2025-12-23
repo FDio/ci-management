@@ -24,6 +24,7 @@ export CIMAN_DOCKER_SCRIPTS=${CIMAN_DOCKER_SCRIPTS:-"$(dirname "${BASH_SOURCE[0]
 . "$CIMAN_DOCKER_SCRIPTS"/lib_common.sh
 
 
+VPP_HST_DIR="./test/hs-test"
 VPP_SUPPORTED_EXECUTOR_CLASSES="builder"
 vpp_supported_executor_class() {
     if ! grep -q "${1:-}" <<< "$VPP_SUPPORTED_EXECUTOR_CLASSES"; then
@@ -35,13 +36,14 @@ vpp_supported_executor_class() {
 install_hst_deps() {
     local branch=${1:-"master"}
     local branchname=${branch/\//_}
-    local hst_dir="./extras/hs-test"
     local bld_log="$DOCKER_BUILD_LOG_DIR"
     bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
     bld_log="${bld_log}-install_hst_deps_bld.log"
 
-    if [ -d "$hst_dir" ] ; then
-        make -C "$hst_dir" install-deps 2>&1 | tee -a "$bld_log"
+    if [ -d "$VPP_HST_DIR" ] ; then
+        make -C "$VPP_HST_DIR" install-deps 2>&1 | tee -a "$bld_log"
+    else
+        echo "ERROR: Missing $VPP_HST_DIR!"
     fi
 }
 
@@ -61,7 +63,7 @@ make_vpp() {
     bld_log="${bld_log}-make_vpp_${target}-bld.log"
 
     makefile_target="^${target}:"
-    if ! grep "$makefile_target" Makefile ; then
+    if ! grep -e "$makefile_target" Makefile ; then
         echo "Make target '$target' does not exist in VPP branch '$branch'!"
         return
     fi
@@ -71,6 +73,35 @@ make_vpp() {
     description="'make UNATTENDED=yes $target' in $(pwd) ($branch)"
     echo_log -e "    Starting  $description..."
     make UNATTENDED=yes "$target" 2>&1 | tee -a "$bld_log"
+    git checkout -q -- .
+    echo_log "    Completed $description!"
+}
+
+make_vpp_hst() {
+    local target=$1
+    local branch=${2:-"master"}
+    local clean=${3:-"true"}
+    local branchname=${branch/\//_}
+    local bld_log="$DOCKER_BUILD_LOG_DIR"
+    local hst_test=""
+    bld_log="${bld_log}/$FDIOTOOLS_IMAGENAME-$branchname"
+    bld_log="${bld_log}-make_vpp_hst_${target}-bld.log"
+
+    makefile_target="^${target}:"
+    if ! grep -e "$makefile_target" "$VPP_HST_DIR"/Makefile ; then
+        echo "Make hst target '$target' does not exist in VPP branch '$branch' dir $(pwd)!"
+        return
+    fi
+    if [ "$clean" = "true" ] ; then
+        make cleanup-hst
+        git clean -qfdx
+    fi
+    if grep -q 'test' <<< "$target" ; then
+        target="$target TEST=EchoBuiltinTest"
+    fi
+    description="'make '$target' in $(pwd) ($branch)"
+    echo_log -e "    Starting  $description..."
+    make -C "$VPP_HST_DIR" "$target" 2>&1 | tee -a "$bld_log"
     git checkout -q -- .
     echo_log "    Completed $description!"
 }
